@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+<meta charset="UTF-8">
+<title>Αιμόσταση - Audio Learning</title>
+
+<style>
+body{
+  font-family:"Segoe UI";
+  background:#f7f8fc;
+  padding:20px;
+  text-align:center;
+}
+
+.container{
+  max-width:800px;
+  margin:auto;
+  background:white;
+  padding:25px;
+  border-radius:20px;
+  box-shadow:0 4px 14px rgba(0,0,0,0.1);
+}
+
+h1{ color:#4b4b6a; }
+
+.card{
+  margin:20px 0;
+  padding:20px;
+  border-radius:16px;
+  background:#fffde7;
+}
+
+button{
+  margin:5px;
+  padding:10px 15px;
+  border:none;
+  border-radius:10px;
+  cursor:pointer;
+}
+
+.controls{
+  margin-top:20px;
+}
+
+select, input{
+  padding:8px;
+  border-radius:8px;
+  margin:5px;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>🎧 Audio Learning</h1>
+
+<div id="cardBox" class="card"></div>
+
+<div class="controls">
+  <button onclick="startPodcast()">🎧 Start Podcast</button>
+  <button onclick="pausePodcast()">⏸ Pause</button>
+  <button onclick="resumePodcast()">▶ Resume</button>
+  <button onclick="stopPodcast()">⏹ Stop</button>
+  <button onclick="replayCurrent()">🔁 Replay Current</button>
+  <button onclick="nextCardManual()">⏭ Next</button>
+
+  <br><br>
+
+  <label>Speed:</label>
+  <input type="range" min="0.6" max="1.4" step="0.1" value="0.9" id="speed">
+
+  <br>
+
+  <label>Voice:</label>
+  <select id="voices"></select>
+</div>
+
+</div>
+
+<script>
+const cards = [
+  { title: "Q1. Εισαγωγή – Τι είναι η αιμόσταση", content: "Η αιμόσταση είναι φυσιολογικός προστατευτικός μηχανισμός που σταματά την αιμορραγία και διατηρεί το αίμα σε ρευστή μορφή." },
+  { title: "Q2. Διακρίσεις της αιμόστασης", content: "Η αιμόσταση χωρίζεται σε πρωτογενή και δευτερογενή. Η πρωτογενής αφορά τα αιμοπετάλια, ενώ η δευτερογενής τον καταρράκτη πήξης και την ινική." },
+  { title: "Q3. Στοιχεία φυσιολογίας", content: "Οι παράγοντες της πήξης παίζουν κεντρικό ρόλο στη δευτερογενή αιμόσταση." }
+  // εδώ θα βάλεις μετά όλες τις κάρτες Q1–Q148
+];
+
+let voices = [];
+let currentIndex = 0;
+let currentUtterance = null;
+let isPodcastMode = false;
+let isPaused = false;
+
+function loadVoices() {
+  const allVoices = speechSynthesis.getVoices();
+
+  voices = allVoices.filter(v =>
+    v.lang.toLowerCase().includes("el") ||
+    v.lang.toLowerCase().includes("en")
+  );
+
+  const select = document.getElementById("voices");
+  select.innerHTML = "";
+
+  voices.forEach((voice, index) => {
+    const option = document.createElement("option");
+    option.value = index;
+    option.textContent = `${voice.name} (${voice.lang})`;
+    select.appendChild(option);
+  });
+}
+
+speechSynthesis.onvoiceschanged = loadVoices;
+
+function renderCard() {
+  const card = cards[currentIndex];
+  document.getElementById("cardBox").innerHTML = `
+    <h2>${card.title}</h2>
+    <p>${card.content}</p>
+    <p style="margin-top:10px;color:#666;">Κάρτα ${currentIndex + 1} από ${cards.length}</p>
+  `;
+}
+
+function getSelectedVoice() {
+  const select = document.getElementById("voices");
+  const selectedIndex = Number(select.value);
+  return voices[selectedIndex] || null;
+}
+
+function getRate() {
+  return Number(document.getElementById("speed").value || 0.9);
+}
+
+function buildCardText(index) {
+  const card = cards[index];
+  return `Κάρτα ${index + 1}. ${card.title}. ${card.content}.`;
+}
+
+function buildRecapText(index) {
+  const start = Math.max(0, index - 19);
+  const chunk = cards.slice(start, index + 1);
+
+  const recapTitles = chunk.map((c, i) => {
+    return `Σημείο ${i + 1}. ${c.title}.`;
+  }).join(" ");
+
+  return `Μικρή επανάληψη σημαντικών σημείων των τελευταίων είκοσι καρτών. ${recapTitles} Τέλος επανάληψης.`;
+}
+
+function speakText(text, onEndCallback = null) {
+  speechSynthesis.cancel();
+
+  const utter = new SpeechSynthesisUtterance(text);
+  utter.lang = "el-GR";
+  utter.rate = getRate();
+  utter.pitch = 1.0;
+
+  const voice = getSelectedVoice();
+  if (voice) utter.voice = voice;
+
+  utter.onend = () => {
+    currentUtterance = null;
+    if (typeof onEndCallback === "function" && isPodcastMode && !isPaused) {
+      onEndCallback();
+    }
+  };
+
+  currentUtterance = utter;
+  speechSynthesis.speak(utter);
+}
+
+function playCurrentCardAndContinue() {
+  if (!isPodcastMode) return;
+
+  renderCard();
+
+  const cardText = buildCardText(currentIndex);
+
+  speakText(cardText, () => {
+    const completedCardNumber = currentIndex + 1;
+
+    if (completedCardNumber % 20 === 0) {
+      const recapText = buildRecapText(currentIndex);
+
+      speakText(recapText, () => {
+        moveToNextAuto();
+      });
+    } else {
+      moveToNextAuto();
+    }
+  });
+}
+
+function moveToNextAuto() {
+  if (!isPodcastMode) return;
+
+  currentIndex++;
+
+  if (currentIndex >= cards.length) {
+    isPodcastMode = false;
+    renderFinishedMessage();
+    return;
+  }
+
+  playCurrentCardAndContinue();
+}
+
+function renderFinishedMessage() {
+  document.getElementById("cardBox").innerHTML = `
+    <h2>Τέλος audio session 🎉</h2>
+    <p>Ολοκληρώθηκαν όλες οι κάρτες.</p>
+    <p>Μπορείς να πατήσεις Start Podcast για να ξεκινήσεις ξανά.</p>
+  `;
+}
+
+function startPodcast() {
+  if (!cards.length) return;
+
+  isPodcastMode = true;
+  isPaused = false;
+  speechSynthesis.cancel();
+  playCurrentCardAndContinue();
+}
+
+function pausePodcast() {
+  if (speechSynthesis.speaking && !speechSynthesis.paused) {
+    speechSynthesis.pause();
+    isPaused = true;
+  }
+}
+
+function resumePodcast() {
+  if (speechSynthesis.paused) {
+    speechSynthesis.resume();
+    isPaused = false;
+    return;
+  }
+
+  if (!speechSynthesis.speaking && isPodcastMode) {
+    isPaused = false;
+    playCurrentCardAndContinue();
+  }
+}
+
+function stopPodcast() {
+  isPodcastMode = false;
+  isPaused = false;
+  speechSynthesis.cancel();
+}
+
+function replayCurrent() {
+  speechSynthesis.cancel();
+  renderCard();
+  const text = buildCardText(currentIndex);
+  speakText(text, null);
+}
+
+function nextCardManual() {
+  speechSynthesis.cancel();
+
+  if (currentIndex < cards.length - 1) {
+    currentIndex++;
+    renderCard();
+
+    if (isPodcastMode) {
+      playCurrentCardAndContinue();
+    }
+  }
+}
+
+renderCard();
+loadVoices();
+</script>
+
+</body>
+</html>

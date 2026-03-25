@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Αιμόσταση - Anki Cards</title>
+  <style>
+    body{
+      font-family:"Segoe UI", Arial, sans-serif;
+      background:#f7f8fc;
+      margin:0;
+      padding:24px;
+      color:#2f2f3a;
+    }
+
+    h1{
+      text-align:center;
+      color:#4b4b6a;
+      margin-bottom:8px;
+    }
+
+    .subtitle{
+      text-align:center;
+      color:#666;
+      margin-bottom:20px;
+    }
+
+    .top-actions{
+      display:flex;
+      justify-content:center;
+      gap:10px;
+      margin-bottom:20px;
+      flex-wrap:wrap;
+    }
+
+    button{
+      border:none;
+      padding:10px 16px;
+      border-radius:12px;
+      cursor:pointer;
+      font-size:14px;
+      background:#e8eaf6;
+      color:#3c3c5a;
+      box-shadow:0 4px 10px rgba(0,0,0,0.05);
+    }
+
+    button:hover{
+      transform:translateY(-1px);
+    }
+
+    .menu-box, .card-box{
+      max-width:900px;
+      margin:0 auto;
+      background:#fff;
+      border-radius:18px;
+      padding:22px;
+      box-shadow:0 4px 14px rgba(0,0,0,0.06);
+    }
+
+    .hidden{
+      display:none;
+    }
+
+    .category-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit, minmax(220px,1fr));
+      gap:14px;
+      margin-top:18px;
+    }
+
+    .category-card{
+      padding:18px;
+      border-radius:16px;
+      cursor:pointer;
+      box-shadow:0 4px 12px rgba(0,0,0,0.05);
+      transition:0.2s;
+    }
+
+    .category-card:hover{
+      transform:translateY(-2px);
+    }
+
+    .pink{ background:#ffe5ec; }
+    .blue{ background:#e3f2fd; }
+    .green{ background:#e8f5e9; }
+    .peach{ background:#fff3e0; }
+    .lav{ background:#f3e5f5; }
+    .mint{ background:#e0f7fa; }
+
+    .info-row{
+      display:flex;
+      justify-content:space-between;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-bottom:18px;
+      font-weight:600;
+      color:#4b4b6a;
+    }
+
+    .flashcard{
+      min-height:280px;
+      border-radius:22px;
+      padding:28px;
+      background:#fffde7;
+      box-shadow:0 4px 14px rgba(0,0,0,0.06);
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      align-items:center;
+      text-align:center;
+      margin-bottom:20px;
+    }
+
+    .card-label{
+      font-size:13px;
+      color:#777;
+      margin-bottom:12px;
+      text-transform:uppercase;
+      letter-spacing:1px;
+    }
+
+    .card-text{
+      font-size:26px;
+      line-height:1.5;
+      max-width:700px;
+    }
+
+    .answer-box{
+      display:none;
+      margin-top:18px;
+      background:#eef7ff;
+      border-radius:16px;
+      padding:18px;
+      line-height:1.6;
+      font-size:17px;
+    }
+
+    .answer-box.show{
+      display:block;
+    }
+
+    .controls{
+      display:flex;
+      justify-content:center;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top:12px;
+    }
+
+    .difficulty{
+      display:none;
+      justify-content:center;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top:16px;
+    }
+
+    .difficulty.show{
+      display:flex;
+    }
+
+    .easy-btn{ background:#e8f5e9; }
+    .medium-btn{ background:#fff3e0; }
+    .hard-btn{ background:#ffe5ec; }
+
+    .small{
+      color:#666;
+      font-size:14px;
+      text-align:center;
+      margin-top:10px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🗂️ ΑΙΜΟΣΤΑΣΗ - Anki Cards</h1>
+  <div class="subtitle">Flashcards για active recall</div>
+
+  <div class="top-actions">
+    <button onclick="window.location.href='aimostasi.html'">⬅ Επιστροφή στις σημειώσεις</button>
+    <button onclick="showMenu()">🏠 Μενού</button>
+    <button onclick="restartDeck()">🔄 Restart</button>
+  </div>
+
+  <!-- MENU -->
+  <div id="menuScreen" class="menu-box">
+    <h2>Διάλεξε deck</h2>
+    <div class="small">Μπορείς να μελετήσεις όλο το κεφάλαιο ή συγκεκριμένη ενότητα.</div>
+
+    <div class="category-grid">
+      <div class="category-card pink" onclick="startDeck('all')">
+        <h3>🌟 Όλα μαζί</h3>
+        <p>Random cards από όλες τις ενότητες.</p>
+      </div>
+
+      <div class="category-card blue" onclick="startDeck('basic')">
+        <h3>🩸 Βασική αιμόσταση</h3>
+        <p>Ορισμοί, φάσεις, παράγοντες, ινωδόλυση.</p>
+      </div>
+
+      <div class="category-card green" onclick="startDeck('hemophilia')">
+        <h3>🧬 Αιμορροφιλία</h3>
+        <p>Αιμορροφιλία A/B, αιμάρθρα, severity.</p>
+      </div>
+
+      <div class="category-card peach" onclick="startDeck('vwf')">
+        <h3>🧫 vWF / vWD</h3>
+        <p>Ρόλος vWF, τύποι vWD, κλινική εικόνα.</p>
+      </div>
+
+      <div class="category-card lav" onclick="startDeck('dic')">
+        <h3>⚠️ ΔΕΠ</h3>
+        <p>Μηχανισμοί, TF, αντιπηκτικά, φλεγμονή.</p>
+      </div>
+
+      <div class="category-card mint" onclick="startDeck('thrombophilia')">
+        <h3>🧠 Θρομβοφιλία</h3>
+        <p>FV Leiden, APS, κύηση, νεοπλάσματα, στάση.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- CARDS -->
+  <div id="cardScreen" class="card-box hidden">
+    <div class="info-row">
+      <div id="cardCounter">Κάρτα 1 / 10</div>
+      <div id="deckName">Deck: -</div>
+      <div id="learnStats">Easy: 0 | Medium: 0 | Hard: 0</div>
+    </div>
+
+    <div class="flashcard">
+      <div id="cardLabel" class="card-label">Ερώτηση</div>
+      <div id="cardQuestion" class="card-text"></div>
+    </div>
+
+    <div id="answerBox" class="answer-box"></div>
+
+    <div class="controls">
+      <button id="showAnswerBtn" onclick="showAnswer()">👀 Show Answer</button>
+      <button id="nextBtn" onclick="nextCard()" style="display:none;">➡ Next Card</button>
+    </div>
+
+    <div id="difficultyRow" class="difficulty">
+      <button class="easy-btn" onclick="rateCard('easy')">💚 Easy</button>
+      <button class="medium-btn" onclick="rateCard('medium')">💛 Medium</button>
+      <button class="hard-btn" onclick="rateCard('hard')">💗 Hard</button>
+    </div>
+
+    <div class="small">Πρώτα προσπάθησε να απαντήσεις μόνη σου και μετά πάτα Show Answer.</div>
+  </div>
+
+  <script>
+    const cardBank = [
+      {
+        category: "basic",
+        front: "Ποιος είναι ο βασικός σκοπός της αιμόστασης;",
+        back: "Να σταματά την αιμορραγία όταν υπάρχει αγγειακή βλάβη και ταυτόχρονα να διατηρεί το αίμα σε ρευστή μορφή μέσα στα αγγεία."
+      },
+      {
+        category: "basic",
+        front: "Ποια είναι η διαφορά πρωτογενούς και δευτερογενούς αιμόστασης;",
+        back: "Η πρωτογενής αιμόσταση αφορά κυρίως αγγειοσύσπαση και αιμοπετάλια. Η δευτερογενής αιμόσταση αφορά τον καταρράκτη πήξης και τον σχηματισμό ινικής."
+      },
+      {
+        category: "basic",
+        front: "Ποιες είναι οι 3 φάσεις του κυτταρικού υποδείγματος αιμόστασης;",
+        back: "Initiation, Amplification, Propagation."
+      },
+      {
+        category: "basic",
+        front: "Τι κάνει ο TFPI;",
+        back: "Ο TFPI αναστέλλει το σύμπλεγμα TF/FVIIa/FXa και περιορίζει την ενεργοποίηση της πήξης."
+      },
+      {
+        category: "basic",
+        front: "Τι είναι η ινωδόλυση;",
+        back: "Είναι η φυσιολογική διαδικασία διάσπασης της ινικής του θρόμβου μέσω της πλασμίνης."
+      },
+      {
+        category: "basic",
+        front: "Από τι προέρχεται η πλασμίνη;",
+        back: "Από την ενεργοποίηση του πλασμινογόνου, κυρίως μέσω t-PA και u-PA."
+      },
+
+      {
+        category: "hemophilia",
+        front: "Τι λείπει στην αιμορροφιλία Α;",
+        back: "Ο παράγοντας VIII."
+      },
+      {
+        category: "hemophilia",
+        front: "Τι λείπει στην αιμορροφιλία Β;",
+        back: "Ο παράγοντας IX."
+      },
+      {
+        category: "hemophilia",
+        front: "Ποια είναι η συχνότερη αιμορραγική εκδήλωση στην αιμορροφιλία;",
+        back: "Η αιμάρθρωση, δηλαδή η ενδαρθρική αιμορραγία."
+      },
+      {
+        category: "hemophilia",
+        front: "Τι σημαίνει βαριά αιμορροφιλία;",
+        back: "Επίπεδα FVIII ή FIX κάτω από 1%."
+      },
+      {
+        category: "hemophilia",
+        front: "Γιατί οι αρθρώσεις είναι τόσο ευάλωτες στην αιμορροφιλία;",
+        back: "Γιατί το αρθρικό υγρό δημιουργεί αντιπηκτικό περιβάλλον, με μειωμένο TF και αυξημένο TFPI, ενώ υπάρχει και αυξημένη ινωδόλυση."
+      },
+
+      {
+        category: "vwf",
+        front: "Ποιος είναι ο διπλός ρόλος του vWF;",
+        back: "Βοηθά στην προσκόλληση των αιμοπεταλίων στο ενδοθήλιο και μεταφέρει/σταθεροποιεί τον FVIII."
+      },
+      {
+        category: "vwf",
+        front: "Ποιος τύπος vWD είναι μερική ποσοτική ανεπάρκεια;",
+        back: "Ο τύπος 1."
+      },
+      {
+        category: "vwf",
+        front: "Ποιος τύπος vWD είναι πλήρης έλλειψη;",
+        back: "Ο τύπος 3."
+      },
+      {
+        category: "vwf",
+        front: "Τι είδους αιμορραγίες δίνει συχνότερα η νόσος von Willebrand;",
+        back: "Βλεννογονικές αιμορραγίες: ουλορραγίες, ρινορραγίες, μηνορραγίες, γαστρεντερικές αιμορραγίες."
+      },
+      {
+        category: "vwf",
+        front: "Γιατί η vWD επηρεάζει και πρωτογενή και δευτερογενή αιμόσταση;",
+        back: "Γιατί ο vWF είναι απαραίτητος για την προσκόλληση των αιμοπεταλίων αλλά και για τη σταθερότητα του FVIII."
+      },
+
+      {
+        category: "dic",
+        front: "Τι είναι η ΔΕΠ;",
+        back: "Επίκτητο σύνδρομο με συστηματική ενεργοποίηση της πήξης, παραγωγή θρομβίνης, εναπόθεση ινικής στη μικροκυκλοφορία, μικροθρόμβωση και κατανάλωση παραγόντων/αιμοπεταλίων."
+      },
+      {
+        category: "dic",
+        front: "Ποιο είναι το παράδοξο της ΔΕΠ;",
+        back: "Συνυπάρχουν θρόμβωση και αιμορραγία."
+      },
+      {
+        category: "dic",
+        front: "Ποιοι είναι οι 5 βασικοί μηχανισμοί της ΔΕΠ;",
+        back: "Μαζική ενεργοποίηση πήξης, ενεργοποίηση αιμοπεταλίων, απορρύθμιση αντιπηκτικών, διαταραχή ινωδόλυσης, ενεργοποίηση φλεγμονής."
+      },
+      {
+        category: "dic",
+        front: "Ποιος είναι βασικός εκκινητής της ΔΕΠ;",
+        back: "Η υπερέκφραση του Tissue Factor."
+      },
+      {
+        category: "dic",
+        front: "Ποια φυσικά αντιπηκτικά μειώνονται στη ΔΕΠ;",
+        back: "Αντιθρομβίνη, πρωτεΐνη C και πρωτεΐνη S."
+      },
+
+      {
+        category: "thrombophilia",
+        front: "Ποια είναι η τριάδα του Virchow;",
+        back: "Στάση, τραυματισμός/βλάβη του αγγειακού τοιχώματος και διαταραχές των παραγόντων πήξης."
+      },
+      {
+        category: "thrombophilia",
+        front: "Ποιος είναι ο συχνότερος κληρονομικός θρομβοφιλικός παράγοντας;",
+        back: "Ο παράγοντας V Leiden."
+      },
+      {
+        category: "thrombophilia",
+        front: "Τι σημαίνει APC resistance στον FV Leiden;",
+        back: "Ο ενεργοποιημένος παράγοντας V δεν αδρανοποιείται σωστά από την ενεργοποιημένη πρωτεΐνη C, άρα παρατείνεται η παραγωγή θρομβίνης."
+      },
+      {
+        category: "thrombophilia",
+        front: "Τι προκαλεί η μετάλλαξη G20210A της προθρομβίνης;",
+        back: "Αυξημένα επίπεδα προθρομβίνης, άρα αυξημένη παραγωγή θρομβίνης και υπερπηκτικότητα."
+      },
+      {
+        category: "thrombophilia",
+        front: "Τι χαρακτηρίζει το αντιφωσφολιπιδικό σύνδρομο;",
+        back: "Αγγειακές θρομβώσεις, επιπλοκές κύησης και παρουσία αντιφωσφολιπιδικών αντισωμάτων."
+      },
+      {
+        category: "thrombophilia",
+        front: "Γιατί η κύηση θεωρείται υπερπηκτική κατάσταση;",
+        back: "Λόγω αύξησης πολλών παραγόντων πήξης, μείωσης της PS, επίκτητης APC resistance και καταστολής της ινωδόλυσης."
+      },
+      {
+        category: "thrombophilia",
+        front: "Γιατί τα αντισυλληπτικά αυξάνουν τον κίνδυνο θρόμβωσης;",
+        back: "Τα οιστρογόνα αυξάνουν τη σύνθεση παραγόντων πήξης, μειώνουν φυσικά αντιπηκτικά και προκαλούν διαταραχές στην ινωδόλυση."
+      },
+      {
+        category: "thrombophilia",
+        front: "Γιατί το νεφρωσικό σύνδρομο προδιαθέτει σε θρόμβωση;",
+        back: "Επειδή χάνεται αντιθρομβίνη στα ούρα και παράλληλα αυξάνονται αρκετοί παράγοντες πήξης."
+      },
+      {
+        category: "thrombophilia",
+        front: "Πώς τα νεοπλάσματα προάγουν τη θρόμβωση;",
+        back: "Μέσω έκφρασης TF, προπηκτικού του καρκίνου, κυτταροκινών, μικροσωματιδίων, φλεβικής στάσης, ενδοθηλιακής βλάβης και καθετήρων."
+      }
+    ];
+
+    const categoryNames = {
+      all: "Όλα μαζί",
+      basic: "Βασική αιμόσταση",
+      hemophilia: "Αιμορροφιλία",
+      vwf: "vWF / vWD",
+      dic: "ΔΕΠ",
+      thrombophilia: "Θρομβοφιλία"
+    };
+
+    let currentDeck = [];
+    let currentIndex = 0;
+    let currentCategory = "all";
+    let easyCount = 0;
+    let mediumCount = 0;
+    let hardCount = 0;
+
+    const menuScreen = document.getElementById("menuScreen");
+    const cardScreen = document.getElementById("cardScreen");
+    const cardCounter = document.getElementById("cardCounter");
+    const deckName = document.getElementById("deckName");
+    const learnStats = document.getElementById("learnStats");
+    const cardQuestion = document.getElementById("cardQuestion");
+    const answerBox = document.getElementById("answerBox");
+    const showAnswerBtn = document.getElementById("showAnswerBtn");
+    const nextBtn = document.getElementById("nextBtn");
+    const difficultyRow = document.getElementById("difficultyRow");
+
+    function shuffleArray(array) {
+      const copy = [...array];
+      for (let i = copy.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [copy[i], copy[j]] = [copy[j], copy[i]];
+      }
+      return copy;
+    }
+
+    function getDeck(category) {
+      if (category === "all") {
+        return shuffleArray(cardBank);
+      }
+      return shuffleArray(cardBank.filter(card => card.category === category));
+    }
+
+    function startDeck(category) {
+      currentCategory = category;
+      currentDeck = getDeck(category);
+      currentIndex = 0;
+      easyCount = 0;
+      mediumCount = 0;
+      hardCount = 0;
+
+      menuScreen.classList.add("hidden");
+      cardScreen.classList.remove("hidden");
+
+      renderCard();
+    }
+
+    function renderCard() {
+      if (currentDeck.length === 0) return;
+
+      const card = currentDeck[currentIndex];
+      cardCounter.textContent = `Κάρτα ${currentIndex + 1} / ${currentDeck.length}`;
+      deckName.textContent = `Deck: ${categoryNames[currentCategory]}`;
+      learnStats.textContent = `Easy: ${easyCount} | Medium: ${mediumCount} | Hard: ${hardCount}`;
+
+      cardQuestion.textContent = card.front;
+      answerBox.textContent = card.back;
+      answerBox.classList.remove("show");
+      showAnswerBtn.style.display = "inline-block";
+      nextBtn.style.display = "none";
+      difficultyRow.classList.remove("show");
+    }
+
+    function showAnswer() {
+      answerBox.classList.add("show");
+      showAnswerBtn.style.display = "none";
+      nextBtn.style.display = "inline-block";
+      difficultyRow.classList.add("show");
+    }
+
+    function rateCard(level) {
+      if (level === "easy") easyCount++;
+      if (level === "medium") mediumCount++;
+      if (level === "hard") hardCount++;
+
+      learnStats.textContent = `Easy: ${easyCount} | Medium: ${mediumCount} | Hard: ${hardCount}`;
+    }
+
+    function nextCard() {
+      currentIndex++;
+
+      if (currentIndex >= currentDeck.length) {
+        currentIndex = 0;
+        currentDeck = shuffleArray(currentDeck);
+      }
+
+      renderCard();
+    }
+
+    function restartDeck() {
+      if (currentCategory) {
+        startDeck(currentCategory);
+      } else {
+        showMenu();
+      }
+    }
+
+    function showMenu() {
+      menuScreen.classList.remove("hidden");
+      cardScreen.classList.add("hidden");
+    }
+  </script>
+</body>
+</html>

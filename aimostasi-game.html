@@ -1,0 +1,788 @@
+
+<!DOCTYPE html>
+<html lang="el">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Αιμόσταση - Learning Game</title>
+  <style>
+    body{
+      font-family:"Segoe UI", Arial, sans-serif;
+      background:#f7f8fc;
+      margin:0;
+      padding:24px;
+      color:#2f2f3a;
+    }
+
+    h1{
+      text-align:center;
+      color:#4b4b6a;
+      margin-bottom:8px;
+    }
+
+    .subtitle{
+      text-align:center;
+      color:#666;
+      margin-bottom:20px;
+    }
+
+    .top-actions{
+      display:flex;
+      justify-content:center;
+      gap:10px;
+      margin-bottom:20px;
+      flex-wrap:wrap;
+    }
+
+    button{
+      border:none;
+      padding:10px 16px;
+      border-radius:12px;
+      cursor:pointer;
+      font-size:14px;
+      background:#e8eaf6;
+      color:#3c3c5a;
+      box-shadow:0 4px 10px rgba(0,0,0,0.05);
+    }
+
+    button:hover{
+      transform:translateY(-1px);
+    }
+
+    .screen{
+      max-width:950px;
+      margin:0 auto;
+      background:#fff;
+      border-radius:18px;
+      padding:22px;
+      box-shadow:0 4px 14px rgba(0,0,0,0.06);
+    }
+
+    .hidden{
+      display:none;
+    }
+
+    .category-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit, minmax(220px,1fr));
+      gap:14px;
+      margin-top:18px;
+    }
+
+    .category-card{
+      padding:18px;
+      border-radius:16px;
+      cursor:pointer;
+      box-shadow:0 4px 12px rgba(0,0,0,0.05);
+      transition:0.2s;
+    }
+
+    .category-card:hover{
+      transform:translateY(-2px);
+    }
+
+    .pink{ background:#ffe5ec; }
+    .blue{ background:#e3f2fd; }
+    .green{ background:#e8f5e9; }
+    .peach{ background:#fff3e0; }
+    .lav{ background:#f3e5f5; }
+    .mint{ background:#e0f7fa; }
+    .yellow{ background:#fffde7; }
+
+    .info-row{
+      display:flex;
+      justify-content:space-between;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-bottom:18px;
+      font-weight:600;
+      color:#4b4b6a;
+    }
+
+    .question{
+      font-size:20px;
+      margin-bottom:18px;
+      line-height:1.5;
+    }
+
+    .answers{
+      display:grid;
+      gap:12px;
+    }
+
+    .answer-btn{
+      text-align:left;
+      background:#eef7ff;
+      color:#2f2f3a;
+      border:2px solid transparent;
+      border-radius:14px;
+      padding:14px;
+      font-size:15px;
+      cursor:pointer;
+      transition:0.2s;
+      box-shadow:none;
+    }
+
+    .answer-btn:hover{
+      transform:translateY(-1px);
+    }
+
+    .answer-btn.correct{
+      background:#e8f5e9;
+      border-color:#7cbf88;
+    }
+
+    .answer-btn.wrong{
+      background:#ffe5ec;
+      border-color:#d8899b;
+    }
+
+    .answer-btn.disabled{
+      pointer-events:none;
+      opacity:0.96;
+    }
+
+    .feedback{
+      margin-top:18px;
+      padding:14px;
+      border-radius:14px;
+      display:none;
+      line-height:1.5;
+    }
+
+    .feedback.correct{
+      display:block;
+      background:#e8f5e9;
+    }
+
+    .feedback.wrong{
+      display:block;
+      background:#ffe5ec;
+    }
+
+    .bottom-actions{
+      display:flex;
+      justify-content:space-between;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top:18px;
+    }
+
+    .final-box{
+      text-align:center;
+      background:#fff3e0;
+      border-radius:18px;
+      padding:22px;
+      margin-top:20px;
+      display:none;
+    }
+
+    .small{
+      color:#666;
+      font-size:14px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🎮 ΑΙΜΟΣΤΑΣΗ - Learning Game</h1>
+  <div class="subtitle">Διάλεξε ενότητα και παίξε quiz από τις σημειώσεις σου</div>
+
+  <div class="top-actions">
+    <button onclick="window.location.href='aimostasi.html'">⬅ Επιστροφή στις σημειώσεις</button>
+    <button onclick="showMenu()">🏠 Μενού</button>
+    <button onclick="restartGame()">🔄 Restart</button>
+  </div>
+
+  <!-- MENU SCREEN -->
+  <div id="menuScreen" class="screen">
+    <h2>Διάλεξε mode</h2>
+    <div class="small">Μπορείς να παίξεις είτε όλο το κεφάλαιο είτε συγκεκριμένη κατηγορία.</div>
+
+    <div class="category-grid">
+      <div class="category-card pink" onclick="startGame('all')">
+        <h3>🌟 Όλα μαζί</h3>
+        <p>Random mix από όλες τις ενότητες.</p>
+      </div>
+
+      <div class="category-card blue" onclick="startGame('basic')">
+        <h3>🩸 Βασική αιμόσταση</h3>
+        <p>Πρωτογενής, δευτερογενής αιμόσταση, καταρράκτης, ινωδόλυση.</p>
+      </div>
+
+      <div class="category-card green" onclick="startGame('hemophilia')">
+        <h3>🧬 Αιμορροφιλία</h3>
+        <p>Αιμορροφιλία A/B, βαρύτητα, αιμάρθρα, παθοφυσιολογία.</p>
+      </div>
+
+      <div class="category-card peach" onclick="startGame('vwf')">
+        <h3>🧫 vWF / vWD</h3>
+        <p>Ρόλος vWF, νόσος von Willebrand, τύποι, κλινική εικόνα.</p>
+      </div>
+
+      <div class="category-card lav" onclick="startGame('dic')">
+        <h3>⚠️ ΔΕΠ</h3>
+        <p>Μηχανισμοί, TF, αντιπηκτικά, φλεγμονή, ινωδόλυση.</p>
+      </div>
+
+      <div class="category-card mint" onclick="startGame('thrombophilia')">
+        <h3>🧠 Θρομβοφιλία</h3>
+        <p>Virchow, FV Leiden, προθρομβίνη, APS, κύηση, νεοπλάσματα.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- GAME SCREEN -->
+  <div id="gameScreen" class="screen hidden">
+    <div class="info-row">
+      <div id="questionCounter">Ερώτηση 1 / 10</div>
+      <div id="categoryDisplay">Κατηγορία: -</div>
+      <div id="scoreDisplay">Score: 0</div>
+    </div>
+
+    <div id="questionText" class="question"></div>
+
+    <div id="answersContainer" class="answers"></div>
+
+    <div id="feedbackBox" class="feedback"></div>
+
+    <div class="bottom-actions">
+      <button onclick="showMenu()">🏠 Μενού</button>
+      <button id="nextBtn" class="hidden" onclick="nextQuestion()">➡ Επόμενη</button>
+    </div>
+
+    <div id="finalBox" class="final-box">
+      <h2>Τέλος παιχνιδιού 🎉</h2>
+      <p id="finalScoreText"></p>
+      <button onclick="restartGame()">Παίξε ξανά</button>
+    </div>
+  </div>
+
+  <script>
+    const questionBank = [
+      {
+        category: "basic",
+        question: "Ποιος είναι ο βασικός σκοπός της αιμόστασης;",
+        answers: [
+          "Να αυξάνει μόνιμα την πηκτικότητα του αίματος",
+          "Να σταματά την αιμορραγία και να διατηρεί το αίμα ρευστό",
+          "Να καταστρέφει τα αιμοπετάλια",
+          "Να ενεργοποιεί μόνο την ινωδόλυση"
+        ],
+        correctIndex: 1,
+        explanation: "Η αιμόσταση προστατεύει από αιμορραγία αλλά ταυτόχρονα διατηρεί το αίμα σε ρευστή μορφή μέσα στα αγγεία."
+      },
+      {
+        category: "basic",
+        question: "Η πρωτογενής αιμόσταση αφορά κυρίως:",
+        answers: [
+          "Παράγοντες πήξης",
+          "Ινωδόλυση",
+          "Αιμοπετάλια",
+          "Μόνο το ήπαρ"
+        ],
+        correctIndex: 2,
+        explanation: "Η πρωτογενής αιμόσταση αφορά αγγειοσύσπαση, προσκόλληση, ενεργοποίηση και συσσώρευση αιμοπεταλίων."
+      },
+      {
+        category: "basic",
+        question: "Η δευτερογενής αιμόσταση οδηγεί κυρίως σε:",
+        answers: [
+          "Παραγωγή ινικής",
+          "Παραγωγή λευκοκυττάρων",
+          "Μείωση του vWF",
+          "Διάσπαση της θρομβίνης"
+        ],
+        correctIndex: 0,
+        explanation: "Η δευτερογενής αιμόσταση ενεργοποιεί τον καταρράκτη πήξης και τελικά το ινωδογόνο μετατρέπεται σε ινική."
+      },
+      {
+        category: "basic",
+        question: "Ποια είναι η σωστή σειρά στο κυτταρικό μοντέλο;",
+        answers: [
+          "Propagation → Initiation → Amplification",
+          "Initiation → Amplification → Propagation",
+          "Amplification → Propagation → Initiation",
+          "Initiation → Propagation → Lysis"
+        ],
+        correctIndex: 1,
+        explanation: "Οι 3 βασικές φάσεις είναι initiation, amplification και propagation."
+      },
+      {
+        category: "basic",
+        question: "Ποιος είναι βασικός φυσικός αναστολέας της εξωγενούς οδού;",
+        answers: [
+          "TAFI",
+          "TFPI",
+          "vWF",
+          "FXIII"
+        ],
+        correctIndex: 1,
+        explanation: "Ο TFPI αναστέλλει το σύμπλεγμα TF/FVIIa/FXa."
+      },
+      {
+        category: "basic",
+        question: "Ποιο μόριο μετατρέπεται σε πλασμίνη;",
+        answers: [
+          "Ινωδογόνο",
+          "Προθρομβίνη",
+          "Πλασμινογόνο",
+          "vWF"
+        ],
+        correctIndex: 2,
+        explanation: "Το πλασμινογόνο ενεργοποιείται και γίνεται πλασμίνη στο σύστημα της ινωδόλυσης."
+      },
+      {
+        category: "basic",
+        question: "Ποιο από τα παρακάτω είναι προϊόν διάσπασης ινικής;",
+        answers: [
+          "D-dimer",
+          "FVIII",
+          "TF",
+          "PS"
+        ],
+        correctIndex: 0,
+        explanation: "Το D-dimer είναι προϊόν διάσπασης της ινικής."
+      },
+
+      {
+        category: "hemophilia",
+        question: "Η αιμορροφιλία Α οφείλεται σε έλλειψη:",
+        answers: [
+          "FVIII",
+          "FIX",
+          "FVII",
+          "vWF"
+        ],
+        correctIndex: 0,
+        explanation: "Αιμορροφιλία Α = ανεπάρκεια FVIII."
+      },
+      {
+        category: "hemophilia",
+        question: "Η αιμορροφιλία Β οφείλεται σε έλλειψη:",
+        answers: [
+          "FV",
+          "FIX",
+          "FXIII",
+          "προθρομβίνης"
+        ],
+        correctIndex: 1,
+        explanation: "Αιμορροφιλία Β = ανεπάρκεια FIX."
+      },
+      {
+        category: "hemophilia",
+        question: "Ποια είναι η συχνότερη χαρακτηριστική αιμορραγία στην αιμορροφιλία;",
+        answers: [
+          "Ουλορραγία",
+          "Αιμάρθρωση",
+          "Επίσταξη",
+          "Αιμόπτυση"
+        ],
+        correctIndex: 1,
+        explanation: "Περίπου 90% των αιμορραγιών στην αιμορροφιλία είναι ενδαρθρικές."
+      },
+      {
+        category: "hemophilia",
+        question: "Βαριά αιμορροφιλία σημαίνει επίπεδα παράγοντα:",
+        answers: [
+          "<1%",
+          "1–5%",
+          "5–40%",
+          ">50%"
+        ],
+        correctIndex: 0,
+        explanation: "Βαριά αιμορροφιλία: επίπεδα FVIII ή FIX κάτω από 1%."
+      },
+      {
+        category: "hemophilia",
+        question: "Η αιμορροφιλία κληρονομείται συνήθως ως:",
+        answers: [
+          "Αυτοσωματική υπολειπόμενη",
+          "Αυτοσωματική επικρατής",
+          "Φυλοσύνδετη στο Χ",
+          "Μιτοχονδριακή"
+        ],
+        correctIndex: 2,
+        explanation: "Οι αιμορροφιλίες Α και Β είναι φυλοσύνδετες διαταραχές."
+      },
+      {
+        category: "hemophilia",
+        question: "Στην άρθρωση της αιμορροφιλίας, ποιο περιβάλλον ευνοεί την αιμορραγία;",
+        answers: [
+          "Υψηλό TF",
+          "Αντιπηκτικό περιβάλλον",
+          "Αυξημένη ενεργοποίηση TAFI",
+          "Απουσία TFPI"
+        ],
+        correctIndex: 1,
+        explanation: "Το αρθρικό υγρό θεωρείται αντιπηκτικό περιβάλλον με μειωμένο TF και αυξημένο TFPI."
+      },
+
+      {
+        category: "vwf",
+        question: "Ο vWF έχει διπλό ρόλο. Ποιος είναι ο σωστός συνδυασμός;",
+        answers: [
+          "Διάσπαση ινικής και αναστολή FVIII",
+          "Προσκόλληση αιμοπεταλίων και μεταφορά FVIII",
+          "Παραγωγή θρομβίνης και FXIII",
+          "Αναστολή αιμοπεταλίων και πλασμίνης"
+        ],
+        correctIndex: 1,
+        explanation: "Ο vWF βοηθά στην προσκόλληση αιμοπεταλίων και μεταφέρει τον FVIII."
+      },
+      {
+        category: "vwf",
+        question: "Η νόσος von Willebrand είναι:",
+        answers: [
+          "Η συχνότερη κληρονομική αιμορραγική διαταραχή",
+          "Η σπανιότερη θρομβοφιλία",
+          "Μόνο επίκτητη νόσος",
+          "Μόνο νόσος αρτηριακής θρόμβωσης"
+        ],
+        correctIndex: 0,
+        explanation: "Η vWD είναι η συχνότερη κληρονομική αιμορραγική διαταραχή."
+      },
+      {
+        category: "vwf",
+        question: "Ποιος τύπος vWD αντιστοιχεί σε μερική ποσοτική ανεπάρκεια;",
+        answers: [
+          "Τύπος 1",
+          "Τύπος 2N",
+          "Τύπος 3",
+          "Τύπος 2B"
+        ],
+        correctIndex: 0,
+        explanation: "Ο τύπος 1 είναι μερική ποσοτική ανεπάρκεια του vWF."
+      },
+      {
+        category: "vwf",
+        question: "Ποιος τύπος vWD είναι η πλήρης έλλειψη;",
+        answers: [
+          "Τύπος 1",
+          "Τύπος 2",
+          "Τύπος 2M",
+          "Τύπος 3"
+        ],
+        correctIndex: 3,
+        explanation: "Ο τύπος 3 αντιστοιχεί σε πλήρη έλλειψη vWF."
+      },
+      {
+        category: "vwf",
+        question: "Η κλινική εικόνα της vWD περιλαμβάνει συχνά:",
+        answers: [
+          "Αιμάρθρα ως κύρια εκδήλωση",
+          "Βλεννογονικές αιμορραγίες",
+          "Μόνο ενδοκρανιακή αιμορραγία",
+          "Καμία αιμορραγία σε χειρουργείο"
+        ],
+        correctIndex: 1,
+        explanation: "Η vWD συνήθως προκαλεί βλεννογονικές αιμορραγίες όπως ρινορραγίες, ουλορραγίες και μηνορραγίες."
+      },
+
+      {
+        category: "dic",
+        question: "Η ΔΕΠ είναι:",
+        answers: [
+          "Κληρονομική νόσος",
+          "Επίκτητο σύνδρομο",
+          "Μόνο διαταραχή αιμοπεταλίων",
+          "Μόνο ανεπάρκεια βιταμίνης Κ"
+        ],
+        correctIndex: 1,
+        explanation: "Η διάχυτη ενδαγγειακή πήξη είναι επίκτητο σύνδρομο."
+      },
+      {
+        category: "dic",
+        question: "Στη ΔΕΠ μπορεί να συνυπάρχουν:",
+        answers: [
+          "Μόνο θρόμβωση",
+          "Μόνο αιμορραγία",
+          "Θρόμβωση και αιμορραγία",
+          "Ούτε θρόμβωση ούτε αιμορραγία"
+        ],
+        correctIndex: 2,
+        explanation: "Στη ΔΕΠ υπάρχει μικροθρόμβωση αλλά και κατανάλωση παραγόντων και αιμοπεταλίων."
+      },
+      {
+        category: "dic",
+        question: "Ποιος είναι βασικός εκκινητής της ΔΕΠ;",
+        answers: [
+          "TF",
+          "vWF",
+          "PAI-2",
+          "FXIII"
+        ],
+        correctIndex: 0,
+        explanation: "Η υπερέκφραση του Tissue Factor είναι βασικός μηχανισμός της ΔΕΠ."
+      },
+      {
+        category: "dic",
+        question: "Ποια φυσικά αντιπηκτικά μειώνονται στη ΔΕΠ;",
+        answers: [
+          "AT, PC, PS",
+          "vWF, FVIII, FIX",
+          "D-dimer και FDPs",
+          "TAFI και t-PA"
+        ],
+        correctIndex: 0,
+        explanation: "Στη ΔΕΠ μειώνονται κυρίως η αντιθρομβίνη, η πρωτεΐνη C και η πρωτεΐνη S."
+      },
+      {
+        category: "dic",
+        question: "Ποια κυτταροκίνες αναφέρονται στη φλεγμονή της ΔΕΠ;",
+        answers: [
+          "IL-6, TNF, IL-1",
+          "Μόνο IL-10",
+          "Μόνο IFN-γ",
+          "IL-4 και IL-5"
+        ],
+        correctIndex: 0,
+        explanation: "Οι κύριες κυτταροκίνες που αναφέρονται είναι IL-6, TNF και IL-1."
+      },
+
+      {
+        category: "thrombophilia",
+        question: "Η τριάδα του Virchow περιλαμβάνει όλα εκτός από:",
+        answers: [
+          "Στάση",
+          "Τραυματισμό αγγειακού τοιχώματος",
+          "Διαταραχές παραγόντων πήξης",
+          "Αύξηση ερυθροποιητίνης"
+        ],
+        correctIndex: 3,
+        explanation: "Η κλασική τριάδα είναι στάση, ενδοθηλιακή βλάβη και διαταραχή των παραγόντων πήξης."
+      },
+      {
+        category: "thrombophilia",
+        question: "Ποιος είναι ο συχνότερος κληρονομικός θρομβοφιλικός παράγοντας;",
+        answers: [
+          "Έλλειψη AT",
+          "FV Leiden",
+          "Έλλειψη PS",
+          "vWD"
+        ],
+        correctIndex: 1,
+        explanation: "Ο FV Leiden είναι ο συχνότερος κληρονομικός θρομβοφιλικός παράγοντας."
+      },
+      {
+        category: "thrombophilia",
+        question: "Ο FV Leiden προκαλεί θρομβοφιλία λόγω:",
+        answers: [
+          "Μείωσης vWF",
+          "Αντίστασης στην ενεργοποιημένη πρωτεΐνη C",
+          "Μείωσης προθρομβίνης",
+          "Αύξησης πλασμίνης"
+        ],
+        correctIndex: 1,
+        explanation: "Η μετάλλαξη προκαλεί APC resistance, άρα ο FVa δεν αδρανοποιείται εύκολα."
+      },
+      {
+        category: "thrombophilia",
+        question: "Η μετάλλαξη G20210A της προθρομβίνης οδηγεί κυρίως σε:",
+        answers: [
+          "Μείωση προθρομβίνης",
+          "Αύξηση προθρομβίνης",
+          "Μείωση FXIII",
+          "Έλλειψη FVIII"
+        ],
+        correctIndex: 1,
+        explanation: "Η G20210A συσχετίζεται με αυξημένα επίπεδα προθρομβίνης."
+      },
+      {
+        category: "thrombophilia",
+        question: "Το αντιφωσφολιπιδικό σύνδρομο χαρακτηρίζεται από:",
+        answers: [
+          "Μόνο βλεννογονικές αιμορραγίες",
+          "Αγγειακές θρομβώσεις και επιπλοκές κύησης",
+          "Μόνο έλλειψη αιμοπεταλίων",
+          "Μόνο επίκτητη αιμορροφιλία Α"
+        ],
+        correctIndex: 1,
+        explanation: "Το APS χαρακτηρίζεται από θρομβώσεις, επιπλοκές κύησης και παρουσία aPL."
+      },
+      {
+        category: "thrombophilia",
+        question: "Η κύηση είναι κατάσταση:",
+        answers: [
+          "Υποπηκτικότητας",
+          "Υπερπηκτικότητας",
+          "Απουσίας ινωδογόνου",
+          "Απουσίας vWF"
+        ],
+        correctIndex: 1,
+        explanation: "Η κύηση είναι φυσιολογική κατάσταση υπερπηκτικότητας."
+      },
+      {
+        category: "thrombophilia",
+        question: "Τα αντισυλληπτικά αυξάνουν τον κίνδυνο θρόμβωσης κυρίως επειδή:",
+        answers: [
+          "Καταστρέφουν τον vWF",
+          "Αυξάνουν την πρωτεϊνοσύνθεση παραγόντων πήξης",
+          "Μειώνουν τον αριθμό αιμοπεταλίων",
+          "Μειώνουν την προθρομβίνη"
+        ],
+        correctIndex: 1,
+        explanation: "Τα οιστρογόνα αυξάνουν τη σύνθεση παραγόντων πήξης και προκαλούν υπερπηκτικότητα."
+      },
+      {
+        category: "thrombophilia",
+        question: "Στο νεφρωσικό σύνδρομο η θρόμβωση σχετίζεται ιδιαίτερα με:",
+        answers: [
+          "Απώλεια αντιθρομβίνης στα ούρα",
+          "Έλλειψη vWF",
+          "Αύξηση πλασμίνης",
+          "Μείωση ινωδογόνου"
+        ],
+        correctIndex: 0,
+        explanation: "Στο νεφρωσικό σύνδρομο χάνεται αντιθρομβίνη στα ούρα και αυτό αυξάνει τη θρομβοφιλική προδιάθεση."
+      }
+    ];
+
+    const categoryNames = {
+      all: "Όλα μαζί",
+      basic: "Βασική αιμόσταση",
+      hemophilia: "Αιμορροφιλία",
+      vwf: "vWF / vWD",
+      dic: "ΔΕΠ",
+      thrombophilia: "Θρομβοφιλία"
+    };
+
+    let currentQuestions = [];
+    let currentQuestionIndex = 0;
+    let score = 0;
+    let answered = false;
+    let currentCategory = "all";
+
+    const menuScreen = document.getElementById("menuScreen");
+    const gameScreen = document.getElementById("gameScreen");
+    const questionText = document.getElementById("questionText");
+    const answersContainer = document.getElementById("answersContainer");
+    const feedbackBox = document.getElementById("feedbackBox");
+    const nextBtn = document.getElementById("nextBtn");
+    const scoreDisplay = document.getElementById("scoreDisplay");
+    const questionCounter = document.getElementById("questionCounter");
+    const categoryDisplay = document.getElementById("categoryDisplay");
+    const finalBox = document.getElementById("finalBox");
+    const finalScoreText = document.getElementById("finalScoreText");
+
+    function shuffleArray(array) {
+      const copy = [...array];
+      for (let i = copy.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [copy[i], copy[j]] = [copy[j], copy[i]];
+      }
+      return copy;
+    }
+
+    function getQuestionsByCategory(category) {
+      if (category === "all") {
+        return shuffleArray(questionBank).slice(0, 12);
+      }
+      return shuffleArray(questionBank.filter(q => q.category === category)).slice(0, 10);
+    }
+
+    function startGame(category) {
+      currentCategory = category;
+      currentQuestions = getQuestionsByCategory(category);
+      currentQuestionIndex = 0;
+      score = 0;
+      answered = false;
+
+      menuScreen.classList.add("hidden");
+      gameScreen.classList.remove("hidden");
+      finalBox.style.display = "none";
+
+      loadQuestion();
+    }
+
+    function loadQuestion() {
+      answered = false;
+      feedbackBox.className = "feedback";
+      feedbackBox.style.display = "none";
+      feedbackBox.textContent = "";
+      nextBtn.classList.add("hidden");
+
+      const q = currentQuestions[currentQuestionIndex];
+      questionText.textContent = q.question;
+      answersContainer.innerHTML = "";
+
+      questionCounter.textContent = `Ερώτηση ${currentQuestionIndex + 1} / ${currentQuestions.length}`;
+      scoreDisplay.textContent = `Score: ${score}`;
+      categoryDisplay.textContent = `Κατηγορία: ${categoryNames[currentCategory]}`;
+
+      q.answers.forEach((answer, index) => {
+        const btn = document.createElement("button");
+        btn.className = "answer-btn";
+        btn.textContent = answer;
+        btn.onclick = () => checkAnswer(index);
+        answersContainer.appendChild(btn);
+      });
+    }
+
+    function checkAnswer(selectedIndex) {
+      if (answered) return;
+      answered = true;
+
+      const q = currentQuestions[currentQuestionIndex];
+      const allButtons = document.querySelectorAll(".answer-btn");
+
+      allButtons.forEach((btn, index) => {
+        btn.classList.add("disabled");
+
+        if (index === q.correctIndex) {
+          btn.classList.add("correct");
+        }
+
+        if (index === selectedIndex && index !== q.correctIndex) {
+          btn.classList.add("wrong");
+        }
+      });
+
+      if (selectedIndex === q.correctIndex) {
+        score++;
+        feedbackBox.className = "feedback correct";
+        feedbackBox.textContent = "Σωστό! " + q.explanation;
+      } else {
+        feedbackBox.className = "feedback wrong";
+        feedbackBox.textContent = "Λάθος. " + q.explanation;
+      }
+
+      feedbackBox.style.display = "block";
+      scoreDisplay.textContent = `Score: ${score}`;
+      nextBtn.classList.remove("hidden");
+    }
+
+    function nextQuestion() {
+      currentQuestionIndex++;
+
+      if (currentQuestionIndex < currentQuestions.length) {
+        loadQuestion();
+      } else {
+        showFinalScreen();
+      }
+    }
+
+    function showFinalScreen() {
+      finalBox.style.display = "block";
+      finalScoreText.textContent = `Τελικό score: ${score} / ${currentQuestions.length}`;
+      questionText.textContent = "Ολοκλήρωσες αυτό το set ερωτήσεων.";
+      answersContainer.innerHTML = "";
+      feedbackBox.style.display = "none";
+      nextBtn.classList.add("hidden");
+    }
+
+    function restartGame() {
+      if (currentCategory) {
+        startGame(currentCategory);
+      } else {
+        showMenu();
+      }
+    }
+
+    function showMenu() {
+      menuScreen.classList.remove("hidden");
+      gameScreen.classList.add("hidden");
+    }
+  </script>
+</body>
+</html>
