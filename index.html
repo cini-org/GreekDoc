@@ -157,6 +157,18 @@
         padding: 22px;
       }
     }
+    .subject-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  margin-top: 30px;
+}
+
+/* διαφορετικά soft themes */
+.card-blue { border-top: 5px solid #2c5aa0; }
+.card-green { border-top: 5px solid #4caf8b; }
+.card-purple { border-top: 5px solid #7b61ff; }
+
   </style>
 </head>
 <body>
@@ -174,17 +186,30 @@
       <h2>Welcome to GreekDoc</h2>
       <p>
         A clean and beautiful study page for your medical subjects.
-        For now, the available section is <strong>Παθολογική Φυσιολογία</strong>.
       </p>
     </section>
 
-    <section class="subject-card">
-      <h3>Παθολογική Φυσιολογία</h3>
-      <p>
-        
-      </p>
-      <a href="pathologiki_physiologia.html" class="subject-btn">Open Subject</a>
-    </section>
+    <section class="subject-grid">
+
+  <div class="subject-card card-blue">
+    <h3>Παθολογική Φυσιολογία</h3>
+    <p>Σημειώσεις βασισμένες στο βιβλίο με έμφαση στην κατανόηση των μηχανισμών.</p>
+    <a href="pathologiki_physiologia.html" class="subject-btn">Open Subject</a>
+  </div>
+
+  <div class="subject-card card-green">
+    <h3>Δερματολογία</h3>
+    <p>Κλινικές εικόνες, παθήσεις δέρματος και high-yield concepts για εξετάσεις.</p>
+    <a href="dermatologia.html" class="subject-btn">Open Subject</a>
+  </div>
+
+  <div class="subject-card card-purple">
+    <h3>Οφθαλμολογία</h3>
+    <p>Ανατομία, παθήσεις και βασικά κλινικά σημεία για το μάτι.</p>
+    <a href="ofthalmologia.html" class="subject-btn">Open Subject</a>
+  </div>
+
+</section>
   </main>
 
   <footer>

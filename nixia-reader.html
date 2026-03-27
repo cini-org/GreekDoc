@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Αιμόσταση - Card Reader</title>
+  <style>
+    body{
+      font-family:"Segoe UI", Arial, sans-serif;
+      background:#f7f8fc;
+      margin:0;
+      padding:24px;
+      color:#2f2f3a;
+    }
+
+    h1{
+      text-align:center;
+      color:#4b4b6a;
+      margin-bottom:8px;
+    }
+
+    .subtitle{
+      text-align:center;
+      color:#666;
+      margin-bottom:20px;
+    }
+
+    .top-actions{
+      display:flex;
+      justify-content:center;
+      gap:10px;
+      margin-bottom:20px;
+      flex-wrap:wrap;
+    }
+
+    button{
+      border:none;
+      padding:10px 16px;
+      border-radius:12px;
+      cursor:pointer;
+      font-size:14px;
+      background:#e8eaf6;
+      color:#3c3c5a;
+      box-shadow:0 4px 10px rgba(0,0,0,0.05);
+    }
+
+    button:hover{
+      transform:translateY(-1px);
+    }
+
+    .reader-box{
+      max-width:900px;
+      margin:0 auto;
+      background:#fff;
+      border-radius:20px;
+      padding:24px;
+      box-shadow:0 4px 14px rgba(0,0,0,0.06);
+    }
+
+    .info-row{
+      display:flex;
+      justify-content:space-between;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-bottom:18px;
+      font-weight:600;
+      color:#4b4b6a;
+    }
+
+    .card{
+      border-radius:20px;
+      padding:24px;
+      background:#fffde7;
+      min-height:320px;
+      box-shadow:0 4px 14px rgba(0,0,0,0.05);
+    }
+
+    .q-number{
+      font-size:14px;
+      color:#777;
+      margin-bottom:10px;
+      text-transform:uppercase;
+      letter-spacing:1px;
+    }
+
+    .q-title{
+      font-size:26px;
+      margin-bottom:18px;
+      color:#3c3c5a;
+      line-height:1.4;
+      font-weight:700;
+    }
+
+    .q-content{
+      font-size:18px;
+      line-height:1.7;
+    }
+
+    .q-content ul{
+      margin-top:10px;
+      padding-left:22px;
+    }
+
+    .q-content li{
+      margin-bottom:8px;
+    }
+
+    .bottom-actions{
+      display:flex;
+      justify-content:space-between;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top:20px;
+    }
+
+    .jump-box{
+      display:flex;
+      justify-content:center;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top:18px;
+    }
+
+    .jump-box input{
+      padding:10px 12px;
+      border-radius:10px;
+      border:1px solid #ccc;
+      width:90px;
+      font-size:14px;
+    }
+
+    .pastel-pink{ background:#ffe5ec; }
+    .pastel-blue{ background:#e3f2fd; }
+    .pastel-green{ background:#e8f5e9; }
+    .pastel-peach{ background:#fff3e0; }
+    .pastel-lav{ background:#f3e5f5; }
+    .pastel-mint{ background:#e0f7fa; }
+    .pastel-yellow{ background:#fffde7; }
+    .pastel-sage{ background:#f1f8e9; }
+
+    .small-note{
+      text-align:center;
+      color:#666;
+      font-size:14px;
+      margin-top:14px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>📖 ΑΙΜΟΣΤΑΣΗ - Card Reader</h1>
+  <div class="subtitle">Διάβασε τις κάρτες μία-μία από το Q1 έως το Q148</div>
+
+  <div class="top-actions">
+    <button onclick="window.location.href='aimostasi.html'">⬅ Επιστροφή στις σημειώσεις</button>
+    <button onclick="goPrevious()">⬅ Προηγούμενη</button>
+    <button onclick="goNext()">➡ Επόμενη</button>
+  </div>
+
+  <div class="reader-box">
+    <div class="info-row">
+      <div id="counter">Q1 / 148</div>
+      <div id="progressText">Πρόοδος: 1 από 148</div>
+    </div>
+
+    <div id="cardBox" class="card pastel-pink">
+      <div id="qNumber" class="q-number">Q1</div>
+      <div id="qTitle" class="q-title"></div>
+      <div id="qContent" class="q-content"></div>
+    </div>
+
+    <div class="bottom-actions">
+      <button onclick="goPrevious()">⬅ Προηγούμενη</button>
+      <button onclick="goNext()">➡ Επόμενη</button>
+    </div>
+
+    <div class="jump-box">
+      <input id="jumpInput" type="number" min="1" max="148" placeholder="π.χ. 48">
+      <button onclick="jumpToCard()">Μετάβαση</button>
+    </div>
+
+    <div class="small-note">
+      Μπορείς να πηγαίνεις σειρά-σειρά ή να μεταβείς κατευθείαν σε συγκεκριμένο Q.
+    </div>
+  </div>
+
+  <script>
+  const cards = [
+
+/* ----------- ΣΥΝΕΧΕΙΑ (ΜΕ ΟΛΑ ΤΑ ΣΗΜΕΙΑ ΠΟΥ ΕΛΕΙΠΑΝ) ----------- */
+
+{
+  number: 14,
+  color: "pastel-blue",
+  title: "Γυροειδής αλωπεκία – επιπλέον χαρακτηριστικά",
+  content: `
+    <ul>
+      <li>Τρίχες κοντές, λεπτές, στενότερες στη βάση ("θαυμαστικού")</li>
+      <li>Εμφανίζονται κυρίως στην περιφέρεια της βλάβης</li>
+      <li>Προσβολή φρυδιών, βλεφαρίδων και γενιών</li>
+    </ul>
+
+    <p><b>Εξέλιξη:</b></p>
+    <ul>
+      <li>Ολική → όλο το τριχωτό</li>
+      <li>Καθολική → όλο το σώμα</li>
+      <li>Ίδια παθολογική διαδικασία</li>
+    </ul>
+
+    <p><b>Νύχια:</b></p>
+    <ul>
+      <li>Μικρά βοθρία</li>
+      <li>Πιο συχνά σε γενικευμένες μορφές</li>
+    </ul>
+
+    <p><b>Πρόγνωση:</b></p>
+    <ul>
+      <li>Μικρές πλάκες → καλή πρόγνωση</li>
+      <li>Εκτεταμένες μορφές → χειρότερη</li>
+    </ul>
+  `
+},
+
+{
+  number: 15,
+  color: "pastel-purple",
+  title: "Γυροειδής αλωπεκία – θεραπεία (λεπτομέρειες)",
+  content: `
+    <ul>
+      <li>Ενδοβλαβικά στεροειδή μπορεί να βοηθήσουν</li>
+      <li>Τοπικά στεροειδή χρησιμοποιούνται συχνά</li>
+      <li>Συστηματικά στεροειδή → προσωρινή ανάπτυξη τριχών</li>
+      <li>Τοπική ευαισθητοποίηση (δινιτροφθοροβενζόλιο)</li>
+    </ul>
+
+    <p>Δύσκολο να εκτιμηθεί αν η βελτίωση οφείλεται στη θεραπεία ή στην αυτόματη ύφεση.</p>
+  `
+},
+
+{
+  number: 16,
+  color: "pastel-green",
+  title: "Σημεία κλειδιά (summary από το βιβλίο)",
+  content: `
+    <ul>
+      <li>Δασυτριχισμός μπορεί να θεωρείται φυσιολογικός σε γυναίκες</li>
+      <li>Χρειάζεται διερεύνηση αν υπάρχει υποψία ενδοκρινολογικής διαταραχής</li>
+      <li>Ανδρογενετική αλωπεκία εμφανίζεται και στα δύο φύλα</li>
+      <li>Στους άνδρες: κροταφική συμμετοχή</li>
+      <li>Στις γυναίκες: μετωπιαία αραίωση</li>
+      <li>Ουλωτική αλωπεκία → απώλεια θυλάκων</li>
+      <li>Γυροειδής αλωπεκία → αυτοάνοση</li>
+    </ul>
+  `
+},
+
+{
+  number: 17,
+  color: "pastel-blue",
+  title: "Συγγενείς ανωμαλίες νυχιών",
+  content: `
+    <ul>
+      <li>Από πλήρη απουσία έως δυστροφία</li>
+      <li>Σχετίζονται με διαταραχές ανάπτυξης</li>
+    </ul>
+
+    <p><b>Παραδείγματα:</b></p>
+    <ul>
+      <li>Εξωδερματικές δυσπλασίες</li>
+      <li>Συγγενής παχυονυχία</li>
+      <li>Κερατοδερμίες παλαμών-πελμάτων</li>
+      <li>Δυστροφία μεγάλου δακτύλου</li>
+      <li>Σύνδρομο νυχιών-επιγονατίδας</li>
+    </ul>
+  `
+},
+
+{
+  number: 18,
+  color: "pastel-pink",
+  title: "Συγγενής παχυονυχία",
+  content: `
+    <ul>
+      <li>Σφηνοειδή παχιά νύχια</li>
+      <li>Συνοδεύεται από:
+        <ul>
+          <li>κερατοδερμία παλαμών-πελμάτων</li>
+          <li>λευκοπλακία στόματος</li>
+          <li>κύστεις</li>
+          <li>νοητική υστέρηση (σε ορισμένους τύπους)</li>
+        </ul>
+      </li>
+    </ul>
+  `
+},
+
+{
+  number: 19,
+  color: "pastel-purple",
+  title: "Σύνδρομο νυχιών-επιγονατίδας",
+  content: `
+    <ul>
+      <li>Υποπλαστικά νύχια (ιδίως αντίχειρες)</li>
+      <li>Τριγωνική ονυχιαία πλάκα</li>
+      <li>Απουσία επιγονατίδας</li>
+      <li>Νεφρικές ανωμαλίες</li>
+    </ul>
+  `
+},
+
+{
+  number: 20,
+  color: "pastel-green",
+  title: "Αλλοιώσεις σχετιζόμενες με επίκτητες διαταραχές",
+  content: `
+    <ul>
+      <li>Οι αλλοιώσεις των νυχιών σχετίζονται με παθήσεις που περιγράφονται στο κεφάλαιο</li>
+      <li>Ψωρίαση και ομαλός λειχήνας προκαλούν χαρακτηριστικές βλάβες</li>
+    </ul>
+  `
+},
+
+{
+  number: 21,
+  color: "pastel-red",
+  title: "Εξοστώσεις και υπονύχιες βλάβες (λεπτομέρειες)",
+  content: `
+    <ul>
+      <li>Όγκοι κάτω από το νύχι αποκολλούν το νύχι</li>
+      <li>Συχνή: εξόστωση τελικής φάλαγγας</li>
+      <li>Ακτινογραφία αποκαλύπτει τη βλάβη</li>
+      <li>Χειρουργική αφαίρεση λύνει το πρόβλημα</li>
+      <li>Άλλοι όγκοι μπορεί να εμφανιστούν στο υπονύχιο</li>
+      <li>Μελάνωμα → αναφέρεται σε άλλο κεφάλαιο</li>
+    </ul>
+  `
+},
+
+{
+  number: 22,
+  color: "pastel-blue",
+  title: "Διαταραχές παρωνυχίου – επιπλέον",
+  content: `
+    <ul>
+      <li>Ερπητικές λοιμώξεις μπορεί να εμφανιστούν</li>
+      <li>Μυρμηκίες στο παρωνύχιο προκαλούν ενόχληση</li>
+      <li>Χρόνια παρωνυχία σχετίζεται με υγρασία και Candida</li>
+    </ul>
+
+    <p><b>Θεραπεία:</b></p>
+    <ul>
+      <li>Δύσκολη</li>
+      <li>Αντιμυκητιασικά βοηθούν</li>
+      <li>Συχνά επιμένει</li>
+    </ul>
+  `
+},
+
+{
+  number: 23,
+  color: "pastel-orange",
+  title: "Παράγοντες που προδιαθέτουν σε παρωνυχία",
+  content: `
+    <ul>
+      <li>Επαναλαμβανόμενοι τραυματισμοί</li>
+      <li>Επαγγέλματα με υγρασία (πλύσιμο, τρόφιμα)</li>
+      <li>Συνύπαρξη μυκητίασης</li>
+    </ul>
+  `
+},
+
+{
+  number: 24,
+  color: "pastel-green",
+  title: "Σημεία κλειδιά για τα νύχια (τελικό summary)",
+  content: `
+    <ul>
+      <li>Συνεχείς τραυματισμοί → συχνές αλλοιώσεις</li>
+      <li>Αλλοιώσεις μπορεί να υποδηλώνουν σοβαρή νόσο</li>
+      <li>Οξεία παρωνυχία → σταφυλόκοκκος</li>
+      <li>Χρόνια → Candida</li>
+      <li>Όγκοι κάτω από το νύχι → αποκόλληση</li>
+    </ul>
+  `
+}
+
+];  
+    let currentIndex = 0;
+
+    const counter = document.getElementById("counter");
+    const progressText = document.getElementById("progressText");
+    const qNumber = document.getElementById("qNumber");
+    const qTitle = document.getElementById("qTitle");
+    const qContent = document.getElementById("qContent");
+    const cardBox = document.getElementById("cardBox");
+    const jumpInput = document.getElementById("jumpInput");
+
+    function renderCard() {
+      const card = cards[currentIndex];
+
+      counter.textContent = `Q${card.number} / 148`;
+      progressText.textContent = `Πρόοδος: ${card.number} από 148`;
+      qNumber.textContent = `Q${card.number}`;
+      qTitle.textContent = card.title;
+      qContent.innerHTML = card.content;
+
+      cardBox.className = `card ${card.color}`;
+    }
+
+    function goNext() {
+      if (currentIndex < cards.length - 1) {
+        currentIndex++;
+        renderCard();
+      }
+    }
+
+    function goPrevious() {
+      if (currentIndex > 0) {
+        currentIndex--;
+        renderCard();
+      }
+    }
+
+    function jumpToCard() {
+      const value = Number(jumpInput.value);
+      if (!value || value < 1 || value > cards.length) return;
+      currentIndex = value - 1;
+      renderCard();
+    }
+
+    renderCard();
+  </script>
+</body>
+</html>

@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Διαταραχές Τριχών και Ονύχων - Πλήρεις Grid Σημειώσεις</title>
+  <style>
+    body{
+      font-family: "Segoe UI", Arial, sans-serif;
+      background:#f7f8fc;
+      margin:0;
+      padding:24px;
+      color:#2f2f3a;
+    }
+
+    h1{
+      text-align:center;
+      color:#4b4b6a;
+      margin-bottom:8px;
+    }
+
+    .subtitle{
+      text-align:center;
+      color:#777;
+      margin-bottom:24px;
+    }
+
+    .toolbar{
+      display:flex;
+      justify-content:center;
+      gap:10px;
+      margin-bottom:20px;
+      flex-wrap:wrap;
+    }
+
+    button{
+      border:none;
+      padding:10px 14px;
+      border-radius:10px;
+      cursor:pointer;
+      font-size:14px;
+      background:#e8eaf6;
+    }
+
+    button:hover{
+      opacity:0.9;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap:16px;
+    }
+
+    .box{
+      border-radius:18px;
+      padding:18px;
+      box-shadow:0 4px 14px rgba(0,0,0,0.06);
+      line-height:1.6;
+      transition:0.2s ease;
+      cursor:pointer;
+    }
+
+    .box:hover{
+      transform:translateY(-2px);
+    }
+
+    .pink{ background:#ffe5ec; }
+    .blue{ background:#e3f2fd; }
+    .green{ background:#e8f5e9; }
+    .peach{ background:#fff3e0; }
+    .lav{ background:#f3e5f5; }
+    .mint{ background:#e0f7fa; }
+    .yellow{ background:#fffde7; }
+    .sage{ background:#f1f8e9; }
+
+    .box h2{
+      margin-top:0;
+      font-size:18px;
+      color:#3c3c5a;
+    }
+
+    ul{
+      margin:8px 0 0 18px;
+      padding:0;
+    }
+
+    li{
+      margin-bottom:6px;
+    }
+
+    .underline{
+      text-decoration: underline;
+      text-decoration-thickness: 3px;
+      text-underline-offset: 3px;
+    }
+
+    .small{
+      font-size:14px;
+      color:#555;
+    }
+
+    .important{
+      background:rgba(255,255,255,0.5);
+      padding:2px 6px;
+      border-radius:8px;
+      font-weight:600;
+    }
+
+  .top-actions{
+  display:flex;
+  justify-content:center;
+  gap:10px;
+  margin:20px 0;
+  flex-wrap:wrap;
+}
+
+.top-actions button{
+  background:#e8eaf6;
+  color:#3c3c5a;
+  border:none;
+  border-radius:12px;
+  padding:12px 18px;
+  font-size:15px;
+  cursor:pointer;
+  box-shadow:0 4px 10px rgba(0,0,0,0.06);
+}
+
+.top-actions button:hover{
+  transform:translateY(-1px);
+}
+
+/* ---------- PRINT STYLE ---------- */
+@media print{
+  body{
+    background:white;
+    margin:0;
+    padding:0;
+    font-size:10px;
+  }
+
+  .top-actions{
+    display:none;
+  }
+
+  h1{
+    font-size:14px;
+    margin-bottom:4px;
+    text-align:center;
+  }
+
+  .subtitle{
+    font-size:10px;
+    margin-bottom:8px;
+    text-align:center;
+  }
+
+  /* 🔥 MORE BOXES PER ROW */
+  .grid{
+    display:grid;
+    grid-template-columns: repeat(5, 1fr); /* change to 6 if you want extreme */
+    gap:5px;
+  }
+
+  /* 🔥 SMALLER BOXES */
+  .box{
+    padding:5px;
+    font-size:10px;
+    line-height:1.2;
+    border-radius:4px;
+    break-inside: avoid;
+    page-break-inside: avoid;
+    border:1px solid #ccc;
+    box-shadow:none;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* 🔥 tighter highlights */
+  .highlight{
+    padding:1px 3px;
+    border-radius:3px;
+  }
+
+  .underline{
+    text-decoration-thickness:1px;
+  }
+
+  @page{
+    size: A4 landscape;
+    margin:8mm;
+  }
+}
+
+</style>
+</head>
+<body>
+
+  <h1>🩸 Διαταραχές Τριχών και ονύχων (Κεφ9 σελ.325-338) </h1>
+  <div class="subtitle"> Δερματολογία - 6ου εξαμήνου: “διάβασμα βιβλίου χωρίς βιβλίο”</div>
+
+  <div class="toolbar">
+    <button onclick="clearUnderline()">Αφαίρεση υπογραμμίσεων</button>
+  </div>
+
+  <div class="top-actions">
+  <button onclick="window.location.href='nixia-reader.html'">📖 Card Reader</button>
+  <button onclick="window.print()">🖨️ Εκτύπωση / Save as PDF</button>
+  <!--button onclick="window.location.href='trixes-game.html'">🎮 Learning Game</button>
+  <button onclick="window.location.href='trixes-cards.html'">🗂️ Anki Cards</button-->
+  </div>
+
+  <div class="grid">
+
+    <div class="box peach">
+  <h2>1. Σημείωση ακρίβειας</h2>
+  <div class="small">
+    Πλήρεις grid σημειώσεις από το κεφάλαιο "Διαταραχές των τριχών και των ονύχων".
+  </div>
+</div>
+
+
+<div class="box pink">
+  <h2>2. Εισαγωγή</h2>
+  Οι τρίχες και τα νύχια είναι <span class="important">αδενικές καταδύσεις της επιδερμίδας</span>.
+
+  <ul>
+    <li>Μπορούν να προσβληθούν από <b>συγγενείς</b> ή <b>επίκτητες νόσους</b>.</li>
+    <li>Μπορεί να νοσούν <b>μαζί</b> ή <b>ανεξάρτητα</b>.</li>
+  </ul>
+
+  Για κατανόηση:
+  <ul>
+    <li>Αρχικά μελετώνται οι <b>διαταραχές των τριχών</b></li>
+    <li>Έπειτα οι <b>διαταραχές των ονύχων</b></li>
+  </ul>
+</div>
+
+
+<div class="box blue">
+  <h2>3. Βασικές κατηγορίες διαταραχών τριχών</h2>
+  Τρία βασικά προβλήματα:
+  <ul>
+    <li><b>Διαταραχές στη δομή και το χρώμα</b></li>
+    <li><b>Υπερβολικές τρίχες</b></li>
+    <li><b>Λίγες τρίχες (υποτρίχωση/αλωπεκία)</b></li>
+  </ul>
+</div>
+
+
+<div class="box green">
+  <h2>4. Διαταραχές στη δομή και το χρώμα</h2>
+
+  <ul>
+    <li>Συχνά <b>συγγενή σύνδρομα</b></li>
+    <li>Η <b>μικροσκόπηση τριχών</b> βοηθά στη διάγνωση</li>
+    <li>Έλεγχος ούρων για <b>αμινοξέα</b> μπορεί να βοηθήσει</li>
+  </ul>
+
+  <b>Επίκτητες διαταραχές:</b>
+  <ul>
+    <li><b>Λεύκανση τριχών</b> → φυσιολογική αλλά μπορεί να είναι πρόωρη</li>
+    <li>Πρόωρη λεύκανση → πιθανή <b>κακοήθης αναιμία</b></li>
+    <li><b>Περιέλιξη (kinking)</b> → πρώιμο σημείο ανδρογενετικής αλωπεκίας</li>
+    <li>Καταστροφή από:
+      <ul>
+        <li>χημικά</li>
+        <li>θερμότητα</li>
+        <li>τεχνικές (χτένισμα)</li>
+      </ul>
+    </li>
+  </ul>
+</div>
+
+
+<div class="box violet">
+  <h2>5. Υπερβολικές τρίχες – Ορισμοί</h2>
+
+  <b>Δασυτριχισμός:</b>
+  <ul>
+    <li>Τελικές τρίχες σε γυναίκες σε περιοχές όπου φυσιολογικά υπάρχει χνούδι</li>
+    <li>Ανδρογενής κατανομή (άνω χείλος, πρόσωπο, θώρακας)</li>
+  </ul>
+
+  <b>Υπερτρίχωση:</b>
+  <ul>
+    <li>Αύξηση τριχών ανεξάρτητα από φύλο</li>
+    <li>Μπορεί να είναι γενικευμένη ή εντοπισμένη</li>
+  </ul>
+</div>
+
+
+<div class="box pink">
+  <h2>6. Δασυτριχισμός – Αιτιολογία</h2>
+
+  <ul>
+    <li>Συχνά <b>γενετική προδιάθεση</b></li>
+    <li>Μπορεί να είναι φυσιολογική για οικογένεια</li>
+  </ul>
+
+  <b>Παθολογικά αίτια:</b>
+  <ul>
+    <li><span class="important">Σύνδρομο πολυκυστικών ωοθηκών (PCOS)</span></li>
+    <li>Ενδοκρινολογικές διαταραχές</li>
+    <li>Συγγενής υπερπλασία επινεφριδίων</li>
+    <li>Όγκοι που παράγουν ανδρογόνα</li>
+    <li>Σύνδρομο Cushing</li>
+  </ul>
+
+  <b>Κλινικά:</b>
+  <ul>
+    <li>Ανδρικού τύπου τριχοφυΐα</li>
+    <li>Συχνά συνοδεύεται από <b>ακμή</b></li>
+  </ul>
+
+  <b>Αντιμετώπιση:</b>
+  <ul>
+    <li>Αποτρίχωση (κερί, laser, ηλεκτρόλυση)</li>
+    <li>Ορμονική θεραπεία (π.χ. οιστρογόνα)</li>
+  </ul>
+</div>
+
+
+<div class="box blue">
+  <h2>7. Υπερτρίχωση</h2>
+
+  <ul>
+    <li>Συχνά <b>γενετική</b></li>
+    <li>Μπορεί να σχετίζεται με:
+      <ul>
+        <li>Συγγενή σύνδρομα</li>
+        <li>Φάρμακα (μινοξιδίλη, στεροειδή, κυκλοσπορίνη)</li>
+        <li>Πορφυρία</li>
+        <li>Καχεξία</li>
+        <li>Νευρογενής ανορεξία</li>
+      </ul>
+    </li>
+  </ul>
+
+  <b>Εντοπισμένη υπερτρίχωση:</b>
+  <ul>
+    <li>Σημείο υποκείμενης νόσου (π.χ. δισχιδής ράχη – "faun tail")</li>
+  </ul>
+</div>
+
+
+<div class="box green">
+  <h2>8. Υποτρίχωση</h2>
+
+  Μείωση πυκνότητας τριχών:
+
+  <ul>
+    <li>Συγγενής απουσία ανάπτυξης</li>
+    <li>Εστιακές βλάβες (π.χ. aplasia cutis)</li>
+    <li>Ουλοποίηση μετά από τραύμα</li>
+  </ul>
+
+  <b>Φυσιολογικά:</b>
+  <ul>
+    <li>Ισορροπία μεταξύ απώλειας και αναγέννησης</li>
+  </ul>
+</div>
+
+
+<div class="box red">
+  <h2>9. Αλωπεκία – Ορισμός</h2>
+
+  <span class="important">Μείωση της ποσότητας των τριχών</span>
+
+  <ul>
+    <li>Αυξημένη απώλεια ή</li>
+    <li>Μειωμένη αναγέννηση</li>
+  </ul>
+</div>
+
+
+<div class="box violet">
+  <h2>10. Αιτίες αλωπεκίας</h2>
+
+  <b>Χωρίς διάχυτη προσβολή:</b>
+  <ul>
+    <li>Ανδρογενετική αλωπεκία</li>
+  </ul>
+
+  <b>Με διάχυτη προσβολή:</b>
+  <ul>
+    <li>Δερματίτιδα</li>
+    <li>Ψωρίαση</li>
+    <li>Αμυαντώδης πιτυρίαση</li>
+  </ul>
+
+  <b>Γενικευμένη:</b>
+  <ul>
+    <li>Τελογενής ροή</li>
+    <li>Φάρμακα</li>
+    <li>Θυρεοειδοπάθειες</li>
+    <li>Σιδηροπενία</li>
+    <li>ΣΕΛ</li>
+  </ul>
+
+  <b>Ουλωτική:</b>
+  <ul>
+    <li>Δισκοειδής λύκος</li>
+    <li>Όγκοι</li>
+    <li>Σκληρόδερμα</li>
+  </ul>
+</div>
+
+
+<div class="box pink">
+  <h2>11. Ανδρογενετική αλωπεκία</h2>
+
+  <ul>
+    <li>Η <b>συχνότερη αιτία</b></li>
+    <li>Επηρεάζει άνδρες και γυναίκες</li>
+  </ul>
+
+  <b>Άνδρες:</b>
+  <ul>
+    <li>Μετωποκροταφική υποχώρηση</li>
+    <li>Λέπτυνση → φαλάκρα</li>
+  </ul>
+
+  <b>Γυναίκες:</b>
+  <ul>
+    <li>Διάχυτη λέπτυνση</li>
+    <li>Σπάνια πλήρης φαλάκρα</li>
+  </ul>
+
+  <b>Θεραπεία:</b>
+  <ul>
+    <li>Μινοξιδίλη</li>
+    <li>Μεταμόσχευση μαλλιών</li>
+  </ul>
+</div>
+
+
+<div class="box blue">
+  <h2>12. Τελογενής ροή</h2>
+
+  <ul>
+    <li>Απότομη είσοδος πολλών τριχών σε <b>φάση τελογενή</b></li>
+    <li>→ μαζική απώλεια μετά από λίγες εβδομάδες</li>
+  </ul>
+
+  <b>Αίτια:</b>
+  <ul>
+    <li>Τοκετός</li>
+    <li>Άγχος</li>
+    <li>Ασθένειες</li>
+    <li>Φάρμακα</li>
+  </ul>
+
+  <b>Χαρακτηριστικό:</b>
+  <ul>
+    <li>Συνήθως <b>αναστρέψιμη</b></li>
+  </ul>
+</div>
+
+
+<div class="box green">
+  <h2>13. Φαρμακευτική αλωπεκία</h2>
+
+  <ul>
+    <li>Κυτταροτοξικά</li>
+    <li>Αντιθυρεοειδικά</li>
+    <li>Αντιπηκτικά</li>
+    <li>Ρετινοειδή</li>
+  </ul>
+</div>
+
+
+<div class="box orange">
+  <h2>14. Τριχοτιλλομανία</h2>
+
+  <ul>
+    <li>Σκόπιμη <b>έλξη τριχών</b></li>
+    <li>Συχνότερα σε παιδιά</li>
+    <li>Μπορεί να σχετίζεται με <b>ψυχολογικούς παράγοντες</b></li>
+  </ul>
+</div>
+
+
+<div class="box red">
+  <h2>15. Αλωπεκία εξ έλξεως</h2>
+
+  <ul>
+    <li>Χρόνια μηχανική τάση</li>
+    <li>Σφιχτά χτενίσματα</li>
+    <li>Θερμότητα / χημικά</li>
+  </ul>
+
+  → Μπορεί να γίνει <b>μόνιμη</b>
+</div>
+
+<div class="box blue">
+  <h2>16. Φλεγμονώδεις αιτίες αλωπεκίας (χωρίς ουλοποίηση)</h2>
+
+  <ul>
+    <li>Βαριά ψωρίαση και δερματίτιδα → μπορεί να προκαλέσουν <b>παροδική απώλεια τριχών</b></li>
+    <li>Ψωρίαση & σμηγματορροϊκή δερματίτιδα → υπερβολική παραγωγή λεπιών (<b>αμιάντωδης πιτυρίαση</b>)</li>
+    <li>Τα λέπια εγκλωβίζουν τις τρίχες → απομακρύνονται μαζί τους</li>
+    <li>Η απώλεια είναι συνήθως <b>παροδική</b>, αλλά μπορεί να γίνει <b>μόνιμη</b></li>
+  </ul>
+</div>
+
+
+<div class="box red">
+  <h2>17. Ουλωτική αλωπεκία</h2>
+
+  <ul>
+    <li>Απώλεια τριχών με <b>καταστροφή τριχικών θυλάκων</b> ή <b>ατροφία δέρματος</b></li>
+    <li>Μόνιμη</li>
+  </ul>
+
+  <b>Διάγνωση:</b>
+  <ul>
+    <li>Δύσκολη στα αρχικά στάδια</li>
+    <li>Συχνά τίθεται καθυστερημένα</li>
+  </ul>
+
+  <b>Κύρια αίτια:</b>
+  <ul>
+    <li>Ομαλός λειχήνας</li>
+    <li>Χρόνιος δισκοειδής ερυθηματώδης λύκος</li>
+  </ul>
+
+  <b>Ψευδογυροειδής αλωπεκία (Brocq):</b>
+  <ul>
+    <li>Μικρές, κυκλικές πλάκες</li>
+    <li>Ήπια ή καθόλου φλεγμονή</li>
+    <li>Απουσία θυλάκων</li>
+  </ul>
+
+  <b>Διερεύνηση:</b>
+  <ul>
+    <li>Κλινική εξέταση</li>
+    <li>Βιοψία + ιστολογία</li>
+    <li>Ανοσοφθορισμός</li>
+    <li>Έλεγχος για ΣΕΛ</li>
+  </ul>
+
+  <b>Θεραπεία:</b>
+  <ul>
+    <li>Κυρίως συμπτωματική</li>
+    <li>Σε κάποιους: τοπικά ή συστηματικά στεροειδή</li>
+  </ul>
+</div>
+
+
+<div class="box violet">
+  <h2>18. Γυροειδής αλωπεκία</h2>
+
+  <ul>
+    <li>Πολύμορφη διαταραχή</li>
+    <li>Πιθανή <b>αυτοάνοση αιτιολογία</b></li>
+    <li>Συσχέτιση με <b>λεύκη</b></li>
+    <li>Μπορεί να εμφανιστεί σε:
+      <ul>
+        <li>Μυασθένεια Gravis</li>
+        <li>Θυμώματα</li>
+        <li>Σύνδρομο Down</li>
+      </ul>
+    </li>
+  </ul>
+
+  <b>Κλινική εικόνα:</b>
+  <ul>
+    <li>Καλά περιγεγραμμένες, απογυμνωμένες πλάκες</li>
+    <li>Χωρίς αλλοιώσεις δέρματος</li>
+    <li>Πιθανό ήπιο ερύθημα</li>
+  </ul>
+
+  <b>Χαρακτηριστικά:</b>
+  <ul>
+    <li>"Τρίχες θαυμαστικού" στην περιφέρεια</li>
+    <li>Προσβολή φρυδιών/βλεφαρίδων</li>
+  </ul>
+
+  <b>Μορφές:</b>
+  <ul>
+    <li><b>Ολική</b> → όλο το τριχωτό</li>
+    <li><b>Καθολική</b> → όλο το σώμα</li>
+  </ul>
+
+  <b>Πρόγνωση:</b>
+  <ul>
+    <li>Συχνά αυτόματη ύφεση</li>
+    <li>Χειρότερη σε εκτεταμένες μορφές και νυχική συμμετοχή</li>
+  </ul>
+
+  <b>Θεραπεία:</b>
+  <ul>
+    <li>Ενδοβλαβικά στεροειδή</li>
+    <li>Τοπικά στεροειδή (συχνά χρησιμοποιούνται)</li>
+    <li>Συστηματικά στεροειδή → παροδικό αποτέλεσμα</li>
+    <li>Ευαισθητοποίηση με δινιτροφθοροβενζόλιο</li>
+  </ul>
+</div>
+
+
+<div class="box green">
+  <h2>19. Βλεννώδης αλωπεκία (θυλακική βλεννίνωση)</h2>
+
+  <ul>
+    <li>Βλεννώδης διήθηση στον τριχικό θύλακο</li>
+    <li>Οι τρίχες αποπίπτουν</li>
+    <li>Βύσματα στα στόμια των θυλάκων</li>
+    <li>Συσχέτιση με <b>T-δερματικό λέμφωμα</b></li>
+  </ul>
+</div>
+
+
+<div class="box blue">
+  <h2>20. Διαταραχές των νυχιών – Εισαγωγή</h2>
+
+  <ul>
+    <li>Τα νύχια υφίστανται <b>συνεχείς τραυματισμούς</b></li>
+    <li>Συνήθως προκαλούνται <b>απλές αλλοιώσεις</b></li>
+    <li>Ορισμένες αλλοιώσεις → <b>σοβαρή παθολογία</b></li>
+  </ul>
+</div>
+
+
+<div class="box pink">
+  <h2>21. Αλλοιώσεις στη υφή και το σχήμα</h2>
+
+  <b>Φυλλώδης δυστροφία:</b>
+  <ul>
+    <li>Οριζόντια αποκόλληση νυχιού</li>
+    <li>Συχνή στους ενήλικες</li>
+  </ul>
+
+  <b>Ονυχογρύπωση:</b>
+  <ul>
+    <li>Πάχυνση και κύρτωση νυχιών</li>
+  </ul>
+
+  <b>Θάμβος:</b>
+  <ul>
+    <li>Θαμπά νύχια</li>
+    <li>Σχετίζεται με ηλικία</li>
+  </ul>
+</div>
+
+
+<div class="box violet">
+  <h2>22. Άλλες αλλοιώσεις νυχιών</h2>
+
+  <ul>
+    <li><b>Κοιλωνυχία</b> → ανεπάρκεια σιδήρου</li>
+    <li><b>Μέση αυλακωτή δυστροφία</b> → επαναλαμβανόμενος τραυματισμός</li>
+    <li><b>Βοθρία</b> → ψωρίαση, γυροειδής αλωπεκία</li>
+    <li><b>Γραμμές Beau</b> → διακοπή ανάπτυξης νυχιού</li>
+    <li><b>Πληκτροδακτυλία</b> → κακοήθεια, καρδιοαναπνευστικά</li>
+    <li><b>Ονυχόλυση</b> → αποκόλληση νυχιού</li>
+  </ul>
+</div>
+
+
+<div class="box green">
+  <h2>23. Διαταραχές χρώματος νυχιών</h2>
+
+  <ul>
+    <li><b>Λευκονυχία</b> → λευκές κηλίδες</li>
+    <li><b>Κίτρινα νύχια</b> → μυκητίαση, σύνδρομο κίτρινων νυχιών</li>
+    <li><b>Μπλε νύχια</b> → φάρμακα, νόσος Wilson</li>
+    <li><b>Μπλε-πράσινα</b> → ψευδομονάδα</li>
+    <li><b>Μαύρες περιοχές</b> → υπονύχιο μελάνωμα</li>
+  </ul>
+</div>
+
+
+<div class="box red">
+  <h2>24. Σύνδρομο κίτρινων νυχιών</h2>
+
+  <ul>
+    <li>Κίτρινα, παχιά, βραδείας ανάπτυξης νύχια</li>
+    <li>Σχετίζεται με:
+      <ul>
+        <li>Λεμφοίδημα</li>
+        <li>Πλευριτική συλλογή</li>
+        <li>Βρογχεκτασίες</li>
+      </ul>
+    </li>
+    <li>Έχει αναφερθεί και σε AIDS</li>
+  </ul>
+</div>
+
+
+<div class="box blue">
+  <h2>25. Τραχυονυχία – δυστροφία 20 νυχιών</h2>
+
+  <ul>
+    <li>Συχνά σε παιδιά</li>
+    <li>Τραχύτητα σε όλα τα νύχια</li>
+    <li>Πιθανή συσχέτιση με γυροειδή αλωπεκία</li>
+  </ul>
+</div>
+
+
+<div class="box orange">
+  <h2>26. Εξοστώσεις και άλλες βλάβες</h2>
+
+  <ul>
+    <li>Όγκοι κάτω από το νύχι → αποκόλληση</li>
+    <li>Συχνή: εξόστωση τελικής φάλαγγας</li>
+    <li>Διάγνωση: ακτινογραφία</li>
+    <li>Θεραπεία: χειρουργική</li>
+  </ul>
+</div>
+
+
+<div class="box pink">
+  <h2>27. Διαταραχές παρωνυχίου</h2>
+
+  <b>Οξεία παρωνυχία:</b>
+  <ul>
+    <li>Συνήθως σταφυλόκοκκος</li>
+  </ul>
+
+  <b>Χρόνια:</b>
+  <ul>
+    <li>Σχετίζεται με Candida</li>
+    <li>Συχνή σε επαγγέλματα με υγρασία</li>
+  </ul>
+
+  <b>Είσφρηση νυχιού:</b>
+  <ul>
+    <li>Είσοδος νυχιού στο δέρμα → φλεγμονή</li>
+    <li>Μπορεί να χρειαστεί χειρουργείο</li>
+  </ul>
+</div>
+
+
+<div class="box green">
+  <h2>28. Βλεννώδεις κύστεις</h2>
+
+  <ul>
+    <li>Μικρά ογκίδια κοντά στο νύχι</li>
+    <li>Εκκρίνουν διαυγές, ζελατινώδες υγρό</li>
+    <li>Συχνά συνοδεύονται από:
+      <ul>
+        <li>επιμήκη κοιλάνωση</li>
+        <li>κυμάτωση νυχιού</li>
+      </ul>
+    </li>
+  </ul>
+</div>
+
+  </div>
+
+  <script>
+    document.querySelectorAll(".box").forEach(box => {
+      box.addEventListener("click", () => {
+        box.classList.toggle("underline");
+      });
+    });
+
+    function clearUnderline(){
+      document.querySelectorAll(".box").forEach(box => {
+        box.classList.remove("underline");
+      });
+    }
+  </script>
+
+</body>
+</html>
