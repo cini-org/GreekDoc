@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Οπίσθια Ραγοειδίτιδα</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 24px;
+      font-family: "Aptos", "Segoe UI", sans-serif;
+      background: #f7f8fc;
+      color: #1f2430;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 10px;
+      font-size: 32px;
+      color: #243b7c;
+    }
+
+    .subtitle {
+      text-align: center;
+      color: #5a6480;
+      margin-bottom: 28px;
+      font-size: 15px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 18px;
+      max-width: 1350px;
+      margin: 0 auto;
+    }
+
+    .box {
+      background: #ffffff;
+      border-radius: 18px;
+      padding: 18px 20px;
+      box-shadow: 0 8px 22px rgba(44, 62, 120, 0.08);
+      border-top: 8px solid #cfd8ff;
+    }
+
+    .box h2 {
+      margin-top: 0;
+      margin-bottom: 12px;
+      font-size: 21px;
+      color: #243b7c;
+    }
+
+    .box ul {
+      margin: 0;
+      padding-left: 18px;
+      line-height: 1.65;
+    }
+
+    .box li {
+      margin-bottom: 8px;
+    }
+
+    .blue { border-top-color: #9dc4ff; background: #f8fbff; }
+    .pink { border-top-color: #f7a8c1; background: #fff8fb; }
+    .green { border-top-color: #9ed9b0; background: #f8fff9; }
+    .yellow { border-top-color: #f2d37a; background: #fffdf6; }
+    .purple { border-top-color: #c7b2ff; background: #fbf9ff; }
+    .red { border-top-color: #f2a0a0; background: #fff9f9; }
+    .orange { border-top-color: #ffbc7f; background: #fffaf6; }
+
+    .tag {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+      margin-bottom: 10px;
+      background: #e8eeff;
+      color: #3950a3;
+    }
+
+    .mini-note {
+      margin-top: 12px;
+      padding: 10px 12px;
+      border-radius: 12px;
+      background: #eef3ff;
+      font-size: 14px;
+      line-height: 1.55;
+      color: #31457c;
+    }
+
+    .flow {
+      margin-top: 10px;
+      padding: 10px 12px;
+      border-radius: 12px;
+      background: #f5f7fb;
+      border: 1px dashed #c8d0e8;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .section-title {
+      max-width: 1350px;
+      margin: 34px auto 14px;
+      font-size: 24px;
+      color: #243b7c;
+      font-weight: 700;
+    }
+
+    .small {
+      font-size: 14px;
+      color: #54607a;
+    }
+
+    .clinical { color: #b03052; font-weight: 700; }
+    .infectious { color: #275dcb; font-weight: 700; }
+    .systemic { color: #7d3cb5; font-weight: 700; }
+    .therapy { color: #00805d; font-weight: 700; }
+    .danger { color: #c0392b; font-weight: 700; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 15px;
+      line-height: 1.45;
+    }
+
+    th, td {
+      border: 1px solid #d9dfef;
+      padding: 10px 10px;
+      vertical-align: top;
+    }
+
+    th {
+      background: #edf2ff;
+      color: #243b7c;
+      text-align: left;
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+      margin-top: 10px;
+    }
+
+    .print-btn {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: #243b7c;
+      color: white;
+      border: none;
+      padding: 10px 16px;
+      border-radius: 10px;
+      font-size: 14px;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      z-index: 1000;
+    }
+
+    .print-btn:hover {
+      background: #1a2d5c;
+    }
+
+    @media print {
+      @page {
+        size: A4 landscape;
+        margin: 8mm;
+      }
+
+      body {
+        background: white !important;
+        padding: 0;
+        color: black;
+        font-size: 11px;
+        line-height: 1.3;
+      }
+
+      h1 {
+        font-size: 22px;
+        margin-bottom: 6px;
+      }
+
+      .subtitle {
+        font-size: 11px;
+        margin-bottom: 14px;
+      }
+
+      .section-title {
+        font-size: 16px;
+        margin: 16px auto 8px;
+      }
+
+      .grid {
+        display: grid !important;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+        max-width: 100%;
+      }
+
+      .box {
+        box-shadow: none !important;
+        border-radius: 10px;
+        padding: 10px 12px;
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+
+      .box h2 {
+        font-size: 14px;
+        margin-bottom: 8px;
+      }
+
+      .box ul {
+        padding-left: 16px;
+        line-height: 1.35;
+      }
+
+      .box li,
+      .mini-note,
+      .flow,
+      table,
+      tr,
+      td,
+      th {
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+
+      table {
+        font-size: 10px;
+      }
+
+      th, td {
+        padding: 6px 6px;
+      }
+
+      .mini-note,
+      .flow {
+        font-size: 10px;
+        padding: 8px 9px;
+      }
+
+      .tag {
+        font-size: 9px;
+        padding: 3px 7px;
+        margin-bottom: 6px;
+      }
+
+      .print-btn {
+        display: none !important;
+      }
+
+      a {
+        color: black;
+        text-decoration: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<button class="print-btn" onclick="printNotes()">🖨️ Print Notes</button>
+
+<h1>Οπίσθια Ραγοειδίτιδα</h1>
+<div class="subtitle">ΚΕΦ 24 • σημειώσεις σε στυλ GreekDoc</div>
+
+<div class="section-title">Βασικά στοιχεία</div>
+<div class="grid">
+
+  <div class="box blue">
+    <div class="tag">ΤΙ ΕΙΝΑΙ</div>
+    <h2>Ορισμός</h2>
+    <ul>
+      <li>Η <b>οπίσθια ραγοειδίτιδα</b> είναι φλεγμονή του <b>χοριοειδούς</b>, δηλαδή του οπίσθιου τμήματος του ραγοειδούς χιτώνα.</li>
+      <li>Συχνά περιλαμβάνονται και φλεγμονές άλλων τμημάτων του <b>οπίσθιου ημιμορίου</b> του οφθαλμού.</li>
+      <li>Μπορεί επίσης να συμμετέχει η <b>επίπεδη μοίρα του ακτινωτού σώματος</b>.</li>
+      <li>Μπορεί να εμφανίζεται ως <b>μεμονωμένη διαταραχή</b> ή ως μέρος <span class="systemic">πολυσυστηματικής νόσου</span>.</li>
+    </ul>
+  </div>
+
+  <div class="box pink">
+    <div class="tag">ΣΥΜΠΤΩΜΑΤΑ</div>
+    <h2>Κλινική εικόνα</h2>
+    <ul>
+      <li><b>Μυϊοψίες</b> — θολερότητες του υαλοειδούς λόγω συγκριμάτων και φλεγμονωδών κυττάρων.</li>
+      <li><b>Μειωμένη όραση</b>.</li>
+      <li>Σπανιότερα: <b>άλγος</b> και <b>ερυθρότητα</b>.</li>
+    </ul>
+  </div>
+
+  <div class="box green">
+    <div class="tag">ΟΦΘΑΛΜΟΣΚΟΠΗΣΗ</div>
+    <h2>Βασικά ευρήματα</h2>
+    <ul>
+      <li><b>Υαλίτιδα</b> — φλεγμονώδη κύτταρα μέσα στο υαλοειδές.</li>
+      <li><b>Αγγειίτιδα</b>.</li>
+      <li><b>Βαμβακόμορφες κηλίδες</b>.</li>
+      <li><b>Οίδημα ωχράς</b>.</li>
+      <li><b>Οίδημα οπτικού δίσκου</b>.</li>
+      <li><b>Εστίες χοριοαμφιβληστροειδικής φλεγμονής</b>.</li>
+    </ul>
+  </div>
+
+  <div class="box yellow">
+    <div class="tag">ΑΠΩΛΕΙΑ ΟΡΑΣΗΣ</div>
+    <h2>Γιατί πέφτει η όραση</h2>
+    <ul>
+      <li>Λόγω <b>θόλωσης του υαλοειδούς</b>.</li>
+      <li>Λόγω <b>οιδήματος της ωχράς</b>.</li>
+      <li>Λόγω <b>προσβολής του οπτικού νεύρου</b>.</li>
+      <li>Λόγω <b>αγγειίτιδας</b>.</li>
+      <li>Λόγω φλεγμονής του <b>χοριοειδούς</b> που επεκτείνεται προς την ωχρά.</li>
+      <li>Μπορεί να συνυπάρχει και <b>ήπια πρόσθια ραγοειδίτιδα</b>, που ανιχνεύεται στη σχισμοειδή λυχνία.</li>
+    </ul>
+  </div>
+
+</div>
+
+<div class="section-title">Λοιμώδη αίτια και σχετιζόμενες νόσοι</div>
+<div class="grid">
+
+  <div class="box red">
+    <div class="tag">ΤΟΞΟΠΛΑΣΜΩΣΗ</div>
+    <h2>Το συχνότερο αίτιο</h2>
+    <ul>
+      <li>Η <span class="infectious">τοξοπλάσμωση</span> είναι το <b>συνηθέστερο αίτιο</b>.</li>
+      <li>Οφείλεται στο <b>Toxoplasma gondii</b>.</li>
+      <li>Συχνά το μόνο κλινικό εύρημα είναι η τυχαία ανακάλυψη ενός ή περισσότερων <b>μελαγχρωστικών χοριοαμφιβληστροειδικών ουλών</b>.</li>
+      <li>Η <b>επανενεργοποίηση</b> παλαιάς βλάβης συμβαίνει συνήθως στην <b>πρώιμη ενήλικη ζωή</b> και προκαλεί μυϊοψίες και θόλωση της όρασης.</li>
+      <li>Η υαλίτιδα μπορεί να κυμαίνεται από λίγα φλεγμονώδη κύτταρα μέχρι πυκνή φλεγμονή που δεν επιτρέπει επισκόπηση του αμφιβληστροειδούς.</li>
+      <li>Οι ενεργές εστίες φαίνονται ως <b>λευκωπές περιοχές</b> με σχετικά σαφή όρια και υπερκείμενη φλεγμονή.</li>
+      <li>Η διάγνωση είναι κυρίως <b>κλινική</b>. Οι ορολογικές δοκιμασίες συνήθως δεν βοηθούν, επειδή μεγάλο ποσοστό του πληθυσμού είναι οροθετικό.</li>
+      <li>Αρνητική ορολογία σε ανοσοεπαρκή ασθενή καθιστά τη διάγνωση <b>απίθανη</b>.</li>
+      <li>Οι περισσότερες επανενεργοποιήσεις υποχωρούν αυτόματα, χωρίς μόνιμη βλάβη της όρασης.</li>
+      <li>Θεραπεία δίνεται όταν <span class="danger">απειλείται η όραση</span>, π.χ. όταν η βλάβη βρίσκεται κοντά στην ωχρά ή στο οπτικό νεύρο.</li>
+    </ul>
+
+    <div class="mini-note">
+      <b>Κύρια θεραπεία:</b> αντιπρωτοζωικά αντιβιοτικά + από του στόματος κορτικοστεροειδή.<br>
+      Παραδείγματα: <b>κλινδαμυκίνη</b>, <b>σουλφαδιαζίνη + πυριμεθαμίνη + φολικό οξύ</b>, <b>τριμεθοπρίμη + σουλφαμεθοξαζόλη</b>.
+    </div>
+  </div>
+
+  <div class="box purple">
+    <div class="tag">ΣΑΡΚΟΕΙΔΩΣΗ</div>
+    <h2>Οφθαλμική και συστηματική νόσος</h2>
+    <ul>
+      <li>Μπορεί να προσβάλει <b>οποιοδήποτε τμήμα του ραγοειδούς</b> και τις περιοφθάλμιες δομές.</li>
+      <li>Συχνά συνυπάρχει και <b>πρόσθια ραγοειδίτιδα</b> με άλγος, ερυθρότητα και συμπτώματα από την όραση.</li>
+      <li>Τυπικά εμφανίζεται σε <b>νεότερους ασθενείς</b>.</li>
+      <li>Εξετάσεις 1ης εκλογής:
+        <ul>
+          <li><b>ACE</b> και <b>λυσοζύμη</b> ορού</li>
+          <li><b>ακτινογραφία θώρακος</b></li>
+        </ul>
+      </li>
+      <li>Χαρακτηριστικά ευρήματα:
+        <ul>
+          <li>φλεγμονώδη κύτταρα και θολερότητες στο υαλοειδές <b>δίκην χιονόμπαλας</b></li>
+          <li><b>φλεβικές περιχειρίδες</b></li>
+          <li>περιφλεβικά εξιδρώματα <b>δίκην σταγόνων λιωμένου κεριού</b></li>
+          <li>αμφιβληστροειδικά και χοριοειδικά οζίδια</li>
+          <li>οιδηματώδης οπτικός δίσκος λόγω διήθησης</li>
+        </ul>
+      </li>
+    </ul>
+
+    <div class="mini-note">
+      <b>Θεραπεία:</b> αντιμετώπιση της συστηματικής νόσου.<br>
+      Ήπια φλεγμονή → τοπικό στεροειδές + μυδριατικό.<br>
+      Αν απειλείται η όραση → περιοφθαλμικά στεροειδή μακράς δράσης, ενδοϋαλοειδικά εμφυτεύματα στεροειδών, συστηματικά στεροειδή ή ανοσοκαταστολή.
+    </div>
+  </div>
+
+  <div class="box orange">
+    <div class="tag">ΑΓΓΕΙΙΤΙΔΕΣ</div>
+    <h2>Πολυσυστηματικές αγγειίτιδες</h2>
+    <ul>
+      <li>Ο οφθαλμός μπορεί να προσβληθεί στα πλαίσια συστηματικής αγγειίτιδας.</li>
+      <li>Παραδείγματα:
+        <ul>
+          <li><b>Συστηματικός Ερυθηματώδης Λύκος</b></li>
+          <li><b>Οζώδης Πολυαρτηρίτιδα</b></li>
+          <li><b>Κοκκιωμάτωση με πολυαγγειίτιδα</b></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <div class="box yellow">
+    <div class="tag">ΣΥΦΙΛΗ</div>
+    <h2>Πολύ σημαντική γιατί απαιτεί ειδική θεραπεία</h2>
+    <ul>
+      <li>Η <span class="infectious">σύφιλη</span> μπορεί να προκαλέσει:
+        <ul>
+          <li><b>ιριδοκυκλίτιδα</b></li>
+          <li><b>υαλίτιδα</b></li>
+          <li><b>αποφρακτική αγγειίτιδα</b></li>
+          <li><b>χοριοαμφιβληστροειδίτιδα</b></li>
+        </ul>
+      </li>
+      <li>Θεραπεία: <b>πενικιλλίνη</b> + <b>ερυθρομυκίνη</b>.</li>
+      <li>Η συγγενής συφιλιδική χοριοαμφιβληστροειδίτιδα δίνει <b>μελαγχρωστικές αλλοιώσεις “αλατοπίπερου”</b>.</li>
+    </ul>
+  </div>
+
+</div>
+
+<div class="section-title">Άλλα λοιμώδη αίτια</div>
+<div class="grid">
+
+  <div class="box blue">
+    <div class="tag">ΤΟΞΟΚΑΡΙΑΣΗ</div>
+    <h2>Σκώληκας από σκύλους</h2>
+    <ul>
+      <li>Μεταδίδεται σε <b>μικρά παιδιά</b> από τους σκύλους.</li>
+      <li>Η οφθαλμική νόσος εκδηλώνεται με <b>υαλίτιδα</b> και <b>μονήρες χοριοειδικό κοκκίωμα</b>.</li>
+      <li>Η <b>πρόγνωση για την όραση είναι φτωχή</b>.</li>
+    </ul>
+  </div>
+
+  <div class="box green">
+    <div class="tag">ΦΥΜΑΤΙΩΣΗ</div>
+    <h2>Φυματιώδης ραγοειδίτιδα</h2>
+    <ul>
+      <li>Μπορεί να εμφανιστεί ως:
+        <ul>
+          <li><b>χρόνια κοκκιωματώδης πρόσθια ραγοειδίτιδα</b></li>
+          <li><b>πολυεστιακή χοριοειδίτιδα</b></li>
+          <li><b>αμφιβληστροειδική αγγειίτιδα</b></li>
+        </ul>
+      </li>
+      <li>Αντιφυματική θεραπεία απαιτείται σε <span class="danger">καταστάσεις απειλητικές για την όραση</span> ή σε εμμένουσες περιπτώσεις.</li>
+    </ul>
+  </div>
+
+  <div class="box red">
+    <div class="tag">CMV</div>
+    <h2>Αμφιβληστροειδίτιδα από κυτταρομεγαλοϊό</h2>
+    <ul>
+      <li>Συχνή σε <b>ανοσοκατεσταλμένους</b>, ιδίως σε ασθενείς με <b>AIDS</b>.</li>
+      <li>Δίνει <b>ανώδυνη απώλεια όρασης</b>, συχνά αμφοτερόπλευρη.</li>
+      <li>Χαρακτηριστική εικόνα: <b>λευκές περιοχές εξιδρώματος νεκρωτικού αμφιβληστροειδούς</b> αναμεμειγμένες με <b>φλογοειδείς αιμορραγίες</b>.</li>
+      <li>Η εικόνα περιγράφεται κλασικά σαν <b>“πίτσα”</b>.</li>
+      <li>Μετά την υποχώρηση, ο αμφιβληστροειδής παραμένει <b>ατροφικός</b> και έχει αυξημένο κίνδυνο <b>αποκόλλησης</b>.</li>
+    </ul>
+
+    <div class="mini-note">
+      <b>Θεραπεία:</b> συστηματική ή ενδοϋαλοειδική γκανσικλοβίρη, από του στόματος βαλγκανσικλοβίρη, σιντοφοβίρη.
+    </div>
+  </div>
+
+  <div class="box purple">
+    <div class="tag">CANDIDA</div>
+    <h2>Ενδοφθαλμίτιδα από Candida</h2>
+    <ul>
+      <li>Ευκαιριακή λοίμωξη σε:
+        <ul>
+          <li>ανοσοκατεσταλμένους</li>
+          <li>ασθενείς με παραμονή ενδοφλέβιων καθετήρων</li>
+          <li>χρήστες ενδοφλέβιων ναρκωτικών</li>
+        </ul>
+      </li>
+      <li>Ευρήματα:
+        <ul>
+          <li><b>πολυεστιακή χοριοαμφιβληστροειδίτιδα</b></li>
+          <li><b>υαλίτιδα</b></li>
+        </ul>
+      </li>
+      <li>Θεραπεία: <b>συστηματική αντιμυκητιασική αγωγή</b>.</li>
+    </ul>
+  </div>
+
+</div>
+
+<div class="section-title">Συστηματικά νοσήματα και ειδικά σύνδρομα</div>
+<div class="grid">
+
+  <div class="box pink">
+    <div class="tag">BEHCET</div>
+    <h2>Νόσος Behçet</h2>
+    <ul>
+      <li>Μπορεί να προκαλέσει:
+        <ul>
+          <li><b>πρόσθια ραγοειδίτιδα</b></li>
+          <li><b>υπόπυο</b></li>
+          <li><b>αποφρακτική αγγειίτιδα</b></li>
+          <li><b>φλεβική απόφραξη</b></li>
+          <li><b>οίδημα της ωχράς</b></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <div class="box yellow">
+    <div class="tag">VKH</div>
+    <h2>Σύνδρομο Vogt-Koyanagi-Harada</h2>
+    <ul>
+      <li>Πολυσυστηματική <b>κοκκιωματώδης πάθηση</b>.</li>
+      <li>Έχει <b>νευρολογικές</b> και <b>δερματολογικές</b> εκδηλώσεις.</li>
+      <li>Προσβάλλει συχνότερα άτομα με <b>σκούρο χρώμα δέρματος</b>.</li>
+      <li>Προκαλεί τόσο <b>πρόσθια</b> όσο και <b>οπίσθια ραγοειδίτιδα</b>.</li>
+    </ul>
+  </div>
+
+</div>
+
+<div class="section-title">Εντοπισμένες διαταραχές</div>
+<div class="grid">
+
+  <div class="box orange">
+    <div class="tag">ΙΣΤΟΠΛΑΣΜΩΣΗ</div>
+    <h2>Σύνδρομο οφθαλμικής ιστοπλάσμωσης</h2>
+    <ul>
+      <li>Σπάνιο στο Ηνωμένο Βασίλειο, αλλά συχνότερο στις <b>νότιες ΗΠΑ</b>.</li>
+      <li>Πιθανόν σχετίζεται με τον μύκητα <b>Histoplasma capsulatum</b>.</li>
+      <li>Ευρήματα:
+        <ul>
+          <li><b>διακριτές ατροφικές βλάβες</b></li>
+          <li><b>προδιάθεση για χοριοειδική νεοαγγείωση</b></li>
+          <li><b>απουσία φλεγμονωδών σημείων</b></li>
+        </ul>
+      </li>
+      <li>Η <b>φλουοροαγγειογραφία</b> μπορεί να βοηθήσει στη διάγνωση.</li>
+    </ul>
+  </div>
+
+  <div class="box red">
+    <div class="tag">ΣΥΜΠΑΘΗΤΙΚΗ ΟΦΘΑΛΜΙΑ</div>
+    <h2>Βαριά αμφοτερόπλευρη φλεγμονή</h2>
+    <ul>
+      <li><b>Αμφοτερόπλευρη κοκκιωματώδης πανραγοειδίτιδα</b>.</li>
+      <li>Εμφανίζεται μετά από <b>διατιτραίνον τραύμα</b> ή χειρουργική επέμβαση ενός ή και των δύο οφθαλμών.</li>
+      <li>Απαιτεί <span class="danger">άμεση και επιθετική αντιφλεγμονώδη θεραπεία</span>.</li>
+    </ul>
+  </div>
+
+  <div class="box blue">
+    <div class="tag">APMPPE</div>
+    <h2>Οξεία Οπίσθια Πολυεστιακή Πλακοειδής Επιθηλιοπάθεια</h2>
+    <ul>
+      <li>Εμφανίζεται κυρίως σε <b>νέους ενήλικες</b>.</li>
+      <li>Συχνά μετά από <b>ιογενή λοίμωξη</b>.</li>
+      <li>Προκαλεί <b>θόλωση της όρασης</b> λόγω εστιακών εξιδρωματικών αποκολλήσεων του αμφιβληστροειδούς.</li>
+      <li>Συνήθως υπάρχει <b>αυτόματη πλήρης υποχώρηση</b> μέσα σε λίγες εβδομάδες.</li>
+    </ul>
+  </div>
+
+  <div class="box purple">
+    <div class="tag">ΟΞΕΙΑ ΑΜΦΙΒΛΗΣΤΡΟΕΙΔΙΚΗ ΝΕΚΡΩΣΗ</div>
+    <h2>Ιογενής νέκρωση του αμφιβληστροειδούς</h2>
+    <ul>
+      <li>Κύρια αίτια:
+        <ul>
+          <li><b>ιός απλού έρπητα</b></li>
+          <li><b>ιός έρπητα ζωστήρα</b></li>
+        </ul>
+      </li>
+      <li>Η νέκρωση ξεκινά από την <b>περιφέρεια</b> και επεκτείνεται προς το <b>κέντρο</b>.</li>
+    </ul>
+  </div>
+
+</div>
+
+<div class="section-title">Παρσπλανίτιδα</div>
+<div class="grid">
+
+  <div class="box green">
+    <div class="tag">PARS PLANITIS</div>
+    <h2>Χαρακτηριστικά</h2>
+    <ul>
+      <li>Προσβάλλει τυπικά <b>εφήβους και νέους</b>.</li>
+      <li>Συμπτώματα:
+        <ul>
+          <li><b>μυϊοψίες</b></li>
+          <li><b>θόλωση της όρασης</b> στον ένα ή και στους δύο οφθαλμούς</li>
+        </ul>
+      </li>
+      <li>Υπάρχουν φλεγμονώδη κύτταρα και θολερότητες στο <b>πρόσθιο υαλοειδές</b>.</li>
+      <li>Μπορεί να εμφανιστεί <b>κυστεοειδές οίδημα της ωχράς</b>, που είναι το κύριο αίτιο μείωσης της όρασης.</li>
+      <li>Στην περιοχή του πρόσθιου αμφιβληστροειδούς και της <b>pars plana</b> υπάρχει το παθογνωμονικό εύρημα της <b>“χιονοπλαγιάς”</b> λόγω εξίδρωσης.</li>
+      <li>Συχνά συνυπάρχει και <b>καταρράκτης</b>.</li>
+    </ul>
+  </div>
+
+  <div class="box yellow">
+    <div class="tag">ΘΕΡΑΠΕΙΑ</div>
+    <h2>Πότε και πώς θεραπεύεται</h2>
+    <ul>
+      <li>Η θεραπεία δίνεται <b>μόνο όταν η όραση είναι σημαντικά μειωμένη</b>.</li>
+      <li>Επιλογές:
+        <ul>
+          <li><b>περιοφθαλμική χορήγηση στεροειδών</b></li>
+          <li><b>ενδοϋαλοειδική χορήγηση</b> ή εμφύτευμα στεροειδών</li>
+          <li><b>συστηματικά στεροειδή</b></li>
+        </ul>
+      </li>
+      <li>Σε ανθεκτικές περιπτώσεις απαιτείται <b>ανοσοκατασταλτική θεραπεία</b>.</li>
+    </ul>
+  </div>
+
+</div>
+
+<div class="section-title">Σύνοψη και σύγκριση</div>
+<div class="grid">
+
+  <div class="box orange">
+    <div class="tag">ΣΥΝΟΨΗ</div>
+    <h2>Οπίσθια ραγοειδίτιδα με μία ματιά</h2>
+    <ul>
+      <li>Η οπίσθια ραγοειδίτιδα προκαλεί κυρίως <b>μυϊοψίες</b> και <b>μείωση της όρασης</b>.</li>
+      <li>Το άλγος και η ερυθρότητα είναι λιγότερο συχνά απ’ ό,τι στην πρόσθια ραγοειδίτιδα.</li>
+      <li>Η απώλεια όρασης μπορεί να οφείλεται σε <b>υαλίτιδα</b>, <b>οίδημα ωχράς</b>, <b>αγγειίτιδα</b>, <b>οπτική νευροπάθεια</b> ή φλεγμονή κοντά στην ωχρά.</li>
+      <li>Τα αίτια μπορεί να είναι <b>λοιμώδη</b>, <b>συστηματικά φλεγμονώδη</b> ή <b>εντοπισμένα σύνδρομα</b>.</li>
+      <li>Η θεραπεία εξαρτάται από το <b>αίτιο</b> και από το αν <b>απειλείται η όραση</b>.</li>
+    </ul>
+  </div>
+
+  <div class="box purple">
+    <div class="tag">FLOW</div>
+    <h2>Λογική προσέγγισης</h2>
+    <div class="flow">
+      Μυϊοψίες / μείωση όρασης → υαλίτιδα / αγγειίτιδα / εστίες χοριοαμφιβληστροειδικής φλεγμονής → σκέψη για λοιμώδη ή συστηματικά αίτια → κλινική διάγνωση + στοχευμένος εργαστηριακός έλεγχος → θεραπεία αιτίου + αντιφλεγμονώδη αγωγή όταν απειλείται η όραση
+    </div>
+  </div>
+
+  <div class="box red">
+    <div class="tag">HIGH-YIELD</div>
+    <h2>Πολύ συχνά εξεταστέα σημεία</h2>
+    <ul>
+      <li><b>Τοξοπλάσμωση</b> = συχνότερο αίτιο.</li>
+      <li><b>Σαρκοείδωση</b> = “χιονόμπαλες” και “λιωμένο κερί”.</li>
+      <li><b>CMV</b> = “πίτσα”.</li>
+      <li><b>Παρσπλανίτιδα</b> = “χιονοπλαγιά”.</li>
+      <li><b>Σύφιλη</b> = ειδική θεραπεία, δεν πρέπει να χάνεται.</li>
+    </ul>
+  </div>
+
+</div>
+
+<script>
+  function printNotes() {
+    window.print();
+  }
+</script>
+
+</body>
+</html>

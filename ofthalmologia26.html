@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Διαβητική Αμφιβληστροειδοπάθεια</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 24px;
+      font-family: "Aptos", "Segoe UI", sans-serif;
+      background: #f7f8fc;
+      color: #1f2430;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 10px;
+      font-size: 32px;
+      color: #243b7c;
+    }
+
+    .subtitle {
+      text-align: center;
+      color: #5a6480;
+      margin-bottom: 28px;
+      font-size: 15px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 18px;
+      max-width: 1350px;
+      margin: 0 auto;
+    }
+
+    .box {
+      background: #ffffff;
+      border-radius: 18px;
+      padding: 18px 20px;
+      box-shadow: 0 8px 22px rgba(44, 62, 120, 0.08);
+      border-top: 8px solid #cfd8ff;
+    }
+
+    .box h2 {
+      margin-top: 0;
+      margin-bottom: 12px;
+      font-size: 21px;
+      color: #243b7c;
+    }
+
+    .box ul {
+      margin: 0;
+      padding-left: 18px;
+      line-height: 1.65;
+    }
+
+    .box li {
+      margin-bottom: 8px;
+    }
+
+    .blue { border-top-color: #9dc4ff; background: #f8fbff; }
+    .pink { border-top-color: #f7a8c1; background: #fff8fb; }
+    .green { border-top-color: #9ed9b0; background: #f8fff9; }
+    .yellow { border-top-color: #f2d37a; background: #fffdf6; }
+    .purple { border-top-color: #c7b2ff; background: #fbf9ff; }
+    .red { border-top-color: #f2a0a0; background: #fff9f9; }
+    .orange { border-top-color: #ffbc7f; background: #fffaf6; }
+
+    .tag {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+      margin-bottom: 10px;
+      background: #e8eeff;
+      color: #3950a3;
+    }
+
+    .mini-note {
+      margin-top: 12px;
+      padding: 10px 12px;
+      border-radius: 12px;
+      background: #eef3ff;
+      font-size: 14px;
+      line-height: 1.55;
+      color: #31457c;
+    }
+
+    .flow {
+      margin-top: 10px;
+      padding: 10px 12px;
+      border-radius: 12px;
+      background: #f5f7fb;
+      border: 1px dashed #c8d0e8;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .section-title {
+      max-width: 1350px;
+      margin: 34px auto 14px;
+      font-size: 24px;
+      color: #243b7c;
+      font-weight: 700;
+    }
+
+    .small {
+      font-size: 14px;
+      color: #54607a;
+    }
+
+    .clinical { color: #b03052; font-weight: 700; }
+    .vascular { color: #275dcb; font-weight: 700; }
+    .danger { color: #c0392b; font-weight: 700; }
+    .exam { color: #7d3cb5; font-weight: 700; }
+    .therapy { color: #00805d; font-weight: 700; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 15px;
+      line-height: 1.45;
+    }
+
+    th, td {
+      border: 1px solid #d9dfef;
+      padding: 10px 10px;
+      vertical-align: top;
+    }
+
+    th {
+      background: #edf2ff;
+      color: #243b7c;
+      text-align: left;
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+      margin-top: 10px;
+    }
+
+    .print-btn {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: #243b7c;
+      color: white;
+      border: none;
+      padding: 10px 16px;
+      border-radius: 10px;
+      font-size: 14px;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      z-index: 1000;
+    }
+
+    .print-btn:hover {
+      background: #1a2d5c;
+    }
+
+    @media print {
+      @page {
+        size: A4 landscape;
+        margin: 8mm;
+      }
+
+      body {
+        background: white !important;
+        padding: 0;
+        color: black;
+        font-size: 11px;
+        line-height: 1.3;
+      }
+
+      h1 {
+        font-size: 22px;
+        margin-bottom: 6px;
+      }
+
+      .subtitle {
+        font-size: 11px;
+        margin-bottom: 14px;
+      }
+
+      .section-title {
+        font-size: 16px;
+        margin: 16px auto 8px;
+      }
+
+      .grid {
+        display: grid !important;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+        max-width: 100%;
+      }
+
+      .box {
+        box-shadow: none !important;
+        border-radius: 10px;
+        padding: 10px 12px;
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+
+      .box h2 {
+        font-size: 14px;
+        margin-bottom: 8px;
+      }
+
+      .box ul {
+        padding-left: 16px;
+        line-height: 1.35;
+      }
+
+      .box li,
+      .mini-note,
+      .flow,
+      table,
+      tr,
+      td,
+      th {
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+
+      table {
+        font-size: 10px;
+      }
+
+      th, td {
+        padding: 6px 6px;
+      }
+
+      .mini-note,
+      .flow {
+        font-size: 10px;
+        padding: 8px 9px;
+      }
+
+      .tag {
+        font-size: 9px;
+        padding: 3px 7px;
+        margin-bottom: 6px;
+      }
+
+      .print-btn {
+        display: none !important;
+      }
+
+      a {
+        color: black;
+        text-decoration: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<button class="print-btn" onclick="printNotes()">🖨️ Print Notes</button>
+
+<h1>Διαβητική Αμφιβληστροειδοπάθεια</h1>
+<div class="subtitle">ΚΕΦ 26 • σημειώσεις σε στυλ GreekDoc από το παρεχόμενο PDF</div>
+
+<div class="section-title">Βασικά στοιχεία</div>
+<div class="grid">
+
+  <div class="box blue">
+    <div class="tag">ΕΠΙΠΛΟΚΕΣ ΣΑΚΧΑΡΩΔΗ ΔΙΑΒΗΤΗ</div>
+    <h2>Συχνές οφθαλμικές και αγγειακές επιπλοκές</h2>
+    <ul>
+      <li><b>Αμφιβληστροειδοπάθεια</b> — η πιο συχνή επιπλοκή.</li>
+      <li><b>Πάρεση εξοφθάλμιων μυών</b>.</li>
+      <li><b>Αγγειακό εγκεφαλικό επεισόδιο</b>.</li>
+      <li><b>Απόφραξη αγγείων του αμφιβληστροειδούς</b>.</li>
+      <li><b>Καταρράκτης</b>.</li>
+    </ul>
+  </div>
+
+  <div class="box pink">
+    <div class="tag">ΕΠΙΔΗΜΙΟΛΟΓΙΑ</div>
+    <h2>FUN / NOT SO FUN FACTS</h2>
+    <ul>
+      <li><b>20 χρόνια από τη διάγνωση</b> → <b>100%</b> των ασθενών με διαβήτη τύπου Ι και <b>60%</b> των ασθενών με διαβήτη τύπου ΙΙ θα έχουν ανιχνεύσιμη αμφιβληστροειδοπάθεια.</li>
+      <li><b>30 χρόνια μετά</b> → <b>30%</b> των ασθενών με διαβήτη τύπου Ι και <b>3%</b> των ασθενών με διαβήτη τύπου ΙΙ θα έχουν <span class="clinical">παραγωγική νόσο</span>.</li>
+    </ul>
+  </div>
+
+  <div class="box green">
+    <div class="tag">ΑΙΤΙΟΠΑΘΟΓΕΝΕΙΑ</div>
+    <h2>Γιατί εμφανίζεται η διαβητική αμφιβληστροειδοπάθεια</h2>
+    <ul>
+      <li><b>Υπεργλυκαιμία</b>.</li>
+      <li><b>Γλυκοζυλίωση ιστικών πρωτεϊνών</b>.</li>
+      <li>Οι κλινικές εκδηλώσεις προκύπτουν λόγω <span class="vascular">απόφραξης μικρών αγγείων</span> αλλά και λόγω <span class="vascular">αυξημένης διαπερατότητάς</span> τους.</li>
+      <li>Υπάρχει <b>αλλοίωση των αγγειακών τοιχωμάτων</b> και <b>απώλεια στηρικτικών περικυττάρων</b>.</li>
+      <li>Προκαλείται <b>ισχαιμία</b> λόγω αυξημένης συγκόλλησης ερυθροκυττάρων και αιμοπεταλίων αλλά και λόγω χαμηλής παροχής οξυγόνου.</li>
+      <li>Προκύπτει επίσης <span class="danger">νεοαγγειογένεση</span> από αγγειογενετικούς παράγοντες όπως ο <b>VEGF</b> (αγγειακός ενδοθηλιακός παράγοντας).</li>
+    </ul>
+
+    <div class="mini-note">
+      <b>Κεντρική ιδέα:</b> ο διαβήτης προκαλεί <b>μικροαγγειοπάθεια</b>, <b>διαρροή</b>, <b>ισχαιμία</b> και τελικά <b>νεοαγγείωση</b>.
+    </div>
+  </div>
+
+  <div class="box yellow">
+    <div class="tag">ΚΛΙΝΙΚΗ ΕΙΚΟΝΑ</div>
+    <h2>Πώς εμφανίζεται η απώλεια όρασης</h2>
+    <ul>
+      <li>Η <b>απώλεια όρασης</b> μπορεί να οφείλεται σε:</li>
+      <li><b>Ωχροπάθεια</b> → αρχικά ήπια, όμως επιδεινώνεται και δεν θεραπεύεται εύκολα.</li>
+      <li><b>Αιμορραγία του υαλοειδούς</b> → οξεία και σοβαρή απώλεια όρασης.</li>
+    </ul>
+  </div>
+
+</div>
+
+<div class="section-title">Κλινικά ευρήματα</div>
+<div class="grid">
+
+  <div class="box red">
+    <div class="tag">ΒΥΘΟΣ</div>
+    <h2>Βασικά οφθαλμοσκοπικά ευρήματα</h2>
+    <ul>
+      <li><b>Μικροανευρύσματα</b>.</li>
+      <li><b>Στικτές αιμορραγίες</b>.</li>
+      <li><b>Κηλιδώδεις αιμορραγίες</b> — πιο σκούρες και μεγαλύτερες.</li>
+      <li><b>Εξιδρώματα</b> — κιτρινωπές εναποθέσεις υλικού πλούσιου σε πρωτεΐνες.</li>
+      <li><b>Νεφελώδεις βαμβακόμορφες κηλίδες</b> — λευκότερες, αντιστοιχούν σε εξοιδημένους νευράξονες.</li>
+      <li><b>Οίδημα αμφιβληστροειδούς</b> — ο αμφιβληστροειδής φαίνεται θαμπός, χωρίς φυσιολογική αντανάκλαση.</li>
+      <li><b>Ήπιες φλεβικές αλλοιώσεις</b>.</li>
+      <li><b>Νεοαγγείωση</b> — είτε εντός του αμφιβληστροειδούς είτε προς το υαλοειδές.</li>
+    </ul>
+  </div>
+
+  <div class="box purple">
+    <div class="tag">ΣΗΜΑΣΙΑ ΕΥΡΗΜΑΤΩΝ</div>
+    <h2>Τι δείχνουν τα ευρήματα</h2>
+    <ul>
+      <li>Οι <b>βαμβακόμορφες κηλίδες</b> σε μεγάλο αριθμό υποδεικνύουν <span class="clinical">σημαντική ισχαιμία</span>.</li>
+      <li>Το <b>οίδημα στο κέντρο της ωχράς</b> έχει <b>κυστεοειδή εμφάνιση</b>.</li>
+      <li>Τα <b>νεοαγγεία</b> είναι <span class="danger">εύθραυστα</span>, αιμορραγούν εύκολα και συχνά συνοδεύονται από <b>ινώδη στοιχεία</b>.</li>
+      <li>Η νεοαγγείωση μπορεί να οδηγήσει σε <span class="danger">αποκόλληση αμφιβληστροειδούς</span>.</li>
+    </ul>
+  </div>
+
+  <div class="box orange">
+    <div class="tag">FLOW</div>
+    <h2>Λογική εξέλιξης της νόσου</h2>
+    <div class="flow">
+      Υπεργλυκαιμία → βλάβη μικρών αγγείων → αυξημένη διαπερατότητα + απόφραξη → ισχαιμία → VEGF → νεοαγγείωση → αιμορραγία / ίνωση / έλξη → προχωρημένες επιπλοκές
+    </div>
+  </div>
+
+</div>
+
+<div class="section-title">Ταξινόμηση και στάδια</div>
+<div class="grid">
+
+  <div class="box blue">
+    <div class="tag">ΤΑΞΙΝΟΜΗΣΗ</div>
+    <h2>Στάδια αμφιβληστροειδοπάθειας</h2>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Στάδιο</th>
+            <th>Χαρακτηριστικά</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><b>Υποστρώματος</b></td>
+            <td>Μικροανευρύσματα, στικτές και κηλιδώδεις αιμορραγίες, εξιδρώματα</td>
+          </tr>
+          <tr>
+            <td><b>Προπαραγωγική</b></td>
+            <td>Βαμβακόμορφες κηλίδες, κατάτμηση, αγκύλες και διπλασιασμός φλεβών</td>
+          </tr>
+          <tr>
+            <td><b>Παραγωγική</b></td>
+            <td>Νεοαγγεία στον δίσκο (<b>NVD</b>), νεοαγγεία αλλαχού (<b>NVE</b>)</td>
+          </tr>
+          <tr>
+            <td><b>Ωχροπάθεια</b></td>
+            <td>Μικροανευρύσματα, αιμορραγίες, εξιδρώματα, οίδημα στην ωχρά</td>
+          </tr>
+          <tr>
+            <td><b>Προχωρημένη νόσος</b></td>
+            <td>Ερυθρώση ίριδας, εμμένουσα αιμορραγία υαλοειδούς, αποκόλληση αμφιβληστροειδούς</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="box pink">
+    <div class="tag">ΥΨΗΛΗΣ ΑΞΙΑΣ ΣΗΜΕΙΑ</div>
+    <h2>Τι πρέπει να ξεχωρίζεις</h2>
+    <ul>
+      <li><b>Υποστρώματος</b> = κυρίως πρώιμες μικροαγγειακές αλλοιώσεις.</li>
+      <li><b>Προπαραγωγική</b> = σημεία πιο έντονης ισχαιμίας και φλεβικών αλλοιώσεων.</li>
+      <li><b>Παραγωγική</b> = <span class="danger">νεοαγγείωση</span>, το πιο απειλητικό στάδιο για σοβαρές επιπλοκές.</li>
+      <li><b>Ωχροπάθεια</b> = ιδιαίτερα σημαντική επειδή σχετίζεται άμεσα με <span class="clinical">πτώση κεντρικής όρασης</span>.</li>
+    </ul>
+  </div>
+
+</div>
+
+<div class="section-title">Διαφορική διάγνωση</div>
+<div class="grid">
+
+  <div class="box yellow">
+    <div class="tag">ΔΙΑΦΟΡΙΚΗ</div>
+    <h2>Είναι σίγουρα διαβητική αμφιβληστροειδοπάθεια;</h2>
+    <ul>
+      <li>Μπορεί να πρόκειται για <b>απόφραξη αμφιβληστροειδικών φλεβών</b>.</li>
+      <li>Μπορεί να πρόκειται για <b>υπερτασική αμφιβληστροειδοπάθεια</b>.</li>
+    </ul>
+  </div>
+
+</div>
+
+<div class="section-title">Πρόληψη, έλεγχος και αντιμετώπιση</div>
+<div class="grid">
+
+  <div class="box green">
+    <div class="tag">ΠΡΟΛΗΨΗ</div>
+    <h2>Τι μειώνει τον κίνδυνο απειλητικής για την όραση νόσου</h2>
+    <ul>
+      <li><b>Πρόληψη ανάπτυξης απειλητικής για την όραση αμφιβληστροειδοπάθειας</b>.</li>
+      <li>Οι διαβητικοί ασθενείς πρέπει να κάνουν <b>εξέταση βυθού τουλάχιστον μία φορά τον χρόνο</b>.</li>
+      <li>Απαραίτητος ο έλεγχος:</li>
+      <li><b>Υπεργλυκαιμίας</b></li>
+      <li><b>Υπέρτασης</b></li>
+      <li><b>Υπερχοληστερολαιμίας</b></li>
+      <li><b>Διακοπή καπνίσματος</b>.</li>
+      <li>Απαιτείται οφθαλμολογική εκτίμηση όταν υπάρχει υποψία <b>ωχροπάθειας</b>, <b>προπαραγωγικής</b> ή <b>παραγωγικής</b> αμφιβληστροειδοπάθειας.</li>
+    </ul>
+  </div>
+
+  <div class="box red">
+    <div class="tag">ΘΕΡΑΠΕΙΑ</div>
+    <h2>Εξειδικευμένη αντιμετώπιση</h2>
+    <ul>
+      <li><span class="therapy">Ενδοϋαλοειδικές εγχύσεις anti-VEGF</span>.</li>
+      <li><span class="therapy">Laser στον αμφιβληστροειδή</span> — παναμφιβληστροειδική φωτοπηξία.</li>
+      <li>Για την <b>παραγωγική αμφιβληστροειδοπάθεια</b> → laser στις ισχαιμικές περιοχές, συνήθως μαζί με <b>anti-VEGF</b>.</li>
+      <li>Σε <b>εμμένουσα αιμορραγία</b> → <span class="therapy">υαλοειδεκτομή</span>.</li>
+    </ul>
+  </div>
+
+  <div class="box purple">
+    <div class="tag">ΕΞΕΤΑΣΕΙΣ</div>
+    <h2>Χρήσιμα διαγνωστικά εργαλεία</h2>
+    <ul>
+      <li><span class="exam">Φλουοροαγγειογραφία</span> → για αναγνώριση περιοχών διαρροής που χρειάζονται αντιμετώπιση.</li>
+      <li><span class="exam">Οπτική τομογραφία συνοχής (OCT)</span> → για ανίχνευση υποκλινικού οιδήματος της ωχράς και για εκτίμηση της ανταπόκρισης στη θεραπεία.</li>
+    </ul>
+  </div>
+
+</div>
+
+<div class="section-title">Σύνοψη κεφαλαίου</div>
+<div class="grid">
+
+  <div class="box orange">
+    <div class="tag">ΣΥΝΟΨΗ</div>
+    <h2>Διαβητική αμφιβληστροειδοπάθεια με μία ματιά</h2>
+    <ul>
+      <li>Η διαβητική αμφιβληστροειδοπάθεια είναι η <b>συχνότερη οφθαλμική επιπλοκή</b> του σακχαρώδη διαβήτη.</li>
+      <li>Οφείλεται σε <b>μικροαγγειακή βλάβη</b>, <b>διαρροή</b>, <b>ισχαιμία</b> και <b>νεοαγγειογένεση</b>.</li>
+      <li>Κύρια ευρήματα: <b>μικροανευρύσματα</b>, <b>αιμορραγίες</b>, <b>εξιδρώματα</b>, <b>βαμβακόμορφες κηλίδες</b>, <b>οίδημα</b>, <b>νεοαγγείωση</b>.</li>
+      <li>Η <b>ωχροπάθεια</b> και η <b>αιμορραγία υαλοειδούς</b> αποτελούν σημαντικές αιτίες απώλειας όρασης.</li>
+      <li>Η παραγωγική νόσος σχετίζεται με <b>νεοαγγεία</b> και σοβαρές επιπλοκές.</li>
+      <li>Η αντιμετώπιση βασίζεται σε <b>έλεγχο παραγόντων κινδύνου</b>, <b>anti-VEGF</b>, <b>laser</b> και όπου χρειάζεται <b>υαλοειδεκτομή</b>.</li>
+    </ul>
+  </div>
+
+  <div class="box purple">
+    <div class="tag">FLOW</div>
+    <h2>Γρήγορη ακολουθία για απομνημόνευση</h2>
+    <div class="flow">
+      Διαβήτης → μικροαγγειοπάθεια → μικροανευρύσματα / αιμορραγίες / εξιδρώματα → ισχαιμία → βαμβακόμορφες κηλίδες / φλεβικές αλλοιώσεις → VEGF → νεοαγγεία → αιμορραγία υαλοειδούς / αποκόλληση / προχωρημένη νόσος
+    </div>
+  </div>
+
+</div>
+
+<script>
+  function printNotes() {
+    window.print();
+  }
+</script>
+
+</body>
+</html>
