@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GreekDoc | Reviews & Support</title>
+
+  <style>
+    :root {
+      --bg: #f7f8fc;
+      --panel: #ffffff;
+      --text: #243043;
+      --muted: #6f7b8f;
+      --line: #e4e8f1;
+
+      --pink: #ffe7f1;
+      --blue: #eaf4ff;
+      --green: #eafbf1;
+      --yellow: #fff8dd;
+      --lavender: #f2ecff;
+
+      --accent: #7b6ef6;
+      --accent-dark: #6357d9;
+      --shadow: 0 10px 28px rgba(44, 62, 80, 0.08);
+      --radius: 18px;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Arial, sans-serif;
+      background: linear-gradient(180deg, #f8faff 0%, #f5f7fb 100%);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .page {
+      width: min(1150px, calc(100% - 32px));
+      margin: 34px auto 60px;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #ffffff, #f7f2ff);
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      padding: 34px 28px;
+      box-shadow: var(--shadow);
+      margin-bottom: 28px;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: var(--lavender);
+      color: #5346d8;
+      font-weight: 700;
+      font-size: 0.9rem;
+      margin-bottom: 14px;
+    }
+
+    h1 {
+      margin: 0 0 10px;
+      font-size: clamp(2rem, 3vw, 3rem);
+      line-height: 1.15;
+    }
+
+    .subtitle {
+      margin: 0;
+      color: var(--muted);
+      max-width: 760px;
+      font-size: 1.04rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1.25fr 0.9fr;
+      gap: 24px;
+      align-items: start;
+    }
+
+    @media (max-width: 900px) {
+      .grid { grid-template-columns: 1fr; }
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 24px;
+    }
+
+    .panel h2 {
+      margin-top: 0;
+      margin-bottom: 10px;
+      font-size: 1.45rem;
+    }
+
+    .lead {
+      color: var(--muted);
+      margin-top: 0;
+      margin-bottom: 22px;
+    }
+
+    form {
+      display: grid;
+      gap: 16px;
+    }
+
+    .field label {
+      display: block;
+      font-weight: 700;
+      margin-bottom: 7px;
+    }
+
+    .field input,
+    .field textarea {
+      width: 100%;
+      border: 1px solid #d9dfeb;
+      border-radius: 14px;
+      padding: 13px 14px;
+      font: inherit;
+      background: #fff;
+      color: var(--text);
+      outline: none;
+    }
+
+    .field input:focus,
+    .field textarea:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 4px rgba(123, 110, 246, 0.12);
+    }
+
+    textarea {
+      min-height: 130px;
+      resize: vertical;
+    }
+
+    .stars {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .stars button {
+      border: none;
+      background: transparent;
+      font-size: 2rem;
+      cursor: pointer;
+      color: #cfd6e4;
+      padding: 0;
+    }
+
+    .stars button.active {
+      color: #ffbf3f;
+    }
+
+    .btn-row {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      border: none;
+      border-radius: 14px;
+      padding: 12px 18px;
+      font: inherit;
+      font-weight: 700;
+      cursor: pointer;
+      transition: 0.18s ease;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-dark);
+    }
+
+    .stats {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 18px;
+    }
+
+    .stat {
+      background: #f6f7fc;
+      border: 1px solid var(--line);
+      padding: 12px 14px;
+      border-radius: 14px;
+      min-width: 120px;
+    }
+
+    .stat .num {
+      font-size: 1.35rem;
+      font-weight: 800;
+      margin-bottom: 4px;
+    }
+
+    .stat .label {
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .comment-list {
+      display: grid;
+      gap: 14px;
+      margin-top: 22px;
+    }
+
+    .comment-card {
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 16px;
+      background: #fcfdff;
+    }
+
+    .comment-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+
+    .comment-name {
+      font-weight: 800;
+      font-size: 1rem;
+    }
+
+    .comment-date {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .comment-rating {
+      color: #ffbf3f;
+      letter-spacing: 1px;
+      font-size: 1rem;
+    }
+
+    .comment-text {
+      margin: 10px 0 0;
+      white-space: pre-wrap;
+    }
+
+    .empty-state {
+      border: 1.5px dashed #d6ddec;
+      border-radius: 16px;
+      padding: 22px;
+      text-align: center;
+      color: var(--muted);
+      background: #fafcff;
+    }
+
+    .donation-box {
+      background: linear-gradient(145deg, #fffdf8, #fff8e7);
+      border: 1px solid #f1e2b8;
+    }
+    .donation-link {
+  display: block;
+  text-decoration: none;   /* removes underline */
+  color: inherit;          /* removes blue color */
+}
+.donation-link:hover {
+  opacity: 0.85;
+  transform: translateY(-1px);
+}
+
+    .support-card {
+      background: rgba(255,255,255,0.82);
+      border: 1px solid #eadcae;
+      border-radius: 14px;
+      padding: 15px;
+      margin-bottom: 12px;
+    }
+
+    .coming-soon {
+      display: inline-block;
+      background: #fff3c4;
+      color: #705d10;
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      margin-top: 8px;
+    }
+
+    .status {
+      margin-top: 12px;
+      font-size: 0.95rem;
+      color: var(--muted);
+      min-height: 22px;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <section class="hero">
+      <div class="badge">GreekDoc Community</div>
+      <h1>Reviews, Comments & Support</h1>
+      <p class="subtitle">
+        If GreekDoc helps you study, you can leave a public review and support the project as it grows.
+      </p>
+    </section>
+
+    <div class="grid">
+      <section class="panel">
+        <h2>Write a public review</h2>
+        <p class="lead">
+          Your review will be visible to everyone visiting this page.
+        </p>
+
+        <form id="reviewForm">
+          <div class="field">
+            <label for="name">Name</label>
+            <input type="text" id="name" maxlength="40" placeholder="e.g. Ioanna / Medical student">
+          </div>
+
+          <div class="field">
+            <label>Rating</label>
+            <div class="stars" id="stars">
+              <button type="button" data-value="1">★</button>
+              <button type="button" data-value="2">★</button>
+              <button type="button" data-value="3">★</button>
+              <button type="button" data-value="4">★</button>
+              <button type="button" data-value="5">★</button>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="comment">Comment</label>
+            <textarea id="comment" maxlength="1000" placeholder="Write your thoughts here..."></textarea>
+          </div>
+
+          <div class="btn-row">
+            <button type="submit" class="btn btn-primary">Post review</button>
+          </div>
+
+          <div class="status" id="status"></div>
+        </form>
+
+        <hr style="border:none; border-top:1px solid var(--line); margin: 26px 0;">
+
+        <h2>Community reviews</h2>
+
+        <div class="stats">
+          <div class="stat">
+            <div class="num" id="reviewCount">0</div>
+            <div class="label">Reviews</div>
+          </div>
+          <div class="stat">
+            <div class="num" id="avgRating">0.0</div>
+            <div class="label">Average rating</div>
+          </div>
+        </div>
+
+        <div id="commentList" class="comment-list">
+          <div class="empty-state">Loading comments...</div>
+        </div>
+      </section>
+
+      <aside class="panel donation-box">
+        <h2>Support GreekDoc</h2>
+        <p class="lead">
+          Donation methods will be added soon.
+        </p>
+
+        <div class="support-card">
+        <a href="YOUR_LINK" class="donation-link" target="_blank">
+         ☕ <strong>Buy me a coffee</strong>
+         </a>
+          </div>
+
+<!--div class="support-card">
+  <strong>💛 PayPal support</strong><br>
+  <span class="coming-soon">Coming soon</span>
+</div>
+
+<div class="support-card">
+  <strong>🌿 Ko-fi support</strong><br>
+  <span class="coming-soon">Coming soon</span>
+</div-->
+      </aside>
+    </div>
+  </div>
+
+  <script type="module">
+    import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
+
+    const SUPABASE_URL = "https://ejbrdidhzmclbomoyeif.supabase.co";
+    const SUPABASE_KEY = "sb_publishable_AdbQ_HYiGJwWM43gQTuT_g_tCsNY6-g";
+
+    const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
+
+    const form = document.getElementById("reviewForm");
+    const nameInput = document.getElementById("name");
+    const commentInput = document.getElementById("comment");
+    const commentList = document.getElementById("commentList");
+    const reviewCount = document.getElementById("reviewCount");
+    const avgRating = document.getElementById("avgRating");
+    const statusBox = document.getElementById("status");
+    const starButtons = document.querySelectorAll("#stars button");
+
+    let selectedRating = 0;
+
+    starButtons.forEach(button => {
+      button.addEventListener("click", () => {
+        selectedRating = Number(button.dataset.value);
+        paintStars(selectedRating);
+      });
+    });
+
+    function paintStars(rating) {
+      starButtons.forEach(button => {
+        const value = Number(button.dataset.value);
+        button.classList.toggle("active", value <= rating);
+      });
+    }
+
+    function escapeHTML(str) {
+      return str
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    }
+
+    function renderStars(rating) {
+      return "★".repeat(rating) + "☆".repeat(5 - rating);
+    }
+
+    function formatDate(dateString) {
+      return new Date(dateString).toLocaleString("el-GR", {
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+        hour: "2-digit",
+        minute: "2-digit"
+      });
+    }
+
+    async function loadReviews() {
+      const { data, error } = await supabase
+        .from("greekdoc_reviews")
+        .select("*")
+        .eq("approved", true)
+        .order("created_at", { ascending: false });
+
+      if (error) {
+        commentList.innerHTML = `<div class="empty-state">Could not load comments.</div>`;
+        console.error(error);
+        return;
+      }
+
+      if (!data || data.length === 0) {
+        reviewCount.textContent = "0";
+        avgRating.textContent = "0.0";
+        commentList.innerHTML = `<div class="empty-state">No reviews yet. Be the first to write one.</div>`;
+        return;
+      }
+
+      reviewCount.textContent = data.length;
+      const avg = data.reduce((sum, item) => sum + item.rating, 0) / data.length;
+      avgRating.textContent = avg.toFixed(1);
+
+      commentList.innerHTML = data.map(item => `
+        <div class="comment-card">
+          <div class="comment-top">
+            <div>
+              <div class="comment-name">${escapeHTML(item.name)}</div>
+              <div class="comment-date">${formatDate(item.created_at)}</div>
+            </div>
+            <div class="comment-rating">${renderStars(item.rating)}</div>
+          </div>
+          <div class="comment-text">${escapeHTML(item.comment)}</div>
+        </div>
+      `).join("");
+    }
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const name = nameInput.value.trim() || "Anonymous";
+      const comment = commentInput.value.trim();
+
+      if (!selectedRating) {
+        statusBox.textContent = "Please choose a rating.";
+        return;
+      }
+
+      if (!comment) {
+        statusBox.textContent = "Please write a comment.";
+        return;
+      }
+
+      statusBox.textContent = "Posting review...";
+
+      const { error } = await supabase
+        .from("greekdoc_reviews")
+        .insert([
+          {
+            name,
+            rating: selectedRating,
+            comment,
+            page_slug: "general"
+          }
+        ]);
+
+      if (error) {
+        statusBox.textContent = "Could not post review.";
+        console.error(error);
+        return;
+      }
+
+      statusBox.textContent = "Review posted successfully.";
+      form.reset();
+      selectedRating = 0;
+      paintStars(0);
+      await loadReviews();
+    });
+
+    loadReviews();
+  </script>
+</body>
+</html>
