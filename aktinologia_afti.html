@@ -1,0 +1,1127 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GreekDoc - Απεικονιστική Διερεύνηση Ωτός και Λιθοειδούς</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg1: #f6f8fc;
+      --bg2: #eef3fb;
+      --text: #233246;
+      --muted: #607085;
+      --card: rgba(255,255,255,0.94);
+      --border: rgba(150,165,190,0.13);
+      --shadow: 0 8px 24px rgba(72, 92, 128, 0.07);
+      --blue: #8db9ff;
+      --pink: #f4a7c9;
+      --purple: #b79cff;
+      --green: #8fd5b6;
+      --orange: #ffc78a;
+      --red: #ff9d9d;
+      --gray: #c8d2e2;
+      --yellow: #ffe68a;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Arial, sans-serif;
+      background: linear-gradient(180deg, var(--bg1) 0%, var(--bg2) 100%);
+      color: var(--text);
+      line-height: 1.58;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+      padding: 16px 20px;
+      background: rgba(246, 249, 253, 0.86);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(140, 160, 190, 0.12);
+    }
+
+    .print-btn {
+      border: none;
+      background: linear-gradient(135deg, #2f5f98, #3f74b3);
+      color: white;
+      padding: 10px 16px;
+      border-radius: 14px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 8px 18px rgba(47, 95, 152, 0.22);
+      transition: 0.18s ease;
+    }
+
+    .print-btn:hover {
+      transform: translateY(-1px);
+      filter: brightness(1.03);
+    }
+
+    .page {
+      max-width: 1580px;
+      margin: 0 auto;
+      padding: 18px 18px 44px;
+    }
+
+    .hero {
+      margin: 8px 0 24px;
+      padding: 28px;
+      border-radius: 28px;
+      background: linear-gradient(135deg, #e7efff 0%, #f9efff 48%, #eefaff 100%);
+      box-shadow: 0 10px 28px rgba(85, 105, 145, 0.08);
+      border: 1px solid rgba(135, 155, 190, 0.12);
+    }
+
+    .tagline {
+      display: inline-block;
+      margin-bottom: 10px;
+      padding: 5px 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.65);
+      color: #345884;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.2px;
+    }
+
+    .hero h1 {
+      margin: 0 0 10px;
+      font-size: 31px;
+      line-height: 1.2;
+      color: #1f3552;
+    }
+
+    .hero p {
+      margin: 0;
+      max-width: 980px;
+      color: #4f6178;
+      font-size: 15px;
+    }
+
+    .panel {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+      align-items: start;
+    }
+
+    .box,
+    .image-box,
+    .wide-box {
+      background: var(--card);
+      border-radius: 22px;
+      padding: 18px 18px 16px;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+      break-inside: avoid;
+      page-break-inside: avoid;
+      overflow: hidden;
+    }
+
+    .wide-box {
+      grid-column: span 3;
+    }
+
+    .box h2,
+    .image-box h2,
+    .wide-box h2 {
+      margin: 0 0 12px;
+      font-size: 20px;
+      line-height: 1.28;
+      color: #203753;
+    }
+
+    .box h3,
+    .wide-box h3 {
+      margin: 15px 0 8px;
+      font-size: 15px;
+      color: #294a70;
+    }
+
+    .box p,
+    .image-box p,
+    .wide-box p {
+      margin: 8px 0;
+    }
+
+    .box ul,
+    .wide-box ul {
+      margin: 8px 0 0;
+      padding-left: 20px;
+    }
+
+    .box li,
+    .wide-box li {
+      margin-bottom: 7px;
+    }
+
+    .mini-note {
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .important {
+      font-weight: 700;
+      color: #1d4f86;
+    }
+
+    .highlight {
+      margin-top: 12px;
+      padding: 12px 13px;
+      background: #f5f8ff;
+      border-left: 5px solid var(--blue);
+      border-radius: 12px;
+    }
+
+    .exam {
+      margin-top: 12px;
+      padding: 12px 13px;
+      background: #fff8e8;
+      border-left: 5px solid #f0c35a;
+      border-radius: 12px;
+    }
+
+    .pink { border-top: 7px solid var(--pink); }
+    .blue { border-top: 7px solid var(--blue); }
+    .purple { border-top: 7px solid var(--purple); }
+    .green { border-top: 7px solid var(--green); }
+    .orange { border-top: 7px solid var(--orange); }
+    .red { border-top: 7px solid var(--red); }
+    .gray { border-top: 7px solid var(--gray); }
+    .yellow { border-top: 7px solid var(--yellow); }
+
+    .image-box {
+      padding: 14px;
+      background: linear-gradient(180deg, #ffffff 0%, #fbfcff 100%);
+    }
+
+    .image-box h2 {
+      margin-bottom: 10px;
+    }
+
+    .image-box img {
+      width: 100%;
+      display: block;
+      margin: 0 auto;
+      border-radius: 12px;
+      object-fit: contain;
+      background: #f7f9fc;
+      max-height: 260px;
+      box-shadow: inset 0 0 0 1px rgba(120, 140, 170, 0.08);
+    }
+
+    .image-box.small img {
+      max-height: 170px;
+    }
+
+    .image-box.medium img {
+      max-height: 230px;
+    }
+
+    .image-box.large img {
+      max-height: 320px;
+    }
+
+    .image-box.xlarge img {
+      max-height: 420px;
+    }
+
+    .image-box small {
+      display: block;
+      margin-top: 8px;
+      color: #6d7a8d;
+      font-size: 13px;
+      line-height: 1.45;
+    }
+
+    .two-images,
+    .three-images {
+      display: grid;
+      gap: 12px;
+      margin-top: 10px;
+    }
+
+    .two-images {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .three-images {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .spacer-top {
+      margin-top: 12px;
+    }
+
+    @media (max-width: 1120px) {
+      .panel {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .wide-box {
+        grid-column: span 2;
+      }
+
+      .three-images {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .panel {
+        grid-template-columns: 1fr;
+      }
+
+      .wide-box {
+        grid-column: span 1;
+      }
+
+      .two-images,
+      .three-images {
+        grid-template-columns: 1fr;
+      }
+
+      .hero h1 {
+        font-size: 25px;
+      }
+    }
+
+    @media print {
+      @page {
+        size: A4 landscape;
+        margin: 8mm;
+      }
+
+      html, body {
+        background: white !important;
+      }
+
+      body {
+        zoom: 0.72;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
+      .topbar {
+        display: none !important;
+      }
+
+      .page {
+        max-width: none;
+        padding: 0;
+      }
+
+      .hero {
+        box-shadow: none;
+        border-radius: 16px;
+        margin: 0 0 10px;
+        padding: 16px 18px;
+      }
+
+      .panel {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+      }
+
+      .wide-box {
+        grid-column: span 4;
+      }
+
+      .box,
+      .image-box,
+      .wide-box {
+        box-shadow: none;
+        border-radius: 12px;
+        padding: 10px 10px 9px;
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+
+      .box h2,
+      .image-box h2,
+      .wide-box h2 {
+        font-size: 13px;
+        margin-bottom: 7px;
+      }
+
+      .box h3,
+      .wide-box h3 {
+        font-size: 11px;
+        margin: 9px 0 5px;
+      }
+
+      .box,
+      .wide-box,
+      .image-box,
+      .box p,
+      .wide-box p,
+      .image-box p,
+      .box li,
+      .wide-box li,
+      .hero p,
+      .mini-note,
+      .image-box small {
+        font-size: 9px !important;
+        line-height: 1.28 !important;
+      }
+
+      .hero h1 {
+        font-size: 18px;
+      }
+
+      .tagline {
+        font-size: 9px;
+        padding: 3px 7px;
+        margin-bottom: 6px;
+      }
+
+      ul {
+        padding-left: 14px;
+        margin-top: 5px;
+      }
+
+      li {
+        margin-bottom: 3px;
+      }
+
+      .highlight,
+      .exam {
+        padding: 8px;
+        margin-top: 8px;
+      }
+
+      .image-box img,
+      .image-box.small img,
+      .image-box.medium img,
+      .image-box.large img,
+      .image-box.xlarge img {
+        max-height: 180px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="topbar">
+    <button class="print-btn" onclick="window.print()">🖨️ Print Notes</button>
+  </div>
+
+  <div class="page">
+
+    <div class="hero">
+      <div class="tagline">GreekDoc • Radiology</div>
+      <h1>Απεικονιστική Διερεύνηση Παθήσεων Ωτός και Λιθοειδούς</h1>
+      <p>
+        Συγκεντρωμένες σημειώσεις με έμφαση στα απεικονιστικά patterns CT / MRI
+      </p>
+    </div>
+
+    <div class="panel">
+
+      <div class="wide-box blue">
+        <h2>1. Τρήματα της βάσης του κρανίου – High Yield</h2>
+
+        <div class="three-images">
+          <div class="image-box medium">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/9/9d/Head_Olfactory_Nerve_Labeled_-_Cribriform_plate_highlighting.png" alt="Τετρημένο πέταλο" />
+            <small>Τετρημένο πέταλο ηθμοειδούς οστού</small>
+          </div>
+          <div class="image-box medium">
+            <img src="trhmata.jpg" alt="Τρήματα βάσης κρανίου" />
+            <small>Συνολική τοπογραφία βασικών τρημάτων</small>
+          </div>
+          <div class="image-box medium">
+            <img src="pseudomazes.jpg" alt="Ψευδομάζες" />
+            <small>Παράδειγμα ψευδομάζας / ανατομικής παραλλαγής</small>
+          </div>
+        </div>
+
+        <h3>Βασικά τρήματα και τι περιέχουν</h3>
+        <ul>
+          <li><b>Τετρημένο πέταλο</b> → οσφρητικά νεύρα, ηθμοειδείς αρτηρίες</li>
+          <li><b>Οπτικό τρήμα</b> → οπτικό νεύρο, οφθαλμική αρτηρία</li>
+          <li><b>Υπερκόγχιο σχίσμα</b> → III, IV, V1, VI, οφθαλμική φλέβα</li>
+          <li><b>Στρόγγυλο τρήμα</b> → V2</li>
+          <li><b>Ωοειδές τρήμα</b> → V3</li>
+          <li><b>Ακανθικό τρήμα</b> → μέση μηνιγγική αρτηρία</li>
+          <li><b>Βιδιανός / πτερυγοειδής πόρος</b> → αρτηρία και νεύρο πτερυγοειδούς πόρου</li>
+          <li><b>Καρωτιδικός σωλήνας</b> → έσω καρωτίδα + συμπαθητικό πλέγμα</li>
+          <li><b>Σφαγιτιδικό τρήμα</b> → IX, X, XI, κάτω λιθοειδής κόλπος, έσω σφαγίτιδα</li>
+          <li><b>Βελονομαστοειδές τρήμα</b> → προσωπικό νεύρο VII</li>
+          <li><b>Υπογλώσσιος πόρος</b> → XII</li>
+        </ul>
+
+        <div class="exam">
+          <b>Exam tip:</b> Να ξέρεις να συνδέεις CT βάσης κρανίου με τα νεύρα V2, V3, VII,
+          τις αγγειακές δομές και το σφαγιτιδικό τρήμα.
+        </div>
+      </div>
+
+      <div class="box purple">
+        <h2>2. Ψευδομάζες</h2>
+        <ul>
+          <li>Είναι <span class="important">ανατομικές παραλλαγές</span> που μιμούνται μάζα.</li>
+          <li>Κλασικό παράδειγμα: <b>σφαγιτιδικό εκκόλπωμα</b>.</li>
+          <li>Σημαντικό για να μην μπερδευτείς με νεόπλασμα.</li>
+        </ul>
+
+        <div class="highlight">
+          Η βασική λογική είναι: όχι κάθε «προβολή» ή ασυνήθιστο contour είναι όγκος.
+          Πάντα σκέψου φυσιολογική παραλλαγή.
+        </div>
+      </div>
+
+      <div class="box gray">
+        <h2>3. Ανατομία κροταφικού οστού – τι να ξέρεις</h2>
+        <ul>
+          <li>Έξω ακουστικός πόρος</li>
+          <li>Τυμπανική κοιλότητα / μέσο ους</li>
+          <li>Σφύρα, άκμονας, αναβολέας</li>
+          <li>Μαστοειδείς κυψέλες</li>
+          <li>Έσω ακουστικός πόρος</li>
+          <li>Κοχλίας, προθάλαμος, ημικύκλιοι σωλήνες</li>
+          <li>Πορεία προσωπικού νεύρου μέσα στο λιθοειδές</li>
+        </ul>
+
+        <div class="highlight">
+          Στο οστικό παράθυρο: <b>αέρας = μαύρος</b>, <b>οστό = λευκό</b>, <b>μαλακοί ιστοί = γκρι</b>.
+          Αυτό είναι το πιο βασικό pattern της ενότητας.
+        </div>
+      </div>
+
+      <div class="box red">
+        <h2>5. Κατάγματα κροταφικού οστού</h2>
+        <ul>
+          <li>Δύο βασικοί τύποι: <b>επιμήκη</b> και <b>εγκάρσια</b></li>
+          <li>Τα επιμήκη είναι γενικά συχνότερα.</li>
+          <li>Τα εγκάρσια σχετίζονται συχνότερα με βλάβη λαβυρίνθου και νευροαισθητήρια βαρηκοΐα.</li>
+        </ul>
+
+        <h3>Απεικονιστικά</h3>
+        <ul>
+          <li>CT: λεπτή γραμμή κατάγματος που διασχίζει το κροταφικό οστό</li>
+          <li>Μπορεί να συνυπάρχουν αίμα στο μέσο ους, εξάλειψη αέρα, διαχωρισμός οσταρίων</li>
+        </ul>
+
+        <div class="exam">
+          Να σκέφτεσαι πάντα επιπλοκές: <b>διαφυγή ΕΝΥ</b>, <b>βλάβη VII</b>, <b>διαχωρισμό οσταρίων</b>.
+        </div>
+      </div>
+
+      <div class="wide-box pink">
+        <h2>6. Διαφυγή ΕΝΥ και μετατραυματική εγκεφαλοκήλη</h2>
+
+        <div class="two-images">
+          <div class="image-box medium">
+            <img src="eni.jpg" alt="Διαφυγή ΕΝΥ" />
+            <small>
+              Η διαφυγή ΕΝΥ υποδηλώνει επικοινωνία κρανιακής κοιλότητας με μέσο ους / μαστοειδές.
+            </small>
+          </div>
+          <div class="image-box medium">
+            <img src="kili.jpg" alt="Μετατραυματική εγκεφαλοκήλη" />
+            <small>
+              Εγκεφαλοκήλη = πρόπτωση ενδοκρανιακού περιεχομένου μέσω οστικού ελλείμματος.
+            </small>
+          </div>
+        </div>
+
+        <ul class="spacer-top">
+          <li><b>Διαφυγή ΕΝΥ</b> συνήθως μετά από κάταγμα βάσης κρανίου / κροταφικού οστού</li>
+          <li>Στο CT μπορεί να φαίνεται εξάλειψη αέρα και υγρό στις αεροφόρες κοιλότητες</li>
+          <li><b>Μετατραυματική εγκεφαλοκήλη</b> φαίνεται καλύτερα στη MRI</li>
+        </ul>
+      </div>
+
+      <div class="box pink">
+        <h2>7. Τραυματισμός προσωπικού νεύρου</h2>
+        <ul>
+          <li>Το προσωπικό νεύρο πορεύεται μέσα στο λιθοειδές οστό.</li>
+          <li>Κάταγμα που περνά από τον προσωπικό σωλήνα μπορεί να το τραυματίσει.</li>
+          <li>Κλινικά: πάρεση ή παράλυση προσωπικού.</li>
+        </ul>
+
+        <div class="highlight">
+          Στην CT ψάχνεις αν η γραμμή κατάγματος τέμνει την οστική πορεία του VII.
+        </div>
+      </div>
+
+      <div class="image-box small">
+        <h2>8. Εικόνα τραυματισμού VII</h2>
+        <img src="prosopiko.jpg" alt="Τραυματισμός προσωπικού νεύρου" />
+        <small>Εντόπιση της πορείας του προσωπικού νεύρου σε τραυματισμό.</small>
+      </div>
+
+      <div class="box orange">
+        <h2>9. Αποφρακτική υπερκεράτωση (Keratosis Obturans)</h2>
+        <ul>
+          <li>Συσσώρευση κερατίνης στον έξω ακουστικό πόρο</li>
+          <li>Προκαλεί διάταση και απόφραξη του πόρου</li>
+          <li>Κλινικά: έντονος πόνος, βαρηκοΐα αγωγιμότητας, σπάνια ωτόρροια</li>
+        </ul>
+
+        <h3>Ωτοσκοπικά / CT</h3>
+        <ul>
+          <li>Κερατινώδης μάζα που γεμίζει τον πόρο</li>
+          <li>Διευρυμένος οστέινος πόρος</li>
+          <li>Άθικτο τύμπανο</li>
+          <li>CT: μαλακός ιστός μέσα στον έξω ακουστικό πόρο</li>
+        </ul>
+      </div>
+
+      <div class="image-box small">
+        <h2>10. Keratosis Obturans</h2>
+        <img src="keratosis.jpg" alt="Keratosis obturans" />
+        <small>Η μάζα κερατίνης φαίνεται σαν πλήρωση του έξω ακουστικού πόρου με διάταση.</small>
+      </div>
+
+      <div class="wide-box blue">
+        <h2>11. Οξεία μέση ωτίτιδα / μαστοειδίτιδα</h2>
+
+        <div class="three-images">
+          <div class="image-box medium">
+            <img src="mesi.jpg" alt="Οξεία μέση ωτίτιδα 1" />
+          </div>
+          <div class="image-box medium">
+            <img src="mesi2.jpg" alt="Οξεία μέση ωτίτιδα 2" />
+          </div>
+          <div class="image-box medium">
+            <img src="mesi3.jpg" alt="Οξεία μέση ωτίτιδα 3" />
+          </div>
+        </div>
+
+        <h3>Βασικά σημεία</h3>
+        <ul>
+          <li>Μπορεί να εμφανιστεί σε οποιαδήποτε ηλικία</li>
+          <li>Σπάνια απομονώνεται στρεπτόκοκκος ή αιμόφιλος</li>
+          <li>Υπάρχει <span class="important">εξάλειψη του αέρα</span> στο μέσο ους και στις μαστοειδείς κυψέλες</li>
+          <li>Με σκιαγραφικό μπορεί να φαίνεται πρόσληψη λόγω φλεγμονής</li>
+        </ul>
+
+        <h3>Πώς την αναγνωρίζω ακτινολογικά;</h3>
+        <ul>
+          <li>Φυσιολογικά το μέσο ους και οι μαστοειδείς κυψέλες περιέχουν αέρα → είναι <b>μαύρα</b> στο CT</li>
+          <li>Στην ωτίτιδα ο αέρας αντικαθίσταται από υγρό / φλεγμονή → η περιοχή γίνεται <b>γκρι</b></li>
+          <li>Στη MRI με σκιαγραφικό, το φλεγμονώδες τοίχωμα / ιστοί μπορεί να ενισχύονται</li>
+        </ul>
+
+        <h3>Επιπλοκές</h3>
+        <ul>
+          <li>Απόστημα</li>
+          <li>Μηνιγγίτιδα</li>
+          <li>Θρόμβωση</li>
+        </ul>
+
+        <div class="exam">
+          <b>Memory trick:</b>  
+          <b>Μαύρο = αέρας</b> • <b>Γκρι = υγρό / μαλακός ιστός</b>.  
+          Όταν «χάνονται τα μαύρα» στις μαστοειδείς κυψέλες, σκέψου φλεγμονώδη πλήρωση.
+        </div>
+      </div>
+
+      <div class="wide-box red">
+        <h2>12. Κακοήθης εξωτερική ωτίτιδα</h2>
+
+        <div class="two-images">
+          <div class="image-box medium">
+            <img src="kakoithis.jpg" alt="Κακοήθης εξωτερική ωτίτιδα 1" />
+          </div>
+          <div class="image-box medium">
+            <img src="kakoithis2.jpg" alt="Κακοήθης εξωτερική ωτίτιδα 2" />
+          </div>
+        </div>
+
+        <ul class="spacer-top">
+          <li>Βαριά επεκτατική λοίμωξη του έξω ακουστικού πόρου</li>
+          <li>Μπορεί να προχωρήσει στη βάση του κρανίου</li>
+          <li>Κλασικά τη σκεφτόμαστε σε διαβητικούς ή ανοσοκατασταλμένους</li>
+        </ul>
+
+        <h3>Τι δείχνουν οι εικόνες;</h3>
+        <ul>
+          <li><b>CT</b> → πάχυνση / μαλακός ιστός στον έξω ακουστικό πόρο, πιθανή οστική διάβρωση</li>
+          <li><b>MRI</b> → καλύτερη ανάδειξη επέκτασης στους μαλακούς ιστούς και στη βάση κρανίου</li>
+        </ul>
+
+        <div class="highlight">
+          Η διαφορά από απλή εξωτερική ωτίτιδα είναι ότι εδώ η λοίμωξη γίνεται επιθετική
+          και διηθεί βαθύτερες δομές.
+        </div>
+      </div>
+
+      <div class="wide-box gray">
+        <h2>13. Δευτεροπαθές / επίκτητο χολοστεάτωμα</h2>
+
+        <div class="three-images">
+          <div class="image-box medium">
+            <img src="xolo.jpg" alt="Χολοστεάτωμα CT 1" />
+          </div>
+          <div class="image-box medium">
+            <img src="xolo2.jpg" alt="Χολοστεάτωμα CT 2" />
+          </div>
+          <div class="image-box medium">
+            <img src="xolo3.jpg" alt="Χολοστεάτωμα CT 3" />
+          </div>
+        </div>
+
+        <p>
+          <b>Χολοστεάτωμα</b> = συσσώρευση κερατίνης / πλακώδους επιθηλίου μέσα στο μέσο ους.
+          Δεν είναι αληθινός όγκος, αλλά μπορεί να προκαλέσει
+          <span class="important">διάβρωση οστού και οσταρίων</span>.
+        </p>
+
+        <h3>Πού εμφανίζεται;</h3>
+        <ul>
+          <li><b>Χαλαρή μοίρα τυμπάνου</b> → χώρος του <b>Prussak</b></li>
+          <li><b>Σκληρή μοίρα τυμπάνου</b> → οπίσθιο μεσοτύμπανο</li>
+          <li>Επίσης γύρω από τα οστάρια, στην ευσταχιανή σάλπιγγα και στο οπίσθιο επιτυμπάνιο</li>
+        </ul>
+
+        <h3>Από τι αποτελείται;</h3>
+        <ul>
+          <li>Πλακώδες επιθήλιο</li>
+          <li>Κερατίνη</li>
+          <li>Χοληστερινικοί κρύσταλλοι</li>
+        </ul>
+
+        <h3>CT – πώς το αναγνωρίζω;</h3>
+        <ul>
+          <li>Οι περιοχές που θα είχαν αέρα και θα ήταν μαύρες, τώρα γεμίζουν με μαλακό ιστό και γίνονται γκρι</li>
+          <li>Συχνά φαίνεται και διάβρωση οστού / οσταρίων</li>
+        </ul>
+
+        <h3>MRI – τι είναι χαρακτηριστικό;</h3>
+        <ul>
+          <li><b>Δεν προσλαμβάνει σκιαγραφικό</b></li>
+        </ul>
+
+        <h3>Κλινικά</h3>
+        <ul>
+          <li>Συχνότερα > 40 ετών</li>
+          <li>Δύσοσμη ωτόρροια</li>
+          <li>Βαρηκοΐα αγωγιμότητας</li>
+        </ul>
+
+        <h3>Διαφορική διάγνωση</h3>
+        <ul>
+          <li>Χοληστερινικό κοκκίωμα</li>
+          <li>Παραγαγγλίωμα</li>
+        </ul>
+
+        <div class="exam">
+          <b>Το πιο σημαντικό pattern:</b>  
+          <b>CT:</b> γκρι μάζα αντί για μαύρο αέρα  
+          <b>MRI:</b> δεν προσλαμβάνει σκιαγραφικό
+        </div>
+      </div>
+
+      <div class="wide-box green">
+        <h2>14. Χολοστεάτωμα – MRI και χειρουργική</h2>
+
+        <div class="three-images">
+          <div class="image-box medium">
+            <img src="xolomr.jpg" alt="Χολοστεάτωμα MRI 1" />
+          </div>
+          <div class="image-box medium">
+            <img src="xolomr2.jpg" alt="Χολοστεάτωμα MRI 2" />
+          </div>
+          <div class="image-box medium">
+            <img src="xolomr3.jpg" alt="Χολοστεάτωμα MRI 3" />
+          </div>
+        </div>
+
+        <h3>Αυτομαστοειδεκτομή – τι είναι;</h3>
+        <p>
+          Η <b>αυτομαστοειδεκτομή</b> είναι εικόνα εκτεταμένης οστικής διάβρωσης από χολοστεάτωμα,
+          τόσο έντονης που η κοιλότητα μοιάζει σαν να έχει ήδη γίνει μαστοειδεκτομή.
+        </p>
+
+        <div class="two-images">
+          <div class="image-box small">
+            <img src="xoloafto.jpg" alt="Αυτομαστοειδεκτομή" />
+            <small>Εκτεταμένη διάβρωση με εικόνα “self-mastoidectomy”.</small>
+          </div>
+          <div class="image-box small">
+            <img src="xoloxei.jpg" alt="Χειρουργική ολική μαστοειδεκτομή" />
+            <small>Μετεγχειρητική / χειρουργική εικόνα ολικής μαστοειδεκτομής.</small>
+          </div>
+        </div>
+
+        <p><b>Θεραπεία:</b> χειρουργική αφαίρεση.</p>
+      </div>
+
+      <div class="box pink">
+        <h2>15. Bell’s palsy</h2>
+        <div class="image-box small" style="padding:0; box-shadow:none; border:none; background:none;">
+          <img src="palsy.jpg" alt="Bell's palsy" />
+        </div>
+        <p>
+          Η <b>Bell’s palsy</b> είναι ιδιοπαθής περιφερική πάρεση / παράλυση του προσωπικού νεύρου.
+        </p>
+        <ul>
+          <li>Εμφανίζεται συνήθως οξέως</li>
+          <li>Κλινικά: αδυναμία όλου του ημιμορίου του προσώπου</li>
+          <li>Η απεικόνιση γίνεται κυρίως σε άτυπες περιπτώσεις ή για αποκλεισμό άλλης αιτίας</li>
+        </ul>
+      </div>
+
+      <div class="wide-box blue">
+        <h2>16. Οστεοποιός λαβυρινθίτιδα</h2>
+
+        <div class="image-box medium">
+          <img src="laby.jpg" alt="Οστεοποιός λαβυρινθίτιδα" />
+          <small>Παθολογική μετατροπή του λαβυρίνθου από φλεγμονώδη διεργασία σε ίνωση και τελικά οστό.</small>
+        </div>
+
+        <ul class="spacer-top">
+          <li>Παθολογική κατάσταση του έσω ωτός όπου ο υμενώδης λαβύρινθος μετατρέπεται προοδευτικά σε οστό</li>
+          <li>Αίτια: ιογενής ή βακτηριακή λοίμωξη, αυτοάνοση αιτιολογία, τραύμα</li>
+          <li>Οδηγεί σε μόνιμη βαριά νευροαισθητήρια βαρηκοΐα και απώλεια ισορροπίας</li>
+        </ul>
+
+        <h3>Απεικονιστικά στάδια</h3>
+        <ul>
+          <li><b>Οξύ φλεγμονώδες στάδιο</b> → MRI: ενίσχυση / πρόσληψη λόγω φλεγμονής, CT ίσως φυσιολογική</li>
+          <li><b>Ινώδες στάδιο</b> → MRI: χάνεται το φυσιολογικό έντονο σήμα του υγρού στην Τ2</li>
+          <li><b>Οστεοποιό στάδιο</b> → MRI: πλήρης απώλεια σήματος υγρού, CT: αυξημένη πυκνότητα σε κοχλία και ημικύκλιους</li>
+        </ul>
+
+        <div class="exam">
+          <b>Τι σημαίνει «απώλεια φυσιολογικού σήματος υγρού στην Τ2»;</b>  
+          Φυσιολογικά το υγρό του λαβυρίνθου είναι φωτεινό στην Τ2.  
+          Όταν αντικαθίσταται από ίνωση ή οστό, αυτή η φωτεινότητα χάνεται.
+        </div>
+      </div>
+
+      <div class="wide-box purple">
+        <h2>17. Σβάννωμα ακουστικού νεύρου</h2>
+
+        <div class="two-images">
+          <div class="image-box medium">
+            <img src="sba.jpg" alt="Σβάννωμα ακουστικού νεύρου 1" />
+          </div>
+          <div class="image-box medium">
+            <img src="sba2.jpg" alt="Σβάννωμα ακουστικού νεύρου 2" />
+          </div>
+        </div>
+
+        <ul class="spacer-top">
+          <li>Καλοήθης όγκος από κύτταρα Schwann</li>
+          <li>Αναπτύσσεται συνήθως μέσα στον έσω ακουστικό πόρο</li>
+          <li>Μπορεί να επεκτείνεται προς τη γεφυροπαρεγκεφαλιδική γωνία</li>
+          <li>Βραδέως αναπτυσσόμενος</li>
+        </ul>
+
+        <h3>Απεικονιστικά</h3>
+        <ul>
+          <li>Μάζα στην περιοχή του έσω ακουστικού πόρου / CPA</li>
+          <li>Στη MRI συνήθως προσλαμβάνει σκιαγραφικό</li>
+          <li>Αν είναι μεγαλύτερο, μπορεί να διευρύνει τον έσω ακουστικό πόρο</li>
+        </ul>
+
+        <div class="exam">
+          Μονόπλευρη προοδευτική νευροαισθητήρια βαρηκοΐα + μάζα στον έσω ακουστικό πόρο = σκέψου σβάννωμα.
+        </div>
+      </div>
+
+      <div class="box gray">
+        <h2>18. Μηνιγγίωμα</h2>
+        <div class="two-images" style="grid-template-columns:1fr;">
+          <div class="image-box small">
+            <img src="mini.jpg" alt="Μηνιγγίωμα 1" />
+          </div>
+          <div class="image-box small">
+            <img src="mini2.jpg" alt="Μηνιγγίωμα 2" />
+          </div>
+        </div>
+        <ul>
+          <li>Εξωαξονικός όγκος από μηνιγγοθηλιακά κύτταρα</li>
+          <li>Συχνά προσφύεται στη σκληρά μήνιγγα</li>
+          <li>Στη MRI συνήθως προσλαμβάνει έντονα σκιαγραφικό</li>
+        </ul>
+      </div>
+
+      <div class="box yellow">
+        <h2>19. Δερμοειδής / επιδερμοειδής κύστη</h2>
+        <div class="image-box small" style="padding:0; box-shadow:none; border:none; background:none;">
+          <img src="kisti.jpg" alt="Δερμοειδής / επιδερμοειδής κύστη" />
+        </div>
+        <ul>
+          <li>Συγγενείς βλάβες</li>
+          <li>Η επιδερμοειδής κύστη συχνά μπαίνει στη διαφορική διάγνωση κυστικών βλαβών</li>
+          <li>Η δερμοειδής μπορεί να έχει λίπος</li>
+        </ul>
+      </div>
+
+      <div class="wide-box green">
+        <h2>20. Χοληστερινικό κοκκίωμα</h2>
+
+        <div class="two-images">
+          <div class="image-box medium">
+            <img src="xoli.jpg" alt="Χοληστερινικό κοκκίωμα 1" />
+          </div>
+          <div class="image-box medium">
+            <img src="xoli2.jpg" alt="Χοληστερινικό κοκκίωμα 2" />
+          </div>
+        </div>
+
+        <ul class="spacer-top">
+          <li>Σχετίζεται με επαναλαμβανόμενα επεισόδια αιμορραγίας σε κλειστή κοιλότητα του λιθοειδούς / μέσου ωτός</li>
+          <li>Κλινικά μπορεί να προκαλεί βαρηκοΐα αγωγιμότητας</li>
+          <li><b>Blue eardrum</b> = κυανή / μπλε τυμπανική μεμβράνη</li>
+          <li>Μπορεί να προκαλεί παρεκτόπιση οσταρίων επειδή λειτουργεί ως επεκτεινόμενη μάζα</li>
+        </ul>
+
+        <h3>Γιατί είναι υψηλό σε Τ1 και Τ2;</h3>
+        <p>
+          Επειδή περιέχει προϊόντα αίματος και χοληστερινικό υλικό. Τα υποπροϊόντα αιμορραγίας
+          δίνουν υψηλό σήμα τόσο στην Τ1 όσο και στην Τ2.
+        </p>
+
+        <div class="exam">
+          <b>Διαφορά από χολοστεάτωμα:</b>  
+          Το χοληστερινικό κοκκίωμα τείνει να είναι <b>φωτεινό σε Τ1 και Τ2</b>.
+        </div>
+      </div>
+
+      <div class="wide-box orange">
+        <h2>21. Παραγαγγλιώματα</h2>
+
+        <h3>Α. Τυμπανικό παραγαγγλίωμα</h3>
+        <div class="two-images">
+          <div class="image-box small">
+            <img src="tymp.jpg" alt="Τυμπανικό παραγαγγλίωμα 1" />
+          </div>
+          <div class="image-box small">
+            <img src="tymp2.jpg" alt="Τυμπανικό παραγαγγλίωμα 2" />
+          </div>
+        </div>
+        <ul>
+          <li>Όγκος από παραγαγγλιακά κύτταρα</li>
+          <li>Σχετίζεται με το τυμπανικό νεύρο, κλάδο του γλωσσοφαρυγγικού</li>
+          <li>Κλινικά: εμβοές, βαρηκοΐα</li>
+          <li>Είναι έντονα αγγειούμενη μάζα</li>
+        </ul>
+
+        <h3>Β. Παραγαγγλίωμα σφαγιτιδικού τρήματος</h3>
+        <div class="two-images">
+          <div class="image-box small">
+            <img src="ximo.jpg" alt="Παραγαγγλίωμα σφαγιτιδικού τρήματος 1" />
+          </div>
+          <div class="image-box small">
+            <img src="ximo2.jpg" alt="Παραγαγγλίωμα σφαγιτιδικού τρήματος 2" />
+          </div>
+        </div>
+        <ul>
+          <li>Χημοδέκτωμα με επιθηλιοειδή και στηρικτικά κύτταρα</li>
+          <li>Αναπτύσσεται στο σφαγιτιδικό τρήμα, στον καρωτιδικό βολβό ή στο τύμπανο</li>
+          <li>Συχνότερα σε γυναίκες 40–60 ετών</li>
+          <li>Υπάρχουν οικογενείς περιπτώσεις και σύνδρομα πολλαπλής νεοπλασίας</li>
+        </ul>
+
+        <h3>Γ. Παραγαγγλίωμα καρωτιδικού σωματίου</h3>
+        <div class="three-images">
+          <div class="image-box small">
+            <img src="para.jpg" alt="Παραγαγγλίωμα καρωτιδικού σωματίου 1" />
+          </div>
+          <div class="image-box small">
+            <img src="para2.jpg" alt="Παραγαγγλίωμα καρωτιδικού σωματίου 2" />
+          </div>
+          <div class="image-box small">
+            <img src="para3.jpg" alt="Παραγαγγλίωμα καρωτιδικού σωματίου 3" />
+          </div>
+        </div>
+        <ul>
+          <li>Χημειοδέκτωμα του καρωτιδικού σωματίου</li>
+          <li>Μπορεί να είναι σποραδικό ή οικογενές</li>
+          <li>Μπορεί να είναι πολυκεντρικό</li>
+          <li>Κλινικά: σφύζουσα μάζα, νευροπάθεια πνευμονογαστρικού ή υπογλωσσίου</li>
+        </ul>
+
+        <div class="exam">
+          Παραγαγγλίωμα = σκέψου <b>πολύ αγγειούμενη μάζα</b>.
+        </div>
+      </div>
+
+      <div class="box red">
+        <h2>22. Καρκίνωμα από επιθηλιακά κύτταρα</h2>
+        <div class="image-box small" style="padding:0; box-shadow:none; border:none; background:none;">
+          <img src="kark.jpg" alt="Καρκίνωμα από επιθηλιακά κύτταρα" />
+        </div>
+        <ul>
+          <li>Κακοήθης επιθηλιακή βλάβη</li>
+          <li>Στην CT αναζητούμε κυρίως οστική διάβρωση</li>
+          <li>Στη MRI αξιολογούμε έκταση σε μαλακά μόρια</li>
+        </ul>
+      </div>
+
+      <div class="box orange">
+        <h2>23. Εφηβικό αγγειορινοίνωμα</h2>
+        <div class="image-box small" style="padding:0; box-shadow:none; border:none; background:none;">
+          <img src="efi.jpg" alt="Εφηβικό αγγειορινοίνωμα" />
+        </div>
+        <ul>
+          <li>Καλοήθης αλλά τοπικά επιθετικός όγκος</li>
+          <li>Αναπτύσσεται στο σφηνοϋπερώιο τρήμα σε εφήβους</li>
+          <li>Προκαλεί διάβρωση και remodelling οστών</li>
+          <li>ΔΔ: εγκεφαλοκήλη, πολύποδας, αιμαγγείωμα, ραβδομυοσάρκωμα</li>
+        </ul>
+      </div>
+
+      <div class="box pink">
+        <h2>24. Καρκίνος του ρινοφάρυγγα</h2>
+        <div class="image-box small" style="padding:0; box-shadow:none; border:none; background:none;">
+          <img src="karkrino.jpg" alt="Καρκίνος ρινοφάρυγγα" />
+        </div>
+        <ul>
+          <li>Συχνά 40–50 έτη, συχνότερος σε άνδρες</li>
+          <li>Σχετίζεται με Epstein-Barr και γενετικούς / περιβαλλοντικούς παράγοντες</li>
+          <li>Συχνή θέση: βόθρος του Rosenmuller</li>
+          <li>Κλινικά: ανώδυνος τραχηλικός λεμφαδένας, μέση ωτίτιδα, διήθηση κρανιακών νεύρων</li>
+        </ul>
+      </div>
+
+      <div class="wide-box blue">
+        <h2>25. Παθήσεις κεντρικής μοίρας βάσεως κρανίου</h2>
+
+        <h3>Α. Ινώδης δυσπλασία</h3>
+        <div class="image-box medium">
+          <img src="inod.jpg" alt="Ινώδης δυσπλασία" />
+        </div>
+        <ul>
+          <li>Αντικατάσταση οστίτη από ινώδη ιστό</li>
+          <li>Συχνή στα οστά της βάσης κρανίου</li>
+          <li>CT: <b>διόγκωση οστού με υφή “δίκην τριμμένης υάλου”</b></li>
+          <li>MRI: δυνατότητα πρόσληψης σκιαγραφικού</li>
+        </ul>
+
+        <h3>Β. Νόσος Paget</h3>
+        <div class="image-box medium">
+          <img src="paget.jpg" alt="Νόσος Paget" />
+        </div>
+        <ul>
+          <li>Χρόνια νόσος μέσης / μεγαλύτερης ηλικίας</li>
+          <li>Διαταραχή ισορροπίας οστεοκλαστικής και οστεοβλαστικής δραστηριότητας</li>
+          <li>Προκαλεί σκλήρυνση και αναδιοργάνωση οστών</li>
+          <li>Πιο εκτεταμένη από την ινώδη δυσπλασία</li>
+        </ul>
+      </div>
+
+      <div class="wide-box purple">
+        <h2>26. Χόρδωμα αποκλίματος – Χονδροσάρκωμα – Μεταστάσεις</h2>
+
+        <h3>Α. Χόρδωμα αποκλίματος</h3>
+        <div class="two-images">
+          <div class="image-box medium">
+            <img src="xordo.jpg" alt="Χόρδωμα 1" />
+          </div>
+          <div class="image-box medium">
+            <img src="xordo2.jpg" alt="Χόρδωμα 2" />
+          </div>
+        </div>
+        <ul>
+          <li>5η–7η δεκαετία</li>
+          <li>Αναπτύσσεται από υπολείμματα της νωτιαίας χορδής</li>
+          <li>MRI: ανομοιογενής μάζα, δυνατότητα για αιμορραγίες / επασβεστώσεις</li>
+        </ul>
+
+        <h3>Β. Χονδροσάρκωμα</h3>
+        <div class="two-images">
+          <div class="image-box medium">
+            <img src="xondro.jpg" alt="Χονδροσάρκωμα 1" />
+          </div>
+          <div class="image-box medium">
+            <img src="xondro2.jpg" alt="Χονδροσάρκωμα 2" />
+          </div>
+        </div>
+        <ul>
+          <li>Κακοήθης βραδέως αναπτυσσόμενος όγκος</li>
+          <li>Ανομοιογενής μάζα με πιθανές επασβεστώσεις / αιμορραγίες</li>
+        </ul>
+
+        <h3>Γ. Μεταστάσεις</h3>
+        <div class="image-box medium">
+          <img src="meta.jpg" alt="Μεταστάσεις βάσης κρανίου" />
+        </div>
+        <ul>
+          <li>Συχνές πρωτοπαθείς εστίες: πνεύμονας, μαστός, προστάτης, νεφρός</li>
+          <li>Μπορεί να είναι οστεολυτικές ή οστεοβλαστικές</li>
+          <li><b>CT</b> → καλύτερα οστικές αλλοιώσεις</li>
+          <li><b>MRI</b> → καλύτερα μυελός των οστών / μαλακά μόρια</li>
+        </ul>
+
+        <div class="exam">
+          <b>Rule:</b> <b>CT = οστό</b> • <b>MRI = μυελός / μαλακά μόρια</b>
+        </div>
+      </div>
+
+      <div class="box gray">
+        <h2>27. Νευριλείμωμα σφαγιτιδικού τρήματος</h2>
+        <div class="two-images" style="grid-template-columns:1fr;">
+          <div class="image-box small">
+            <img src="nevri.jpg" alt="Νευριλείμωμα 1" />
+          </div>
+          <div class="image-box small">
+            <img src="nevri2.jpg" alt="Νευριλείμωμα 2" />
+          </div>
+        </div>
+        <ul>
+          <li>Schwannoma στην περιοχή του σφαγιτιδικού τρήματος</li>
+          <li>Μπορεί να επηρεάζει τα κατώτερα κρανιακά νεύρα</li>
+          <li>Στη MRI συνήθως απεικονίζεται ως ενισχυόμενη μάζα</li>
+        </ul>
+      </div>
+
+      <div class="box green">
+        <h2>28. Ωτική πρόθεση</h2>
+        <div class="image-box small" style="padding:0; box-shadow:none; border:none; background:none;">
+          <img src="prothesi.jpg" alt="Ωτική πρόθεση" />
+        </div>
+        <p class="mini-note">
+          Μετεγχειρητική εικόνα πρόθεσης στην αλυσίδα των οσταρίων.
+        </p>
+      </div>
+
+      <div class="box blue">
+        <h2>29. Κοχλιακό εμφύτευμα</h2>
+        <div class="two-images" style="grid-template-columns:1fr;">
+          <div class="image-box small">
+            <img src="emfi.jpg" alt="Κοχλιακό εμφύτευμα 1" />
+          </div>
+          <div class="image-box small">
+            <img src="emfi2.jpg" alt="Κοχλιακό εμφύτευμα 2" />
+          </div>
+        </div>
+        <p class="mini-note">
+          Αναγνώριση της θέσης του ηλεκτροδίου στον κοχλία και της μετεγχειρητικής εικόνας.
+        </p>
+      </div>
+
+      <div class="wide-box yellow">
+        <h2>30. Mini recap – τα πιο εξεταστικά patterns</h2>
+        <ul>
+          <li><b>Μέση ωτίτιδα / μαστοειδίτιδα</b> → χάνονται οι μαύρες αεροφόρες κυψέλες, γίνονται γκρι</li>
+          <li><b>Χολοστεάτωμα</b> → μαλακός ιστός αντί για αέρα + διάβρωση οστών + MRI χωρίς πρόσληψη</li>
+          <li><b>Κακοήθης εξωτερική ωτίτιδα</b> → επιθετική λοίμωξη με επέκταση στη βάση κρανίου</li>
+          <li><b>Χοληστερινικό κοκκίωμα</b> → υψηλό σήμα Τ1 και Τ2</li>
+          <li><b>Σβάννωμα</b> → μάζα έσω ακουστικού πόρου / γεφυροπαρεγκεφαλιδικής γωνίας</li>
+          <li><b>Ινώδης δυσπλασία</b> → ground-glass CT</li>
+          <li><b>Μεταστάσεις</b> → CT για οστικές βλάβες, MRI για μυελό</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</body>
+</html>

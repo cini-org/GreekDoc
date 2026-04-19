@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GreekDoc - Αυτί</title>
+
+  <style>
+    :root {
+      --bg: #fcfbff;
+      --text: #2d2a32;
+      --muted: #6a6475;
+      --purple-dark: #4d2f73;
+      --white: #ffffff;
+      --line: #ece5f7;
+      --shadow: 0 10px 30px rgba(80, 60, 120, 0.08);
+      --radius-xl: 28px;
+      --radius-lg: 22px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Arial, sans-serif;
+      background: linear-gradient(to bottom, #fcfbff, #f8f5ff);
+      color: var(--text);
+      line-height: 1.65;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(10px);
+      background: rgba(252, 251, 255, 0.88);
+      border-bottom: 1px solid rgba(220, 210, 240, 0.7);
+      padding: 12px 20px;
+    }
+
+    .topbar-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .brand {
+      font-weight: 700;
+      color: var(--purple-dark);
+      letter-spacing: 0.2px;
+    }
+
+    .print-btn {
+      border: none;
+      border-radius: 999px;
+      padding: 10px 18px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      background: linear-gradient(135deg, #e9ddff, #dff4ff);
+      color: #442466;
+      box-shadow: 0 4px 14px rgba(100, 80, 140, 0.12);
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .print-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 8px 18px rgba(100, 80, 140, 0.16);
+    }
+
+    .page {
+      max-width: 1200px;
+      margin: 26px auto 60px;
+      padding: 0 20px;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #f8d7e8, #e7dcff, #dff4ff);
+      border-radius: 30px;
+      padding: 36px 34px;
+      box-shadow: var(--shadow);
+      margin-bottom: 26px;
+    }
+
+    .hero h1 {
+      margin: 0 0 10px 0;
+      font-size: 2.2rem;
+      color: #3e245f;
+    }
+
+    .hero p {
+      margin: 0;
+      color: #4e4960;
+      max-width: 900px;
+    }
+
+    .section {
+      background: var(--white);
+      border-radius: var(--radius-xl);
+      padding: 28px;
+      margin-bottom: 24px;
+      box-shadow: var(--shadow);
+      border: 1px solid #f0ebfa;
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+
+    .section-title {
+      margin: 0 0 18px 0;
+      font-size: 1.6rem;
+      color: #40235d;
+    }
+
+    .lead-box {
+      background: #faf7ff;
+      border: 1px solid #eee7fb;
+      border-radius: 18px;
+      padding: 16px 18px;
+      margin-bottom: 18px;
+    }
+
+    .subsection {
+      margin-top: 18px;
+      padding: 18px;
+      border-radius: var(--radius-lg);
+      border: 1px solid #efe8fb;
+      background: #fcfbff;
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+
+    .subsection h3 {
+      margin: 0 0 10px 0;
+      color: #4a2d69;
+      font-size: 1.13rem;
+    }
+
+    .tag {
+      display: inline-block;
+      background: #efe4ff;
+      color: #5d348b;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .important {
+      color: #b42352;
+      font-weight: 700;
+    }
+
+    .danger {
+      color: #b91c1c;
+      font-weight: 700;
+    }
+
+    .highlight {
+      background: #fff1a8;
+      padding: 0 4px;
+      border-radius: 6px;
+      font-weight: 600;
+    }
+
+    .muted {
+      color: var(--muted);
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .mini-card {
+      background: #ffffff;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 18px;
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+
+    .mini-card h4 {
+      margin: 0 0 10px 0;
+      color: #4a2d69;
+      font-size: 1rem;
+    }
+
+    .callout {
+      margin-top: 14px;
+      border-radius: 18px;
+      padding: 15px 16px;
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+
+    .callout.blue {
+      background: #eef8ff;
+      border-left: 6px solid #9fd7ff;
+    }
+
+    .callout.red {
+      background: #fff4f4;
+      border-left: 6px solid #ff9797;
+    }
+
+    .img-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 16px;
+    }
+
+    .image-card {
+      background: #ffffff;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 12px;
+      break-inside: avoid;
+      page-break-inside: avoid;
+      box-shadow: 0 6px 18px rgba(80, 60, 120, 0.05);
+    }
+
+    .image-card img {
+      width: 100%;
+      height: 220px;
+      object-fit: contain;
+      display: block;
+      border-radius: 14px;
+      background: linear-gradient(135deg, #faf7ff, #f2f9ff);
+    }
+
+    .image-caption {
+      margin-top: 10px;
+      text-align: center;
+      font-size: 0.92rem;
+      color: #4d4560;
+      font-weight: 600;
+    }
+
+    ul {
+      margin: 8px 0 0 0;
+      padding-left: 22px;
+    }
+
+    li {
+      margin-bottom: 7px;
+    }
+
+    .footer-note {
+      text-align: center;
+      color: #7a7486;
+      font-size: 0.92rem;
+      margin-top: 18px;
+    }
+
+    @media (max-width: 900px) {
+      .grid-2,
+      .img-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero h1 {
+        font-size: 1.8rem;
+      }
+    }
+
+    @media print {
+      @page {
+        size: A4 landscape;
+        margin: 10mm;
+      }
+
+      html, body {
+        background: white !important;
+      }
+
+      body {
+        font-size: 11px;
+        line-height: 1.35;
+        color: #000;
+      }
+
+      .topbar {
+        display: none !important;
+      }
+
+      .page {
+        max-width: none;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+      }
+
+      .hero {
+        box-shadow: none;
+        border: 1px solid #ddd;
+        padding: 14px 16px;
+        margin-bottom: 10px;
+        border-radius: 14px;
+        background: #f5f5f5 !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+
+      .hero h1 {
+        font-size: 18px;
+        margin-bottom: 4px;
+      }
+
+      .hero p {
+        font-size: 10px;
+      }
+
+      .section {
+        box-shadow: none;
+        border: 1px solid #dcdcdc;
+        border-radius: 12px;
+        padding: 12px 13px;
+        margin-bottom: 10px;
+        background: #fff !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+
+      .section-title {
+        font-size: 15px;
+        margin-bottom: 10px;
+      }
+
+      .lead-box,
+      .subsection,
+      .mini-card,
+      .callout,
+      .image-card {
+        break-inside: avoid !important;
+        page-break-inside: avoid !important;
+      }
+
+      .subsection {
+        padding: 11px 12px;
+        margin-top: 10px;
+        border-radius: 10px;
+      }
+
+      .subsection h3 {
+        font-size: 12px;
+        margin-bottom: 6px;
+      }
+
+      .tag {
+        font-size: 8px;
+        padding: 2px 7px;
+        margin-bottom: 6px;
+      }
+
+      .mini-card {
+        padding: 11px 12px;
+        border-radius: 10px;
+      }
+
+      .mini-card h4 {
+        font-size: 11px;
+        margin-bottom: 6px;
+      }
+
+      .image-card {
+        border-radius: 10px;
+        padding: 8px;
+        box-shadow: none;
+      }
+
+      .image-card img {
+        height: 120px;
+        border-radius: 8px;
+      }
+
+      .image-caption {
+        font-size: 8.5px;
+        margin-top: 5px;
+      }
+
+      ul {
+        margin-top: 4px;
+        padding-left: 18px;
+      }
+
+      li {
+        margin-bottom: 4px;
+      }
+
+      .footer-note {
+        margin-top: 8px;
+        font-size: 8.5px;
+      }
+
+      .grid-2,
+      .img-grid {
+        gap: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">GreekDoc • Αυτί</div>
+      <button class="print-btn" onclick="window.print()">🖨️ Print notes</button>
+    </div>
+  </div>
+
+  <div class="page">
+
+    <div class="hero">
+      <h1>Αυτί – Τραυματισμοί, φλεγμονές, μέσο ους, βαρηκοΐα</h1>
+      <p>
+        Συγκεντρωμένες σημειώσεις σε αισθητικό <b>AMBOSS / GreekDoc style</b>,
+        οργανωμένες ώστε να διαβάζονται όμορφα στην οθόνη και να τυπώνονται σε
+        <span class="important">οριζόντια διάταξη</span> χωρίς να σπάνε εύκολα τα κουτάκια.
+      </p>
+    </div>
+
+    <section class="section">
+      <h2 class="section-title">1. Τραυματισμοί και φλεγμονές πτερυγίου</h2>
+
+      <div class="grid-2">
+        <div class="mini-card">
+          <h4>Τραυματισμοί</h4>
+          <ul>
+            <li><b>Ανοικτοί τραυματισμοί</b></li>
+            <li><b>Ωταιμάτωμα</b> (“<span class="highlight">αυτί του boxer</span>”): συλλογή αίματος μεταξύ <b>χόνδρου</b> και <b>περιχονδρίου</b>.</li>
+            <li><b>Κρυοπαγήματα</b></li>
+            <li><b>Εγκαύματα</b></li>
+          </ul>
+        </div>
+
+        <div class="mini-card">
+          <h4>Φλεγμονές πτερυγίου</h4>
+          <ul>
+            <li><b>Περιχονδρίτιδα</b> → φλεγμονή του <b>πτερυγίου</b></li>
+            <li><b>Ερυσίπελας</b> → δερματική φλεγμονή</li>
+            <li><span class="muted">ερυθρός + πέλλα = “κόκκινο δέρμα”</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">2. Φλεγμονές έξω ακουστικού πόρου</h2>
+
+      <div class="subsection">
+        <div class="tag">Εξωτερική ωτίτιδα</div>
+        <h3>Περιγεγραμμένη εξωτερική ωτίτιδα</h3>
+        <ul>
+          <li>Εντοπισμένη φλεγμονή του έξω ακουστικού πόρου.</li>
+          <li>Λέγεται <b>περιγεγραμμένη</b> επειδή είναι σε ένα σημείο και όχι διάχυτη.</li>
+          <li>Συνήθως από <b>λοίμωξη θυλάκου τρίχας</b> → <b>δοθιήνας</b> μέσα στον πόρο.</li>
+          <li>Συχνότερο αίτιο: <span class="important">χρυσίζων σταφυλόκοκκος</span>.</li>
+          <li><b>ΚΕ:</b> έντονος πόνος, ιδίως με έλξη πτερυγίου, τοπικό οίδημα, ερύθημα, μικρό απόστημα στο τοίχωμα.</li>
+        </ul>
+
+        <div class="img-grid">
+          <div class="image-card">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTzg1GcGZlyofu5OJfnmRpWEKUAil-79gfU1g&s" alt="Περιγεγραμμένη εξωτερική ωτίτιδα">
+            <div class="image-caption">Περιγεγραμμένη εξωτερική ωτίτιδα</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="subsection">
+        <div class="tag">Πιο συχνή μορφή</div>
+        <h3>Διάχυτη εξωτερική ωτίτιδα</h3>
+        <ul>
+          <li>Λέγεται και <b>Swimmer’s ear</b>.</li>
+          <li>Φλεγμονή <b>όλου</b> του έξω ακουστικού πόρου.</li>
+          <li>Η πιο συχνή μορφή.</li>
+          <li>Κύρια αίτια: <b>Pseudomonas aeruginosa</b> και <b>χρυσίζων σταφυλόκοκκος</b>.</li>
+          <li><b>ΚΕ:</b> πόνος που χειροτερεύει με πίεση στον τράγο, οίδημα πόρου, κνησμός, ωτόρροια, μειωμένη ακοή.</li>
+        </ul>
+
+        <div class="img-grid">
+          <div class="image-card">
+            <img src="https://www.avanidi.gr/assets/pages/main_e59a0-ayti-toy-kolymbiti.jpg" alt="Διάχυτη εξωτερική ωτίτιδα">
+            <div class="image-caption">Διάχυτη εξωτερική ωτίτιδα</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="subsection">
+        <div class="tag">Μυκητιασική λοίμωξη</div>
+        <h3>Ωτομύκωση</h3>
+        <ul>
+          <li>Μυκητιασική λοίμωξη του έξω ακουστικού πόρου.</li>
+          <li>Συχνότεροι μικροοργανισμοί: <b>Aspergillus</b> και <b>Candida</b>.</li>
+          <li>Ευνοείται από υγρασία, κολύμπι, παρατεταμένη χρήση αντιβιοτικών σταγόνων, χρόνιες εξωτερικές ωτίτιδες.</li>
+          <li><b>ΚΕ:</b> έντονος κνησμός, πληρότητα, χαρακτηριστική “βαμβακώδης” μαύρη ή λευκή έκκριση, ήπιος πόνος.</li>
+        </ul>
+
+        <div class="img-grid">
+          <div class="image-card">
+            <img src="https://drmeghavishahent.com/wp-content/uploads/2025/06/Fungus-Otomycosis.webp" alt="Ωτομύκωση">
+            <div class="image-caption">Ωτομύκωση</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="subsection">
+        <div class="tag">Μη λοιμώδες</div>
+        <h3>Έκζεμα έξω ακουστικού πόρου</h3>
+        <ul>
+          <li>Μη λοιμώδης φλεγμονή του δέρματος του πόρου.</li>
+          <li>Συχνότερο σε άτομα με ατοπική δερματίτιδα, σμηγματορροϊκή δερματίτιδα ή ψωρίαση.</li>
+          <li><b>ΚΕ:</b> ξηρότητα, απολέπιση, κνησμός, ήπια ωτόρροια.</li>
+          <li>Αν επιμολυνθεί, μπορεί να μοιάζει με διάχυτη εξωτερική ωτίτιδα.</li>
+        </ul>
+      </div>
+
+      <div class="subsection">
+        <div class="tag">Επείγον / high-yield</div>
+        <h3>Κακοήθης εξωτερική ωτίτιδα</h3>
+        <ul>
+          <li><span class="danger">Σοβαρή και δυνητικά θανατηφόρα</span> φλεγμονή του έξω ακουστικού πόρου και των γύρω ιστών.</li>
+          <li>Η λοίμωξη επεκτείνεται μέχρι τη <b>βάση του κρανίου</b> → οστεομυελίτιδα / οστεΐτιδα.</li>
+          <li>Εμφανίζεται κυρίως σε <b>ηλικιωμένους</b>, <b>διαβητικούς</b> ή <b>ανοσοκατεσταλμένους</b>.</li>
+          <li>Κύριο αίτιο: <span class="important">Pseudomonas aeruginosa</span>.</li>
+          <li><b>ΚΕ:</b> βαθύς νυχτερινός πόνος, ωτόρροια, <span class="highlight">κοκκιώδης ιστός στον πόρο</span>, πιθανή πάρεση προσωπικού νεύρου ή άλλων κρανιακών νεύρων.</li>
+        </ul>
+
+        <div class="callout red">
+          <b>Προσοχή:</b> ο όρος “κακοήθης” εδώ δεν σημαίνει καρκίνος· σημαίνει ότι η νόσος είναι
+          <b>επιθετική, καταστροφική και απειλητική</b>.
+        </div>
+
+        <div class="callout blue">
+          <b>Διάκριση:</b><br>
+          <b>Οστεομυελίτιδα</b> = λοίμωξη του μυελού των οστών που επεκτείνεται προς τα έξω.<br>
+          <b>Οστεΐτιδα</b> = λοίμωξη του φλοιώδους οστού και των γύρω μαλακών μορίων.
+        </div>
+
+        <div class="img-grid">
+          <div class="image-card">
+            <img src="https://assets.cureus.com/uploads/figure/file/266253/article_river_8541f1204fbc11ec9470e9b15d711ea5-IMG_9467.png" alt="Κακοήθης εξωτερική ωτίτιδα">
+            <div class="image-caption">Κακοήθης εξωτερική ωτίτιδα</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">3. Όγκοι έξω ωτός</h2>
+
+      <div class="grid-2">
+        <div class="mini-card">
+          <h4>Καλοήθεις</h4>
+          <ul>
+            <li><b>Υπεροστώσεις</b></li>
+            <li><b>Εξοστώσεις</b></li>
+          </ul>
+        </div>
+
+        <div class="mini-card">
+          <h4>Κακοήθεις</h4>
+          <ul>
+            <li><b>Βασικοκυτταρικό καρκίνωμα (BCC)</b></li>
+            <li><b>Καρκίνωμα από πλακώδες επιθήλιο</b></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="callout blue">
+        <b>Ορισμοί:</b><br>
+        <b>Υπερόστωση</b> = υπερβολική ανάπτυξη οστού.<br>
+        <b>Εξόστωση</b> = εντοπισμένο οστικό εξόγκωμα που προβάλλει προς τα έξω από την επιφάνεια του οστού.
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">4. Μέσο ους – βασικά ανατομικά στοιχεία</h2>
+
+      <div class="grid-2">
+        <div class="mini-card">
+          <h4>Τυμπανική κοιλότητα</h4>
+          <ul>
+            <li>Κεντρική κοιλότητα του μέσου ωτός.</li>
+          </ul>
+        </div>
+
+        <div class="mini-card">
+          <h4>Τυμπανικός υμένας</h4>
+          <ul>
+            <li>Βρίσκεται <b>λοξά</b> σε σχέση με τον έξω ακουστικό πόρο.</li>
+          </ul>
+        </div>
+
+        <div class="mini-card">
+          <h4>Ακουστικά οστάρια</h4>
+          <ul>
+            <li>Βασικές δομές για τη μετάδοση του ήχου.</li>
+          </ul>
+        </div>
+
+        <div class="mini-card">
+          <h4>Ευσταχιανή σάλπιγγα</h4>
+          <ul>
+            <li>Σημαντική για τον αερισμό και τη λειτουργία του μέσου ωτός.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="img-grid">
+        <div class="image-card">
+          <img src="timkoil.jpg" alt="Τυμπανική κοιλότητα">
+          <div class="image-caption">Τυμπανική κοιλότητα</div>
+        </div>
+
+        <div class="image-card">
+          <img src="timkoil2.jpg" alt="Τυμπανική κοιλότητα 2">
+          <div class="image-caption">Τυμπανική κοιλότητα 2</div>
+        </div>
+
+        <div class="image-card">
+          <img src="ymenas.jpg" alt="Τυμπανικός υμένας">
+          <div class="image-caption">Τυμπανικός υμένας</div>
+        </div>
+
+        <div class="image-card">
+          <img src="ostaria.jpg" alt="Ακουστικά οστάρια">
+          <div class="image-caption">Ακουστικά οστάρια</div>
+        </div>
+
+        <div class="image-card">
+          <img src="efstaxiani.jpg" alt="Ευσταχιανή σάλπιγγα">
+          <div class="image-caption">Ευσταχιανή σάλπιγγα</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">5. Παθήσεις μέσου αυτιού</h2>
+
+      <div class="lead-box">
+        <b>Βασικές κατηγορίες:</b>
+        συγγενείς δυσπλασίες, τραυματισμοί, διαταραχές λειτουργίας ευσταχιανής σάλπιγγας, φλεγμονές.
+      </div>
+
+      <div class="subsection">
+        <h3>Τραυματισμοί</h3>
+        <ul>
+          <li>Περίπου <span class="highlight">80%</span> επουλώνονται αυτόματα.</li>
+          <li>Οι επιμολύνσεις και οι μεγάλοι τραυματισμοί είναι <b>δυσμενείς προγνωστικοί παράγοντες</b>.</li>
+        </ul>
+      </div>
+
+      <div class="subsection">
+        <div class="tag">Συχνή εξέταση</div>
+        <h3>Οξεία μέση ωτίτιδα</h3>
+        <ul>
+          <li><b>ΚΕ:</b> ωταλγία, πυρετός, ωτόρροια, ανησυχία, βαρηκοΐα.</li>
+          <li>Στα παιδιά μπορεί να εκδηλωθεί μόνο με γενική ανησυχία ή κακουχία.</li>
+          <li><b>Θερ:</b> αντιβιοτικά, αναλγησία, το αυτί να μένει στεγνό, αποσυμφορητικά μύτης.</li>
+        </ul>
+
+        <div class="callout red">
+          <b>Επιπλοκές:</b><br>
+          <b>Ενδοκροταφικές:</b> μαστοειδίτιδα, λαβυρινθίτιδα, παράλυση προσωπικού νεύρου.<br>
+          <b>Ενδοκρανιακές:</b> θρομβοφλεβίτιδα σιγμοειδούς κόλπου, μηνιγγίτιδα, εγκεφαλικό απόστημα, επισκληρίδιο απόστημα.
+        </div>
+      </div>
+
+      <div class="subsection">
+        <h3>Πυώδης μέση ωτίτιδα</h3>
+        <ul>
+          <li>Ξεχωριστή φλεγμονώδης οντότητα του μέσου ωτός.</li>
+        </ul>
+      </div>
+
+      <div class="subsection">
+        <div class="tag">Συχνή στα παιδιά</div>
+        <h3>Εκκριτική μέση ωτίτιδα</h3>
+        <ul>
+          <li>Παράγοντες που ευνοούν τη δημιουργία της:
+            <ul>
+              <li>οξεία μέση ωτίτιδα,</li>
+              <li>φλεγμονή ή αλλεργία βλεννογόνου μέσου ωτός,</li>
+              <li>δυσλειτουργία ευσταχιανής σάλπιγγας.</li>
+            </ul>
+          </li>
+          <li>Αίτια δυσλειτουργίας ευσταχιανής:
+            <ul>
+              <li>ανώμαλη ή ατελής ανάπτυξη,</li>
+              <li>απόφραξη από υπερτροφία αδενοειδών εκβλαστήσεων,</li>
+              <li>ανωμαλίες ή απόφραξη μύτης,</li>
+              <li>υπερωιοσχιστία.</li>
+            </ul>
+          </li>
+          <li>Συνήθως στα παιδιά <span class="highlight">(70–80%)</span>.</li>
+          <li>Συχνά έχει αυτόματη υποχώρηση.</li>
+          <li>Μπορεί να παραμείνει για μήνες ή χρόνια.</li>
+          <li>Προκαλεί βαρηκοΐα ως <b>30 dB HL</b>.</li>
+          <li>Αν το υγρό παραμείνει, προδιαθέτει σε επαναλαμβανόμενα επεισόδια οξείας μέσης ωτίτιδας.</li>
+          <li>Αν δεν υποχωρεί → <b>σωληνίσκοι αερισμού</b>.</li>
+        </ul>
+      </div>
+
+      <div class="subsection">
+        <div class="tag">Χρόνια βλάβη</div>
+        <h3>Χρόνια μέση ωτίτιδα (ΧΜΩ)</h3>
+        <ul>
+          <li>Φλεγμονώδης πάθηση του μέσου ωτός που έχει προκαλέσει <b>μόνιμες βλάβες</b> στις ανατομικές δομές.</li>
+          <li>Παραδείγματα βλαβών:
+            <ul>
+              <li>διάτρηση τυμπανικού υμένα,</li>
+              <li>ατελεκτασία τυμπανικού υμένα,</li>
+              <li>τυμπανοσκλήρυνση,</li>
+              <li>χολοστεάτωμα.</li>
+            </ul>
+          </li>
+          <li><b>ΚΕ:</b> βαρηκοΐα, ωτόρροια.</li>
+          <li><b>Θεραπεία ενεργού φλεγμονής:</b> τακτικός καθαρισμός, στεγνό ους, σταγόνες (αντιβιοτικά + στεροειδή).</li>
+          <li><b>Ανενεργή ΧΜΩ:</b> δεν χρειάζεται αγωγή.</li>
+          <li>Αν η διάτρηση δεν κλείνει μόνη της μετά από 2–3 μήνες ή προκαλεί συχνά επεισόδια μέσης ωτίτιδας, ωτόρροια ή βαρηκοΐα αγωγιμότητας → <span class="important">μυριγγοπλαστική</span>.</li>
+        </ul>
+
+        <div class="callout blue">
+          <b>Μυριγγοπλαστική</b> = χειρουργική αποκατάσταση του τυμπανικού υμένα όταν υπάρχει διάτρηση.
+        </div>
+      </div>
+
+      <div class="subsection">
+        <div class="tag">Πολύ σημαντικό</div>
+        <h3>Χολοστεάτωμα</h3>
+        <ul>
+          <li>Επιδερμική δομή εντός της <b>τυμπανομαστοειδικής κοιλότητας</b>.</li>
+          <li>Σχηματίζεται από <b>πλακώδες επιθήλιο</b> και <b>αποεπιθηλιοποιημένη κερατίνη</b>.</li>
+          <li>Αναπτύσσεται ανεξάρτητα, όχι απαραίτητα λόγω λοίμωξης.</li>
+          <li>Μπορεί να είναι <b>συγγενές</b> ή <b>επίκτητο</b>.</li>
+        </ul>
+      </div>
+
+      <div class="subsection">
+        <h3>Άλλες παθήσεις μέσου ωτός</h3>
+        <ul>
+          <li><b>Κοκκιωματώδεις νόσοι</b></li>
+          <li><b>Όγκοι</b></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">6. Ωτοσκλήρυνση</h2>
+
+      <div class="subsection">
+        <div class="tag">High-yield</div>
+        <ul>
+          <li>Αντικατάσταση του σκληρού συμπαγούς οστού από <b>σπογγώδες οστό</b> (<b>ωτοσπογγίωση</b>).</li>
+          <li>Συνήθως στη <b>βάση του αναβολέα</b>.</li>
+          <li><b>ΚΕ:</b> προοδευτική βαρηκοΐα αγωγιμότητας, δυνατότητα και νευροαισθητήριας βαρηκοΐας, εμβοές.</li>
+          <li>Η αιτιολογία είναι άγνωστη.</li>
+          <li>Υπάρχει κληρονομική προδιάθεση και συσχέτιση με την <b>ιλαρά</b>.</li>
+          <li><b>Θερ:</b> αναβολοτομή, αναβολεκτομή.</li>
+        </ul>
+
+        <div class="img-grid">
+          <div class="image-card">
+            <img src="https://www.clinmedres.org/content/clinmedres/1/2/151/F2.large.jpg" alt="Ωτοσκλήρυνση">
+            <div class="image-caption">Ωτοσκλήρυνση</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">7. Βαρηκοΐα</h2>
+
+      <div class="grid-2">
+        <div class="mini-card">
+          <h4>Τύποι βαρηκοΐας</h4>
+          <ul>
+            <li><b>Αγωγιμότητας</b></li>
+            <li><b>Νευροαισθητήρια</b></li>
+            <li><b>Μικτή</b></li>
+          </ul>
+        </div>
+
+        <style>
+  .mini-card {
+    padding: 15px;
+    border-radius: 12px;
+    background: #f9f9fb;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  }
+
+  .mini-img {
+    width: 100%;
+    max-width: 220px;
+    display: block;
+    margin: 0 auto 15px auto;
+    border-radius: 10px;
+  }
+
+  .mini-card h4 {
+    font-size: 20px;   /* 👈 μεγαλύτερα γράμματα */
+    margin-top: 15px;
+    margin-bottom: 8px;
+  }
+
+  .mini-card p {
+    margin: 5px 0;
+  }
+
+  .mini-card ul, .mini-card ol {
+    margin-left: 18px;
+  }
+
+  .important {
+    color: #d9534f;
+    font-weight: bold;
+  }
+</style>
+
+<div class="mini-card">
+
+  <img src="test.jpg" alt="Weber and Rinne test" class="mini-img">
+
+  <h4>Weber test</h4>
+
+  <p><b>Βήματα:</b></p>
+  <ol>
+    <li>Χτυπάμε τον τονοδότη σε οστέινη επιφάνεια (γόνατο/αγκώνα)</li>
+    <li>Τον τοποθετούμε στο κέντρο του μετώπου του ασθενούς</li>
+    <li>Ρωτάμε αν ακούγεται το ίδιο και στα δύο αυτιά ή καλύτερα σε ένα</li>
+  </ol>
+
+  <p><b>Αποτελέσματα:</b></p>
+  <ul>
+    <li>Ίδιος ήχος → <b>Φυσιολογική ακοή</b></li>
+    <li>Ακούγεται καλύτερα δεξιά → <b>Weber πλαγιάζει δεξιά</b></li>
+    <li>Ακούγεται καλύτερα αριστερά → <b>Weber πλαγιάζει αριστερά</b></li>
+    <li>Πλαγιάζει στο πάσχον αυτί → <span class="important">Βαρηκοΐα αγωγιμότητας</span></li>
+    <li>Πλαγιάζει στο υγιές αυτί → <span class="important">Νευροαισθητήρια βαρηκοΐα</span></li>
+  </ul>
+
+  <h4>Rinne test</h4>
+
+  <p><b>Βήματα:</b></p>
+  <ol>
+    <li>Χτυπάμε τον τονοδότη σε αγκώνα ή γόνατο</li>
+    <li>Τον τοποθετούμε μπροστά από το πτερύγιο (αεροαγωγή)</li>
+    <li>Στη συνέχεια πίσω από τη μαστοειδή απόφυση (οστέινη αγωγή)</li>
+  </ol>
+
+  <p><b>Αποτελέσματα:</b></p>
+  <ul>
+    <li>Ακούγεται καλύτερα μπροστά → <b>Rinne (+)</b> → φυσιολογική ή νευροαισθητήρια</li>
+    <li>Ακούγεται καλύτερα πίσω → <b>Rinne (−)</b> → βαρηκοΐα αγωγιμότητας</li>
+  </ul>
+
+</div>
+      </div>
+    </section>
+
+    <div class="footer-note">
+      GreekDoc style notes • έτοιμο για οθόνη και εκτύπωση
+    </div>
+
+  </div>
+
+</body>
+</html>
