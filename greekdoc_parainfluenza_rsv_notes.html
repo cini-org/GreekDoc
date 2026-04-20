@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GreekDoc - Παραϊνφλουέντζα & RSV</title>
+  <style>
+    :root{
+      --bg:#fbf9fe;
+      --paper:#fffdfd;
+      --ink:#2f2638;
+      --muted:#6d6176;
+      --pink:#ffe0eb;
+      --rose:#ffd0df;
+      --lilac:#ece3ff;
+      --blue:#dff2ff;
+      --mint:#dcf6eb;
+      --sand:#fff0da;
+      --peach:#ffe8d7;
+      --line:#eadff2;
+      --shadow:0 12px 30px rgba(89,70,105,.08);
+      --radius:22px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:"Segoe UI", Inter, system-ui, sans-serif;
+      color:var(--ink);
+      background:
+        radial-gradient(circle at top left, #f8e9f6 0, transparent 28%),
+        radial-gradient(circle at top right, #e4f3ff 0, transparent 24%),
+        linear-gradient(180deg,#faf7fd 0%, #f7fbff 100%);
+      line-height:1.72;
+    }
+    .page{width:min(1180px, calc(100% - 32px)); margin:28px auto 80px;}
+    .hero{
+      background:linear-gradient(135deg, rgba(255,255,255,.95), rgba(255,248,252,.96));
+      border:1px solid var(--line);
+      border-radius:30px;
+      box-shadow:var(--shadow);
+      padding:38px 34px 28px;
+      position:relative;
+      overflow:hidden;
+    }
+    .hero::before,.hero::after{content:""; position:absolute; border-radius:50%; opacity:.55;}
+    .hero::before{
+      width:230px;height:230px; right:-80px;top:-72px;
+      background:radial-gradient(circle, #ffd9e7 0%, #ffd9e700 70%);
+    }
+    .hero::after{
+      width:180px;height:180px; left:-55px;bottom:-55px;
+      background:radial-gradient(circle, #d9efff 0%, #d9efff00 72%);
+    }
+    h1{margin:0 0 8px; font-size:clamp(2rem, 3vw, 3.15rem); line-height:1.08; letter-spacing:-.03em;}
+    .subtitle{font-size:1.03rem; color:var(--muted); max-width:860px; margin-bottom:18px;}
+    .chips{display:flex; flex-wrap:wrap; gap:10px; margin:18px 0 4px;}
+    .chip{
+      background:#fff; border:1px solid var(--line); border-radius:999px;
+      padding:9px 14px; color:#59495f; font-size:.95rem;
+      box-shadow:0 4px 10px rgba(107,82,126,.05);
+    }
+    .toc{margin-top:24px; display:grid; grid-template-columns:repeat(auto-fit,minmax(210px,1fr)); gap:14px;}
+    .toc a{
+      text-decoration:none; color:var(--ink); background:#fff; border:1px solid var(--line);
+      border-radius:18px; padding:14px 16px; box-shadow:0 8px 18px rgba(86,72,104,.05);
+    }
+    .section{margin-top:30px; display:grid; gap:18px;}
+    .section-title{display:flex; align-items:center; gap:12px; margin:8px 4px -4px;}
+    .section-title .num{
+      width:44px;height:44px;border-radius:14px; display:grid;place-items:center;
+      background:linear-gradient(135deg,var(--rose),#ffdfe9); color:#814b67; font-weight:800;
+      box-shadow:0 8px 18px rgba(162,93,136,.14); flex:0 0 auto;
+    }
+    .section-title h2{margin:0; font-size:1.55rem; line-height:1.2; letter-spacing:-.02em;}
+    .grid-2{display:grid; grid-template-columns:1.1fr .9fr; gap:18px;}
+    @media (max-width:900px){.grid-2{grid-template-columns:1fr}}
+    .box{
+      background:var(--paper); border:1px solid var(--line); border-radius:var(--radius);
+      padding:22px 22px 18px; box-shadow:var(--shadow);
+    }
+    .pink{background:linear-gradient(180deg,#fff9fb 0%, #fff 100%)}
+    .blue{background:linear-gradient(180deg,#f8fcff 0%, #fff 100%)}
+    .mint{background:linear-gradient(180deg,#f8fffb 0%, #fff 100%)}
+    .sand{background:linear-gradient(180deg,#fffaf2 0%, #fff 100%)}
+    .lilac{background:linear-gradient(180deg,#fbf9ff 0%, #fff 100%)}
+    .peach{background:linear-gradient(180deg,#fff9f6 0%, #fff 100%)}
+    .box h3{margin:0 0 12px; font-size:1.18rem; line-height:1.28; letter-spacing:-.01em; color:#3d3147;}
+    .box h4{margin:14px 0 8px; font-size:1rem; color:#53425f;}
+    .box p{margin:8px 0}
+    .box ul,.box ol{margin:8px 0 0 0; padding-left:21px}
+    .box li{margin:7px 0}
+    .important{background:linear-gradient(transparent 55%, #ffe7a6 55%); padding:0 .08em; font-weight:700;}
+    .mini-note{
+      margin-top:12px; background:#fff; border-left:5px solid #dfbfd0;
+      padding:12px 14px; border-radius:14px; color:#5a4d64;
+    }
+    .memory{
+      margin-top:14px; background:linear-gradient(135deg,#fff4e1,#fffaf0);
+      border:1px dashed #eccd93; border-radius:16px; padding:14px 16px;
+    }
+    .exam{
+      margin-top:14px; background:linear-gradient(135deg,#eef9ff,#f8fdff);
+      border:1px dashed #b5d7ef; border-radius:16px; padding:14px 16px;
+    }
+    .warn{
+      margin-top:14px; background:linear-gradient(135deg,#fff2ed,#fff9f6);
+      border:1px dashed #ebb4a0; border-radius:16px; padding:14px 16px;
+    }
+    .flow{display:grid; gap:10px; margin-top:10px;}
+    .flow .step{background:#fff; border:1px solid var(--line); border-radius:16px; padding:12px 14px;}
+    .flow .arrow{text-align:center; color:#9c7f91; font-size:1.25rem; line-height:1;}
+    .table-wrap{overflow-x:auto; margin-top:8px;}
+    table{
+      width:100%; border-collapse:separate; border-spacing:0; font-size:.96rem; background:#fff;
+      border:1px solid var(--line); border-radius:18px; overflow:hidden;
+    }
+    th,td{padding:12px 12px; vertical-align:middle; border-bottom:1px solid #efe7f4; text-align:left;}
+    th{background:#fbf2f7; color:#55445d; font-weight:700;}
+    tr:last-child td{border-bottom:none}
+    .sketch{
+      border:1px dashed #d8c8e4; border-radius:22px; padding:18px;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(255,225,236,.58) 0, transparent 22%),
+        radial-gradient(circle at 85% 15%, rgba(223,242,255,.55) 0, transparent 22%),
+        #fff;
+    }
+    .svg{width:100%; height:auto; display:block;}
+    .caption{margin-top:10px; color:var(--muted); font-size:.92rem;}
+    .footer{
+      margin:36px 0 18px; padding:18px 20px; background:#fff;
+      border:1px solid var(--line); border-radius:20px; box-shadow:var(--shadow); color:#5d5167;
+    }
+    .small{font-size:.94rem; color:var(--muted);}
+    .pill-row{display:flex; flex-wrap:wrap; gap:10px; margin-top:12px;}
+    .pill{padding:8px 12px; border-radius:999px; background:#fff; border:1px solid var(--line); font-size:.92rem;}
+    .two-col-list{columns:2; column-gap:24px; padding-left:18px;}
+    @media (max-width:700px){.two-col-list{columns:1}}
+    .divider{height:1px; background:linear-gradient(90deg, transparent, #decfe8, transparent); margin:10px 0 4px;}
+  </style>
+</head>
+<body>
+  <div class="page">
+    <section class="hero">
+      <h1>Ιοί Παραϊνφλουέντζας &amp; RSV</h1>
+      <div class="subtitle">
+        GreekDoc χάρτης-σημειώσεις για να θυμάσαι εύκολα τα πιο σημαντικά για τις εξετάσεις:
+        ταξινόμηση, δομή, μετάδοση, croup, βρογχιολίτιδα, RSV, διάγνωση, θεραπεία και εμβολιαστικές προσπάθειες.
+      </div>
+
+      <div class="chips">
+        <div class="chip">Paramyxoviridae</div>
+        <div class="chip">Παραϊνφλουέντζα 1-4</div>
+        <div class="chip">RSV</div>
+        <div class="chip">Croup / Βρογχιολίτιδα</div>
+      </div>
+
+      <div class="toc">
+        <a href="#sec1"><b>1.</b> Ταξινόμηση και βασικά χαρακτηριστικά</a>
+        <a href="#sec2"><b>2.</b> Παραϊνφλουέντζα</a>
+        <a href="#sec3"><b>3.</b> Croup και κλινική εικόνα</a>
+        <a href="#sec4"><b>4.</b> Ανοσία και επαναλοιμώξεις</a>
+        <a href="#sec5"><b>5.</b> RSV - γενικά</a>
+        <a href="#sec6"><b>6.</b> Παθογένεια RSV</a>
+        <a href="#sec7"><b>7.</b> Κλινική εικόνα και επιπλοκές RSV</a>
+        <a href="#sec8"><b>8.</b> Διάγνωση</a>
+        <a href="#sec9"><b>9.</b> Θεραπεία</a>
+        <a href="#sec10"><b>10.</b> Respiratory panels</a>
+        <a href="#sec11"><b>11.</b> Τελική επανάληψη</a>
+      </div>
+    </section>
+
+    <section class="section" id="sec1">
+      <div class="section-title"><div class="num">1</div><h2>Ταξινόμηση και βασικά χαρακτηριστικά</h2></div>
+      <div class="grid-2">
+        <div class="box pink">
+          <h3>Υποοικογένειες και γένη</h3>
+          <p>Στο αρχείο παρουσιάζονται 2 υποοικογένειες:</p>
+          <ul>
+            <li><b>Paramyxovirinae</b></li>
+            <li><b>Pneumovirinae</b></li>
+          </ul>
+
+          <p>Και βασικά γένη:</p>
+          <ul>
+            <li><b>Paramyxovirus</b> → παραϊνφλουέντζα 1 και 3</li>
+            <li><b>Rubulavirus</b> → παραϊνφλουέντζα 2 και 4, ιός παρωτίτιδας</li>
+            <li><b>Morbillivirus</b> → ιός ιλαράς</li>
+          </ul>
+
+          <div class="mini-note">
+            Το slide τονίζει ότι πρόκειται για <span class="important">RNA ιούς με ελικοειδή συμμετρία</span>, με γλυκοπρωτεΐνες επιφανείας.
+          </div>
+
+          <h4>Κοινές ιδέες που πρέπει να θυμάσαι</h4>
+          <ul>
+            <li>μετάδοση με <b>σταγονίδια</b></li>
+            <li>προσβολή κυρίως των <b>επιθηλιακών κυττάρων της αναπνευστικής οδού</b></li>
+            <li>σχηματισμός <b>γιγαντοκυττάρων / συγκυτίων</b></li>
+            <li>δυνατότητα για βλάβη στο <b>κατώτερο αναπνευστικό</b></li>
+          </ul>
+        </div>
+
+        <!--div class="box lilac sketch">
+          <h3>Sketch - Τι να σκέφτεσαι συνολικά</h3>
+          <svg class="svg" viewBox="0 0 620 320" xmlns="http://www.w3.org/2000/svg">
+            <rect x="25" y="42" rx="20" ry="20" width="170" height="92" fill="#fff3f8" stroke="#e6c7d6" stroke-width="2"/>
+            <text x="110" y="80" text-anchor="middle" font-size="25" fill="#7d4c68" font-weight="700">RNA</text>
+            <text x="110" y="110" text-anchor="middle" font-size="20" fill="#7d4c68">ελικοειδής</text>
+
+            <rect x="225" y="42" rx="20" ry="20" width="170" height="92" fill="#eef8ff" stroke="#bed9ef" stroke-width="2"/>
+            <text x="310" y="80" text-anchor="middle" font-size="25" fill="#4a678b" font-weight="700">Σταγονίδια</text>
+            <text x="310" y="110" text-anchor="middle" font-size="20" fill="#4a678b">άνθρωπος → άνθρωπος</text>
+
+            <rect x="425" y="42" rx="20" ry="20" width="170" height="92" fill="#fdf8ef" stroke="#ead6af" stroke-width="2"/>
+            <text x="510" y="80" text-anchor="middle" font-size="25" fill="#6b5736" font-weight="700">Συγκύτια</text>
+            <text x="510" y="110" text-anchor="middle" font-size="20" fill="#6b5736">κυτταρική βλάβη</text>
+
+            <line x1="110" y1="150" x2="110" y2="236" stroke="#a9899d" stroke-width="4"/>
+            <line x1="310" y1="150" x2="310" y2="236" stroke="#a9899d" stroke-width="4"/>
+            <line x1="510" y1="150" x2="510" y2="236" stroke="#a9899d" stroke-width="4"/>
+
+            <rect x="148" y="220" rx="22" ry="22" width="324" height="70" fill="#f7fff9" stroke="#bfe0c4" stroke-width="2"/>
+            <text x="310" y="248" text-anchor="middle" font-size="24" fill="#4f8b6c" font-weight="700">αναπνευστικοί ιοί παιδιατρικού ενδιαφέροντος</text>
+            <text x="310" y="273" text-anchor="middle" font-size="19" fill="#4f8b6c">ιδίως croup, βρογχιολίτιδα, πνευμονία</text>
+          </svg>
+          <div class="caption">Ο κοινός πυρήνας: RNA + αναπνευστική μετάδοση + συγκύτια + νόσος αεραγωγών.</div>
+        </div-->
+      </div>
+    </section>
+
+    <section class="section" id="sec2">
+      <div class="section-title"><div class="num">2</div><h2>Ιοί Παραϊνφλουέντζας</h2></div>
+      <div class="grid-2">
+        <div class="box blue">
+          <h3>Τι κάνουν γενικά</h3>
+          <ul>
+            <li>μεταδίδονται από άτομο σε άτομο με <b>εκπνεόμενα σταγονίδια</b></li>
+            <li>προσβάλλουν τα <b>επιθηλιακά κύτταρα της ανώτερης αναπνευστικής οδού</b></li>
+            <li>αναπαράγονται εύκολα</li>
+            <li>μπορούν να προκαλέσουν σχηματισμό <b>γιγαντοκυττάρων</b> και <b>κυτταρική λύση</b></li>
+            <li>σε ποσοστό προχωρούν σε <b>κατώτερη αναπνευστική οδό</b></li>
+          </ul>
+
+          <div class="mini-note">
+            Άρα οι παραϊνφλουέντζες δεν είναι απλώς «ένα κρυολόγημα». Μπορούν να δώσουν εικόνες από ήπιες έως κλασικά παιδιατρικά σύνδρομα.
+          </div>
+        </div>
+
+        <div class="box peach">
+          <h3>Οι τύποι και η σχέση τους με τη νόσο</h3>
+          <ul>
+            <li><b>Τύπος I</b> → οξεία <b>λαρυγγο-τραχειο-βρογχίτιδα</b></li>
+            <li><b>Τύπος II</b> → <b>croup / λαρυγγίτιδα</b> σε παιδιά</li>
+            <li><b>Τύπος III</b> → <b>βρογχιολίτιδα</b>, πιο λοιμογόνος</li>
+            <li><b>Τύπος IV</b> → ελαφρά αναπνευστικά</li>
+          </ul>
+
+          <div class="exam">
+            <b>Υψηλής αξίας σημείο:</b><br>
+            Παραϊνφλουέντζα = σκέψου κυρίως <b>croup</b><br>
+            RSV = σκέψου κυρίως <b>βρογχιολίτιδα / πνευμονία βρεφών</b>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="sec3">
+      <div class="section-title"><div class="num">3</div><h2>Croup και σχετική κλινική εικόνα</h2></div>
+      <div class="grid-2">
+        <div class="box sand">
+          <h3>Τι λένε τα slides</h3>
+          <ul>
+            <li>η μόλυνση γίνεται μέσω του <b>αναπνευστικού συστήματος</b></li>
+            <li>υπάρχει <b>βραχύ στάδιο επώασης</b></li>
+            <li>η κλασική ηλικία για έντονη εικόνα είναι περίπου <b>6 μηνών έως 3 ετών</b></li>
+            <li>αναφέρονται <b>επιδημίες ανά διετία</b></li>
+          </ul>
+
+          <div class="memory">
+            <b>Μνημονικό:</b> <b>Παραϊνφλουέντζα = Παιδί + Πάνω αεραγωγός + Πρήξιμο λάρυγγα</b>
+          </div>
+        </div>
+
+        <div class="box mint">
+          <h3>Αίτια croup που αναφέρονται</h3>
+          <ul>
+            <li>ιός παραϊνφλουέντζας</li>
+            <li>ιός RS</li>
+            <li>ιός γρίπης A</li>
+            <li>ιός ιλαράς</li>
+            <li>Αιμόφιλος της ινφλουέντζας τύπου b</li>
+          </ul>
+
+          <div class="exam">
+            <b>Το πιο τυπικό όμως για εξετάσεις:</b> το croup συνδέεται κυρίως με <b>παραϊνφλουέντζα</b>.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="sec4">
+      <div class="section-title"><div class="num">4</div><h2>Ανοσία και επαναλοιμώξεις στην παραϊνφλουέντζα</h2></div>
+      <div class="grid-2">
+        <div class="box pink">
+          <h3>Βασικές ανοσολογικές ιδέες</h3>
+          <ul>
+            <li>η μεταδοτική περίοδος μπορεί να <b>προηγείται των συμπτωμάτων</b></li>
+            <li>μπορεί να συμβεί και <b>απουσία συμπτωμάτων</b></li>
+            <li>σπάνια προκαλείται <b>ιαιμία</b></li>
+            <li>οι ιοί επηρεάζουν την <b>κυτταρική ανοσία</b> και περιορίζουν την ανάπτυξη ανοσιακής μνήμης</li>
+            <li>μετά από φυσική λοίμωξη η ανοσία είναι <b>βραχείας διάρκειας</b></li>
+          </ul>
+        </div>
+
+        <div class="box blue">
+          <h3>Τι σημαίνει αυτό πρακτικά</h3>
+          <ul>
+            <li>οι <b>επαναλοιμώξεις</b> είναι συχνές</li>
+            <li>συνήθως είναι <b>ηπιότερες</b> από την πρώτη λοίμωξη</li>
+            <li>υπάρχει <b>μερική ανοσία</b></li>
+            <li>ο άνθρωπος παρουσιάζεται ως ο <b>μόνος ξενιστής</b></li>
+          </ul>
+
+          <div class="mini-note">
+            Στα slides αναφέρεται επίσης ότι υπάρχει μόνο <b>ένας ορότυπος</b> στο συγκεκριμένο σημείο της παρουσίασης·
+            εξεταστικά κράτα πιο πολύ τη λογική των επαναλοιμώξεων και της ατελούς ανοσίας.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="sec5">
+      <div class="section-title"><div class="num">5</div><h2>RSV - βασικά χαρακτηριστικά</h2></div>
+      <div class="grid-2">
+        <div class="box lilac">
+          <h3>Ποιος είναι ο RSV</h3>
+          <ul>
+            <li><b>Ιός Αναπνευστικού Συγκυτίου</b></li>
+            <li>έχει <b>υπότυπους A και B</b> με βάση την <b>G protein</b></li>
+            <li><span class="important">ΔΕΝ έχει αιμοσυγκολλητίνη</span></li>
+            <li>στην καλλιέργεια έχει <b>βραδεία ανάπτυξη (4-8 ημέρες)</b></li>
+            <li>χαρακτηρίζεται από σχηματισμό <b>συγκυτίων</b></li>
+          </ul>
+
+          <div class="memory">
+            <b>RSV = Respiratory + Syncytia + Very young infants</b>
+          </div>
+        </div>
+
+        <!--div class="box peach sketch">
+          <h3>Sketch - RSV στο μυαλό</h3>
+          <svg class="svg" viewBox="0 0 620 340" xmlns="http://www.w3.org/2000/svg">
+            <rect x="35" y="50" rx="20" ry="20" width="170" height="92" fill="#eef8ff" stroke="#bed9ef" stroke-width="2"/>
+            <text x="120" y="86" text-anchor="middle" font-size="25" fill="#4a678b" font-weight="700">Βρέφη</text>
+            <text x="120" y="116" text-anchor="middle" font-size="20" fill="#4a678b">&lt; 6 μηνών</text>
+
+            <rect x="225" y="50" rx="20" ry="20" width="170" height="92" fill="#fff3f8" stroke="#e6c7d6" stroke-width="2"/>
+            <text x="310" y="86" text-anchor="middle" font-size="25" fill="#7d4c68" font-weight="700">Βρογχιολίτιδα</text>
+            <text x="310" y="116" text-anchor="middle" font-size="20" fill="#7d4c68">πνευμονία</text>
+
+            <rect x="415" y="50" rx="20" ry="20" width="170" height="92" fill="#fdf8ef" stroke="#ead6af" stroke-width="2"/>
+            <text x="500" y="86" text-anchor="middle" font-size="25" fill="#6b5736" font-weight="700">Συγκύτια</text>
+            <text x="500" y="116" text-anchor="middle" font-size="20" fill="#6b5736">κυτταρική βλάβη</text>
+
+            <line x1="120" y1="155" x2="120" y2="248" stroke="#a9899d" stroke-width="4"/>
+            <line x1="310" y1="155" x2="310" y2="248" stroke="#a9899d" stroke-width="4"/>
+            <line x1="500" y1="155" x2="500" y2="248" stroke="#a9899d" stroke-width="4"/>
+
+            <rect x="150" y="228" rx="22" ry="22" width="320" height="72" fill="#f7fff9" stroke="#bfe0c4" stroke-width="2"/>
+            <text x="310" y="255" text-anchor="middle" font-size="24" fill="#4f8b6c" font-weight="700">κλασικός ιός βρεφικής βρογχιολίτιδας</text>
+            <text x="310" y="282" text-anchor="middle" font-size="19" fill="#4f8b6c">και σοβαρής λοίμωξης κατώτερου αναπνευστικού</text>
+          </svg>
+          <div class="caption">Για RSV σκέψου αμέσως: βρέφος - βρογχιολίτιδα - συγκύτια.</div>
+        </div-->
+      </div>
+    </section>
+
+    <section class="section" id="sec6">
+      <div class="section-title"><div class="num">6</div><h2>Παθογένεια της νόσου από RSV</h2></div>
+      <div class="grid-2">
+        <div class="box mint">
+          <h3>Τι τονίζει το slide</h3>
+          <ul>
+            <li>η λοίμωξη γίνεται μέσω της <b>αναπνευστικής οδού</b> ή μέσω <b>μολυσμένων αντικειμένων</b></li>
+            <li>η περίοδος επώασης είναι <b>2-8 ημέρες</b></li>
+            <li>δεν προκαλεί <b>ιαιμία</b> ή συστημική διασπορά</li>
+          </ul>
+
+          <h4>Γιατί τα βρέφη παθαίνουν βαριά νόσο</h4>
+          <ul>
+            <li>προκαλείται <b>κυτταρική βλάβη</b></li>
+            <li>τα βρογχιόλια των βρεφών είναι ανατομικά στενά</li>
+            <li>υπάρχει απόφραξη από:
+              <ul>
+                <li>βλέννη</li>
+                <li>ινώδες</li>
+                <li>νεκρωτικό υλικό</li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+
+        <div class="box sand">
+          <h3>Εποχικότητα και επιδημιολογία</h3>
+          <ul>
+            <li>στα slides αναφέρεται περίοδος λοιμώξεων <b>Φεβρουάριος - Απρίλιος</b></li>
+            <li>σχεδόν όλα τα παιδιά έχουν περάσει λοίμωξη RSV μέχρι τα <b>2 έτη</b></li>
+            <li>κατά την πρώτη έκθεση:
+              <ul>
+                <li>25-40% εμφανίζουν σημεία βρογχιολίτιδας ή πνευμονίας</li>
+                <li>5-20 / 1000 χρειάζονται νοσηλεία</li>
+              </ul>
+            </li>
+            <li>οι περισσότερες νοσηλείες αφορούν παιδιά <b>&lt; 6 μηνών</b></li>
+          </ul>
+
+          <div class="exam">
+            <b>Άρα:</b> ο RSV είναι εξαιρετικά συχνός, αλλά ιδιαίτερα επικίνδυνος στα μικρά βρέφη.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="sec7">
+      <div class="section-title"><div class="num">7</div><h2>Κλινική εικόνα και επιπλοκές RSV</h2></div>
+      <div class="grid-2">
+        <div class="box pink">
+          <h3>Από ήπια σε βαριά νόσο</h3>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Ήπια εικόνα</th>
+                  <th>Βαριά εικόνα</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    ρινόρροια<br>
+                    ξηρός βήχας<br>
+                    χαμηλός πυρετός<br>
+                    πονόλαιμος<br>
+                    ήπια κεφαλαλγία
+                  </td>
+                  <td>
+                    υψηλός πυρετός<br>
+                    έντονος βήχας<br>
+                    αναπνευστική δυσχέρεια<br>
+                    ασφυξία
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="mini-note">
+            Κλινικά ο RSV μπορεί να ξεκινήσει σαν κοινή λοίμωξη ανώτερου αναπνευστικού και να εξελιχθεί σε σοβαρή βρογχιολίτιδα / πνευμονία.
+          </div>
+        </div>
+
+        <div class="box blue">
+          <h3>Επιπλοκές</h3>
+          <ul>
+            <li>νοσηλεία</li>
+            <li>πνευμονία ή βρογχιολίτιδα</li>
+            <li>μέση ωτίτιδα</li>
+            <li>άσθμα</li>
+          </ul>
+
+          <div class="exam">
+            <b>Το κλασικό ζεύγος για RSV:</b><br>
+            <b>βρέφος + βρογχιολίτιδα</b>
+          </div>
+
+          <div class="memory">
+            <b>Μνημονικό:</b> RSV = <b>ρινόρροια → συριγμός/βρογχιολίτιδα → δύσπνοια</b>
+          </div>
+        </div>
+      </div>
+
+      <div class="box lilac">
+        <h3>Ανοσία μετά τον RSV</h3>
+        <p>Το slide τονίζει ότι <span class="important">η φυσική ανοσία δεν αποτρέπει την επαναλοίμωξη</span>.</p>
+        <p>Άρα μπορεί να υπάρχουν επαναλοιμώξεις, παρότι συχνά με διαφορετική βαρύτητα.</p>
+      </div>
+    </section>
+
+    <section class="section" id="sec8">
+      <div class="section-title"><div class="num">8</div><h2>Εργαστηριακή διάγνωση</h2></div>
+      <div class="grid-2">
+        <div class="box peach">
+          <h3>Παραϊνφλουέντζα</h3>
+          <ul>
+            <li>απομόνωση του αιτιολογικού παράγοντα σε <b>καλλιέργειες κυττάρων νεφρού πιθήκου ή ανθρώπου</b></li>
+            <li>ανίχνευση αντιγόνων με <b>ανοσοφθορισμό</b></li>
+            <li>ορολογική διάγνωση με <b>2 δείγματα</b></li>
+            <li>σύνδεση συμπληρώματος</li>
+            <li>μοριακές τεχνικές</li>
+          </ul>
+        </div>
+
+        <div class="box mint">
+          <h3>RSV</h3>
+          <ul>
+            <li>απομόνωση ιού σε καλλιέργειες <b>Hep-2</b> ή <b>HeLa</b></li>
+            <li>αν χρειαστεί, το υλικό πρέπει να εμβολιαστεί άμεσα ή να μείνει στους <b>4°C</b></li>
+            <li>ορολογική διάγνωση με σύνδεση συμπληρώματος</li>
+            <li><b>ELISA</b> και ειδικό <b>IgM</b></li>
+            <li>μοριακές τεχνικές</li>
+          </ul>
+
+          <div class="exam">
+            <b>Πρακτικά σήμερα:</b> για αναπνευστικούς ιούς οι <b>μοριακές τεχνικές</b> είναι οι πιο χρήσιμες για γρήγορη και αξιόπιστη διάγνωση.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="sec9">
+      <div class="section-title"><div class="num">9</div><h2>Θεραπεία και εμβολιαστικές προσπάθειες</h2></div>
+      <div class="grid-2">
+        <div class="box sand">
+          <h3>Θεραπεία RSV</h3>
+          <p>Στο slide αναφέρεται <span class="important">ριμπαβιρίνη για 3-6 ημέρες</span>.</p>
+
+          <div class="mini-note">
+            Για εξετάσεις κράτα ότι η θεραπεία είναι κυρίως υποστηρικτική, αλλά στη διάλεξη αναφέρεται ρητά η ριμπαβιρίνη.
+          </div>
+        </div>
+
+        <div class="box pink">
+          <h3>Εμβόλια</h3>
+          <ul>
+            <li>γίνονται προσπάθειες παρασκευής εμβολίου για <b>παραϊνφλουέντζα</b> (αναφέρεται τύπου 3)</li>
+            <li>γίνονται επίσης προσπάθειες παρασκευής εμβολίου για <b>RSV</b></li>
+          </ul>
+
+          <div class="exam">
+            <b>Σωστή φράση για προφορική:</b><br>
+            «Η πρόληψη είναι δύσκολη λόγω της συχνότητας των λοιμώξεων, της ατελούς ανοσίας και των επαναλοιμώξεων».
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="sec10">
+      <div class="section-title"><div class="num">10</div><h2>Respiratory panels - γιατί είναι χρήσιμα</h2></div>
+      <div class="box blue">
+        <h3>Τι δείχνει το αρχείο</h3>
+        <p>Παρουσιάζονται πολυπαραγοντικά panels για λοιμώξεις αναπνευστικού που μπορούν να ανιχνεύσουν ταυτόχρονα πολλούς ιούς και ορισμένα βακτήρια.</p>
+        <ul class="two-col-list">
+          <li>Adenovirus</li>
+          <li>Coronavirus</li>
+          <li>Human Metapneumovirus</li>
+          <li>Human Rhinovirus/Enterovirus</li>
+          <li>Influenza A / B</li>
+          <li>Parainfluenza 1,2,3,4</li>
+          <li>RSV</li>
+          <li>Bordetella pertussis</li>
+          <li>Mycoplasma pneumoniae</li>
+          <li>Chlamydophila pneumoniae</li>
+        </ul>
+
+        <div class="mini-note">
+          Η λογική τους είναι ότι σε έναν ασθενή με λοίμωξη αναπνευστικού μπορείς γρήγορα να κάνεις <b>διαφορική διάγνωση</b> ανάμεσα σε πολλούς πιθανούς παθογόνους παράγοντες.
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="sec11">
+      <div class="section-title"><div class="num">11</div><h2>Τελική επανάληψη - τι να κρατήσεις οπωσδήποτε</h2></div>
+      <div class="grid-2">
+        <div class="box pink">
+          <h3>10 must-know σημεία</h3>
+          <ol>
+            <li>Οι ιοί παραϊνφλουέντζας και ο RSV είναι αναπνευστικοί RNA ιοί με ελικοειδή συμμετρία.</li>
+            <li>Μεταδίδονται κυρίως με <b>σταγονίδια</b>.</li>
+            <li>Προκαλούν <b>συγκύτια</b> και κυτταρική βλάβη.</li>
+            <li>Η παραϊνφλουέντζα συνδέεται κλασικά με <b>croup</b>.</li>
+            <li>Ο RSV συνδέεται κλασικά με <b>βρογχιολίτιδα και πνευμονία</b> σε βρέφη.</li>
+            <li>Ο RSV είναι ιδιαίτερα σημαντικός σε παιδιά <b>&lt; 6 μηνών</b>.</li>
+            <li>Η φυσική ανοσία μετά από RSV <b>δεν αποτρέπει πλήρως την επαναλοίμωξη</b>.</li>
+            <li>Η διάγνωση γίνεται με καλλιέργεια, ανοσολογικές μεθόδους και κυρίως <b>μοριακές τεχνικές</b>.</li>
+            <li>Στον RSV αναφέρεται θεραπεία με <b>ριμπαβιρίνη</b>.</li>
+            <li>Τα respiratory panels είναι χρήσιμα για γρήγορη ταυτόχρονη ανίχνευση πολλών αναπνευστικών παθογόνων.</li>
+          </ol>
+        </div>
+
+        <div class="box sand">
+          <h3>Mini oral script</h3>
+          <ol>
+            <li><b>«Πείτε μου παραϊνφλουέντζα»</b><br>
+              Μεταδίδεται με σταγονίδια, προσβάλλει κυρίως το αναπνευστικό, προκαλεί croup, ιδίως στα παιδιά.
+            </li>
+            <li><b>«Πείτε μου RSV»</b><br>
+              Ιός αναπνευστικού συγκυτίου, υπότυποι A/B, χωρίς αιμοσυγκολλητίνη, βρογχιολίτιδα και πνευμονία στα βρέφη.
+            </li>
+            <li><b>«Πώς θα τα ξεχωρίσω κλινικά;»</b><br>
+              Παραϊνφλουέντζα → πάνω αεραγωγός / croup. RSV → κάτω αεραγωγός / βρογχιολίτιδα σε βρέφος.
+            </li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <div class="footer">
+      <b>Για απομνημόνευση με εικόνες:</b> στο συγκεκριμένο αρχείο σε βοηθά πολύ να έχεις 3-4 κλασικές οπτικές άγκυρες.
+      <div class="divider"></div>
+      <div class="small">
+        Πρότεινα να αποθηκεύσεις εικόνες για: <b>1) croup σε παιδί, 2) RSV bronchiolitis σε βρέφος, 3) σχηματισμό syncytia, 4) αναπνευστικό δέντρο με ανώτερο vs κατώτερο αναπνευστικό</b>.
+        Αυτές είναι οι πιο χρήσιμες για να θυμάσαι γρήγορα τη διαφορά παραϊνφλουέντζας και RSV.
+      </div>
+    </div>
+  </div>
+</body>
+</html>

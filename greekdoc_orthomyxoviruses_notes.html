@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GreekDoc - Ορθοβλεννοϊοί / Ιοί Γρίπης</title>
+  <style>
+    :root{
+      --bg:#fbf9fe;
+      --paper:#fffdfd;
+      --ink:#2f2638;
+      --muted:#6d6176;
+      --pink:#ffe0eb;
+      --rose:#ffd0df;
+      --lilac:#ece3ff;
+      --blue:#dff2ff;
+      --mint:#dcf6eb;
+      --sand:#fff0da;
+      --peach:#ffe8d7;
+      --line:#eadff2;
+      --accent:#9a5d85;
+      --accent2:#577ab3;
+      --good:#4f8b6c;
+      --warn:#b96b53;
+      --shadow:0 12px 30px rgba(89,70,105,.08);
+      --radius:22px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:"Segoe UI", Inter, system-ui, sans-serif;
+      color:var(--ink);
+      background:
+        radial-gradient(circle at top left, #f8e9f6 0, transparent 28%),
+        radial-gradient(circle at top right, #e4f3ff 0, transparent 24%),
+        linear-gradient(180deg,#faf7fd 0%, #f7fbff 100%);
+      line-height:1.72;
+    }
+    .page{width:min(1180px, calc(100% - 32px)); margin:28px auto 80px;}
+    .hero{
+      background:linear-gradient(135deg, rgba(255,255,255,.95), rgba(255,248,252,.96));
+      border:1px solid var(--line);
+      border-radius:30px;
+      box-shadow:var(--shadow);
+      padding:38px 34px 28px;
+      position:relative;
+      overflow:hidden;
+    }
+    .hero::before,.hero::after{
+      content:""; position:absolute; border-radius:50%; opacity:.55;
+    }
+    .hero::before{
+      width:230px;height:230px; right:-80px;top:-72px;
+      background:radial-gradient(circle, #ffd9e7 0%, #ffd9e700 70%);
+    }
+    .hero::after{
+      width:180px;height:180px; left:-55px;bottom:-55px;
+      background:radial-gradient(circle, #d9efff 0%, #d9efff00 72%);
+    }
+    h1{margin:0 0 8px; font-size:clamp(2rem, 3vw, 3.15rem); line-height:1.08; letter-spacing:-.03em;}
+    .subtitle{font-size:1.03rem; color:var(--muted); max-width:840px; margin-bottom:18px;}
+    .chips{display:flex; flex-wrap:wrap; gap:10px; margin:18px 0 4px;}
+    .chip{
+      background:#fff; border:1px solid var(--line); border-radius:999px;
+      padding:9px 14px; color:#59495f; font-size:.95rem;
+      box-shadow:0 4px 10px rgba(107,82,126,.05);
+    }
+    .toc{
+      margin-top:24px; display:grid; grid-template-columns:repeat(auto-fit,minmax(210px,1fr)); gap:14px;
+    }
+    .toc a{
+      text-decoration:none; color:var(--ink); background:#fff; border:1px solid var(--line);
+      border-radius:18px; padding:14px 16px; box-shadow:0 8px 18px rgba(86,72,104,.05);
+      transition:transform .15s ease, box-shadow .15s ease, border-color .15s ease;
+    }
+    .toc a:hover{transform:translateY(-2px); box-shadow:0 12px 24px rgba(86,72,104,.08); border-color:#d9bfd3;}
+    .section{margin-top:30px; display:grid; gap:18px;}
+    .section-title{display:flex; align-items:center; gap:12px; margin:8px 4px -4px;}
+    .section-title .num{
+      width:44px;height:44px;border-radius:14px; display:grid;place-items:center;
+      background:linear-gradient(135deg,var(--rose),#ffdfe9); color:#814b67; font-weight:800;
+      box-shadow:0 8px 18px rgba(162,93,136,.14); flex:0 0 auto;
+    }
+    .section-title h2{margin:0; font-size:1.55rem; line-height:1.2; letter-spacing:-.02em;}
+    .grid-2{display:grid; grid-template-columns:1.1fr .9fr; gap:18px;}
+    @media (max-width:900px){.grid-2{grid-template-columns:1fr}}
+    .box{
+      background:var(--paper); border:1px solid var(--line); border-radius:var(--radius);
+      padding:22px 22px 18px; box-shadow:var(--shadow);
+    }
+    .pink{background:linear-gradient(180deg,#fff9fb 0%, #fff 100%)}
+    .blue{background:linear-gradient(180deg,#f8fcff 0%, #fff 100%)}
+    .mint{background:linear-gradient(180deg,#f8fffb 0%, #fff 100%)}
+    .sand{background:linear-gradient(180deg,#fffaf2 0%, #fff 100%)}
+    .lilac{background:linear-gradient(180deg,#fbf9ff 0%, #fff 100%)}
+    .peach{background:linear-gradient(180deg,#fff9f6 0%, #fff 100%)}
+    .box h3{margin:0 0 12px; font-size:1.18rem; line-height:1.28; letter-spacing:-.01em; color:#3d3147;}
+    .box h4{margin:14px 0 8px; font-size:1rem; color:#53425f;}
+    .box p{margin:8px 0}
+    .box ul,.box ol{margin:8px 0 0 0; padding-left:21px}
+    .box li{margin:7px 0}
+    .important{
+      background:linear-gradient(transparent 55%, #ffe7a6 55%);
+      padding:0 .08em;
+      font-weight:700;
+    }
+    .mini-note{
+      margin-top:12px; background:#fff; border-left:5px solid #dfbfd0;
+      padding:12px 14px; border-radius:14px; color:#5a4d64;
+    }
+    .memory{
+      margin-top:14px; background:linear-gradient(135deg,#fff4e1,#fffaf0);
+      border:1px dashed #eccd93; border-radius:16px; padding:14px 16px;
+    }
+    .exam{
+      margin-top:14px; background:linear-gradient(135deg,#eef9ff,#f8fdff);
+      border:1px dashed #b5d7ef; border-radius:16px; padding:14px 16px;
+    }
+    .warn{
+      margin-top:14px; background:linear-gradient(135deg,#fff2ed,#fff9f6);
+      border:1px dashed #ebb4a0; border-radius:16px; padding:14px 16px;
+    }
+    .flow{display:grid; gap:10px; margin-top:10px;}
+    .flow .step{background:#fff; border:1px solid var(--line); border-radius:16px; padding:12px 14px;}
+    .flow .arrow{text-align:center; color:#9c7f91; font-size:1.25rem; line-height:1;}
+    .table-wrap{overflow-x:auto; margin-top:8px;}
+    table{
+      width:100%; border-collapse:separate; border-spacing:0; font-size:.96rem; background:#fff;
+      border:1px solid var(--line); border-radius:18px; overflow:hidden;
+    }
+    th,td{padding:12px 12px; vertical-align:middle; border-bottom:1px solid #efe7f4; text-align:left;}
+    th{background:#fbf2f7; color:#55445d; font-weight:700;}
+    tr:last-child td{border-bottom:none}
+    .sketch{
+      border:1px dashed #d8c8e4; border-radius:22px; padding:18px;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(255,225,236,.58) 0, transparent 22%),
+        radial-gradient(circle at 85% 15%, rgba(223,242,255,.55) 0, transparent 22%),
+        #fff;
+    }
+    .svg{width:100%; height:auto; display:block;}
+    .caption{margin-top:10px; color:var(--muted); font-size:.92rem;}
+    .footer{
+      margin:36px 0 18px; padding:18px 20px; background:#fff;
+      border:1px solid var(--line); border-radius:20px; box-shadow:var(--shadow); color:#5d5167;
+    }
+    .small{font-size:.94rem; color:var(--muted);}
+    .pill-row{display:flex; flex-wrap:wrap; gap:10px; margin-top:12px;}
+    .pill{padding:8px 12px; border-radius:999px; background:#fff; border:1px solid var(--line); font-size:.92rem;}
+    .two-col-list{columns:2; column-gap:24px; padding-left:18px;}
+    @media (max-width:700px){.two-col-list{columns:1}}
+    .divider{height:1px; background:linear-gradient(90deg, transparent, #decfe8, transparent); margin:10px 0 4px;}
+  </style>
+</head>
+<body>
+  <div class="page">
+    <section class="hero">
+      <h1>Ορθοβλεννοϊοί - Ιοί Γρίπης</h1>
+      <div class="subtitle">
+        GreekDoc χάρτης-σημειώσεις για να μάθει κάποιος <b>σωστά και εξεταστικά</b> τους ορθοβλεννοϊούς:
+        δομή, αντιγόνα H/N, ανασυνδυασμό, drift/shift, μετάδοση, κλινική εικόνα, επιπλοκές, διάγνωση,
+        θεραπεία και εμβόλια.
+      </div>
+
+      <div class="chips">
+        <div class="chip">Orthomyxoviridae</div>
+        <div class="chip">Influenza A, B, C</div>
+        <div class="chip">Drift / Shift</div>
+        <div class="chip">Εξεταστική επανάληψη</div>
+      </div>
+
+      <div class="toc">
+        <a href="#sec1"><b>1.</b> Γενικά χαρακτηριστικά</a>
+        <a href="#sec2"><b>2.</b> Δομή του ιού</a>
+        <a href="#sec3"><b>3.</b> Τύποι και ξενιστές</a>
+        <a href="#sec4"><b>4.</b> H και N</a>
+        <a href="#sec5"><b>5.</b> Drift / Shift</a>
+        <a href="#sec6"><b>6.</b> Κύκλος αναπαραγωγής</a>
+        <a href="#sec7"><b>7.</b> Πανδημίες και νέα στελέχη</a>
+        <a href="#sec8"><b>8.</b> Μετάδοση - κλινική εικόνα</a>
+        <a href="#sec9"><b>9.</b> Επιπλοκές</a>
+        <a href="#sec10"><b>10.</b> Διάγνωση</a>
+        <a href="#sec11"><b>11.</b> Θεραπεία</a>
+        <a href="#sec12"><b>12.</b> Εμβόλια - τελική επανάληψη</a>
+      </div>
+    </section>
+
+    <section class="section" id="sec1">
+      <div class="section-title"><div class="num">1</div><h2>Γενικά χαρακτηριστικά των ορθοβλεννοϊών</h2></div>
+      <div class="grid-2">
+        <div class="box pink">
+          <h3>Τι πρέπει να ξέρεις από την αρχή</h3>
+          <ul>
+            <li>Οι ιοί γρίπης είναι <span class="important">ορθοβλεννοϊοί</span>.</li>
+            <li>Έχουν <b>ss(-)RNA</b>, το οποίο είναι <b>κατατετμημένο σε 8 τμήματα</b>.</li>
+            <li>Έχουν <b>περίβλημα</b>, άρα είναι ευαίσθητοι σε <b>λιποδιαλύτες</b>.</li>
+            <li>Φέρουν στην επιφάνειά τους τις <b>αιμοσυγκολλητίνες (H)</b> και τις <b>νευραμινιδάσες (N)</b>.</li>
+            <li>Προσβάλλουν κυρίως το <b>αναπνευστικό</b>.</li>
+            <li>Μπορούν να αναπτυχθούν σε <b>εμβρυοφόρα ωά</b> και σε κυτταροκαλλιέργειες όπως <b>MDCK</b>.</li>
+          </ul>
+
+          <div class="mini-note">
+            Το πιο σημαντικό εξεταστικά είναι ότι ο ιός της γρίπης έχει <b>κατατετμημένο αρνητικό RNA</b>.
+            Αυτό εξηγεί γιατί μπορεί να κάνει <b>ανασυνδυασμό τμημάτων</b> και άρα μεγάλες αντιγονικές αλλαγές.
+          </div>
+
+          <div class="memory">
+            <b>Μνημονικό:</b> <b>8 - HN - envelope - respiratory</b><br>
+            Δηλαδή: 8 τμήματα RNA, H/N στην επιφάνεια, περίβλημα, αναπνευστικός τροπισμός.
+          </div>
+        </div>
+
+        <!--div class="box lilac sketch">
+          <h3>Sketch - το «προφίλ» του ιού της γρίπης</h3>
+          <svg class="svg" viewBox="0 0 620 350" xmlns="http://www.w3.org/2000/svg">
+            <rect x="25" y="45" rx="22" ry="22" width="160" height="86" fill="#fff4f9" stroke="#e3c1d2" stroke-width="2"/>
+            <text x="105" y="82" text-anchor="middle" font-size="25" fill="#7d4c68" font-weight="700">ss(-)RNA</text>
+            <text x="105" y="110" text-anchor="middle" font-size="20" fill="#7d4c68">8 τμήματα</text>
+
+            <rect x="230" y="45" rx="22" ry="22" width="160" height="86" fill="#fdf8ef" stroke="#ead6af" stroke-width="2"/>
+            <text x="310" y="82" text-anchor="middle" font-size="25" fill="#6b5736" font-weight="700">Περίβλημα</text>
+            <text x="310" y="110" text-anchor="middle" font-size="20" fill="#6b5736">λιποδιαλύτες!</text>
+
+            <rect x="435" y="45" rx="22" ry="22" width="160" height="86" fill="#eef8ff" stroke="#bed9ef" stroke-width="2"/>
+            <text x="515" y="82" text-anchor="middle" font-size="25" fill="#4a678b" font-weight="700">H + N</text>
+            <text x="515" y="110" text-anchor="middle" font-size="20" fill="#4a678b">επιφανειακά Ag</text>
+
+            <line x1="105" y1="150" x2="105" y2="250" stroke="#a9899d" stroke-width="4"/>
+            <line x1="310" y1="150" x2="310" y2="250" stroke="#a9899d" stroke-width="4"/>
+            <line x1="515" y1="150" x2="515" y2="250" stroke="#a9899d" stroke-width="4"/>
+
+            <rect x="145" y="225" rx="24" ry="24" width="330" height="84" fill="#f7fff9" stroke="#bfe0c4" stroke-width="2"/>
+            <text x="310" y="260" text-anchor="middle" font-size="25" fill="#4f8b6c" font-weight="700">Τελικό αποτέλεσμα:</text>
+            <text x="310" y="290" text-anchor="middle" font-size="21" fill="#4f8b6c">ιός με μεγάλη μεταβλητότητα και τροπισμό για το αναπνευστικό</text>
+          </svg>
+          <div class="caption">Συνδύασε στο μυαλό σου: 8 RNA τμήματα + H/N + περίβλημα.</div>
+        </div-->
+      </div>
+    </section>
+
+    <section class="section" id="sec2">
+      <div class="section-title"><div class="num">2</div><h2>Δομή του ιού</h2></div>
+      <div class="grid-2">
+        <div class="box blue">
+          <h3>Κατασκευή</h3>
+          <ul>
+            <li>Ο ιός εμφανίζει <b>πολυμορφισμό</b>.</li>
+            <li>Έχει <b>ελικοειδή συμμετρία</b>.</li>
+            <li>Το περίβλημα φέρει:
+              <ul>
+                <li><b>HA</b> = αιμοσυγκολλητίνη</li>
+                <li><b>NA</b> = νευραμινιδάση</li>
+                <li><b>M2</b> = ιοντικός δίαυλος</li>
+              </ul>
+            </li>
+            <li>Εσωτερικά υπάρχουν τα <b>ριβονουκλεοπρωτεϊνικά σύμπλοκα</b> (RNPs).</li>
+          </ul>
+
+          <h4>Τα 8 γονιδιακά τμήματα που προβάλλονται</h4>
+          <p><b>PB2, PA, PB1, HA, NA, NP, NS, MP</b></p>
+
+          <div class="exam">
+            <b>Συχνό ερώτημα:</b> γιατί ο ιός της γρίπης έχει μεγάλη ικανότητα για γενετική αλλαγή;<br>
+            Επειδή έχει <b>RNA</b> και μάλιστα <b>κατατετμημένο</b>, άρα ευνοούνται <b>μεταλλάξεις</b> και <b>reassortment</b>.
+          </div>
+        </div>
+
+        <div class="box peach sketch">
+          <h3>Sketch - «διάβασε» το σωματίδιο</h3>
+          <svg class="svg" viewBox="0 0 560 420" xmlns="http://www.w3.org/2000/svg">
+            <ellipse cx="280" cy="210" rx="122" ry="148" fill="#fff1d8" stroke="#c8aa6a" stroke-width="4"/>
+            <ellipse cx="280" cy="210" rx="145" ry="172" fill="none" stroke="#dfc58f" stroke-width="4" stroke-dasharray="8 7"/>
+
+            <g stroke="#9d5b82" stroke-width="3" fill="#f5bfd4">
+              <g transform="translate(280 24)"><line x1="0" y1="0" x2="0" y2="36"/><circle cx="0" cy="-4" r="16"/></g>
+              <g transform="translate(385 58) rotate(30)"><line x1="0" y1="0" x2="0" y2="36"/><circle cx="0" cy="-4" r="16"/></g>
+              <g transform="translate(454 128) rotate(58)"><line x1="0" y1="0" x2="0" y2="36"/><circle cx="0" cy="-4" r="16"/></g>
+              <g transform="translate(482 225) rotate(90)"><line x1="0" y1="0" x2="0" y2="36"/><circle cx="0" cy="-4" r="16"/></g>
+              <g transform="translate(449 323) rotate(122)"><line x1="0" y1="0" x2="0" y2="36"/><circle cx="0" cy="-4" r="16"/></g>
+              <g transform="translate(374 383) rotate(150)"><line x1="0" y1="0" x2="0" y2="36"/><circle cx="0" cy="-4" r="16"/></g>
+              <g transform="translate(186 386) rotate(210)"><line x1="0" y1="0" x2="0" y2="36"/><circle cx="0" cy="-4" r="16"/></g>
+              <g transform="translate(110 325) rotate(240)"><line x1="0" y1="0" x2="0" y2="36"/><circle cx="0" cy="-4" r="16"/></g>
+              <g transform="translate(78 226) rotate(270)"><line x1="0" y1="0" x2="0" y2="36"/><circle cx="0" cy="-4" r="16"/></g>
+              <g transform="translate(108 126) rotate(300)"><line x1="0" y1="0" x2="0" y2="36"/><circle cx="0" cy="-4" r="16"/></g>
+              <g transform="translate(180 57) rotate(330)"><line x1="0" y1="0" x2="0" y2="36"/><circle cx="0" cy="-4" r="16"/></g>
+            </g>
+
+            <g fill="#8bc0e7">
+              <rect x="161" y="123" width="10" height="20" rx="5"/>
+              <rect x="396" y="131" width="10" height="20" rx="5"/>
+              <rect x="278" y="59" width="10" height="20" rx="5"/>
+              <rect x="276" y="343" width="10" height="20" rx="5"/>
+            </g>
+
+            <g fill="none" stroke="#7b5a92" stroke-width="6" stroke-linecap="round">
+              <path d="M210 140 C235 105, 255 165, 285 142"/>
+              <path d="M238 175 C267 138, 300 220, 330 172"/>
+              <path d="M212 223 C248 181, 285 255, 336 212"/>
+              <path d="M220 273 C260 243, 278 315, 338 272"/>
+              <path d="M214 320 C250 285, 301 339, 348 305"/>
+            </g>
+
+            <text x="430" y="72" font-size="24" fill="#884f71" font-weight="700">HA / NA</text>
+            <text x="382" y="210" font-size="22" fill="#4c688c" font-weight="700">M2</text>
+            <text x="192" y="360" font-size="22" fill="#5f4c6c" font-weight="700">8 RNP segments</text>
+          </svg>
+          <div class="caption">HA και NA έξω, M2 στο περίβλημα, 8 τμήματα RNP μέσα.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="sec3">
+      <div class="section-title"><div class="num">3</div><h2>Τύποι ιών γρίπης και ξενιστές</h2></div>
+      <div class="grid-2">
+        <div class="box mint">
+          <h3>Διαίρεση των βλεννοϊών</h3>
+          <p>Στη διάλεξη γίνεται διάκριση ανάμεσα σε <b>ορθοβλεννοϊούς</b> και <b>παραβλεννοϊούς</b>. Οι ορθοβλεννοϊοί περιλαμβάνουν τους ιούς γρίπης <b>A, B, C</b>.</p>
+
+          <h4>Συμπεριφορά ανά τύπο</h4>
+          <ul>
+            <li><b>Γρίπη A</b> → συχνές αλλαγές, <span class="important">επιδημίες και πανδημίες</span></li>
+            <li><b>Γρίπη B</b> → μεγαλύτερη σταθερότητα, κυρίως <b>επιδημίες</b></li>
+            <li><b>Γρίπη C</b> → λίγες αλλαγές, <b>σποραδικά κρούσματα</b></li>
+          </ul>
+
+          <div class="memory">
+            <b>A = All kinds of hosts &amp; big changes</b><br>
+            <b>B = more Bound / σταθερότερη</b><br>
+            <b>C = Casual / σποραδική</b>
+          </div>
+        </div>
+
+        <div class="box sand">
+          <h3>Ξενιστές και H/N</h3>
+          <p>Η παρουσίαση δείχνει ότι διαφορετικά ζωικά είδη φέρουν διαφορετικά υποσύνολα αιμοσυγκολλητινών και νευραμινιδασών.</p>
+          <ul>
+            <li>Στα <b>πτηνά</b> υπάρχει η μεγαλύτερη ποικιλία.</li>
+            <li>Ο <b>χοίρος</b> είναι πολύ σημαντικός γιατί μπορεί να λειτουργήσει ως <b>αναμικτικός ξενιστής</b>.</li>
+            <li>Στον <b>άνθρωπο</b> κυριαρχούν συγκεκριμένοι υπότυποι.</li>
+          </ul>
+
+          <div class="exam">
+            <b>Κεντρική ιδέα:</b> η γρίπη A είναι η πιο επικίνδυνη για πανδημία επειδή έχει 
+            <b>μεγάλη ζωική δεξαμενή</b> και δυνατότητα <b>γενετικού ανασυνδυασμού</b>.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="sec4">
+      <div class="section-title"><div class="num">4</div><h2>Αιμοσυγκολλητίνη (H) και Νευραμινιδάση (N)</h2></div>
+      <div class="grid-2">
+        <div class="box blue">
+          <h3>Αιμοσυγκολλητίνη (H)</h3>
+          <ul>
+            <li>Η H προσδένεται σε υποδοχείς επιφανείας του κυττάρου-ξενιστή που περιέχουν <b>σιαλικό οξύ</b>.</li>
+            <li>Άρα είναι υπεύθυνη για την <span class="important">προσκόλληση του ιού</span> στο κύτταρο.</li>
+            <li>Η δομή των υποδοχέων διαφέρει ανάλογα με το ζωικό είδος.</li>
+            <li>Με βάση τη δομή της H, «επιλέγεται» το είδος ξενιστή.</li>
+          </ul>
+
+          <h4>Θέση 226 της H</h4>
+          <ul>
+            <li><b>Λευκίνη</b> → προτίμηση για <b>α-(2,6) σιαλικό</b> του ανθρώπου</li>
+            <li><b>Γλουταμίνη</b> → προτίμηση για <b>α-(2,3) σιαλικό</b> των πτηνών</li>
+          </ul>
+
+          <div class="mini-note">
+            Ο χοίρος αναφέρεται ως παράδειγμα οργανισμού που μπορεί να φέρει και τους δύο τύπους υποδοχέων,
+            άρα είναι υποψήφιος χώρος για ανασυνδυασμό.
+          </div>
+        </div>
+
+        <div class="box peach">
+          <h3>Νευραμινιδάση (N)</h3>
+          <p>Η νευραμινιδάση είναι σημαντική για την <b>απελευθέρωση των νέων ιών</b> από το κύτταρο-ξενιστή,
+          επειδή διασπά δεσμούς που κρατούν το ιικό σωματίδιο προσκολλημένο.</p>
+
+          <div class="exam">
+            <b>Εξεταστικό δίπολο:</b><br>
+            <b>H</b> = προσκόλληση / είσοδος<br>
+            <b>N</b> = απελευθέρωση νεοπαραγόμενων ιών
+          </div>
+
+          <div class="memory">
+            <b>H = Hook</b> (γαντζώνει)<br>
+            <b>N = New virions out</b> (βοηθά να βγουν οι νέοι ιοί)
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="sec5">
+      <div class="section-title"><div class="num">5</div><h2>Γενετικός ανασυνδυασμός, drift και shift</h2></div>
+      <div class="grid-2">
+        <div class="box pink">
+          <h3>Γενετικός ανασυνδυασμός</h3>
+          <p>Όταν ένα κύτταρο ή ένας ξενιστής μολυνθεί ταυτόχρονα από <b>δύο διαφορετικούς ιούς γρίπης</b>, τα τμήματα του RNA μπορεί να <b>αναμειχθούν</b>. Έτσι προκύπτει <span class="important">ανασυνδυασμένος ιός</span>.</p>
+
+          <div class="mini-note">
+            Επειδή το γονιδίωμα είναι σε <b>8 ξεχωριστά κομμάτια</b>, δεν ανασυνδυάζεται απλώς «σημείο με σημείο»·
+            μπορεί να γίνει <b>ανταλλαγή ολόκληρων τμημάτων</b>.
+          </div>
+
+          <h4>Αντιγονική εκτροπή (drift)</h4>
+          <ul>
+            <li>οφείλεται σε <b>τυχαίες μεταλλάξεις</b></li>
+            <li>αφορά αλλαγές στη σειρά αμινοξέων της <b>HA</b> ή της <b>NA</b> ή και των δύο</li>
+            <li>οδηγεί σε <b>παραλλαγές</b> → εποχικές επιδημίες / τοπικές εξάρσεις</li>
+          </ul>
+        </div>
+
+        <div class="box blue">
+          <h3>Αντιγονική μεταβολή (shift)</h3>
+          <ul>
+            <li>γίνεται με <b>αντικατάσταση γονιδίων HA ή/και NA</b></li>
+            <li>ουσιαστικά πρόκειται για <span class="important">γονιδιακό ανασυνδυασμό / reassortment</span></li>
+            <li>μπορεί να δημιουργήσει <b>νέα Η ή/και Ν</b></li>
+            <li>συνδέεται με <b>πανδημίες</b></li>
+          </ul>
+
+          <div class="exam">
+            <b>Το πιο σημαντικό:</b><br>
+            <b>Drift = μικρές αλλαγές</b> → επιδημίες<br>
+            <b>Shift = μεγάλη αλλαγή</b> → πιθανή πανδημία
+          </div>
+
+          <div class="warn">
+            Πανδημία δεν αρκεί να προκύψει μόνο επειδή εμφανίστηκε νέος ιός.
+            Χρειάζεται να μπορεί να γίνει και <b>μετάδοση από άνθρωπο σε άνθρωπο</b>.
+          </div>
+        </div>
+      </div>
+
+      <div class="box lilac sketch">
+        <h3>Sketch - Drift vs Shift</h3>
+        <svg class="svg" viewBox="0 0 860 300" xmlns="http://www.w3.org/2000/svg">
+          <rect x="25" y="35" rx="22" ry="22" width="375" height="220" fill="#fff9fb" stroke="#e3c1d2" stroke-width="2"/>
+          <text x="212" y="72" text-anchor="middle" font-size="30" fill="#7d4c68" font-weight="700">Drift</text>
+          <text x="212" y="103" text-anchor="middle" font-size="20" fill="#7d4c68">μικρές τυχαίες μεταλλάξεις</text>
+          <circle cx="140" cy="162" r="42" fill="#fff1d8" stroke="#c8aa6a" stroke-width="3"/>
+          <circle cx="140" cy="122" r="7" fill="#f5bfd4"/><circle cx="177" cy="162" r="7" fill="#f5bfd4"/><circle cx="103" cy="162" r="7" fill="#f5bfd4"/>
+          <circle cx="285" cy="162" r="42" fill="#fff1d8" stroke="#c8aa6a" stroke-width="3"/>
+          <circle cx="285" cy="122" r="7" fill="#f5bfd4"/><circle cx="322" cy="162" r="7" fill="#8bc0e7"/><circle cx="248" cy="162" r="7" fill="#f5bfd4"/>
+          <line x1="182" y1="162" x2="243" y2="162" stroke="#a9899d" stroke-width="4"/>
+          <text x="212" y="225" text-anchor="middle" font-size="20" fill="#5a4d64">παραλλαγές - εποχικές επιδημίες</text>
+
+          <rect x="460" y="35" rx="22" ry="22" width="375" height="220" fill="#f8fcff" stroke="#bad8ef" stroke-width="2"/>
+          <text x="647" y="72" text-anchor="middle" font-size="30" fill="#4b678b" font-weight="700">Shift</text>
+          <text x="647" y="103" text-anchor="middle" font-size="20" fill="#4b678b">ανταλλαγή ολόκληρων τμημάτων</text>
+          <circle cx="565" cy="162" r="42" fill="#fff1d8" stroke="#c8aa6a" stroke-width="3"/>
+          <rect x="548" y="145" width="10" height="32" rx="4" fill="#f5bfd4"/>
+          <rect x="564" y="145" width="10" height="32" rx="4" fill="#f5bfd4"/>
+          <rect x="580" y="145" width="10" height="32" rx="4" fill="#8bc0e7"/>
+
+          <circle cx="730" cy="162" r="42" fill="#fff1d8" stroke="#c8aa6a" stroke-width="3"/>
+          <rect x="713" y="145" width="10" height="32" rx="4" fill="#8bc0e7"/>
+          <rect x="729" y="145" width="10" height="32" rx="4" fill="#8bc0e7"/>
+          <rect x="745" y="145" width="10" height="32" rx="4" fill="#f5bfd4"/>
+
+          <line x1="607" y1="162" x2="688" y2="162" stroke="#a9899d" stroke-width="4"/>
+          <text x="647" y="225" text-anchor="middle" font-size="20" fill="#4b678b">νέος υπότυπος - κίνδυνος πανδημίας</text>
+        </svg>
+        <div class="caption">Drift = «ψιλοδιορθώσεις». Shift = «αλλάζω ολόκληρα κομμάτια».</div>
+      </div>
+    </section>
+
+    <section class="section" id="sec6">
+      <div class="section-title"><div class="num">6</div><h2>Κύκλος αναπαραγωγής</h2></div>
+      <div class="grid-2">
+        <div class="box mint">
+          <h3>Βήμα προς βήμα</h3>
+          <div class="flow">
+            <div class="step"><b>1. Προσκόλληση</b><br>Η HA προσδένεται σε υποδοχείς με σιαλικό οξύ.</div>
+            <div class="arrow">↓</div>
+            <div class="step"><b>2. Είσοδος / ενδοκύττωση</b></div>
+            <div class="arrow">↓</div>
+            <div class="step"><b>3. Uncoating</b><br>Σημαντικός ο ρόλος της <b>M2</b> και της πτώσης του pH.</div>
+            <div class="arrow">↓</div>
+            <div class="step"><b>4. Μεταφορά στο πυρήνα</b><br>Σε αντίθεση με πολλούς RNA ιούς, η γρίπη χρησιμοποιεί <b>τον πυρήνα</b> για τμήμα της αντιγραφής/μεταγραφής της.</div>
+            <div class="arrow">↓</div>
+            <div class="step"><b>5. Σύνθεση ιικών RNA και πρωτεϊνών</b></div>
+            <div class="arrow">↓</div>
+            <div class="step"><b>6. Συσκευασία των 8 τμημάτων</b></div>
+            <div class="arrow">↓</div>
+            <div class="step"><b>7. Budding και απελευθέρωση</b><br>Η NA βοηθά τους νέους ιούς να αποκολληθούν από το κύτταρο.</div>
+          </div>
+        </div>
+
+        <div class="box sand">
+          <h3>Παγίδες που ρωτιούνται συχνά</h3>
+          <ul>
+            <li>Η γρίπη έχει <b>αρνητικό RNA</b>, άρα δεν μεταφράζεται απευθείας.</li>
+            <li>Η πρωτεΐνη <b>M2</b> σχετίζεται με το <b>uncoating</b>.</li>
+            <li>Η <b>NA</b> είναι κρίσιμη στο <b>τελικό στάδιο απελευθέρωσης</b>.</li>
+            <li>Η ύπαρξη 8 τμημάτων σημαίνει ότι η συσκευασία πρέπει να είναι σωστή για να είναι λειτουργικός ο νέος ιός.</li>
+          </ul>
+
+          <div class="exam">
+            <b>Εκεί χτυπούν οι ερωτήσεις:</b><br>
+            είσοδος με HA - έναρξη uncoating με M2 - έξοδος με NA.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="sec7">
+      <div class="section-title"><div class="num">7</div><h2>Πανδημίες και νεότερα στελέχη</h2></div>
+      <div class="grid-2">
+        <div class="box pink">
+          <h3>Κλασικές πανδημίες του 20ού και 21ου αιώνα</h3>
+          <ul>
+            <li><b>1918</b> Ισπανική γρίπη A(H1N1)</li>
+            <li><b>1957</b> Ασιατική γρίπη A(H2N2)</li>
+            <li><b>1968</b> Hong Kong A(H3N2)</li>
+            <li><b>1976-77</b> Ρωσική A(H1N1)</li>
+            <li><b>2009</b> «Νέα» A(H1N1)</li>
+          </ul>
+
+          <div class="mini-note">
+            Έκτοτε, στη διάλεξη αναφέρονται ως κυκλοφορούντα κυρίως τα <b>A(H1N1)</b>, <b>A(H3N2)</b> και <b>B</b>.
+          </div>
+        </div>
+
+        <div class="box blue">
+          <h3>Νεότερα στελέχη ζωικής προέλευσης</h3>
+          <ul>
+            <li><b>H9N2</b> στον άνθρωπο χωρίς ευρεία εξάπλωση</li>
+            <li><b>H5N1</b> στον άνθρωπο χωρίς ευρεία εξάπλωση</li>
+            <li><b>H7N9</b> στον άνθρωπο χωρίς ευρεία εξάπλωση</li>
+          </ul>
+
+          <div class="warn">
+            Η παρουσία τους δεν σημαίνει αυτόματα πανδημία.<br>
+            <b>Πανδημία μόνο αν είναι εφικτή η μετάδοση από άνθρωπο σε άνθρωπο.</b>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="sec8">
+      <div class="section-title"><div class="num">8</div><h2>Μετάδοση, γριπώδης συνδρομή και κλινική εικόνα</h2></div>
+      <div class="grid-2">
+        <div class="box blue">
+          <h3>Τι συμβαίνει στο αναπνευστικό</h3>
+          <ul>
+            <li>Η λοίμωξη ξεκινά στο <b>ανώτερο αναπνευστικό</b>.</li>
+            <li>Μπορεί να υπάρξει <b>μετακίνηση - εξέλιξη - επιδείνωση</b> προς το <b>κατώτερο αναπνευστικό</b>.</li>
+            <li>Ο αρχικός ιός πολλαπλασιάζεται στα <b>επιφανειακά κύτταρα των αεραγωγών</b>.</li>
+            <li>Οι νεοπαραγόμενοι ιοί απελευθερώνονται στους αεραγωγούς.</li>
+          </ul>
+
+          <div class="mini-note">
+            Άρα η γρίπη μπορεί να ξεκινά «σαν ανώτερη λοίμωξη», αλλά σε σοβαρές περιπτώσεις να κατεβαίνει βαθύτερα.
+          </div>
+        </div>
+
+        <div class="box mint">
+          <h3>Γριπώδης συνδρομή (ILI) κατά ΠΟΥ</h3>
+          <ol>
+            <li>Απότομη έναρξη υψηλού πυρετού &gt;38°C</li>
+            <li>Κεφαλαλγία και μυαλγίες</li>
+            <li>Συμπτώματα από το αναπνευστικό</li>
+            <li>Κακουχία</li>
+          </ol>
+
+          <div class="exam">
+            <b>Πολύ σημαντικό:</b> δεν είναι κάθε γριπώδης συνδρομή «γρίπη».<br>
+            «Γρίπη» λέγεται μόνο όταν οφείλεται σε <b>ιό γρίπης</b>, όχι σε οποιονδήποτε αναπνευστικό ιό.
+          </div>
+        </div>
+      </div>
+
+      <div class="box sand">
+        <h3>Κλινική εικόνα γρίπης ενηλίκων</h3>
+        <ul class="two-col-list">
+          <li>επώαση 1-5 ημέρες</li>
+          <li>πονοκέφαλος</li>
+          <li>ρίγη</li>
+          <li>ξηρός βήχας</li>
+          <li>πυρετός, μονοφασικός ή διφασικός</li>
+          <li>μυαλγίες</li>
+          <li>κακουχία</li>
+          <li>ανορεξία</li>
+          <li>ρινόρροια</li>
+          <li>πταρμοί</li>
+          <li>φαρυγγικές εκκρίσεις</li>
+          <li>4η-5η ημέρα: παραγωγικός βήχας</li>
+          <li>καταβολή και βήχας μπορεί να επιμένουν 1-2 εβδομάδες</li>
+          <li>υπάρχει και γαστρεντερική μορφή</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section" id="sec9">
+      <div class="section-title"><div class="num">9</div><h2>Επιπλοκές</h2></div>
+      <div class="grid-2">
+        <div class="box peach">
+          <h3>Επιπλοκές σε ενήλικες</h3>
+          <ul>
+            <li>μέση ωτίτιδα</li>
+            <li>επιπεφυκίτιδα</li>
+            <li>ιογενής πνευμονία</li>
+            <li>συνδυασμένη ιογενής-μικροβιακή πνευμονία</li>
+            <li>μεταγριπική μικροβιακή πνευμονία</li>
+            <li>πνευμονική εμβολή</li>
+            <li>μυοσίτιδα</li>
+            <li>καρδιακή συμμετοχή</li>
+            <li>γριπώδης εγκεφαλοπάθεια</li>
+            <li>μεταγριπική εγκεφαλίτιδα</li>
+          </ul>
+
+          <div class="mini-note">
+            Οι ηλικιωμένοι, τα άτομα υψηλού κινδύνου και τα πανδημικά στελέχη σχετίζονται με αυξημένο κίνδυνο σοβαρών επιπλοκών.
+          </div>
+        </div>
+
+        <div class="box lilac">
+          <h3>Επιπλοκές σε παιδιά</h3>
+          <ul>
+            <li>λαρυγγοτραχειοβρογχίτιδα (<b>croup</b>)</li>
+            <li>γαστρεντερίτιδα</li>
+            <li><b>σύνδρομο Reye</b></li>
+            <li>σοβαρή προσβολή εγκύων</li>
+            <li>συγγενείς ανωμαλίες σε σχέση με πανδημικά στελέχη</li>
+          </ul>
+
+          <div class="exam">
+            <b>Το σύνδρομο Reye</b> είναι must-know λέξη και συνδέεται στην παρουσίαση με τα <b>σαλικυλικά</b>.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="sec10">
+      <div class="section-title"><div class="num">10</div><h2>Εργαστηριακή διάγνωση</h2></div>
+      <div class="grid-2">
+        <div class="box mint">
+          <h3>Άμεση - ταχεία διάγνωση</h3>
+          <ul>
+            <li><b>Ανίχνευση αντιγόνων</b> με ανοσοχρωματογραφία, ανοσοφθορισμό κ.ά.</li>
+            <li><b>Ανίχνευση RNA</b> με PCR, που στη διάλεξη αναφέρεται ως η <span class="important">βέλτιστη μέθοδος</span>.</li>
+          </ul>
+
+          <h4>Καλλιέργεια / απομόνωση / τυποποίηση</h4>
+          <ul>
+            <li>κυτταροκαλλιέργειες</li>
+            <li>εμβρυοφόρα ωά όρνιθας</li>
+          </ul>
+
+          <h4>Ορολογική διάγνωση</h4>
+          <ul>
+            <li>σύνδεση συμπληρώματος</li>
+            <li>αναστολή αιμοσυγκόλλησης</li>
+            <li>ELISA (IgM, IgG)</li>
+          </ul>
+        </div>
+
+        <div class="box blue">
+          <h3>Παθολογικά υλικά</h3>
+          <ul>
+            <li>επίχρισμα φάρυγγος</li>
+            <li>έκπλυμα φάρυγγος</li>
+            <li>δείγματα κατωτέρου αναπνευστικού: βρογχικές εκκρίσεις, BAL κ.ά.</li>
+          </ul>
+
+          <h4>Rapid tests</h4>
+          <p>Η ανοσοχρωματογραφία χρησιμοποιείται ως <b>screening</b> test.</p>
+          <ul>
+            <li>ειδικότητα: <b>98,4%</b></li>
+            <li>ευαισθησία: <b>αμφιλεγόμενη</b></li>
+          </ul>
+
+          <div class="exam">
+            <b>Άρα:</b> ένα rapid θετικό μπορεί να βοηθήσει, αλλά η <b>PCR</b> είναι σαφώς πιο αξιόπιστη για τεκμηρίωση.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="sec11">
+      <div class="section-title"><div class="num">11</div><h2>Θεραπεία</h2></div>
+      <div class="grid-2">
+        <div class="box sand">
+          <h3>Παλαιότερα αντιιικά</h3>
+          <ul>
+            <li><b>Amantadine</b>: αναστολέας διαύλου ιόντων, για γρίπη A</li>
+            <li><b>Rimantadine</b>: αναστολέας διαύλου ιόντων, για γρίπη A</li>
+            <li><b>Ribavirin</b>: νουκλεοτιδικό ανάλογο, για γρίπη A και B</li>
+          </ul>
+
+          <div class="mini-note">
+            Η αμανταδίνη και η ριμανταδίνη στοχεύουν την <b>πρωτεΐνη M2</b>, δηλαδή τον ιοντικό δίαυλο που χρειάζεται για την έναρξη της αναπαραγωγής.
+          </div>
+        </div>
+
+        <div class="box peach">
+          <h3>Αναστολείς νευραμινιδάσης</h3>
+          <ul>
+            <li><b>Zanamivir</b> (Relenza) - εισπνεόμενη σκόνη</li>
+            <li><b>Oseltamivir</b> (Tamiflu) - per os</li>
+            <li><b>Peramivir</b></li>
+            <li><b>Laninamivir</b></li>
+          </ul>
+
+          <p>Η θεραπεία πρέπει να αρχίζει <span class="important">μέχρι 3 ημέρες από την έναρξη των συμπτωμάτων</span> σύμφωνα με το slide.</p>
+
+          <div class="exam">
+            <b>Στόχος των αναστολέων NA:</b> εμποδίζουν την απελευθέρωση των νέων ιών από το κύτταρο-ξενιστή.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="sec12">
+      <div class="section-title"><div class="num">12</div><h2>Εμβόλιο γρίπης και τελικός χάρτης επανάληψης</h2></div>
+      <div class="box lilac">
+        <h3>Σύνθεση αντιγριπικού εμβολίου</h3>
+        <p>Η διάλεξη δίνει ως παράδειγμα τη σύνθεση του εμβολίου <b>2025-2026</b> για το Βόρειο ημισφαίριο, με στελέχη τύπου <b>A(H1N1)</b>, <b>A(H3N2)</b> και <b>B/Victoria lineage</b>.</p>
+
+        <div class="mini-note">
+          Το σημαντικό για εξετάσεις δεν είναι να αποστηθίσεις όλα τα ονόματα στελεχών, αλλά να θυμάσαι ότι το εμβόλιο της γρίπης <b>επικαιροποιείται</b> ανάλογα με τα στελέχη που αναμένεται να κυκλοφορήσουν.
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <div class="box pink">
+          <h3>10 πράγματα που δεν πρέπει να φύγουν</h3>
+          <ol>
+            <li>Οι ιοί γρίπης είναι <b>ορθοβλεννοϊοί</b>.</li>
+            <li>Έχουν <b>ss(-)RNA σε 8 τμήματα</b>.</li>
+            <li>Η <b>HA</b> προσδένεται σε υποδοχείς με <b>σιαλικό οξύ</b>.</li>
+            <li>Η <b>NA</b> βοηθά στην <b>απελευθέρωση</b> των νέων ιών.</li>
+            <li>Η <b>M2</b> είναι ιοντικός δίαυλος σημαντικός για το <b>uncoating</b>.</li>
+            <li><b>Drift</b> = μικρές μεταλλάξεις, επιδημίες.</li>
+            <li><b>Shift</b> = reassortment, νέος υπότυπος, πανδημίες.</li>
+            <li>Η <b>γρίπη A</b> είναι η πιο επικίνδυνη για πανδημίες.</li>
+            <li>Η <b>PCR</b> είναι η βέλτιστη εργαστηριακή μέθοδος.</li>
+            <li>Τα βασικά αντιγριπικά στοχεύουν <b>M2</b> ή <b>NA</b>.</li>
+          </ol>
+        </div>
+
+        <div class="box blue">
+          <h3>Mini oral script για προφορική</h3>
+          <ol>
+            <li><b>«Πείτε μου τα βασικά χαρακτηριστικά της γρίπης»</b><br>
+              Ελυτροφόρος ορθοβλεννοϊός με ss(-)RNA σε 8 τμήματα, HA και NA στην επιφάνεια.
+            </li>
+            <li><b>«Τι είναι drift και τι shift;»</b><br>
+              Drift = μικρές μεταλλάξεις στις HA/NA. Shift = ανασυνδυασμός ολόκληρων τμημάτων, νέος υπότυπος και κίνδυνος πανδημίας.
+            </li>
+            <li><b>«Πώς γίνεται διάγνωση και θεραπεία;»</b><br>
+              PCR, antigen tests, καλλιέργεια / ορολογία όπου χρειάζεται. Θεραπεία με αναστολείς M2 ή κυρίως αναστολείς νευραμινιδάσης.
+            </li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <div class="footer">
+      <b>Σημείωση για το GreekDoc:</b> το αρχείο είναι φτιαγμένο για να λειτουργεί σαν χάρτης-σημειώσεις, με καθαρά κουτιά, επανάληψη και λέξεις-κλειδιά.
+      <div class="divider"></div>
+      <div class="small">Το περιεχόμενο οργανώθηκε από την παρουσίαση για τους ορθοβλεννοϊούς / ιούς γρίπης με έμφαση στα σημαντικά εξεταστικά σημεία.</div>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GreekDoc – Ερπητοϊοί: EBV & CMV</title>
+  <style>
+    :root{
+      --bg:#f6f7fb;
+      --paper:#ffffff;
+      --ink:#243042;
+      --muted:#607089;
+      --pink:#ffe3ee;
+      --lilac:#eee8ff;
+      --blue:#e4f0ff;
+      --green:#e8f7ee;
+      --yellow:#fff7da;
+      --rose:#ff6e9a;
+      --violet:#8167d8;
+      --teal:#3b8f87;
+      --gold:#d8a83f;
+      --line:#dde3ee;
+      --shadow:0 10px 30px rgba(36,48,66,.08);
+      --radius:20px;
+    }
+
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: "Segoe UI", Arial, sans-serif;
+      background:linear-gradient(180deg,#f7f8fc 0%, #eef2f9 100%);
+      color:var(--ink);
+      line-height:1.6;
+    }
+
+    .topbar{
+      position:sticky;
+      top:0;
+      z-index:50;
+      backdrop-filter: blur(12px);
+      background:rgba(246,247,251,.85);
+      border-bottom:1px solid rgba(221,227,238,.9);
+      padding:12px 18px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:12px;
+    }
+
+    .brand{
+      font-weight:800;
+      letter-spacing:.3px;
+      color:#40506a;
+    }
+
+    .actions{display:flex; gap:10px; flex-wrap:wrap;}
+
+    button{
+      border:none;
+      padding:10px 16px;
+      border-radius:999px;
+      background:linear-gradient(135deg,var(--violet),#a981ff);
+      color:white;
+      font-weight:700;
+      cursor:pointer;
+      box-shadow:var(--shadow);
+    }
+
+    .ghost{
+      background:white;
+      color:#40506a;
+      border:1px solid var(--line);
+      box-shadow:none;
+    }
+
+    .page{
+      max-width:1400px;
+      margin:0 auto;
+      padding:28px 18px 60px;
+    }
+
+    .hero{
+      background:linear-gradient(135deg,#fff 0%, #f8edff 48%, #ebf5ff 100%);
+      border:1px solid var(--line);
+      border-radius:30px;
+      padding:28px;
+      box-shadow:var(--shadow);
+      margin-bottom:24px;
+    }
+
+    .eyebrow{
+      display:inline-block;
+      padding:6px 12px;
+      border-radius:999px;
+      background:#ffffffcc;
+      border:1px solid #eadfff;
+      color:#7b5bc8;
+      font-weight:700;
+      margin-bottom:12px;
+    }
+
+    h1{
+      margin:0 0 10px;
+      font-size:clamp(30px,4vw,44px);
+      line-height:1.15;
+    }
+
+    .subtitle{
+      margin:0;
+      max-width:1000px;
+      color:var(--muted);
+      font-size:18px;
+    }
+
+    .quick-grid,
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(12,1fr);
+      gap:18px;
+    }
+
+    .stat{
+      grid-column:span 3;
+      background:var(--paper);
+      border:1px solid var(--line);
+      border-radius:22px;
+      padding:18px;
+      box-shadow:var(--shadow);
+    }
+
+    .stat h3{margin:0 0 6px; font-size:15px; color:var(--muted)}
+    .stat p{margin:0; font-size:19px; font-weight:800}
+
+    .box{
+      grid-column:span 6;
+      background:var(--paper);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:22px;
+      box-shadow:var(--shadow);
+      break-inside:avoid;
+      page-break-inside:avoid;
+    }
+
+    .box.full{grid-column:1 / -1}
+    .box.third{grid-column:span 4}
+    .box.pink{background:linear-gradient(180deg,#fff 0%, var(--pink) 100%)}
+    .box.lilac{background:linear-gradient(180deg,#fff 0%, var(--lilac) 100%)}
+    .box.blue{background:linear-gradient(180deg,#fff 0%, var(--blue) 100%)}
+    .box.green{background:linear-gradient(180deg,#fff 0%, var(--green) 100%)}
+    .box.yellow{background:linear-gradient(180deg,#fff 0%, var(--yellow) 100%)}
+
+    h2{
+      margin:0 0 14px;
+      font-size:24px;
+      line-height:1.25;
+    }
+
+    h3{
+      margin:16px 0 8px;
+      font-size:18px;
+    }
+
+    p{margin:8px 0}
+    ul{margin:8px 0 0 0; padding-left:22px}
+    li{margin:6px 0}
+
+    .tagrow{display:flex; flex-wrap:wrap; gap:8px; margin-top:12px}
+    .tag{
+      display:inline-block;
+      padding:6px 10px;
+      border-radius:999px;
+      background:#ffffffb7;
+      border:1px solid rgba(255,255,255,.8);
+      font-size:13px;
+      font-weight:700;
+      color:#50607a;
+    }
+
+    .important{
+      background:linear-gradient(180deg, transparent 45%, #fff0a8 45%);
+      font-weight:800;
+    }
+
+    .flow{
+      display:grid;
+      grid-template-columns:repeat(5,1fr);
+      gap:10px;
+      margin-top:14px;
+    }
+
+    .step{
+      background:white;
+      border:1px solid var(--line);
+      border-radius:16px;
+      padding:12px;
+      min-height:110px;
+    }
+
+    .step .n{
+      display:inline-flex;
+      width:28px;height:28px;
+      align-items:center;justify-content:center;
+      border-radius:50%;
+      background:#efe8ff;
+      color:#6f56ca;
+      font-weight:800;
+      margin-bottom:8px;
+    }
+
+    table{
+      width:100%;
+      border-collapse:collapse;
+      overflow:hidden;
+      border-radius:14px;
+      margin-top:10px;
+      background:white;
+    }
+
+    th, td{
+      border:1px solid #e7ebf2;
+      padding:12px 10px;
+      text-align:left;
+      vertical-align:top;
+      font-size:15px;
+    }
+
+    th{background:#f5f7fb; font-size:14px; text-transform:uppercase; letter-spacing:.03em}
+
+    .image-card{
+      background:white;
+      border:1px solid var(--line);
+      border-radius:18px;
+      padding:14px;
+      box-shadow:var(--shadow);
+      break-inside:avoid;
+      page-break-inside:avoid;
+    }
+
+    .image-grid{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:16px;
+      margin-top:14px;
+    }
+
+    .image-card img{
+      width:100%;
+      border-radius:14px;
+      display:block;
+      max-height:330px;
+      object-fit:cover;
+      background:#f3f5f9;
+    }
+
+    .caption{
+      margin-top:10px;
+      font-size:14px;
+      color:#55657d;
+    }
+
+    .caption b{color:#26344a}
+
+    .mini-note{
+      margin-top:12px;
+      padding:12px 14px;
+      border-left:4px solid var(--gold);
+      background:#fffdf4;
+      border-radius:10px;
+    }
+
+    .two-col{
+      columns:2;
+      column-gap:24px;
+    }
+
+    .two-col li{break-inside:avoid}
+
+    .sources{
+      font-size:14px;
+      color:#5c6b81;
+    }
+
+    .footer-note{
+      margin-top:24px;
+      font-size:13px;
+      color:#6d7b8f;
+      text-align:center;
+    }
+
+    @media (max-width: 1080px){
+      .stat{grid-column:span 6}
+      .box{grid-column:1 / -1}
+      .box.third{grid-column:1 / -1}
+      .flow{grid-template-columns:repeat(2,1fr)}
+      .image-grid{grid-template-columns:1fr}
+      .two-col{columns:1}
+    }
+
+    @media print{
+      @page{size:A4 landscape; margin:10mm}
+      body{background:white}
+      .topbar{display:none !important}
+      .page{max-width:none; padding:0}
+      .hero, .box, .stat, .image-card{
+        box-shadow:none !important;
+        border:1px solid #ccd3df;
+      }
+      h1{font-size:24px}
+      h2{font-size:18px}
+      h3{font-size:14px}
+      p, li, td, th, .caption, .sources, .subtitle{font-size:11px}
+      .tag{font-size:10px; padding:4px 8px}
+      .flow{grid-template-columns:repeat(5,1fr)}
+      .image-card img{max-height:180px; object-fit:contain}
+      .hero, .box, .stat, .image-card{break-inside:avoid; page-break-inside:avoid}
+      button{display:none}
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="brand">GreekDoc • Ερπητοϊοί</div>
+    <div class="actions">
+      <button class="ghost" onclick="window.scrollTo({top:0,behavior:'smooth'})">Κορυφή</button>
+      <button onclick="window.print()">Print Notes</button>
+    </div>
+  </div>
+
+  <main class="page">
+    <section class="hero">
+      <div class="eyebrow">Ιατρική Μικροβιολογία • GreekDoc σημειώσεις</div>
+      <h1>Ερπητοϊοί – δομημένες αναλυτικές σημειώσεις<br>με έμφαση σε <span style="color:var(--violet)">EBV</span> και <span style="color:var(--teal)">CMV</span></h1>
+      <p class="subtitle">
+        Η λογική είναι: πρώτα ο κοινός μηχανισμός των ερπητοϊών, μετά ο <b>EBV</b>, μετά ο <b>CMV</b>, και στο τέλος μία καθαρή <b>σύγκριση EBV vs CMV</b>.
+      </p>
+      <div class="tagrow">
+        <span class="tag">dsDNA ιοί</span>
+        <span class="tag">αναπαραγωγή στον πυρήνα</span>
+        <span class="tag">immediate early / early / late genes</span>
+        <span class="tag">λανθάνουσα λοίμωξη</span>
+        <span class="tag">λοιμώδης μονοπυρήνωση</span>
+        <span class="tag">συγγενής CMV</span>
+      </div>
+    </section>
+
+    <section class="quick-grid" style="margin-bottom:18px;">
+      <div class="stat"><h3>Οικογένεια</h3><p>Herpesviridae</p></div>
+      <div class="stat"><h3>Γονιδίωμα</h3><p>δίκλωνο DNA</p></div>
+      <div class="stat"><h3>Θέση πολλαπλασιασμού</h3><p>πυρήνας</p></div>
+      <div class="stat"><h3>Κεντρικό χαρακτηριστικό</h3><p>λανθάνουσα παραμονή</p></div>
+    </section>
+
+    <section class="grid">
+      <div class="box lilac third">
+        <h2>1. Υποοικογένειες ερπητοϊών</h2>
+        <p>Οι ερπητοϊοί χωρίζονται κλασικά σε 3 υποοικογένειες ανάλογα με τον ρυθμό ανάπτυξης και τον κυτταρικό τους τροπισμό.</p>
+        <ul>
+          <li><b>Α:</b> ταχεία ανάπτυξη, παραμονή κυρίως σε <span class="important">αισθητικά γάγγλια</span> → <b>HSV-1, HSV-2, VZV</b></li>
+          <li><b>Β:</b> βραδεία ανάπτυξη, <span class="important">πολλαπλές εντοπίσεις</span> → <b>CMV, HHV-6, HHV-7</b></li>
+          <li><b>Γ:</b> ανάπτυξη σε <span class="important">λεμφοβλάστες/λεμφοκύτταρα</span> → <b>EBV, HHV-8</b></li>
+        </ul>
+        <div class="mini-note"><b>Κλινική ιδέα:</b> Η υποοικογένεια ήδη μας δείχνει πού “κρύβεται” ο ιός και τι τύπου νόσο μπορεί να περιμένεις.</div>
+      </div>
+
+      <div class="box blue third">
+        <h2>2. Τι πρέπει να θυμάσαι για όλους τους ερπητοϊούς</h2>
+        <ul>
+          <li>Είναι <b>ιοί DNA</b>, συγκεκριμένα <b>dsDNA</b>.</li>
+          <li>Ο πολλαπλασιασμός τους γίνεται κυρίως <b>στον πυρήνα</b>.</li>
+          <li>Έχουν <b>3 φάσεις γονιδιακής έκφρασης</b>:
+            <ul>
+              <li><b>Immediate early</b> → ρύθμιση των υπολοίπων γονιδίων</li>
+              <li><b>Early</b> → ένζυμα για αντιγραφή DNA</li>
+              <li><b>Late</b> → δομικές πρωτεΐνες καψιδίου και περιβλήματος</li>
+            </ul>
+          </li>
+          <li>Έχουν ικανότητα <b>λανθάνουσας λοίμωξης</b>, άρα μπορούν να παραμένουν στο σώμα για χρόνια.</li>
+        </ul>
+      </div>
+
+      <div class="box yellow third">
+        <h2>3. Μνημονικό σκελετό</h2>
+        <p><b>Ερπητοϊός = μπαίνει, γράφει, μένει, ξαναξυπνά.</b></p>
+        <ul>
+          <li><b>Μπαίνει</b> στο κύτταρο</li>
+          <li><b>Γράφει</b> τα γονίδιά του σε 3 φάσεις</li>
+          <li><b>Μένει</b> λανθάνων</li>
+          <li><b>Ξαναξυπνά</b> όταν ευνοηθεί από stress ή ανοσοκαταστολή</li>
+        </ul>
+        <div class="mini-note">Αυτό το μοτίβο είναι η βάση για να καταλαβαίνεις γιατί οι ερπητοϊοί κάνουν <b>υποτροπές</b>.</div>
+      </div>
+
+      <div class="box full pink">
+        <h2>4. Κοινός πολλαπλασιασμός ερπητοϊών – βήμα προς βήμα</h2>
+        <p>Ο πολλαπλασιασμός των ερπητοϊών έχει συγκεκριμένη λογική αλληλουχία. Αν την καταλάβεις, θυμάσαι πολύ πιο εύκολα και τα επιμέρους σημεία των HSV, EBV, CMV κτλ.</p>
+        <div class="flow">
+          <div class="step"><div class="n">1</div><b>Προσκόλληση</b><br>Ο ιός προσκολλάται σε υποδοχείς της κυτταρικής μεμβράνης.</div>
+          <div class="step"><div class="n">2</div><b>Fusion</b><br>Το ιικό envelope συντήκεται με τη μεμβράνη του κυττάρου.</div>
+          <div class="step"><div class="n">3</div><b>Είσοδος</b><br>Το νουκλεοκαψίδιο μπαίνει στο κύτταρο και μεταφέρεται προς τον πυρήνα.</div>
+          <div class="step"><div class="n">4</div><b>Γονιδιακή έκφραση</b><br>Immediate early → early → late.</div>
+          <div class="step"><div class="n">5</div><b>Συναρμολόγηση & έξοδος</b><br>Το καψίδιο σχηματίζεται στον πυρήνα, ο ιός αποκτά περίβλημα από πυρηνική μεμβράνη και τελικά απελευθερώνεται.</div>
+        </div>
+        <div class="mini-note">
+          <b>Πολύ σημαντικό εξεταστικό σημείο:</b> το περίβλημα των ερπητοϊών αποκτάται κατά τη διέλευση από πυρηνικές μεμβράνες μέσω <b>εκβλάστησης</b> (<i>budding</i>).
+        </div>
+      </div>
+
+      <div class="box full">
+        <h2>5. Εικόνες κατανόησης</h2>
+        <div class="image-grid">
+          <div class="image-card">
+            <img src="herpes_replication.JPG" alt="Διάγραμμα κύκλου ζωής ερπητοϊού" />
+            <div class="caption"><b>Εικόνα 1.</b> Σχηματικό διάγραμμα του κύκλου ζωής ερπητοϊού. Πολύ χρήσιμο για να θυμάσαι τις 3 φάσεις γονιδιακής έκφρασης και ότι η τελική έξοδος σχετίζεται με απόκτηση περιβλήματος.</div>
+          </div>
+          <div class="image-card">
+            <img src="ebv_particles.jpg" alt="Ηλεκτρονική μικρογραφία EBV" />
+            <div class="caption"><b>Εικόνα 2.</b> Ηλεκτρονική μικρογραφία σωματιδίων <b>EBV</b>.</div>
+          </div>
+          <div class="image-card">
+            <img src="atypical_lymphocytes_mononucleosis.jpg" alt="Άτυπα λεμφοκύτταρα σε λοιμώδη μονοπυρήνωση" />
+            <div class="caption"><b>Εικόνα 3.</b> Άτυπα λεμφοκύτταρα σε λοιμώδη μονοπυρήνωση. Θυμήσου: αυτά είναι <b>ενεργοποιημένα Τ-κύτταρα</b>, όχι τα ίδια τα μολυσμένα Β-κύτταρα.</div>
+          </div>
+          <div class="image-card">
+            <img src="cmv_owl_eye.jpg" alt="CMV owl eye inclusions" />
+            <div class="caption"><b>Εικόνα 4.</b> Τυπική ιστολογική εικόνα <b>“owl’s eye”</b> σε CMV. Είναι το κλασικό μορφολογικό εύρημα που σχετίζεται με μεγάλα μολυσμένα κύτταρα με ενδοπυρηνικά έγκλειστα.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="box pink full">
+        <h2>6. Epstein–Barr virus (EBV / HHV-4) – βασική ιδέα</h2>
+        <p>Ο <b>EBV</b> ανήκει στην υποοικογένεια <b>Γ</b> και έχει ιδιαίτερη αγάπη για τα <span class="important">Β-λεμφοκύτταρα</span>. Εισέρχεται σε αυτά μέσω του υποδοχέα <b>CD21</b>.</p>
+        <ul>
+          <li>Δεν κάνει απλώς λοίμωξη: <b>ενεργοποιεί</b> τα Β-κύτταρα.</li>
+          <li>Μιμείται σήματα ενεργοποίησης, άρα τα Β-κύτταρα <b>πολλαπλασιάζονται</b> και δεν πεθαίνουν εύκολα.</li>
+          <li>Μετά την είσοδο, υπάρχουν δύο πιθανοί δρόμοι:
+            <ul>
+              <li><b>Λυτικός κύκλος</b> → παραγωγή νέων ιών</li>
+              <li><b>Λανθάνουσα λοίμωξη</b> → το ιικό DNA παραμένει ως <b>κυκλικό επίσωμα (episome)</b> στον πυρήνα</li>
+            </ul>
+          </li>
+        </ul>
+        <div class="mini-note"><b>Σημαντικό για εξετάσεις:</b> ο EBV δεν ενσωματώνεται κλασικά στο γονιδίωμα του ξενιστή· παραμένει συνήθως ως <b>episome</b>.</div>
+      </div>
+
+      <div class="box lilac">
+        <h2>7. Πορεία λοίμωξης από EBV</h2>
+        <ol>
+          <li>Μόλυνση επιθηλιακών κυττάρων του <b>ρινοφάρυγγα</b>.</li>
+          <li>Τοπικός πολλαπλασιασμός → <b>φαρυγγίτιδα</b>.</li>
+          <li>Απελευθέρωση στο <b>σάλιο</b> → μετάδοση ως “<b>kissing disease</b>”.</li>
+          <li>Προσβολή <b>Β-λεμφοκυττάρων</b> μέσω CD21.</li>
+          <li>Πολυκλωνική ενεργοποίηση Β-κυττάρων → παραγωγή <b>ετερόφιλων αντισωμάτων</b>.</li>
+          <li>Τα μολυσμένα Β-κύτταρα εκφράζουν ιικές πρωτεΐνες στην επιφάνειά τους.</li>
+          <li>Ενεργοποιούνται <b>CD8+ Τ-κύτταρα</b> που τα καταστρέφουν.</li>
+          <li>Η έντονη ανοσολογική απάντηση οδηγεί σε <b>λεμφαδενοπάθεια, σπληνομεγαλία, ηπατομεγαλία</b>.</li>
+        </ol>
+      </div>
+
+      <div class="box blue">
+        <h2>8. Τι είναι τα άτυπα λεμφοκύτταρα;</h2>
+        <p>Στη λοιμώδη μονοπυρήνωση βλέπουμε στο αίμα τα λεγόμενα <b>άτυπα λεμφοκύτταρα</b> ή <b>Downey cells</b>.</p>
+        <ul>
+          <li><b>Δεν είναι</b> τα μολυσμένα Β-κύτταρα.</li>
+          <li>Είναι κυρίως <b>ενεργοποιημένα Τ-λεμφοκύτταρα</b> που αντιδρούν εναντίον των μολυσμένων Β-κυττάρων.</li>
+          <li>Λέγονται “άτυπα” γιατί έχουν <b>μεγάλο μέγεθος</b>, άφθονο κυτταρόπλασμα και <b>ακανόνιστο σχήμα</b>.</li>
+        </ul>
+        <div class="mini-note"><b>Άρα:</b> στον EBV το αίμα “φωνάζει” την ανοσολογική αντίδραση του οργανισμού, όχι απλώς την παρουσία του ιού.</div>
+      </div>
+
+      <div class="box yellow full">
+        <h2>9. Αντιγόνα EBV – πώς να τα βάλεις σε σειρά</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Δείκτης</th>
+              <th>Τι σημαίνει</th>
+              <th>Πότε εμφανίζεται</th>
+              <th>Κλινική αξία</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><b>VCA-IgM</b></td>
+              <td>Αντισώματα κατά του καψιδικού αντιγόνου</td>
+              <td>Πρώιμα</td>
+              <td>Δείχνει <b>οξεία πρόσφατη λοίμωξη</b></td>
+            </tr>
+            <tr>
+              <td><b>VCA-IgG</b></td>
+              <td>Αντισώματα κατά του καψιδικού αντιγόνου</td>
+              <td>Λίγο μετά το IgM</td>
+              <td>Παραμένει για χρόνια/δια βίου → δείχνει <b>έκθεση</b></td>
+            </tr>
+            <tr>
+              <td><b>EA</b></td>
+              <td>Early antigen</td>
+              <td>Νωρίς στην ενεργό λοίμωξη</td>
+              <td>Υποδηλώνει ότι ο <b>ιικός πολλαπλασιασμός</b> έχει αρχίσει</td>
+            </tr>
+            <tr>
+              <td><b>EBNA</b></td>
+              <td>Πυρηνικό αντιγόνο του EBV</td>
+              <td>Αργότερα</td>
+              <td>Συνδέεται με <b>παλιά/λανθάνουσα λοίμωξη</b></td>
+            </tr>
+            <tr>
+              <td><b>LMP</b></td>
+              <td>Latent membrane protein</td>
+              <td>Λανθάνουσα φάση</td>
+              <td>Μιμείται σήματα ανάπτυξης, συμβάλλει σε <b>καρκινογένεση</b></td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="mini-note"><b>Γρήγορο pattern:</b> <b>Οξεία φάση</b> → EA, VCA-IgM, VCA-IgG. <b>Παλιότερη λοίμωξη</b> → EBNA + VCA-IgG.</div>
+      </div>
+
+      <div class="box pink">
+        <h2>10. Λοιμώδης μονοπυρήνωση από EBV</h2>
+        <p>Η λοιμώδης μονοπυρήνωση είναι ουσιαστικά η <b>κλινική έκφραση της έντονης ανοσολογικής αντίδρασης</b> που προκαλεί ο EBV.</p>
+        <h3>Κύρια συμπτώματα</h3>
+        <ul>
+          <li>Πυρετός</li>
+          <li>Φαρυγγίτιδα / αμυγδαλίτιδα</li>
+          <li>Λεμφαδενοπάθεια</li>
+          <li>Σπληνομεγαλία</li>
+          <li>Κακουχία / κόπωση</li>
+        </ul>
+        <h3>Εργαστηριακά</h3>
+        <ul>
+          <li>Λευκοκυττάρωση με <b>λεμφοκυττάρωση</b></li>
+          <li><b>&gt;10% άτυπα λεμφοκύτταρα</b></li>
+          <li>Αύξηση ηπατικών ενζύμων</li>
+          <li>Ετερόφιλα αντισώματα θετικά (Monospot / Paul-Bunnell)</li>
+        </ul>
+      </div>
+
+      <div class="box blue">
+        <h2>11. Παγίδες στις εξετάσεις για EBV</h2>
+        <ul>
+          <li>Αν δοθεί <b>αμπικιλλίνη ή αμοξυκιλλίνη</b> σε ασθενή με EBV, εμφανίζεται συχνά <b>έντονο εξάνθημα</b>.</li>
+          <li>Η σπληνομεγαλία σημαίνει κίνδυνο <b>ρήξης σπληνός</b>.</li>
+          <li>Οι πλάκες στις αμυγδαλές μπορεί να θυμίζουν <b>στρεπτοκοκκική φαρυγγίτιδα</b>.</li>
+          <li>Το <b>Monospot</b> μπορεί να είναι αρνητικό νωρίς, οπότε βοηθά το <b>VCA-IgM</b>.</li>
+          <li>Μπορεί να δεις ήπια <b>θρομβοπενία</b> ή σπανιότερα <b>αιμολυτική αναιμία</b>.</li>
+        </ul>
+      </div>
+
+      <div class="box lilac full">
+        <h2>12. Γιατί ο EBV συνδέεται με καρκινογένεση;</h2>
+        <p>Ο EBV μπορεί να συμβάλει σε ογκογένεση επειδή:</p>
+        <ul>
+          <li>το <b>LMP</b> μιμείται σήματα ανάπτυξης και επιβίωσης,</li>
+          <li>το <b>EBNA</b> επηρεάζει την κυτταρική γονιδιακή έκφραση,</li>
+          <li>ο ιός οδηγεί σε <b>συνεχή πολλαπλασιασμό Β-κυττάρων</b>.</li>
+        </ul>
+        <h3>Νεοπλάσματα/καταστάσεις που σχετίζονται</h3>
+        <ul class="two-col">
+          <li>Λέμφωμα <b>Burkitt</b></li>
+          <li>Καρκίνος <b>ρινοφάρυγγα</b></li>
+          <li>Λέμφωμα <b>Hodgkin</b></li>
+          <li>Ορισμένα <b>Non-Hodgkin</b> λεμφώματα</li>
+          <li>NK/T-cell λεμφώματα, κυρίως σε ανοσοκαταστολή</li>
+          <li><b>Post-transplant</b> λεμφοϋπερπλασία</li>
+          <li><b>Στοματική λευκοπλακία</b> σε HIV</li>
+          <li>Καρκίνος του <b>στομάχου</b></li>
+        </ul>
+      </div>
+
+      <div class="box green full">
+        <h2>13. Κυτταρομεγαλοϊός (CMV / HHV-5) – βασική ιδέα</h2>
+        <p>Ο <b>CMV</b> ανήκει στην υποοικογένεια <b>Β</b>. Είναι επίσης dsDNA ερπητοϊός, αλλά σε αντίθεση με τον EBV έχει πιο <b>πλατύ κυτταρικό τροπισμό</b>.</p>
+        <ul>
+          <li>Κάνει λανθάνουσα λοίμωξη και παραμένει ως <b>κυκλικό επίσωμα</b> στον πυρήνα, ιδιαίτερα σε <b>μονοκύτταρα</b>.</li>
+          <li>Μπορεί να μολύνει <b>μονοκύτταρα/μακροφάγα, ενδοθηλιακά κύτταρα, επιθηλιακά κύτταρα, ινοβλάστες</b> και άλλους ιστούς.</li>
+          <li>Χαρακτηριστικό μορφολογικό εύρημα είναι τα κύτταρα με εμφάνιση <b>“owl’s eye”</b>.</li>
+        </ul>
+        <div class="mini-note"><b>Μνήμη:</b> CMV = <b>μεγάλα κύτταρα</b> + <b>ενδοπυρηνικά έγκλειστα</b> + <b>σοβαρότητα σε ανοσοκαταστολή και έμβρυο</b>.</div>
+      </div>
+
+      <div class="box yellow">
+        <h2>14. Τι σημαίνει “owl’s eye”;</h2>
+        <p>Το “<b>owl’s eye</b>” είναι η ιστολογική εικόνα μολυσμένου κυττάρου από CMV με:</p>
+        <ul>
+          <li><b>μεγάλο πυρήνα</b>,</li>
+          <li>πυκνό ενδοπυρηνικό έγκλειστο,</li>
+          <li>και γύρω του <b>ανοιχτόχρωμη άλω</b>.</li>
+        </ul>
+        <p>Ονομάζεται έτσι επειδή ο πυρήνας θυμίζει το <b>μάτι κουκουβάγιας</b>.</p>
+      </div>
+
+      <div class="box blue">
+        <h2>15. Μετάδοση CMV</h2>
+        <p>Ο CMV μεταδίδεται με <b>σωματικά υγρά</b> και γενικά έχει <b>ευρεία διασπορά</b>.</p>
+        <ul>
+          <li>Σάλιο</li>
+          <li>Αίμα / μεταγγίσεις</li>
+          <li>Μεταμόσχευση οργάνων</li>
+          <li>Σεξουαλική επαφή</li>
+          <li>Ούρα</li>
+          <li>Κάθετα από <b>μητέρα σε έμβρυο</b></li>
+        </ul>
+        <div class="mini-note">Ο CMV μπορεί να αποβάλλεται <b>για μεγάλο χρονικό διάστημα ασυμπτωματικά</b>, αλλά δεν επιβιώνει καλά εκτός σώματος.</div>
+      </div>
+
+      <div class="box pink">
+        <h2>16. Πρωτοπαθής λοίμωξη και επανενεργοποίηση CMV</h2>
+        <h3>Πρωτοπαθής λοίμωξη</h3>
+        <ul>
+          <li>Συνήθως <b>ασυμπτωματική ή ήπια</b></li>
+          <li>Μπορεί να μοιάζει με μονοπυρήνωση αλλά <b>χωρίς ετερόφιλα αντισώματα</b></li>
+        </ul>
+        <h3>Επανενεργοποίηση</h3>
+        <ul>
+          <li>Συχνά ασυμπτωματική σε ανοσοεπαρκείς</li>
+          <li>Μπορεί να γίνει <b>σοβαρή</b> σε <b>AIDS</b>, μεταμοσχευμένους και γενικά ανοσοκατασταλμένους</li>
+        </ul>
+      </div>
+
+      <div class="box lilac">
+        <h2>17. Θεραπεία CMV</h2>
+        <ul>
+          <li><b>Ganciclovir</b></li>
+          <li><b>Foscarnet</b></li>
+        </ul>
+        <p>Τα φάρμακα αυτά χρησιμοποιούνται κυρίως όταν η λοίμωξη είναι <b>σοβαρή</b>, ιδιαίτερα σε ανοσοκαταστολή ή σε σημαντική συγγενή/νεογνική νόσο.</p>
+      </div>
+
+      <div class="box green full">
+        <h2>18. Συγγενής CMV – το πιο σημαντικό κλινικό κομμάτι</h2>
+        <p>Η συγγενής λοίμωξη από CMV είναι <span class="important">η πιο συχνή συγγενής λοίμωξη</span>. Είναι ιδιαίτερα σημαντική γιατί μπορεί να προκαλέσει σοβαρές βλάβες στο έμβρυο και στο νεογνό.</p>
+        <h3>Τι πρέπει να ξέρεις</h3>
+        <ul>
+          <li>Ο κίνδυνος για το έμβρυο είναι μεγαλύτερος όταν η μητέρα έχει <b>πρωτοπαθή λοίμωξη</b> στην κύηση.</li>
+          <li>Περίπου <b>35–50%</b> των εμβρύων μπορεί να μολυνθούν σε πρωτοπαθή μητρική λοίμωξη.</li>
+          <li>Πολλά νεογνά είναι αρχικά <b>ασυμπτωματικά</b>, αλλά μπορεί αργότερα να εμφανίσουν προβλήματα.</li>
+        </ul>
+        <h3>Πιθανές εκδηλώσεις</h3>
+        <ul class="two-col">
+          <li><b>Μικροκεφαλία</b></li>
+          <li><b>Ενδοκράνιες ασβεστώσεις</b></li>
+          <li><b>Ηπατοσπληνομεγαλία</b></li>
+          <li><b>Ίκτερος</b></li>
+          <li><b>Πετέχειες</b> / “blueberry muffin”</li>
+          <li><b>Κώφωση</b></li>
+          <li>Χοριοαμφιβληστροειδίτιδα</li>
+          <li>Καθυστέρηση ανάπτυξης</li>
+        </ul>
+        <div class="mini-note"><b>Πολύ υψηλής αξίας σημείο:</b> ακόμη και ασυμπτωματικά νεογνά μπορεί να εμφανίσουν αργότερα κυρίως <b>νευροαισθητήρια κώφωση</b> ή αναπτυξιακά προβλήματα.</div>
+      </div>
+
+      <div class="box full yellow">
+        <h2>19. EBV vs CMV – καθαρή σύγκριση</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Χαρακτηριστικό</th>
+              <th>EBV</th>
+              <th>CMV</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><b>Κύτταρο-στόχος</b></td>
+              <td>Β-λεμφοκύτταρα μέσω <b>CD21</b></td>
+              <td>Μονοκύτταρα/μακροφάγα και πολλά άλλα κύτταρα</td>
+            </tr>
+            <tr>
+              <td><b>Σύνδρομο μονοπυρήνωσης</b></td>
+              <td>Συνήθως <b>εντονότερο</b></td>
+              <td>Συνήθως <b>ηπιότερο</b></td>
+            </tr>
+            <tr>
+              <td><b>Φαρυγγίτιδα / λεμφαδενοπάθεια</b></td>
+              <td>Πιο έντονα</td>
+              <td>Λιγότερο χαρακτηριστικά</td>
+            </tr>
+            <tr>
+              <td><b>Ετερόφιλα αντισώματα</b></td>
+              <td><b>Θετικά</b></td>
+              <td><b>Αρνητικά</b></td>
+            </tr>
+            <tr>
+              <td><b>Άτυπα λεμφοκύτταρα</b></td>
+              <td>Συνήθως <b>&gt;10%</b></td>
+              <td>Συνήθως <b>&lt;10%</b></td>
+            </tr>
+            <tr>
+              <td><b>Ηπατικά ένζυμα</b></td>
+              <td>Μεγαλύτερη αύξηση</td>
+              <td>Μικρότερη αύξηση</td>
+            </tr>
+            <tr>
+              <td><b>Χολερυθρίνη</b></td>
+              <td>Μπορεί να αυξηθεί</td>
+              <td>Συνήθως όχι</td>
+            </tr>
+            <tr>
+              <td><b>Ειδικό μεγάλο κλινικό βάρος</b></td>
+              <td>Καρκινογένεση / μονοπυρήνωση</td>
+              <td>Συγγενής λοίμωξη / ανοσοκαταστολή</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="box pink third">
+        <h2>20. Τι να λες προφορικά για τον EBV</h2>
+        <p>“Ο EBV είναι γ-ερπητοϊός που προσβάλλει κυρίως Β-λεμφοκύτταρα μέσω CD21. Προκαλεί πολυκλωνική ενεργοποίηση Β-κυττάρων, ενώ τα άτυπα λεμφοκύτταρα που βλέπουμε στο αίμα είναι ενεργοποιημένα Τ-κύτταρα. Κλινικά προκαλεί λοιμώδη μονοπυρήνωση και σχετίζεται με διάφορα νεοπλάσματα.”</p>
+      </div>
+
+      <div class="box blue third">
+        <h2>21. Τι να λες προφορικά για τον CMV</h2>
+        <p>“Ο CMV είναι β-ερπητοϊός με ευρύ τροπισμό, κάνει λανθάνουσα λοίμωξη κυρίως σε μονοκύτταρα και δίνει κύτταρα ‘owl’s eye’. Είναι ιδιαίτερα σημαντικός σε ανοσοκαταστολή και αποτελεί την πιο συχνή συγγενή λοίμωξη.”</p>
+      </div>
+
+      <div class="box yellow third">
+        <h2>22. Υπερσύντομη αποστήθιση</h2>
+        <ul>
+          <li><b>EBV</b> → <b>B cells, CD21, Monospot+, atypical T cells, cancer</b></li>
+          <li><b>CMV</b> → <b>owl’s eye, Monospot−, congenital infection, Ganciclovir</b></li>
+        </ul>
+      </div>
+
+      <div class="box full">
+        <h2>23. Πηγές που χρησιμοποιήθηκαν για τη σύνθεση</h2>
+        <div class="sources">
+          <p><b>Βασικό περιεχόμενο σημειώσεων:</b></p>
+          <ul>
+            <li>Εσωτερικό υλικό 2: <i>ΙΙ ΕΡΠΗΤΟΪΟΙ ΙΙ.pdf</i></li>
+            <li>Online εικόνα 1: Wikimedia Commons – HSV life cycle diagram</li>
+            <li>Online εικόνα 2: Wikimedia Commons – Electron micrograph of EBV particles</li>
+            <li>Online εικόνα 3: ASH Image Bank – atypical lymphocytes in infectious mononucleosis</li>
+            <li>Online εικόνα 4: Wikimedia Commons – CMV owl’s eye inclusions</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <div class="footer-note">GreekDoc note page • έτοιμο για ανάγνωση και εκτύπωση σε οριζόντια διάταξη</div>
+  </main>
+</body>
+</html>

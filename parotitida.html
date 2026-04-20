@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GreekDoc – Ιός Παρωτίτιδας</title>
+  <style>
+    :root{
+      --bg:#f5f7fb;
+      --paper:#ffffff;
+      --ink:#243042;
+      --muted:#5f6f86;
+      --line:#dfe5ef;
+      --pink:#fde8ef;
+      --blue:#eaf3ff;
+      --green:#eaf8ef;
+      --yellow:#fff8de;
+      --lav:#f1ecff;
+      --accent:#7b67d9;
+      --accent2:#4f87b8;
+      --shadow:0 10px 30px rgba(33,44,70,.08);
+      --radius:22px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:"Segoe UI", Arial, sans-serif;
+      background:linear-gradient(180deg,#f8faff 0%, #eef3fb 100%);
+      color:var(--ink);
+      line-height:1.65;
+    }
+    .topbar{
+      position:sticky;
+      top:0;
+      z-index:30;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:12px;
+      padding:14px 18px;
+      background:rgba(248,250,255,.88);
+      border-bottom:1px solid rgba(223,229,239,.9);
+      backdrop-filter:blur(10px);
+    }
+    .brand{
+      font-weight:800;
+      letter-spacing:.3px;
+      color:#42536d;
+    }
+    .actions{display:flex; gap:10px; flex-wrap:wrap}
+    button{
+      border:none;
+      border-radius:999px;
+      padding:10px 16px;
+      font-weight:700;
+      cursor:pointer;
+      color:white;
+      background:linear-gradient(135deg,var(--accent),#a18cff);
+      box-shadow:var(--shadow);
+    }
+    button.ghost{
+      background:white;
+      color:#45556f;
+      border:1px solid var(--line);
+      box-shadow:none;
+    }
+    .page{
+      max-width:1400px;
+      margin:0 auto;
+      padding:28px 18px 56px;
+    }
+    .hero{
+      background:linear-gradient(135deg,#ffffff 0%, #f7efff 45%, #ecf5ff 100%);
+      border:1px solid var(--line);
+      border-radius:32px;
+      box-shadow:var(--shadow);
+      padding:28px;
+      margin-bottom:22px;
+    }
+    .eyebrow{
+      display:inline-block;
+      padding:6px 12px;
+      border-radius:999px;
+      border:1px solid #e6ddff;
+      background:#ffffffd9;
+      color:#715bd4;
+      font-size:13px;
+      font-weight:800;
+      margin-bottom:12px;
+    }
+    h1{
+      margin:0 0 10px;
+      font-size:clamp(30px,4vw,44px);
+      line-height:1.12;
+    }
+    .subtitle{
+      margin:0;
+      max-width:980px;
+      font-size:18px;
+      color:var(--muted);
+    }
+    .tagrow{
+      margin-top:16px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+    }
+    .tag{
+      padding:7px 11px;
+      border-radius:999px;
+      background:#ffffffcc;
+      border:1px solid rgba(255,255,255,.9);
+      color:#566780;
+      font-size:13px;
+      font-weight:700;
+    }
+
+    .stats, .grid{
+      display:grid;
+      grid-template-columns:repeat(12,1fr);
+      gap:18px;
+    }
+    .stat{
+      grid-column:span 3;
+      background:var(--paper);
+      border:1px solid var(--line);
+      border-radius:20px;
+      padding:18px;
+      box-shadow:var(--shadow);
+      break-inside:avoid;
+      page-break-inside:avoid;
+    }
+    .stat h3{
+      margin:0 0 6px;
+      font-size:14px;
+      color:var(--muted);
+    }
+    .stat p{
+      margin:0;
+      font-size:20px;
+      font-weight:800;
+    }
+    .box{
+      grid-column:span 6;
+      background:var(--paper);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:22px;
+      box-shadow:var(--shadow);
+      break-inside:avoid;
+      page-break-inside:avoid;
+    }
+    .full{grid-column:1 / -1}
+    .third{grid-column:span 4}
+    .pink{background:linear-gradient(180deg,#fff 0%, var(--pink) 100%)}
+    .blue{background:linear-gradient(180deg,#fff 0%, var(--blue) 100%)}
+    .green{background:linear-gradient(180deg,#fff 0%, var(--green) 100%)}
+    .yellow{background:linear-gradient(180deg,#fff 0%, var(--yellow) 100%)}
+    .lav{background:linear-gradient(180deg,#fff 0%, var(--lav) 100%)}
+
+    h2{
+      margin:0 0 14px;
+      font-size:25px;
+      line-height:1.22;
+    }
+    h3{
+      margin:18px 0 8px;
+      font-size:18px;
+    }
+    p{margin:8px 0}
+    ul,ol{margin:8px 0 0; padding-left:22px}
+    li{margin:6px 0}
+    .important{
+      background:linear-gradient(180deg, transparent 45%, #fff0a8 45%);
+      font-weight:800;
+    }
+    .flow{
+      display:grid;
+      grid-template-columns:repeat(5,1fr);
+      gap:10px;
+      margin-top:14px;
+    }
+    .step{
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:16px;
+      padding:12px;
+      min-height:110px;
+    }
+    .n{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      width:29px;height:29px;
+      border-radius:50%;
+      background:#efe9ff;
+      color:#6f58cf;
+      font-weight:800;
+      margin-bottom:8px;
+    }
+    .mini{
+      margin-top:12px;
+      padding:12px 14px;
+      border-left:4px solid #d6a74a;
+      background:#fffdf5;
+      border-radius:10px;
+    }
+    table{
+      width:100%;
+      border-collapse:collapse;
+      margin-top:12px;
+      background:white;
+      border-radius:14px;
+      overflow:hidden;
+    }
+    th,td{
+      border:1px solid #e7ebf2;
+      padding:11px 10px;
+      text-align:left;
+      vertical-align:top;
+      font-size:15px;
+    }
+    th{
+      background:#f4f7fc;
+      font-size:13px;
+      text-transform:uppercase;
+      letter-spacing:.04em;
+    }
+    .image-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:16px;
+      margin-top:14px;
+    }
+    .image-card{
+      background:white;
+      border:1px solid var(--line);
+      border-radius:18px;
+      padding:14px;
+      box-shadow:var(--shadow);
+      break-inside:avoid;
+      page-break-inside:avoid;
+    }
+    .image-card img{
+      width:100%;
+      display:block;
+      border-radius:14px;
+      max-height:300px;
+      object-fit:cover;
+      background:#f2f5fa;
+    }
+    .image-card.tall img{object-fit:contain; background:#f8fafc}
+    .caption{
+      margin-top:10px;
+      font-size:14px;
+      color:#5a6a80;
+    }
+    .caption b{color:#243042}
+    .footer{
+      margin-top:24px;
+      text-align:center;
+      color:#6d7b90;
+      font-size:13px;
+    }
+
+    @media (max-width:1100px){
+      .stat{grid-column:span 6}
+      .box, .third{grid-column:1 / -1}
+      .flow{grid-template-columns:repeat(2,1fr)}
+      .image-grid{grid-template-columns:1fr}
+    }
+    @media print{
+      @page{size:A4 landscape; margin:10mm}
+      body{background:white}
+      .topbar{display:none !important}
+      .page{max-width:none; padding:0}
+      .hero,.stat,.box,.image-card{
+        box-shadow:none !important;
+        border:1px solid #cfd6e2;
+      }
+      h1{font-size:24px}
+      h2{font-size:18px}
+      h3{font-size:14px}
+      p,li,td,th,.subtitle,.caption{font-size:11px}
+      .tag{font-size:10px; padding:4px 8px}
+      .image-card img{max-height:180px; object-fit:contain}
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="brand">GreekDoc • Ιός Παρωτίτιδας</div>
+    <div class="actions">
+      <button class="ghost" onclick="window.scrollTo({top:0,behavior:'smooth'})">Κορυφή</button>
+      <button onclick="window.print()">Print Notes</button>
+    </div>
+  </div>
+
+  <main class="page">
+    <section class="hero">
+      <div class="eyebrow">Ιατρική Μικροβιολογία • GreekDoc</div>
+      <h1>Ιός Παρωτίτιδας (Mumps virus)</h1>
+      <p class="subtitle">
+        Δομημένες σημειώσεις για τον ιό της παρωτίτιδας με βάση τις αναλυτικές σημειώσεις και την παρουσίαση:
+        τι είναι ο ιός, πώς μεταδίδεται, πώς εξελίσσεται η λοίμωξη, ποια όργανα μπορεί να προσβάλει,
+        πώς μπαίνει η διάγνωση και ποιος είναι ο ρόλος του εμβολίου MMR.
+      </p>
+      <div class="tagrow">
+        <span class="tag">RNA ιός</span>
+        <span class="tag">Παραμυξοϊοί</span>
+        <span class="tag">Παρωτίδες</span>
+        <span class="tag">Ιαιμία 3–5 ημέρες</span>
+        <span class="tag">ΚΝΣ / όρχεις / πάγκρεας</span>
+        <span class="tag">MMR</span>
+      </div>
+    </section>
+
+    <section class="stats" style="margin-bottom:18px;">
+      <div class="stat"><h3>Οικογένεια / ομάδα</h3><p>Παραμυξοϊοί</p></div>
+      <div class="stat"><h3>Γονιδίωμα</h3><p>RNA ιός</p></div>
+      <div class="stat"><h3>Κύρια νόσος</h3><p>Παρωτίτιδα</p></div>
+      <div class="stat"><h3>Πρόληψη</h3><p>Εμβόλιο MMR</p></div>
+    </section>
+
+    <section class="grid">
+      <div class="box lav third">
+        <h2>1. Βασικά χαρακτηριστικά του ιού</h2>
+        <ul>
+          <li>Ο ιός της παρωτίτιδας είναι <b>RNA ιός</b>.</li>
+          <li>Ανήκει στην ομάδα των <b>παραμυξοϊών</b>.</li>
+          <li>Αδρανοποιείται από <b>ζέστη</b>, <b>αιθέρα</b>, <b>φορμόλη</b>, <b>χλωροφόρμιο</b> και <b>υπεριώδη ακτινοβολία</b>.</li>
+          <li>Προκαλεί την <b>παρωτίτιδα</b>, δηλαδή μία οξεία λοιμώδη ιογενή νόσο με χαρακτηριστική <span class="important">επώδυνη διόγκωση των σιελογόνων αδένων</span>, κυρίως των παρωτίδων.</li>
+        </ul>
+      </div>
+
+      <div class="box blue third">
+        <h2>2. Γλυκοπρωτεΐνες, αντιγόνα και αντισώματα</h2>
+        <h3>Γλυκοπρωτεΐνες του ιού</h3>
+        <ul>
+          <li>Αιμοσυγκολλητίνες</li>
+          <li>Νευραμινιδάσες</li>
+          <li>Αιμολυσίνες</li>
+        </ul>
+        <h3>Αντιγόνα</h3>
+        <ul>
+          <li><b>S</b> (στο εσωτερικό του ιού)</li>
+          <li><b>V</b> (στην επιφάνεια του ιού)</li>
+        </ul>
+        <h3>Αντισώματα</h3>
+        <ul>
+          <li><b>anti-S</b></li>
+          <li><b>anti-V</b></li>
+        </ul>
+        <p>Τα αντισώματα έναντι του <b>V αντιγόνου</b> συνδέονται με <b>μόνιμη ανοσία</b>.</p>
+      </div>
+
+      <div class="box yellow third">
+        <h2>3. Ανοσία και απομόνωση του ιού</h2>
+        <ul>
+          <li>Η νόσος αφήνει κατά κανόνα <b>μόνιμη ανοσία</b>.</li>
+          <li>Βρέφη μέχρι περίπου <b>6 μηνών</b> συνήθως δεν παθαίνουν παρωτίτιδα, εφόσον η μητέρα είχε νοσήσει στο παρελθόν.</li>
+          <li>Ο ιός μπορεί να απομονωθεί από:
+            <ul>
+              <li>σάλιο</li>
+              <li>ούρα</li>
+              <li>φάρυγγα</li>
+              <li>ΕΝΥ</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+
+      <div class="box full pink">
+        <h2>4. Παθογένεια</h2>
+        <div class="flow">
+          <div class="step"><div class="n">1</div><b>Είσοδος</b><br>Ο ιός εισέρχεται από το <b>αναπνευστικό</b>.</div>
+          <div class="step"><div class="n">2</div><b>Πολλαπλασιασμός</b><br>Πολλαπλασιάζεται στον <b>ρινοφάρυγγα</b> και στους <b>επιχώριους λεμφαδένες</b>.</div>
+          <div class="step"><div class="n">3</div><b>Ιαιμία</b><br>Ακολουθεί <b>ιαιμία</b> που διαρκεί περίπου <b>3–5 ημέρες</b>.</div>
+          <div class="step"><div class="n">4</div><b>Διασπορά</b><br>Ο ιός διασπείρεται σε πολλούς ιστούς και όργανα.</div>
+          <div class="step"><div class="n">5</div><b>Φλεγμονή</b><br>Η φλεγμονή των προσβεβλημένων ιστών οδηγεί στα κλινικά συμπτώματα και μπορεί να δώσει <b>άσηπτη μηνιγγίτιδα</b>.</div>
+        </div>
+        <div class="mini">
+          Η παρουσίαση δείχνει και πιο αναλυτικά την πορεία λοίμωξης: από τον αναπνευστικό βλεννογόνο, σε λεμφαδένες και σιελογόνους αδένες, έπειτα σε ιαιμία και τέλος σε εκλεκτική προσβολή οργάνων όπως <b>παρωτίδες, ΚΝΣ, όρχεις, πάγκρεας, νεφροί, οπτικό νεύρο, ωοθήκες και όργανο του Corti</b>.
+        </div>
+      </div>
+
+      <div class="box green">
+        <h2>5. Όργανα που μπορεί να προσβληθούν</h2>
+        <ul>
+          <li>Σιελογόνοι αδένες και κυρίως <b>παρωτίδες</b></li>
+          <li><b>Μήνιγγες</b> και γενικότερα ΚΝΣ</li>
+          <li><b>Πάγκρεας</b></li>
+          <li><b>Όρχεις</b></li>
+          <li><b>Ωοθήκες</b></li>
+          <li><b>Μαστοί</b></li>
+          <li><b>Θυρεοειδής</b></li>
+          <li><b>Νεφροί</b></li>
+          <li><b>Οπτικό νεύρο</b></li>
+          <li><b>Όργανο του Corti</b></li>
+        </ul>
+      </div>
+
+      <div class="box blue">
+        <h2>6. Μετάδοση και μεταδοτική περίοδος</h2>
+        <h3>Μετάδοση</h3>
+        <ul>
+          <li>Από <b>άτομο σε άτομο</b> με σταγονίδια από το στόμα / αναπνευστικές εκκρίσεις.</li>
+          <li>Με <b>αντικείμενα</b> που έχουν πρόσφατα μολυνθεί.</li>
+        </ul>
+        <h3>Μεταδοτική περίοδος</h3>
+        <p>Η νόσος μεταδίδεται περίπου <b>1 εβδομάδα πριν</b> μέχρι και <b>9 ημέρες μετά</b> την έναρξη της νόσου.</p>
+        <h3>Χρόνος επώασης</h3>
+        <p>Συνήθως <b>16–18 ημέρες</b>, με εύρος περίπου <b>12–25 ημέρες</b>.</p>
+      </div>
+
+      <div class="box full">
+        <h2>7. Κλινική εικόνα</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Βασικά ευρήματα</th>
+              <th>Σημεία που τονίζονται στις σημειώσεις / παρουσίαση</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><b>Διόγκωση παρωτίδας</b></td>
+              <td>Εμφανίζεται περίπου στο <b>60–70%</b> των λοιμώξεων· στη συμπτωματική νόσο είναι πολύ συχνή. Συνήθως είναι <b>αμφοτερόπλευρη</b>, αν και μπορεί να είναι και ετερόπλευρη.</td>
+            </tr>
+            <tr>
+              <td><b>Γενικά συμπτώματα</b></td>
+              <td><b>Πυρετός, κεφαλαλγία, κακουχία, ανορεξία</b>.</td>
+            </tr>
+            <tr>
+              <td><b>Διόγκωση άλλων αδένων / οργάνων</b></td>
+              <td>Μπορεί να εμφανιστούν <b>επιδιδυμο-ορχίτιδα</b>, <b>μαστίτιδα</b>, <b>παγκρεατίτιδα</b>, <b>θυρεοειδίτιδα</b>.</td>
+            </tr>
+            <tr>
+              <td><b>Προσβολή ΚΝΣ</b></td>
+              <td>Αναφέρεται προσβολή ΚΝΣ σε σημαντικό ποσοστό ασθενών, αλλά κλινική συμπτωματολογία σε μικρότερο ποσοστό.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="box pink">
+        <h2>8. Επιπλοκές</h2>
+        <ul>
+          <li><b>Άσηπτη μηνιγγίτιδα / προσβολή ΚΝΣ</b></li>
+          <li><b>Επιδιδυμο-ορχίτιδα</b>, ιδιαίτερα μετά την ήβη</li>
+          <li><b>Παγκρεατίτιδα</b></li>
+          <li><b>Κώφωση</b> λόγω προσβολής του οργάνου του Corti</li>
+          <li>Σπανιότερα σοβαρή έκβαση</li>
+        </ul>
+        <p>Στην παρουσίαση υπάρχει και ξεχωριστή διαφάνεια με συχνότητες για ΚΝΣ involvement, orchitis, pancreatitis, deafness και θάνατο.</p>
+      </div>
+
+      <div class="box lav">
+        <h2>9. Επιδιδυμο-ορχίτιδα και γονάδες</h2>
+        <p>Η προσβολή των γονάδων είναι ένα από τα πιο κλασικά συστηματικά σύνδρομα της παρωτίτιδας.</p>
+        <ul>
+          <li>Στους άνδρες μπορεί να εμφανιστεί <b>επιδιδυμο-ορχίτιδα</b>.</li>
+          <li>Στις σημειώσεις σου αναφέρεται και ο κίνδυνος <b>στειρότητας</b>.</li>
+          <li>Αντίστοιχα μπορεί να υπάρξει προσβολή και των <b>ωοθηκών</b>.</li>
+        </ul>
+      </div>
+
+      <div class="box full">
+        <h2>10. Εικόνες</h2>
+        <div class="image-grid">
+          <div class="image-card">
+            <img src="mumps_virus_electron_micrograph.jpg" alt="Ηλεκτρονική μικρογραφία ιού παρωτίτιδας">
+            <div class="caption"><b>Εικόνα 1.</b> Ηλεκτρονική μικρογραφία του ιού της παρωτίτιδας.</div>
+          </div>
+          <div class="image-card">
+            <img src="mumps_child_parotitis.jpg" alt="Παιδί με παρωτίτιδα και διόγκωση παρωτίδων">
+            <div class="caption"><b>Εικόνα 2.</b> Παιδί με χαρακτηριστική διόγκωση της περιοχής των παρωτίδων.</div>
+          </div>
+          <div class="image-card tall">
+            <img src="MMR_vaccine.jpg" alt="Εμβόλιο MMR">
+            <div class="caption"><b>Εικόνα 3.</b> Εμβόλιο MMR, που χρησιμοποιείται για την πρόληψη ιλαράς, παρωτίτιδας και ερυθράς.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="box green">
+        <h2>11. Εργαστηριακή διάγνωση</h2>
+        <p>Η παρουσίαση συμπληρώνει το κομμάτι που στις σύντομες σημειώσεις ήταν ανοιχτό.</p>
+        <ul>
+          <li><b>Απομόνωση / καλλιέργεια του ιού</b> από:
+            <ul>
+              <li>σάλιο</li>
+              <li>ούρα</li>
+              <li>ΕΝΥ</li>
+              <li>αίμα</li>
+              <li>φάρυγγα</li>
+            </ul>
+          </li>
+          <li><b>Ορολογική διάγνωση</b>:
+            <ul>
+              <li>ειδικά <b>IgM</b> αντισώματα</li>
+              <li>άνοδος τίτλου <b>IgG</b> σε διαδοχικά δείγματα</li>
+            </ul>
+          </li>
+          <li><b>RT-PCR</b></li>
+        </ul>
+      </div>
+
+      <div class="box blue">
+        <h2>12. Πρακτικά σημεία για τη διάγνωση</h2>
+        <ul>
+          <li>Το <b>σάλιο</b> αναφέρεται ως χρήσιμο δείγμα τις πρώτες ημέρες μετά την έναρξη των συμπτωμάτων.</li>
+          <li>Ο ιός μπορεί επίσης να αναζητηθεί στα <b>ούρα</b> για μεγαλύτερο διάστημα.</li>
+          <li>Σε νευρολογική συμμετοχή έχει σημασία το <b>ΕΝΥ</b>.</li>
+          <li>Η ορολογία και η <b>RT-PCR</b> βοηθούν στην επιβεβαίωση της λοίμωξης.</li>
+        </ul>
+      </div>
+
+      <div class="box full yellow">
+        <h2>13. Πρόληψη – Εμβόλιο MMR</h2>
+        <p>Η πρόληψη γίνεται με το <b>MMR</b>, δηλαδή το συνδυασμένο εμβόλιο για:</p>
+        <ul>
+          <li><b>Ιλαρά</b></li>
+          <li><b>Παρωτίτιδα</b></li>
+          <li><b>Ερυθρά</b></li>
+        </ul>
+        <p>Η παρουσίαση αναφέρει ότι το εμβόλιο περιέχει <b>ζώντες εξασθενημένους ιούς</b>.</p>
+        <p>Στις διαφάνειες φαίνεται επίσης η κλασική λογική των <b>δύο δόσεων</b> και η σαφής μείωση της επίπτωσης της νόσου μετά τον εμβολιασμό.</p>
+      </div>
+
+      <div class="box pink third">
+        <h2>14. Τι κρατάς για την παθογένεια</h2>
+        <p>Αναπνευστικό → ρινοφάρυγγας / λεμφαδένες → <b>ιαιμία</b> → διασπορά σε <b>παρωτίδες, ΚΝΣ, πάγκρεας, όρχεις, ωοθήκες</b> και άλλα όργανα.</p>
+      </div>
+
+      <div class="box blue third">
+        <h2>15. Τι κρατάς για την κλινική εικόνα</h2>
+        <p><b>Επώδυνη διόγκωση παρωτίδων</b>, συνήθως αμφοτερόπλευρη, με <b>πυρετό, κεφαλαλγία, κακουχία και ανορεξία</b>. Δεν μένει πάντα μόνο στους σιελογόνους αδένες.</p>
+      </div>
+
+      <div class="box green third">
+        <h2>16. Τι κρατάς για την πρόληψη</h2>
+        <p>Το <b>MMR</b> είναι το βασικό προληπτικό μέτρο και έχει μειώσει ουσιαστικά τα περιστατικά παρωτίτιδας.</p>
+      </div>
+    </section>
+
+    <div class="footer">GreekDoc note page • εκτύπωση σε οριζόντια διάταξη</div>
+  </main>
+</body>
+</html>
