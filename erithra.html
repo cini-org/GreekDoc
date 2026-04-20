@@ -1,155 +1,496 @@
 <!DOCTYPE html>
 <html lang="el">
 <head>
-<meta charset="UTF-8">
-<title>GreekDoc – Ερυθρά</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GreekDoc – Ερυθρά</title>
+  <style>
+    :root{
+      --bg:#f6f7fb;
+      --paper:#ffffff;
+      --ink:#243042;
+      --muted:#607089;
+      --pink:#ffe3ee;
+      --lilac:#eee8ff;
+      --blue:#e4f0ff;
+      --green:#e8f7ee;
+      --yellow:#fff7da;
+      --rose:#ff6e9a;
+      --violet:#8167d8;
+      --teal:#3b8f87;
+      --gold:#d8a83f;
+      --line:#dde3ee;
+      --shadow:0 10px 30px rgba(36,48,66,.08);
+      --radius:20px;
+    }
 
-<style>
-body{
-  font-family: 'Segoe UI', sans-serif;
-  background:#f5f7fb;
-  margin:0;
-}
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:"Segoe UI", Arial, sans-serif;
+      background:linear-gradient(180deg,#f7f8fc 0%, #eef2f9 100%);
+      color:var(--ink);
+      line-height:1.6;
+    }
 
-.container{
-  max-width:1200px;
-  margin:auto;
-  padding:20px;
-}
+    .topbar{
+      position:sticky;
+      top:0;
+      z-index:50;
+      backdrop-filter: blur(12px);
+      background:rgba(246,247,251,.85);
+      border-bottom:1px solid rgba(221,227,238,.9);
+      padding:12px 18px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:12px;
+    }
 
-.box{
-  background:white;
-  border-radius:18px;
-  padding:20px;
-  margin-bottom:18px;
-  box-shadow:0 10px 25px rgba(0,0,0,0.08);
-}
+    .brand{font-weight:800;letter-spacing:.3px;color:#40506a}
+    .actions{display:flex;gap:10px;flex-wrap:wrap}
+    button{
+      border:none;
+      padding:10px 16px;
+      border-radius:999px;
+      background:linear-gradient(135deg,var(--violet),#a981ff);
+      color:white;
+      font-weight:700;
+      cursor:pointer;
+      box-shadow:var(--shadow);
+    }
+    .ghost{
+      background:white;
+      color:#40506a;
+      border:1px solid var(--line);
+      box-shadow:none;
+    }
 
-.pink{background:#ffe4ec;}
-.blue{background:#e4f0ff;}
-.green{background:#e8f7ee;}
-.yellow{background:#fff6d6;}
+    .page{max-width:1400px;margin:0 auto;padding:28px 18px 60px}
+    .hero{
+      background:linear-gradient(135deg,#fff 0%, #f8edff 48%, #ebf5ff 100%);
+      border:1px solid var(--line);
+      border-radius:30px;
+      padding:28px;
+      box-shadow:var(--shadow);
+      margin-bottom:24px;
+    }
+    .eyebrow{
+      display:inline-block;
+      padding:6px 12px;
+      border-radius:999px;
+      background:#ffffffcc;
+      border:1px solid #eadfff;
+      color:#7b5bc8;
+      font-weight:700;
+      margin-bottom:12px;
+    }
+    h1{margin:0 0 10px;font-size:clamp(30px,4vw,44px);line-height:1.15}
+    .subtitle{margin:0;max-width:1000px;color:var(--muted);font-size:18px}
+    .tagrow{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+    .tag{
+      display:inline-block;
+      padding:6px 10px;
+      border-radius:999px;
+      background:#ffffffb7;
+      border:1px solid rgba(255,255,255,.8);
+      font-size:13px;
+      font-weight:700;
+      color:#50607a;
+    }
 
-h1{font-size:36px;}
-h2{font-size:22px;}
-ul{margin-top:10px;}
+    .quick-grid,.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:18px}
+    .stat{
+      grid-column:span 3;
+      background:var(--paper);
+      border:1px solid var(--line);
+      border-radius:22px;
+      padding:18px;
+      box-shadow:var(--shadow);
+    }
+    .stat h3{margin:0 0 6px;font-size:15px;color:var(--muted)}
+    .stat p{margin:0;font-size:19px;font-weight:800}
 
-img{
-  width:100%;
-  border-radius:12px;
-  margin-top:10px;
-}
-</style>
+    .box{
+      grid-column:span 6;
+      background:var(--paper);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:22px;
+      box-shadow:var(--shadow);
+      break-inside:avoid;
+      page-break-inside:avoid;
+    }
+    .box.full{grid-column:1 / -1}
+    .box.third{grid-column:span 4}
+    .box.pink{background:linear-gradient(180deg,#fff 0%, var(--pink) 100%)}
+    .box.lilac{background:linear-gradient(180deg,#fff 0%, var(--lilac) 100%)}
+    .box.blue{background:linear-gradient(180deg,#fff 0%, var(--blue) 100%)}
+    .box.green{background:linear-gradient(180deg,#fff 0%, var(--green) 100%)}
+    .box.yellow{background:linear-gradient(180deg,#fff 0%, var(--yellow) 100%)}
 
+    h2{margin:0 0 14px;font-size:24px;line-height:1.25}
+    h3{margin:16px 0 8px;font-size:18px}
+    p{margin:8px 0}
+    ul,ol{margin:8px 0 0 0;padding-left:22px}
+    li{margin:6px 0}
+
+    .important{background:linear-gradient(180deg, transparent 45%, #fff0a8 45%);font-weight:800}
+    .mini-note{margin-top:12px;padding:12px 14px;border-left:4px solid var(--gold);background:#fffdf4;border-radius:10px}
+
+    .flow{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:14px}
+    .step{background:white;border:1px solid var(--line);border-radius:16px;padding:12px;min-height:110px}
+    .step .n{display:inline-flex;width:28px;height:28px;align-items:center;justify-content:center;border-radius:50%;background:#efe8ff;color:#6f56ca;font-weight:800;margin-bottom:8px}
+
+    table{width:100%;border-collapse:collapse;overflow:hidden;border-radius:14px;margin-top:10px;background:white}
+    th,td{border:1px solid #e7ebf2;padding:12px 10px;text-align:left;vertical-align:top;font-size:15px}
+    th{background:#f5f7fb;font-size:14px;text-transform:uppercase;letter-spacing:.03em}
+
+    .image-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:14px}
+    .image-card{background:white;border:1px solid var(--line);border-radius:18px;padding:14px;box-shadow:var(--shadow);break-inside:avoid;page-break-inside:avoid}
+    .image-card img{width:100%;border-radius:14px;display:block;max-height:300px;object-fit:cover;background:#f3f5f9}
+    .caption{margin-top:10px;font-size:14px;color:#55657d}
+    .caption b{color:#26344a}
+
+    .two-col{columns:2;column-gap:24px}
+    .two-col li{break-inside:avoid}
+    .footer-note{margin-top:24px;font-size:13px;color:#6d7b8f;text-align:center}
+
+    @media (max-width:1080px){
+      .stat{grid-column:span 6}
+      .box,.box.third{grid-column:1 / -1}
+      .flow{grid-template-columns:repeat(2,1fr)}
+      .image-grid{grid-template-columns:1fr}
+      .two-col{columns:1}
+    }
+
+    @media print{
+      @page{size:A4 landscape;margin:10mm}
+      body{background:white}
+      .topbar{display:none !important}
+      .page{max-width:none;padding:0}
+      .hero,.box,.stat,.image-card{box-shadow:none !important;border:1px solid #ccd3df}
+      h1{font-size:24px}
+      h2{font-size:18px}
+      h3{font-size:14px}
+      p,li,td,th,.caption,.subtitle{font-size:11px}
+      .tag{font-size:10px;padding:4px 8px}
+      .flow{grid-template-columns:repeat(5,1fr)}
+      .image-card img{max-height:180px;object-fit:contain}
+      .hero,.box,.stat,.image-card{break-inside:avoid;page-break-inside:avoid}
+      button{display:none}
+    }
+  </style>
 </head>
-
 <body>
-<div class="container">
+  <div class="topbar">
+    <div class="brand">GreekDoc • Ερυθρά</div>
+    <div class="actions">
+      <button class="ghost" onclick="window.scrollTo({top:0,behavior:'smooth'})">Κορυφή</button>
+      <button onclick="window.print()">Print Notes</button>
+    </div>
+  </div>
 
-<h1>Ερυθρά (Rubella)</h1>
+  <main class="page">
+    <section class="hero">
+      <div class="eyebrow">Ιατρική Μικροβιολογία • GreekDoc σημειώσεις</div>
+      <h1>Ερυθρά – δομημένες αναλυτικές σημειώσεις<br>με έμφαση στην <span style="color:var(--violet)">επίκτητη</span> και τη <span style="color:var(--teal)">συγγενή</span> νόσο</h1>
+      <p class="subtitle">Η ερυθρά είναι συνήθως ήπια επίκτητη λοίμωξη, όμως αποκτά ιδιαίτερη βαρύτητα στην κύηση, επειδή ο ιός μπορεί να περάσει δια του πλακούντα και να προκαλέσει σοβαρές διαταραχές στη διάπλαση των οργάνων του εμβρύου.</p>
+      <div class="tagrow">
+        <span class="tag">Togaviridae</span>
+        <span class="tag">Rubivirus</span>
+        <span class="tag">μονόκλωνο RNA</span>
+        <span class="tag">E1 αιμοσυγκολλητίνη</span>
+        <span class="tag">επίκτητη ερυθρά</span>
+        <span class="tag">συγγενές σύνδρομο ερυθράς</span>
+        <span class="tag">MMR</span>
+      </div>
+    </section>
 
-<div class="box pink">
-<h2>Βασικά χαρακτηριστικά</h2>
-<ul>
-<li>Οικογένεια: <b>Togaviridae</b></li>
-<li>Γένος: <b>Rubivirus</b></li>
-<li>Γονιδίωμα: <b>μονόκλωνο RNA</b></li>
-<li>Πρωτεΐνες: C, E1, E2 (αιμοσυγκολλητίνη)</li>
-<li>Περίβλημα: λιπιδικό</li>
-<li>Ευαίσθητος σε: θερμότητα, απορρυπαντικά, UV</li>
-</ul>
-</div>
+    <section class="quick-grid" style="margin-bottom:18px;">
+      <div class="stat"><h3>Οικογένεια</h3><p>Togaviridae</p></div>
+      <div class="stat"><h3>Γένος</h3><p>Rubivirus</p></div>
+      <div class="stat"><h3>Γονιδίωμα</h3><p>ssRNA</p></div>
+      <div class="stat"><h3>Κρίσιμο σημείο</h3><p>κύηση</p></div>
+    </section>
 
-<div class="box blue">
-<h2>Νόσος</h2>
-<p>Οξεία ιογενής νόσος με:</p>
-<ul>
-<li>ήπιο πυρετό</li>
-<li>γενικευμένη λεμφαδενοπάθεια</li>
-<li>ροδόχρουν, κηλιδώδες εξάνθημα</li>
-</ul>
-</div>
+    <section class="grid">
+      <div class="box lilac third">
+        <h2>1. Ταυτότητα του ιού</h2>
+        <ul>
+          <li>Η ερυθρά ανήκει στην οικογένεια <b>Toga</b> και στο γένος <b>Rubivirus</b>.</li>
+          <li>Έχει <b>μονόκλωνο μόριο RNA</b>.</li>
+          <li>Οι βασικές πρωτεΐνες του είναι η <b>C</b> του νουκλεοκαψιδίου και οι <b>E2</b>, <b>E1</b> του περιβλήματος, με την <b>E1</b> να λειτουργεί ως <b>αιμοσυγκολλητίνη</b>.</li>
+          <li>Το περίβλημά του περιέχει <b>λιπίδια</b>.</li>
+          <li>Ξενιστής του ιού είναι ο <b>άνθρωπος</b>.</li>
+        </ul>
+      </div>
 
-<div class="box green">
-<h2>Μετάδοση & Παθογένεια</h2>
-<ul>
-<li>Μετάδοση με σταγονίδια</li>
-<li>Πολλαπλασιασμός στον ρινοφάρυγγα</li>
-<li>Ιαιμία</li>
-<li>Διασπορά σε όλο το σώμα</li>
-</ul>
+      <div class="box blue third">
+        <h2>2. Ιδιότητες που πρέπει να θυμάσαι</h2>
+        <ul>
+          <li>Ο ιός είναι <b>ευαίσθητος</b> στη <b>θέρμανση</b> 56°C για 30 λεπτά.</li>
+          <li>Αδρανοποιείται από <b>απορρυπαντικά</b>.</li>
+          <li>Στην παρουσίαση αναφέρεται καλλιέργεια σε <b>RK13</b> (νεφρικά κύτταρα κονίκλου).</li>
+          <li>Ιστορικά αναφέρονται οι σταθμοί <b>1881</b>, <b>1941</b>, <b>1962</b>, <b>1969</b>.</li>
+        </ul>
+      </div>
 
-<img src="https://upload.wikimedia.org/wikipedia/commons/3/32/Rubella_rash.jpg">
-</div>
+      <div class="box yellow third">
+        <h2>3. Ονομασίες</h2>
+        <ul>
+          <li><b>Rubella</b></li>
+          <li><b>German measles</b></li>
+          <li><b>Rotheln</b></li>
+        </ul>
+        <p>Η ονομασία <b>Rubella</b> καθιερώθηκε ιστορικά το <b>1881</b>.</p>
+      </div>
 
-<div class="box yellow">
-<h2>Κλινική εικόνα</h2>
-<ul>
-<li>Εξάνθημα (φευγαλέο)</li>
-<li>Λεμφαδενοπάθεια</li>
-<li>Επιπεφυκίτιδα</li>
-<li>Αρθραλγίες</li>
-</ul>
+      <div class="box full pink">
+        <h2>4. Παθογόνος δράση και κλινικός χαρακτήρας</h2>
+        <p>Η επίκτητη ερυθρά είναι συνήθως μια <b>ήπια εξανθηματική νόσος</b>, αλλά η σημασία της δεν είναι μόνο η οξεία εικόνα. Η μεγάλη κλινική της βαρύτητα βρίσκεται στο ότι ο ιός μπορεί να μολύνει το έμβρυο κατά την κύηση και να προκαλέσει <span class="important">συγγενές σύνδρομο ερυθράς</span>.</p>
+        <ul>
+          <li>Συχνές είναι οι <b>αφανείς λοιμώξεις</b>.</li>
+          <li>Η επίκτητη νόσος αφήνει <b>ισόβια ανοσία</b>.</li>
+          <li>Η συγγενής νόσος συνδέεται με πολλαπλές βλάβες, ιδιαίτερα όταν η λοίμωξη συμβεί νωρίς στην κύηση.</li>
+        </ul>
+      </div>
 
-<p><b>Σπάνια:</b></p>
-<ul>
-<li>Θρομβοπενία</li>
-<li>Εγκεφαλίτιδα</li>
-</ul>
-</div>
+      <div class="box full">
+        <h2>5. Εικόνες αναφοράς</h2>
+        <div class="image-grid">
+          <div class="image-card">
+            <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Rash%20of%20rubella%20on%20back%20%28crop%29.JPG" alt="Εξάνθημα ερυθράς" />
+            <div class="caption"><b>Εικόνα 1.</b> Κηλιδοβλατιδώδες ροδόχρουν εξάνθημα ερυθράς.</div>
+          </div>
+          <div class="image-card">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Blueberry_muffin_baby.jpg/250px-Blueberry_muffin_baby.jpg" alt="Συγγενής ερυθρά blueberry muffin" />
+            <div class="caption"><b>Εικόνα 2.</b> Νεογνό με εικόνα συμβατή με συγγενή ερυθρά και δερματικές εκδηλώσεις τύπου blueberry muffin.</div>
+          </div>
+          <div class="image-card">
+            <img src="https://commons.wikimedia.org/wiki/Special:FilePath/MMR%20vaccine.jpg" alt="Εμβόλιο MMR" />
+            <div class="caption"><b>Εικόνα 3.</b> Εμβόλιο MMR για ιλαρά, παρωτίτιδα και ερυθρά.</div>
+          </div>
+        </div>
+      </div>
 
-<div class="box pink">
-<h2>Συγγενής ερυθρά (CRS)</h2>
+      <div class="box pink full">
+        <h2>6. Μετάδοση και παθογένεια της επίκτητης ερυθράς</h2>
+        <div class="flow">
+          <div class="step"><div class="n">1</div><b>Είσοδος</b><br>Ο ιός μεταδίδεται από το αναπνευστικό.</div>
+          <div class="step"><div class="n">2</div><b>Πολλαπλασιασμός</b><br>Πολλαπλασιάζεται αρχικά στον ρινοφάρυγγα.</div>
+          <div class="step"><div class="n">3</div><b>Ιαιμία</b><br>Ακολουθεί ιαιμία και συστηματική διασπορά.</div>
+          <div class="step"><div class="n">4</div><b>Ανοσολογική αντίδραση</b><br>Προκύπτει γενικευμένη λεμφαδενίτιδα και εξάνθημα.</div>
+          <div class="step"><div class="n">5</div><b>Κλινική εικόνα</b><br>Εμφανίζεται ροδόχρουν, φευγαλέο, κηλιδώδες εξάνθημα.</div>
+        </div>
+      </div>
 
-<p>Λοίμωξη στο 1ο τρίμηνο → σοβαρές βλάβες</p>
+      <div class="box lilac">
+        <h2>7. Κλινική εικόνα της επίκτητης ερυθράς</h2>
+        <ul>
+          <li><b>Γενικευμένη λεμφαδενίτιδα</b></li>
+          <li><b>Πυρετός</b></li>
+          <li><b>Κηλιδώδες, ροδόχρουν, φευγαλέο εξάνθημα</b></li>
+          <li><b>Επιπεφυκίτιδα</b></li>
+          <li><b>Κυνάγχη</b></li>
+          <li><b>Αρθραλγίες</b></li>
+        </ul>
+      </div>
 
-<ul>
-<li>Καταρράκτης</li>
-<li>Κώφωση</li>
-<li>Καρδιοπάθεια</li>
-<li>Μικρό βάρος γέννησης</li>
-<li>Νοητική καθυστέρηση</li>
-</ul>
+      <div class="box blue">
+        <h2>8. Επιπλοκές της επίκτητης νόσου</h2>
+        <ul>
+          <li><b>Θρομβοπενία</b> — σπάνια</li>
+          <li><b>Εγκεφαλίτιδα</b> — μπορεί να είναι μεταλοιμώδης, περίπου 1 εβδομάδα μετά το εξάνθημα</li>
+          <li><b>Προϊούσα πανεγκεφαλίτιδα</b> — αναφέρεται πολύ όψιμα, 10–20 χρόνια μετά</li>
+        </ul>
+      </div>
 
-<img src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Congenital_rubella.jpg">
-</div>
+      <div class="box green full">
+        <h2>9. Ανοσία</h2>
+        <ul>
+          <li>Η επίκτητη ερυθρά εγκαταλείπει <b>ισόβια ανοσία</b>.</li>
+          <li>Άνοσες μητέρες μεταδίδουν <b>ενδομητρίως αντισώματα</b> στα παιδιά τους.</li>
+          <li>Τα μητρικά αντισώματα προστατεύουν το βρέφος για περίπου <b>4–6 μήνες</b> μετά τη γέννηση.</li>
+          <li>Ο εμβολιασμός προκαλεί ανοσία στο <b>95%</b> των εμβολιασθέντων για περίπου <b>10 χρόνια</b>, σύμφωνα με την παρουσίαση.</li>
+        </ul>
+      </div>
 
-<div class="box blue">
-<h2>Ανοσία</h2>
-<ul>
-<li>Η φυσική λοίμωξη δίνει <b>ισόβια ανοσία</b></li>
-<li>Μητρικά αντισώματα προστατεύουν για <b>4–6 μήνες</b></li>
-</ul>
-</div>
+      <div class="box full pink">
+        <h2>10. Συγγενής ερυθρά – πώς περνά ο ιός στο έμβρυο</h2>
+        <p>Η κρίσιμη περίοδος είναι οι <span class="important">πρώτες 17 εβδομάδες της κύησης</span>. Κατά το στάδιο της ιαιμίας, ο ιός μπορεί να περάσει <b>δια του πλακούντα</b> και να εγκατασταθεί στους εμβρυϊκούς ιστούς.</p>
+        <ul>
+          <li>Στον πλακούντα αναπτύσσονται <b>φλεγμονώδεις αλλοιώσεις</b> στο επιθήλιο των λαχνών του χορίου, που διευκολύνουν την είσοδο του ιού.</li>
+          <li>Ο ιός πολλαπλασιάζεται στα κύτταρα του εμβρύου και προκαλεί <b>αναστολή του μεταβολισμού</b> τους.</li>
+          <li>Αυτό οδηγεί σε <b>καθυστέρηση στη διάπλαση οργάνων</b>.</li>
+          <li>Παράλληλα προσβάλλονται τα αγγεία του πλακούντα και τα εμβρυϊκά αγγεία, με ανάπτυξη <b>ινώδους ιστού</b> στο τοίχωμά τους και <b>κακή αιμάτωση</b>.</li>
+        </ul>
+      </div>
 
-<div class="box green">
-<h2>Διάγνωση</h2>
-<ul>
-<li>Ορολογία: IgM, IgG</li>
-<li>ELISA</li>
-<li>PCR</li>
-<li>Avidity test</li>
-</ul>
-</div>
+      <div class="box yellow full">
+        <h2>11. Συγγενές σύνδρομο ερυθράς</h2>
+        <ul class="two-col">
+          <li><b>Καταρράκτης</b></li>
+          <li><b>Κώφωση</b></li>
+          <li><b>Καρδιοπάθεια</b></li>
+          <li><b>Καθυστέρηση νοητική</b></li>
+          <li><b>Μικρό βάρος γέννησης</b></li>
+          <li><b>Μυοκαρδίτιδα</b></li>
+          <li><b>Ηπατοσπληνομεγαλία</b></li>
+          <li><b>Πνευμονία</b></li>
+          <li><b>Οστικές αλλοιώσεις</b></li>
+          <li><b>Αιμολυτική αναιμία</b></li>
+          <li><b>Θόλωση κερατοειδούς</b></li>
+          <li><b>Μηνιγγοεγκεφαλίτιδα</b></li>
+        </ul>
+      </div>
 
-<div class="box yellow">
-<h2>Εμβόλιο MMR</h2>
-<ul>
-<li>Ζων εξασθενημένος ιός</li>
-<li>1η δόση: 12–15 μηνών</li>
-<li>2η δόση: 4–6 ετών</li>
-<li>Αποτελεσματικότητα ~95–99%</li>
-</ul>
+      <div class="box blue">
+        <h2>12. Ο χρόνος της λοίμωξης είναι κρίσιμος</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Εβδομάδες κύησης</th>
+              <th>Κίνδυνος συγγενούς βλάβης</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>1–4</td><td>47–56%</td></tr>
+            <tr><td>5–8</td><td>22–25%</td></tr>
+            <tr><td>9–12</td><td>7–15%</td></tr>
+            <tr><td>13–16</td><td>6–10%</td></tr>
+            <tr><td>17–21</td><td>&lt;4%</td></tr>
+            <tr><td>&gt;22</td><td>0</td></tr>
+          </tbody>
+        </table>
+      </div>
 
-<p><b>Αντενδείξεις:</b></p>
-<ul>
-<li>Κύηση</li>
-<li>Ανοσοκαταστολή</li>
-</ul>
+      <div class="box lilac">
+        <h2>13. Νεογνό με συγγενή νόσο</h2>
+        <p>Το νεογνό μπορεί να αποβάλλει τον ιό για <b>12–18 μήνες</b>, άρα υπάρχει <b>κίνδυνος διασποράς</b> για μεγάλο χρονικό διάστημα μετά τη γέννηση.</p>
+      </div>
 
-<img src="https://upload.wikimedia.org/wikipedia/commons/6/6f/MMR_vaccine.jpg">
-</div>
+      <div class="box pink full">
+        <h2>14. Διαφορική διάγνωση</h2>
+        <p>Η κλινική διάγνωση της ερυθράς δεν είναι εύκολη, επειδή πολλά νοσήματα συνοδεύονται από εξάνθημα.</p>
+        <ul>
+          <li><b>Ιλαρά</b></li>
+          <li><b>Οστρακιά</b></li>
+          <li><b>Πέμπτη εξανθηματική νόσος</b></li>
+          <li><b>Έκτη εξανθηματική νόσος</b></li>
+          <li><b>Λοιμώξεις από εντεροϊούς</b></li>
+          <li><b>Λοιμώξεις από αδενοϊούς</b></li>
+        </ul>
+      </div>
 
-</div>
+      <div class="box green full">
+        <h2>15. Πότε γίνεται κυρίως η εργαστηριακή διάγνωση</h2>
+        <ul>
+          <li>Σε <b>γυναίκες αναπαραγωγικής ηλικίας</b> στο πλαίσιο προγεννητικού ελέγχου</li>
+          <li>Σε <b>έγκυες γυναίκες</b></li>
+          <li>Σε <b>βρέφη με συγγενή νόσο</b></li>
+          <li>Σε <b>επιδημιολογικές έρευνες</b></li>
+        </ul>
+      </div>
+
+      <div class="box yellow full">
+        <h2>16. Εργαστηριακή διάγνωση</h2>
+        <ul>
+          <li><b>Καλλιέργεια – απομόνωση</b> σε RK13</li>
+          <li><b>Ορολογική διάγνωση</b>:
+            <ul>
+              <li>ΗΑΙ</li>
+              <li>Σύνδεση συμπληρώματος</li>
+              <li>ELISA <b>IgM – IgG</b></li>
+              <li>Δοκιμασία συγγένειας <b>IgG</b> (<i>avidity test</i>)</li>
+            </ul>
+          </li>
+          <li><b>Μοριακή διάγνωση</b></li>
+        </ul>
+      </div>
+
+      <div class="box blue full">
+        <h2>17. Αξιολόγηση των ορολογικών αποτελεσμάτων</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Εύρημα</th>
+              <th>Ερμηνεία</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>IgG (-), IgM (-)</td>
+              <td>Δεν υπάρχουν ενδείξεις προηγούμενης ανοσίας ή πρόσφατης λοίμωξης.</td>
+            </tr>
+            <tr>
+              <td>IgG (+), IgM (-)</td>
+              <td>Συμβατό με παλαιά λοίμωξη ή ανοσία μετά από εμβολιασμό.</td>
+            </tr>
+            <tr>
+              <td>IgM (+) σε ασυμπτωματική έγκυο με σταθερό τίτλο IgG</td>
+              <td>Χρειάζεται προσοχή στην ερμηνεία και περαιτέρω έλεγχος.</td>
+            </tr>
+            <tr>
+              <td>IgM (-) με υψηλό ή αυξανόμενο τίτλο IgG</td>
+              <td>Αξιολογείται σε συνδυασμό με το ιστορικό και, όπου χρειάζεται, με avidity.</td>
+            </tr>
+            <tr>
+              <td>IgM (+) σε νεογνό με συμβατή κλινική εικόνα</td>
+              <td>Υποστηρίζει τη διάγνωση συγγενούς λοίμωξης.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="box lilac full">
+        <h2>18. Εμβόλιο MMR</h2>
+        <ul>
+          <li><b>MMR</b> = Measles, Mumps, Rubella</li>
+          <li>Στέλεχος ερυθράς: <b>RA27/3</b></li>
+          <li><b>1η δόση</b>: 12ος–15ος μήνας</li>
+          <li><b>2η δόση</b>: 4ο–6ο έτος</li>
+          <li>Σε ενήλικες: <b>2 δόσεις</b> με μεσοδιάστημα <b>1 μήνα</b></li>
+          <li>Στην παρουσίαση αναφέρεται ότι το <b>99%</b> αναπτύσσει προστατευτικά αντισώματα.</li>
+          <li>Κάλυψη πληθυσμού <b>&gt;90%</b> συνδέεται με προστασία του πληθυσμού.</li>
+        </ul>
+      </div>
+
+      <div class="box pink">
+        <h2>19. Πότε δεν χορηγείται</h2>
+        <ul>
+          <li><b>Κύηση</b></li>
+          <li><b>Ανοσοκαταστολή</b></li>
+        </ul>
+      </div>
+
+      <div class="box blue">
+        <h2>20. Ανεπιθύμητες ενέργειες του εμβολιασμού</h2>
+        <ul>
+          <li>Τοπικές αντιδράσεις</li>
+          <li>Χαμηλός πυρετός</li>
+          <li>Εξάνθημα</li>
+          <li>Λεμφαδενοπάθεια</li>
+          <li><b>Αρθραλγίες</b> σε περίπου 25%</li>
+          <li><b>Αρθρίτιδα</b> σε περίπου 10%</li>
+          <li>Διάρκεια: από <b>ημέρες</b> έως <b>2 εβδομάδες</b></li>
+          <li><b>Θρομβοκυτοπενία</b> περίπου 1/30.000 δόσεις</li>
+        </ul>
+      </div>
+
+      <div class="box green full">
+        <h2>21. Εμβολιασμός και κύηση</h2>
+        <p>Το MMR και τα επιμέρους εμβόλια που περιέχουν ζώντες ιούς <b>δεν χορηγούνται σε γνωστά έγκυες γυναίκες</b>. Μετά τον εμβολιασμό συνιστάται αποφυγή εγκυμοσύνης για περίπου <b>28 ημέρες</b>.</p>
+        <p>Αν μια γυναίκα εμβολιαστεί χωρίς να γνωρίζει ότι είναι έγκυος ή μείνει έγκυος μέσα σε 4 εβδομάδες από το MMR, αυτό <b>δεν αποτελεί λόγο διακοπής της κύησης</b>, σύμφωνα με το κείμενο της παρουσίασης.</p>
+      </div>
+
+      <div class="box yellow full">
+        <h2>22. Επιδημιολογική σημασία</h2>
+        <p>Η παρουσίαση τονίζει την επιδημία του <b>1993</b> στην Ελλάδα, η οποία αποδόθηκε σε <b>ασυνεπή πολιτική εμβολιασμού</b> τα προηγούμενα χρόνια. Σημαντικό χαρακτηριστικό ήταν η μετακίνηση της ηλικίας προσβολής σε άτομα <b>15 ετών και άνω</b>, δηλαδή σε άτομα αναπαραγωγικής ηλικίας, γεγονός που αύξησε τον κίνδυνο εμφάνισης συγγενούς ερυθράς.</p>
+      </div>
+    </section>
+
+    <div class="footer-note">GreekDoc note page • έτοιμο για ανάγνωση και εκτύπωση σε οριζόντια διάταξη</div>
+  </main>
 </body>
 </html>
