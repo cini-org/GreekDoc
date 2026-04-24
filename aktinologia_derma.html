@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GreekDoc | Ακτινολογία Δερματολογίας</title>
+  <style>
+    :root{
+      --paper:#fffdfb;
+      --ink:#2f2a26;
+      --muted:#6c625b;
+      --line:#e7ddd5;
+      --shadow:0 10px 28px rgba(84,64,48,.08);
+      --radius:22px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:"Segoe UI", Arial, sans-serif;
+      background:radial-gradient(circle at top left,#fff8f1 0,#f6f2ee 40%,#f2ece7 100%);
+      color:var(--ink);
+      line-height:1.65;
+    }
+
+    .topbar{
+      position:sticky;
+      top:0;
+      z-index:50;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:12px;
+      padding:14px 20px;
+      backdrop-filter:blur(10px);
+      background:rgba(250,246,242,.82);
+      border-bottom:1px solid rgba(231,221,213,.8);
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+    }
+
+    .brand-badge{
+      width:42px;
+      height:42px;
+      border-radius:14px;
+      background:linear-gradient(135deg,#f8dfe7,#dfefff);
+      display:grid;
+      place-items:center;
+      font-weight:800;
+      color:#5d4d6b;
+      box-shadow:var(--shadow);
+    }
+
+    .brand h1{
+      margin:0;
+      font-size:1.05rem;
+      line-height:1.1;
+    }
+
+    .brand small{
+      display:block;
+      color:var(--muted);
+      font-size:.82rem;
+    }
+
+    .actions{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+
+    button,.action-link{
+      border:none;
+      border-radius:999px;
+      padding:11px 16px;
+      font-weight:700;
+      cursor:pointer;
+      text-decoration:none;
+      color:var(--ink);
+      background:#fff;
+      box-shadow:var(--shadow);
+      border:1px solid #efe5dc;
+    }
+
+    button.primary{
+      background:linear-gradient(135deg,#f8dfe7,#ece3ff);
+    }
+
+    .wrap{
+      max-width:1320px;
+      margin:0 auto;
+      padding:28px 18px 56px;
+    }
+
+    .hero{
+      background:linear-gradient(135deg,rgba(248,223,231,.92),rgba(223,239,255,.9) 45%,rgba(236,227,255,.88));
+      border:1px solid #eadfd7;
+      border-radius:30px;
+      box-shadow:var(--shadow);
+      padding:30px 28px;
+      margin-bottom:24px;
+      display:grid;
+      grid-template-columns:1.4fr .8fr;
+      gap:18px;
+      align-items:start;
+    }
+
+    .hero h2{
+      margin:.1rem 0 .55rem;
+      font-size:2rem;
+      line-height:1.15;
+    }
+
+    .hero p{
+      margin:.4rem 0;
+      color:#433c38;
+      max-width:72ch;
+    }
+
+    .chips{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top:14px;
+    }
+
+    .chip{
+      background:rgba(255,255,255,.72);
+      border:1px solid rgba(255,255,255,.75);
+      padding:8px 12px;
+      border-radius:999px;
+      font-size:.92rem;
+      font-weight:700;
+    }
+
+    .hero-card{
+      background:rgba(255,255,255,.76);
+      border-radius:24px;
+      padding:18px;
+      border:1px solid rgba(255,255,255,.85);
+    }
+
+    .hero-card h3{
+      margin:.1rem 0 .5rem;
+      font-size:1.02rem;
+    }
+
+    .hero-card ul{
+      margin:.4rem 0 0 1.1rem;
+      padding:0;
+    }
+
+    .layout{
+      display:grid;
+      grid-template-columns:repeat(12,1fr);
+      gap:18px;
+      align-items:start;
+    }
+
+    .box{
+      background:var(--paper);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:22px 22px 20px;
+      break-inside:avoid;
+      page-break-inside:avoid;
+    }
+
+    .box h2{
+      margin:.1rem 0 .85rem;
+      font-size:1.25rem;
+      line-height:1.25;
+    }
+
+    .box h3{
+      margin:1rem 0 .4rem;
+      font-size:1rem;
+    }
+
+    .box ul{
+      margin:.35rem 0 .25rem 1.15rem;
+      padding:0;
+    }
+
+    .box li{ margin:.28rem 0; }
+
+    .important{
+      font-weight:800;
+      color:#5f3450;
+    }
+
+    .pill{
+      display:inline-block;
+      padding:4px 10px;
+      border-radius:999px;
+      font-size:.82rem;
+      font-weight:800;
+      background:rgba(255,255,255,.74);
+      border:1px solid rgba(0,0,0,.05);
+      margin-bottom:10px;
+    }
+
+    .pink{ background:linear-gradient(180deg,#fffafb,#fff4f7); }
+    .blue{ background:linear-gradient(180deg,#fbfdff,#f2f8ff); }
+    .green{ background:linear-gradient(180deg,#fbfffc,#f1fbf4); }
+    .yellow{ background:linear-gradient(180deg,#fffef8,#fff8e1); }
+    .purple{ background:linear-gradient(180deg,#fdfcff,#f5f1ff); }
+    .peach{ background:linear-gradient(180deg,#fffdfb,#fff3ea); }
+    .rose{ background:linear-gradient(180deg,#fffdfd,#fff1f5); }
+
+    .span-12{grid-column:span 12}
+    .span-6{grid-column:span 6}
+
+    .table-wrap{
+      overflow:auto;
+      border:1px solid #eadfd7;
+      border-radius:18px;
+      background:#fff;
+    }
+
+    table{
+      width:100%;
+      border-collapse:collapse;
+      min-width:640px;
+      font-size:.96rem;
+    }
+
+    th,td{
+      padding:12px 14px;
+      border-bottom:1px solid #f0e8e0;
+      vertical-align:top;
+      text-align:left;
+    }
+
+    th{
+      background:#faf5ef;
+      font-size:.9rem;
+    }
+
+    .image-grid{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:14px;
+    }
+
+    .figure{
+      background:#fff;
+      border:1px solid #ebdfd7;
+      border-radius:20px;
+      overflow:hidden;
+    }
+
+    .figure img{
+      width:100%;
+      display:block;
+      aspect-ratio:16/10;
+      object-fit:cover;
+      background:#f5efe9;
+    }
+
+    .figure figcaption{
+      padding:12px 14px 14px;
+      font-size:.92rem;
+      color:#4f4540;
+    }
+
+    .placeholder{
+      display:grid;
+      place-items:center;
+      min-height:260px;
+      padding:20px;
+      text-align:center;
+      color:#7a6f68;
+      background:linear-gradient(135deg,#f7f1eb,#fff);
+      font-weight:700;
+    }
+
+    .note{
+      background:#fff8ef;
+      border:1px dashed #e2c9a8;
+      border-radius:18px;
+      padding:14px 16px;
+      margin-top:10px;
+      color:#634f40;
+    }
+
+    .quiz-card{
+      border:1px solid #eadfd7;
+      border-radius:20px;
+      padding:16px;
+      background:#fff;
+      margin:14px 0;
+      break-inside:avoid;
+      page-break-inside:avoid;
+    }
+
+    .quiz-card h3{
+      margin:.1rem 0 .55rem;
+      font-size:1rem;
+    }
+
+    .options{
+      display:grid;
+      gap:10px;
+      margin-top:12px;
+    }
+
+    .option{
+      text-align:left;
+      border-radius:16px;
+      padding:12px 14px;
+      background:#faf7f3;
+      border:1px solid #ece2d8;
+      cursor:pointer;
+      font-weight:600;
+    }
+
+    .option.correct{
+      background:#e9f7ee;
+      border-color:#96c9a8;
+    }
+
+    .option.wrong{
+      background:#fff0f0;
+      border-color:#e3a5a5;
+    }
+
+    .feedback{
+      margin-top:12px;
+      border-radius:14px;
+      padding:12px 14px;
+      display:none;
+      font-size:.94rem;
+    }
+
+    .feedback.show{ display:block; }
+    .feedback.ok{ background:#eef8f1; border:1px solid #b6d7c0; }
+    .feedback.no{ background:#fff4f4; border:1px solid #e2bbbb; }
+
+    .mini-grid{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:12px;
+    }
+
+    .mini-card{
+      border:1px solid #eadfd7;
+      border-radius:18px;
+      padding:14px;
+      background:rgba(255,255,255,.84);
+    }
+
+    @media (max-width:1024px){
+      .hero{grid-template-columns:1fr}
+      .span-6{grid-column:span 12}
+      .image-grid,.mini-grid{grid-template-columns:1fr}
+    }
+
+    @media print{
+      @page{
+        size:A4 landscape;
+        margin:9mm;
+      }
+
+      body{
+        background:#fff;
+        font-size:11px;
+        line-height:1.35;
+      }
+
+      .topbar{
+        position:static;
+        background:#fff;
+        border-bottom:none;
+        padding:0 0 8px 0;
+        margin-bottom:10px;
+      }
+
+      .actions{
+        display:none !important;
+      }
+
+      .wrap{
+        max-width:none;
+        margin:0;
+        padding:0;
+      }
+
+      .hero{
+        padding:14px;
+        margin-bottom:10px;
+        border-radius:18px;
+        box-shadow:none;
+      }
+
+      .hero h2{font-size:18px}
+      .hero p{font-size:11px}
+
+      .layout{gap:8px}
+
+      .box{
+        padding:12px 12px 10px;
+        border-radius:14px;
+        box-shadow:none;
+        font-size:10.2px;
+      }
+
+      .box h2{font-size:14px;margin:0 0 6px}
+      .box h3{font-size:11px;margin:8px 0 4px}
+      .pill{font-size:9px;padding:2px 7px;margin-bottom:5px}
+
+      table{font-size:9.6px;min-width:0}
+      th,td{padding:6px 7px}
+
+      .quiz-card{padding:10px;margin:8px 0}
+      .option{padding:7px 9px;font-size:9.8px}
+      .feedback{display:block !important;font-size:9.6px;padding:8px}
+      .figure img{aspect-ratio:16/8}
+      .placeholder{min-height:140px;font-size:10px}
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="brand">
+      <div class="brand-badge">GD</div>
+      <div>
+        <h1>GreekDoc</h1>
+        <small>Ακτινολογία Δερματολογίας • Σταδιοποίηση κακοήθων νεοπλασμάτων δέρματος</small>
+      </div>
+    </div>
+    <div class="actions">
+      <a class="action-link" href="#quiz">Quiz</a>
+      <button class="primary" onclick="window.print()">Print notes</button>
+    </div>
+  </div>
+
+  <main class="wrap">
+    <section class="hero">
+      <div>
+        <div class="pill">Ακτινολογία • Δερματολογία</div>
+        <h2>Η απεικόνιση στη σταδιοποίηση κακοήθων νεοπλασμάτων του δέρματος</h2>
+        <p>
+          Η ουσία του μαθήματος δεν είναι να θυμάσαι απλώς «ποια εξέταση υπάρχει», αλλά
+          <b>ποια μέθοδος ζητείται σε ποιο κλινικό ερώτημα</b>: βάθος διήθησης, τοπική επέκταση,
+          λεμφαδενική νόσος, απομακρυσμένες μεταστάσεις, περινευρική προσβολή και παρακολούθηση.
+        </p>
+        <p>
+          Οι βασικές μέθοδοι είναι <b>US, CT, MRI και PET/CT</b>. Στο μάθημα δίνεται μεγαλύτερη έμφαση
+          στο <b>μελάνωμα</b> και στο <b>δερματικό ακανθοκυτταρικό καρκίνωμα (cSCC)</b>.
+        </p>
+        <div class="chips">
+          <span class="chip">US → βάθος / λεμφαδένες</span>
+          <span class="chip">CT → οστά / πνεύμονες / staging</span>
+          <span class="chip">MRI → μαλακά μόρια / νεύρα / ΚΝΣ</span>
+          <span class="chip">PET/CT → μεταβολική ενεργότητα / μικρομεταστάσεις</span>
+        </div>
+      </div>
+
+      <aside class="hero-card">
+        <h3>Τι πρέπει να ξέρεις για εξετάσεις</h3>
+        <ul>
+          <li>Πότε χρειάζεται απεικόνιση και πότε όχι</li>
+          <li>Ποια μέθοδος υπερέχει σε κάθε τύπο επέκτασης</li>
+          <li>Τυπικά imaging features μελανώματος</li>
+          <li>Υψηλού κινδύνου cSCC και ρόλος PET/CT</li>
+          <li>Σχέση HFUS με πάχος Breslow</li>
+        </ul>
+      </aside>
+    </section>
+
+    <section class="layout">
+      <div class="box pink span-6">
+        <div class="pill">1. Βασική αρχή</div>
+        <h2>Γιατί χρειάζεται ακτινολογία στους καρκίνους του δέρματος</h2>
+        Η ακτινολογική απεικόνιση χρησιμοποιείται κυρίως για:
+        <ul>
+          <li><b>σταδιοποίηση</b> του όγκου,</li>
+          <li><b>αξιολόγηση της τοπικής επέκτασης</b>,</li>
+          <li><b>ανίχνευση λεμφαδενικών ή απομακρυσμένων μεταστάσεων</b>,</li>
+          <li><b>παρακολούθηση</b> για υποτροπή ή εξέλιξη νόσου.</li>
+        </ul>
+        <div class="note">
+          Η απεικόνιση δεν αντικαθιστά την ιστολογική διάγνωση. Συμπληρώνει το κλινικό και παθολογοανατομικό
+          στάδιο και απαντά στο ερώτημα «μέχρι πού έχει φτάσει η νόσος;».
+        </div>
+      </div>
+
+      <div class="box blue span-6">
+        <div class="pill">2. Ανατομία</div>
+        <h2>Στρώματα του δέρματος και απεικονιστική σημασία</h2>
+        <ul>
+          <li><b>Επιδερμίδα</b>: περιφερικό στρώμα, με βασική, ακανθωτή, κοκκώδη και κερατινοποιημένη στιβάδα.</li>
+          <li><b>Χόριο</b>: περιέχει τριχοθυλάκια, νεύρα, σμηγματογόνους και ιδρωτοποιούς αδένες, καθώς και κολλαγόνο.</li>
+          <li><b>Υποδόριος ιστός</b>: λιπώδης ιστός σε μικρά λόβια.</li>
+        </ul>
+        <div class="note">
+          Στην ακτινολογική απεικόνιση, <b>επιδερμίδα και χόριο συνήθως δεν ξεχωρίζουν καθαρά</b>, οπότε η αξιολόγηση
+          βασίζεται περισσότερο στο πάχος, στη διήθηση προς υποδόριο ιστό και στα συνοδά σημεία.
+        </div>
+      </div>
+
+      <div class="box yellow span-12">
+        <div class="pill">3. Νεοπλάσματα</div>
+        <h2>Κύριοι κακοήθεις όγκοι του δέρματος</h2>
+        <div class="mini-grid">
+          <div class="mini-card">
+            <h3>Βασικοκυτταρικό καρκίνωμα (cBCC)</h3>
+            Προέρχεται από την επιδερμική στιβάδα. Συνήθως είναι λιγότερο επιθετικό από το μελάνωμα και το cSCC,
+            αλλά όταν είναι εκτεταμένο ή σε «επικίνδυνη» εντόπιση χρειάζεται απεικόνιση για τοπική επέκταση.
+          </div>
+          <div class="mini-card">
+            <h3>Ακανθοκυτταρικό καρκίνωμα (cSCC)</h3>
+            Επίσης επιδερμικής προέλευσης. Έχει μεγαλύτερη πιθανότητα για τοπική προχωρημένη νόσο και μεταστατική
+            συμπεριφορά σε σχέση με το cBCC, ειδικά όταν είναι υψηλού κινδύνου.
+          </div>
+          <div class="mini-card">
+            <h3>Κακόηθες μελάνωμα (cMM)</h3>
+            Προέρχεται από τα μελανοκύτταρα. Είναι λιγότερο συχνό από BCC και SCC, αλλά σαφώς πιο επικίνδυνο,
+            γιατί δίνει γρηγορότερα μεταστάσεις και ευθύνεται για το μεγαλύτερο ποσοστό θανάτων από καρκίνο δέρματος.
+          </div>
+          <div class="mini-card">
+            <h3>Μεσεγχυματικοί όγκοι</h3>
+            Εντοπίζονται κυρίως στο χόριο ή στον υποδόριο ιστό. Η διάλεξη εστιάζει κυρίως στα cSCC και στα μελανώματα.
+          </div>
+        </div>
+      </div>
+
+      <div class="box green span-12">
+        <div class="pill">4. Σύγκριση μεθόδων</div>
+        <h2>US, CT, MRI, PET/CT — τι βλέπει καλύτερα η καθεμία</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Μέθοδος</th>
+                <th>Τι προσφέρει</th>
+                <th>Καλύτερη χρήση</th>
+                <th>Περιορισμοί</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><b>US</b></td>
+                <td>Φθηνό, επαναλήψιμο, χωρίς ακτινοβολία</td>
+                <td>Βάθος διήθησης, τοπικοί λεμφαδένες, μικρές βλάβες, Doppler αγγείωση</td>
+                <td>Εξαρτάται από τον χειριστή, μικρότερο πεδίο</td>
+              </tr>
+              <tr>
+                <td><b>CT</b></td>
+                <td>Ευρέως διαθέσιμη, ταχεία, καλό staging</td>
+                <td>Οστική προσβολή, λεμφαδενική νόσος, πνεύμονες, απομακρυσμένες μεταστάσεις</td>
+                <td>Χαμηλότερη αντίθεση μαλακών μορίων</td>
+              </tr>
+              <tr>
+                <td><b>MRI</b></td>
+                <td>Εξαιρετική αντίθεση μαλακών μορίων</td>
+                <td>Περινευρική νόσος, μύες, τένοντες, μυελός οστών, εγκέφαλος</td>
+                <td>Ακριβότερη, λιγότερο διαθέσιμη</td>
+              </tr>
+              <tr>
+                <td><b>PET/CT</b></td>
+                <td>Μορφολογία + μεταβολική ενεργότητα</td>
+                <td>Μικρομεταστάσεις, υποτροπές, απομακρυσμένη νόσος</td>
+                <td>Κόστος, όχι πρώτη επιλογή για όλα τα στάδια</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="box purple span-6">
+        <div class="pill">5. US</div>
+        <h2>Υπερηχογράφημα</h2>
+        <ul>
+          <li>Είναι <b>φθηνό</b>, <b>εύκολα επαναλήψιμο</b> και χρήσιμο στην αρχική τοπική εκτίμηση.</li>
+          <li>Χρησιμοποιείται για <b>διαφορική διάγνωση</b>, για <b>μέτρηση βάθους διήθησης</b> και για αξιολόγηση λεμφαδένων.</li>
+          <li>Σε βλάβες <b>&lt; 10 mm</b> είναι ιδιαίτερα χρήσιμο για εκτίμηση του πάχους.</li>
+        </ul>
+        <h3>HFUS και Breslow</h3>
+        Με υπερηχογράφημα πολύ υψηλής συχνότητας (&gt;20 MHz) μπορούμε να μετρήσουμε το
+        <span class="important">υπερηχογραφικό πάχος</span> της βλάβης, το οποίο σχετίζεται στενά με το
+        <b>ιστοπαθολογικό πάχος (δείκτης Breslow)</b>.
+        <div class="note">
+          Ο Breslow είναι θεμελιώδης προγνωστικός δείκτης στο μελάνωμα: μετρά το βάθος από την επιφάνεια του δέρματος
+          έως το βαθύτερο σημείο του όγκου.
+        </div>
+      </div>
+
+      <div class="box peach span-6">
+        <div class="pill">6. CT</div>
+        <h2>Αξονική τομογραφία</h2>
+        <ul>
+          <li>Μέθοδος εκλογής για αξιολόγηση <b>οστικού φλοιού</b>.</li>
+          <li>Σημαντική για <b>λεμφαδενικές</b> και <b>απομακρυσμένες μεταστάσεις</b>.</li>
+          <li>Κρίσιμη στην ανίχνευση <b>πνευμονικών μεταστάσεων</b>.</li>
+          <li>Ευαίσθητη στην ανίχνευση <b>επασβεστώσεων, οστεοποίησης και λίπους</b>.</li>
+        </ul>
+        <div class="note">
+          Οι περισσότεροι κακοήθεις όγκοι δέρματος έχουν μη ειδική πυκνότητα μαλακών μορίων στην CT, άρα η CT δεν
+          είναι ιδανική για ιστολογική «ταυτοποίηση» αλλά για <b>έκταση νόσου</b>.
+        </div>
+      </div>
+
+      <div class="box rose span-6">
+        <div class="pill">7. MRI</div>
+        <h2>Μαγνητική τομογραφία</h2>
+        <ul>
+          <li>Προτιμάται όταν υπάρχει υποψία <b>περινευρικής νόσου</b>.</li>
+          <li>Χρήσιμη για <b>εν τω βάθει μαλακά μόρια</b>, <b>τένοντες</b>, <b>μύες</b> και <b>μυελό οστών</b>.</li>
+          <li>Αξιολογεί διαμόρφωση όγκου, ομοιογένεια, αιμορραγία και κυστικό εκφυλισμό.</li>
+        </ul>
+        <div class="note">
+          Όταν το ερώτημα είναι «μπήκε σε νεύρο; προχώρησε ενδοκρανιακά; έφτασε σε μυ ή τένοντα;»
+          η MRI υπερέχει.
+        </div>
+      </div>
+
+      <div class="box blue span-6">
+        <div class="pill">8. PET/CT</div>
+        <h2>18F-FDG PET/CT</h2>
+        <ul>
+          <li>Συνδυάζει μορφολογική πληροφορία και <b>μεταβολική δραστηριότητα</b>.</li>
+          <li>Μπορεί να αποκαλύψει <b>υποσημαινόμενες υποτροπές</b> και <b>μικρομεταστάσεις</b>.</li>
+          <li>Είναι χρήσιμο για ανίχνευση <b>λεμφαδενικών</b> και <b>απομακρυσμένων μεταστάσεων</b>.</li>
+        </ul>
+        <div class="note">
+          Στους ασθενείς σταδίου III–IV η PET/CT αποκτά ιδιαίτερη βαρύτητα.
+        </div>
+      </div>
+
+      <div class="box pink span-12">
+        <div class="pill">9. Μελάνωμα</div>
+        <h2>Κακόηθες μελάνωμα — πότε και γιατί απεικονίζουμε</h2>
+
+        <div class="mini-grid">
+          <div class="mini-card">
+            <h3>Γενικά</h3>
+            Ξεκινά από τα <b>μελανοκύτταρα</b>. Είναι λιγότερο συχνό από BCC και SCC, αλλά πολύ πιο επικίνδυνο,
+            γιατί μετασταίνεται γρήγορα και προκαλεί το μεγαλύτερο μέρος της θνητότητας από τους καρκίνους του δέρματος.
+          </div>
+          <div class="mini-card">
+            <h3>Διάγνωση</h3>
+            Η αρχική διάγνωση είναι κυρίως <b>κλινική</b> και επιβεβαιώνεται με <b>δερματοσκόπηση</b>.
+            Η απεικόνιση έρχεται κυρίως για σταδιοποίηση και αναζήτηση εξάπλωσης.
+          </div>
+        </div>
+
+        <h3>Απεικονιστική στρατηγική ανά στάδιο</h3>
+        <ul>
+          <li><b>Πάχος έως 0.8 mm</b> → συνήθως <b>δεν χρειάζονται επιπλέον απεικονιστικές εξετάσεις</b>.</li>
+          <li><b>Από στάδιο IB</b> → συνιστάται <b>υπερηχογράφημα λεμφαδένων</b>.</li>
+          <li><b>Από στάδιο IIC</b> → συνιστάται <b>CT ή PET/CT</b> σε συνδυασμό με <b>MRI</b>.</li>
+          <li><b>Από στάδιο III</b> → απαιτείται <b>στενή παρακολούθηση</b> και συστηματική αναζήτηση μεταστάσεων.</li>
+          <li><b>Στάδιο IV</b> → χρειάζεται προσεκτική <b>ολοσωματική απεικόνιση</b> με CT ή PET/CT και <b>MRI εγκεφάλου</b>.</li>
+        </ul>
+      </div>
+
+      <div class="box purple span-6">
+        <div class="pill">10. Μελάνωμα & λεμφαδένες</div>
+        <h2>Υπερηχογράφημα λεμφαδένων στο πρωτοπαθές μελάνωμα</h2>
+        Για την αρχική εξέταση των πρωτοπαθών μελανωμάτων, πρέπει να γίνεται
+        <b>υπερηχογράφημα των τοπικών/περιοχικών λεμφαδένων και της περιοχής</b>.
+        <ul>
+          <li>Οι μεταστατικοί λεμφαδένες μπορεί να είναι <b>ακανόνιστοι</b>, <b>υποηχοϊκοί</b> ή <b>λοβωτοί</b>.</li>
+          <li>Το υπερηχογράφημα είναι ιδιαίτερα χρήσιμο στην ανίχνευση <b>μη ψηλαφητών λεμφαδενικών μεταστάσεων</b>.</li>
+        </ul>
+      </div>
+
+      <div class="box yellow span-6">
+        <div class="pill">11. Μελάνωμα & MRI</div>
+        <h2>Κλασικά MRI ευρήματα μεταστατικού μελανώματος</h2>
+        Τα μεταστατικά μελανωματικά μορφώματα, ειδικά στον εγκέφαλο, έχουν σχετικά χαρακτηριστική συμπεριφορά:
+        <ul>
+          <li><b>T1</b> → συνήθως <span class="important">υψηλό σήμα</span></li>
+          <li><b>T2</b> → συχνά <span class="important">χαμηλό σήμα</span></li>
+          <li><b>T1 + σκιαγραφικό</b> → περιφερική ενίσχυση</li>
+        </ul>
+        <div class="note">
+          Το υψηλό T1 αποδίδεται στη <b>μελανίνη</b>. Αυτό είναι σημαντικό exam point.
+        </div>
+      </div>
+
+      <div class="box green span-12">
+        <div class="pill">12. Μεταστάσεις μελανώματος</div>
+        <h2>Συχνές θέσεις και κατάλληλη απεικόνιση</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Θέση μεταστάσεων</th>
+                <th>Τι πρέπει να θυμάσαι</th>
+                <th>Καλύτερη εξέταση</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><b>Λεμφαδένες</b></td>
+                <td>Η πιο συχνή θέση μεταστατικής εξάπλωσης</td>
+                <td>US αρχικά, CT για συνολική εκτίμηση</td>
+              </tr>
+              <tr>
+                <td><b>Πνεύμονες / υπεζωκότας</b></td>
+                <td>2η συχνότερη εστία, συνήθως πολλαπλές στρογγυλές βλάβες</td>
+                <td>CT θώρακος ή PET/CT</td>
+              </tr>
+              <tr>
+                <td><b>ΚΝΣ</b></td>
+                <td>Συχνές ενδοκρανιακές μεταστάσεις</td>
+                <td>MRI εγκεφάλου με ενδοφλέβιο σκιαγραφικό</td>
+              </tr>
+              <tr>
+                <td><b>Ήπαρ / κοιλία / πύελος</b></td>
+                <td>Συχνές ηπατικές μεταστάσεις, συχνά πολλαπλές</td>
+                <td>CT ή PET/CT, και MRI σε ειδικά ερωτήματα</td>
+              </tr>
+              <tr>
+                <td><b>Οστά</b></td>
+                <td>Συνήθως οστεολυτικές βλάβες</td>
+                <td>CT / PET-CT ανά κλινικό πλαίσιο</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="box peach span-12">
+        <div class="pill">13. cSCC</div>
+        <h2>Δερματικό ακανθοκυτταρικό καρκίνωμα (cSCC)</h2>
+        <p>
+          Το cSCC είναι ο δεύτερος πιο συχνός μη μελανωματικός καρκίνος του δέρματος μετά το cBCC.
+          Συνήθως είναι πιο αργό από το μελάνωμα, όμως όταν αποκτήσει χαρακτηριστικά υψηλού κινδύνου,
+          η ακτινολογική απεικόνιση γίνεται ουσιαστικό μέρος της διαχείρισης.
+        </p>
+
+        <h3>Παράγοντες υψηλού κινδύνου</h3>
+        <ul>
+          <li><b>Διάμετρος όγκου &gt; 2 cm</b> — ο πιο σημαντικός παράγοντας κινδύνου.</li>
+          <li><b>Περινευρική εισβολή</b></li>
+          <li><b>Τοπικά προχωρημένη νόσος</b> με διήθηση βαθύτερων δομών</li>
+          <li><b>Ανοσοκαταστολή</b> → αυξημένος κίνδυνος μετάστασης</li>
+        </ul>
+
+        <h3>Σταδιοποίηση cSCC με απλή λογική</h3>
+        <ul>
+          <li><b>Στάδιο 0</b>: in situ, μόνο στην επιδερμίδα.</li>
+          <li><b>Στάδιο 1</b>: έως 2 cm, χωρίς βαθιά επέκταση ή μεταστάσεις.</li>
+          <li><b>Στάδιο 2</b>: &gt;2 cm ή/και high-risk χαρακτηριστικά.</li>
+          <li><b>Στάδιο 3</b>: επέκταση σε κοντινές βαθύτερες δομές ή κοντινούς λεμφαδένες.</li>
+          <li><b>Στάδιο 4</b>: απομακρυσμένες μεταστάσεις ή επέκταση σε σκελετό / βάση κρανίου / ενδοκρανιακά.</li>
+        </ul>
+      </div>
+
+      <div class="box rose span-6">
+        <div class="pill">14. cSCC imaging</div>
+        <h2>Ποια μέθοδος ζητάμε στο cSCC</h2>
+        <ul>
+          <li><b>US</b> σε χειρουργήσιμους όγκους υψηλού κινδύνου χωρίς ψηλαφητούς λεμφαδένες.</li>
+          <li><b>CT / MRI</b> σε τοπικά προχωρημένους όγκους.</li>
+          <li><b>CT ολόκληρου σώματος ή PET/CT</b> για πιθανές απομακρυσμένες μεταστάσεις.</li>
+        </ul>
+        <div class="note">
+          Η MRI προτιμάται ειδικά για <b>περινευρική προσβολή</b> και <b>ενδοκρανιακή επέκταση</b>.
+        </div>
+      </div>
+
+      <div class="box blue span-6">
+        <div class="pill">15. cSCC MRI μορφολογία</div>
+        <h2>Εικόνα cSCC στη μαγνητική</h2>
+        Συχνά περιγράφονται:
+        <ul>
+          <li><b>επιπεδωμένες βλάβες</b>,</li>
+          <li><b>επιφανειακό έλκος</b>,</li>
+          <li><b>προβολή στον υποδόριο ιστό</b>,</li>
+          <li><b>ασαφώς οριοθετημένο βαθύ όριο</b>,</li>
+          <li><b>περικαρκινικό λίπος</b>.</li>
+        </ul>
+      </div>
+
+      <div class="box green span-12">
+        <div class="pill">16. PET/CT στο cSCC</div>
+        <h2>Γιατί το FDG-PET/CT μπορεί να αλλάξει τη διαχείριση</h2>
+        <ul>
+          <li>Έχει υψηλή ευαισθησία για <b>πρωτογενείς και υποτροπιάζουσες βλάβες cSCC</b>.</li>
+          <li>Ανιχνεύει και <b>μικρές δερματικές</b> ή <b>κλινικά μη ψηλαφητές λεμφαδενικές βλάβες</b>.</li>
+          <li>Μπορεί να οδηγήσει σε <b>τροποποίηση της θεραπευτικής στρατηγικής</b>.</li>
+        </ul>
+      </div>
+
+      <div class="box yellow span-12">
+        <div class="pill">17. Exam synthesis</div>
+        <h2>Τι θέλουν συνήθως να ξέρεις “σε μία ματιά”</h2>
+        <div class="mini-grid">
+          <div class="mini-card"><h3>US</h3>Μικρές βλάβες, βάθος, Doppler, HFUS, τοπικοί λεμφαδένες.</div>
+          <div class="mini-card"><h3>CT</h3>Οστά, πνεύμονες, λεμφαδένες, ολόσωμο staging.</div>
+          <div class="mini-card"><h3>MRI</h3>Περινευρική νόσος, εν τω βάθει μαλακά μόρια, εγκέφαλος, μυελός.</div>
+          <div class="mini-card"><h3>PET/CT</h3>Μικρομεταστάσεις, υποτροπή, απομακρυσμένη μεταστατική νόσος.</div>
+          <div class="mini-card"><h3>Μελάνωμα</h3>Επιθετικό, γρήγορες μεταστάσεις, T1↑ / T2↓ στη MRI λόγω μελανίνης.</div>
+          <div class="mini-card"><h3>cSCC</h3>High risk όταν &gt;2 cm, MRI για περινευρική επέκταση, PET/CT για occult νόσο.</div>
+        </div>
+      </div>
+
+      <div class="box purple span-12">
+        <div class="pill">18. Εικόνες / figure slots</div>
+        <h2>Παραδείγματα εικόνων για ένθεση στο GreekDoc</h2>
+        <div class="note">
+          Αν βάλεις τα παρακάτω αρχεία εικόνων στον ίδιο φάκελο με το HTML, θα εμφανιστούν αυτόματα.
+        </div>
+
+        <div class="image-grid">
+          <figure class="figure">
+            <img src="melanomap.JPG" alt="Μελάνωμα" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';" />
+            <div class="placeholder" style="display:none;">Βάλε αρχείο: <br><b>melanomap.JPG</b></div>
+            <figcaption><b>Figure 1.</b> Πρωτοπαθές μελάνωμα.</figcaption>
+          </figure>
+
+          <figure class="figure">
+            <img src="iperixosmelanoma.JPG" alt="Υπερηχογράφημα μελανώματος" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';" />
+            <div class="placeholder" style="display:none;">Βάλε αρχείο: <br><b>iperixosmelanoma.JPG</b></div>
+            <figcaption><b>Figure 2.</b> Υπερηχογραφική εικόνα μελανώματος.</figcaption>
+          </figure>
+
+          <figure class="figure">
+            <img src="elastografia.JPG" alt="Ελαστογραφία μελανώματος" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';" />
+            <div class="placeholder" style="display:none;">Βάλε αρχείο: <br><b>elastografia.JPG</b></div>
+            <figcaption><b>Figure 3.</b> Ελαστογραφία σε πραγματικό χρόνο.</figcaption>
+          </figure>
+
+          <figure class="figure">
+            <img src="egkefalos3.JPG" alt="Εγκεφαλικές μεταστάσεις" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';" />
+            <div class="placeholder" style="display:none;">Βάλε αρχείο: <br><b>egkefalos3.JPG</b></div>
+            <figcaption><b>Figure 4.</b> Εγκεφαλικές μεταστάσεις μελανώματος.</figcaption>
+          </figure>
+
+          <figure class="figure">
+            <img src="akanthokitariko.PNG" alt="MRI cSCC" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';" />
+            <div class="placeholder" style="display:none;">Βάλε αρχείο: <br><b>akanthokitariko.PNG</b></div>
+            <figcaption><b>Figure 5.</b> cSCC σε MRI.</figcaption>
+          </figure>
+
+          <figure class="figure">
+            <img src="akantho4.PNG" alt="HFUS cSCC" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';" />
+            <div class="placeholder" style="display:none;">Βάλε αρχείο: <br><b>akantho4.PNG</b></div>
+            <figcaption><b>Figure 6.</b> HFUS διηθητικού cSCC.</figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <div class="box rose span-12" id="quiz">
+        <div class="pill">19. Quiz</div>
+        <h2>Γρήγορο quiz επανάληψης</h2>
+
+        <div class="quiz-card" data-answer="b">
+          <h3>1. Ποια μέθοδος είναι καταλληλότερη για υποψία περινευρικής προσβολής σε καρκίνο δέρματος;</h3>
+          <div class="options">
+            <button class="option" data-choice="a">A. Υπερηχογράφημα</button>
+            <button class="option" data-choice="b">B. MRI</button>
+            <button class="option" data-choice="c">C. Απλή ακτινογραφία</button>
+            <button class="option" data-choice="d">D. Δερματοσκόπηση</button>
+          </div>
+          <div class="feedback" data-correct="Σωστό. Η MRI προτιμάται για περινευρική νόσο και ενδοκρανιακή επέκταση."
+               data-wrong="Λάθος. Η MRI είναι η εξέταση εκλογής όταν το ερώτημα αφορά νεύρα, βαθιά μαλακά μόρια ή ενδοκρανιακή επέκταση."></div>
+        </div>
+
+        <div class="quiz-card" data-answer="c">
+          <h3>2. Σε ποια μέθοδο αντιστοιχεί καλύτερα η μέτρηση του υπερηχογραφικού πάχους που συσχετίζεται με τον δείκτη Breslow;</h3>
+          <div class="options">
+            <button class="option" data-choice="a">A. CT</button>
+            <button class="option" data-choice="b">B. PET/CT</button>
+            <button class="option" data-choice="c">C. HFUS</button>
+            <button class="option" data-choice="d">D. MRI εγκεφάλου</button>
+          </div>
+          <div class="feedback" data-correct="Σωστό. Το HFUS (&gt;20 MHz) αυξάνει την ακρίβεια μέτρησης του πάχους της βλάβης."
+               data-wrong="Λάθος. Η συσχέτιση με το Breslow προκύπτει από το υπερηχογράφημα πολύ υψηλής συχνότητας."></div>
+        </div>
+
+        <div class="quiz-card" data-answer="a">
+          <h3>3. Ποια είναι η πιο συχνή θέση μεταστατικής εξάπλωσης του μελανώματος;</h3>
+          <div class="options">
+            <button class="option" data-choice="a">A. Λεμφαδένες</button>
+            <button class="option" data-choice="b">B. Νεφροί</button>
+            <button class="option" data-choice="c">C. Θυρεοειδής</button>
+            <button class="option" data-choice="d">D. Πάγκρεας</button>
+          </div>
+          <div class="feedback" data-correct="Σωστό. Η συχνότερη θέση μεταστατικής εξάπλωσης είναι οι λεμφαδένες."
+               data-wrong="Λάθος. Στο μελάνωμα, οι λεμφαδενικές μεταστάσεις είναι η συχνότερη εντόπιση."></div>
+        </div>
+
+        <div class="quiz-card" data-answer="d">
+          <h3>4. Ποιο εύρημα είναι χαρακτηριστικό για μεταστατικό μελάνωμα στην MRI εγκεφάλου;</h3>
+          <div class="options">
+            <button class="option" data-choice="a">A. T1 χαμηλό, T2 υψηλό</button>
+            <button class="option" data-choice="b">B. Καμία ενίσχυση με σκιαγραφικό</button>
+            <button class="option" data-choice="c">C. Πάντα κυστική αλλοίωση</button>
+            <button class="option" data-choice="d">D. T1 υψηλό, T2 χαμηλό</button>
+          </div>
+          <div class="feedback" data-correct="Σωστό. Η μελανίνη οδηγεί συχνά σε υψηλό σήμα T1 και χαμηλότερο T2."
+               data-wrong="Λάθος. Κλασικό exam point: T1 υψηλό και T2 χαμηλότερο λόγω μελανίνης."></div>
+        </div>
+
+        <div class="quiz-card" data-answer="b">
+          <h3>5. Ποιος παράγοντας υψηλού κινδύνου στο cSCC συσχετίζεται περισσότερο με τη νόσο;</h3>
+          <div class="options">
+            <button class="option" data-choice="a">A. Εντόπιση στον κορμό</button>
+            <button class="option" data-choice="b">B. Διάμετρος &gt; 2 cm</button>
+            <button class="option" data-choice="c">C. Ύπαρξη υπερκεράτωσης</button>
+            <button class="option" data-choice="d">D. Επιφανειακό έλκος μόνο</button>
+          </div>
+          <div class="feedback" data-correct="Σωστό. Η διάμετρος &gt;2 cm αναφέρεται ως ο σημαντικότερος παράγοντας κινδύνου."
+               data-wrong="Λάθος. Το μέγεθος &gt;2 cm είναι βασικό high-risk χαρακτηριστικό στο cSCC."></div>
+        </div>
+
+        <div class="quiz-card" data-answer="c">
+          <h3>6. Ποια εξέταση έχει ιδιαίτερη αξία στο cSCC για εντοπισμό μικρής δερματικής και μη ψηλαφητής λεμφαδενικής νόσου;</h3>
+          <div class="options">
+            <button class="option" data-choice="a">A. Μόνο απλή CT χωρίς σκιαγραφικό</button>
+            <button class="option" data-choice="b">B. MRI καρδιάς</button>
+            <button class="option" data-choice="c">C. 18F-FDG PET/CT</button>
+            <button class="option" data-choice="d">D. Μαστογραφία</button>
+          </div>
+          <div class="feedback" data-correct="Σωστό. Το FDG-PET/CT μπορεί να αναδείξει μικρές και occult βλάβες και να αλλάξει τη διαχείριση."
+               data-wrong="Λάθος. Για occult νόσο και μικρές λεμφαδενικές/δερματικές εστίες στο cSCC, σημαντικό ρόλο έχει το FDG-PET/CT."></div>
+        </div>
+      </div>
+
+      <div class="box pink span-12">
+        <div class="pill">20. Τελική σύνοψη</div>
+        <h2>Συμπέρασμα με μία παράγραφο</h2>
+        Στους καρκίνους του δέρματος η επιλογή της απεικονιστικής μεθόδου εξαρτάται από το
+        <b>κλινικό ερώτημα</b>. Το <b>US</b> είναι πολύτιμο για βάθος, επιφανειακές βλάβες και λεμφαδένες.
+        Η <b>CT</b> βοηθά κυρίως σε οστά, πνεύμονες και staging. Η <b>MRI</b> υπερέχει σε μαλακά μόρια,
+        περινευρική επέκταση και εγκεφαλικές μεταστάσεις. Η <b>PET/CT</b> προσθέτει μεταβολική πληροφορία
+        και είναι ιδιαίτερα χρήσιμη στη μεταστατική ή υποτροπιάζουσα νόσο. Το <b>μελάνωμα</b> είναι ο πιο
+        επιθετικός δερματικός καρκίνος, ενώ το <b>cSCC</b> απαιτεί ειδική προσοχή όταν αποκτά χαρακτηριστικά
+        υψηλού κινδύνου.
+      </div>
+    </section>
+  </main>
+
+  <script>
+    document.querySelectorAll('.quiz-card').forEach(card => {
+      const answer = card.dataset.answer;
+      const feedback = card.querySelector('.feedback');
+      const options = card.querySelectorAll('.option');
+
+      options.forEach(btn => {
+        btn.addEventListener('click', () => {
+          if (card.dataset.locked === 'true') return;
+          card.dataset.locked = 'true';
+
+          const choice = btn.dataset.choice;
+          options.forEach(o => o.disabled = true);
+
+          if (choice === answer) {
+            btn.classList.add('correct');
+            feedback.className = 'feedback show ok';
+            feedback.textContent = feedback.dataset.correct;
+          } else {
+            btn.classList.add('wrong');
+            const right = card.querySelector(`.option[data-choice="${answer}"]`);
+            if (right) right.classList.add('correct');
+            feedback.className = 'feedback show no';
+            feedback.textContent = feedback.dataset.wrong;
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>
