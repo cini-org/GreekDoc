@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GreekDoc - Οφθαλμολογία | Βλέφαρα, Κόγχος, Δάκρυα</title>
+
+  <style>
+    :root {
+      --bg: #fcfbff;
+      --text: #2d2a32;
+      --muted: #6a6475;
+      --purple-dark: #4d2f73;
+      --white: #ffffff;
+      --line: #ece5f7;
+      --shadow: 0 10px 30px rgba(80, 60, 120, 0.08);
+      --radius-xl: 28px;
+      --radius-lg: 22px;
+      --pink: #fff2f7;
+      --blue: #eef8ff;
+      --violet: #f5efff;
+      --green: #effaf3;
+      --peach: #fff5ed;
+      --yellow: #fffbe6;
+      --red-soft: #fff4f4;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Arial, sans-serif;
+      background: linear-gradient(to bottom, #fcfbff, #f8f5ff);
+      color: var(--text);
+      line-height: 1.65;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(10px);
+      background: rgba(252, 251, 255, 0.9);
+      border-bottom: 1px solid rgba(220, 210, 240, 0.7);
+      padding: 12px 20px;
+    }
+
+    .topbar-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .brand {
+      font-weight: 800;
+      color: var(--purple-dark);
+      letter-spacing: 0.2px;
+    }
+
+    .print-btn {
+      border: none;
+      border-radius: 999px;
+      padding: 10px 18px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+      background: linear-gradient(135deg, #e9ddff, #dff4ff);
+      color: #442466;
+      box-shadow: 0 4px 14px rgba(100, 80, 140, 0.12);
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .print-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 8px 18px rgba(100, 80, 140, 0.16);
+    }
+
+    .page {
+      max-width: 1200px;
+      margin: 26px auto 60px;
+      padding: 0 20px;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #f8d7e8, #e7dcff, #dff4ff);
+      border-radius: 30px;
+      padding: 36px 34px;
+      box-shadow: var(--shadow);
+      margin-bottom: 26px;
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+
+    .hero h1 {
+      margin: 0 0 10px 0;
+      font-size: 2.2rem;
+      color: #3e245f;
+    }
+
+    .hero p {
+      margin: 0;
+      color: #4e4960;
+      max-width: 920px;
+    }
+
+    .quick-map {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 18px;
+    }
+
+    .quick-map a {
+      text-decoration: none;
+      color: #56317f;
+      background: rgba(255,255,255,0.72);
+      border: 1px solid rgba(95, 65, 130, 0.12);
+      padding: 7px 12px;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 0.88rem;
+    }
+
+    .section {
+      background: var(--white);
+      border-radius: var(--radius-xl);
+      padding: 28px;
+      margin-bottom: 24px;
+      box-shadow: var(--shadow);
+      border: 1px solid #f0ebfa;
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+
+    .section-title {
+      margin: 0 0 18px 0;
+      font-size: 1.6rem;
+      color: #40235d;
+    }
+
+    .lead-box {
+      background: #faf7ff;
+      border: 1px solid #eee7fb;
+      border-radius: 18px;
+      padding: 16px 18px;
+      margin-bottom: 18px;
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+
+    .subsection {
+      margin-top: 18px;
+      padding: 18px;
+      border-radius: var(--radius-lg);
+      border: 1px solid #efe8fb;
+      background: #fcfbff;
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+
+    .subsection h3 {
+      margin: 0 0 10px 0;
+      color: #4a2d69;
+      font-size: 1.13rem;
+    }
+
+    .tag {
+      display: inline-block;
+      background: #efe4ff;
+      color: #5d348b;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 0.82rem;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+
+    .tag.red { background: #ffe4e9; color: #9f1239; }
+    .tag.blue { background: #dff4ff; color: #075985; }
+    .tag.green { background: #dcfce7; color: #166534; }
+    .tag.yellow { background: #fff3bf; color: #8a5a00; }
+
+    .important { color: #b42352; font-weight: 800; }
+    .danger { color: #b91c1c; font-weight: 800; }
+    .muted { color: var(--muted); }
+    .highlight { background: #fff1a8; padding: 0 4px; border-radius: 6px; font-weight: 700; }
+    .blue-text { color: #075985; font-weight: 800; }
+    .green-text { color: #166534; font-weight: 800; }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .mini-card {
+      background: #ffffff;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 18px;
+      break-inside: avoid;
+      page-break-inside: avoid;
+      box-shadow: 0 5px 16px rgba(80, 60, 120, 0.04);
+    }
+
+    .mini-card.pink { background: var(--pink); }
+    .mini-card.blue { background: var(--blue); }
+    .mini-card.violet { background: var(--violet); }
+    .mini-card.green { background: var(--green); }
+    .mini-card.peach { background: var(--peach); }
+    .mini-card.yellow { background: var(--yellow); }
+    .mini-card.red { background: var(--red-soft); }
+
+    .mini-card h4 {
+      margin: 0 0 10px 0;
+      color: #4a2d69;
+      font-size: 1.05rem;
+    }
+
+    .callout {
+      margin-top: 14px;
+      border-radius: 18px;
+      padding: 15px 16px;
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+
+    .callout.blue { background: #eef8ff; border-left: 6px solid #9fd7ff; }
+    .callout.red { background: #fff4f4; border-left: 6px solid #ff9797; }
+    .callout.green { background: #effaf3; border-left: 6px solid #8fe1aa; }
+    .callout.yellow { background: #fffbe6; border-left: 6px solid #f6d365; }
+
+    .img-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 16px;
+    }
+
+    .image-card {
+      background: #ffffff;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 12px;
+      break-inside: avoid;
+      page-break-inside: avoid;
+      box-shadow: 0 6px 18px rgba(80, 60, 120, 0.05);
+    }
+
+    .image-card img {
+      width: 100%;
+      height: 245px;
+      object-fit: contain;
+      display: block;
+      border-radius: 14px;
+      background: linear-gradient(135deg, #faf7ff, #f2f9ff);
+    }
+
+    .image-caption {
+      margin-top: 10px;
+      text-align: center;
+      font-size: 0.92rem;
+      color: #4d4560;
+      font-weight: 700;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      overflow: hidden;
+      border-radius: 18px;
+      border: 1px solid #ece5f7;
+      margin-top: 12px;
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+
+    th, td {
+      padding: 12px 14px;
+      border-bottom: 1px solid #ece5f7;
+      vertical-align: top;
+    }
+
+    th {
+      background: #f5efff;
+      color: #4a2d69;
+      text-align: left;
+      font-weight: 800;
+    }
+
+    tr:last-child td { border-bottom: none; }
+
+    ul, ol {
+      margin: 8px 0 0 0;
+      padding-left: 22px;
+    }
+
+    li { margin-bottom: 7px; }
+
+    .footer-note {
+      text-align: center;
+      color: #7a7486;
+      font-size: 0.92rem;
+      margin-top: 18px;
+    }
+
+    @media (max-width: 900px) {
+      .grid-2, .grid-3, .img-grid { grid-template-columns: 1fr; }
+      .hero h1 { font-size: 1.8rem; }
+    }
+
+    @media print {
+      @page { size: A4 landscape; margin: 10mm; }
+      html, body { background: white !important; }
+      body { font-size: 10.5px; line-height: 1.32; color: #000; }
+      .topbar { display: none !important; }
+      .page { max-width: none; width: 100%; margin: 0; padding: 0; }
+      .hero {
+        box-shadow: none; border: 1px solid #ddd; padding: 14px 16px; margin-bottom: 10px;
+        border-radius: 14px; background: #f5f5f5 !important;
+        -webkit-print-color-adjust: exact; print-color-adjust: exact;
+      }
+      .hero h1 { font-size: 18px; margin-bottom: 4px; }
+      .hero p, .quick-map { font-size: 9.5px; }
+      .quick-map a { padding: 3px 7px; }
+      .section {
+        box-shadow: none; border: 1px solid #dcdcdc; border-radius: 12px;
+        padding: 12px 13px; margin-bottom: 10px; background: #fff !important;
+        -webkit-print-color-adjust: exact; print-color-adjust: exact;
+        break-inside: avoid; page-break-inside: avoid;
+      }
+      .section-title { font-size: 15px; margin-bottom: 10px; }
+      .lead-box, .subsection, .mini-card, .callout, .image-card, table {
+        break-inside: avoid !important; page-break-inside: avoid !important;
+      }
+      .subsection { padding: 10px 11px; margin-top: 9px; border-radius: 10px; }
+      .subsection h3 { font-size: 12px; margin-bottom: 6px; }
+      .tag { font-size: 8px; padding: 2px 7px; margin-bottom: 6px; }
+      .mini-card { padding: 10px 11px; border-radius: 10px; }
+      .mini-card h4 { font-size: 11px; margin-bottom: 6px; }
+      .callout { padding: 9px 10px; border-radius: 10px; }
+      .image-card { border-radius: 10px; padding: 8px; box-shadow: none; }
+      .image-card img { height: 115px; border-radius: 8px; }
+      .image-caption { font-size: 8.5px; margin-top: 5px; }
+      th, td { padding: 7px 8px; }
+      ul, ol { margin-top: 4px; padding-left: 17px; }
+      li { margin-bottom: 3px; }
+      .footer-note { margin-top: 8px; font-size: 8.5px; }
+      .grid-2, .grid-3, .img-grid { gap: 9px; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">GreekDoc • Οφθαλμολογία</div>
+      <button class="print-btn" onclick="window.print()">🖨️ Print notes</button>
+    </div>
+  </div>
+
+  <div class="page">
+    <div class="hero">
+      <h1>Οφθαλμολογία – Βλέφαρα, κόγχος, δάκρυα</h1>
+      <p>
+        Σημειώσεις από παρουσίαση Οφθαλμολογίας ΑΠΘ, κεφάλαιο 3ο, δεξιότητες 20–27.
+        Οργανωμένες: ανατομία, κλινικά σημεία, διαφορές παθήσεων και SOS σημεία για εξετάσεις.
+      </p>
+      <div class="quick-map">
+        <a href="#blefara">Βλέφαρα</a>
+        <a href="#ptosi">Βλεφαρόπτωση</a>
+        <a href="#derma">Δέρμα βλεφάρων</a>
+        <a href="#kogxos">Κόγχος / Εξόφθαλμος</a>
+        <a href="#ted">Thyroid Eye Disease</a>
+        <a href="#dakrya">Δάκρυα</a>
+      </div>
+    </div>
+
+    <section class="section" id="blefara">
+      <h2 class="section-title">1. Βασικές λειτουργίες των βλεφάρων</h2>
+
+      <div class="grid-2">
+        <div class="mini-card pink">
+          <h4>Προστασία και επιφάνεια οφθαλμού</h4>
+          <ul>
+            <li><b>Μηχανική προάσπιση</b> του βολβού.</li>
+            <li>Συμμετοχή στην <b>επίστρωση της δακρυϊκής στιβάδας</b>.</li>
+            <li>Ελάττωση της <b>επιφανειακής τάσης</b> του δακρυϊκού φιλμ.</li>
+          </ul>
+        </div>
+
+        <div class="mini-card blue">
+          <h4>Αποχέτευση δακρύων</h4>
+          <ul>
+            <li>Τα βλέφαρα συμμετέχουν στην <b>ενεργό άντληση των δακρύων</b>.</li>
+            <li>Προωθούν τα δάκρυα από τον οφθαλμό προς την <b>αποχέτευση</b>.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">2. Βασικά ανατομικά στοιχεία των βλεφάρων</h2>
+
+      <div class="subsection">
+        <div class="tag">Στιβάδες</div>
+        <h3>Πρόσθιο και οπίσθιο πέταλο</h3>
+        <div class="grid-2">
+          <div class="mini-card violet">
+            <h4>Πρόσθιο πέταλο</h4>
+            <ul>
+              <li><b>Δέρμα</b></li>
+              <li><b>Σφιγκτήρας των βλεφάρων</b></li>
+            </ul>
+          </div>
+          <div class="mini-card green">
+            <h4>Οπίσθιο πέταλο</h4>
+            <ul>
+              <li><b>Ταρσός</b>: ινώδης πλάκα που δίνει <span class="important">σχήμα και στήριξη</span> στο βλέφαρο.</li>
+              <li><b>Επιπεφυκότας</b>: επενδύει την οπίσθια επιφάνεια του βλεφάρου.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="subsection">
+        <div class="tag blue">Αδένες</div>
+        <h3>Αδένες των βλεφάρων</h3>
+        <div class="grid-3">
+          <div class="mini-card peach">
+            <h4>Αδένες Moll</h4>
+            <ul>
+              <li>Τροποποιημένοι <b>ιδρωτοποιοί αδένες</b>.</li>
+            </ul>
+          </div>
+          <div class="mini-card peach">
+            <h4>Αδένες Zeiss</h4>
+            <ul>
+              <li><b>Σμηγματογόνοι αδένες</b> των βλεφαρίδων.</li>
+            </ul>
+          </div>
+          <div class="mini-card peach">
+            <h4>Αδένες Meibomius</h4>
+            <ul>
+              <li><b>Λιπώδεις αδένες</b> μέσα στον ταρσό.</li>
+              <li>Εκκρίνουν το <span class="important">λιπώδες στρώμα των δακρύων</span>.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="subsection">
+        <div class="tag green">Μύες</div>
+        <h3>Μύες που κινούν τα βλέφαρα</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Μυς</th>
+              <th>Κύρια λειτουργία</th>
+              <th>Κλινική λογική</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><b>Ανελκτήρας άνω βλεφάρου</b></td>
+              <td>Ανύψωση άνω βλεφάρου.</td>
+              <td>Βλάβη → πτώση άνω βλεφάρου.</td>
+            </tr>
+            <tr>
+              <td><b>Μυς του Müller</b></td>
+              <td>Συμμετέχει στην ανύψωση. Είναι <b>συμπαθητικός μυς</b>.</td>
+              <td>Δίνει περίπου <b>2 mm</b> ανύψωση και κρατά το βλέφαρο πιο ανοιχτό σε εγρήγορση/στρες.</td>
+            </tr>
+            <tr>
+              <td><b>Κατασπαστήρας κάτω βλεφάρου</b></td>
+              <td>Έλκει το κάτω βλέφαρο προς τα κάτω.</td>
+              <td>Σημαντικός για τη θέση του κάτω βλεφάρου.</td>
+            </tr>
+            <tr>
+              <td><b>Σφιγκτήρας των βλεφάρων</b></td>
+              <td>Κλείνει τα βλέφαρα.</td>
+              <td>Βλάβη προσωπικού νεύρου μπορεί να επηρεάσει τη σύγκλιση.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="subsection">
+        <div class="tag yellow">Κίνηση + νεύρωση</div>
+        <h3>Πώς ανοίγουν και κλείνουν τα βλέφαρα</h3>
+        <div class="grid-2">
+          <div class="mini-card blue">
+            <h4>Διάνοιξη βλεφάρων</h4>
+            <ul>
+              <li>Γίνεται μέσω του <b>ανελκτήρα του άνω βλεφάρου</b>.</li>
+              <li>Νεύρωση: <span class="important">κοινό κινητικό νεύρο (CN III)</span>.</li>
+            </ul>
+          </div>
+          <div class="mini-card pink">
+            <h4>Σύγκλιση βλεφάρων</h4>
+            <ul>
+              <li>Γίνεται μέσω του <b>σφιγκτήρα μυός των βλεφάρων</b>.</li>
+              <li>Νεύρωση: <span class="important">προσωπικό νεύρο (CN VII)</span>.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="callout yellow">
+          <b>Συμπαθητική νεύρωση στον μυ του Müller:</b><br>
+          Οι μεταγαγγλιακές ίνες έρχονται από το <b>άνω αυχενικό γάγγλιο</b> μέσω του οφθαλμικού πλέγματος.
+          Προκαλούν σύσπαση του μυός → ήπια ανύψωση του άνω βλεφάρου.
+        </div>
+
+        <div class="callout red">
+          <b>Κλινική σημασία:</b> βλάβη του συμπαθητικού → παράλυση του μυός του Müller →
+          <span class="important">ήπια πτώση βλεφάρου</span>, χαρακτηριστική του <b>συνδρόμου Horner</b>, μαζί με
+          <b>μύση</b> και <b>ανιδρωσία</b> στην ίδια πλευρά.
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="ptosi">
+      <h2 class="section-title">3. Διαταραχές θέσης και λειτουργίας βλεφάρων</h2>
+
+      <div class="grid-2">
+        <div class="mini-card red">
+          <h4>Λαγόφθαλμος</h4>
+          <ul>
+            <li><b>Ατελής σύγκλιση</b> του βλεφάρου.</li>
+            <li>Ο βολβός μπορεί να μένει εκτεθειμένος → ξηρότητα/κερατοπάθεια από έκθεση.</li>
+          </ul>
+        </div>
+        <div class="mini-card violet">
+          <h4>Βλεφαρόπτωση</h4>
+          <ul>
+            <li>Πτώση του βλεφάρου.</li>
+            <li>Μπορεί να είναι συγγενής ή επίκτητη, μυογενής, νευρογενής, μηχανική ή απονευρωτική.</li>
+          </ul>
+        </div>
+        <div class="mini-card blue">
+          <h4>Εκτρόπιο</h4>
+          <ul>
+            <li>Παθολογική <span class="important">έξω στροφή</span> του βλεφάρου.</li>
+          </ul>
+        </div>
+        <div class="mini-card green">
+          <h4>Εντρόπιο</h4>
+          <ul>
+            <li>Παθολογική <span class="important">έσω στροφή</span> του βλεφάρου.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="subsection">
+        <div class="tag red">SOS</div>
+        <h3>Συγγενής βλεφαρόπτωση</h3>
+        <ul>
+          <li>Πτώση του <b>άνω βλεφάρου από τη γέννηση</b>.</li>
+          <li>Οφείλεται σε ανεπάρκεια του <b>ανελκτήρα μυός</b> ή του <b>μυός του Müller</b>.</li>
+          <li>Το βλέφαρο μπορεί να καλύπτει μέρος ή όλο τον οφθαλμό.</li>
+          <li><span class="danger">Απαιτεί άμεση χειρουργική αντιμετώπιση</span> όταν καλύπτει την κόρη, γιατί υπάρχει κίνδυνος <b>αμβλυωπίας εξ ανοψίας</b>.</li>
+        </ul>
+
+        <div class="callout red">
+          <b>Γιατί είναι SOS;</b><br>
+          Αν το βλέφαρο καλύπτει την κόρη, το παιδί δεν βλέπει καθαρά. Έτσι το μάτι “μαθαίνει” να μη βλέπει.
+          Η ανεπαρκής οπτική διέγερση στην κρίσιμη περίοδο ανάπτυξης της όρασης, περίπου <b>0–7 έτη</b>, μπορεί να οδηγήσει σε
+          <b>αμβλυωπία</b>.
+        </div>
+
+        <div class="grid-2">
+          <div class="mini-card yellow">
+            <h4>Αμβλυωπία</h4>
+            <ul>
+              <li>“Αμβλύς” + “όψις” → <b>θαμπή / μειωμένη όραση</b>.</li>
+              <li>Μειωμένη οπτική οξύτητα σε ένα ή και στα δύο μάτια, χωρίς οργανική βλάβη του οφθαλμού.</li>
+            </ul>
+          </div>
+          <div class="mini-card yellow">
+            <h4>Εξ ανοψίας</h4>
+            <ul>
+              <li>“Ανοψία” = α + όψις → χωρίς όραση.</li>
+              <li>Δηλαδή η βλάβη γίνεται λόγω <b>απουσίας οπτικού ερεθίσματος</b>.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="subsection">
+        <div class="tag">Αίτια βλεφαρόπτωσης</div>
+        <h3>Πώς ταξινομούμε τη βλεφαρόπτωση</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Κατηγορία</th>
+              <th>Παράδειγμα</th>
+              <th>Τι πρέπει να θυμάμαι</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><b>Μυογενής</b></td>
+              <td>Μυασθένεια</td>
+              <td>Το πρόβλημα είναι στον μυ ή στη νευρομυϊκή λειτουργία.</td>
+            </tr>
+            <tr>
+              <td><b>Νευρογενής</b></td>
+              <td>Πάρεση CN III</td>
+              <td>Πτώση βλεφάρου + στραβισμός + <b>μυδρίαση</b>.</td>
+            </tr>
+            <tr>
+              <td><b>Νευρογενής</b></td>
+              <td>Σύνδρομο Horner</td>
+              <td>Βλάβη συμπαθητικού → ήπια πτώση λόγω Müller + <b>μύση</b> + <b>ανιδρωσία</b>.</td>
+            </tr>
+            <tr>
+              <td><b>Μηχανική</b></td>
+              <td>Δερματοχάλαση, όγκοι</td>
+              <td>Κάτι “βαραίνει” ή εμποδίζει μηχανικά το βλέφαρο.</td>
+            </tr>
+            <tr>
+              <td><b>Απονευρωτική</b></td>
+              <td>Ηλικιωμένοι, μετά από χειρουργείο ή φακούς επαφής</td>
+              <td>Χαλάρωση ή αποκόλληση της απονεύρωσης του ανελκτήρα από τον ταρσό. Ο μυς λειτουργεί, αλλά η σύνδεση δεν μεταδίδει σωστά την κίνηση.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="section" id="derma">
+      <h2 class="section-title">4. Οφθαλμικές βλάβες που αφορούν το δέρμα</h2>
+
+      <div class="subsection">
+        <div class="tag red">VZV / V1</div>
+        <h3>Οφθαλμικός έρπητας ζωστήρας</h3>
+        <ul>
+          <li>Οφείλεται στον <b>ιό Varicella-Zoster</b>.</li>
+          <li>Εντόπιση στο <b>γάγγλιο του Gasser</b>, στον κλάδο <b>V1</b> του τριδύμου.</li>
+          <li><b>Δερματικές βλάβες:</b> φυσαλίδες σε μέτωπο, βλέφαρα, ρινική ράχη.</li>
+          <li><b>Οφθαλμικές εκδηλώσεις:</b> επιπεφυκίτιδα, κερατίτιδα, ιριδοκυκλίτιδα, οπτική νευρίτιδα.</li>
+          <li><b>Επιπλοκές:</b> κερατοειδικές ουλές, αμβλυωπία, μετα-ερπητικός πόνος.</li>
+          <li><b>Αντιμετώπιση:</b> αντιϊκά, π.χ. <b>acyclovir</b>, αναλγητικά, τοπική φροντίδα και οφθαλμολογική παρακολούθηση.</li>
+        </ul>
+      </div>
+
+      <div class="grid-2">
+        <div class="mini-card peach">
+          <h4>Κριθή</h4>
+          <ul>
+            <li>Φλεγμονή των <b>θυλάκων των βλεφαρίδων</b>.</li>
+            <li><b>Θεραπεία:</b> αντιβιοτική αλοιφή, ζεστές κομπρέσες, αφαίρεση βλεφαρίδων.</li>
+          </ul>
+        </div>
+
+        <div class="mini-card violet">
+          <h4>Χαλάζιο</h4>
+          <ul>
+            <li>Φλεγμονή <b>αδένων του βλεφάρου</b>.</li>
+            <li><b>Αντιμετώπιση:</b> χειρουργική αντιμετώπιση.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="kogxos">
+      <h2 class="section-title">5. Εξόφθαλμος και παθήσεις κόγχου</h2>
+
+      <div class="lead-box">
+        <b>Εξόφθαλμος</b> = πρόπτωση/προβολή του βολβού προς τα εμπρός. Η διερεύνηση περιλαμβάνει
+        <b>εξοφθαλμομέτρηση</b> και απεικόνιση με <b>CT/MRI</b>.
+      </div>
+
+      <div class="grid-2">
+        <div class="mini-card blue">
+          <h4>Αίτια εξόφθαλμου</h4>
+          <ol>
+            <li>Φλεγμονές κόγχου</li>
+            <li>Όγκοι κόγχου</li>
+            <li>Φλεβική στάση στον σηραγγώδη κόλπο</li>
+            <li>Ενδοκρινική οφθαλμοπάθεια</li>
+          </ol>
+        </div>
+
+        <div class="mini-card yellow">
+          <h4>Διερεύνηση</h4>
+          <ul>
+            <li><b>Εξοφθαλμομέτρηση</b></li>
+            <li><b>CT/MRI</b></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="subsection">
+        <div class="tag red">Φλεγμονές κόγχου</div>
+        <h3>Προδιαφραγματική vs οπισθοδιαφραγματική κυτταρίτιδα</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Κατάσταση</th>
+              <th>Χαρακτηριστικά</th>
+              <th>Κλινική σημασία</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><b>Προδιαφραγματική κυτταρίτιδα</b></td>
+              <td>Οίδημα βλεφάρων, πτώση.</td>
+              <td>Η φλεγμονή είναι πιο πρόσθια, πριν το οφθαλμικό διάφραγμα.</td>
+            </tr>
+            <tr>
+              <td><b>Κογχική / οπισθοδιαφραγματική κυτταρίτιδα</b></td>
+              <td>Περιορισμός κινητικότητας βολβού και κακουχία.</td>
+              <td><span class="danger">Πιο ανησυχητική</span>, γιατί αφορά τον κόγχο πίσω από το διάφραγμα.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="section" id="ted">
+      <h2 class="section-title">6. Θυρεοειδική οφθαλμοπάθεια / Thyroid Eye Disease (TED)</h2>
+
+      <div class="subsection">
+        <div class="tag red">Graves-Basedow</div>
+        <h3>Βασική έννοια</h3>
+        <ul>
+          <li>Η θυρεοειδική οφθαλμοπάθεια είναι εκδήλωση της <b>νόσου Graves-Basedow</b>.</li>
+          <li>Είναι <b>αυτοάνοσο νόσημα</b>.</li>
+          <li>Σχηματίζονται <b>Τ-λεμφοκύτταρα</b> έναντι θυρεοειδικών αντιγόνων αλλά και έναντι δομών του οφθαλμού.</li>
+          <li>Οι δομές που προσβάλλονται είναι κυρίως το <b>κογχικό λίπος</b>, οι <b>εξωφθάλμιοι μύες</b> και τα <b>βλέφαρα</b>.</li>
+          <li>Αυτό προκαλεί <span class="important">φλεγμονή, οίδημα και αύξηση όγκου μέσα στον κόγχο</span> → <b>εξόφθαλμος</b>.</li>
+        </ul>
+
+        <div class="img-grid">
+          <div class="image-card">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/8/8f/Proptosis_and_lid_retraction_from_Graves%27_Disease.jpg" alt="Thyroid Eye Disease - proptosis and lid retraction">
+            <div class="image-caption">Thyroid Eye Disease: πρόπτωση και ανάσπαση βλεφάρου</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="subsection">
+        <div class="tag yellow">Στάδια βαρύτητας</div>
+        <h3>Πώς εξελίσσεται η TED</h3>
+        <ol>
+          <li><b>Ήπιο οίδημα</b>.</li>
+          <li><b>Ανάσπαση / κατάσπαση βλεφάρων</b>.</li>
+          <li><b>Διαταραχές κινητικότητας</b>: διπλωπία, περιορισμένες κινήσεις ματιού.</li>
+          <li><span class="danger">Συμπιεστική οπτική νευροπάθεια</span>: πιέζεται το οπτικό νεύρο → μειώνεται η όραση και μπορεί να προκληθεί τύφλωση αν δεν αντιμετωπιστεί.</li>
+        </ol>
+      </div>
+
+      <div class="subsection">
+        <div class="tag blue">Χαρακτηριστικά στους οφθαλμούς</div>
+        <h3>Τα σημεία ένα-ένα</h3>
+        <div class="grid-2">
+          <div class="mini-card pink">
+            <h4>1. Πρόπτωση του βολβού</h4>
+            <p>Ο βολβός προβάλλει προς τα εμπρός. Αυτό είναι ο <b>εξόφθαλμος</b>.</p>
+          </div>
+          <div class="mini-card pink">
+            <h4>2. Σημείο Dalrymple</h4>
+            <p>“Αγριεμένη” όψη λόγω <b>ανελκυσμού του άνω βλεφάρου</b>. Δηλαδή το άνω βλέφαρο είναι πιο ανεβασμένο.</p>
+          </div>
+          <div class="mini-card violet">
+            <h4>3. Σημείο von Graefe</h4>
+            <p>Όταν ο ασθενής κοιτά προς τα κάτω, το άνω βλέφαρο <b>καθυστερεί</b> και φαίνεται λευκή γραμμή πάνω από την ίριδα.</p>
+          </div>
+          <div class="mini-card blue">
+            <h4>4. Αραιός βλεφαρισμός</h4>
+            <p>Ο ασθενής δεν ανοιγοκλείνει συχνά τα μάτια → προκαλείται <b>ξηρότητα</b>.</p>
+          </div>
+          <div class="mini-card green">
+            <h4>5. Οίδημα βλεφάρων</h4>
+            <p>Οφείλεται στη φλεγμονή και μπορεί να είναι πιο εμφανές το πρωί.</p>
+          </div>
+          <div class="mini-card green">
+            <h4>6. Χύμωση επιπεφυκότα</h4>
+            <p>Ο επιπεφυκότας “φουσκώνει” σαν ζελέ.</p>
+          </div>
+          <div class="mini-card peach">
+            <h4>7. Υπεραιμία επιπεφυκότος</h4>
+            <p>Κόκκινο μάτι λόγω διάτασης των αγγείων.</p>
+          </div>
+          <div class="mini-card red">
+            <h4>8. Στικτή κερατοπάθεια</h4>
+            <p>Μπορεί να φτάσει μέχρι <b>κερατοπάθεια εκ λαγοφθάλμου</b>, λόγω έκθεσης και ξηρότητας της επιφάνειας του βολβού.</p>
+          </div>
+          <div class="mini-card yellow">
+            <h4>9. Διπλωπία</h4>
+            <p>Οφείλεται σε υπερτροφία των εξωφθαλμίων μυών, ιδίως του <b>έσω ορθού</b>.</p>
+          </div>
+          <div class="mini-card yellow">
+            <h4>10. Αύξηση οφθαλμικού τόνου</h4>
+            <p>Μπορεί να παρατηρηθεί αύξηση της ενδοφθάλμιας πίεσης.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="callout blue">
+        <b>Fun fact:</b> η νόσος ονομάστηκε από δύο γιατρούς που την περιέγραψαν ανεξάρτητα.
+        Ο <b>Robert Graves</b>, Ιρλανδός γιατρός, περιέγραψε το 1835 υπερθυρεοειδισμό, εξόφθαλμο και ταχυκαρδία.
+        Ο <b>Karl Adolph von Basedow</b>, Γερμανός γιατρός, περιέγραψε το ίδιο νόσημα το 1840.
+        Στον αγγλόφωνο κόσμο λέγεται <b>Graves disease</b>, ενώ στη Γερμανία και σε πολλές ευρωπαϊκές χώρες <b>Basedow disease</b>.
+      </div>
+    </section>
+
+    <section class="section" id="dakrya">
+      <h2 class="section-title">7. Δάκρυα – λειτουργίες, ξηρός οφθαλμός, δακρύρροια</h2>
+
+      <div class="subsection">
+        <div class="tag green">Λειτουργίες δακρύων</div>
+        <h3>Τι κάνουν τα δάκρυα</h3>
+        <ul>
+          <li>Θρέψη και οξυγόνωση των εξωτερικών στιβάδων του κερατοειδή, επειδή ο <b>κερατοειδής είναι ανάγγειος ιστός</b>.</li>
+          <li>Εξασφάλιση <b>λείας πρόσθιας διαθλαστικής επιφάνειας</b> του οφθαλμού.</li>
+          <li>Χημική και μηχανική προάσπιση της επιφάνειας του οφθαλμού.</li>
+          <li>Ενζυματικός καθαρισμός και έκπλυση μικροσωματιδίων.</li>
+        </ul>
+      </div>
+
+      <div class="subsection">
+        <div class="tag yellow">Να ξεχωρίζονται</div>
+        <h3>Ξηρός οφθαλμός – δακρύρροια – επιφορά</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Όρος</th>
+              <th>Τι σημαίνει</th>
+              <th>Λογική</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><b>Σύνδρομο ξηρού οφθαλμού</b></td>
+              <td>Ποσοτική ή ποιοτική ανεπάρκεια της δακρυϊκής στιβάδας να ανταποκριθεί στην αποστολή της.</td>
+              <td>Ποσοτική = ελάττωση έκκρισης δακρυϊκού αδένα. Ποιοτική = ελάττωση βλέννης ή λιποειδών.</td>
+            </tr>
+            <tr>
+              <td><b>Δακρύρροια</b></td>
+              <td>Αυξημένη παραγωγή δακρύων.</td>
+              <td>Συχνά είναι αντανακλαστική σε τοπικό ερεθισμό.</td>
+            </tr>
+            <tr>
+              <td><b>Επιφορά</b></td>
+              <td>Ανεπιτυχής αποχέτευση δακρύων.</td>
+              <td>Μπορεί να είναι ανατομική ή λειτουργική.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="subsection">
+        <div class="tag blue">Αποχέτευση</div>
+        <h3>Αποχέτευση δακρύων και συγγενής απόφραξη</h3>
+        <ul>
+          <li>Στη <b>συγγενή απόφραξη</b> μπορεί να υπάρχουν <b>βλεννώδεις εκκρίσεις</b> και <b>επιφορά</b>.</li>
+          <li><b>Αντιμετώπιση:</b> μαλάξεις, αντιβιοτικά, καθετηριασμός ρινοδακρυϊκού πόρου.</li>
+        </ul>
+      </div>
+
+      <div class="subsection">
+        <div class="tag red">Δακρυοκυστίτιδα</div>
+        <h3>Οξεία και χρόνια μορφή</h3>
+        <div class="grid-2">
+          <div class="mini-card red">
+            <h4>Οξεία δακρυοκυστίτιδα</h4>
+            <ul>
+              <li><b>Ταχεία εξέλιξη</b>.</li>
+              <li>Οίδημα και ερυθρότητα.</li>
+              <li>Έντονη ευαισθησία.</li>
+              <li><b>Αντιβίωση per os</b>.</li>
+            </ul>
+          </div>
+          <div class="mini-card violet">
+            <h4>Χρόνια δακρυοκυστίτιδα</h4>
+            <ul>
+              <li><b>Επιφορά</b>.</li>
+              <li>Βλεννοπυώδεις εκκρίσεις.</li>
+              <li>Συχνές επιπεφυκίτιδες.</li>
+              <li><b>Ασκορινοστομία</b>.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">8. Γρήγορο exam recap</h2>
+      <div class="grid-2">
+        <div class="mini-card yellow">
+          <h4>High-yield νεύρα</h4>
+          <ul>
+            <li>Άνοιγμα βλεφάρου → <b>CN III</b>.</li>
+            <li>Κλείσιμο βλεφάρου → <b>CN VII</b>.</li>
+            <li>Müller → <b>συμπαθητικό</b>, άνω αυχενικό γάγγλιο.</li>
+            <li>Οφθαλμικός έρπητας ζωστήρας → <b>V1</b>, γάγγλιο Gasser.</li>
+          </ul>
+        </div>
+        <div class="mini-card red">
+          <h4>High-yield κλινικά</h4>
+          <ul>
+            <li>Συγγενής βλεφαρόπτωση που καλύπτει κόρη → κίνδυνος <b>αμβλυωπίας εξ ανοψίας</b>.</li>
+            <li>CN III πάρεση → πτώση + στραβισμός + <b>μυδρίαση</b>.</li>
+            <li>Horner → ήπια πτώση + <b>μύση</b> + ανιδρωσία.</li>
+            <li>TED → εξόφθαλμος, ανάσπαση βλεφάρου, ξηρότητα, διπλωπία, πιθανή συμπιεστική οπτική νευροπάθεια.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <div class="footer-note">
+      GreekDoc style notes • Οφθαλμολογία • έτοιμο για οθόνη και εκτύπωση
+    </div>
+  </div>
+</body>
+</html>
