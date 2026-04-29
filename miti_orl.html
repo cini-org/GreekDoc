@@ -1,0 +1,1224 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GreekDoc - Μύτη</title>
+
+  <style>
+    :root {
+      --bg: #fcfbff;
+      --text: #2d2a32;
+      --muted: #6a6475;
+      --purple-dark: #4d2f73;
+      --white: #ffffff;
+      --line: #ece5f7;
+      --shadow: 0 10px 30px rgba(80, 60, 120, 0.08);
+      --radius-xl: 28px;
+      --radius-lg: 22px;
+      --pink: #fff2f7;
+      --blue: #eef8ff;
+      --green: #f1fff7;
+      --peach: #fff7ed;
+      --violet: #faf7ff;
+      --yellow: #fffbe8;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Arial, sans-serif;
+      background: linear-gradient(to bottom, #fcfbff, #f8f5ff);
+      color: var(--text);
+      line-height: 1.65;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(10px);
+      background: rgba(252, 251, 255, 0.88);
+      border-bottom: 1px solid rgba(220, 210, 240, 0.7);
+      padding: 12px 20px;
+    }
+
+    .topbar-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .brand {
+      font-weight: 700;
+      color: var(--purple-dark);
+      letter-spacing: 0.2px;
+    }
+
+    .print-btn {
+      border: none;
+      border-radius: 999px;
+      padding: 10px 18px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      background: linear-gradient(135deg, #e9ddff, #dff4ff);
+      color: #442466;
+      box-shadow: 0 4px 14px rgba(100, 80, 140, 0.12);
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .print-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 8px 18px rgba(100, 80, 140, 0.16);
+    }
+
+    .page {
+      max-width: 1200px;
+      margin: 26px auto 60px;
+      padding: 0 20px;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #f8d7e8, #e7dcff, #dff4ff);
+      border-radius: 30px;
+      padding: 36px 34px;
+      box-shadow: var(--shadow);
+      margin-bottom: 26px;
+    }
+
+    .hero h1 {
+      margin: 0 0 10px 0;
+      font-size: 2.2rem;
+      color: #3e245f;
+    }
+
+    .hero p {
+      margin: 0;
+      color: #4e4960;
+      max-width: 950px;
+    }
+
+    .section {
+      background: var(--white);
+      border-radius: var(--radius-xl);
+      padding: 28px;
+      margin-bottom: 24px;
+      box-shadow: var(--shadow);
+      border: 1px solid #f0ebfa;
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+
+    .section-title {
+      margin: 0 0 18px 0;
+      font-size: 1.6rem;
+      color: #40235d;
+    }
+
+    .lead-box {
+      background: #faf7ff;
+      border: 1px solid #eee7fb;
+      border-radius: 18px;
+      padding: 16px 18px;
+      margin-bottom: 18px;
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+
+    .subsection {
+      margin-top: 18px;
+      padding: 18px;
+      border-radius: var(--radius-lg);
+      border: 1px solid #efe8fb;
+      background: #fcfbff;
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+
+    .subsection h3 {
+      margin: 0 0 10px 0;
+      color: #4a2d69;
+      font-size: 1.13rem;
+    }
+
+    .tag {
+      display: inline-block;
+      background: #efe4ff;
+      color: #5d348b;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .tag.sos { background: #ffe4ec; color: #9f1239; }
+    .tag.clinical { background: #e0f2fe; color: #075985; }
+    .tag.anatomy { background: #ecfdf5; color: #166534; }
+    .tag.exam { background: #fff7ed; color: #9a3412; }
+
+    .important { color: #b42352; font-weight: 700; }
+    .danger { color: #b91c1c; font-weight: 700; }
+    .blue-text { color: #0369a1; font-weight: 700; }
+    .green-text { color: #15803d; font-weight: 700; }
+    .orange-text { color: #c2410c; font-weight: 700; }
+
+    .highlight {
+      background: #fff1a8;
+      padding: 0 4px;
+      border-radius: 6px;
+      font-weight: 600;
+    }
+
+    .muted { color: var(--muted); }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .mini-card {
+      background: #ffffff;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 18px;
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+
+    .mini-card.pink { background: var(--pink); }
+    .mini-card.blue { background: var(--blue); }
+    .mini-card.green { background: var(--green); }
+    .mini-card.peach { background: var(--peach); }
+    .mini-card.violet { background: var(--violet); }
+    .mini-card.yellow { background: var(--yellow); }
+
+    .mini-card h4 {
+      margin: 0 0 10px 0;
+      color: #4a2d69;
+      font-size: 1rem;
+    }
+
+    .callout {
+      margin-top: 14px;
+      border-radius: 18px;
+      padding: 15px 16px;
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+
+    .callout.blue {
+      background: #eef8ff;
+      border-left: 6px solid #9fd7ff;
+    }
+
+    .callout.red {
+      background: #fff4f4;
+      border-left: 6px solid #ff9797;
+    }
+
+    .callout.green {
+      background: #f1fff7;
+      border-left: 6px solid #9be7b3;
+    }
+
+    .callout.peach {
+      background: #fff7ed;
+      border-left: 6px solid #fdba74;
+    }
+
+    .img-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 16px;
+    }
+
+    .image-card {
+      background: #ffffff;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 12px;
+      break-inside: avoid;
+      page-break-inside: avoid;
+      box-shadow: 0 6px 18px rgba(80, 60, 120, 0.05);
+    }
+
+    .image-card img {
+      width: 100%;
+      height: 230px;
+      object-fit: contain;
+      display: block;
+      border-radius: 14px;
+      background: linear-gradient(135deg, #faf7ff, #f2f9ff);
+    }
+
+    .image-caption {
+      margin-top: 10px;
+      text-align: center;
+      font-size: 0.92rem;
+      color: #4d4560;
+      font-weight: 600;
+    }
+
+    .flow {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .pill {
+      background: #ffffff;
+      border: 1px solid #eadff7;
+      border-radius: 999px;
+      padding: 7px 12px;
+      font-weight: 650;
+      color: #51336f;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 12px;
+      background: white;
+      border-radius: 16px;
+      overflow: hidden;
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+
+    th, td {
+      border: 1px solid #efe8fb;
+      padding: 10px 12px;
+      vertical-align: top;
+      text-align: left;
+    }
+
+    th {
+      background: #f3edff;
+      color: #42235d;
+    }
+
+    ul, ol {
+      margin: 8px 0 0 0;
+      padding-left: 22px;
+    }
+
+    li { margin-bottom: 7px; }
+
+    .footer-note {
+      text-align: center;
+      color: #7a7486;
+      font-size: 0.92rem;
+      margin-top: 18px;
+    }
+
+    @media (max-width: 900px) {
+      .grid-2,
+      .grid-3,
+      .img-grid {
+        grid-template-columns: 1fr;
+      }
+      .hero h1 { font-size: 1.8rem; }
+    }
+
+    @media print {
+      @page { size: A4 landscape; margin: 10mm; }
+
+      html, body { background: white !important; }
+
+      body {
+        font-size: 10.5px;
+        line-height: 1.32;
+        color: #000;
+      }
+
+      .topbar { display: none !important; }
+
+      .page {
+        max-width: none;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+      }
+
+      .hero {
+        box-shadow: none;
+        border: 1px solid #ddd;
+        padding: 13px 15px;
+        margin-bottom: 10px;
+        border-radius: 14px;
+        background: #f5f5f5 !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+
+      .hero h1 { font-size: 18px; margin-bottom: 4px; }
+      .hero p { font-size: 10px; }
+
+      .section {
+        box-shadow: none;
+        border: 1px solid #dcdcdc;
+        border-radius: 12px;
+        padding: 12px 13px;
+        margin-bottom: 10px;
+        background: #fff !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+
+      .section-title { font-size: 15px; margin-bottom: 10px; }
+
+      .lead-box,
+      .subsection,
+      .mini-card,
+      .callout,
+      .image-card,
+      table {
+        break-inside: avoid !important;
+        page-break-inside: avoid !important;
+      }
+
+      .subsection {
+        padding: 10px 11px;
+        margin-top: 10px;
+        border-radius: 10px;
+      }
+
+      .subsection h3 { font-size: 12px; margin-bottom: 6px; }
+      .tag { font-size: 8px; padding: 2px 7px; margin-bottom: 6px; }
+      .mini-card { padding: 10px 11px; border-radius: 10px; }
+      .mini-card h4 { font-size: 11px; margin-bottom: 6px; }
+      .callout { padding: 9px 10px; border-radius: 10px; }
+
+      .image-card {
+        border-radius: 10px;
+        padding: 8px;
+        box-shadow: none;
+      }
+
+      .image-card img { height: 115px; border-radius: 8px; }
+      .image-caption { font-size: 8.5px; margin-top: 5px; }
+
+      ul, ol { margin-top: 4px; padding-left: 17px; }
+      li { margin-bottom: 3px; }
+      th, td { padding: 6px 7px; }
+      .footer-note { margin-top: 8px; font-size: 8.5px; }
+      .grid-2, .grid-3, .img-grid { gap: 9px; }
+      .pill { padding: 4px 8px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">GreekDoc • Μύτη</div>
+      <button class="print-btn" onclick="window.print()">🖨️ Print notes</button>
+    </div>
+  </div>
+
+  <div class="page">
+
+    <div class="hero">
+      <h1>Μύτη – Έξω ρις, έσω ρις, φυσιολογία & παραρρίνιοι κόλποι</h1>
+      <p>
+        Οργανωμένες σημειώσεις για εξεταστική αποστήθιση και εκτύπωση σε <span class="important">A4 landscape</span>
+      </p>
+    </div>
+
+    <section class="section">
+      <h2 class="section-title">1. Έξω ρις – βασικά μορφολογικά στοιχεία</h2>
+
+      <div class="lead-box">
+        Η <b>έξω ρις</b> αποτελεί το εξωτερικό, εμφανές τμήμα της μύτης και στηρίζεται σε
+        <span class="important">οστεοχόνδρινο σκελετό</span>, μύες και δερματικό περίβλημα.
+      </div>
+
+      <div class="grid-2">
+        <div class="mini-card pink">
+          <h4>Κύρια ανατομικά σημεία</h4>
+          <ul>
+            <li><b>Ριζορρίνιο</b></li>
+            <li><b>Ράχη</b></li>
+            <li><b>Κορυφή</b> = ακρωτήριο</li>
+            <li><b>Κάτω βασική επιφάνεια</b></li>
+            <li><b>Ρώθωνες</b> / <b>μυκτήρες</b> = επιστημονική ονομασία για τα ρουθούνια</li>
+            <li><b>Στυλίδα</b> = κίων</li>
+            <li><b>Πλάγιες επιφάνειες</b> / πτερύγια</li>
+          </ul>
+        </div>
+
+        <div class="mini-card violet">
+          <h4>Δομικά στοιχεία έξω ρινός</h4>
+          <ul>
+            <li><b>Οστεοχόνδρινος σκελετός</b></li>
+            <li><b>Μύες</b></li>
+            <li><b>Δερματικό περίβλημα</b></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="img-grid">
+        <div class="image-card">
+          <img src="miti.JPG" alt="Έξω ρις">
+          <div class="image-caption">Έξω ρις – βασικά μορφολογικά σημεία</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">2. Οστεοχόνδρινος σκελετός έξω ρινός</h2>
+
+      <div class="grid-2">
+        <div class="mini-card blue">
+          <h4>Οστέινη μοίρα έξω ρινός</h4>
+          <ol>
+            <li><b>Ρινική απόφυση μετωπιαίου οστού</b></li>
+            <li><b>Μετωπιαία απόφυση άνω γνάθου</b></li>
+            <li><b>Ρινικά οστά</b></li>
+            <li><b>Πρόσθια μοίρα κάθετου πετάλου ηθμοειδούς</b></li>
+          </ol>
+        </div>
+
+        <div class="mini-card green">
+          <h4>Χόνδρινη μοίρα έξω ρινός</h4>
+          <p>Έχει μεγάλη σημασία στη <span class="important">στήριξη της μύτης</span>.</p>
+          <ol>
+            <li><b>Χόνδρος ρινικού διαφράγματος</b></li>
+            <li><b>Άνω πλάγιοι χόνδροι</b></li>
+            <li><b>Πτερυγιαίοι χόνδροι</b> → μείζονες + ελάσσονες</li>
+            <li><b>Σησαμοειδείς χόνδροι</b> μέσα στη μύτη</li>
+            <li><b>Υνιορρινικοί χόνδροι</b></li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="callout blue">
+        <b>JTK:</b> οι <b>μείζονες πτερυγιαίοι χόνδροι</b> ονομάζονται και <b>κάτω πλάγιοι χόνδροι</b>
+        και μοιάζουν σαν <span class="highlight">πέταλο αλόγου</span>.
+      </div>
+
+      <div class="callout peach">
+        <b>Για τις εξετάσεις:</b> γενικά ασχολούμαστε περισσότερο με το
+        <b>ρινικό διάφραγμα</b>, τους <b>άνω πλάγιους</b> και τους <b>κάτω πλάγιους χόνδρους</b>.
+      </div>
+
+      <div class="img-grid">
+        <div class="image-card">
+          <img src="xondroi.PNG" alt="Χόνδροι έξω ρινός">
+          <div class="image-caption">Χόνδρινη μοίρα έξω ρινός</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">3. Ρινική βαλβίδα της έξω ρινός</h2>
+
+      <div class="subsection">
+        <div class="tag sos">SOS / πολύ σημαντική</div>
+        <h3>Τι είναι η ρινική βαλβίδα;</h3>
+        <ul>
+          <li>Βρίσκεται μεταξύ <b>ρινικού διαφράγματος</b> και <b>άνω πλαγίου χόνδρου</b>.</li>
+          <li>Αποτελεί <b>γωνιώδες άνοιγμα</b> περίπου <span class="highlight">10–15°</span>.</li>
+          <li>Είναι το <span class="important">πιο στενό και εύκαμπτο σημείο</span> της μύτης.</li>
+          <li>Ρυθμίζει τη <b>ροή του εισπνεόμενου αέρα</b>.</li>
+          <li>Σε δυσλειτουργία της, ο ασθενής μπορεί να νιώθει ότι <b>δεν αναπνέει καλά</b>.</li>
+        </ul>
+      </div>
+
+      <div class="img-grid">
+        <div class="image-card">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTi42L80vU6G4DDpz3oXsNSF9347GvFEsWIeBpudJQXuX96aqty" alt="Ρινική βαλβίδα">
+          <div class="image-caption">Ρινική βαλβίδα – στενό σημείο ροής αέρα</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">4. Μύες και δερματικό περίβλημα έξω ρινός</h2>
+
+      <div class="grid-2">
+        <div class="mini-card pink">
+          <h4>Μύες της έξω ρινός</h4>
+          <ol>
+            <li><b>Ανελκτήρες</b>: ανελκτήρας άνω χείλους</li>
+            <li><b>Καθελκτήρες</b>: καθελκτήρας διαφράγματος</li>
+            <li><b>Πιεστήριοι</b>: ρινικός μυς</li>
+            <li><b>Διαστολείς</b>:
+              <ul>
+                <li>πρόσθιος διαστολέας ρινικών μυκτήρων</li>
+                <li>οπίσθιος διαστολέας ρινικών μυκτήρων</li>
+              </ul>
+            </li>
+          </ol>
+        </div>
+
+        <div class="mini-card blue">
+          <h4>Δερματικό περίβλημα</h4>
+          <table>
+            <tr>
+              <th>Περιοχή</th>
+              <th>Χαρακτηριστικά</th>
+            </tr>
+            <tr>
+              <td><b>Οστέινο τμήμα – ράχη</b></td>
+              <td>λεπτό, ευκίνητο, χωρίς υποδόριο λίπος</td>
+            </tr>
+            <tr>
+              <td><b>Πτερύγιο</b></td>
+              <td>παχύτερο, ακίνητο, με υποδόριο λίπος και σμηγματογόνους αδένες</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">5. SOS αιμάτωση και φλεβική παροχέτευση έξω ρινός</h2>
+
+      <div class="grid-2">
+        <div class="mini-card green">
+          <div class="tag sos">SOS TO KNOW</div>
+          <h4>Αρτηρίες έξω ρινός</h4>
+          <ol>
+            <li><b>Προσωπική αρτηρία</b> → στη συνέχεια γίνεται <b>γωνιαία αρτηρία</b> <span class="muted">(κλάδοι έξω καρωτίδας)</span>.</li>
+            <li><b>Ραχιαία της ρινός αρτηρία</b> από την <b>οφθαλμική αρτηρία</b> <span class="muted">(κλάδος έσω καρωτίδας)</span>.</li>
+            <li><b>Κλάδοι υποκόγχιας αρτηρίας</b> από την <b>έσω γναθιαία</b> <span class="muted">(τελικός κλάδος έξω καρωτίδας)</span>.</li>
+          </ol>
+          <div class="callout blue">
+            Η <b>γωνιαία αρτηρία</b> ενώνεται με τη <b>ραχιαία της ρινός αρτηρία</b>.
+          </div>
+        </div>
+
+        <div class="mini-card violet">
+          <h4>Φλέβες έξω ρινός</h4>
+          <ol>
+            <li><b>Τοπικές φλέβες της ρινός</b> → προσωπική φλέβα → έσω σφαγίτιδα.</li>
+            <li><b>Γωνιαία φλέβα</b> → οφθαλμική φλέβα → <b>σηραγγώδης κόλπος</b>.</li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="callout red">
+        <b>JTK – Danger Triangle:</b><br>
+        Η επικίνδυνη περιοχή του προσώπου ορίζεται με <b>άνω όριο τη ρίζα της μύτης</b> και
+        <b>κάτω όριο τις γωνίες του στόματος</b>. Λέγεται “επικίνδυνο” επειδή οι φλέβες αυτής της περιοχής
+        — γωνιαία, προσωπική, οφθαλμική — επικοινωνούν με ενδοκρανιακές φλέβες, κυρίως με τον
+        <span class="danger">σηραγγώδη κόλπο</span>. Έτσι, μια λοίμωξη στη μύτη ή στο άνω χείλος
+        μπορεί να επεκταθεί προς τον εγκέφαλο μέσω αυτών των φλεβικών αναστομώσεων και να γίνει απειλητική για τη ζωή.
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">6. SOS νεύρωση έξω ρινός</h2>
+
+      <div class="grid-2">
+        <div class="mini-card blue">
+          <div class="tag sos">Αισθητική νεύρωση</div>
+          <h4>Τρίδυμο νεύρο</h4>
+          <ul>
+            <li><b>1ος κλάδος τριδύμου</b> = οφθαλμικό νεύρο <b>(V1)</b>:
+              <ul>
+                <li>υπερτροχίλιο</li>
+                <li>υπερκόγχιο</li>
+                <li>ραχιαίο ρινικό νεύρο</li>
+              </ul>
+            </li>
+            <li><b>2ος κλάδος τριδύμου</b> = άνω γναθικό νεύρο <b>(V2)</b>:
+              <ul>
+                <li>υποκόγχιο</li>
+                <li>έξω ρινικό νεύρο</li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+
+        <div class="mini-card peach">
+          <div class="tag anatomy">Κινητική νεύρωση</div>
+          <h4>Προσωπικό νεύρο</h4>
+          <ul>
+            <li><b>Προσωπικό νεύρο (VII)</b></li>
+            <li>Κινεί <b>όλους τους μύες της μύτης</b>.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">7. Έσω ρις – ρινικές θαλάμες και στόμια</h2>
+
+      <div class="lead-box">
+        Το <b>ρινικό διάφραγμα</b> χωρίζει τη μύτη σε <span class="important">δύο ρινικές θαλάμες</span>.
+        Το πρόσθιο τμήμα της μύτης ονομάζεται <b>πρόδρομος ρινός</b> και εκεί υπάρχει κατάδυση του δέρματος με τρίχες.
+      </div>
+
+      <div class="grid-2">
+        <div class="mini-card green">
+          <h4>Επιφάνειες κύριας ρινικής θαλάμης</h4>
+          <ul>
+            <li><b>Κάτω επιφάνεια</b>: αποτελεί το έδαφος της μύτης.</li>
+            <li><b>Έξω επιφάνεια</b></li>
+            <li><b>Έσω επιφάνεια</b>: αντιστοιχεί στο ρινικό διάφραγμα.</li>
+            <li><b>Άνω επιφάνεια</b>: αντιστοιχεί στη βάση του κρανίου.</li>
+          </ul>
+        </div>
+
+        <div class="mini-card yellow">
+          <h4>Στόμια</h4>
+          <ol>
+            <li><b>Μπρόσθιο στόμιο</b> = ρουθούνι</li>
+            <li><b>Οπίσθιο στόμιο</b> = χοάνη = φαρυγγικό στόμιο</li>
+          </ol>
+          <div class="callout blue">
+            Το οπίσθιο τμήμα των ρινικών θαλάμων, δηλαδή οι <b>χοάνες</b>, οδηγεί στον <b>ρινοφάρυγγα</b>.
+          </div>
+        </div>
+      </div>
+
+      <div class="grid-2" style="margin-top:18px;">
+        <div class="mini-card blue">
+          <h4>Έδαφος μύτης</h4>
+          <ul>
+            <li><b>Υπερώια απόφυση άνω γνάθου</b></li>
+            <li><b>Οριζόντια απόφυση υπερώιου οστού</b></li>
+          </ul>
+        </div>
+
+        <div class="mini-card violet">
+          <h4>Οροφή / βάση κρανίου</h4>
+          <ul>
+            <li><b>Σώμα σφηνοειδούς οστού</b></li>
+            <li><b>Τετρημένο πέταλο ηθμοειδούς οστού</b></li>
+            <li><b>Ρινική άκανθα μετωπιαίου οστού</b></li>
+            <li><b>Ρινικά οστά</b></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">8. Ρινικό διάφραγμα</h2>
+
+      <div class="subsection">
+        <div class="tag anatomy">Οστέινη + χόνδρινη μοίρα</div>
+        <h3>Από τι αποτελείται;</h3>
+        <ol>
+          <li><b>Τετράπλευρος χόνδρος</b> — ο βασικός χόνδρος.</li>
+          <li><b>Κάθετο πέταλο ηθμοειδούς οστού</b>.</li>
+          <li><b>Ύνιδα</b>.</li>
+          <li><b>Ακρολοφίες άνω γνάθου και υπερώιου οστού</b>.</li>
+        </ol>
+      </div>
+
+      <div class="grid-2">
+        <div class="mini-card pink">
+          <h4>Κλινική σημασία</h4>
+          <ul>
+            <li>Έχει σημαντικό ρόλο στη <b>στήριξη της μύτης</b>.</li>
+            <li><span class="highlight">“The nose goes where the septum goes”</span> → καθορίζει την κλίση της μύτης.</li>
+            <li>Αν το διάφραγμα είναι “ζαβό”, δηλαδή υπάρχει σκολίωση, ο ασθενής μπορεί να <b>μην αναπνέει καλά</b>.</li>
+            <li>Περίπου <b>40–80%</b> των ατόμων έχουν κάποιο βαθμό σκολίωσης της μύτης, αλλά δεν επεμβαίνουμε πάντα.</li>
+            <li>Αποτελεί και <b>θέση λήψης μοσχεύματος</b>.</li>
+          </ul>
+        </div>
+
+        <div class="image-card">
+          <img src="riniko.PNG" alt="Ρινικό διάφραγμα">
+          <div class="image-caption">Ρινικό διάφραγμα</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">9. Έξω τοίχωμα ρινικής θαλάμης και ρινικοί πόροι</h2>
+
+      <div class="lead-box">
+        Το έξω τοίχωμα της ρινικής θαλάμης έχει <span class="important">3 ρινικές κόγχες</span>:
+        <b>άνω</b>, <b>μέση</b> και <b>κάτω</b> ρινική κόγχη.
+      </div>
+
+      <div class="subsection">
+        <div class="tag sos">SOS – TO KNOW</div>
+        <h3>Ρινικοί πόροι της έσω ρινός</h3>
+        <table>
+          <tr>
+            <th>Ρινικός πόρος</th>
+            <th>Θέση</th>
+            <th>Τι εκβάλλει</th>
+          </tr>
+          <tr>
+            <td><b>Άνω ρινικός πόρος</b></td>
+            <td>Μεταξύ άνω και μέσης ρινικής κόγχης</td>
+            <td><b>Οπίσθιες ηθμοειδείς κυψέλες</b></td>
+          </tr>
+          <tr>
+            <td><b>Μέσος ρινικός πόρος</b></td>
+            <td>Μεταξύ μέσης και κάτω ρινικής κόγχης</td>
+            <td>
+              <ul>
+                <li>Πρόσθιες ηθμοειδείς κυψέλες</li>
+                <li>Μετωπιαίος κόλπος</li>
+                <li>Ιγμόρειο άντρο</li>
+              </ul>
+            </td>
+          </tr>
+          <tr>
+            <td><b>Κάτω ρινικός πόρος</b></td>
+            <td>Κάτω από την κάτω ρινική κόγχη</td>
+            <td><b>Ρινοδακρυικός πόρος</b></td>
+          </tr>
+        </table>
+      </div>
+
+      <div class="img-grid">
+        <div class="image-card">
+          <img src="https://eclass.teiep.gr/modules/document/file.php/LOGO140/%CE%95%CE%B9%CE%BA%CF%8C%CE%BD%CE%B5%CF%82/8.png" alt="Ρινικοί πόροι">
+          <div class="image-caption">Ρινικές κόγχες και ρινικοί πόροι</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">10. SOS αιμάτωση έσω ρινός</h2>
+
+      <div class="grid-2">
+        <div class="mini-card green">
+          <div class="tag sos">Έξω τοίχωμα</div>
+          <h4>Αρτηρίες έξω τοιχώματος</h4>
+          <ol>
+            <li><b>Πρόσθια ηθμοειδής αρτηρία</b></li>
+            <li><b>Οπίσθια ηθμοειδής αρτηρία</b></li>
+            <li><b>Σφηνοϋπερώια αρτηρία</b></li>
+            <li><b>Κατιούσα υπερώια αρτηρία</b></li>
+            <li><b>Μείζων υπερώιος</b></li>
+          </ol>
+          <div class="callout peach">
+            <b>JTK:</b> η <b>σφηνοϋπερώια αρτηρία</b> είναι μεγάλη αρτηρία και συχνά προκαλεί αιμορραγίες,
+            ιδίως σε ηλικιωμένους.
+          </div>
+        </div>
+
+        <div class="mini-card blue">
+          <div class="tag sos">Έσω τοίχωμα / διάφραγμα</div>
+          <h4>Αρτηρίες διαφράγματος</h4>
+          <ul>
+            <li>Οι <b>5 αρτηρίες</b> του έξω τοιχώματος.</li>
+            <li>+ <b>Άνω χειλική αρτηρία</b>.</li>
+          </ul>
+          <div class="callout red">
+            Στο πρόσθιο σημείο του ρινικού διαφράγματος τα αγγεία συνενώνονται και σχηματίζουν την
+            <b>κηλίδα Kiesselbach</b> → <span class="danger">συχνότερη περιοχή ρινορραγίας</span>.
+          </div>
+        </div>
+      </div>
+
+      <div class="callout blue">
+        Η <b>σφηνοϋπερώια</b> και η <b>κατιούσα υπερώια αρτηρία</b> είναι τελικοί κλάδοι της
+        <b>έσω γναθιαίας αρτηρίας</b>, η οποία προέρχεται από την <b>έξω καρωτίδα</b>.
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">11. Νεύρωση έσω ρινός και επιθήλιο</h2>
+
+      <div class="grid-2">
+        <div class="mini-card violet">
+          <h4>Νεύρωση έσω ρινός</h4>
+          <ol>
+            <li><b>Αισθητική νεύρωση</b>:
+              <ul>
+                <li>1ος κλάδος τριδύμου</li>
+                <li>2ος κλάδος τριδύμου</li>
+              </ul>
+            </li>
+            <li><b>Νευροφυτική νεύρωση</b>:
+              <ul>
+                <li>κέντρο: <b>σφηνοϋπερώιο γάγγλιο</b> = πτέρυγοϋπερώιο γάγγλιο</li>
+                <li><b>Παρασυμπαθητικές ίνες</b> από το προσωπικό νεύρο VII → ενεργοποιούν τους ρινικούς αδένες → παραγωγή βλέννας.</li>
+                <li><b>Συμπαθητικές ίνες</b> από το άνω αυχενικό γάγγλιο → αγγειοσύσπαση → μειωμένη ροή αίματος.</li>
+              </ul>
+            </li>
+            <li><b>Ειδική αισθητικότητα</b>: οσφρητικό νεύρο → όσφρηση.</li>
+          </ol>
+        </div>
+
+        <div class="mini-card yellow">
+          <h4>Επιθήλιο μύτης</h4>
+          <ol>
+            <li><b>Πολύστιβο πλακώδες</b> στον πρόδρομο της μύτης.</li>
+            <li><b>Οσφρητικό επιθήλιο</b> στην περιοχή μεταξύ άνω ρινικής κόγχης και ρινικού διαφράγματος.</li>
+            <li><b>Αναπνευστικό επιθήλιο</b> = πολύστιβο κυλινδρικό κροσσωτό, στο υπόλοιπο επιθήλιο της μύτης.</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">12. Φυσιολογία μύτης – ρινική αναπνοή και ρεύμα αέρα</h2>
+
+      <div class="grid-2">
+        <div class="mini-card blue">
+          <h4>Ρινική αναπνοή</h4>
+          <ul>
+            <li>Παίρνουμε αέρα και τον <b>αισθανόμαστε</b>.</li>
+            <li>Η ροή είναι κυρίως <b>γραμμική</b>.</li>
+            <li>Σε έντονη εισπνοή, δηλαδή <b>sniffing</b>, προκαλείται <b>στροβιλώδης ροή</b> του αέρα.</li>
+            <li>Η μεγαλύτερη ροή αέρα βρίσκεται μεταξύ <b>μέσης</b> και <b>κάτω ρινικής κόγχης</b>.</li>
+            <li>Η ροή αέρα στην οσφρητική περιοχή είναι <b>μικρή</b>, για προστασία της περιοχής και καλύτερη επαφή των οσμηρών ουσιών με τον βλεννογόνο.</li>
+          </ul>
+        </div>
+
+        <div class="mini-card peach">
+          <h4>Κλιματισμός αέρα</h4>
+          <ul>
+            <li>Ο αέρας θερμαίνεται μέσω της μύτης.</li>
+            <li>Από περίπου <b>25°C</b>, φτάνει στον ρινοφάρυγγα περίπου <span class="highlight">31–34°C</span>.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">13. Όσφρηση</h2>
+
+      <div class="subsection">
+        <div class="tag anatomy">Οσφρητικό νεύρο</div>
+        <h3>Οσφρητικά νημάτια</h3>
+        <ul>
+          <li>Το <b>οσφρητικό νεύρο</b> αποτελείται από τα <b>οσφρητικά νημάτια</b>.</li>
+          <li>Περίπου <b>17–18 οσφρητικά νημάτια</b> διαπερνούν, σε κάθε πλευρά, το <b>τετρημένο πέταλο του ηθμοειδούς οστού</b>.</li>
+        </ul>
+      </div>
+
+      <div class="grid-2">
+        <div class="mini-card green">
+          <h4>Οσφρητικό + τρίδυμο</h4>
+          <ul>
+            <li>Η αίσθηση της όσφρησης προκύπτει από το <b>οσφρητικό νεύρο</b> αλλά και από το <b>τρίδυμο</b>.</li>
+            <li>Οι περισσότερες ουσίες έχουν <b>οσφρητικό</b> και <b>τριδυμικό</b> μέρος.</li>
+            <li>Η <b>μέντα</b> και το <b>σκόρδο</b> έχουν έντονη μυρωδιά λόγω έντονου τριδυμικού μέρους.</li>
+            <li>Το τρίδυμο είναι υπεύθυνο και για πόνο, κάψιμο, ερεθισμό και αίσθηση του ρεύματος αέρα, επειδή έχει μηχανοϋποδοχείς.</li>
+          </ul>
+        </div>
+
+        <div class="mini-card red" style="background:#fff4f4;">
+          <h4>Συχνές αιτίες απώλειας όσφρησης</h4>
+          <ul>
+            <li><b>Κάταγμα κρανίου</b> μπορεί να προκαλέσει κάταγμα στο τετρημένο πέταλο του ηθμοειδούς και να κόψει τα οσφρητικά νημάτια.</li>
+            <li>Αυτό μπορεί να οδηγήσει σε <b>απώλεια όσφρησης</b> και αποτελεί μία από τις 3 συχνότερες αιτίες.</li>
+            <li><b>Ιογενείς λοιμώξεις</b> → περίπου 1/3 παθαίνουν απώλεια όσφρησης.</li>
+            <li><b>Ρινικοί πολύποδες</b> → συχνή αιτία απώλειας όσφρησης.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="img-grid">
+        <div class="image-card">
+          <img src="osfritiko.PNG" alt="Οσφρητικό νεύρο">
+          <div class="image-caption">Οσφρητικό νεύρο και οσφρητικά νημάτια</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">14. Καθαρισμός, άμυνα και ρινικός κύκλος</h2>
+
+      <div class="grid-2">
+        <div class="mini-card blue">
+          <h4>Καθαρισμός εισπνεόμενου αέρα</h4>
+          <ul>
+            <li>Η μύτη απομακρύνει από τον εισπνεόμενο αέρα σωματίδια μεγέθους <b>&gt;5 μm</b>.</li>
+            <li>Οι μύριγγες του προδόμου ρινός εμποδίζουν μεγάλα σωματίδια <b>&gt;30 μm</b>.</li>
+            <li>Η μορφολογία της μύτης, ο στροβιλισμός του αέρα και η κατάποση βοηθούν επιπλέον στην απομάκρυνση σωματιδίων.</li>
+          </ul>
+        </div>
+
+        <div class="mini-card green">
+          <h4>Άμυνα</h4>
+          <ul>
+            <li><b>Μη ειδική άμυνα</b>: ουδετερόφιλα και μακροφάγα.</li>
+            <li><b>Ειδική άμυνα</b>: Β και Τ λεμφοκύτταρα.</li>
+            <li>Το <b>τρίδυμο νεύρο</b> αντιλαμβάνεται ερεθιστικές ουσίες και βοηθά στην απομάκρυνσή τους → αποτροπή εισόδου βλαβερών ουσιών.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="subsection">
+        <div class="tag exam">Ρινικός κύκλος</div>
+        <h3>Φυσιολογική διαδικασία άμυνας</h3>
+        <ul>
+          <li>Κυκλική διόγκωση της μιας <b>κάτω ρινικής κόγχης</b> κάθε <span class="highlight">1/2–4 ώρες</span>, με ταυτόχρονη αποσυμφόρηση της άλλης.</li>
+          <li>Υπάρχει στο <b>80%</b> του πληθυσμού.</li>
+          <li>Η ρινική απόφραξη οφείλεται στη διόγκωση της κόγχης από τη διόγκωση των <b>φλεβωδών κόλπων</b>.</li>
+          <li>Ακολουθεί αποσυμφόρηση της κόγχης με έξοδο εξιδρώματος πλάσματος και <b>ρινόρροια</b>.</li>
+          <li>Η περιοδικότητα του ρινικού κύκλου εξασφαλίζεται από τον <b>υποθάλαμο</b>.</li>
+          <li>Παιδιά <b>&lt;7 ετών</b> έχουν ανώριμο ρινικό κύκλο.</li>
+          <li>Ο ρινικός κύκλος είναι λιγότερο εμφανής σε ηλικιωμένους.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">15. Αντανακλαστικά και αντήχηση φωνής</h2>
+
+      <div class="grid-2">
+        <div class="mini-card violet">
+          <h4>Αντανακλαστικά μύτης</h4>
+          <ul>
+            <li>Αντανακλαστικά από το <b>νευροφυτικό σύστημα</b> — συμπαθητικό και παρασυμπαθητικό.</li>
+            <li>Απομακρυσμένα αντανακλαστικά όπως:
+              <ul>
+                <li>ρινοπνευμονικά</li>
+                <li>ρινοκαρδιακά</li>
+              </ul>
+            </li>
+            <li>Αντανακλαστικά από τους <b>αισθητικούς κλάδους του τριδύμου</b>:</li>
+            <li>βήχας, δάκρυα, πταρμός.</li>
+            <li>Προκαλούνται από μηχανικά, χημικά και θερμικά ερεθίσματα του ρινικού βλεννογόνου.</li>
+          </ul>
+        </div>
+
+        <div class="mini-card peach">
+          <h4>Αντήχηση φωνής</h4>
+          <ul>
+            <li><b>Κλειστή ρινολαλία</b>: απόφραξη των ρινικών θαλάμων που προκαλεί αλλαγή της χροιάς της φωνής.</li>
+            <li><b>Ανοικτή ρινολαλία</b>: ανεπάρκεια μαλακής υπερώας που προκαλεί αλλαγή της χροιάς της φωνής.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">16. Παραρρίνιοι κόλποι – βασικά</h2>
+
+      <div class="lead-box">
+        Οι <b>παραρρίνιοι κόλποι</b> είναι <span class="important">αεροφόροι χώροι</span> μέσα στο σπλαχνικό κρανίο
+        και επικαλύπτονται από <b>αναπνευστικό βλεννογόνο</b>.
+      </div>
+
+      <div class="grid-2">
+        <div class="mini-card green">
+          <h4>Κύριοι παραρρίνιοι κόλποι</h4>
+          <ol>
+            <li><b>Γναθιαίοι κόλποι</b> ή <b>ιγμόρεια άντρα</b></li>
+            <li><b>Ηθμοειδείς κυψέλες</b> — πρόσθιες και οπίσθιες</li>
+            <li><b>Μετωπιαίοι κόλποι</b></li>
+            <li><b>Σφηνοειδής κόλπος</b></li>
+          </ol>
+        </div>
+
+        <div class="image-card">
+          <img src="pararinioi.JPG" alt="Παραρρίνιοι κόλποι">
+          <div class="image-caption">Παραρρίνιοι κόλποι</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">17. Ιγμόρειο άντρο / γναθιαίος κόλπος</h2>
+
+      <div class="subsection">
+        <div class="tag anatomy">Ανατομικά όρια</div>
+        <h3>Ιγμόρειο άντρο</h3>
+        <ul>
+          <li>Βρίσκεται στο <b>σώμα της άνω γνάθου</b>.</li>
+          <li><b>Άνω τοίχωμα</b>: έδαφος οφθαλμικού κόγχου.</li>
+          <li><b>Κάτω τοίχωμα</b>: φατνιακή απόφυση της άνω γνάθου και έξω μοίρα σκληράς υπερώας.</li>
+          <li><b>Έσω τοίχωμα</b>:
+            <ul>
+              <li>στόμιο του ιγμορείου → παροχετεύει στον <b>μέσο ρινικό πόρο</b> της ρινικής θαλάμης</li>
+              <li><b>15–40%</b> των ατόμων έχουν επικουρικό στόμιο</li>
+            </ul>
+          </li>
+          <li><b>Πρόσθιο τοίχωμα</b>: υποκόγχιο τρήμα πάνω, κυνικό βοθρίο κάτω.</li>
+          <li><b>Οπίσθιο τοίχωμα</b>: πίσω από το ιγμόρειο βρίσκονται ο <span class="important">πτερυγοϋπερώιος βόθρος</span> και η <span class="important">έσω γναθιαία αρτηρία</span>.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">18. Ανάπτυξη παραρρίνιων κόλπων και κλινική σημασία</h2>
+
+      <div class="callout red">
+        <b>FACT:</b> κατά τη γέννηση δεν είναι παρόντα τα <b>ιγμόρεια άντρα</b>, οι <b>μετωπιαίοι κόλποι</b>
+        και ο <b>σφηνοειδής κόλπος</b>. Στην πρώιμη παιδική ηλικία, μέχρι περίπου τα <b>6 έτη</b>, είναι ανεπτυγμένες κυρίως οι <b>ηθμοειδείς κυψέλες</b>.
+      </div>
+
+      <div class="grid-2">
+        <div class="mini-card blue">
+          <h4>JTK – ανάπτυξη</h4>
+          <ul>
+            <li>Το <b>ιγμόρειο</b> αρχίζει να σχηματίζεται γύρω στα <b>4–5 έτη</b>, αλλά είναι πολύ μικρό.</li>
+            <li>Ο <b>μετωπιαίος κόλπος</b> εμφανίζεται μετά τα <b>6–7 έτη</b>.</li>
+            <li>Ο <b>σφηνοειδής κόλπος</b> αρχίζει να σχηματίζεται προς το τέλος της παιδικής ηλικίας.</li>
+          </ul>
+        </div>
+
+        <div class="mini-card peach">
+          <h4>Κλινικό παράδειγμα</h4>
+          <ul>
+            <li>Παιδί μέχρι 6 ετών με πρησμένο κόγχο και πρησμένο άνω/κάτω βλέφαρο μπορεί να έχει <b>παραρρινοκολπίτιδα</b>.</li>
+            <li>Είναι λάθος να πούμε ότι έχει <b>ιγμορίτιδα</b>, γιατί τα ιγμόρεια δεν είναι ανεπτυγμένα.</li>
+            <li>Πιο σωστό: πιθανή <span class="important">ηθμοειδίτιδα</span> με επέκταση της φλεγμονής προς το μάτι.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="callout red">
+        <b>SOS:</b> οι επιπλοκές των παραρρινοκολπίτιδων είναι σοβαρές. Οι πιο συχνές επιπλοκές είναι από το <b>μάτι</b>.
+        Αν κάποιος έρθει με πρησμένο κόκκινο μάτι, εκτός από παθήσεις του ματιού πρέπει να σκεφτόμαστε και παραρρινοκολπίτιδα.
+        Η φλεγμονή μπορεί να επεκταθεί μέσα σε λίγες ώρες και να προκαλέσει κυτταρίτιδα ή απόστημα μέσα στο μάτι.
+        Ο ασθενής μπορεί να χάσει άμεσα το μάτι → <span class="danger">ενδοφλέβια αγωγή στο νοσοκομείο</span> και, αν δεν υποχωρήσει, πιθανό χειρουργείο για αποσυμφόρηση του κόλπου.
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">19. Παραρρινοκολπίτιδες ανά κόλπο</h2>
+
+      <div class="grid-2">
+        <div class="mini-card yellow">
+          <h4>Μετωπιαία παραρρινοκολπίτιδα</h4>
+          <ul>
+            <li>Δύσκολη κατάσταση.</li>
+            <li>Έντονη <b>μετωπιαία κεφαλαλγία</b>.</li>
+          </ul>
+        </div>
+
+        <div class="mini-card green">
+          <h4>Ιγμορίτιδα</h4>
+          <ul>
+            <li>Πόνος προς τα <b>μάγουλα</b>.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="subsection">
+        <div class="tag sos">Σφηνοειδίτιδα – πιο σοβαρή</div>
+        <h3>Γιατί είναι επικίνδυνη;</h3>
+        <ul>
+          <li>Είναι πιο σοβαρή κατάσταση επειδή ο σφηνοειδής κόλπος είναι κοντά σε σημαντικές δομές.</li>
+          <li><b>Άνω τοίχωμα</b>: υπόφυση, οπτικό χίασμα, μετωπιαίος λοβός.</li>
+          <li><b>Κάτω τοίχωμα</b>: θόλος φάρυγγα, ρινικές θαλάμες.</li>
+          <li><b>Πρόσθιο τοίχωμα</b>: ρινική θαλάμη, οπίσθιες ηθμοειδείς κυψέλες, πτερυγοϋπερώιος βόθρος.</li>
+          <li><b>Πλάγιο / έξω τοίχωμα</b>: καρωτιδική αύλακα, έσω καρωτίδα, σηραγγώδης κόλπος, 3η, 4η, 6η εγκεφαλική συζυγία, οφθαλμικό νεύρο, οφθαλμική φλέβα.</li>
+          <li>Μπορεί να απειληθεί ακόμη και η ζωή του ασθενούς.</li>
+          <li>Πόνος συνήθως <b>πίσω από τα μάτια</b>.</li>
+          <li>Ο σφηνοειδής κόλπος εκβάλλει στο <b>σφηνοηθμοειδές κόλπωμα</b>.</li>
+        </ul>
+
+        <div class="img-grid">
+          <div class="image-card">
+            <img src="https://i0.wp.com/www.neurosurgery-blog.com/wp-content/uploads/2010/04/Sphenoid.jpg?ssl=1" alt="Σφηνοειδής κόλπος">
+            <div class="image-caption">Σφηνοειδής κόλπος – σχέσεις με σημαντικές δομές</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">20. Εξεταστικές μέθοδοι μύτης</h2>
+
+      <div class="grid-2">
+        <div class="mini-card blue">
+          <h4>Κλινικές εξετάσεις</h4>
+          <ol>
+            <li><b>Εξωτερική επισκόπηση</b></li>
+            <li><b>Πρόσθια ρινοσκόπηση</b></li>
+            <li><b>Οπίσθια ρινοσκόπηση</b></li>
+            <li><b>Ενδοσκόπηση</b> με άκαμπτο και εύκαμπτο ενδοσκόπιο — μπορούμε να δούμε μέχρι και τον λάρυγγα.</li>
+          </ol>
+        </div>
+
+        <div class="mini-card green">
+          <h4>Εξεταστικές μέθοδοι ρινικής αναπνοής</h4>
+          <ol>
+            <li><b>Ρινομανομετρία</b></li>
+            <li><b>Ακουστική ρινομετρία</b></li>
+            <li><b>Τετραφασική ρινομανομετρία</b></li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="img-grid">
+        <div class="image-card">
+          <img src="https://www.medical.theclinics.com/cms/10.1016/j.mcna.2025.05.015/asset/ea29e84b-de29-4bc7-8e0e-7e86b0c3e480/main.assets/gr3_lrg.jpg" alt="Πρόσθια ρινοσκόπηση">
+          <div class="image-caption">Πρόσθια ρινοσκόπηση</div>
+        </div>
+
+        <div class="image-card">
+          <img src="https://media.springernature.com/lw685/springer-static/image/chp%3A10.1007%2F978-981-96-1765-4_5/MediaObjects/630209_1_En_5_Fig1_HTML.jpg" alt="Οπίσθια ρινοσκόπηση">
+          <div class="image-caption">Οπίσθια ρινοσκόπηση</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">21. Έλεγχος όσφρησης και απεικονιστικές εξετάσεις</h2>
+
+      <div class="grid-2">
+        <div class="mini-card violet">
+          <h4>Sniffin’ Sticks test</h4>
+          <ul>
+            <li>Υποκειμενική μέθοδος ελέγχου όσφρησης.</li>
+            <li>Με βάση το τεστ ο ασθενής χαρακτηρίζεται ως:</li>
+          </ul>
+          <div class="flow">
+            <span class="pill">Νορμοσμηκός = φυσιολογική όσφρηση</span>
+            <span class="pill">Υποσμηκός = μειωμένη όσφρηση</span>
+            <span class="pill">Ανοσμικός = απουσία όσφρησης</span>
+          </div>
+          <div class="callout blue">
+            <b>JTK:</b> το τεστ ελέγχει τρία στοιχεία: <b>κατώφλι ανίχνευσης</b>, <b>διάκριση</b> και <b>αναγνώριση</b> της οσμής.
+          </div>
+        </div>
+
+        <div class="mini-card peach">
+          <h4>Απεικονιστικές εξετάσεις</h4>
+          <ol>
+            <li><b>Ακτινογραφία</b></li>
+            <li><b>Αξονική τομογραφία</b></li>
+            <li><b>Μαγνητική τομογραφία</b></li>
+          </ol>
+          <div class="callout green">
+            Στη <b>χρόνια παραρρινοκολπίτιδα</b>, εξέταση εκλογής είναι η <b>αξονική τομογραφία</b>.
+          </div>
+          <div class="callout blue">
+            Αν υποψιαζόμαστε <b>όγκο στη μύτη</b>, κάνουμε <b>μαγνητική τομογραφία</b>.
+          </div>
+        </div>
+      </div>
+
+      <div class="callout red">
+        <b>SOS:</b> Μονόπλευρη ρινική απόφραξη τους τελευταίους <b>3 μήνες</b> μας προβληματίζει για
+        <span class="danger">καλοήθη ή κακοήθη όγκο</span>.
+      </div>
+    </section>
+
+    <div class="footer-note">
+      GreekDoc style notes • Μύτη • έτοιμο για οθόνη και εκτύπωση
+    </div>
+
+  </div>
+
+</body>
+</html>
