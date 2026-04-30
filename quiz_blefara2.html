@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GreekDoc Quiz | Βλέφαρα</title>
+  <style>
+    :root{
+      --bg:#fcfbff; --text:#2d2a32; --muted:#70697d; --purple:#4d2f73; --line:#ece5f7;
+      --pink:#fff2f7; --blue:#eef8ff; --violet:#f5efff; --green:#effaf3; --peach:#fff5ed; --yellow:#fffbe6;
+      --ok:#15803d; --bad:#b91c1c; --okbg:#dcfce7; --badbg:#fee2e2; --white:#fff;
+      --shadow:0 14px 35px rgba(80,60,120,.09); --r:24px;
+    }
+    *{box-sizing:border-box} html{scroll-behavior:smooth}
+    body{margin:0;font-family:"Segoe UI",Arial,sans-serif;background:linear-gradient(180deg,#fcfbff,#f8f5ff);color:var(--text);line-height:1.55}
+    .topbar{position:sticky;top:0;z-index:10;background:rgba(252,251,255,.92);backdrop-filter:blur(10px);border-bottom:1px solid #e7def5;padding:12px 18px}
+    .topbar-inner{max-width:1120px;margin:auto;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+    .brand{font-weight:900;color:var(--purple)}
+    button{font-family:inherit}
+    .btn{border:0;border-radius:999px;padding:10px 16px;font-weight:800;cursor:pointer;background:linear-gradient(135deg,#eadfff,#dff4ff);color:#442466;box-shadow:0 4px 14px rgba(100,80,140,.12)}
+    .btn.secondary{background:#fff;border:1px solid var(--line);box-shadow:none;color:#56317f}
+    .page{max-width:1120px;margin:24px auto 60px;padding:0 18px}
+    .hero{background:linear-gradient(135deg,#f8d7e8,#e7dcff,#dff4ff);border-radius:32px;padding:30px;box-shadow:var(--shadow);margin-bottom:22px}
+    h1{margin:0 0 8px;font-size:2.15rem;color:#3e245f}.hero p{margin:0;color:#514b61;max-width:900px}
+    .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:20px}.stat{background:rgba(255,255,255,.72);border:1px solid rgba(95,65,130,.12);border-radius:18px;padding:12px;text-align:center}.num{font-size:1.45rem;font-weight:900;color:#4d2f73}.lab{font-size:.82rem;color:var(--muted);font-weight:700}
+    .toolbar{display:flex;gap:10px;flex-wrap:wrap;margin:16px 0 22px}.pill{border:1px solid var(--line);background:white;color:#56317f;border-radius:999px;padding:8px 12px;font-weight:800;cursor:pointer}.pill.active{background:#efe4ff;border-color:#d8c5fa}
+    .section-card{background:#fff;border:1px solid #f0ebfa;border-radius:28px;box-shadow:var(--shadow);padding:22px;margin-bottom:20px}
+    .section-title{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px}.section-title h2{margin:0;color:#40235d;font-size:1.35rem}.tag{font-size:.78rem;font-weight:900;border-radius:999px;padding:5px 10px;background:#efe4ff;color:#5d348b}
+    .quiz-grid{display:grid;grid-template-columns:1fr;gap:14px}.qcard{border:1px solid var(--line);border-radius:22px;padding:18px;background:#fcfbff;break-inside:avoid;page-break-inside:avoid}.qhead{display:flex;gap:10px;align-items:flex-start;margin-bottom:12px}.qno{min-width:34px;height:34px;border-radius:12px;background:#f0e7ff;color:#55307e;display:grid;place-items:center;font-weight:900}.question{font-weight:850;color:#2f283b}
+    .options{display:grid;gap:9px;margin-top:12px}.option{border:1px solid #e7ddf5;background:#fff;border-radius:16px;padding:11px 12px;cursor:pointer;transition:.15s;display:flex;gap:9px;align-items:flex-start}.option:hover{transform:translateY(-1px);box-shadow:0 5px 14px rgba(80,60,120,.07)}.letter{font-weight:900;color:#5d348b;min-width:22px}.option.correct{background:var(--okbg);border-color:#86efac}.option.wrong{background:var(--badbg);border-color:#fecaca}.option.correct .letter{color:var(--ok)}.option.wrong .letter{color:var(--bad)}
+    .feedback{display:none;margin-top:12px;border-radius:16px;padding:12px 14px;background:#fff;border-left:6px solid #d8c5fa}.feedback.show{display:block}.feedback.ok{border-left-color:#86efac;background:#f0fdf4}.feedback.bad{border-left-color:#fca5a5;background:#fff7f7}.explain{color:#514b61;margin-top:4px}.memory{display:block;margin-top:6px;font-weight:850;color:#4d2f73}
+    .mini-note{background:#fffbe6;border-left:6px solid #f6d365;border-radius:18px;padding:14px 16px;margin-bottom:16px;color:#4d4560}.hidden{display:none!important}
+    @media(max-width:800px){.stats{grid-template-columns:repeat(2,1fr)}h1{font-size:1.75rem}.page{padding:0 12px}.hero,.section-card{padding:18px}}
+    @media print{@page{size:A4 landscape;margin:10mm}.topbar,.toolbar{display:none!important}body{background:#fff;font-size:10px;line-height:1.28}.page{max-width:none;margin:0;padding:0}.hero,.section-card,.qcard{box-shadow:none;border:1px solid #ddd;break-inside:avoid;page-break-inside:avoid}.hero{padding:12px;margin-bottom:8px}.hero h1{font-size:18px}.stats{display:none}.section-card{padding:12px;margin-bottom:9px}.qcard{padding:10px}.options{gap:5px}.option{padding:6px;border-radius:10px}.feedback{display:block!important;padding:7px}.hidden{display:block!important}}
+  </style>
+</head>
+<body>
+  <div class="topbar"><div class="topbar-inner"><div class="brand">GreekDoc • Learning Quiz</div><div><button class="btn secondary" onclick="resetQuiz()">↺ Reset</button> <button class="btn" onclick="window.print()">🖨️ Print quiz</button></div></div></div>
+  <main class="page">
+    <section class="hero">
+      <h1>Βλέφαρα — Learning Quiz</h1>
+      <p>Διαδραστικό quiz με άμεση ανατροφοδότηση. Πάτα μία απάντηση: αν είναι σωστή πρασινίζει, αν είναι λάθος κοκκινίζει και εμφανίζεται η σωστή μαζί με σύντομη εξήγηση.</p>
+      <div class="stats"><div class="stat"><div class="num" id="score">0</div><div class="lab">Σωστές</div></div><div class="stat"><div class="num" id="answered">0</div><div class="lab">Απαντημένες</div></div><div class="stat"><div class="num" id="total">0</div><div class="lab">Σύνολο</div></div><div class="stat"><div class="num" id="percent">0%</div><div class="lab">Ποσοστό</div></div></div>
+    </section>
+    <div class="toolbar" id="filters"></div>
+    <div class="mini-note"><b>Tip:</b> Δεν είναι απλώς τεστ· κάθε ερώτηση έχει μικρή εξήγηση, ώστε να “κλειδώνει” η έννοια για εξετάσεις.</div>
+    <div id="quiz"></div>
+  </main>
+<script>
+const sections = [
+{key:'all', title:'Όλα'}, {key:'anatomy', title:'Ανατομία / μύες'}, {key:'ptosis', title:'Βλεφαρόπτωση'}, {key:'position', title:'Εντρόπιο / Εκτρόπιο / Λαγόφθαλμος'}, {key:'bleph', title:'Βλεφαρίτιδα'}, {key:'lesions', title:'Μορφώματα / δέρμα'}
+];
+const questions = [
+{cat:'anatomy',q:'Ποια είναι η βασική λειτουργία του ταρσού;',o:['Παράγει το υδατοειδές υγρό','Δίνει σχήμα και στήριξη στο βλέφαρο','Κλείνει ενεργητικά το βλέφαρο','Νευρώνει τον ανελκτήρα μυ'],a:1,e:'Ο ταρσός είναι ινώδης πλάκα του οπίσθιου πετάλου και στηρίζει το βλέφαρο.',m:'Ταρσός = “σκελετός” βλεφάρου.'},
+{cat:'anatomy',q:'Οι αδένες Meibomius εκκρίνουν κυρίως:',o:['Το υδατικό στρώμα των δακρύων','Το λιπώδες στρώμα των δακρύων','Βλέννη από καλυκοειδή κύτταρα','Ιδρώτα στο βλεφαρικό χείλος'],a:1,e:'Οι μεϊβομιανοί αδένες είναι λιπώδεις αδένες μέσα στον ταρσό.',m:'Meibomius = lipid layer = λιγότερη εξάτμιση.'},
+{cat:'anatomy',q:'Ποιο νεύρο νευρώνει τον σφιγκτήρα των βλεφάρων;',o:['Κοινό κινητικό νεύρο','Προσωπικό νεύρο','Οφθαλμικός κλάδος τριδύμου','Συμπαθητικό πλέγμα'],a:1,e:'Ο σφιγκτήρας κλείνει τα βλέφαρα και νευρώνεται από το προσωπικό νεύρο (CN VII).',m:'CN VII = κλείνει το μάτι.'},
+{cat:'anatomy',q:'Ποιο νεύρο νευρώνει κυρίως τον ανελκτήρα του άνω βλεφάρου;',o:['CN III','CN IV','CN VI','CN VII'],a:0,e:'Ο ανελκτήρας άνω βλεφάρου νευρώνεται από το κοινό κινητικό νεύρο.',m:'CN III = ανοίγει το άνω βλέφαρο.'},
+{cat:'anatomy',q:'Ο μυς του Müller σχετίζεται με:',o:['Παρασυμπαθητική νεύρωση','Συμπαθητική νεύρωση','Νεύρωση από CN VII','Αισθητική νεύρωση από V2'],a:1,e:'Ο Müller είναι συμπαθητικός μυς και δίνει μικρή ανύψωση του άνω βλεφάρου.',m:'Müller → Horner όταν χαθεί το συμπαθητικό.'},
+{cat:'ptosis',q:'Συγγενής βλεφαρόπτωση που καλύπτει την κόρη σε παιδί πρέπει να αντιμετωπίζεται:',o:['Μετά τα 6 έτη','Το ταχύτερο δυνατόν','Μόνο με τεχνητά δάκρυα','Μόνο αν υπάρχει πόνος'],a:1,e:'Όταν καλύπτεται ο οπτικός άξονας υπάρχει κίνδυνος αμβλυωπίας εξ ανοψίας.',m:'Κόρη κλειστή σε παιδί = SOS για αμβλυωπία.'},
+{cat:'ptosis',q:'Η αμβλυωπία εξ ανοψίας προκαλείται κυρίως από:',o:['Υψηλή ενδοφθάλμια πίεση','Απουσία επαρκούς οπτικού ερεθίσματος στην κρίσιμη περίοδο','Υπερέκκριση δακρύων','Φλεγμονή του σκληρού'],a:1,e:'Το μάτι δεν δέχεται σωστή οπτική διέγερση και η οπτική οδός δεν ωριμάζει φυσιολογικά.',m:'Εξ ανοψίας = επειδή δεν “βλέπει”.'},
+{cat:'ptosis',q:'Πτώση βλεφάρου + μύση + ανιδρωσία παραπέμπει σε:',o:['Πάρεση απαγωγού','Σύνδρομο Horner','Οξύ γλαύκωμα','Εκτρόπιο'],a:1,e:'Το σύνδρομο Horner είναι βλάβη της συμπαθητικής οδού.',m:'Horner = πτώση μικρή + μύση + ανιδρωσία.'},
+{cat:'ptosis',q:'Πτώση βλεφάρου + στραβισμός + μυδρίαση είναι πιο ύποπτο για:',o:['Πάρεση CN III','Πάρεση CN VII','Απλή βλεφαρίτιδα','Ξηροφθαλμία'],a:0,e:'Το CN III νευρώνει τον ανελκτήρα και πολλούς εξωφθάλμιους μύες· οι παρασυμπαθητικές ίνες επηρεάζουν την κόρη.',m:'CN III palsy: ptosis + eye movement + pupil.'},
+{cat:'ptosis',q:'Μεταβλητή βλεφαρόπτωση που χειροτερεύει με κόπωση θυμίζει:',o:['Μυασθένεια','Χαλάζιο','Εκτρόπιο','Υπόσφαγμα'],a:0,e:'Η μυασθένεια συχνά εμφανίζει κόπωση/μεταβλητότητα και μπορεί να δώσει διπλωπία.',m:'Κούραση → χειρότερη πτώση → μυασθένεια.'},
+{cat:'ptosis',q:'Στην απονευρωτική βλεφαρόπτωση ηλικιωμένου συνήθως:',o:['Ο ανελκτήρας έχει καλή λειτουργία αλλά η απονεύρωση έχει χαλαρώσει','Υπάρχει πάντα μυδρίαση','Υπάρχει λοίμωξη μεϊβομιανού αδένα','Υπάρχει πλήρης παράλυση CN VII'],a:0,e:'Στην απονευρωτική πτώση το πρόβλημα είναι η χαλάρωση/αποκόλληση της απονεύρωσης του ανελκτήρα.',m:'Απονευρωτική = “κόπηκε/χαλάρωσε η σύνδεση”, όχι απαραίτητα ο μυς.'},
+{cat:'position',q:'Εντρόπιο σημαίνει:',o:['Έξω στροφή βλεφάρου','Έσω στροφή βλεφάρου','Πτώση άνω βλεφάρου','Ατελής σύγκλιση βλεφάρων'],a:1,e:'Στο εντρόπιο το βλεφαρικό χείλος στρέφεται προς τον βολβό.',m:'ΕΝτρόπιο = ΕΝτός.'},
+{cat:'position',q:'Κύριος κίνδυνος στο εντρόπιο είναι:',o:['Μηχανικός ερεθισμός/εκδορές κερατοειδούς από βλεφαρίδες','Αποκόλληση αμφιβληστροειδούς','Μυδρίαση','Αμβλυωπία από καταρράκτη'],a:0,e:'Οι βλεφαρίδες τρίβουν κερατοειδή και επιπεφυκότα, άρα μπορεί να προκαλέσουν βλάβη.',m:'Εντρόπιο = τρίχες πάνω στον κερατοειδή.'},
+{cat:'position',q:'Εκτρόπιο σημαίνει:',o:['Έσω στροφή βλεφάρου','Έξω στροφή βλεφάρου','Παράλυση κόρης','Χρόνιο κοκκίωμα μεϊβομιανού'],a:1,e:'Στο εκτρόπιο το βλέφαρο γυρίζει προς τα έξω, συχνά το κάτω.',m:'ΕΚτρόπιο = ΕΚτός.'},
+{cat:'position',q:'Το εκτρόπιο προκαλεί συχνά δακρύρροια γιατί:',o:['Παράγονται περισσότερα δάκρυα από τον φακό','Το δακρυϊκό σημείο δεν εφαρμόζει σωστά στην οφθαλμική επιφάνεια','Αυξάνεται η ενδοφθάλμια πίεση','Παραλύει το CN III'],a:1,e:'Η κακή θέση του κάτω βλεφάρου χαλάει την αποχέτευση των δακρύων.',m:'Εκτρόπιο = έξω βλέφαρο → κακή αποχέτευση.'},
+{cat:'position',q:'Λαγόφθαλμος είναι:',o:['Ατελής σύγκλιση των βλεφάρων','Πτώση του άνω βλεφάρου','Έσω στροφή κάτω βλεφάρου','Λοίμωξη αδένα Zeiss'],a:0,e:'Ο λαγόφθαλμος αφήνει τον βολβό εκτεθειμένο.',m:'Λαγόφθαλμος = δεν κλείνει καλά το μάτι.'},
+{cat:'position',q:'Σε παράλυση προσωπικού νεύρου η βασική προτεραιότητα είναι:',o:['Αύξηση προσαρμογής','Προστασία κερατοειδούς από έκθεση','Άμεση αντιμετώπιση καταρράκτη','Μείωση μυδρίασης'],a:1,e:'Το CN VII κλείνει το μάτι. Αν δεν κλείνει, ο κερατοειδής κινδυνεύει από ξηρότητα/έκθεση.',m:'CN VII palsy → protect cornea.'},
+{cat:'bleph',q:'Σταφυλοκοκκική βλεφαρίτιδα χαρακτηρίζεται περισσότερο από:',o:['Λέπια/εφελκίδες στο βλεφαρικό χείλος','Μυδρίαση και πόνο','Πρόπτωση βολβού','Λευκοκορία'],a:0,e:'Η σταφυλοκοκκική μορφή αφορά κυρίως το βλεφαρικό χείλος με λέπια και εφελκίδες.',m:'Σταφυλοκοκκική = crusts στο χείλος.'},
+{cat:'bleph',q:'Η δυσλειτουργία μεϊβομιανών αδένων οδηγεί κυρίως σε:',o:['Αλλοίωση λιπιδικής στιβάδας και ξηρό οφθαλμό','Αύξηση παραγωγής υδατοειδούς υγρού','Άμεση αμβλυωπία','Μόνιμη μυδρίαση'],a:0,e:'Οι Meibomius δίνουν το λιπώδες στρώμα· όταν δυσλειτουργούν, το δακρυϊκό φιλμ γίνεται ασταθές.',m:'Meibomius dysfunction = evaporative dry eye.'},
+{cat:'bleph',q:'Ποια θεραπευτική κίνηση βοηθά στην έκθλιψη βυσμάτων σμήγματος;',o:['Ψυχρά επιθέματα','Θερμά επιθέματα και μαλάξεις','Μυδριατικά','Πιεστική επίδεση για εβδομάδες'],a:1,e:'Η θερμότητα μαλακώνει το λιπώδες υλικό και οι μαλάξεις βοηθούν στην αποβολή του.',m:'Θερμό + μασάζ = Meibomius.'},
+{cat:'bleph',q:'Σε σοβαρή/εμμένουσα βλεφαρίτιδα μπορεί να χρησιμοποιηθούν συστηματικά:',o:['Τετρακυκλίνη ή δοξοκυκλίνη για εβδομάδες','Μόνο παρακεταμόλη','Μόνο αντιισταμινικά','Αντιγλαυκωματικά κολλύρια'],a:0,e:'Στις σημειώσεις αναφέρεται τετρακυκλίνη ή δοξοκυκλίνη για 6–12 εβδομάδες σε σοβαρές περιπτώσεις.',m:'Βαριά βλεφαρίτιδα → σκέψου doxy.'},
+{cat:'lesions',q:'Κριθή είναι κυρίως:',o:['Βακτηριακή λοίμωξη θυλάκου βλεφαρίδας ή μεϊβομιανού αδένα','Χρόνιο μη λοιμώδες κοκκίωμα μόνο','Κακοήθης όγκος','Πτώση άνω βλεφάρου'],a:0,e:'Η εξωτερική κριθή αφορά θυλάκο βλεφαρίδων, η εσωτερική μεϊβομιανό αδένα.',m:'Κριθή = οξεία λοίμωξη.'},
+{cat:'lesions',q:'Χαλάζιο είναι:',o:['Χρόνιο κοκκίωμα μεϊβομιανού αδένα','Οξεία παράλυση CN III','Αλλεργική δερματίτιδα','Έξω στροφή βλεφάρου'],a:0,e:'Το χαλάζιο είναι βραδέως αναπτυσσόμενο χρόνιο κοκκίωμα μεϊβομιανού αδένα.',m:'Χαλάζιο = chronic Meibomian granuloma.'},
+{cat:'lesions',q:'Ο οφθαλμικός έρπητας ζωστήρας αφορά συχνά:',o:['V1 του τριδύμου και γάγγλιο Gasser','CN VII και παρωτίδα','CN VI και σηραγγώδη κόλπο μόνο','Οπτικό νεύρο χωρίς δερματικές βλάβες'],a:0,e:'Ο VZV μπορεί να εντοπιστεί στο γάγγλιο του Gasser και στον οφθαλμικό κλάδο V1.',m:'Ζωστήρας οφθαλμού = V1.'},
+{cat:'lesions',q:'Δερματίτιδα βλεφάρων είναι συχνότερα:',o:['Αλλεργική εξ επαφής','Αποκόλληση αμφιβληστροειδούς','Χρόνιο γλαύκωμα','Βλάβη ακτινωτού σώματος'],a:0,e:'Τα βλέφαρα έχουν λεπτό δέρμα και αντιδρούν εύκολα σε αλλεργιογόνα/ερεθιστικά εξ επαφής.',m:'Βλέφαρα + ερύθημα/οίδημα/απολέπιση = contact dermatitis.'}
+];
+let state = {}; let current = 'all';
+function renderFilters(){const f=document.getElementById('filters'); f.innerHTML=''; sections.forEach(s=>{const b=document.createElement('button'); b.className='pill'+(current===s.key?' active':''); b.textContent=s.title; b.onclick=()=>{current=s.key;render()}; f.appendChild(b);});}
+function groupedQs(){return questions.filter(q=>current==='all'||q.cat===current).reduce((acc,q,i)=>{(acc[q.cat]??=[]).push({...q,idx:questions.indexOf(q)});return acc},{})}
+const titles={anatomy:'Ανατομία / μύες / νεύρωση',ptosis:'Βλεφαρόπτωση',position:'Θέση βλεφάρων & λαγόφθαλμος',bleph:'Βλεφαρίτιδα',lesions:'Μορφώματα & δέρμα βλεφάρων'};
+function render(){renderFilters(); const root=document.getElementById('quiz'); root.innerHTML=''; const groups=groupedQs(); Object.keys(groups).forEach(cat=>{const sec=document.createElement('section'); sec.className='section-card'; sec.innerHTML=`<div class="section-title"><h2>${titles[cat]}</h2><span class="tag">${groups[cat].length} ερωτήσεις</span></div><div class="quiz-grid"></div>`; const grid=sec.querySelector('.quiz-grid'); groups[cat].forEach((q,n)=>grid.appendChild(qCard(q))); root.appendChild(sec);}); updateStats();}
+function qCard(q){const card=document.createElement('div'); card.className='qcard'; const done=state[q.idx]; card.innerHTML=`<div class="qhead"><div class="qno">${q.idx+1}</div><div class="question">${q.q}</div></div><div class="options"></div><div class="feedback ${done?'show '+(done.correct?'ok':'bad'):''}">${done?feedbackText(q,done.choice):''}</div>`; const opts=card.querySelector('.options'); q.o.forEach((txt,i)=>{const op=document.createElement('div'); op.className='option'; if(done){ if(i===q.a) op.classList.add('correct'); if(i===done.choice && i!==q.a) op.classList.add('wrong'); } op.innerHTML=`<span class="letter">${String.fromCharCode(65+i)}.</span><span>${txt}</span>`; op.onclick=()=>answer(q.idx,i,card); opts.appendChild(op);}); return card;}
+function feedbackText(q,choice){const correct=choice===q.a; return `<b>${correct?'Σωστό ✅':'Όχι ακριβώς ❌'} Σωστή απάντηση: ${String.fromCharCode(65+q.a)}.</b><div class="explain">${q.e}<span class="memory">${q.m}</span></div>`}
+function answer(idx,choice,card){ if(state[idx]) return; const q=questions[idx]; state[idx]={choice,correct:choice===q.a}; const opts=card.querySelectorAll('.option'); opts.forEach((op,i)=>{if(i===q.a)op.classList.add('correct'); if(i===choice&&i!==q.a)op.classList.add('wrong')}); const fb=card.querySelector('.feedback'); fb.innerHTML=feedbackText(q,choice); fb.className='feedback show '+(choice===q.a?'ok':'bad'); updateStats();}
+function updateStats(){const ans=Object.keys(state).length; const score=Object.values(state).filter(x=>x.correct).length; document.getElementById('total').textContent=questions.length; document.getElementById('answered').textContent=ans; document.getElementById('score').textContent=score; document.getElementById('percent').textContent=ans?Math.round(score/ans*100)+'%':'0%';}
+function resetQuiz(){state={}; render(); window.scrollTo({top:0,behavior:'smooth'});}
+render();
+</script>
+</body>
+</html>
