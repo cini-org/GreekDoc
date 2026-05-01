@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GreekDoc - Οφθαλμολογία | Έκκριση και αποχέτευση δακρύων</title>
+
+  <style>
+    :root {
+      --bg: #fcfbff;
+      --text: #2d2a32;
+      --muted: #6a6475;
+      --purple-dark: #4d2f73;
+      --white: #ffffff;
+      --line: #ece5f7;
+      --shadow: 0 10px 30px rgba(80, 60, 120, 0.08);
+      --radius-xl: 28px;
+      --radius-lg: 22px;
+      --pink: #fff2f7;
+      --blue: #eef8ff;
+      --violet: #f5efff;
+      --green: #effaf3;
+      --peach: #fff5ed;
+      --yellow: #fffbe6;
+      --red-soft: #fff4f4;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Arial, sans-serif;
+      background: linear-gradient(to bottom, #fcfbff, #f8f5ff);
+      color: var(--text);
+      line-height: 1.65;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(10px);
+      background: rgba(252, 251, 255, 0.9);
+      border-bottom: 1px solid rgba(220, 210, 240, 0.7);
+      padding: 12px 20px;
+    }
+
+    .topbar-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .brand {
+      font-weight: 800;
+      color: var(--purple-dark);
+      letter-spacing: 0.2px;
+    }
+
+    .print-btn {
+      border: none;
+      border-radius: 999px;
+      padding: 10px 18px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+      background: linear-gradient(135deg, #e9ddff, #dff4ff);
+      color: #442466;
+      box-shadow: 0 4px 14px rgba(100, 80, 140, 0.12);
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .print-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 8px 18px rgba(100, 80, 140, 0.16);
+    }
+
+    .page {
+      max-width: 1200px;
+      margin: 26px auto 60px;
+      padding: 0 20px;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #f8d7e8, #e7dcff, #dff4ff);
+      border-radius: 30px;
+      padding: 36px 34px;
+      box-shadow: var(--shadow);
+      margin-bottom: 26px;
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+
+    .hero h1 {
+      margin: 0 0 10px 0;
+      font-size: 2.2rem;
+      color: #3e245f;
+    }
+
+    .hero p {
+      margin: 0;
+      color: #4e4960;
+      max-width: 920px;
+    }
+
+    .quick-map {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 18px;
+    }
+
+    .quick-map a {
+      text-decoration: none;
+      color: #56317f;
+      background: rgba(255,255,255,0.72);
+      border: 1px solid rgba(95, 65, 130, 0.12);
+      padding: 7px 12px;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 0.88rem;
+    }
+
+    .section {
+      background: var(--white);
+      border-radius: var(--radius-xl);
+      padding: 28px;
+      margin-bottom: 24px;
+      box-shadow: var(--shadow);
+      border: 1px solid #f0ebfa;
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+
+    .section-title {
+      margin: 0 0 18px 0;
+      font-size: 1.6rem;
+      color: #40235d;
+    }
+
+    .lead-box {
+      background: #faf7ff;
+      border: 1px solid #eee7fb;
+      border-radius: 18px;
+      padding: 16px 18px;
+      margin-bottom: 18px;
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+
+    .subsection {
+      margin-top: 18px;
+      padding: 18px;
+      border-radius: var(--radius-lg);
+      border: 1px solid #efe8fb;
+      background: #fcfbff;
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+
+    .subsection h3 {
+      margin: 0 0 10px 0;
+      color: #4a2d69;
+      font-size: 1.13rem;
+    }
+
+    .tag {
+      display: inline-block;
+      background: #efe4ff;
+      color: #5d348b;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 0.82rem;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+
+    .tag.red { background: #ffe4e9; color: #9f1239; }
+    .tag.blue { background: #dff4ff; color: #075985; }
+    .tag.green { background: #dcfce7; color: #166534; }
+    .tag.yellow { background: #fff3bf; color: #8a5a00; }
+
+    .important { color: #b42352; font-weight: 800; }
+    .danger { color: #b91c1c; font-weight: 800; }
+    .muted { color: var(--muted); }
+    .highlight { background: #fff1a8; padding: 0 4px; border-radius: 6px; font-weight: 700; }
+    .blue-text { color: #075985; font-weight: 800; }
+    .green-text { color: #166534; font-weight: 800; }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .mini-card {
+      background: #ffffff;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 18px;
+      break-inside: avoid;
+      page-break-inside: avoid;
+      box-shadow: 0 5px 16px rgba(80, 60, 120, 0.04);
+    }
+
+    .mini-card.pink { background: var(--pink); }
+    .mini-card.blue { background: var(--blue); }
+    .mini-card.violet { background: var(--violet); }
+    .mini-card.green { background: var(--green); }
+    .mini-card.peach { background: var(--peach); }
+    .mini-card.yellow { background: var(--yellow); }
+    .mini-card.red { background: var(--red-soft); }
+
+    .mini-card h4 {
+      margin: 0 0 10px 0;
+      color: #4a2d69;
+      font-size: 1.05rem;
+    }
+
+    .callout {
+      margin-top: 14px;
+      border-radius: 18px;
+      padding: 15px 16px;
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+
+    .callout.blue { background: #eef8ff; border-left: 6px solid #9fd7ff; }
+    .callout.red { background: #fff4f4; border-left: 6px solid #ff9797; }
+    .callout.green { background: #effaf3; border-left: 6px solid #8fe1aa; }
+    .callout.yellow { background: #fffbe6; border-left: 6px solid #f6d365; }
+
+    .img-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 16px;
+    }
+
+    .image-card {
+      background: #ffffff;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 12px;
+      break-inside: avoid;
+      page-break-inside: avoid;
+      box-shadow: 0 6px 18px rgba(80, 60, 120, 0.05);
+    }
+
+    .image-card img {
+      width: 100%;
+      height: 245px;
+      object-fit: contain;
+      display: block;
+      border-radius: 14px;
+      background: linear-gradient(135deg, #faf7ff, #f2f9ff);
+    }
+
+    .image-caption {
+      margin-top: 10px;
+      text-align: center;
+      font-size: 0.92rem;
+      color: #4d4560;
+      font-weight: 700;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      overflow: hidden;
+      border-radius: 18px;
+      border: 1px solid #ece5f7;
+      margin-top: 12px;
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+
+    th, td {
+      padding: 12px 14px;
+      border-bottom: 1px solid #ece5f7;
+      vertical-align: top;
+    }
+
+    th {
+      background: #f5efff;
+      color: #4a2d69;
+      text-align: left;
+      font-weight: 800;
+    }
+
+    tr:last-child td { border-bottom: none; }
+
+    ul, ol {
+      margin: 8px 0 0 0;
+      padding-left: 22px;
+    }
+
+    li { margin-bottom: 7px; }
+
+    .footer-note {
+      text-align: center;
+      color: #7a7486;
+      font-size: 0.92rem;
+      margin-top: 18px;
+    }
+
+    @media (max-width: 900px) {
+      .grid-2, .grid-3, .img-grid { grid-template-columns: 1fr; }
+      .hero h1 { font-size: 1.8rem; }
+    }
+
+    @media print {
+      @page { size: A4 landscape; margin: 10mm; }
+      html, body { background: white !important; }
+      body { font-size: 10.5px; line-height: 1.32; color: #000; }
+      .topbar { display: none !important; }
+      .page { max-width: none; width: 100%; margin: 0; padding: 0; }
+      .hero {
+        box-shadow: none; border: 1px solid #ddd; padding: 14px 16px; margin-bottom: 10px;
+        border-radius: 14px; background: #f5f5f5 !important;
+        -webkit-print-color-adjust: exact; print-color-adjust: exact;
+      }
+      .hero h1 { font-size: 18px; margin-bottom: 4px; }
+      .hero p, .quick-map { font-size: 9.5px; }
+      .quick-map a { padding: 3px 7px; }
+      .section {
+        box-shadow: none; border: 1px solid #dcdcdc; border-radius: 12px;
+        padding: 12px 13px; margin-bottom: 10px; background: #fff !important;
+        -webkit-print-color-adjust: exact; print-color-adjust: exact;
+        break-inside: avoid; page-break-inside: avoid;
+      }
+      .section-title { font-size: 15px; margin-bottom: 10px; }
+      .lead-box, .subsection, .mini-card, .callout, .image-card, table {
+        break-inside: avoid !important; page-break-inside: avoid !important;
+      }
+      .subsection { padding: 10px 11px; margin-top: 9px; border-radius: 10px; }
+      .subsection h3 { font-size: 12px; margin-bottom: 6px; }
+      .tag { font-size: 8px; padding: 2px 7px; margin-bottom: 6px; }
+      .mini-card { padding: 10px 11px; border-radius: 10px; }
+      .mini-card h4 { font-size: 11px; margin-bottom: 6px; }
+      .callout { padding: 9px 10px; border-radius: 10px; }
+      .image-card { border-radius: 10px; padding: 8px; box-shadow: none; }
+      .image-card img { height: 115px; border-radius: 8px; }
+      .image-caption { font-size: 8.5px; margin-top: 5px; }
+      th, td { padding: 7px 8px; }
+      ul, ol { margin-top: 4px; padding-left: 17px; }
+      li { margin-bottom: 3px; }
+      .footer-note { margin-top: 8px; font-size: 8.5px; }
+      .grid-2, .grid-3, .img-grid { gap: 9px; }
+    }
+  </style>
+</head>
+
+
+<body>
+  <div class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">GreekDoc • Οφθαλμολογία</div>
+      <button class="print-btn" onclick="window.print()">🖨️ Print notes</button>
+    </div>
+  </div>
+
+  <div class="page">
+    <div class="hero">
+      <h1>Έκκριση και αποχέτευση δακρύων</h1>
+      <p>
+        Οργανωμένες σημειώσεις για τη δακρυϊκή στιβάδα, τον ξηρό οφθαλμό, τη δακρύρροια,
+        την επιφορά, την απόφραξη της δακρυϊκής οδού και τη δακρυοκυστίτιδα.
+      </p>
+      <div class="quick-map">
+        <a href="#leitourgies">Λειτουργίες</a>
+        <a href="#film">Δακρυϊκή στιβάδα</a>
+        <a href="#xiros">Ξηρός οφθαλμός</a>
+        <a href="#klinika">Κλινική εικόνα</a>
+        <a href="#dakryrrhoia">Δακρύρροια / Επιφορά</a>
+        <a href="#apofraxi">Απόφραξη</a>
+        <a href="#dacryocystitis">Δακρυοκυστίτιδα</a>
+        <a href="#therapeia">Αντιμετώπιση</a>
+        <a href="#exam">Exam recap</a>
+      </div>
+    </div>
+
+    <section class="section" id="leitourgies">
+      <h2 class="section-title">1. Γιατί χρειάζονται τα δάκρυα;</h2>
+      <div class="lead-box">
+        Η επαρκής εφύγρανση του οφθαλμού είναι απαραίτητη για τη διατήρηση της <b>ακεραιότητας του κερατοειδούς</b>,
+        ο οποίος λειτουργεί ως φραγμός σε λοιμώξεις και ως οπτικό μέσο. Η διαταραχή στην παραγωγή ή στην αποχέτευση των δακρύων επηρεάζει αυτές τις λειτουργίες.
+      </div>
+
+      <div class="grid-2">
+        <div class="mini-card green">
+          <h4>Θρέψη και οξυγόνωση</h4>
+          <ul>
+            <li>Θρέψη και οξυγόνωση των εξωτερικών στιβάδων του κερατοειδή.</li>
+            <li>Σημαντικό επειδή ο <b>κερατοειδής είναι ανάγγειος ιστός</b>.</li>
+          </ul>
+        </div>
+        <div class="mini-card blue">
+          <h4>Καθαρή όραση</h4>
+          <ul>
+            <li>Τα δάκρυα εξασφαλίζουν <b>λεία πρόσθια διαθλαστική επιφάνεια</b>.</li>
+            <li>Χωρίς σταθερό δακρυϊκό φιλμ η όραση μπορεί να θολώνει.</li>
+          </ul>
+        </div>
+        <div class="mini-card violet">
+          <h4>Προστασία επιφάνειας</h4>
+          <ul>
+            <li><b>Χημική και μηχανική προάσπιση</b> της οφθαλμικής επιφάνειας.</li>
+            <li>Συμμετοχή στην άμυνα απέναντι σε μικρόβια και σωματίδια.</li>
+          </ul>
+        </div>
+        <div class="mini-card peach">
+          <h4>Καθαρισμός</h4>
+          <ul>
+            <li><b>Ενζυματικός καθαρισμός</b>.</li>
+            <li>Έκπλυση μικροσωματιδίων από την επιφάνεια του οφθαλμού.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="film">
+      <h2 class="section-title">2. Δακρυϊκή στιβάδα: τα 3 στρώματα</h2>
+      <div class="lead-box">
+        Ο ξηρός οφθαλμός / σύνδρομο ξηρών οφθαλμών είναι αποτέλεσμα ανεπάρκειας <b>οποιουδήποτε</b> από τα τρία στοιχεία της δακρυϊκής στιβάδας: <b>εξωτερική λιποειδική</b>, <b>μέση υδατίνη</b>, <b>έσω βλεννώδης</b>. Άρα δεν σημαίνει πάντα ότι “δεν παράγονται αρκετά δάκρυα”· μπορεί να είναι και πρόβλημα ποιότητας ή κατανομής του δακρυϊκού φιλμ.
+      </div>
+
+      <div class="grid-3">
+        <div class="mini-card yellow">
+          <h4>1. Εξωτερική λιποειδική στιβάδα</h4>
+          <ul>
+            <li>Σχετίζεται κυρίως με τους <b>μεϊβομιανούς αδένες</b>.</li>
+            <li>Μειώνει την εξάτμιση της υδατίνης στιβάδας και σταθεροποιεί το δακρυϊκό φιλμ.</li>
+            <li><b>Ανεπάρκεια εξωτερικής λιποειδικής στιβάδας</b> εμφανίζεται συνήθως σε <b>βλεφαρίτιδα</b>.</li>
+          </ul>
+        </div>
+        <div class="mini-card blue">
+          <h4>2. Μέση υδατίνη στιβάδα</h4>
+          <ul>
+            <li>Περίπου <b>95%</b> παράγεται από τον κύριο δακρυϊκό αδένα.</li>
+            <li>Περίπου <b>5%</b> παράγεται από επικουρικούς αδένες του επιπεφυκότα.</li>
+            <li>Λειαίνει την οπτική επιφάνεια, εκπλένει συγκρίματα/μικροσωματίδια και μεταφέρει <b>οξυγόνο</b> και <b>αντιβακτηριακούς παράγοντες</b> στην κερατοειδική και επιπεφυκοτική επιφάνεια.</li>
+          </ul>
+        </div>
+        <div class="mini-card green">
+          <h4>3. Έσω βλεννώδης στιβάδα</h4>
+          <ul>
+            <li>Παράγεται κυρίως από τα <b>καλυκοειδή κύτταρα του επιπεφυκότα</b>.</li>
+            <li>Κάνει την επιφάνεια υδρόφιλη, ώστε να απλώνεται η υδατίνη στιβάδα.</li>
+            <li><b>Ανεπάρκεια βλέννας</b> → <b>ξηροφθαλμία</b>.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="callout yellow">
+        <b>High-yield:</b> Η “ποιότητα” των δακρύων είναι εξίσου σημαντική με την ποσότητα. Γι’ αυτό κάποιος μπορεί να έχει δάκρυα αλλά να έχει ξηρό οφθαλμό.
+      </div>
+    </section>
+
+    <section class="section" id="xiros">
+      <h2 class="section-title">3. Ξηρός οφθαλμός</h2>
+      <div class="lead-box">
+        Το σύνδρομο ξηρού οφθαλμού μπορεί να οφείλεται σε ανεπάρκεια οποιουδήποτε από τα τρία στοιχεία της δακρυϊκής στιβάδας: λιποειδική, υδατίνη ή βλεννώδης στιβάδα.
+      </div>
+
+      <div class="subsection">
+        <div class="tag red">Αιτιοπαθογένεια</div>
+        <h3>Πού μπορεί να υπάρχει το πρόβλημα;</h3>
+        <div class="grid-2">
+          <div class="mini-card blue">
+            <h4>Υδατίνη ανεπάρκεια = ξηρά κερατοεπιπεφυκίτιδα</h4>
+            <ul>
+              <li>Η ανεπάρκεια της μέσης υδατίνης στιβάδας ονομάζεται <b>ξηρά κερατοεπιπεφυκίτιδα</b>.</li>
+              <li>Είναι σχετικά <b>ασυνήθες αλλά σοβαρό</b> αίτιο ξηρού οφθαλμού.</li>
+              <li>Στην <b>αληθή ξηρά κερατοεπιπεφυκίτιδα</b> προσβάλλεται μόνο/κυρίως ο δακρυϊκός αδένας.</li>
+            </ul>
+          </div>
+          <div class="mini-card violet">
+            <h4>Ποιοτική διαταραχή</h4>
+            <ul>
+              <li>Είναι πολύ συχνή.</li>
+              <li>Σχετίζεται με <b>βλεφαρίτιδα</b> και δυσλειτουργία μεϊβομιανών αδένων.</li>
+              <li>Μπορεί να δημιουργεί συμπτώματα ξηρότητας ακόμη και όταν υπάρχουν δάκρυα.</li>
+            </ul>
+          </div>
+          <div class="mini-card green">
+            <h4>Βλεννώδης ανεπάρκεια</h4>
+            <ul>
+              <li>Καταστροφή καλυκοειδών κυττάρων → μειωμένη βλέννα.</li>
+              <li>Αιτίες: ουλοποίηση επιπεφυκότα, εγκαύματα από αλκάλια, ουλωτικές νόσοι του επιπεφυκότα.</li>
+              <li><b>Υποβιταμίνωση A</b>: σημαντικό αίτιο ανεπαρκούς παραγωγής βλέννας.</li>
+            </ul>
+          </div>
+          <div class="mini-card peach">
+            <h4>Λιποειδική διαταραχή</h4>
+            <ul>
+              <li>Συχνά σε βλεφαρίτιδα.</li>
+              <li>Η δακρυϊκή στιβάδα εξατμίζεται πιο εύκολα.</li>
+              <li>Οδηγεί σε ερεθισμό και αστάθεια του δακρυϊκού φιλμ.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="callout blue">
+          <b>Αιτίες δυσλειτουργίας δακρυϊκού αδένα:</b> συχνότερα <b>φλεγμονή</b> — ιδιαίτερα αυτοάνοση —, επίσης ουλοποίηση των εκφορητικών πόρων ή εκτομή του αδένα.
+        </div>
+      </div>
+
+      <div class="subsection">
+        <div class="tag blue">Sjögren</div>
+        <h3>Ξηρός οφθαλμός και αυτοάνοσα</h3>
+        <div class="grid-2">
+          <div class="mini-card blue">
+            <h4>Πρωτοπαθές Sjögren</h4>
+            <ul>
+              <li>Προσβάλλονται ο <b>δακρυϊκός αδένας</b>, οι <b>σιελογόνοι</b> και άλλοι εξωκρινείς αδένες.</li>
+              <li>Ξηροφθαλμία + ξηροστομία.</li>
+              <li>Πρόκειται για <b>αυτοάνοση διαταραχή</b>.</li>
+            </ul>
+          </div>
+          <div class="mini-card violet">
+            <h4>Δευτεροπαθές Sjögren</h4>
+            <ul>
+              <li>Εμφανίζεται στα πλαίσια συστηματικής αυτοάνοσης νόσου.</li>
+              <li>Κλασικό παράδειγμα: <b>ρευματοειδής αρθρίτιδα</b>.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="callout red">
+        <b>Κλινική παγίδα:</b> ο ξηρός οφθαλμός μπορεί να προκαλεί <b>αντανακλαστική δακρύρροια</b>. Άρα “τρέχουν δάκρυα” δεν αποκλείει ξηρότητα.
+      </div>
+    </section>
+
+    <section class="section" id="klinika">
+      <h2 class="section-title">4. Κλινική εικόνα και εξετάσεις</h2>
+      <div class="grid-2">
+        <div class="mini-card yellow">
+          <h4>Συμπτώματα</h4>
+          <ul>
+            <li><b>Εμμένων ερεθισμός</b>.</li>
+            <li>Αίσθημα ξένου σώματος.</li>
+            <li>Αίσθημα ξηρότητας.</li>
+            <li>Θολή όραση που μπορεί να μεταβάλλεται με το βλεφάρισμα.</li>
+          </ul>
+        </div>
+        <div class="mini-card peach">
+          <h4>Ευρήματα</h4>
+          <ul>
+            <li>Σημεία ξηρότητας στην οφθαλμική επιφάνεια.</li>
+            <li>Συχνή συσχέτιση με βλεφαρίτιδα.</li>
+            <li>Στικτές βλάβες επιθηλίου κερατοειδούς/επιπεφυκότα σε βαφή.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="subsection">
+        <div class="tag green">Δοκιμασίες</div>
+        <h3>Πώς το ελέγχουμε;</h3>
+        <div class="grid-2">
+          <div class="mini-card green">
+            <h4>Schirmer test</h4>
+            <ul>
+              <li>Μετρά την παραγωγή δακρύων με διηθητικό χαρτί.</li>
+              <li>Χρήσιμο για την ποσότητα των δακρύων.</li>
+              <li>Δεν είναι πάντα αξιόπιστο μόνο του για τη συνολική εκτίμηση του ξηρού οφθαλμού.</li>
+            </ul>
+          </div>
+          <div class="mini-card yellow">
+            <h4>Fluorescein / χρώσεις</h4>
+            <ul>
+              <li>Η φλουορεσεΐνη αναμιγνύεται με τα δάκρυα.</li>
+              <li>Βοηθά στην ποιοτική εκτίμηση της δακρυϊκής στιβάδας.</li>
+              <li>Χρωματίζει <b>στικτές αποπτώσεις</b> του επιθηλίου κερατοειδούς και επιπεφυκότα.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="dakryrrhoia">
+      <h2 class="section-title">5. Δακρύρροια και επιφορά</h2>
+      <div class="lead-box">
+        Το μη φυσιολογικό δάκρυσμα μπορεί να οφείλεται είτε σε <b>υπερέκκριση δακρύων</b> είτε σε <b>ανεπαρκή αποχέτευση</b> του αποχετευτικού συστήματος.
+      </div>
+
+      <div class="grid-2">
+        <div class="mini-card blue">
+          <h4>Υπερέκκριση δακρύων</h4>
+          <ul>
+            <li>Αντανακλαστική αντίδραση σε οφθαλμικό ερεθισμό.</li>
+            <li>Συχνά συνοδεύει βλεφαρίτιδα ή ξηρό οφθαλμό.</li>
+            <li>Ο ασθενής μπορεί να παραπονιέται για δάκρυα, ενώ το βασικό πρόβλημα είναι ερεθισμός/ξηρότητα.</li>
+          </ul>
+        </div>
+        <div class="mini-card green">
+          <h4>Ανεπαρκής αποχέτευση</h4>
+          <ul>
+            <li>Τα δάκρυα δεν οδηγούνται σωστά προς τη ρινική κοιλότητα.</li>
+            <li>Μπορεί να είναι <b>ανατομική απόφραξη</b> ή <b>λειτουργική ανεπάρκεια δακρυϊκής αντλίας</b>.</li>
+            <li>Το αποτέλεσμα είναι <b>επιφορά</b>.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="subsection">
+        <div class="tag yellow">Δακρυϊκή αντλία</div>
+        <h3>Λειτουργική αποχέτευση</h3>
+        <div class="grid-2">
+          <div class="mini-card yellow">
+            <h4>Ανεπάρκεια αντλίας</h4>
+            <ul>
+              <li>Η φυσιολογική άντληση προωθεί τα δάκρυα στον δακρυϊκό ασκό.</li>
+              <li>Ανεπάρκεια μπορεί να εμφανιστεί σε <b>παράλυση προσωπικού νεύρου</b>.</li>
+              <li>Μπορεί επίσης να σχετίζεται με <b>εκτρόπιο</b>.</li>
+            </ul>
+          </div>
+          <div class="mini-card peach">
+            <h4>Σημεία που ψάχνω</h4>
+            <ul>
+              <li>Θέση κάτω βλεφάρου.</li>
+              <li>Επαφή δακρυϊκού σημείου με τον βολβό.</li>
+              <li>Παράλυση προσωπικού ή κακή σύγκλιση βλεφάρων.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="apofraxi">
+      <h2 class="section-title">6. Απόφραξη δακρυϊκής οδού</h2>
+      <div class="grid-2">
+        <div class="mini-card yellow">
+          <h4>Συγγενής απόφραξη</h4>
+          <ul>
+            <li>Συχνά οφείλεται σε ατελή ανάπτυξη του ρινοδακρυϊκού πόρου.</li>
+            <li>Μπορεί να λυθεί αυτόματα καθώς αναπτύσσεται η αποχετευτική οδός.</li>
+            <li>Χαρακτηριστικά: <b>επιφορά</b> και βλεννώδεις/βλεννοπυώδεις εκκρίσεις.</li>
+          </ul>
+        </div>
+        <div class="mini-card violet">
+          <h4>Επίκτητη απόφραξη</h4>
+          <ul>
+            <li>Μπορεί να συμβεί σε οποιοδήποτε σημείο της αποχετευτικής οδού.</li>
+            <li><b>Συχνότερος τύπος:</b> απόφραξη του άπω τμήματος του ρινοδακρυϊκού πόρου, συχνά λόγω γεροντικών/ηλικιακών αλλοιώσεων.</li>
+            <li>Μπορεί να οδηγήσει σε διάταση δακρυϊκού ασκού ή δακρυοκυστίτιδα.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="subsection">
+        <div class="tag red">Εκτίμηση</div>
+        <h3>Ο στόχος είναι να ξεχωρίσεις υπερέκκριση από ανεπαρκή αποχέτευση</h3>
+        <ul>
+          <li>Προσεκτική εξέταση βλεφάρων και βολβού για αίτια υπερέκκρισης.</li>
+          <li>Έλεγχος για βλεφαρίτιδα, εντρόπιο/εκτρόπιο, ξηρό οφθαλμό.</li>
+          <li>Αναζήτηση διόγκωσης στον έσω κανθό, που μπορεί να υποδηλώνει βλεννοκήλη ή δακρυοκυστίτιδα.</li>
+        </ul>
+      </div>
+
+      <div class="subsection">
+        <div class="tag blue">Καθετηριασμός</div>
+        <h3>Πώς ερμηνεύεται;</h3>
+        <table>
+          <thead>
+            <tr><th>Εύρημα</th><th>Τι υποδηλώνει</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Ο καθετήρας δεν εισέρχεται</td><td>Στένωση/απόφραξη δακρυϊκού σημείου.</td></tr>
+            <tr><td>Δεν μπορεί να προωθηθεί στον δακρυϊκό ασκό</td><td>Απόφραξη σωληναρίου.</td></tr>
+            <tr><td>Παλινδρόμηση φυσιολογικού ορού</td><td>Απόφραξη πόρου.</td></tr>
+            <tr><td>Ο φυσιολογικός ορός περνά στον ρινοφάρυγγα και γίνεται αισθητή η γεύση του</td><td>Βατή αποχετευτική οδός· αναζήτηση άλλων αιτίων δακρύρροιας.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="subsection">
+        <div class="tag green">Απεικόνιση</div>
+        <h3>Πότε βοηθά;</h3>
+        <ul>
+          <li><b>Δακρυοκυστογραφία:</b> έγχυση ακτινοσκιερής χρωστικής στο αποχετευτικό σύστημα.</li>
+          <li><b>Δακρυοσπινθηρογράφημα:</b> ραδιοϊσότοπο + γ-camera για εκτίμηση φυσιολογικής ροής.</li>
+          <li>Οι αποχετευτικές οδοί μπορούν να απεικονιστούν άμεσα και με μικροσκοπικό ενδοσκόπιο.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section" id="dacryocystitis">
+      <h2 class="section-title">7. Δακρυοκυστίτιδα</h2>
+      <div class="lead-box">
+        Η δακρυοκυστίτιδα είναι φλεγμονή/λοίμωξη του δακρυϊκού ασκού, συνήθως λόγω απόφραξης της αποχετευτικής οδού.
+      </div>
+      <div class="grid-2">
+        <div class="mini-card red">
+          <h4>Οξεία δακρυοκυστίτιδα</h4>
+          <ul>
+            <li><b>Ευαίσθητη, εξέρυθρη διόγκωση</b> στον έσω κανθό.</li>
+            <li>Συχνά υπάρχει σημείο εκροής πυώδους υλικού.</li>
+            <li>Πόνος, οίδημα, ερυθρότητα.</li>
+            <li>Αντιμετώπιση με <b>αντιβίωση per os</b> ή σύμφωνα με την κλινική βαρύτητα.</li>
+          </ul>
+        </div>
+        <div class="mini-card violet">
+          <h4>Χρόνια δακρυοκυστίτιδα</h4>
+          <ul>
+            <li><b>Επιφορά</b>.</li>
+            <li>Βλεννοπυώδεις εκκρίσεις.</li>
+            <li>Συχνές επιπεφυκίτιδες.</li>
+            <li>Μπορεί να χρειαστεί <b>δακρυοασκορινοστομία</b>.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="therapeia">
+      <h2 class="section-title">8. Αντιμετώπιση</h2>
+      <div class="lead-box">
+        Η θεραπεία κατευθύνεται προς το αίτιο: άλλο πρόβλημα είναι η ξηρότητα, άλλο η υπερέκκριση από ερεθισμό και άλλο η μηχανική απόφραξη.
+      </div>
+      <div class="grid-2">
+        <div class="mini-card green">
+          <h4>Ξηρός οφθαλμός</h4>
+          <ul>
+            <li>Συντηρητικά μέτρα.</li>
+            <li>Τεχνητά δάκρυα / υποκατάστατα δακρύων.</li>
+            <li>Αντιμετώπιση βλεφαρίτιδας ή περιβαλλοντικών παραγόντων.</li>
+            <li>Σε σοβαρές περιπτώσεις μπορεί να εξεταστεί η απόφραξη δακρυϊκών σημείων για διατήρηση δακρύων.</li>
+          </ul>
+        </div>
+        <div class="mini-card blue">
+          <h4>Απόφραξη αποχέτευσης</h4>
+          <ul>
+            <li>Συγγενής απόφραξη: συχνά αρχικά παρακολούθηση/μαλάξεις, ανάλογα με την ηλικία και τα συμπτώματα.</li>
+            <li>Καθετηριασμός/διερεύνηση όταν δεν υποχωρεί.</li>
+            <li>Επίκτητη απόφραξη: θεραπεία ανάλογα με το επίπεδο και τη βαρύτητα.</li>
+          </ul>
+        </div>
+        <div class="mini-card peach">
+          <h4>Δακρυοασκορινοστομία</h4>
+          <ul>
+            <li>Παρακαμπτήρια οδός μεταξύ δακρυϊκού ασκού και ρινικής κοιλότητας.</li>
+            <li>Μπορεί να γίνει εξωτερικά ή ενδορρινικά.</li>
+            <li>Η ενδορρινική με laser είναι λιγότερο επεμβατική επιλογή, αλλά η επιλογή εξαρτάται από τον ασθενή και τη βαρύτητα.</li>
+          </ul>
+        </div>
+        <div class="mini-card red">
+          <h4>Χειρουργική ανάγκη</h4>
+          <ul>
+            <li>Βλέφαρα που στρέφονται προς τα μέσα, εντρόπιο ή εκτρόπιο μπορεί να απαιτούν χειρουργική αντιμετώπιση.</li>
+            <li>Η απόφαση εξαρτάται από τη βαρύτητα, την έκθεση του κερατοειδούς και τα συμπτώματα.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="exam">
+      <h2 class="section-title">9. Γρήγορο exam recap</h2>
+      <div class="grid-2">
+        <div class="mini-card yellow">
+          <h4>Να ξεχωρίζεις</h4>
+          <ul>
+            <li><b>Ξηρός οφθαλμός:</b> ποσοτική ή ποιοτική ανεπάρκεια οποιουδήποτε από τα 3 στοιχεία της δακρυϊκής στιβάδας.</li>
+            <li><b>Δακρύρροια:</b> αυξημένη παραγωγή δακρύων.</li>
+            <li><b>Επιφορά:</b> ανεπαρκής αποχέτευση δακρύων.</li>
+            <li><b>Reflex tearing:</b> ξηρός οφθαλμός μπορεί να κάνει δάκρυα.</li>
+          </ul>
+        </div>
+        <div class="mini-card red">
+          <h4>High-yield κλινικά</h4>
+          <ul>
+            <li>Υδατίνη στιβάδα: 95% από κύριο δακρυϊκό αδένα + 5% από επικουρικούς αδένες.</li>
+            <li>Ανεπάρκεια υδατίνης στιβάδας = ξηρά κερατοεπιπεφυκίτιδα· ασυνήθης αλλά σοβαρή.</li>
+            <li>Βλεννώδης στιβάδα: καλυκοειδή κύτταρα· υποβιταμίνωση A → ↓ βλέννα.</li>
+            <li>Schirmer → ποσότητα δακρύων. Fluorescein → επιθηλιακές βλάβες.</li>
+            <li>Δακρυϊκή αντλία: επηρεάζεται από προσωπικό νεύρο και θέση βλεφάρων.</li>
+            <li>Οξεία δακρυοκυστίτιδα → επώδυνη, ερυθρή διόγκωση έσω κανθού ± πύον.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <div class="footer-note">
+      GreekDoc style notes • Οφθαλμολογία • Έκκριση και αποχέτευση δακρύων • έτοιμο για οθόνη και εκτύπωση
+    </div>
+  </div>
+</body>
+
+</html>
