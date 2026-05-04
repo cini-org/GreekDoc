@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>GreekDoc | Quiz Αδενοϊοί & Parvo B19</title>
+
+  <style>
+    body{
+      margin:0;
+      font-family: Georgia, serif;
+      background:linear-gradient(135deg,#f7f6f2,#eef3ec);
+      color:#27312f;
+    }
+
+    .page{
+      max-width:1000px;
+      margin:auto;
+      padding:30px 20px 80px;
+    }
+
+    header{
+      background:white;
+      border-radius:26px;
+      padding:30px;
+      margin-bottom:25px;
+      box-shadow:0 10px 30px rgba(0,0,0,.08);
+    }
+
+    h1{margin:0;font-size:2.4rem;}
+    .subtitle{color:#6d7774;}
+
+    .toolbar{
+      margin-top:18px;
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+
+    a, button{
+      background:#2f3d38;
+      color:white;
+      border:none;
+      padding:10px 16px;
+      border-radius:999px;
+      cursor:pointer;
+      text-decoration:none;
+      font-family:inherit;
+    }
+
+    .quiz-card{
+      background:white;
+      border-radius:24px;
+      padding:24px;
+      margin-bottom:18px;
+      box-shadow:0 10px 30px rgba(0,0,0,.08);
+      border:1px solid #ddd5c8;
+    }
+
+    .question{
+      font-weight:bold;
+      font-size:1.1rem;
+      margin-bottom:14px;
+    }
+
+    .option{
+      display:block;
+      width:100%;
+      text-align:left;
+      background:#f7f6f2;
+      color:#27312f;
+      border:1px solid #ddd5c8;
+      margin:8px 0;
+      padding:12px 14px;
+      border-radius:16px;
+      cursor:pointer;
+      font-size:1rem;
+    }
+
+    .option:hover{
+      background:#eef3ec;
+    }
+
+    .correct{
+      background:#dceee4 !important;
+      border-color:#7fa37f !important;
+    }
+
+    .wrong{
+      background:#f7d7d7 !important;
+      border-color:#c77979 !important;
+    }
+
+    .explanation{
+      display:none;
+      margin-top:12px;
+      padding:13px;
+      border-radius:16px;
+      background:#fff3c7;
+      border:1px solid #e1c96d;
+    }
+
+    .score-box{
+      background:#ebe3f7;
+      border-radius:22px;
+      padding:20px;
+      margin-bottom:20px;
+      font-weight:bold;
+      text-align:center;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+
+    <header>
+      <h1>🧠 Quiz: Αδενοϊοί & Parvo B19</h1>
+      <p class="subtitle">
+        Ερωτήσεις πολλαπλής επιλογής για γρήγορη επανάληψη πριν τις εξετάσεις.
+      </p>
+
+      <div class="toolbar">
+        <a href="adenoioi.html">⬅️ Πίσω στις σημειώσεις</a>
+        <a href="adenoi-parvo-exams.html">🎯 Για τις εξετάσεις</a>
+        <button onclick="resetQuiz()">🔄 Ξανά από την αρχή</button>
+      </div>
+    </header>
+
+    <div class="score-box" id="scoreBox">
+      Score: 0 / 0
+    </div>
+
+    <div id="quiz"></div>
+
+  </div>
+
+  <script>
+    const questions = [
+      {
+        q: "1. Ποιο είναι το γονιδίωμα των αδενοϊών;",
+        options: ["Μονόκλωνο RNA", "Δίκλωνο DNA", "Μονόκλωνο DNA", "Δίκλωνο RNA"],
+        answer: 1,
+        explanation: "Οι αδενοϊοί είναι δίκλωνοι DNA ιοί."
+      },
+      {
+        q: "2. Οι αδενοϊοί έχουν περίβλημα;",
+        options: ["Ναι, λιπιδικό περίβλημα", "Όχι, είναι γυμνοί ιοί", "Μόνο μερικοί τύποι", "Μόνο όταν μολύνουν επιπεφυκότα"],
+        answer: 1,
+        explanation: "Οι αδενοϊοί δεν έχουν περίβλημα, γι’ αυτό είναι ανθεκτικοί στον αιθέρα."
+      },
+      {
+        q: "3. Ποια συμμετρία έχουν οι αδενοϊοί;",
+        options: ["Ελικοειδή", "Πολύμορφη", "Εικοσαεδρική", "Σφαιρική με περίβλημα"],
+        answer: 2,
+        explanation: "Έχουν κυβική/εικοσαεδρική συμμετρία."
+      },
+      {
+        q: "4. Πού γίνεται κυρίως η αναπαραγωγή των αδενοϊών;",
+        options: ["Στο κυτταρόπλασμα", "Στα μιτοχόνδρια", "Στον πυρήνα", "Στα ριβοσώματα"],
+        answer: 2,
+        explanation: "Η αναπαραγωγή και σύνθεση του ιού γίνεται στον πυρήνα του μολυσμένου κυττάρου."
+      },
+      {
+        q: "5. Ποια κλινική εικόνα είναι κλασική για αδενοϊό;",
+        options: ["Λοιμώδες ερύθημα", "Φαρυγγοεπιπεφυκιτικός πυρετός", "Ηπατίτιδα Β", "Λύσσα"],
+        answer: 1,
+        explanation: "Ο φαρυγγοεπιπεφυκιτικός πυρετός είναι χαρακτηριστική εικόνα αδενοϊού."
+      },
+      {
+        q: "6. Η επιπεφυκίτιδα των κολυμβητικών δεξαμενών συνδέεται κυρίως με:",
+        options: ["Αδενοϊούς", "Parvo B19", "HBV", "CMV"],
+        answer: 0,
+        explanation: "Οι αδενοϊοί μπορούν να προκαλέσουν επιπεφυκίτιδα των κολυμβητικών δεξαμενών."
+      },
+      {
+        q: "7. Ποια ουρολογική νόσος μπορεί να προκληθεί από αδενοϊούς;",
+        options: ["Οξεία αιμορραγική κυστίτιδα", "Σπειραματονεφρίτιδα", "Πυελονεφρίτιδα από μύκητες", "Νεφρωσικό σύνδρομο"],
+        answer: 0,
+        explanation: "Οι αδενοϊοί μπορούν να προκαλέσουν οξεία αιμορραγική κυστίτιδα."
+      },
+      {
+        q: "8. Το εμβόλιο αδενοϊών αφορά κυρίως:",
+        options: ["Όλο τον αστικό πληθυσμό", "Νεογνά", "Νεοσύλλεκτους στρατιώτες", "Εγκύους"],
+        answer: 2,
+        explanation: "Στην παρουσίαση αναφέρεται εμβολιασμός νεοσύλλεκτων στρατιωτών."
+      },
+      {
+        q: "9. Ποιοι τύποι αδενοϊών χρησιμοποιούνται στο εμβόλιο των νεοσυλλέκτων;",
+        options: ["1 και 2", "4 και 7", "16 και 18", "40 και 41"],
+        answer: 1,
+        explanation: "Το εμβόλιο περιέχει ζώντες αδενοϊούς τύπου 4 και 7."
+      },
+      {
+        q: "10. Ποια μέθοδος μπορεί να χρησιμοποιηθεί για διάγνωση αδενοϊών;",
+        options: ["PCR για DNA", "Μόνο Gram χρώση", "Καλλιέργεια σε Sabouraud", "Mantoux"],
+        answer: 0,
+        explanation: "Μπορεί να γίνει ανίχνευση DNA αδενοϊών με PCR."
+      },
+
+      {
+        q: "11. Ο ανθρώπειος παρβοϊός B19 έχει:",
+        options: ["Δίκλωνο DNA", "Μονόκλωνο DNA", "RNA", "Τμηματικό RNA"],
+        answer: 1,
+        explanation: "Ο Parvo B19 έχει μονόκλωνο DNA."
+      },
+      {
+        q: "12. Ο Parvo B19 είναι γνωστός ως:",
+        options: ["Ο μεγαλύτερος RNA ιός", "Ο μικρότερος DNA ιός", "Ιός με περίβλημα", "Ρετροϊός"],
+        answer: 1,
+        explanation: "Στην παρουσίαση αναφέρεται ως ο μικρότερος DNA ιός, περίπου 18–26 nm."
+      },
+      {
+        q: "13. Ποιος είναι ο βασικός κυτταρικός στόχος του Parvo B19;",
+        options: ["Ηπατοκύτταρα", "Νευρώνες", "Ανθρώπειοι ερυθροβλάστες", "Κερατινοκύτταρα"],
+        answer: 2,
+        explanation: "Ο Parvo B19 στοχεύει τον ανθρώπειο ερυθροβλάστη."
+      },
+      {
+        q: "14. Ποια νόσος σχετίζεται κλασικά με Parvo B19;",
+        options: ["5η εξανθηματική νόσος", "Ιλαρά", "Ερυθρά", "Ανεμευλογιά"],
+        answer: 0,
+        explanation: "Ο Parvo B19 προκαλεί λοιμώδες ερύθημα, δηλαδή 5η εξανθηματική νόσο."
+      },
+      {
+        q: "15. Το χαρακτηριστικό “slapped cheek” σημαίνει:",
+        options: ["Εξάνθημα στα πέλματα", "Έντονο ερύθημα στα μάγουλα", "Φυσαλίδες στα χείλη", "Πορφύρα στα κάτω άκρα"],
+        answer: 1,
+        explanation: "Στην 5η νόσο εμφανίζεται χαρακτηριστικό ερύθημα στα μάγουλα."
+      },
+      {
+        q: "16. Σε ασθενείς με χρόνια αιμολυτική αναιμία, ο Parvo B19 μπορεί να προκαλέσει:",
+        options: ["Απλαστική κρίση", "Κίρρωση", "Πνευμονική ίνωση", "Μυοκαρδίτιδα από τοξίνη"],
+        answer: 0,
+        explanation: "Επειδή προσβάλλει ερυθροβλάστες, μπορεί να προκαλέσει απλαστική κρίση."
+      },
+      {
+        q: "17. Στην κύηση, ο Parvo B19 μπορεί να προκαλέσει:",
+        options: ["Εμβρυϊκό ύδρωπα", "Σύνδρομο Reye", "Κυστική ίνωση", "Σακχαρώδη διαβήτη τύπου 1"],
+        answer: 0,
+        explanation: "Η παρουσίαση αναφέρει εμβρυϊκό ύδρωπα και ενδομήτριο θάνατο εμβρύου."
+      },
+      {
+        q: "18. Για διάγνωση Parvo B19 μπορούμε να ανιχνεύσουμε:",
+        options: ["IgM αντισώματα", "Αποκλειστικά καλλιέργεια", "Μόνο αιμοκαλλιέργεια", "Μόνο ακτινογραφία"],
+        answer: 0,
+        explanation: "Η διάγνωση περιλαμβάνει ειδικά IgM, οροαναστροφή IgG και DNA του ιού."
+      },
+      {
+        q: "19. Ποιο από τα παρακάτω ισχύει για Parvo B19;",
+        options: ["Υπάρχει εμβόλιο", "Γίνεται εύκολα καλλιέργεια", "Δεν γίνεται καλλιέργεια", "Έχει λιπιδικό περίβλημα"],
+        answer: 2,
+        explanation: "Στην παρουσίαση αναφέρεται ξεκάθαρα: δεν γίνεται καλλιέργεια."
+      },
+      {
+        q: "20. Ποια πρόταση είναι σωστή;",
+        options: [
+          "Οι αδενοϊοί είναι ssDNA και ο Parvo B19 dsDNA",
+          "Οι αδενοϊοί έχουν περίβλημα",
+          "Ο Parvo B19 στοχεύει ερυθροβλάστες",
+          "Ο Parvo B19 έχει διαθέσιμο εμβόλιο"
+        ],
+        answer: 2,
+        explanation: "Ο Parvo B19 έχει τροπισμό για ερυθροβλάστες."
+      }
+    ];
+
+    let score = 0;
+    let answered = 0;
+
+    const quiz = document.getElementById("quiz");
+    const scoreBox = document.getElementById("scoreBox");
+
+    function renderQuiz(){
+      quiz.innerHTML = "";
+
+      questions.forEach((item, index) => {
+        const card = document.createElement("div");
+        card.className = "quiz-card";
+
+        const q = document.createElement("div");
+        q.className = "question";
+        q.textContent = item.q;
+        card.appendChild(q);
+
+        item.options.forEach((option, optionIndex) => {
+          const btn = document.createElement("button");
+          btn.className = "option";
+          btn.textContent = option;
+
+          btn.onclick = () => checkAnswer(btn, card, item, optionIndex);
+
+          card.appendChild(btn);
+        });
+
+        const explanation = document.createElement("div");
+        explanation.className = "explanation";
+        explanation.textContent = item.explanation;
+        card.appendChild(explanation);
+
+        quiz.appendChild(card);
+      });
+
+      updateScore();
+    }
+
+    function checkAnswer(button, card, item, optionIndex){
+      const buttons = card.querySelectorAll(".option");
+      const explanation = card.querySelector(".explanation");
+
+      if(card.dataset.answered === "true") return;
+
+      card.dataset.answered = "true";
+      answered++;
+
+      buttons.forEach((btn, i) => {
+        btn.disabled = true;
+        if(i === item.answer){
+          btn.classList.add("correct");
+        }
+      });
+
+      if(optionIndex === item.answer){
+        button.classList.add("correct");
+        score++;
+      } else {
+        button.classList.add("wrong");
+      }
+
+      explanation.style.display = "block";
+      updateScore();
+    }
+
+    function updateScore(){
+      scoreBox.textContent = `Score: ${score} / ${answered} απαντημένες | Σύνολο ερωτήσεων: ${questions.length}`;
+    }
+
+    function resetQuiz(){
+      score = 0;
+      answered = 0;
+      renderQuiz();
+      window.scrollTo({top:0, behavior:"smooth"});
+    }
+
+    renderQuiz();
+  </script>
+
+</body>
+</html>
