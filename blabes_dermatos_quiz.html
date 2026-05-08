@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>GreekDoc | Game Mode Βλάβες Δέρματος</title>
+<style>
+:root{--bg:#fbfaf7;--paper:#fffdf9;--ink:#2f2b28;--muted:#7a716a;--line:#eadfd4;--accent:#8f6f55;--good:#2e7d32;--bad:#b3261e;--shadow:0 18px 45px rgba(83,62,45,.10)}
+*{box-sizing:border-box}
+body{margin:0;background:linear-gradient(180deg,#fbfaf7,#f7f1eb);color:var(--ink);font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.6}
+header{padding:34px 18px 20px;text-align:center;background:radial-gradient(circle at 20% 0%,#fff1dd 0,#fbfaf7 42%,#f4ebe3 100%);border-bottom:1px solid var(--line)}
+.brand{display:inline-flex;gap:10px;align-items:center;padding:8px 14px;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.75);color:var(--accent);font-weight:850;letter-spacing:.03em}
+h1{font-size:clamp(2rem,5vw,3.6rem);margin:18px auto 8px;line-height:1.05;max-width:1050px}
+.subtitle{max-width:920px;margin:0 auto;color:var(--muted);font-size:1.03rem}
+main{max-width:1040px;margin:0 auto;padding:24px 16px 60px}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin:0 0 18px}
+.stat{background:rgba(255,255,255,.78);border:1px solid var(--line);border-radius:22px;padding:14px 16px;box-shadow:0 10px 28px rgba(0,0,0,.045)}
+.stat b{display:block;font-size:1.25rem;color:#3c332d}.stat span{color:var(--muted);font-size:.88rem}
+.game-card{background:var(--paper);border:1px solid var(--line);border-radius:30px;box-shadow:var(--shadow);overflow:hidden}
+.game-top{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:16px 18px;border-bottom:1px solid var(--line);background:#fffaf4}
+.badge{display:inline-flex;align-items:center;gap:8px;border-radius:999px;background:#3c332d;color:white;padding:7px 12px;font-size:.86rem;font-weight:850}
+.badge.soft{background:#f2ebe5;color:#6c5140;border:1px solid var(--line)}
+.progress-wrap{height:10px;background:#f0e6dc;border-radius:999px;overflow:hidden;flex:1;min-width:170px}
+.progress{height:100%;width:0%;background:linear-gradient(90deg,#b98b6f,#8f6f55);transition:width .25s ease}
+.question-area{padding:20px}.question-title{font-size:1.35rem;font-weight:900;margin:0 0 14px}
+.image-box{border:1px solid var(--line);border-radius:24px;overflow:hidden;background:#f4efe9;margin-bottom:16px}
+.image-box img{display:block;width:100%;max-height:430px;object-fit:contain;background:#f4efe9}
+.image-caption{padding:10px 14px;color:var(--muted);font-size:.86rem;background:#fffdf9;border-top:1px solid var(--line)}
+.definition-box{padding:20px;border-radius:24px;background:linear-gradient(135deg,#fff8ec,#f5efff);border:1px solid var(--line);font-size:1.18rem;font-weight:750;margin-bottom:16px}
+.answers{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.answer{width:100%;text-align:left;border:1px solid var(--line);border-radius:18px;background:white;padding:13px 14px;color:#332b26;font-weight:800;cursor:pointer;box-shadow:0 8px 18px rgba(0,0,0,.04);transition:.16s ease}
+.answer:hover{transform:translateY(-1px);border-color:#c8ad98}.answer.correct{background:#eef8ef;border-color:#84bf88;color:var(--good)}.answer.wrong{background:#fff1f1;border-color:#d99a96;color:var(--bad)}.answer:disabled{cursor:default;transform:none}
+.feedback{margin-top:15px;padding:13px 14px;border-radius:18px;display:none;font-weight:850}.feedback.good{display:block;background:#eff8ef;color:var(--good);border:1px solid #cbe6cf}.feedback.bad{display:block;background:#fff1f1;color:var(--bad);border:1px solid #efc6c2}
+.controls{padding:16px 18px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;border-top:1px solid var(--line);background:#fffaf4}
+button.primary,button.secondary{border:0;border-radius:999px;padding:11px 18px;font-weight:900;cursor:pointer;box-shadow:0 10px 20px rgba(0,0,0,.08)}button.primary{background:#3c332d;color:#fff}button.secondary{background:white;color:#6c5140;border:1px solid var(--line)}button:disabled{opacity:.45;cursor:not-allowed}
+.result{display:none;padding:24px;text-align:center}.result.show{display:block}.result h2{font-size:2rem;margin:0 0 8px}.review{margin-top:18px;text-align:left;display:grid;gap:10px}.review-item{border:1px solid var(--line);border-radius:18px;background:#fff;padding:12px 14px}.review-item b{color:#3c332d}.tiny{font-size:.84rem;color:var(--muted)}.hidden{display:none!important}
+@media(max-width:720px){.answers{grid-template-columns:1fr}.image-box img{max-height:330px}.progress-wrap{width:100%}}
+</style>
+</head>
+<body>
+<header>
+<div class="brand">GreekDoc · Game Mode</div>
+<h1>Παιχνίδι: Στοιχειώδεις Βλάβες Δέρματος</h1>
+<p class="subtitle">Εμφανίζεται είτε εικόνα είτε ορισμός. Διάλεξε τη σωστή βλάβη. Οι ερωτήσεις ανακατεύονται κάθε φορά και όλες οι εικόνες του GreekDoc μπαίνουν σίγουρα στο παιχνίδι.</p>
+</header>
+<main>
+<div class="stats">
+<div class="stat"><b id="scoreStat">0</b><span>Σωστές απαντήσεις</span></div>
+<div class="stat"><b id="countStat">0 / 64</b><span>Πρόοδος</span></div>
+<div class="stat"><b>43</b><span>Ερωτήσεις με εικόνα</span></div>
+<div class="stat"><b>21</b><span>Ερωτήσεις ορισμού</span></div>
+</div>
+<section class="game-card">
+<div class="game-top">
+<span class="badge" id="typeBadge">Ερώτηση</span>
+<div class="progress-wrap"><div class="progress" id="progressBar"></div></div>
+<span class="badge soft" id="qNumber">1 / 64</span>
+</div>
+<div class="question-area" id="questionArea">
+<p class="question-title" id="questionTitle"></p>
+<div id="mediaSlot"></div>
+<div class="answers" id="answers"></div>
+<div class="feedback" id="feedback"></div>
+</div>
+<div class="controls">
+<button class="secondary" id="restartBtn" type="button">↻ Ανακάτεμα από την αρχή</button>
+<button class="primary" id="nextBtn" type="button" disabled>Επόμενη →</button>
+</div>
+<div class="result" id="resultBox">
+<h2 id="resultTitle"></h2>
+<p id="resultText"></p>
+<button class="primary" id="playAgainBtn" type="button">Παίξε ξανά με νέο ανακάτεμα</button>
+<div class="review" id="reviewBox"></div>
+</div>
+</section>
+</main>
+<script>
+const QUESTIONS = [{"type": "image", "lesion": "Κηλίδα", "image": "https://www.dermatologosmanto.gr/wp-content/uploads/2014/11/%CE%BA%CE%B7%CE%BB%CE%B9%CE%B4%CE%B5%CF%82.jpg", "caption": "1 Κηλίδα: επίπεδη μεταβολή χρώματος."}, {"type": "image", "lesion": "Κηλίδα", "image": "https://www.iatropedia.gr/wp-content/uploads/2015n/11/17f16eedd4f4e0f6f5ec55016299501f-1200x899.jpg", "caption": "2 Κηλίδα: εστιακή χρωματική αλλοίωση."}, {"type": "image", "lesion": "Κηλίδα", "image": "https://wikihealth.gr/wp-content/uploads/2020/06/dreamstime_l_94578157-380x203.jpg", "caption": "3 Κηλίδα: υπερχρωματική/χρωματική μεταβολή."}, {"type": "image", "lesion": "Κηλίδα", "image": "https://www.womanidol.com/wp-content/uploads/kafe-kilides2.jpg", "caption": "4 Καφέ κηλίδες: επίπεδες χρωματικές αλλοιώσεις."}, {"type": "image", "lesion": "Κηλίδα", "image": "https://img.lb.wbmdstatic.com/vim/live/webmd/consumer_assets/site_images/article_thumbnails/BigBead/hyperpigmentation-hypopigmentation-and-your-skin-bigbead/1800x1200-hyperpigmentation-hypopigmentation-and-your-skin-bigbead.jpg", "caption": "5 Υπέρχρωση/υποχρώση: αλλαγή χρώματος χωρίς έπαρση."}, {"type": "image", "lesion": "Βλατίδα", "image": "https://sp-ao.shortpixel.ai/client/to_webp,q_glossy,ret_img,h_203/https://wikihealth.gr/wp-content/uploads/2021/02/dreamstime_l_132121987-380x203.jpg", "caption": "1 Βλατίδα: μικρό επηρμένο στοιχείο."}, {"type": "image", "lesion": "Βλατίδα", "image": "https://www.e-medi.eu/wp-content/uploads/2016/12/images_originalphotos_42_kilida-2.jpg", "caption": "2 Βλατίδες: μικρές επηρμένες βλάβες."}, {"type": "image", "lesion": "Βλατίδα", "image": "https://jama.jamanetwork.com/ImageLibrary/QuizzesAndPolls/jama/jcg120020.jpg", "caption": "3 Papule: μικρή συμπαγής έπαρση."}, {"type": "image", "lesion": "Βλατίδα", "image": "https://t4.ftcdn.net/jpg/04/90/93/41/360_F_490934196_F7ytNMqhmYBFImuVmjIRu5QtWBLEgemR.jpg", "caption": "4 Βλατίδες: μορφολογία μικρού επάρματος."}, {"type": "image", "lesion": "Βλατίδα", "image": "https://upload.wikimedia.org/wikipedia/commons/b/b5/Fibrous_papule_of_the_nose_01.jpg", "caption": "5 Papule: μικρό έπαρμα, εδώ στη μύτη."}, {"type": "image", "lesion": "Όζος", "image": "https://theskinhouse.in/wp-content/uploads/2024/04/nodules.jpg", "caption": "1 Όζοι: μεγαλύτερες επηρμένες βλάβες."}, {"type": "image", "lesion": "Όζος", "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqY7pHkNocBFf0fURUYqpWvh-ZYfo23D5YRA&s", "caption": "2 Όζος: παράδειγμα μεγαλύτερης επηρμένης βλάβης."}, {"type": "image", "lesion": "Όζος", "image": "https://www.learnderm.com/wp-content/uploads/2023/09/L02_raised_nodule_light-skin_neurofibromatosis_19569.jpg", "caption": "3 Επηρμένος όζος: πρόσεξε τη μεγαλύτερη διάμετρο/έπαρση."}, {"type": "image", "lesion": "Όζος", "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSD-e6rYRYzKTI5CF4mwZ4cGBqMEVqDr0FgqA&s", "caption": "4 Όζος: μορφολογικό παράδειγμα."}, {"type": "image", "lesion": "Όζος", "image": "https://media.sciencephoto.com/image/m3100017/800wm/M3100017.jpg", "caption": "5 Όζος: συμπαγής/σφαιρική διόγκωση."}, {"type": "image", "lesion": "Μικρή πλάκα", "image": "https://assets.nhs.uk/nhsuk-cms/images/M1200082.original.width-320.jpg", "caption": "1 Μικρή πλάκα: ομαλή επηρμένη επιφάνεια μικρής έκτασης."}, {"type": "image", "lesion": "Μικρή πλάκα", "image": "https://images.theconversation.com/files/206737/original/file-20180216-131010-1sqaufr.jpg?ixlib=rb-4.1.0&q=45&auto=format&w=754&fit=clip", "caption": "2 Μικρή πλάκα: πλατιά βλάβη περιορισμένης διαμέτρου."}, {"type": "image", "lesion": "Μικρή πλάκα", "image": "https://media.post.rvohealth.io/wp-content/uploads/2024/07/ringworm-fungal-infection-body8.jpg", "caption": "3 Δακτυλιοειδής πλάκα: εδώ κοιτάμε τη μορφολογία της πλάκας, όχι τη διάγνωση."}, {"type": "image", "lesion": "Μεγάλη πλάκα", "image": "https://my.clevelandclinic.org/-/scassets/images/org/health/articles/17729-pityriasis-rosea-802333962", "caption": "1 Μεγάλη πλάκα: μεγαλύτερη πλατιά επηρμένη επιφάνεια."}, {"type": "image", "lesion": "Μεγάλη πλάκα", "image": "https://www.london-dermatology-centre.co.uk/blog/wp-content/uploads/2025/12/Eczema-Patches-2.webp", "caption": "2 Μεγάλη πλάκα/patch: μεγαλύτερη βλάβη με πλατιά επιφάνεια."}, {"type": "image", "lesion": "Πόμφος", "image": "https://www.iatropedia.gr/wp-content/uploads/2015/11/15702c5ccce747244095909cd3711843.png", "caption": "1 Πόμφοι: επηρμένες οιδηματώδεις περιοχές."}, {"type": "image", "lesion": "Πόμφος", "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTa7BzILT0asaa_WxN_wUS69eL1HVK0bV0eRA&s", "caption": "2 Πόμφος: οίδημα που σηκώνει το δέρμα."}, {"type": "image", "lesion": "Πόμφος", "image": "https://lh4.googleusercontent.com/proxy/rzcCSf-00RYVP2f4MkzAelVtofeHWMvawa1HFVy3udDgEQeRgEm0RByLqohhCfPP--Sd00tZ___Y6bk3r48gahqDgf9V_6DCZ2E", "caption": "3 Πόμφος: παροδική επηρμένη βλάβη από οίδημα."}, {"type": "image", "lesion": "Φυσαλίδα", "image": "https://dims.healthgrades.com/dims3/MMH/d946f25/2147483647/strip/true/crop/1024x575+0+0/resize/800x449!/quality/75/?url=https%3A%2F%2Fucmscdn.healthgrades.com%2Fb8%2Fa6%2F4ed1d434f16db6411feb76037ea8%2Fvesicle-1024x575.jpg", "caption": "1 Φυσαλίδα: μικρή βλάβη που περιέχει υγρό."}, {"type": "image", "lesion": "Φυσαλίδα", "image": "https://lh3.googleusercontent.com/proxy/kBoznBnhhyz7ohntBNqm8z0Nzxy2nNBcpeGaosqbp8K4Jl39es2J0RxVSIoyz7oWawHP-ocBzHMp6hG7YVSBMAlqGvk7ELGu5ug", "caption": "2 Φυσαλίδα: μικρή συλλογή υγρού."}, {"type": "image", "lesion": "Φυσαλίδα", "image": "https://www.learnderm.com/wp-content/uploads/2023/09/L02_fluid-filled_vesicle_dark-skin_71468.jpg", "caption": "3 Fluid-filled vesicle: πρόσεξε το μικρό μέγεθος και το υγρό."}, {"type": "image", "lesion": "Πομφόλυγα", "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQhrcQm6-5Y7maF8vg6T5gg1tNWqDZ1zG3MA&s", "caption": "1 Πομφόλυγα: μεγαλύτερη βλάβη με υγρό."}, {"type": "image", "lesion": "Πομφόλυγα", "image": "https://pressbooks.bccampus.ca/pedsdermprimer/wp-content/uploads/sites/1779/h5p/content/7/images/collageClip-636a8a31106e4.jpeg", "caption": "2 Bullae: μεγαλύτερες φυσαλίδες."}, {"type": "image", "lesion": "Πομφόλυγα", "image": "https://static.wixstatic.com/media/2c70ec_36dc3789d1c9304706e2c5606653477e.png/v1/fill/w_268,h_143,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/2c70ec_36dc3789d1c9304706e2c5606653477e.png", "caption": "3 Πομφόλυγα: μεγάλη συλλογή υγρού."}, {"type": "image", "lesion": "Κλειστός φαγέσωρας", "image": "https://www.health.com/thmb/U2Pj7HrlmfbOhYW4LFfPtYrgNBk=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/Health-133.acne-001-5569be33e2174af18cc1513bdfa52610.jpeg", "caption": "1 Κλειστός φαγέσωρας: φραγμένος πόρος χωρίς ελεύθερη επικοινωνία με την επιφάνεια."}, {"type": "image", "lesion": "Κλειστός φαγέσωρας", "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1P4fPqbLf3XBVq16a6-6wX0-mjb6wDJAe5g&s", "caption": "2 Whitehead: κατακράτηση σμήγματος σε κλειστό πόρο."}, {"type": "image", "lesion": "Κλειστός φαγέσωρας", "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbQJNHUTSgAVi-lZFtr1fdchDBg-npJj1WkA&s", "caption": "3 Κλειστός φαγέσωρας: μικρό λευκό/δερματόχρωμο στοιχείο."}, {"type": "image", "lesion": "Ανοικτός φαγέσωρας", "image": "https://media.allure.com/photos/5ae38367b4825822d6ef7609/16:9/w_2560%2Cc_limit/what-is-a-blackhead.jpg", "caption": "1 Ανοικτός φαγέσωρας: ο πόρος επικοινωνεί με την επιφάνεια."}, {"type": "image", "lesion": "Ανοικτός φαγέσωρας", "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5L7NpwD5Hf6HTArHtmz_Qlix8GvaYKpGcYg&s", "caption": "2 Blackhead: μαύρο λόγω οξείδωσης λιπιδίων/μελανίνης."}, {"type": "image", "lesion": "Ανοικτός φαγέσωρας", "image": "https://www.laroche-posay.us/on/demandware.static/-/Sites-lrp-us-Library/default/dw44b30de5/images/blog/skincare-tips-and-advice/acne-oily-skin/la-roche-posay-how-to-get-rid-of-blackheads.jpg", "caption": "3 Ανοικτοί φαγέσωρες: δεν είναι βρωμιά."}, {"type": "image", "lesion": "Φλύκταινα", "image": "https://luxaestheticclinic.com/wp-content/uploads/pustules-acne.jpg", "caption": "1 Φλύκταινα: βλάβη που περιέχει πύον."}, {"type": "image", "lesion": "Φλύκταινα", "image": "https://www.shutterstock.com/image-photo/pimple-acne-comedones-inflamed-pimples-260nw-2386735153.jpg", "caption": "2 Pustule: πυώδες περιεχόμενο."}, {"type": "image", "lesion": "Φλύκταινα", "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8w1VZ7EY61z6FIcj2sJrPLYG_9pLpCUcHLw&s", "caption": "3 Φλύκταινα: λευκοκίτρινη κορυφή λόγω πύου."}, {"type": "image", "lesion": "Λέπι", "image": "https://dermnetnz.org/assets/Uploads/scaly/ps6.jpg", "caption": "Λέπι: ορατό/ψηλαφητό απολεπιζόμενο υλικό στην επιφάνεια."}, {"type": "image", "lesion": "Εφελκίδα", "image": "https://aboutskin.gr/wp-content/uploads/2019/01/%CE%BC%CE%BF%CE%BB%CF%85%CF%83%CE%BC%CE%B1%CF%84%CE%B9%CE%BA%CE%BF-%CE%BA%CE%B7%CF%81%CE%AF%CE%BF-1024x683.jpg", "caption": "1 Εφελκίδα: αποξηραμένος ορός/έκκριμα στην επιφάνεια."}, {"type": "image", "lesion": "Εφελκίδα", "image": "https://upload.wikimedia.org/wikipedia/commons/a/a4/Impetigo2020.jpg", "caption": "2 Εφελκίδα: κρούστα τύπου μολυσματικού κηρίου."}, {"type": "image", "lesion": "Έλκωση", "image": "https://www.in.gr/wp-content/uploads/2018/09/36182233_ml-1024x729.jpg", "caption": "1 Έλκος: βαθύτερη απώλεια ιστού, επούλωση με ουλή."}, {"type": "image", "lesion": "Λειχηνοποίηση", "image": "https://dermnetnz.org/assets/collection/Lichen-simplex/lichen-simplex-0018.jpg", "caption": "Λειχηνοποίηση: πάχυνση και έντονες γραμμώσεις."}, {"type": "definition", "lesion": "Κηλίδα", "definition": "Επίπεδη, περιγεγραμμένη μεταβολή του χρώματος του δέρματος ή του βλεννογόνου."}, {"type": "definition", "lesion": "Βλατίδα", "definition": "Επηρμένη βλάβη του δέρματος με διάμετρο μικρότερη από 0,5 cm."}, {"type": "definition", "lesion": "Όζος / οζίδιο", "definition": "Επηρμένη βλάβη με διάμετρο μεγαλύτερη από 0,5 cm."}, {"type": "definition", "lesion": "Μικρή πλάκα", "definition": "Επηρμένη βλάβη με ομαλή επιφάνεια και διάμετρο μικρότερη από 2 cm."}, {"type": "definition", "lesion": "Μεγάλη πλάκα", "definition": "Επηρμένη βλάβη με ομαλή επιφάνεια και διάμετρο μεγαλύτερη από 2 cm."}, {"type": "definition", "lesion": "Πόμφος", "definition": "Επηρμένη περιοχή που οφείλεται σε οίδημα του δέρματος."}, {"type": "definition", "lesion": "Φυσαλίδα", "definition": "Βλάβη που περιέχει υγρό με διάμετρο μικρότερη από 0,5 cm."}, {"type": "definition", "lesion": "Πομφόλυγα", "definition": "Βλάβη που περιέχει υγρό με διάμετρο μεγαλύτερη από 0,5 cm."}, {"type": "definition", "lesion": "Κλειστός φαγέσωρας", "definition": "Φραγμένος πόρος που δεν επικοινωνεί ελεύθερα με την επιφάνεια και υπάρχει κατακράτηση σμήγματος."}, {"type": "definition", "lesion": "Ανοικτός φαγέσωρας", "definition": "Φραγμένος πόρος που επικοινωνεί με την επιφάνεια· το μαύρο προκύπτει από οξείδωση λιπιδίων και μελανίνης, όχι από βρωμιά."}, {"type": "definition", "lesion": "Φλύκταινα", "definition": "Βλάβη που περιέχει πύον."}, {"type": "definition", "lesion": "Λέπι", "definition": "Εμφανή και ψηλαφητά πετάλια που αποτελούνται από συναθροιζόμενα επιδερμικά κύτταρα."}, {"type": "definition", "lesion": "Εφελκίδα", "definition": "Αποξηραμένος ορός ή εξίδρωμα στην επιφάνεια του δέρματος."}, {"type": "definition", "lesion": "Κέρας", "definition": "Προεξοχή κερατίνης."}, {"type": "definition", "lesion": "Διάβρωση", "definition": "Απώλεια επιφανειακών στιβάδων της επιδερμίδας που δεν ξεπερνά τη βασική στιβάδα και δεν αφήνει ουλή."}, {"type": "definition", "lesion": "Έλκωση / Έλκος", "definition": "Απώλεια επιδερμίδας ± υποκείμενου χορίου και υποδερμίδας· μετά την αποκατάσταση παραμένει ουλή."}, {"type": "definition", "lesion": "Εκδορά", "definition": "Επιφανειακή έλκωση, αποτέλεσμα ξεσμού."}, {"type": "definition", "lesion": "Ατροφία", "definition": "Ελάττωση ή εξαφάνιση μέρους ή ολόκληρων στιβάδων του δέρματος."}, {"type": "definition", "lesion": "Ουλή", "definition": "Αντικατάσταση φυσιολογικών στοιχείων του δέρματος από συνδετικό ιστό."}, {"type": "definition", "lesion": "Εμβροχή", "definition": "Μαλακή, υγρή επιδερμίδα."}, {"type": "definition", "lesion": "Λειχηνοποίηση", "definition": "Επιδερμική πάχυνση με επιπεδωμένη επιφάνεια."}];
+const ALL_ANSWERS = ["Κηλίδα", "Βλατίδα", "Όζος / οζίδιο", "Μικρή πλάκα", "Μεγάλη πλάκα", "Πόμφος", "Φυσαλίδα", "Πομφόλυγα", "Κλειστός φαγέσωρας", "Ανοικτός φαγέσωρας", "Φλύκταινα", "Λέπι", "Εφελκίδα", "Κέρας", "Διάβρωση", "Έλκωση / Έλκος", "Εκδορά", "Ατροφία", "Ουλή", "Εμβροχή", "Λειχηνοποίηση"];
+let deck = [], currentIndex = 0, score = 0, answered = false, mistakes = [];
+
+function normalizeAnswer(label) {
+  if (label === "Όζος") return "Όζος / οζίδιο";
+  if (label === "Έλκωση") return "Έλκωση / Έλκος";
+  return label;
+}
+function shuffle(array) {
+  const arr = [...array];
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
+}
+function makeOptions(correct) {
+  const c = normalizeAnswer(correct);
+  const distractors = ALL_ANSWERS.filter(a => a !== c);
+  return shuffle([c, ...shuffle(distractors).slice(0, 3)]);
+}
+function startGame() {
+  deck = shuffle(QUESTIONS.map(q => ({...q, lesion: normalizeAnswer(q.lesion)})));
+  currentIndex = 0; score = 0; mistakes = []; answered = false;
+  document.getElementById("resultBox").classList.remove("show");
+  document.getElementById("questionArea").classList.remove("hidden");
+  document.querySelector(".game-top").classList.remove("hidden");
+  document.querySelector(".controls").classList.remove("hidden");
+  renderQuestion();
+}
+function renderQuestion() {
+  answered = false;
+  const q = deck[currentIndex];
+  const total = deck.length;
+  document.getElementById("nextBtn").disabled = true;
+  document.getElementById("feedback").className = "feedback";
+  document.getElementById("feedback").textContent = "";
+  document.getElementById("qNumber").textContent = `${currentIndex + 1} / ${total}`;
+  document.getElementById("countStat").textContent = `${currentIndex} / ${total}`;
+  document.getElementById("scoreStat").textContent = score;
+  document.getElementById("progressBar").style.width = `${(currentIndex / total) * 100}%`;
+
+  const mediaSlot = document.getElementById("mediaSlot");
+  mediaSlot.innerHTML = "";
+
+  if (q.type === "image") {
+    document.getElementById("typeBadge").textContent = "Εικόνα → ποια βλάβη;";
+    document.getElementById("questionTitle").textContent = "Ποια στοιχειώδης βλάβη δείχνει η εικόνα;";
+    const box = document.createElement("div");
+    box.className = "image-box";
+    box.innerHTML = `<img src="${q.image}" alt="Εικόνα βλάβης" referrerpolicy="no-referrer"><div class="image-caption tiny">Διάλεξε τη μορφολογία της βλάβης, όχι απαραίτητα τη διάγνωση.</div>`;
+    const img = box.querySelector("img");
+    img.addEventListener("error", () => {
+      box.innerHTML = `<div class="definition-box">Η εξωτερική εικόνα δεν φορτώθηκε. Caption εικόνας:<br><br><b>${q.caption || "Εικόνα βλάβης"}</b></div>`;
+    });
+    mediaSlot.appendChild(box);
+  } else {
+    document.getElementById("typeBadge").textContent = "Ορισμός → ποια βλάβη;";
+    document.getElementById("questionTitle").textContent = "Ποια στοιχειώδης βλάβη αντιστοιχεί στον ορισμό;";
+    const def = document.createElement("div");
+    def.className = "definition-box";
+    def.textContent = q.definition;
+    mediaSlot.appendChild(def);
+  }
+
+  const answers = document.getElementById("answers");
+  answers.innerHTML = "";
+  makeOptions(q.lesion).forEach(option => {
+    const btn = document.createElement("button");
+    btn.className = "answer";
+    btn.type = "button";
+    btn.textContent = option;
+    btn.addEventListener("click", () => chooseAnswer(btn, option, q));
+    answers.appendChild(btn);
+  });
+}
+function chooseAnswer(button, selected, q) {
+  if (answered) return;
+  answered = true;
+  const correct = normalizeAnswer(q.lesion);
+  const isCorrect = selected === correct;
+  const buttons = [...document.querySelectorAll(".answer")];
+
+  buttons.forEach(btn => {
+    btn.disabled = true;
+    if (btn.textContent === correct) btn.classList.add("correct");
+  });
+
+  const feedback = document.getElementById("feedback");
+  if (isCorrect) {
+    score++;
+    feedback.className = "feedback good";
+    feedback.textContent = "Σωστά ✨";
+  } else {
+    button.classList.add("wrong");
+    feedback.className = "feedback bad";
+    feedback.textContent = `Όχι ακριβώς — σωστό: ${correct}`;
+    mistakes.push({
+      type: q.type,
+      correct,
+      selected,
+      prompt: q.type === "definition" ? q.definition : (q.caption || "Εικόνα")
+    });
+  }
+
+  document.getElementById("scoreStat").textContent = score;
+  document.getElementById("countStat").textContent = `${currentIndex + 1} / ${deck.length}`;
+  document.getElementById("progressBar").style.width = `${((currentIndex + 1) / deck.length) * 100}%`;
+  document.getElementById("nextBtn").disabled = false;
+  document.getElementById("nextBtn").textContent = currentIndex === deck.length - 1 ? "Αποτελέσματα →" : "Επόμενη →";
+}
+function nextQuestion() {
+  if (!answered) return;
+  if (currentIndex < deck.length - 1) {
+    currentIndex++;
+    renderQuestion();
+  } else {
+    showResults();
+  }
+}
+function showResults() {
+  document.getElementById("questionArea").classList.add("hidden");
+  document.querySelector(".game-top").classList.add("hidden");
+  document.querySelector(".controls").classList.add("hidden");
+  const resultBox = document.getElementById("resultBox");
+  resultBox.classList.add("show");
+  const percent = Math.round((score / deck.length) * 100);
+  document.getElementById("resultTitle").textContent = `Τελικό σκορ: ${score} / ${deck.length}`;
+  document.getElementById("resultText").textContent =
+    percent >= 85 ? "Πολύ δυνατό αποτέλεσμα — έχεις πιάσει τη μορφολογία." :
+    percent >= 65 ? "Καλή προσπάθεια — θέλει λίγη επανάληψη στα μπερδεμένα ζευγάρια." :
+    "Θέλει επανάληψη, αλλά αυτό ακριβώς είναι το point του game.";
+
+  const review = document.getElementById("reviewBox");
+  review.innerHTML = "";
+  if (mistakes.length === 0) {
+    review.innerHTML = `<div class="review-item"><b>Καμία λάθος απάντηση.</b> Τέλειο ✨</div>`;
+    return;
+  }
+  mistakes.forEach((m, i) => {
+    const item = document.createElement("div");
+    item.className = "review-item";
+    item.innerHTML = `<b>${i + 1}. Σωστό: ${m.correct}</b><br><span class="tiny">Εσύ απάντησες: ${m.selected}</span><br><span class="tiny">Prompt: ${m.prompt}</span>`;
+    review.appendChild(item);
+  });
+}
+document.getElementById("nextBtn").addEventListener("click", nextQuestion);
+document.getElementById("restartBtn").addEventListener("click", startGame);
+document.getElementById("playAgainBtn").addEventListener("click", startGame);
+startGame();
+</script>
+</body>
+</html>
