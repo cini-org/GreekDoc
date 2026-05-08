@@ -16,7 +16,7 @@
     }
     *{box-sizing:border-box}
     body{margin:0;background:linear-gradient(180deg,#fbfaf7 0%,#f7f1eb 100%);color:var(--ink);font-family:Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;line-height:1.65}
-    header{padding:38px 18px 22px;text-align:center;background:radial-gradient(circle at 20% 0%,#fff1dd 0,#fbfaf7 42%,#f4ebe3 100%);border-bottom:1px solid var(--line)}
+    header{position:relative;padding:38px 18px 22px;text-align:center;background:radial-gradient(circle at 20% 0%,#fff1dd 0,#fbfaf7 42%,#f4ebe3 100%);border-bottom:1px solid var(--line)}
     .brand{display:inline-flex;gap:10px;align-items:center;padding:8px 14px;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.75);color:var(--accent);font-weight:800;letter-spacing:.03em}
     h1{font-size:clamp(2rem,5vw,4rem);margin:18px auto 8px;line-height:1.05;max-width:1050px}
     .subtitle{max-width:920px;margin:0 auto;color:var(--muted);font-size:1.05rem}
@@ -44,10 +44,33 @@
     .compare{width:100%;border-collapse:separate;border-spacing:0;margin-top:10px;background:#fff;border:1px solid var(--line);border-radius:20px;overflow:hidden}.compare th,.compare td{padding:12px;border-bottom:1px solid var(--line);vertical-align:top}.compare tr:last-child td{border-bottom:0}.compare th{background:#f3e8dc;text-align:left}.compare td:first-child{font-weight:850;color:#5c4435}
     footer{max-width:1180px;margin:0 auto 50px;padding:0 16px;color:var(--muted);font-size:.9rem}.warn{background:#fff8e7;border:1px solid #ead7ad;border-radius:22px;padding:14px 16px}
     @media print{body{background:#fff;font-size:11px}header{padding:10px;background:#fff}.toolbar,.arrow,.dots{display:none!important}main{max-width:none;padding:8px}.grid{grid-template-columns:1fr 1fr;gap:8px}.card{break-inside:avoid;box-shadow:none;border-radius:14px}.card-body{padding:10px}.slide{display:none!important}.slide.active{display:block!important}.slide img{height:155px}.caption{position:static;border-radius:0;background:#fff}.legend{grid-template-columns:repeat(4,1fr);gap:8px}.mini{padding:8px;box-shadow:none;border-radius:14px}h1{font-size:26px}h3{font-size:17px}.fact,.exam{padding:8px;margin-top:7px}.sketch svg{height:130px}}
+    .back-btn{
+    position:absolute;
+    top:18px;
+    left:18px;
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:10px 16px;
+    border-radius:999px;
+    background:rgba(255,255,255,.88);
+    border:1px solid var(--line);
+    color:var(--accent);
+    text-decoration:none;
+    font-weight:850;
+    box-shadow:0 8px 20px rgba(0,0,0,.05);
+    transition:.15s ease;
+}
+
+.back-btn:hover{
+    transform:translateY(-1px);
+    background:white;
+}
   </style>
 </head>
 <body>
 <header>
+    <a class="back-btn" href="dermatology.html">← Πίσω στη Δερματολογία</a>
 <div class="brand">GreekDoc · Δερματολογία</div>
 <h1>Στοιχειώδεις Βλάβες Δέρματος</h1>
 <p class="subtitle">Οργανωμένες σημειώσεις για γρήγορη αναγνώριση: τι βλέπω, αν είναι επίπεδο ή επηρμένο, τι περιέχει, αν αφήνει ουλή και ποια είναι η αγγλική ορολογία.</p>
