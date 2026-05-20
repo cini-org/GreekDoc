@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>ΩΡΛ — Εμπειρίες Προφορικών | GreekDoc</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Inter',sans-serif;
+    background:#f6f8fb;
+    color:#1d1d1f;
+    line-height:1.7;
+}
+
+header{
+    background:linear-gradient(135deg,#b7d7ff,#dcecff);
+    padding:50px 25px;
+    text-align:center;
+}
+
+header h1{
+    font-size:2.4rem;
+    margin-bottom:10px;
+}
+
+header p{
+    max-width:700px;
+    margin:auto;
+    color:#3b4b63;
+}
+
+.container{
+    width:min(1100px,92%);
+    margin:auto;
+    padding:40px 0;
+}
+
+.notice{
+    background:white;
+    border-left:5px solid #7aa8ff;
+    padding:18px;
+    border-radius:16px;
+    margin-bottom:35px;
+    box-shadow:0 4px 15px rgba(0,0,0,0.05);
+}
+
+.notice strong{
+    color:#285ea8;
+}
+
+.filters{
+    display:flex;
+    gap:15px;
+    flex-wrap:wrap;
+    margin-bottom:35px;
+}
+
+.filters input,
+.filters select{
+    padding:12px 14px;
+    border:none;
+    border-radius:12px;
+    background:white;
+    box-shadow:0 3px 12px rgba(0,0,0,0.05);
+    font-size:0.95rem;
+}
+
+.exam-card{
+    background:white;
+    border-radius:22px;
+    padding:28px;
+    margin-bottom:28px;
+    box-shadow:0 6px 24px rgba(0,0,0,0.06);
+}
+
+.top-row{
+    display:flex;
+    justify-content:space-between;
+    gap:20px;
+    flex-wrap:wrap;
+    margin-bottom:18px;
+}
+
+.professor{
+    font-size:1.25rem;
+    font-weight:700;
+}
+
+.university{
+    color:#5f6b7a;
+}
+
+.badges{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+    margin-top:12px;
+}
+
+.badge{
+    padding:6px 12px;
+    border-radius:999px;
+    font-size:0.85rem;
+    font-weight:600;
+}
+
+.easy{
+    background:#dff7e4;
+    color:#1f7a39;
+}
+
+.medium{
+    background:#fff1d6;
+    color:#9b6a00;
+}
+
+.hard{
+    background:#ffe0e0;
+    color:#b52b2b;
+}
+
+.question-box{
+    background:#f7f9fc;
+    border-radius:16px;
+    padding:18px;
+    margin:18px 0;
+}
+
+.question-box ul{
+    padding-left:20px;
+}
+
+.meta{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:15px;
+    margin-top:20px;
+}
+
+.meta-card{
+    background:#f7f9fc;
+    padding:14px;
+    border-radius:14px;
+}
+
+.meta-title{
+    font-size:0.85rem;
+    color:#6b7280;
+    margin-bottom:4px;
+}
+
+.review{
+    margin-top:18px;
+    background:#fffdf6;
+    border-left:4px solid #ffd76a;
+    padding:18px;
+    border-radius:14px;
+}
+
+.add-button{
+    position:fixed;
+    bottom:25px;
+    right:25px;
+    width:65px;
+    height:65px;
+    border:none;
+    border-radius:50%;
+    background:#5c8dff;
+    color:white;
+    font-size:2rem;
+    cursor:pointer;
+    box-shadow:0 8px 24px rgba(92,141,255,0.35);
+}
+
+footer{
+    text-align:center;
+    padding:40px 20px;
+    color:#6b7280;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>ΩΡΛ — Εμπειρίες Προφορικών</h1>
+    <p>
+        Ανώνυμες εμπειρίες εξετάσεων από φοιτητές ιατρικής.
+        Δες τι ρωτάνε οι καθηγητές, το ύφος της εξέτασης και συμβουλές
+        για τα προφορικά ΩΡΛ.
+    </p>
+</header>
+
+<div class="container">
+
+    <div class="notice">
+        <strong>Σημαντικό:</strong>
+        Οι εμπειρίες είναι ανώνυμες και βασίζονται σε προσωπικές εμπειρίες φοιτητών.
+        Οι εξετάσεις μπορεί να διαφέρουν ανά περίοδο.
+    </div>
+
+    <div class="filters">
+        <input type="text" placeholder="Αναζήτηση καθηγητή...">
+        
+        <select>
+            <option>Πανεπιστήμιο</option>
+            <option>ΑΠΘ</option>
+            <option>ΕΚΠΑ</option>
+            <option>Πανεπιστήμιο Πατρών</option>
+        </select>
+
+        <select>
+            <option>Δυσκολία</option>
+            <option>Εύκολη</option>
+            <option>Μέτρια</option>
+            <option>Δύσκολη</option>
+        </select>
+    </div>
+
+    <!-- CARD -->
+
+    <div class="exam-card">
+
+        <div class="top-row">
+            <div>
+                <div class="professor">Καθηγητής Παπαδόπουλος</div>
+                <div class="university">ΑΠΘ • Ιούνιος 2026</div>
+
+                <div class="badges">
+                    <div class="badge medium">Μέτρια δυσκολία</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="question-box">
+            <strong>Ερωτήσεις που έγιναν:</strong>
+
+            <ul>
+                <li>Κλάδοι έξω καρωτίδας</li>
+                <li>Αντιμετώπιση ρινορραγίας</li>
+                <li>Πότε κάνουμε τραχειοστομία</li>
+                <li>Νεύρωση λάρυγγα</li>
+            </ul>
+        </div>
+
+        <div class="meta">
+
+            <div class="meta-card">
+                <div class="meta-title">Αριθμός ερωτήσεων</div>
+                <div>4</div>
+            </div>
+
+            <div class="meta-card">
+                <div class="meta-title">Ύφος εξεταστή</div>
+                <div>Ήρεμος αλλά λεπτομερής</div>
+            </div>
+
+            <div class="meta-card">
+                <div class="meta-title">Χρόνος εξέτασης</div>
+                <div>~10 λεπτά</div>
+            </div>
+
+        </div>
+
+        <div class="review">
+            <strong>Γενική εμπειρία:</strong><br><br>
+
+            Δεν προσπαθούσε να “κόψει”.
+            Αν έβλεπε ότι ξέρεις τη γενική λογική βοηθούσε αρκετά.
+            Έδινε σημασία στην κλινική σκέψη και όχι μόνο στην αποστήθιση.
+        </div>
+
+    </div>
+
+    <!-- SECOND CARD -->
+
+    <div class="exam-card">
+
+        <div class="top-row">
+            <div>
+                <div class="professor">Επίκουρη Καθηγήτρια Δημητρίου</div>
+                <div class="university">ΕΚΠΑ • Σεπτέμβριος 2025</div>
+
+                <div class="badges">
+                    <div class="badge hard">Δύσκολη</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="question-box">
+            <strong>Ερωτήσεις που έγιναν:</strong>
+
+            <ul>
+                <li>Έμμεση λαρυγγοσκόπηση</li>
+                <li>Bell palsy</li>
+                <li>Χρόνια μέση ωτίτιδα</li>
+                <li>Παραρρίνιοι κόλποι</li>
+                <li>Λεμφαδένες τραχήλου</li>
+            </ul>
+        </div>
+
+        <div class="meta">
+
+            <div class="meta-card">
+                <div class="meta-title">Αριθμός ερωτήσεων</div>
+                <div>5+</div>
+            </div>
+
+            <div class="meta-card">
+                <div class="meta-title">Ύφος εξεταστή</div>
+                <div>Αυστηρή</div>
+            </div>
+
+            <div class="meta-card">
+                <div class="meta-title">Χρόνος εξέτασης</div>
+                <div>15-20 λεπτά</div>
+            </div>
+
+        </div>
+
+        <div class="review">
+            <strong>Γενική εμπειρία:</strong><br><br>
+
+            Ζητούσε αρκετές λεπτομέρειες.
+            Αν κολλούσες συνέχιζε με επόμενη ερώτηση χωρίς βοήθεια.
+            Καλό να ξέρεις καλά ανατομία.
+        </div>
+
+    </div>
+
+</div>
+
+<button class="add-button">+</button>
+
+<footer>
+    GreekDoc • ΩΡΛ Προφορικά
+</footer>
+
+</body>
+</html>
