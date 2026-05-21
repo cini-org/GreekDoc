@@ -1,0 +1,1069 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GreekDoc | Κερατοειδής: Δυστροφίες και Εκφυλίσεις</title>
+
+  <style>
+    :root {
+      --bg: #f8fafc;
+      --card: #ffffff;
+      --text: #1f2937;
+      --muted: #64748b;
+      --blue: #dbeafe;
+      --blue-strong: #2563eb;
+      --pink: #fce7f3;
+      --pink-strong: #db2777;
+      --green: #dcfce7;
+      --green-strong: #16a34a;
+      --yellow: #fef9c3;
+      --yellow-strong: #ca8a04;
+      --purple: #ede9fe;
+      --purple-strong: #7c3aed;
+      --red: #fee2e2;
+      --red-strong: #dc2626;
+      --teal: #ccfbf1;
+      --teal-strong: #0f766e;
+      --orange: #ffedd5;
+      --orange-strong: #ea580c;
+      --border: #e2e8f0;
+      --shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+      --radius: 24px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+      background:
+        radial-gradient(circle at 15% 0%, rgba(124, 58, 237, 0.10), transparent 32%),
+        radial-gradient(circle at 85% 10%, rgba(37, 99, 235, 0.10), transparent 34%),
+        linear-gradient(135deg, #f8fafc 0%, #eef2ff 100%);
+      color: var(--text);
+      line-height: 1.65;
+    }
+
+    header {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 42px 22px 18px;
+    }
+
+    .top-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--purple);
+      color: var(--purple-strong);
+      font-weight: 800;
+      padding: 7px 13px;
+      border-radius: 999px;
+      font-size: 0.86rem;
+      margin-bottom: 14px;
+    }
+
+    h1 {
+      font-size: clamp(2rem, 4vw, 3.55rem);
+      line-height: 1.05;
+      margin: 0 0 12px;
+      letter-spacing: -0.045em;
+    }
+
+    .subtitle {
+      color: var(--muted);
+      font-size: 1.08rem;
+      max-width: 900px;
+      margin: 0;
+    }
+
+    .toolbar {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 22px 18px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .btn {
+      border: none;
+      background: #111827;
+      color: white;
+      padding: 10px 16px;
+      border-radius: 999px;
+      cursor: pointer;
+      font-weight: 800;
+      box-shadow: var(--shadow);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 12px 32px rgba(15, 23, 42, 0.12);
+    }
+
+    .btn.secondary {
+      background: white;
+      color: #111827;
+      border: 1px solid var(--border);
+    }
+
+    main {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 22px 60px;
+    }
+
+    .nav-card {
+      background: rgba(255, 255, 255, 0.72);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(226, 232, 240, 0.85);
+      border-radius: 26px;
+      padding: 14px;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin: 8px 0 22px;
+      position: sticky;
+      top: 10px;
+      z-index: 10;
+    }
+
+    .nav-card a {
+      color: #334155;
+      text-decoration: none;
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 8px 12px;
+      font-weight: 800;
+      font-size: 0.9rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+      margin: 22px 0;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      margin: 18px 0;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px;
+      box-shadow: var(--shadow);
+    }
+
+    .section { margin-top: 26px; }
+
+    h2 {
+      font-size: 1.65rem;
+      margin: 0 0 14px;
+      letter-spacing: -0.025em;
+    }
+
+    h3 {
+      font-size: 1.21rem;
+      margin: 0 0 12px;
+    }
+
+    h4 {
+      margin: 0 0 8px;
+      font-size: 1rem;
+    }
+
+    ul, ol {
+      margin: 10px 0 0;
+      padding-left: 22px;
+    }
+
+    li { margin: 6px 0; }
+
+    .box {
+      border-radius: 18px;
+      padding: 16px 18px;
+      margin: 14px 0;
+      border: 1px solid transparent;
+    }
+
+    .blue { background: var(--blue); border-color: #bfdbfe; }
+    .pink { background: var(--pink); border-color: #fbcfe8; }
+    .green { background: var(--green); border-color: #bbf7d0; }
+    .yellow { background: var(--yellow); border-color: #fde68a; }
+    .purple { background: var(--purple); border-color: #ddd6fe; }
+    .red { background: var(--red); border-color: #fecaca; }
+    .teal { background: var(--teal); border-color: #99f6e4; }
+    .orange { background: var(--orange); border-color: #fed7aa; }
+
+    .tag {
+      display: inline-block;
+      padding: 4px 9px;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-weight: 900;
+      margin: 2px 4px 2px 0;
+      white-space: nowrap;
+    }
+
+    .tag.blue { color: var(--blue-strong); background: var(--blue); }
+    .tag.pink { color: var(--pink-strong); background: var(--pink); }
+    .tag.green { color: var(--green-strong); background: var(--green); }
+    .tag.yellow { color: var(--yellow-strong); background: var(--yellow); }
+    .tag.purple { color: var(--purple-strong); background: var(--purple); }
+    .tag.red { color: var(--red-strong); background: var(--red); }
+    .tag.teal { color: var(--teal-strong); background: var(--teal); }
+    .tag.orange { color: var(--orange-strong); background: var(--orange); }
+
+    .important { color: var(--red-strong); font-weight: 900; }
+    .keyword { color: var(--blue-strong); font-weight: 900; }
+    .clinical { color: var(--pink-strong); font-weight: 900; }
+    .treatment { color: var(--green-strong); font-weight: 900; }
+    .exam { color: var(--purple-strong); font-weight: 900; }
+    .memory { color: var(--orange-strong); font-weight: 900; }
+
+    .compare {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+      margin: 18px 0;
+    }
+
+    .mini-title {
+      font-size: 0.82rem;
+      font-weight: 950;
+      text-transform: uppercase;
+      letter-spacing: 0.065em;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    .image-card, .sketch-card {
+      margin: 16px 0;
+      background: #f8fafc;
+      border: 1px dashed #cbd5e1;
+      border-radius: 20px;
+      padding: 14px;
+    }
+
+    .image-card img {
+      width: 100%;
+      max-height: 360px;
+      object-fit: contain;
+      border-radius: 16px;
+      background: white;
+      display: block;
+    }
+
+    .caption {
+      color: var(--muted);
+      font-size: 0.9rem;
+      margin-top: 8px;
+    }
+
+    .caption a {
+      color: var(--blue-strong);
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .image-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+      margin: 18px 0;
+    }
+
+    .image-grid.atlas {
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+    }
+
+    .image-card.local {
+      border-style: solid;
+      background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+    }
+
+    .image-card.local img {
+      max-height: 300px;
+    }
+
+
+    .sketch {
+      width: 100%;
+      min-height: 190px;
+      border-radius: 16px;
+      background: white;
+      display: block;
+      overflow: hidden;
+    }
+
+    .summary-list { display: grid; gap: 10px; }
+
+    .summary-item {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 13px 15px;
+    }
+
+    .mini-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 15px;
+      min-height: 100%;
+    }
+
+    .flow {
+      display: flex;
+      align-items: stretch;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin: 15px 0;
+    }
+
+    .flow-step {
+      flex: 1 1 160px;
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 12px;
+      text-align: center;
+      font-weight: 850;
+    }
+
+    .arrow {
+      align-self: center;
+      font-weight: 950;
+      color: var(--muted);
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      margin: 14px 0;
+      background: white;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 720px;
+    }
+
+    th, td {
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      text-align: left;
+    }
+
+    th {
+      background: #f8fafc;
+      font-weight: 950;
+      color: #334155;
+    }
+
+    tr:last-child td { border-bottom: none; }
+
+    .footer-note {
+      color: var(--muted);
+      font-size: 0.9rem;
+      margin-top: 35px;
+      text-align: center;
+    }
+
+    @media (max-width: 900px) {
+      .grid, .grid-3, .compare { grid-template-columns: 1fr; }
+      .nav-card { position: static; }
+      table { min-width: 620px; }
+    }
+
+    @media print {
+      body {
+        background: white;
+        font-size: 10.5px;
+        line-height: 1.45;
+      }
+
+      header, main { max-width: none; padding: 8px; }
+      .toolbar, .nav-card { display: none; }
+
+      .card, .box, .summary-item, .image-card, .sketch-card, .mini-card {
+        box-shadow: none;
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+
+      .card { padding: 14px; border-radius: 16px; }
+      .box { padding: 10px 12px; margin: 8px 0; }
+      .section { margin-top: 14px; }
+
+      h1 { font-size: 25px; }
+      h2 { font-size: 17px; }
+      h3 { font-size: 13.5px; }
+      .sketch { min-height: 135px; }
+      .image-card img { max-height: 190px; }
+
+      @page { size: A4 landscape; margin: 9mm; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="top-label">👁️ Οφθαλμολογία • ΚΕΦ20</div>
+    <h1>Κερατοειδής: Δυστροφίες και Εκφυλίσεις</h1>
+    <p class="subtitle">
+      Συγκριτική, εξεταστική προσέγγιση για τις πρωτοπαθείς δυστροφίες και τις δευτεροπαθείς εκφυλίσεις του κερατοειδούς — με κλινικές εικόνες για γρήγορη οπτική μνήμη.
+    </p>
+  </header>
+
+  <div class="toolbar">
+    <button class="btn" onclick="window.print()">🖨️ Print notes</button>
+    <a class="btn secondary" href="../ofthalmologia.html">← Πίσω στην Οφθαλμολογία</a>
+    <a class="btn secondary" href="../index.html">⌂ GreekDoc Home</a>
+  </div>
+
+  <main>
+
+    <nav class="nav-card" aria-label="Πλοήγηση κεφαλαίου">
+      <a href="#intro">Δυστροφίες vs Εκφυλίσεις</a>
+      <a href="#erosion">Υποτροπιάζουσα απόπτωση</a>
+      <a href="#stromal">Στρωματικές δυστροφίες</a>
+      <a href="#fuchs">Fuchs</a>
+      <a href="#keratoconus">Κερατόκωνος</a>
+      <a href="#degenerations">Εκφυλίσεις</a>
+      <a href="#exam">Exam mode</a>
+    </nav>
+
+    <section class="grid" id="intro">
+      <div class="card">
+        <h2>Δυστροφίες</h2>
+        <div>
+          <span class="tag purple">Πρωτοπαθείς</span>
+          <span class="tag blue">Εγγενείς/κληρονομικές</span>
+          <span class="tag green">Συνήθως αμφοτερόπλευρες</span>
+        </div>
+        <ul>
+          <li><span class="keyword">Πρωτοπαθείς εγγενείς κληρονομικές διαταραχές</span>.</li>
+          <li>Συνήθως εμφανίζονται <span class="important">αμφοτερόπλευρα</span>.</li>
+          <li>Αφορούν δομές του κερατοειδούς όπως το επιθήλιο, το στρώμα ή το ενδοθήλιο.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h2>Εκφυλίσεις</h2>
+        <div>
+          <span class="tag yellow">Δευτεροπαθείς</span>
+          <span class="tag pink">Γήρανση/φλεγμονή</span>
+          <span class="tag red">Όχι πάντα αμφοτερόπλευρες</span>
+        </div>
+        <ul>
+          <li><span class="keyword">Δευτεροπαθείς διαταραχές</span>, δηλαδή προσβάλλεται ένας αρχικά υγιής ιστός.</li>
+          <li>Μπορεί να σχετίζονται με <span class="clinical">γήρανση</span>, χρόνια φλεγμονή ή προηγούμενη βλάβη.</li>
+          <li>Δεν είναι απαραίτητο να είναι αμφοτερόπλευρες.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="card section">
+      <h2>Γρήγορη ταξινόμηση</h2>
+      <div class="compare">
+        <div class="box purple">
+          <h3>Δυστροφίες κερατοειδούς</h3>
+          <ol>
+            <li>Σύνδρομο υποτροπιάζουσας απόπτωσης του επιθηλίου</li>
+            <li>Δυστροφίες του στρώματος</li>
+            <li>Σταγονοειδής κερατοειδής και ενδοθηλιακή δυστροφία Fuchs</li>
+            <li>Κερατόκωνος</li>
+          </ol>
+        </div>
+
+        <div class="box yellow">
+          <h3>Εκφυλίσεις κερατοειδούς</h3>
+          <ol>
+            <li>Πτερύγιο</li>
+            <li>Στεάτιο</li>
+            <li>Ταινιοειδής κερατοπάθεια</li>
+            <li>Απόθεση λιπιδίων / γεροντότοξο</li>
+            <li>Οζώδης εκφύλιση Salzmann</li>
+            <li>Κρυστάλλινη κερατοπάθεια</li>
+            <li>Στροβιλοειδής κερατοπάθεια</li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="image-grid atlas">
+        <div class="image-card local">
+          <img src="ofth_kef20_eikones/ipotropiazousa_apoptosi_keratoeidous.png" alt="Υποτροπιάζουσα απόπτωση επιθηλίου κερατοειδούς" loading="lazy">
+          <div class="caption">Υποτροπιάζουσα απόπτωση επιθηλίου: αστάθεια/απόπτωση επιθηλίου με εικόνα επιφανειακής βλάβης.</div>
+        </div>
+        <div class="image-card local">
+          <img src="ofth_kef20_eikones/pterigio.png" alt="Πτερύγιο" loading="lazy">
+          <div class="caption">Πτερύγιο: ινοαγγειακή αλλοίωση που προχωρά από τον επιπεφυκότα προς τον κερατοειδή.</div>
+        </div>
+        <div class="image-card local">
+          <img src="ofth_kef20_eikones/steatio.png" alt="Στεάτιο" loading="lazy">
+          <div class="caption">Στεάτιο: κιτρινωπή αλλοίωση στον επιπεφυκότα, χωρίς είσοδο στον κερατοειδή.</div>
+        </div>
+        <div class="image-card local">
+          <img src="ofth_kef20_eikones/tainioeidhs_keratopatheia.png" alt="Ταινιοειδής κερατοπάθεια" loading="lazy">
+          <div class="caption">Ταινιοειδής κερατοπάθεια: ταινιοειδής υποεπιθηλιακή απόθεση ασβεστίου.</div>
+        </div>
+        <div class="image-card local">
+          <img src="ofth_kef20_eikones/gerontotokso.png" alt="Γεροντότοξο" loading="lazy">
+          <div class="caption">Γεροντότοξο: περιφερική δακτυλιοειδής/τοξοειδής απόθεση λιπιδίων.</div>
+        </div>
+        <div class="image-card local">
+          <img src="ofth_kef20_eikones/ekfilisi_Salzmann.png" alt="Οζώδης εκφύλιση του Salzmann" loading="lazy">
+          <div class="caption">Οζώδης εκφύλιση Salzmann: λευκωπά οζίδια μετά από χρόνια φλεγμονή.</div>
+        </div>
+        <div class="image-card local">
+          <img src="ofth_kef20_eikones/kristalini_keratopatheia.png" alt="Κρυστάλλινη κερατοπάθεια" loading="lazy">
+          <div class="caption">Κρυστάλλινη κερατοπάθεια: μικροσκοπικοί κρύσταλλοι μέσα στον κερατοειδή.</div>
+        </div>
+        <div class="image-card local">
+          <img src="ofth_kef20_eikones/stroviloeidis_keratopatheia.png" alt="Στροβιλοειδής κερατοπάθεια" loading="lazy">
+          <div class="caption">Στροβιλοειδής κερατοπάθεια: vortex-like εναπόθεση στο επιθήλιο, κλασικά με αμιωδαρόνη.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="card section" id="erosion">
+      <h2>1. Σύνδρομο υποτροπιάζουσας απόπτωσης του επιθηλίου του κερατοειδούς</h2>
+
+      <div class="box blue">
+        <div class="mini-title">Παθοφυσιολογία</div>
+        Επηρεάζεται η <span class="keyword">σύνδεση του επιθηλίου με τη βασική μεμβράνη</span> → δημιουργείται
+        <span class="important">αστάθεια του επιθηλίου</span> → το επιθήλιο αποπίπτει/αποκολλάται εύκολα.
+      </div>
+
+      <div class="flow">
+        <div class="flow-step">Αδύναμη πρόσφυση επιθηλίου</div>
+        <div class="flow-step">Αυτόματες εκδορές</div>
+        <div class="flow-step">Ξένο σώμα + δακρύρροια</div>
+        <div class="flow-step">Στικτή χρώση με φλουοροσεΐνη</div>
+      </div>
+
+      <div class="image-grid atlas">
+        <div class="image-card local">
+          <img src="ofth_kef20_eikones/ipotropiazousa_apoptosi_keratoeidous.png" alt="Υποτροπιάζουσα απόπτωση επιθηλίου κερατοειδούς" loading="lazy">
+          <div class="caption">Οπτική μνήμη: επιφανειακή απόπτωση/εκδορά του επιθηλίου → πόνος, δακρύρροια, αίσθημα ξένου σώματος.</div>
+        </div>
+      </div>
+
+      <div class="grid">
+        <div class="box pink">
+          <h3>Συμπτώματα</h3>
+          <ul>
+            <li><span class="clinical">Αυτόματες εκδορές κερατοειδούς</span>, δηλαδή επιφανειακή απώλεια του επιθηλίου σαν «γρατζουνιές».</li>
+            <li><span class="important">Έντονο αίσθημα ξένου σώματος</span>, ειδικά το πρωί.</li>
+            <li>Η φλεγμονή προκαλεί <span class="clinical">δακρύρροια</span>.</li>
+            <li>Τα συμπτώματα μπορεί να βελτιώνονται κατά τη διάρκεια της ημέρας.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="grid">
+        <div class="box green">
+          <h3>Κλινικά ευρήματα</h3>
+          <ul>
+            <li>Ήπια <span class="clinical">ένεση επιπεφυκότος</span>, δηλαδή αγγειοδιαστολή/κοκκίνισμα.</li>
+            <li><span class="important">Στικτή χρώση κερατοειδούς</span> με φλουοροσεΐνη στον μπλε φωτισμό της σχισμοειδούς λυχνίας.</li>
+            <li>Εκδορά κερατοειδούς στη σχισμοειδή λυχνία.</li>
+          </ul>
+        </div>
+
+        <div class="box yellow">
+          <h3>Διαφορική διάγνωση</h3>
+          <ul>
+            <li>Ανεπαρκής σύγκλειση βλεφάρων</li>
+            <li>Τραυματισμός</li>
+            <li>Οικογενής δυστροφία του επιθηλίου, π.χ. δυστροφία δίκην δακτυλικών αποτυπωμάτων</li>
+            <li>Δυστροφίες του στρώματος του κερατοειδούς</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="box green">
+        <h3>Αντιμετώπιση</h3>
+        <ul>
+          <li><span class="treatment">Λιπαντικά κολλύρια/αλοιφές</span> για την εμμένουσα οφθαλμική δυσφορία.</li>
+          <li><span class="treatment">Αλοιφή χλωραμφενικόλης</span> για αντιβιοτική κάλυψη όταν υπάρχει εκδορά/απόπτωση επιθηλίου.</li>
+          <li>Αν οφείλεται σε τραύμα: μπορεί να χρησιμοποιηθεί <span class="treatment">μαλακός θεραπευτικός φακός επαφής</span>.</li>
+          <li>Σε εμμένουσες περιπτώσεις: <span class="treatment">χειρουργική παρέμβαση</span> ή <span class="treatment">φωτοθεραπευτική κερατεκτομή με excimer laser</span>.</li>
+        </ul>
+      </div>
+
+      <div class="box red">
+        <strong>Exam tip:</strong>
+        «Ξένο σώμα το πρωί + δακρύρροια + στικτή χρώση με φλουοροσεΐνη» → σκέψου υποτροπιάζουσα απόπτωση/εκδορά επιθηλίου.
+      </div>
+    </section>
+
+    <section class="card section" id="stromal">
+      <h2>2. Δυστροφίες του στρώματος</h2>
+
+      <div class="box purple">
+        Οι δυστροφίες του στρώματος επηρεάζουν το <span class="keyword">στρώμα του κερατοειδούς</span> και μπορεί να οδηγήσουν σε
+        <span class="important">νεφέλωση</span>, υποτροπιάζουσες εκδορές και απώλεια όρασης.
+      </div>
+
+      <div class="grid">
+        <div>
+          <h3>Δικτυωτή δυστροφία</h3>
+          <div class="box blue">
+            <ul>
+              <li>Αποτίθεται στο στρώμα του κερατοειδούς <span class="important">αμυλοειδές</span>.</li>
+              <li>Το αμυλοειδές έχει μορφή <span class="keyword">διακλαδώσεων</span>.</li>
+              <li>Έχει <span class="exam">αυτοσωματική επικρατή</span> κληρονομικότητα.</li>
+              <li>Προκαλεί συμπτώματα υποτροπιάζουσας απόπτωσης του επιθηλίου.</li>
+              <li>Ο κεντρικός κερατοειδής γίνεται νεφελώδης → <span class="important">απώλεια όρασης</span>.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="image-card">
+          <img src="https://webeye.ophth.uiowa.edu/eyeforum/atlas/photos/lattice-corneal-dystrophy-1.jpg" alt="Δικτυωτή δυστροφία κερατοειδούς">
+          <div class="caption">Δικτυωτή δυστροφία: γραμμικές/διακλαδιζόμενες θολερότητες στο στρώμα.</div>
+        </div>
+      </div>
+
+      <div class="box yellow">
+        <h3>Άλλες δυστροφίες του στρώματος</h3>
+        <ul>
+          <li>Δυστροφία Reis-Bücklers του πρόσθιου στρώματος</li>
+          <li>Κοκκώδης δυστροφία</li>
+          <li>Κηλιδώδης δυστροφία</li>
+        </ul>
+        <p>
+          Είναι λιγότερο συχνές καταστάσεις, αλλά μπορούν να επηρεάσουν την όραση και να συνυπάρχει σύνδρομο υποτροπιάζουσας απόπτωσης του επιθηλίου.
+        </p>
+      </div>
+    </section>
+
+    <section class="card section" id="fuchs">
+      <h2>3. Σταγονοειδής κερατοειδής και ενδοθηλιακή δυστροφία Fuchs</h2>
+
+      <div class="grid">
+        <div class="box blue">
+          <h3>Σταγονοειδής κερατοειδής</h3>
+          <ul>
+            <li>Κατάσταση <span class="important">δυσλειτουργίας ή απώλειας ενδοθηλιακών κυττάρων</span>.</li>
+            <li>Εμφανίζεται στον κερατοειδή στο πλαίσιο της <span class="clinical">γήρανσης</span>.</li>
+          </ul>
+        </div>
+
+        <div class="box pink">
+          <h3>Δυστροφία Fuchs</h3>
+          <ul>
+            <li><span class="important">Προοδευτική απώλεια ενδοθηλιακών κυττάρων</span>.</li>
+            <li>Δυσπραγία / δυσλειτουργία / ανεπάρκεια ενδοθηλίου.</li>
+            <li>Οιδηματώδης κερατοειδής → απώλεια διαφάνειας → μείωση όρασης.</li>
+            <li>Επώδυνες φυσαλίδες επιθηλίου: <span class="clinical">φυσαλιδώδης κερατοπάθεια</span>.</li>
+            <li>Μπορεί να συμβούν ουλοποίηση και αγγείωση.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="box orange">
+        <h3>Μετά από χειρουργική επέμβαση καταρράκτη</h3>
+        <ul>
+          <li>Οφθαλμοί με δυσλειτουργία του ενδοθηλίου μπορεί να παρουσιάσουν δυσπραγία μετά από χειρουργική επέμβαση καταρράκτη.</li>
+          <li>Μπορεί να προκύψει αφάκικη ή ψευδοφακική φυσαλιδώδης κερατοπάθεια.</li>
+        </ul>
+      </div>
+
+      <div class="box green">
+        <h3>Αντιμετώπιση</h3>
+        <ul>
+          <li>Τοπικά υπερωσμωτικά/υπέρτονα διαλύματα, π.χ. χλωριούχο νάτριο 5%.</li>
+          <li>Όταν η απώλεια όρασης ή ο πόνος είναι σημαντικά: <span class="treatment">διαμπερής κερατοπλαστική</span> ή <span class="treatment">ενδοθηλιακή κερατοπλαστική</span>.</li>
+          <li>Η επέμβαση μπορεί να γίνει για απώλεια όρασης και για πόνο, ακόμη και όταν η πρόγνωση για την όραση είναι φτωχή.</li>
+        </ul>
+      </div>
+
+      <div class="box red">
+        <strong>Exam tip:</strong>
+        Fuchs = ενδοθήλιο που αποτυγχάνει → οίδημα κερατοειδούς → θόλωση/μείωση όρασης ± επώδυνες φυσαλίδες.
+      </div>
+    </section>
+
+    <section class="card section" id="keratoconus">
+      <h2>4. Κερατόκωνος</h2>
+
+      <div class="box purple">
+        <div class="mini-title">Ορισμός</div>
+        Ο <span class="keyword">κερατόκωνος</span> είναι μια επίκτητη ανωμαλία του σχήματος του κερατοειδούς με
+        <span class="important">προοδευτική εμφάνιση</span>. Είναι συνήθως <span class="exam">αμφοτερόπλευρος αλλά ασύμμετρος</span>.
+      </div>
+
+      <div class="grid">
+        <div class="box blue">
+          <h3>Συσχετίσεις</h3>
+          <ul>
+            <li>Η επίπτωση είναι περίπου <span class="important">1 στους 20.000</span>.</li>
+            <li>Σχετίζεται με συστηματικά νοσήματα, όπως <span class="clinical">σύνδρομο Down</span> και <span class="clinical">σύνδρομο Marfan</span>.</li>
+            <li>Σχετίζεται και με οφθαλμικά νοσήματα, όπως <span class="clinical">ατοπική κερατοεπιπεφυκίτιδα</span>.</li>
+          </ul>
+        </div>
+
+        <div class="box pink">
+          <h3>Τι συμβαίνει στον κερατοειδή;</h3>
+          <ul>
+            <li>Ο κερατοειδής <span class="important">προβάλλει προς τα εμπρός</span> με μορφή κώνου.</li>
+            <li>Η κορυφή του κώνου <span class="important">λεπταίνεται</span>.</li>
+            <li>Ο κερατοειδής <span class="clinical">ουλοποιείται</span> και <span class="clinical">παραμορφώνεται</span>.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="grid">
+
+        <div class="image-card">
+          <img src="https://www.karabatsas.gr/wp-content/uploads/2019/05/keratoconus-1.jpg" alt="Κερατόκωνος">
+          <div class="caption">Κερατόκωνος: προοδευτική λέπτυνση/προβολή του κερατοειδούς με αλλοίωση του σχήματός του.</div>
+        </div>
+      </div>
+
+      <div class="box yellow">
+        <h3>Κλινική εικόνα</h3>
+        <ul>
+          <li>Βραδεία επιδείνωση της όρασης, συχνά αρχικά ετερόπλευρη.</li>
+          <li><span class="important">Προοδευτική μυωπία και αστιγματισμός</span>.</li>
+        </ul>
+      </div>
+
+      <div class="box red">
+        <h3>Οξύς ύδρωπας</h3>
+        <ul>
+          <li>Μπορεί να εμφανιστεί <span class="important">οξύς ύδρωπας</span>.</li>
+          <li>Το στρώμα αιφνιδίως παρουσιάζει πάχυνση και θόλωση.</li>
+          <li>Εισέρχεται υδατοειδές υγρό μέσω ρήξεων στη μεμβράνη του Descemet → ουλοποίηση.</li>
+        </ul>
+      </div>
+
+      <div class="grid">
+        <div class="box green">
+          <h3>Διάγνωση</h3>
+          <ul>
+            <li>Προοδευτικός μυωπικός αστιγματισμός.</li>
+            <li>Σχισμοειδής λυχνία: πολλαπλές, μόλις υποσημαινόμενες αλλοιώσεις.</li>
+            <li><span class="keyword">Αυτοματοποιημένη τοπογραφία κερατοειδούς</span> για πρώιμη διάγνωση.</li>
+          </ul>
+        </div>
+
+        <div class="box blue">
+          <h3>Αντιμετώπιση</h3>
+          <ul>
+            <li>Διόρθωση διαθλαστικών ανωμαλιών.</li>
+            <li>Φακοί επαφής όταν τα γυαλιά δεν διορθώνουν πλέον τον αστιγματισμό.</li>
+            <li>Οξύς ύδρωπας: λιπαντικές ουσίες και υπέρτονα διαλύματα.</li>
+            <li><span class="treatment">Cross-linking</span>: ριβοφλαβίνη + υπεριώδης ακτινοβολία, κυρίως σε πρώιμα στάδια.</li>
+            <li><span class="treatment">Διαμπερής κερατοπλαστική</span> όταν δεν διορθώνεται οπτικά ή υπάρχει σημαντική ουλοποίηση.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="box red">
+        <strong>Exam tip:</strong>
+        Κερατόκωνος = προοδευτική λέπτυνση/προβολή κερατοειδούς → μυωπία + αστιγματισμός. Αν προχωρήσει: οξύς ύδρωπας ή κερατοπλαστική.
+      </div>
+    </section>
+
+    <section class="card section" id="degenerations">
+      <h2>Εκφυλίσεις κερατοειδούς</h2>
+
+      <div class="box yellow">
+        Οι <span class="keyword">εκφυλίσεις</span> είναι δευτεροπαθείς αλλοιώσεις του κερατοειδούς. Δεν είναι απαραίτητα κληρονομικές και δεν είναι απαραίτητο να είναι αμφοτερόπλευρες.
+      </div>
+
+      <div class="grid-3">
+        <div class="mini-card"><strong>Πτερύγιο</strong><br>Επιπεφυκότας που προχωρά προς τον κερατοειδή.</div>
+        <div class="mini-card"><strong>Στεάτιο</strong><br>Παρόμοιο, αλλά μένει στον επιπεφυκότα.</div>
+        <div class="mini-card"><strong>Ταινιοειδής</strong><br>Ασβέστιο υποεπιθηλιακά στη μεσοβλεφάρια περιοχή.</div>
+        <div class="mini-card"><strong>Λιπίδια</strong><br>Απόθεση λιπιδίων, π.χ. γεροντότοξο.</div>
+        <div class="mini-card"><strong>Salzmann</strong><br>Λευκωπά οζίδια μετά από χρόνια φλεγμονή.</div>
+        <div class="mini-card"><strong>Στροβιλοειδής</strong><br>Αμιωδαρόνη, συνήθως χωρίς συμπτώματα.</div>
+      </div>
+
+      <section class="card section">
+        <h2>1. Πτερύγιο</h2>
+        <div class="grid">
+          <div>
+            <div class="box blue">
+              <h3>Ορισμός</h3>
+              <ul>
+                <li>Μη νεοπλασματική <span class="important">ινοαγγειακή εκφυλιστική αλλοίωση</span>.</li>
+                <li>Εκτείνεται από τον <span class="keyword">μεσοβλεφάριο επιπεφυκότα</span> προς τον κερατοειδή, κάτω από το επιθήλιο.</li>
+              </ul>
+            </div>
+            <div class="box pink">
+              <h3>Συμπτώματα / προβλήματα</h3>
+              <ul>
+                <li>Σπανίως παρεμβάλλεται στον οπτικό άξονα ή προκαλεί αστιγματισμό.</li>
+                <li>Συχνά προκαλεί αισθητικό πρόβλημα.</li>
+                <li>Μπορεί να προκαλεί επίμονο αίσθημα ξένου σώματος.</li>
+              </ul>
+            </div>
+          </div>
+        <div class="image-card local">
+          <img src="ofth_kef20_eikones/pterigio.png" alt="Πτερύγιο" loading="lazy">
+          <div class="caption">Πτερύγιο: αλλοίωση που ξεκινά από τον επιπεφυκότα και προχωρά προς/πάνω στον κερατοειδή.</div>
+        </div>
+        </div>
+        <div class="box green">
+          <h3>Αντιμετώπιση</h3>
+          <ul>
+            <li>Χειρουργική αφαίρεση και αποκατάσταση του ελλείμματος με τμήμα επιπεφυκότος του ίδιου ασθενούς.</li>
+            <li>Η τεχνική αυτή έχει υψηλά ποσοστά επιτυχίας.</li>
+          </ul>
+        </div>
+        <div class="box red"><strong>Exam tip:</strong> Πτερύγιο = ινοαγγειακή αλλοίωση από επιπεφυκότα προς κερατοειδή.</div>
+      </section>
+
+      <section class="card section">
+        <h2>2. Στεάτιο</h2>
+        <div class="grid">
+          <div class="box purple">
+            <ul>
+              <li>Παρόμοια εξεργασία με το πτερύγιο.</li>
+              <li>Προβάλλει μόνο τον επιπεφυκότα της μεσοβλεφάριας περιοχής.</li>
+              <li><span class="important">Δεν επεκτείνεται στον κερατοειδή</span>.</li>
+              <li>Δεν απαιτείται συνήθως χειρουργική επέμβαση.</li>
+            </ul>
+          </div>
+        <div class="image-card local">
+          <img src="ofth_kef20_eikones/steatio.png" alt="Στεάτιο" loading="lazy">
+          <div class="caption">Στεάτιο: μένει στον επιπεφυκότα και δεν προχωρά στον κερατοειδή.</div>
+        </div>
+        </div>
+        <div class="box yellow"><strong>Να το ξεχωρίζεις:</strong> Πτερύγιο → μπαίνει στον κερατοειδή. Στεάτιο → μένει στον επιπεφυκότα.</div>
+      </section>
+
+      <section class="card section">
+        <h2>3. Ταινιοειδής κερατοπάθεια</h2>
+        <div class="grid">
+          <div>
+            <div class="box blue">
+              <h3>Τι είναι;</h3>
+              <ul>
+                <li>Υποεπιθηλιακή <span class="important">απόθεση ασβεστίου</span>.</li>
+                <li>Εντοπίζεται στη <span class="keyword">μεσοβλεφάρια περιοχή</span>.</li>
+              </ul>
+            </div>
+            <div class="box pink">
+              <h3>Αίτια / συσχετίσεις</h3>
+              <ul>
+                <li>Χρόνια ενδοφθάλμια φλεγμονή.</li>
+                <li>Συστηματική υπερασβεστιαιμία.</li>
+                <li>Ιδιοπαθώς σε μεγαλύτερης ηλικίας ασθενείς.</li>
+              </ul>
+            </div>
+          </div>
+        <div class="image-card local">
+          <img src="ofth_kef20_eikones/tainioeidhs_keratopatheia.png" alt="Ταινιοειδής κερατοπάθεια" loading="lazy">
+          <div class="caption">Ταινιοειδής κερατοπάθεια: η εικόνα βοηθά να θυμάσαι την «ταινία» ασβεστίου στη μεσοβλεφάρια περιοχή.</div>
+        </div>
+        </div>
+        <div class="grid">
+          <div class="box yellow">
+            <h3>Συμπτώματα</h3>
+            <ul>
+              <li>Μείωση όρασης λόγω προβολής του κεντρικού κερατοειδούς.</li>
+              <li>Αίσθημα ξένου σώματος λόγω ανωμαλιών του υπερκείμενου επιθηλίου.</li>
+            </ul>
+          </div>
+          <div class="box green">
+            <h3>Αντιμετώπιση</h3>
+            <ul>
+              <li>Αν τα συμπτώματα είναι σημαντικά, το ασβέστιο απομακρύνεται με τοπικό καθαρισμό.</li>
+              <li>Χρησιμοποιείται <span class="treatment">χηλικός παράγοντας</span>.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="box red"><strong>Exam tip:</strong> Ταινιοειδής κερατοπάθεια = υποεπιθηλιακή απόθεση ασβεστίου στη μεσοβλεφάρια περιοχή.</div>
+      </section>
+
+      <section class="card section">
+        <h2>4. Απόθεση λιπιδίων και γεροντότοξο</h2>
+        <div class="grid">
+          <div>
+            <div class="box blue">
+              <ul>
+                <li>Συσσώρευση διακριτών αποθέσεων λιπιδίων στον κερατοειδή.</li>
+                <li>Συνήθως κοντά σε περιοχές αγγείωσης του κερατοειδούς, όπως μετά από λοίμωξη.</li>
+              </ul>
+            </div>
+            <div class="box yellow">
+              <h3>Γεροντότοξο</h3>
+              <ul>
+                <li>Συχνή εκφύλιση στους περισσότερους ηλικιωμένους.</li>
+                <li>Στενή κυκλοτερής ταινία λιπιδίων στον περιφερικό κερατοειδή.</li>
+                <li>Σε νέους ενήλικες μπορεί να αποτελεί ένδειξη <span class="important">υπερλιπιδαιμίας</span>.</li>
+              </ul>
+            </div>
+          </div>
+        <div class="image-card local">
+          <img src="ofth_kef20_eikones/gerontotokso.png" alt="Γεροντότοξο" loading="lazy">
+          <div class="caption">Γεροντότοξο: περιφερικός λευκός/γκριζωπός δακτύλιος από λιπίδια, με καθαρό διάστημα από το σκληροκερατοειδικό όριο.</div>
+        </div>
+        </div>
+        <div class="box red"><strong>Exam tip:</strong> Γεροντότοξο σε ηλικιωμένο = συχνό. Σε νέο άτομο = σκέψου υπερλιπιδαιμία.</div>
+      </section>
+
+      <section class="card section">
+        <h2>5. Οζώδης εκφύλιση του Salzmann</h2>
+        <div class="grid">
+          <div class="box purple">
+            <ul>
+              <li>Σε κερατοειδή εκτεθειμένο σε <span class="clinical">χρόνια φλεγμονή</span> μπορεί να αναπτυχθούν λευκωπά οζίδια.</li>
+              <li>Το υπερκείμενο επιθήλιο τείνει να είναι <span class="important">ανώμαλο και ασταθές</span>.</li>
+              <li>Οι <span class="treatment">λιπαντικές ουσίες</span> είναι χρήσιμες για την ανακούφιση των συμπτωμάτων.</li>
+            </ul>
+          </div>
+        <div class="image-card local">
+          <img src="ofth_kef20_eikones/ekfilisi_Salzmann.png" alt="Οζώδης εκφύλιση του Salzmann" loading="lazy">
+          <div class="caption">Salzmann: λευκωπά/γκριζωπά οζίδια στον κερατοειδή, συνήθως μετά από χρόνια φλεγμονή.</div>
+        </div>
+        </div>
+        <div class="box red"><strong>Exam tip:</strong> Salzmann = χρόνια φλεγμονή + λευκωπά οζίδια + ασταθές επιθήλιο.</div>
+      </section>
+
+      <section class="card section">
+        <h2>6. Κρυστάλλινη κερατοπάθεια</h2>
+        <div class="grid">
+          <div>
+            <div class="box blue">
+              <ul>
+                <li>Σχηματισμός <span class="important">μικροσκοπικών κρυστάλλων</span> εντός του κερατοειδούς.</li>
+                <li>Μπορεί να παρατηρηθεί σε ποικιλία καταστάσεων.</li>
+              </ul>
+            </div>
+            <div class="box yellow">
+              <h3>Παραδείγματα</h3>
+              <ul>
+                <li>Δυσπρωτεϊναιμίες</li>
+                <li>Λήψη χρυσού για θεραπευτικούς λόγους</li>
+                <li>Μεταβολικές νόσοι: κυστίνωση, ουρική αρθρίτιδα</li>
+              </ul>
+            </div>
+          </div>
+        <div class="image-card local">
+          <img src="ofth_kef20_eikones/kristalini_keratopatheia.png" alt="Κρυστάλλινη κερατοπάθεια" loading="lazy">
+          <div class="caption">Κρυστάλλινη κερατοπάθεια: μικροσκοπικές λαμπερές/κρυσταλλικές εναποθέσεις μέσα στον κερατοειδή.</div>
+        </div>
+        </div>
+      </section>
+
+      <section class="card section">
+        <h2>7. Στροβιλοειδής κερατοπάθεια</h2>
+        <div class="grid">
+          <div class="box pink">
+            <ul>
+              <li>Απόθεση στο επιθήλιο με χαρακτηριστική <span class="important">στροβιλοειδή μορφή</span>.</li>
+              <li>Σχετίζεται με φάρμακα, ιδίως με <span class="clinical">αμιωδαρόνη</span>.</li>
+              <li>Δεν προκαλεί συμπτώματα και δεν επηρεάζει την όραση.</li>
+            </ul>
+          </div>
+        <div class="image-card local">
+          <img src="ofth_kef20_eikones/stroviloeidis_keratopatheia.png" alt="Στροβιλοειδής κερατοπάθεια" loading="lazy">
+          <div class="caption">Στροβιλοειδής κερατοπάθεια: χαρακτηριστικό στροβιλοειδές/vortex πρότυπο εναπόθεσης στο επιθήλιο.</div>
+        </div>
+        </div>
+        <div class="box red"><strong>Exam tip:</strong> Στροβιλοειδής κερατοπάθεια = αμιωδαρόνη + στροβιλοειδής απόθεση στο επιθήλιο + χωρίς επίδραση στην όραση.</div>
+      </section>
+    </section>
+
+    <section class="card section" id="exam">
+      <h2>Για τις εξετάσεις — Κερατοειδής: δυστροφίες και εκφυλίσεις</h2>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Κατάσταση</th>
+              <th>Λέξη-κλειδί</th>
+              <th>Τι πρέπει να θυμάσαι</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Υποτροπιάζουσα απόπτωση επιθηλίου</strong></td>
+              <td>Ξένο σώμα το πρωί</td>
+              <td>Αστάθεια σύνδεσης επιθηλίου-βασικής μεμβράνης → εκδορές → φλουοροσεΐνη.</td>
+            </tr>
+            <tr>
+              <td><strong>Δικτυωτή δυστροφία</strong></td>
+              <td>Αμυλοειδές σε διακλαδώσεις</td>
+              <td>Αυτοσωματική επικρατής, νεφελώδης κεντρικός κερατοειδής, απώλεια όρασης.</td>
+            </tr>
+            <tr>
+              <td><strong>Fuchs</strong></td>
+              <td>Ενδοθήλιο</td>
+              <td>Απώλεια ενδοθηλιακών κυττάρων → οίδημα κερατοειδούς → θόλωση/μείωση όρασης.</td>
+            </tr>
+            <tr>
+              <td><strong>Κερατόκωνος</strong></td>
+              <td>Μυωπικός αστιγματισμός</td>
+              <td>Προοδευτική προβολή/λέπτυνση κερατοειδούς. Cross-linking σε πρώιμα στάδια.</td>
+            </tr>
+            <tr>
+              <td><strong>Πτερύγιο</strong></td>
+              <td>Επιπεφυκότας → κερατοειδής</td>
+              <td>Μη νεοπλασματική ινοαγγειακή εκφυλιστική αλλοίωση.</td>
+            </tr>
+            <tr>
+              <td><strong>Ταινιοειδής κερατοπάθεια</strong></td>
+              <td>Ασβέστιο</td>
+              <td>Υποεπιθηλιακή απόθεση ασβεστίου στη μεσοβλεφάρια περιοχή.</td>
+            </tr>
+            <tr>
+              <td><strong>Γεροντότοξο</strong></td>
+              <td>Περιφερική ταινία λιπιδίων</td>
+              <td>Σε ηλικιωμένους συχνό. Σε νέο άτομο σκέψου υπερλιπιδαιμία.</td>
+            </tr>
+            <tr>
+              <td><strong>Salzmann</strong></td>
+              <td>Λευκωπά οζίδια</td>
+              <td>Χρόνια φλεγμονή + ασταθές επιθήλιο.</td>
+            </tr>
+            <tr>
+              <td><strong>Στροβιλοειδής</strong></td>
+              <td>Αμιωδαρόνη</td>
+              <td>Vortex-like απόθεση στο επιθήλιο, χωρίς συμπτώματα/όραση.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="summary-list">
+        <div class="summary-item"><strong>Δυστροφίες vs Εκφυλίσεις:</strong> Δυστροφίες = πρωτοπαθείς, κληρονομικές, συνήθως αμφοτερόπλευρες. Εκφυλίσεις = δευτεροπαθείς, γήρανση/φλεγμονή/βλάβη, όχι απαραίτητα αμφοτερόπλευρες.</div>
+      </div>
+    </section>
+
+    <p class="footer-note">GreekDoc • Οφθαλμολογία • Κερατοειδής</p>
+
+  </main>
+
+</body>
+</html>
