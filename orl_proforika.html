@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>GreekDoc | Προφορικές Εξετάσεις ΩΡΛ</title>
+
+  <style>
+    :root {
+      --bg: #f7f3f0;
+      --card: #ffffff;
+      --text: #2f2a28;
+      --muted: #746b66;
+      --accent: #8b5e83;
+      --accent-light: #f0ddec;
+      --blue: #dbeafe;
+      --green: #dcfce7;
+      --yellow: #fef3c7;
+      --pink: #fce7f3;
+      --orange: #ffedd5;
+      --border: #eadfd9;
+      --danger: #b91c1c;
+      --shadow: 0 10px 30px rgba(0,0,0,0.06);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    header {
+      background: linear-gradient(135deg, #8b5e83, #b089a7);
+      color: white;
+      padding: 42px 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      letter-spacing: -0.04em;
+    }
+
+    header p {
+      max-width: 760px;
+      margin: 16px auto 0;
+      font-size: 1.05rem;
+      opacity: 0.95;
+    }
+
+    main {
+      max-width: 1150px;
+      margin: 0 auto;
+      padding: 28px 18px 60px;
+    }
+
+    .top-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+      margin-top: -20px;
+      margin-bottom: 28px;
+    }
+
+    .btn {
+      border: none;
+      border-radius: 999px;
+      padding: 11px 18px;
+      font-weight: 700;
+      cursor: pointer;
+      background: var(--accent);
+      color: white;
+      box-shadow: var(--shadow);
+      transition: 0.2s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+      opacity: 0.94;
+    }
+
+    .btn.secondary {
+      background: white;
+      color: var(--accent);
+      border: 1px solid var(--border);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1.05fr 1.45fr;
+      gap: 22px;
+      align-items: start;
+    }
+
+    @media (max-width: 900px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .box {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 22px;
+      box-shadow: var(--shadow);
+      margin-bottom: 22px;
+    }
+
+    .box h2 {
+      margin-top: 0;
+      color: var(--accent);
+      font-size: 1.35rem;
+    }
+
+    .note {
+      background: var(--accent-light);
+      border-left: 5px solid var(--accent);
+      padding: 14px 16px;
+      border-radius: 16px;
+      margin-bottom: 18px;
+      color: #4b3446;
+    }
+
+    .warning {
+      background: #fff7ed;
+      border-left: 5px solid #f97316;
+      padding: 14px 16px;
+      border-radius: 16px;
+      margin-bottom: 18px;
+      color: #7c2d12;
+    }
+
+    label {
+      display: block;
+      font-weight: 700;
+      margin: 15px 0 6px;
+      color: #3a3431;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      padding: 11px 12px;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      font: inherit;
+      background: #fffdfc;
+      color: var(--text);
+    }
+
+    textarea {
+      min-height: 105px;
+      resize: vertical;
+    }
+
+    .small-help {
+      font-size: 0.88rem;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    @media (max-width: 700px) {
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .checkbox-area {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px 14px;
+      margin-top: 8px;
+    }
+
+    @media (max-width: 700px) {
+      .checkbox-area {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .checkbox-item {
+      background: #fbf7f4;
+      padding: 9px 11px;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      font-size: 0.95rem;
+    }
+
+    .checkbox-item input {
+      width: auto;
+      margin-right: 7px;
+    }
+
+    .oral-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 20px;
+      box-shadow: var(--shadow);
+      margin-bottom: 18px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .oral-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 7px;
+      height: 100%;
+      background: var(--accent);
+    }
+
+    .oral-card h3 {
+      margin: 0 0 10px;
+      color: var(--accent);
+      padding-left: 6px;
+    }
+
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 12px 0 14px;
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 5px 10px;
+      border-radius: 999px;
+      font-size: 0.84rem;
+      font-weight: 700;
+      background: var(--blue);
+      color: #1e3a8a;
+    }
+
+    .tag.green {
+      background: var(--green);
+      color: #166534;
+    }
+
+    .tag.yellow {
+      background: var(--yellow);
+      color: #854d0e;
+    }
+
+    .tag.pink {
+      background: var(--pink);
+      color: #9d174d;
+    }
+
+    .tag.orange {
+      background: var(--orange);
+      color: #9a3412;
+    }
+
+    .section-title {
+      font-weight: 800;
+      margin-top: 14px;
+      margin-bottom: 4px;
+      color: #3f3733;
+    }
+
+    .empty-state {
+      text-align: center;
+      color: var(--muted);
+      padding: 35px 15px;
+      background: #fffdfc;
+      border: 1px dashed var(--border);
+      border-radius: 22px;
+    }
+
+    .delete-btn {
+      background: transparent;
+      border: 1px solid #fecaca;
+      color: var(--danger);
+      border-radius: 999px;
+      padding: 7px 12px;
+      cursor: pointer;
+      font-weight: 700;
+      margin-top: 14px;
+    }
+
+    .delete-btn:hover {
+      background: #fee2e2;
+    }
+
+    .mini-title {
+      font-weight: 800;
+      color: var(--accent);
+      margin-bottom: 6px;
+    }
+
+    .guide-list {
+      padding-left: 20px;
+      margin-bottom: 0;
+    }
+
+    .guide-list li {
+      margin-bottom: 8px;
+    }
+
+    footer {
+      text-align: center;
+      color: var(--muted);
+      padding: 30px 16px;
+      font-size: 0.9rem;
+    }
+
+    @media print {
+      body {
+        background: white;
+        font-size: 11px;
+      }
+
+      header,
+      .top-actions,
+      .form-column,
+      .delete-btn,
+      footer {
+        display: none !important;
+      }
+
+      main {
+        max-width: 100%;
+        padding: 0;
+      }
+
+      .grid {
+        display: block;
+      }
+
+      .box,
+      .oral-card {
+        box-shadow: none;
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>Προφορικές Εξετάσεις ΩΡΛ</h1>
+    <p>
+      Καταγραφή εμπειριών από προφορικές εξετάσεις ΩΡΛ: κλινική, νοσοκομείο,
+      εξεταστής, ερωτήσεις, διαδικασία, κλίμα και γενική αίσθηση βαθμολόγησης.
+    </p>
+  </header>
+
+  <main>
+
+    <div class="top-actions">
+      <button class="btn" onclick="document.getElementById('entryForm').scrollIntoView({behavior:'smooth'})">
+        + Νέα καταχώρηση
+      </button>
+    </div>
+
+    <div class="grid">
+
+      <!-- LEFT COLUMN: FORM -->
+      <section class="form-column">
+
+        <div class="box">
+          <h2>Πριν γράψεις</h2>
+
+          <div class="warning">
+            Η σελίδα προορίζεται για αντικειμενική καταγραφή εμπειριών.
+            Απόφυγε προσβλητικούς χαρακτηρισμούς ή προσωπικά σχόλια.
+            Γράψε τι έγινε στην εξέταση, όχι επίθεση σε πρόσωπα.
+          </div>
+
+          <ul class="guide-list">
+            <li>Γράψε τις ερωτήσεις όσο πιο καθαρά γίνεται.</li>
+            <li>Αν δεν θυμάσαι όνομα καθηγητή, άφησέ το κενό ή γράψε “δεν θυμάμαι”.</li>
+            <li>Μπορείς να γράψεις αν η βαθμολόγηση φάνηκε δίκαιη, αλλά με ήρεμο τρόπο.</li>
+            <li>Μην γράφεις προσωπικά δεδομένα άλλων φοιτητών.</li>
+          </ul>
+        </div>
+
+        <div class="box" id="entryForm">
+          <h2>Εμπειρία προφορικής εξέτασης</h2>
+
+          <form id="oralExamForm">
+
+            <div class="form-row">
+              <div>
+                <label for="clinic">Κλινική που παρακολουθούσε ο φοιτητής</label>
+                <input id="clinic" type="text" placeholder="π.χ. Α΄ ΩΡΛ Κλινική" />
+              </div>
+
+              <div>
+                <label for="hospital">Νοσοκομείο</label>
+                <input id="hospital" type="text" placeholder="π.χ. ΑΧΕΠΑ, Παπαγεωργίου" />
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div>
+                <label for="examiner">Καθηγητής / εξεταστής</label>
+                <input id="examiner" type="text" placeholder="π.χ. Καθηγητής/τρια Χ ή Δεν θυμάμαι" />
+              </div>
+
+              <div>
+                <label for="examPeriod">Εξεταστική / περίοδος</label>
+                <input id="examPeriod" type="text" placeholder="π.χ. Ιούνιος 2026" />
+              </div>
+            </div>
+
+            <label for="questions">Ερωτήσεις που έγιναν</label>
+            <textarea id="questions" placeholder="Γράψε κάθε ερώτηση σε νέα γραμμή. Π.χ.&#10;1. Οξεία μέση ωτίτιδα: διάγνωση και θεραπεία&#10;2. Επιπλοκές χολοστεατώματος&#10;3. Διαφορική διάγνωση βαρηκοΐας"></textarea>
+            <div class="small-help">Ιδανικά γράψε και αν ζητήθηκαν λεπτομέρειες, ορισμοί, θεραπεία ή κλινική σκέψη.</div>
+
+            <label for="procedure">Διαδικασία εξέτασης</label>
+            <textarea id="procedure" placeholder="Π.χ. Ήταν ένας-ένας οι φοιτητές, κράτησε περίπου 10 λεπτά, πρώτα ρώτησαν από ιστορικό και μετά από θεωρία..."></textarea>
+
+            <div class="form-row">
+              <div>
+                <label for="climate">Κλίμα εξέτασης</label>
+                <select id="climate">
+                  <option value="">Επίλεξε</option>
+                  <option>Πολύ ήρεμο</option>
+                  <option>Ήρεμο</option>
+                  <option>Ουδέτερο</option>
+                  <option>Απαιτητικό</option>
+                  <option>Πιεστικό</option>
+                  <option>Πολύ αγχωτικό</option>
+                </select>
+              </div>
+
+              <div>
+                <label for="difficulty">Δυσκολία</label>
+                <select id="difficulty">
+                  <option value="">Επίλεξε</option>
+                  <option>Εύκολη</option>
+                  <option>Μέτρια</option>
+                  <option>Δύσκολη</option>
+                  <option>Πολύ δύσκολη</option>
+                  <option>Εξαρτάται από τον εξεταστή</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div>
+                <label for="examinerStyle">Ύφος εξεταστή</label>
+                <select id="examinerStyle">
+                  <option value="">Επίλεξε</option>
+                  <option>Βοηθητικός/ή</option>
+                  <option>Ήρεμος/η</option>
+                  <option>Ουδέτερος/η</option>
+                  <option>Απαιτητικός/ή</option>
+                  <option>Αυστηρός/ή</option>
+                  <option>Αγχώδης/πιεστικός τρόπος</option>
+                </select>
+              </div>
+
+              <div>
+                <label for="gradeInfo">Πληροφορία για βαθμό</label>
+                <input id="gradeInfo" type="text" placeholder="π.χ. 8, πέρασα, δεν ξέρω ακόμη" />
+              </div>
+            </div>
+
+            <label for="gradeFairness">Πιστεύεις ότι ο βαθμός ήταν δίκαιος;</label>
+            <select id="gradeFairness">
+              <option value="">Επίλεξε</option>
+              <option>Ναι, φάνηκε δίκαιος</option>
+              <option>Μάλλον ναι</option>
+              <option>Ουδέτερο / δεν ξέρω</option>
+              <option>Μάλλον όχι</option>
+              <option>Όχι, δεν φάνηκε δίκαιος</option>
+              <option>Δεν υπάρχει ακόμη πληροφορία για βαθμό</option>
+            </select>
+
+            <label>Τι ζητήθηκε περισσότερο;</label>
+            <div class="checkbox-area">
+              <label class="checkbox-item">
+                <input type="checkbox" name="focus" value="Βασικές γνώσεις" />
+                Βασικές γνώσεις
+              </label>
+              <label class="checkbox-item">
+                <input type="checkbox" name="focus" value="Κλινική σκέψη" />
+                Κλινική σκέψη
+              </label>
+              <label class="checkbox-item">
+                <input type="checkbox" name="focus" value="Λεπτομέρειες" />
+                Λεπτομέρειες
+              </label>
+              <label class="checkbox-item">
+                <input type="checkbox" name="focus" value="Διαφορική διάγνωση" />
+                Διαφορική διάγνωση
+              </label>
+              <label class="checkbox-item">
+                <input type="checkbox" name="focus" value="Θεραπεία" />
+                Θεραπεία
+              </label>
+              <label class="checkbox-item">
+                <input type="checkbox" name="focus" value="Επείγοντα / κλινικά περιστατικά" />
+                Επείγοντα / κλινικά περιστατικά
+              </label>
+            </div>
+
+            <label for="extra">Οτιδήποτε άλλο θέλεις να προσθέσεις</label>
+            <textarea id="extra" placeholder="Π.χ. Τι θα πρότεινες να διαβάσει κάποιος, τι σε βοήθησε, τι θα πρόσεχες αν ξαναέδινες..."></textarea>
+
+            <button class="btn" type="submit" style="margin-top: 18px;">
+              Αποθήκευση καταχώρησης
+            </button>
+
+          </form>
+        </div>
+      </section>
+
+      <!-- RIGHT COLUMN: ENTRIES -->
+      <section>
+
+        <div class="box">
+          <h2>Καταχωρήσεις φοιτητών</h2>
+          <div class="note">
+            Προς το παρόν οι καταχωρήσεις αποθηκεύονται δοκιμαστικά στον browser.
+            Αργότερα θα συνδεθούν με Supabase ώστε να εμφανίζονται σε όλους τους συνδεδεμένους φοιτητές.
+          </div>
+          <div id="entriesContainer"></div>
+        </div>
+
+      </section>
+
+    </div>
+
+  </main>
+
+  <footer>
+    GreekDoc — Φοιτητικές εμπειρίες εξετάσεων για καλύτερη προετοιμασία.
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+  <script>
+  const SUPABASE_URL = "https://ejbrdidhzmclbomoyeif.supabase.co";
+  const SUPABASE_ANON_KEY = "sb_publishable_AdbQ_HYiGJwWM43gQTuT_g_tCsNY6-g";
+
+  const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+  const form = document.getElementById("oralExamForm");
+  const entriesContainer = document.getElementById("entriesContainer");
+
+  function getSelectedFocus() {
+    const checked = document.querySelectorAll('input[name="focus"]:checked');
+    return Array.from(checked).map(item => item.value);
+  }
+
+  function escapeHTML(str) {
+    if (!str) return "";
+    return String(str).replace(/[&<>"']/g, function(match) {
+      const map = {
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': "&quot;",
+        "'": "&#039;"
+      };
+      return map[match];
+    });
+  }
+
+  function formatText(text) {
+    if (!text) return "";
+    return text
+      .split("\n")
+      .filter(line => line.trim() !== "")
+      .map(line => `<li>${escapeHTML(line.trim())}</li>`)
+      .join("");
+  }
+
+  async function loadEntries() {
+    entriesContainer.innerHTML = `
+      <div class="empty-state">
+        Φόρτωση καταχωρήσεων...
+      </div>
+    `;
+
+    const { data, error } = await supabaseClient
+      .from("orl_oral_exams")
+      .select("*")
+      .order("created_at", { ascending: false });
+
+    if (error) {
+      console.error(error);
+      entriesContainer.innerHTML = `
+        <div class="empty-state">
+          Δεν μπόρεσαν να φορτωθούν οι καταχωρήσεις.
+          <br>
+          Έλεγξε τα Supabase policies και το table name.
+        </div>
+      `;
+      return;
+    }
+
+    renderEntries(data || []);
+  }
+
+  function renderEntries(entries) {
+    entriesContainer.innerHTML = "";
+
+    if (!entries || entries.length === 0) {
+      entriesContainer.innerHTML = `
+        <div class="empty-state">
+          Δεν υπάρχουν ακόμη καταχωρήσεις. Πρόσθεσε την πρώτη εμπειρία προφορικής εξέτασης ΩΡΛ.
+        </div>
+      `;
+      return;
+    }
+
+    entries.forEach((entry) => {
+      const card = document.createElement("div");
+      card.className = "oral-card";
+
+      card.innerHTML = `
+        <h3>${escapeHTML(entry.exam_period || "Χωρίς αναφερόμενη εξεταστική")}</h3>
+
+        <div class="meta">
+          ${entry.clinic ? `<span class="tag">${escapeHTML(entry.clinic)}</span>` : ""}
+          ${entry.hospital ? `<span class="tag green">${escapeHTML(entry.hospital)}</span>` : ""}
+          ${entry.examiner ? `<span class="tag pink">Εξεταστής: ${escapeHTML(entry.examiner)}</span>` : ""}
+          ${entry.climate ? `<span class="tag yellow">${escapeHTML(entry.climate)}</span>` : ""}
+          ${entry.difficulty ? `<span class="tag orange">${escapeHTML(entry.difficulty)}</span>` : ""}
+          ${entry.approved ? `<span class="tag green">Εγκεκριμένο</span>` : `<span class="tag orange">Σε αναμονή έγκρισης</span>`}
+        </div>
+
+        ${entry.questions ? `
+          <div class="section-title">Ερωτήσεις που έγιναν</div>
+          <ul>${formatText(entry.questions)}</ul>
+        ` : ""}
+
+        ${entry.procedure ? `
+          <div class="section-title">Διαδικασία εξέτασης</div>
+          <p>${escapeHTML(entry.procedure)}</p>
+        ` : ""}
+
+        ${entry.examiner_style ? `
+          <div class="section-title">Ύφος εξεταστή</div>
+          <p>${escapeHTML(entry.examiner_style)}</p>
+        ` : ""}
+
+        ${entry.focus && entry.focus.length > 0 ? `
+          <div class="section-title">Τι ζητήθηκε περισσότερο</div>
+          <div class="meta">
+            ${entry.focus.map(item => `<span class="tag">${escapeHTML(item)}</span>`).join("")}
+          </div>
+        ` : ""}
+
+        ${entry.grade_info || entry.grade_fairness ? `
+          <div class="section-title">Βαθμός / αίσθηση δικαιοσύνης</div>
+          <p>
+            ${entry.grade_info ? `<strong>Πληροφορία βαθμού:</strong> ${escapeHTML(entry.grade_info)}<br>` : ""}
+            ${entry.grade_fairness ? `<strong>Αίσθηση φοιτητή:</strong> ${escapeHTML(entry.grade_fairness)}` : ""}
+          </p>
+        ` : ""}
+
+        ${entry.extra ? `
+          <div class="section-title">Επιπλέον σχόλιο</div>
+          <p>${escapeHTML(entry.extra)}</p>
+        ` : ""}
+      `;
+
+      entriesContainer.appendChild(card);
+    });
+  }
+
+  form.addEventListener("submit", async function(event) {
+    event.preventDefault();
+
+    const newEntry = {
+      clinic: document.getElementById("clinic").value.trim(),
+      hospital: document.getElementById("hospital").value.trim(),
+      examiner: document.getElementById("examiner").value.trim(),
+      exam_period: document.getElementById("examPeriod").value.trim(),
+
+      questions: document.getElementById("questions").value.trim(),
+      procedure: document.getElementById("procedure").value.trim(),
+      climate: document.getElementById("climate").value,
+      difficulty: document.getElementById("difficulty").value,
+      examiner_style: document.getElementById("examinerStyle").value,
+
+      grade_info: document.getElementById("gradeInfo").value.trim(),
+      grade_fairness: document.getElementById("gradeFairness").value,
+      focus: getSelectedFocus(),
+      extra: document.getElementById("extra").value.trim(),
+
+      approved: false
+    };
+
+    if (!newEntry.questions && !newEntry.procedure && !newEntry.extra) {
+      alert("Γράψε τουλάχιστον τις ερωτήσεις, τη διαδικασία ή κάποιο σχόλιο.");
+      return;
+    }
+
+    const { error } = await supabaseClient
+      .from("orl_oral_exams")
+      .insert([newEntry]);
+
+    if (error) {
+      console.error(error);
+      alert("Δεν αποθηκεύτηκε η καταχώρηση. Έλεγξε Supabase table/policies.");
+      return;
+    }
+
+    alert("Η καταχώρηση αποθηκεύτηκε επιτυχώς.");
+
+    form.reset();
+    loadEntries();
+    entriesContainer.scrollIntoView({ behavior: "smooth" });
+  });
+
+  loadEntries();
+</script>
+
+</body>
+</html>
