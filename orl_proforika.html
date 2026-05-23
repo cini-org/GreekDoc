@@ -88,6 +88,12 @@
       opacity: 0.94;
     }
 
+    .btn:disabled {
+      opacity: 0.65;
+      cursor: not-allowed;
+      transform: none;
+    }
+
     .btn.secondary {
       background: white;
       color: var(--accent);
@@ -318,6 +324,68 @@
       margin-bottom: 8px;
     }
 
+
+
+    .auth-panel {
+      max-width: 620px;
+      margin: -18px auto 28px;
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .auth-panel h2 {
+      margin: 0 0 10px;
+      color: var(--accent);
+    }
+
+    .auth-panel p {
+      color: var(--muted);
+      margin: 0 0 14px;
+    }
+
+    .auth-status {
+      margin-top: 12px;
+      padding: 11px 13px;
+      border-radius: 14px;
+      background: var(--accent-light);
+      color: #4b3446;
+      display: none;
+    }
+
+    .auth-status.error {
+      display: block;
+      background: #fee2e2;
+      color: #991b1b;
+      border: 1px solid #fecaca;
+    }
+
+    .auth-status.success {
+      display: block;
+      background: var(--green);
+      color: #166534;
+      border: 1px solid #bbf7d0;
+    }
+
+    .user-bar {
+      max-width: 1150px;
+      margin: -10px auto 22px;
+      padding: 0 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
     footer {
       text-align: center;
       color: var(--muted);
@@ -368,11 +436,37 @@
     </p>
   </header>
 
-  <main>
+  <section id="loginSection" class="auth-panel hidden">
+    <h2>Σύνδεση φοιτητή</h2>
+    <p>
+      Για να δεις ή να προσθέσεις καταχωρήσεις, χρησιμοποίησε ακαδημαϊκό email ΑΠΘ
+      που τελειώνει σε <strong>@auth.gr</strong>.
+    </p>
+
+    <form id="loginForm">
+      <label for="loginEmail">Ακαδημαϊκό email</label>
+      <input id="loginEmail" type="email" placeholder="π.χ. username@auth.gr" autocomplete="email" required />
+      <button class="btn" id="loginButton" type="submit" style="margin-top: 14px;">
+        Αποστολή magic link
+      </button>
+    </form>
+
+    <div id="loginStatus" class="auth-status"></div>
+  </section>
+
+  <div id="userBar" class="user-bar hidden">
+    <div>Συνδεδεμένος/η ως <strong id="userEmail"></strong></div>
+    <button class="btn secondary" id="logoutButton" type="button">Αποσύνδεση</button>
+  </div>
+
+  <main id="appContent" class="hidden">
 
     <div class="top-actions">
       <button class="btn" onclick="document.getElementById('entryForm').scrollIntoView({behavior:'smooth'})">
         + Νέα καταχώρηση
+      </button>
+      <button class="btn secondary" onclick="window.print()">
+        Εκτύπωση καταχωρήσεων
       </button>
     </div>
 
@@ -537,8 +631,8 @@
         <div class="box">
           <h2>Καταχωρήσεις φοιτητών</h2>
           <div class="note">
-            Προς το παρόν οι καταχωρήσεις αποθηκεύονται δοκιμαστικά στον browser.
-            Αργότερα θα συνδεθούν με Supabase ώστε να εμφανίζονται σε όλους τους συνδεδεμένους φοιτητές.
+            Οι καταχωρήσεις αποθηκεύονται στο Supabase και εμφανίζονται άμεσα στη σελίδα.
+            Πρόσβαση έχουν μόνο συνδεδεμένοι χρήστες με επιτρεπόμενο ακαδημαϊκό email.
           </div>
           <div id="entriesContainer"></div>
         </div>
@@ -556,184 +650,311 @@
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
   <script>
-  const SUPABASE_URL = "https://ejbrdidhzmclbomoyeif.supabase.co";
-  const SUPABASE_ANON_KEY = "sb_publishable_AdbQ_HYiGJwWM43gQTuT_g_tCsNY6-g";
+    const SUPABASE_URL = "https://ejbrdidhzmclbomoyeif.supabase.co";
+    const SUPABASE_ANON_KEY = "sb_publishable_AdbQ_HYiGJwWM43gQTuT_g_tCsNY6-g";
+    const REQUIRED_EMAIL_DOMAIN = "@auth.gr";
 
-  const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+    const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-  const form = document.getElementById("oralExamForm");
-  const entriesContainer = document.getElementById("entriesContainer");
+    const loginSection = document.getElementById("loginSection");
+    const loginForm = document.getElementById("loginForm");
+    const loginEmail = document.getElementById("loginEmail");
+    const loginButton = document.getElementById("loginButton");
+    const loginStatus = document.getElementById("loginStatus");
+    const userBar = document.getElementById("userBar");
+    const userEmail = document.getElementById("userEmail");
+    const logoutButton = document.getElementById("logoutButton");
+    const appContent = document.getElementById("appContent");
 
-  function getSelectedFocus() {
-    const checked = document.querySelectorAll('input[name="focus"]:checked');
-    return Array.from(checked).map(item => item.value);
-  }
+    const form = document.getElementById("oralExamForm");
+    const entriesContainer = document.getElementById("entriesContainer");
+    const submitButton = form.querySelector('button[type="submit"]');
 
-  function escapeHTML(str) {
-    if (!str) return "";
-    return String(str).replace(/[&<>"']/g, function(match) {
-      const map = {
-        "&": "&amp;",
-        "<": "&lt;",
-        ">": "&gt;",
-        '"': "&quot;",
-        "'": "&#039;"
-      };
-      return map[match];
+    function showStatus(message, type = "success") {
+      loginStatus.textContent = message;
+      loginStatus.className = `auth-status ${type}`;
+    }
+
+    function hideStatus() {
+      loginStatus.textContent = "";
+      loginStatus.className = "auth-status";
+    }
+
+    function isAuthEmail(email) {
+      return String(email || "").trim().toLowerCase().endsWith(REQUIRED_EMAIL_DOMAIN);
+    }
+
+    function showLogin(message = "") {
+      appContent.classList.add("hidden");
+      userBar.classList.add("hidden");
+      loginSection.classList.remove("hidden");
+      if (message) showStatus(message, "error");
+    }
+
+    async function showApp(session) {
+      const email = session?.user?.email || "";
+
+      if (!isAuthEmail(email)) {
+        await supabaseClient.auth.signOut();
+        showLogin("Η πρόσβαση επιτρέπεται μόνο με email που τελειώνει σε @auth.gr.");
+        return;
+      }
+
+      hideStatus();
+      userEmail.textContent = email;
+      loginSection.classList.add("hidden");
+      userBar.classList.remove("hidden");
+      appContent.classList.remove("hidden");
+      await loadEntries();
+    }
+
+    async function checkSession() {
+      const { data, error } = await supabaseClient.auth.getSession();
+
+      if (error) {
+        console.error(error);
+        showLogin("Δεν μπόρεσε να ελεγχθεί η σύνδεση. Δοκίμασε ξανά.");
+        return;
+      }
+
+      if (data.session) {
+        await showApp(data.session);
+      } else {
+        showLogin();
+      }
+    }
+
+    loginForm.addEventListener("submit", async function(event) {
+      event.preventDefault();
+      hideStatus();
+
+      const email = loginEmail.value.trim().toLowerCase();
+
+      if (!isAuthEmail(email)) {
+        showStatus("Χρησιμοποίησε email που τελειώνει σε @auth.gr.", "error");
+        return;
+      }
+
+      loginButton.disabled = true;
+      loginButton.textContent = "Αποστολή...";
+
+      const redirectTo = window.location.href.split("#")[0];
+      const { error } = await supabaseClient.auth.signInWithOtp({
+        email,
+        options: {
+          emailRedirectTo: redirectTo
+        }
+      });
+
+      if (error) {
+        console.error(error);
+        showStatus("Δεν στάλθηκε το email σύνδεσης. Έλεγξε τις ρυθμίσεις Auth/Redirect URLs στο Supabase.", "error");
+      } else {
+        showStatus("Στάλθηκε magic link στο email σου. Άνοιξέ το για να συνδεθείς.", "success");
+      }
+
+      loginButton.disabled = false;
+      loginButton.textContent = "Αποστολή magic link";
     });
-  }
 
-  function formatText(text) {
-    if (!text) return "";
-    return text
-      .split("\n")
-      .filter(line => line.trim() !== "")
-      .map(line => `<li>${escapeHTML(line.trim())}</li>`)
-      .join("");
-  }
+    logoutButton.addEventListener("click", async function() {
+      await supabaseClient.auth.signOut();
+      showLogin();
+    });
 
-  async function loadEntries() {
-    entriesContainer.innerHTML = `
-      <div class="empty-state">
-        Φόρτωση καταχωρήσεων...
-      </div>
-    `;
+    supabaseClient.auth.onAuthStateChange(async (_event, session) => {
+      if (session) {
+        await showApp(session);
+      } else {
+        showLogin();
+      }
+    });
 
-    const { data, error } = await supabaseClient
-      .from("orl_oral_exams")
-      .select("*")
-      .order("created_at", { ascending: false });
-
-    if (error) {
-      console.error(error);
-      entriesContainer.innerHTML = `
-        <div class="empty-state">
-          Δεν μπόρεσαν να φορτωθούν οι καταχωρήσεις.
-          <br>
-          Έλεγξε τα Supabase policies και το table name.
-        </div>
-      `;
-      return;
+    function getSelectedFocus() {
+      const checked = document.querySelectorAll('input[name="focus"]:checked');
+      return Array.from(checked).map(item => item.value);
     }
 
-    renderEntries(data || []);
-  }
-
-  function renderEntries(entries) {
-    entriesContainer.innerHTML = "";
-
-    if (!entries || entries.length === 0) {
-      entriesContainer.innerHTML = `
-        <div class="empty-state">
-          Δεν υπάρχουν ακόμη καταχωρήσεις. Πρόσθεσε την πρώτη εμπειρία προφορικής εξέτασης ΩΡΛ.
-        </div>
-      `;
-      return;
+    function escapeHTML(str) {
+      if (!str) return "";
+      return String(str).replace(/[&<>"']/g, function(match) {
+        const map = {
+          "&": "&amp;",
+          "<": "&lt;",
+          ">": "&gt;",
+          '"': "&quot;",
+          "'": "&#039;"
+        };
+        return map[match];
+      });
     }
 
-    entries.forEach((entry) => {
-      const card = document.createElement("div");
-      card.className = "oral-card";
+    function formatText(text) {
+      if (!text) return "";
+      return text
+        .split("\n")
+        .filter(line => line.trim() !== "")
+        .map(line => `<li>${escapeHTML(line.trim())}</li>`)
+        .join("");
+    }
 
-      card.innerHTML = `
-        <h3>${escapeHTML(entry.exam_period || "Χωρίς αναφερόμενη εξεταστική")}</h3>
-
-        <div class="meta">
-          ${entry.clinic ? `<span class="tag">${escapeHTML(entry.clinic)}</span>` : ""}
-          ${entry.hospital ? `<span class="tag green">${escapeHTML(entry.hospital)}</span>` : ""}
-          ${entry.examiner ? `<span class="tag pink">Εξεταστής: ${escapeHTML(entry.examiner)}</span>` : ""}
-          ${entry.climate ? `<span class="tag yellow">${escapeHTML(entry.climate)}</span>` : ""}
-          ${entry.difficulty ? `<span class="tag orange">${escapeHTML(entry.difficulty)}</span>` : ""}
-          ${entry.approved ? `<span class="tag green">Εγκεκριμένο</span>` : `<span class="tag orange">Σε αναμονή έγκρισης</span>`}
+    async function loadEntries() {
+      entriesContainer.innerHTML = `
+        <div class="empty-state">
+          Φόρτωση καταχωρήσεων...
         </div>
+      `;
 
-        ${entry.questions ? `
-          <div class="section-title">Ερωτήσεις που έγιναν</div>
-          <ul>${formatText(entry.questions)}</ul>
-        ` : ""}
+      const { data, error } = await supabaseClient
+        .from("orl_oral_exams")
+        .select("*")
+        .order("created_at", { ascending: false });
 
-        ${entry.procedure ? `
-          <div class="section-title">Διαδικασία εξέτασης</div>
-          <p>${escapeHTML(entry.procedure)}</p>
-        ` : ""}
-
-        ${entry.examiner_style ? `
-          <div class="section-title">Ύφος εξεταστή</div>
-          <p>${escapeHTML(entry.examiner_style)}</p>
-        ` : ""}
-
-        ${entry.focus && entry.focus.length > 0 ? `
-          <div class="section-title">Τι ζητήθηκε περισσότερο</div>
-          <div class="meta">
-            ${entry.focus.map(item => `<span class="tag">${escapeHTML(item)}</span>`).join("")}
+      if (error) {
+        console.error(error);
+        entriesContainer.innerHTML = `
+          <div class="empty-state">
+            Δεν μπόρεσαν να φορτωθούν οι καταχωρήσεις.
+            <br>
+            Αν το email σου είναι @auth.gr, έλεγξε τα RLS policies ή τη λίστα αποκλεισμένων emails.
           </div>
-        ` : ""}
+        `;
+        return;
+      }
 
-        ${entry.grade_info || entry.grade_fairness ? `
-          <div class="section-title">Βαθμός / αίσθηση δικαιοσύνης</div>
-          <p>
-            ${entry.grade_info ? `<strong>Πληροφορία βαθμού:</strong> ${escapeHTML(entry.grade_info)}<br>` : ""}
-            ${entry.grade_fairness ? `<strong>Αίσθηση φοιτητή:</strong> ${escapeHTML(entry.grade_fairness)}` : ""}
-          </p>
-        ` : ""}
+      renderEntries(data || []);
+    }
 
-        ${entry.extra ? `
-          <div class="section-title">Επιπλέον σχόλιο</div>
-          <p>${escapeHTML(entry.extra)}</p>
-        ` : ""}
-      `;
+    function renderEntries(entries) {
+      entriesContainer.innerHTML = "";
 
-      entriesContainer.appendChild(card);
+      if (!entries || entries.length === 0) {
+        entriesContainer.innerHTML = `
+          <div class="empty-state">
+            Δεν υπάρχουν ακόμη καταχωρήσεις. Πρόσθεσε την πρώτη εμπειρία προφορικής εξέτασης ΩΡΛ.
+          </div>
+        `;
+        return;
+      }
+
+      entries.forEach((entry) => {
+        const card = document.createElement("div");
+        card.className = "oral-card";
+
+        card.innerHTML = `
+          <h3>${escapeHTML(entry.exam_period || "Χωρίς αναφερόμενη εξεταστική")}</h3>
+
+          <div class="meta">
+            ${entry.clinic ? `<span class="tag">${escapeHTML(entry.clinic)}</span>` : ""}
+            ${entry.hospital ? `<span class="tag green">${escapeHTML(entry.hospital)}</span>` : ""}
+            ${entry.examiner ? `<span class="tag pink">Εξεταστής: ${escapeHTML(entry.examiner)}</span>` : ""}
+            ${entry.climate ? `<span class="tag yellow">${escapeHTML(entry.climate)}</span>` : ""}
+            ${entry.difficulty ? `<span class="tag orange">${escapeHTML(entry.difficulty)}</span>` : ""}
+          </div>
+
+          ${entry.questions ? `
+            <div class="section-title">Ερωτήσεις που έγιναν</div>
+            <ul>${formatText(entry.questions)}</ul>
+          ` : ""}
+
+          ${entry.procedure ? `
+            <div class="section-title">Διαδικασία εξέτασης</div>
+            <p>${escapeHTML(entry.procedure)}</p>
+          ` : ""}
+
+          ${entry.examiner_style ? `
+            <div class="section-title">Ύφος εξεταστή</div>
+            <p>${escapeHTML(entry.examiner_style)}</p>
+          ` : ""}
+
+          ${entry.focus && entry.focus.length > 0 ? `
+            <div class="section-title">Τι ζητήθηκε περισσότερο</div>
+            <div class="meta">
+              ${entry.focus.map(item => `<span class="tag">${escapeHTML(item)}</span>`).join("")}
+            </div>
+          ` : ""}
+
+          ${entry.grade_info || entry.grade_fairness ? `
+            <div class="section-title">Βαθμός / αίσθηση δικαιοσύνης</div>
+            <p>
+              ${entry.grade_info ? `<strong>Πληροφορία βαθμού:</strong> ${escapeHTML(entry.grade_info)}<br>` : ""}
+              ${entry.grade_fairness ? `<strong>Αίσθηση φοιτητή:</strong> ${escapeHTML(entry.grade_fairness)}` : ""}
+            </p>
+          ` : ""}
+
+          ${entry.extra ? `
+            <div class="section-title">Επιπλέον σχόλιο</div>
+            <p>${escapeHTML(entry.extra)}</p>
+          ` : ""}
+        `;
+
+        entriesContainer.appendChild(card);
+      });
+    }
+
+    form.addEventListener("submit", async function(event) {
+      event.preventDefault();
+      submitButton.disabled = true;
+      submitButton.textContent = "Αποθήκευση...";
+
+      const { data: sessionData } = await supabaseClient.auth.getSession();
+      if (!sessionData.session || !isAuthEmail(sessionData.session.user.email)) {
+        alert("Πρέπει πρώτα να συνδεθείς με email @auth.gr.");
+        submitButton.disabled = false;
+        submitButton.textContent = "Αποθήκευση καταχώρησης";
+        showLogin();
+        return;
+      }
+
+      const newEntry = {
+        clinic: document.getElementById("clinic").value.trim(),
+        hospital: document.getElementById("hospital").value.trim(),
+        examiner: document.getElementById("examiner").value.trim(),
+        exam_period: document.getElementById("examPeriod").value.trim(),
+
+        questions: document.getElementById("questions").value.trim(),
+        procedure: document.getElementById("procedure").value.trim(),
+        climate: document.getElementById("climate").value,
+        difficulty: document.getElementById("difficulty").value,
+        examiner_style: document.getElementById("examinerStyle").value,
+
+        grade_info: document.getElementById("gradeInfo").value.trim(),
+        grade_fairness: document.getElementById("gradeFairness").value,
+        focus: getSelectedFocus(),
+        extra: document.getElementById("extra").value.trim()
+      };
+
+      if (!newEntry.questions && !newEntry.procedure && !newEntry.extra) {
+        alert("Γράψε τουλάχιστον τις ερωτήσεις, τη διαδικασία ή κάποιο σχόλιο.");
+        submitButton.disabled = false;
+        submitButton.textContent = "Αποθήκευση καταχώρησης";
+        return;
+      }
+
+      const { error } = await supabaseClient
+        .from("orl_oral_exams")
+        .insert([newEntry]);
+
+      if (error) {
+        console.error(error);
+        alert("Δεν αποθηκεύτηκε η καταχώρηση. Το email μπορεί να μην επιτρέπεται ή να υπάρχει θέμα στα RLS policies.");
+        submitButton.disabled = false;
+        submitButton.textContent = "Αποθήκευση καταχώρησης";
+        return;
+      }
+
+      alert("Η καταχώρηση αποθηκεύτηκε επιτυχώς.");
+
+      form.reset();
+      await loadEntries();
+      entriesContainer.scrollIntoView({ behavior: "smooth" });
+
+      submitButton.disabled = false;
+      submitButton.textContent = "Αποθήκευση καταχώρησης";
     });
-  }
 
-  form.addEventListener("submit", async function(event) {
-    event.preventDefault();
-
-    const newEntry = {
-      clinic: document.getElementById("clinic").value.trim(),
-      hospital: document.getElementById("hospital").value.trim(),
-      examiner: document.getElementById("examiner").value.trim(),
-      exam_period: document.getElementById("examPeriod").value.trim(),
-
-      questions: document.getElementById("questions").value.trim(),
-      procedure: document.getElementById("procedure").value.trim(),
-      climate: document.getElementById("climate").value,
-      difficulty: document.getElementById("difficulty").value,
-      examiner_style: document.getElementById("examinerStyle").value,
-
-      grade_info: document.getElementById("gradeInfo").value.trim(),
-      grade_fairness: document.getElementById("gradeFairness").value,
-      focus: getSelectedFocus(),
-      extra: document.getElementById("extra").value.trim(),
-
-      approved: false
-    };
-
-    if (!newEntry.questions && !newEntry.procedure && !newEntry.extra) {
-      alert("Γράψε τουλάχιστον τις ερωτήσεις, τη διαδικασία ή κάποιο σχόλιο.");
-      return;
-    }
-
-    const { error } = await supabaseClient
-      .from("orl_oral_exams")
-      .insert([newEntry]);
-
-    if (error) {
-      console.error(error);
-      alert("Δεν αποθηκεύτηκε η καταχώρηση. Έλεγξε Supabase table/policies.");
-      return;
-    }
-
-    alert("Η καταχώρηση αποθηκεύτηκε επιτυχώς.");
-
-    form.reset();
-    loadEntries();
-    entriesContainer.scrollIntoView({ behavior: "smooth" });
-  });
-
-  loadEntries();
-</script>
+    checkSession();
+  </script>
 
 </body>
 </html>
