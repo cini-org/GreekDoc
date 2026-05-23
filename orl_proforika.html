@@ -734,7 +734,7 @@
       loginButton.disabled = true;
       loginButton.textContent = "Αποστολή...";
 
-      const redirectTo = window.location.href.split("#")[0];
+      const redirectTo = "https://cini-org.github.io/GreekDoc/orl_proforika.html";
       const { error } = await supabaseClient.auth.signInWithOtp({
         email,
         options: {
@@ -746,7 +746,7 @@
         console.error(error);
         showStatus("Δεν στάλθηκε το email σύνδεσης. Έλεγξε τις ρυθμίσεις Auth/Redirect URLs στο Supabase.", "error");
       } else {
-        showStatus("Στάλθηκε magic link στο email σου. Άνοιξέ το για να συνδεθείς.", "success");
+        showStatus("Σφάλμα Supabase: " + error.message, "error");
       }
 
       loginButton.disabled = false;
