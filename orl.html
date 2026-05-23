@@ -14,7 +14,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>ΩτοΡινοΛαρυγοολογία | GreekDoc</title>
 
-  <style>
+ <style>
     * {
       margin: 0;
       padding: 0;
@@ -105,6 +105,46 @@
       box-shadow: 0 10px 20px rgba(44, 90, 160, 0.3);
     }
 
+    .student-only-card {
+      background: linear-gradient(135deg, #ffffff, #f7f9ff);
+      border: 1px solid #dbe6ff;
+      border-left: 6px solid #5a8dee;
+    }
+
+    .student-only-card h2 {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .student-note {
+      font-size: 0.95rem;
+      line-height: 1.7;
+      color: #44516b;
+      margin-bottom: 18px;
+    }
+
+    .student-badge {
+      display: inline-block;
+      margin-top: 10px;
+      background: #eef3ff;
+      color: #2c5aa0;
+      border: 1px solid #dbe6ff;
+      padding: 7px 12px;
+      border-radius: 999px;
+      font-size: 0.88rem;
+      font-weight: 700;
+    }
+
+    .btn.oral-btn {
+      background: linear-gradient(135deg, #7c3aed, #5a8dee);
+      box-shadow: 0 6px 14px rgba(124, 58, 237, 0.22);
+    }
+
+    .btn.oral-btn:hover {
+      box-shadow: 0 10px 20px rgba(124, 58, 237, 0.28);
+    }
+
     footer {
       text-align: center;
       padding: 25px;
@@ -147,6 +187,22 @@
       <a href="miti_orl.html" class="btn">Μύτη</a>
     </div>
 
+  </div>
+
+  <div class="card student-only-card">
+    <h2>🗣️ Προφορικές Εξετάσεις ΩΡΛ</h2>
+    <p class="student-note">
+      Χώρος καταγραφής εμπειριών από προφορικές εξετάσεις ΩΡΛ: ερωτήσεις που έγιναν,
+      κλινική, νοσοκομείο, διαδικασία εξέτασης και γενικό κλίμα.
+      <br>
+      <span class="student-badge">Πρόσβαση μόνο για φοιτητές ΑΠΘ</span>
+    </p>
+
+    <div class="buttons">
+      <a href="orl_proforika.html" class="btn oral-btn">
+        Είσοδος στα Προφορικά ΩΡΛ
+      </a>
+    </div>
   </div>
 
 </main>
