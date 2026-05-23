@@ -748,7 +748,7 @@
         console.error(error);
         showStatus("Δεν στάλθηκε το email σύνδεσης. Έλεγξε τις ρυθμίσεις Auth/Redirect URLs στο Supabase.", "error");
       } else {
-        showStatus("Σφάλμα Supabase: " + error.message, "error");
+        showStatus("Στάλθηκε magic link στο email σου. Άνοιξε το link για να συνδεθείς.", "success");
       }
 
       loginButton.disabled = false;
@@ -803,24 +803,54 @@
         </div>
       `;
 
-      const { data, error } = await supabaseClient
-        .from("orl_oral_exams")
-        .select("*")
-        .order("created_at", { ascending: false });
+      try {
+        const { data, error } = await supabaseClient
+          .from("orl_oral_exams")
+          .select("*")
+          .order("created_at", { ascending: false });
 
-      if (error) {
-        console.error(error);
+        console.log("SUPABASE DATA:", data);
+        console.log("SUPABASE ERROR:", error);
+
+        if (error) {
+          console.error(error);
+          entriesContainer.innerHTML = `
+            <div class="empty-state">
+              Δεν μπόρεσαν να φορτωθούν οι καταχωρήσεις.
+              <br><br>
+              <strong>Supabase error:</strong> ${escapeHTML(error.message || "Άγνωστο σφάλμα")}
+              <br><br>
+              Συνήθως αυτό σημαίνει ότι λείπει SELECT policy για authenticated users ή υπάρχει λάθος σε κάποιο column/policy.
+            </div>
+          `;
+          return;
+        }
+
+        renderEntries(data || []);
+      } catch (err) {
+        console.error("JS ERROR:", err);
         entriesContainer.innerHTML = `
           <div class="empty-state">
-            Δεν μπόρεσαν να φορτωθούν οι καταχωρήσεις.
-            <br>
-            Αν το email σου είναι @auth.gr, έλεγξε τα RLS policies ή τη λίστα αποκλεισμένων emails.
+            Κάτι έσπασε στο JavaScript και δεν ολοκληρώθηκε η φόρτωση.
+            <br><br>
+            <strong>Error:</strong> ${escapeHTML(err.message || String(err))}
           </div>
         `;
-        return;
       }
+    }
 
-      renderEntries(data || []);
+    function normalizeFocus(value) {
+      if (Array.isArray(value)) return value;
+      if (!value) return [];
+      if (typeof value === "string") {
+        try {
+          const parsed = JSON.parse(value);
+          if (Array.isArray(parsed)) return parsed;
+        } catch (e) {
+          return value.split(",").map(item => item.trim()).filter(Boolean);
+        }
+      }
+      return [];
     }
 
     function renderEntries(entries) {
@@ -836,6 +866,7 @@
       }
 
       entries.forEach((entry) => {
+        const focusItems = normalizeFocus(entry.focus);
         const card = document.createElement("div");
         card.className = "oral-card";
 
@@ -865,10 +896,10 @@
             <p>${escapeHTML(entry.examiner_style)}</p>
           ` : ""}
 
-          ${entry.focus && entry.focus.length > 0 ? `
+          ${focusItems.length > 0 ? `
             <div class="section-title">Τι ζητήθηκε περισσότερο</div>
             <div class="meta">
-              ${entry.focus.map(item => `<span class="tag">${escapeHTML(item)}</span>`).join("")}
+              ${focusItems.map(item => `<span class="tag">${escapeHTML(item)}</span>`).join("")}
             </div>
           ` : ""}
 
