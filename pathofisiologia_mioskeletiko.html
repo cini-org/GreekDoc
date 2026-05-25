@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GreekDoc — Μυοσκελετικό Σύστημα</title>
+
+<style>
+body{
+  margin:0;
+  padding:30px;
+  background:#faf8fc;
+  color:#2d2d2d;
+  font-family:Arial, sans-serif;
+  line-height:1.65;
+}
+
+.chapter-hero{
+  display:flex;
+  align-items:center;
+  gap:28px;
+  padding:34px;
+  margin-bottom:32px;
+  border-radius:28px;
+  background:linear-gradient(135deg,#f4edf8,#fff8f1);
+  box-shadow:0 4px 16px rgba(0,0,0,0.06);
+}
+
+.chapter-number{
+  font-size:92px;
+  font-weight:900;
+  color:#8d6aa8;
+}
+
+.chapter-hero h1{
+  margin:0;
+  font-size:42px;
+  color:#472c59;
+}
+
+.chapter-hero p{
+  color:#7d6987;
+  font-weight:600;
+}
+
+.section{
+  margin:36px 0;
+}
+
+.section-title{
+  font-size:30px;
+  color:#472c59;
+  border-bottom:4px solid #dcc9e7;
+  padding-bottom:10px;
+  margin-bottom:22px;
+}
+
+.box,.card,.exam-box{
+  padding:22px;
+  border-radius:22px;
+  margin:18px 0;
+  box-shadow:0 4px 16px rgba(0,0,0,0.06);
+}
+
+.purple{background:#f4edf8;}
+.green{background:#ebf8ef;}
+.pink{background:#fdecef;}
+.orange{background:#fff1e2;}
+.blue{background:#eef6ff;}
+.yellow{background:#fff7d9;}
+
+.grid-2{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:18px;
+}
+
+.grid-3{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:18px;
+}
+
+.card{
+  background:white;
+}
+
+.card h3{
+  margin-top:0;
+  color:#472c59;
+}
+
+.image-card{
+  background:white;
+  border:1px solid #e5d6eb;
+  border-radius:22px;
+  padding:14px;
+  margin:22px 0;
+  box-shadow:0 4px 16px rgba(0,0,0,0.05);
+}
+
+.image-card img{
+  width:100%;
+  border-radius:16px;
+  display:block;
+}
+
+.image-caption{
+  font-size:14px;
+  color:#6d5a75;
+  margin-top:10px;
+  text-align:center;
+  font-weight:600;
+}
+
+.tag{
+  display:inline-block;
+  padding:4px 10px;
+  border-radius:999px;
+  font-size:12px;
+  font-weight:800;
+  margin-bottom:10px;
+  background:#ffe7a8;
+  color:#6e4e00;
+}
+
+.exam-box{
+  background:#fff6d7;
+  border-left:7px solid #e0b548;
+}
+
+.exam-box h2{
+  margin-top:0;
+  color:#735500;
+}
+
+strong{
+  color:#3f2950;
+}
+
+ul{
+  padding-left:22px;
+}
+
+@media print{
+  body{padding:10px;background:white;}
+  .chapter-hero,.box,.card,.exam-box,.image-card{
+    break-inside:avoid;
+    box-shadow:none;
+  }
+}
+
+/* PRINT BUTTON */
+
+.print-btn{
+  position:fixed;
+
+  bottom:24px;
+  right:24px;
+
+  border:none;
+  border-radius:18px;
+
+  padding:14px 22px;
+
+  background:#cbb7d9;
+  color:#4c3a59;
+
+  font-size:15px;
+  font-weight:700;
+
+  cursor:pointer;
+
+  box-shadow:0 6px 18px rgba(0,0,0,0.12);
+
+  transition:0.2s;
+  z-index:999;
+}
+
+.print-btn:hover{
+  transform:translateY(-2px);
+
+  background:#b79acb;
+}
+
+.print-btn:hover{
+  transform:translateY(-2px);
+  background:#74548d;
+}
+
+/* SMART PRINT */
+
+@media print{
+
+  body{
+    padding:6mm;
+    font-size:11px;
+    line-height:1.35;
+    background:white;
+  }
+
+  .print-btn{
+    display:none;
+  }
+
+  .chapter-hero{
+    padding:16px;
+    margin-bottom:14px;
+  }
+
+  .chapter-number{
+    font-size:52px;
+  }
+
+  .chapter-hero h1{
+    font-size:24px;
+  }
+
+  .chapter-hero p{
+    font-size:11px;
+  }
+
+  .section{
+    margin:16px 0;
+  }
+
+  .section-title{
+    font-size:20px;
+    margin-bottom:12px;
+  }
+
+  .box,
+  .card,
+  .exam-box,
+  .image-card{
+    padding:12px;
+    margin:10px 0;
+    border-radius:14px;
+
+    box-shadow:none;
+
+    break-inside:avoid;
+    page-break-inside:avoid;
+  }
+
+  .card h3{
+    font-size:15px;
+    margin-bottom:6px;
+  }
+
+  p,li{
+    font-size:10.5px;
+  }
+
+  ul{
+    padding-left:16px;
+  }
+
+  .image-card img{
+    max-height:320px;
+    object-fit:contain;
+  }
+
+  .image-caption{
+    font-size:9px;
+    margin-top:5px;
+  }
+
+  .grid-2,
+  .grid-3{
+    gap:10px;
+  }
+
+}
+</style>
+</head>
+
+<body>
+
+<section class="chapter-hero">
+  <div class="chapter-number"></div>
+  <div>
+    <h1>Μυοσκελετικό Σύστημα</h1>
+    <p>Οστά • αρθρώσεις • τένοντες • μύες • συνδετικός ιστός</p>
+  </div>
+</section>
+
+<section class="section">
+  <h2 class="section-title">Εισαγωγή</h2>
+
+  <div class="box purple">
+    <p>Το <strong>μυοσκελετικό σύστημα</strong> αποτελείται από:</p>
+    <ul>
+      <li><strong>οστά</strong></li>
+      <li><strong>αρθρώσεις</strong></li>
+      <li><strong>τένοντες</strong></li>
+      <li><strong>μύες</strong></li>
+      <li><strong>συνδετικό ιστό</strong></li>
+    </ul>
+
+    <div class="grid-3">
+      <div class="card">
+        <h3>🦴 Στήριξη</h3>
+        <p>Υποστήριξη του σώματος.</p>
+      </div>
+
+      <div class="card">
+        <h3>🛡️ Προστασία</h3>
+        <p>Προστασία ζωτικών οργάνων.</p>
+      </div>
+
+      <div class="card">
+        <h3>🏃 Κίνηση</h3>
+        <p>Συνεργασία με το νευρικό σύστημα για κίνηση.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="box pink">
+    <span class="tag">HIGH-YIELD</span>
+    <p>Οι διαταραχές του μυοσκελετικού μπορεί να είναι <strong>οξείες</strong> ή <strong>χρόνιες</strong>.</p>
+    <p>Αίτια: <strong>γενετικά, ανοσολογικά, περιβαλλοντικά, διατροφικά, υπερχρησία</strong>.</p>
+  </div>
+</section>
+
+<section class="section">
+  <h2 class="section-title">Βασικά στοιχεία ανατομίας και φυσιολογίας</h2>
+
+  <div class="box orange">
+    <h3>Οστά</h3>
+    <p>Ο ανθρώπινος σκελετός αποτελείται από <strong>206 οστά</strong>.</p>
+    <p>Προστατεύει: <strong>καρδιά, πνεύμονες, εγκέφαλο</strong>.</p>
+    <p>Τα οστά είναι <strong>ζωντανός, μεταβολικά ενεργός ιστός</strong>.</p>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <h3>Φλοιώδες οστό</h3>
+      <ul>
+        <li><strong>συμπαγές</strong></li>
+        <li><strong>σκληρό</strong></li>
+        <li>παρέχει δύναμη</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>Σπογγώδες οστό</h3>
+      <ul>
+        <li><strong>πορώδες</strong></li>
+        <li>απορροφά ενέργεια</li>
+        <li>περιέχει μυελό</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="box green">
+    <h3>Αξονικός και περιφερικός σκελετός</h3>
+    <ul>
+      <li><strong>Αξονικός:</strong> κρανίο, σπονδυλική στήλη, θώρακας.</li>
+      <li><strong>Περιφερικός:</strong> ζώνη ώμου, άνω άκρα, ζώνη πυέλου, κάτω άκρα.</li>
+    </ul>
+  </div>
+
+  <div class="image-card">
+    <img src="myoskeletiko_eikones/aksonikos_periferikos_skeletos.png" alt="Αξονικός και περιφερικός σκελετός">
+    <div class="image-caption">Εικόνα: Αξονικός vs περιφερικός σκελετός.</div>
+  </div>
+</section>
+
+<section class="section">
+  <h2 class="section-title">Ταξινόμηση οστών</h2>
+
+  <div class="grid-2">
+    <div class="card">
+      <h3>Μακρά οστά</h3>
+      <p><strong>Επίφυση • διάφυση • μετάφυση</strong></p>
+      <p>Π.χ. <strong>μηριαίο, βραχιόνιο, κνήμη</strong>.</p>
+    </div>
+
+    <div class="card">
+      <h3>Βραχέα οστά</h3>
+      <p>Ίσο περίπου <strong>μήκος, πλάτος, ύψος</strong>.</p>
+      <p>Π.χ. <strong>οστά καρπού, οστά ταρσού</strong>.</p>
+    </div>
+
+    <div class="card">
+      <h3>Επίπεδα οστά</h3>
+      <p><strong>Προστασία οργάνων</strong> + βάση για <strong>μυϊκή πρόσφυση</strong>.</p>
+      <p>Π.χ. <strong>κρανίο, στέρνο, πλευρές, ωμοπλάτη</strong>.</p>
+    </div>
+
+    <div class="card">
+      <h3>Ανώμαλα οστά</h3>
+      <p><strong>Ακανόνιστο σχήμα</strong>.</p>
+      <p>Π.χ. <strong>σπόνδυλοι, ιερό οστό, κάτω γνάθος</strong>.</p>
+    </div>
+
+    <div class="card">
+      <h3>Σησαμοειδή οστά</h3>
+      <p>Προστατεύουν τένοντες και μειώνουν τριβή.</p>
+      <p>Π.χ. <strong>επιγονατίδα</strong>.</p>
+    </div>
+  </div>
+
+  <div class="image-card">
+    <img src="myoskeletiko_eikones/typoi_oston.png" alt="Τύποι οστών">
+    <div class="image-caption">Εικόνα: Τύποι οστών.</div>
+  </div>
+</section>
+
+<section class="section">
+  <h2 class="section-title">Δομή μακρού οστού</h2>
+
+  <div class="box purple">
+    <ul>
+      <li><strong>Επίφυση:</strong> άκρα του οστού.</li>
+      <li><strong>Διάφυση:</strong> επιμήκης άξονας.</li>
+      <li><strong>Μετάφυση:</strong> μεταξύ επίφυσης και διάφυσης.</li>
+      <li><strong>Πλάκα ανάπτυξης:</strong> διαμήκης ανάπτυξη οστών σε παιδιά/εφήβους.</li>
+    </ul>
+  </div>
+
+  <div class="box blue">
+    <p>Εξωτερικά: <strong>φλοιώδες οστό</strong>.</p>
+    <p>Εσωτερικά: <strong>σπογγώδες οστό + μυελός</strong>.</p>
+    <p><strong>Περιόστεο:</strong> καλύπτει την εξωτερική επιφάνεια και βοηθά στην επούλωση.</p>
+  </div>
+
+  <div class="image-card">
+    <img src="myoskeletiko_eikones/domi_makrou_ostou.png" alt="Δομή μακρού οστού">
+    <div class="image-caption">Εικόνα: Δομή μακρού οστού.</div>
+  </div>
+</section>
+
+<section class="section">
+  <h2 class="section-title">Οστικός ιστός</h2>
+
+  <div class="box orange">
+    <p>Βασικό δομικό στοιχείο: <strong>κολλαγόνο τύπου Ι</strong>.</p>
+  </div>
+
+  <div class="grid-3">
+    <div class="card">
+      <h3>Οστεοκλάστες</h3>
+      <p><strong>Απορρόφηση</strong> οστού.</p>
+    </div>
+
+    <div class="card">
+      <h3>Οστεοβλάστες</h3>
+      <p><strong>Σύνθεση</strong> οστικής μήτρας.</p>
+    </div>
+
+    <div class="card">
+      <h3>Οστεοκύτταρα</h3>
+      <p>Εγκλωβισμένοι <strong>οστεοβλάστες</strong>.</p>
+    </div>
+  </div>
+
+  <div class="image-card">
+    <img src="myoskeletiko_eikones/ostikos_istos.png" alt="Οστικός ιστός">
+    <div class="image-caption">Εικόνα: Οστικός ιστός — οστεοβλάστες, οστεοκλάστες, οστεοκύτταρα.</div>
+  </div>
+</section>
+
+<section class="section">
+  <h2 class="section-title">Οστά και μεταλλικά στοιχεία</h2>
+
+  <div class="box blue">
+    <ul>
+      <li><strong>99%</strong> του ασβεστίου</li>
+      <li><strong>80–85%</strong> του φωσφόρου</li>
+      <li><strong>66%</strong> του μαγνησίου</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section">
+  <h2 class="section-title">Ορμονική ρύθμιση των οστών</h2>
+
+  <div class="box blue">
+    <ul>
+      <li><strong>GH (Αυξητική ορμόνη):</strong> ανάπτυξη οστών.</li>
+      <li><strong>PTH (Παραθορμόνη):</strong> ↑ ασβέστιο αίματος, ↑ οστική αναδόμηση, [memory trick: PTH - Pulls The calcium Higher]</li>
+      <li><strong>Καλσιτονίνη:</strong> ↓ ασβέστιο αίματος, ↓ οστική απορρόφηση.</li>
+      <li><strong>Οιστρογόνα:</strong> ↓ οστεοκλάστες.</li>
+      <li><strong>Τεστοστερόνη:</strong> ↑ μυϊκή και οστική μάζα.</li>
+      <li><strong>Βιταμίνη D:</strong> μεταβολισμός Ca²⁺ και PO₄³⁻.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section">
+  <h2 class="section-title">Αρθρώσεις</h2>
+
+  <div class="box purple">
+    <p>Οι αρθρώσεις αποτελούνται από:</p>
+    <ul>
+      <li><strong>οστά</strong></li>
+      <li><strong>αρθρικό χόνδρο</strong></li>
+      <li><strong>αρθρικό υγρό</strong></li>
+      <li><strong>αρθρικό θύλακο</strong></li>
+      <li><strong>συνδέσμους</strong></li>
+      <li><strong>μυς και τένοντες</strong></li>
+    </ul>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <h3>Διάρθρωση</h3>
+      <p>Ο πιο κοινός τύπος άρθρωσης.</p>
+      <p>Έχει <strong>αρθρική κοιλότητα</strong> και <strong>αρθρικό υγρό</strong>.</p>
+    </div>
+
+    <div class="card">
+      <h3>Σύνδεσμοι</h3>
+      <p>Πυκνός συνδετικός ιστός.</p>
+      <p>Συνδέουν τα οστά και προσφέρουν <strong>στήριξη</strong>.</p>
+    </div>
+
+    <div class="card">
+      <h3>Αρθρικός χόνδρος</h3>
+      <p>Καλύπτει τις αρθρικές επιφάνειες.</p>
+      <p><strong>Δεν έχει νεύρωση</strong> → δεν είναι κύρια πηγή πόνου.</p>
+    </div>
+
+    <div class="card">
+      <h3>Αρθρικό υγρό</h3>
+      <p>Λιπαίνει τον χόνδρο.</p>
+      <p>Μεταφέρει <strong>θρεπτικά συστατικά</strong>.</p>
+    </div>
+  </div>
+
+  <div class="image-card">
+    <img src="myoskeletiko_eikones/diarthrosi.png" alt="Διάρθρωση">
+    <div class="image-caption">Εικόνα: Διάρθρωση — αρθρικός χόνδρος, αρθρική κοιλότητα, κάψουλα, σύνδεσμοι.</div>
+  </div>
+</section>
+
+<section class="section">
+  <h2 class="section-title">Μύες</h2>
+
+  <div class="box orange">
+    <p>Η κίνηση του σκελετού γίνεται από τους <strong>μύες</strong> που δρουν στα οστά.</p>
+    <p>Οι μύες συστέλλονται σε ομάδες: <strong>αγωνιστές</strong> και <strong>ανταγωνιστές</strong>.</p>
+  </div>
+
+  <div class="grid-3">
+    <div class="card">
+      <h3>Σκελετικοί μύες</h3>
+      <p><strong>Εκούσιοι</strong>.</p>
+      <p>Συνδέονται με οστά και τένοντες.</p>
+    </div>
+
+    <div class="card">
+      <h3>Λείοι μύες</h3>
+      <p><strong>Ακούσιοι</strong>.</p>
+      <p>Βρίσκονται σε κοίλα όργανα, αγγεία, δέρμα, αδένες.</p>
+    </div>
+
+    <div class="card">
+      <h3>Καρδιακός μυς</h3>
+      <p>Βρίσκεται μόνο στην <strong>καρδιά</strong>.</p>
+      <p>Είναι <strong>αυτόματος</strong> και <strong>ακούσιος</strong>.</p>
+    </div>
+  </div>
+
+</section>
+
+<section class="section">
+  <h2 class="section-title">Δομή σκελετικού μυός</h2>
+
+  <div class="box blue">
+    <p>Ο σκελετικός μυς αποτελείται από:</p>
+    <ul>
+      <li><strong>μυϊκές ίνες</strong></li>
+      <li><strong>συνδετικό ιστό</strong></li>
+      <li><strong>αιμοφόρα αγγεία</strong></li>
+      <li><strong>νεύρα</strong></li>
+    </ul>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <h3>Μυϊκή ίνα</h3>
+      <p>Κάθε μυϊκή ίνα περιβάλλεται από <strong>σαρκόλημμα</strong>.</p>
+      <p>Περιέχει <strong>μυοϊνίδια</strong>.</p>
+    </div>
+
+    <div class="card">
+      <h3>Συσταλτικές πρωτεΐνες</h3>
+      <p>Τα μυοϊνίδια αποτελούνται κυρίως από:</p>
+      <ul>
+        <li><strong>ακτίνη</strong></li>
+        <li><strong>μυοσίνη</strong></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="box yellow">
+    <span class="tag">HIGH-YIELD</span>
+    <p>
+      Η αύξηση της μυϊκής μάζας στους ενήλικες γίνεται κυρίως με
+      <strong>αύξηση μεγέθους των μυϊκών ινών</strong>, όχι με αύξηση του αριθμού τους.
+    </p>
+  </div>
+
+</section>
+
+<section class="exam-box">
+  <h2>🎯 Για τις εξετάσεις</h2>
+
+  <ul>
+    <li>Ο σκελετός έχει <strong>206 οστά</strong>.</li>
+    <li>Βασικοί τύποι: <strong>φλοιώδες + σπογγώδες οστό</strong>.</li>
+    <li>Μακρό οστό: <strong>επίφυση, διάφυση, μετάφυση</strong>.</li>
+    <li>Βασικό κολλαγόνο οστού: <strong>τύπου Ι</strong>.</li>
+    <li><strong>Οστεοκλάστες:</strong> απορρόφηση οστού.</li>
+    <li><strong>Οστεοβλάστες:</strong> σύνθεση οστικής μήτρας.</li>
+    <li>Ο αρθρικός χόνδρος <strong>δεν έχει νεύρωση</strong>.</li>
+    <li>Το αρθρικό υγρό <strong>λιπαίνει</strong> και θρέφει τον χόνδρο.</li>
+    <li>Τύποι μυών: <strong>σκελετικοί, λείοι, καρδιακός</strong>.</li>
+    <li>Συσταλτικές πρωτεΐνες: <strong>ακτίνη + μυοσίνη</strong>.</li>
+    <li>Η μυϊκή ανάπτυξη στους ενήλικες γίνεται κυρίως με <strong>υπερτροφία</strong>.</li>
+  </ul>
+</section>
+<button class="print-btn" onclick="window.print()">
+  🖨️ Εκτύπωση σημειώσεων
+</button>
+</body>
+</html>
