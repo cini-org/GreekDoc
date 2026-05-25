@@ -43,6 +43,7 @@
       color: white;
       padding: 42px 20px;
       text-align: center;
+      position: relative;
     }
 
     header h1 {
@@ -56,6 +57,40 @@
       margin: 16px auto 0;
       font-size: 1.05rem;
       opacity: 0.95;
+    }
+
+
+    .back-link {
+      position: absolute;
+      top: 18px;
+      left: 18px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      text-decoration: none;
+      background: rgba(255, 255, 255, 0.18);
+      color: white;
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      border-radius: 999px;
+      padding: 9px 15px;
+      font-weight: 750;
+      font-size: 0.92rem;
+      backdrop-filter: blur(6px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.10);
+      transition: 0.2s ease;
+    }
+
+    .back-link:hover {
+      transform: translateY(-1px);
+      background: rgba(255, 255, 255, 0.28);
+    }
+
+    @media (max-width: 600px) {
+      .back-link {
+        position: static;
+        margin: 0 auto 18px;
+        width: fit-content;
+      }
     }
 
     main {
@@ -405,6 +440,7 @@
       .top-actions,
       .form-column,
       .delete-btn,
+      .back-link,
       footer {
         display: none !important;
       }
@@ -431,6 +467,7 @@
 <body>
 
   <header>
+    <a href="orl.html" class="back-link">← Πίσω στο ΩΡΛ</a>
     <h1>Προφορικές Εξετάσεις ΩΡΛ</h1>
     <p>
       Καταγραφή εμπειριών από προφορικές εξετάσεις ΩΡΛ: κλινική, νοσοκομείο,
@@ -470,6 +507,9 @@
       <button class="btn secondary" onclick="window.print()">
         Εκτύπωση καταχωρήσεων
       </button>
+      <a class="btn secondary" href="orl.html" style="text-decoration:none; display:inline-flex; align-items:center;">
+        Άνοιγμα σελίδας ΩΡΛ
+      </a>
     </div>
 
     <div class="grid">
