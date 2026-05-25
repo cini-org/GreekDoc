@@ -760,13 +760,15 @@
       showLogin();
     });
 
-    supabaseClient.auth.onAuthStateChange(async (_event, session) => {
-      if (session) {
-        await showApp(session);
-      } else {
-        showLogin();
-      }
-    });
+  supabaseClient.auth.onAuthStateChange((_event, session) => {
+  setTimeout(() => {
+    if (session) {
+      showApp(session);
+    } else {
+      showLogin();
+    }
+  }, 0);
+});
 
     function getSelectedFocus() {
       const checked = document.querySelectorAll('input[name="focus"]:checked');
@@ -797,47 +799,47 @@
     }
 
     async function loadEntries() {
+  entriesContainer.innerHTML = `
+    <div class="empty-state">
+      Φόρτωση καταχωρήσεων...
+    </div>
+  `;
+
+  try {
+    console.log("START loadEntries");
+
+    const { data, error } = await supabaseClient
+      .from("orl_oral_exams")
+      .select("*")
+      .order("created_at", { ascending: false });
+
+    console.log("END loadEntries");
+    console.log("SUPABASE DATA:", data);
+    console.log("SUPABASE ERROR:", error);
+
+    if (error) {
       entriesContainer.innerHTML = `
         <div class="empty-state">
-          Φόρτωση καταχωρήσεων...
+          Δεν μπόρεσαν να φορτωθούν οι καταχωρήσεις.
+          <br><br>
+          <strong>Supabase error:</strong> ${escapeHTML(error.message || "Άγνωστο σφάλμα")}
         </div>
       `;
-
-      try {
-        const { data, error } = await supabaseClient
-          .from("orl_oral_exams")
-          .select("*")
-          .order("created_at", { ascending: false });
-
-        console.log("SUPABASE DATA:", data);
-        console.log("SUPABASE ERROR:", error);
-
-        if (error) {
-          console.error(error);
-          entriesContainer.innerHTML = `
-            <div class="empty-state">
-              Δεν μπόρεσαν να φορτωθούν οι καταχωρήσεις.
-              <br><br>
-              <strong>Supabase error:</strong> ${escapeHTML(error.message || "Άγνωστο σφάλμα")}
-              <br><br>
-              Συνήθως αυτό σημαίνει ότι λείπει SELECT policy για authenticated users ή υπάρχει λάθος σε κάποιο column/policy.
-            </div>
-          `;
-          return;
-        }
-
-        renderEntries(data || []);
-      } catch (err) {
-        console.error("JS ERROR:", err);
-        entriesContainer.innerHTML = `
-          <div class="empty-state">
-            Κάτι έσπασε στο JavaScript και δεν ολοκληρώθηκε η φόρτωση.
-            <br><br>
-            <strong>Error:</strong> ${escapeHTML(err.message || String(err))}
-          </div>
-        `;
-      }
+      return;
     }
+
+    renderEntries(data || []);
+  } catch (err) {
+    console.error("JS ERROR:", err);
+    entriesContainer.innerHTML = `
+      <div class="empty-state">
+        Κάτι έσπασε στο JavaScript.
+        <br><br>
+        <strong>Error:</strong> ${escapeHTML(err.message || String(err))}
+      </div>
+    `;
+  }
+}
 
     function normalizeFocus(value) {
       if (Array.isArray(value)) return value;
