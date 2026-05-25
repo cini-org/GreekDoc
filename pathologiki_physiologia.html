@@ -2,7 +2,8 @@
 <html lang="el">
 <head>
   <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-E7X9XN8DC0"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-E7X9XN8DC0"></script>
+
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Παθολογική Φυσιολογία | GreekDoc</title>
@@ -22,11 +23,36 @@
     }
 
     header {
+      position: relative;
       background: linear-gradient(135deg, #3a6ea5, #5a8dee);
       color: white;
       text-align: center;
       padding: 30px 20px;
       box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+    }
+
+    .home-btn {
+      position: absolute;
+      top: 18px;
+      left: 18px;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: rgba(255, 255, 255, 0.18);
+      color: white;
+      text-decoration: none;
+      padding: 9px 14px;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      backdrop-filter: blur(6px);
+      transition: 0.25s ease;
+    }
+
+    .home-btn:hover {
+      background: rgba(255, 255, 255, 0.28);
+      transform: translateY(-2px);
     }
 
     header h1 {
@@ -105,12 +131,29 @@
       font-size: 0.9rem;
       margin-top: 40px;
     }
+
+    @media (max-width: 600px) {
+      header {
+        padding: 26px 18px 30px;
+      }
+
+      .home-btn {
+        position: static;
+        margin-bottom: 18px;
+      }
+
+      header h1 {
+        font-size: 1.8rem;
+      }
+    }
   </style>
 </head>
 
 <body>
 
 <header>
+  <a href="index.html" class="home-btn">← GreekDoc</a>
+
   <h1>Παθολογική Φυσιολογία</h1>
   <p>GreekDoc • Structured Medical Learning</p>
 </header>
@@ -121,8 +164,8 @@
     <h2>Πηγή Σημειώσεων</h2>
     <p class="source">
       Αυτή τη στιγμή οι σημειώσεις προέρχονται από το βιβλίο 
-      <strong>«Παθολογική Φυσιολογία, 3η έκδοση»</strong> με Συγγραφείς: 
-      Συλλογικό έργο, Επιμ. Ζεμπεκάκης Παντελής, Παπαϊωάννου Μαρία,
+      <strong>«Παθολογική Φυσιολογία, 3η έκδοση»</strong> με συγγραφείς: 
+      συλλογικό έργο, επιμ. Ζεμπεκάκης Παντελής, Παπαϊωάννου Μαρία,
       Εκδόσεις: University Studio Press.
       <br><br>
       Επίσημη ιστοσελίδα:
@@ -141,7 +184,6 @@
       <a href="aggeiako.html" class="btn">Αγγειακό Σύστημα Ι</a>
       <a href="pagreas.html" class="btn">Το Ενδοκρινές Πάγκρεας</a>
     </div>
-
   </div>
 
 </main>
