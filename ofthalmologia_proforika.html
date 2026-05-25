@@ -43,6 +43,7 @@
       color: white;
       padding: 42px 20px;
       text-align: center;
+      position: relative;
     }
 
     header h1 {
@@ -103,26 +104,37 @@
     }
 
     .back-link {
+      position: absolute;
+      top: 18px;
+      left: 18px;
       display: inline-flex;
       align-items: center;
       gap: 6px;
       text-decoration: none;
-      border-radius: 999px;
-      padding: 10px 16px;
-      font-weight: 800;
-      background: rgba(255,255,255,0.18);
+      background: rgba(255, 255, 255, 0.18);
       color: white;
-      border: 1px solid rgba(255,255,255,0.35);
-      box-shadow: 0 10px 24px rgba(0,0,0,0.08);
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      border-radius: 999px;
+      padding: 9px 15px;
+      font-weight: 750;
+      font-size: 0.92rem;
+      backdrop-filter: blur(6px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.10);
       transition: 0.2s ease;
-      margin-bottom: 18px;
     }
 
     .back-link:hover {
       transform: translateY(-1px);
-      background: rgba(255,255,255,0.28);
+      background: rgba(255, 255, 255, 0.28);
     }
 
+    @media (max-width: 600px) {
+      .back-link {
+        position: static;
+        margin: 0 auto 18px;
+        width: fit-content;
+      }
+    }
 
     .grid {
       display: grid;
@@ -488,9 +500,6 @@
   <main id="appContent" class="hidden">
 
     <div class="top-actions">
-      <a class="btn secondary" href="ofthalmologia.html" style="text-decoration:none;">
-        ← Πίσω στην Οφθαλμολογία
-      </a>
       <button class="btn" onclick="document.getElementById('entryForm').scrollIntoView({behavior:'smooth'})">
         + Νέα καταχώρηση
       </button>
