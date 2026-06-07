@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GreekDoc Quiz | Συστηματική Φαρμακολογία Οφθαλμολογία</title>
+  <style>
+    :root {
+      --navy: #102a43;
+      --blue: #4c8bf5;
+      --soft-blue: #eef5ff;
+      --green: #1f9d55;
+      --red: #d64545;
+      --gold: #f7c948;
+      --text: #243b53;
+      --muted: #627d98;
+      --card: #ffffff;
+      --bg: #f6f8fb;
+      --border: #d9e2ec;
+      --shadow: 0 14px 40px rgba(16, 42, 67, 0.10);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: "Inter", "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(76, 139, 245, 0.13), transparent 35%),
+        linear-gradient(180deg, #ffffff 0%, var(--bg) 45%, #edf2f7 100%);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .page {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 34px 18px 70px;
+    }
+
+    .hero {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 26px;
+      padding: 38px 34px;
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      right: -90px;
+      top: -90px;
+      width: 240px;
+      height: 240px;
+      background: rgba(76, 139, 245, 0.12);
+      border-radius: 50%;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      gap: 8px;
+      align-items: center;
+      font-size: 0.9rem;
+      color: var(--blue);
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    h1 {
+      color: var(--navy);
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      line-height: 1.1;
+      margin: 0 0 12px;
+      letter-spacing: -0.03em;
+    }
+
+    .subtitle {
+      font-size: 1.2rem;
+      color: var(--muted);
+      margin: 0 0 20px;
+    }
+
+    .source-box {
+      background: var(--soft-blue);
+      border-left: 5px solid var(--blue);
+      padding: 16px 18px;
+      border-radius: 16px;
+      margin-top: 20px;
+    }
+
+    .source-box strong { color: var(--navy); }
+
+    .controls {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      margin: 24px 0;
+      background: rgba(255,255,255,0.9);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 14px;
+      position: sticky;
+      top: 10px;
+      z-index: 10;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 8px 20px rgba(16,42,67,0.07);
+    }
+
+    .filter-buttons {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    .chip, .action-btn {
+      border: 1px solid var(--border);
+      background: #fff;
+      color: var(--navy);
+      border-radius: 999px;
+      padding: 9px 14px;
+      cursor: pointer;
+      font-weight: 750;
+      transition: 0.18s ease;
+    }
+
+    .chip:hover, .action-btn:hover {
+      transform: translateY(-1px);
+      border-color: var(--blue);
+    }
+
+    .chip.active {
+      background: var(--navy);
+      color: #fff;
+      border-color: var(--navy);
+    }
+
+    .score-pill {
+      background: #fff8e1;
+      color: #7c5e10;
+      border: 1px solid #f7d070;
+      border-radius: 999px;
+      padding: 9px 14px;
+      font-weight: 800;
+    }
+
+    .progress-wrap {
+      width: 100%;
+      height: 10px;
+      background: #e6edf5;
+      border-radius: 999px;
+      overflow: hidden;
+      margin-top: 10px;
+    }
+
+    .progress {
+      width: 0%;
+      height: 100%;
+      background: linear-gradient(90deg, var(--blue), var(--green));
+      transition: width 0.25s ease;
+    }
+
+    .section-title {
+      margin: 38px 0 16px;
+      color: var(--navy);
+      font-size: 1.65rem;
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 10px;
+    }
+
+    .question-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 24px;
+      margin: 18px 0;
+      box-shadow: 0 10px 28px rgba(16,42,67,0.07);
+    }
+
+    .question-meta {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      color: var(--muted);
+      font-weight: 800;
+      font-size: 0.88rem;
+      margin-bottom: 12px;
+    }
+
+    .question-card h2 {
+      margin: 0 0 18px;
+      font-size: 1.32rem;
+      color: var(--navy);
+      line-height: 1.38;
+    }
+
+    .options {
+      display: grid;
+      gap: 10px;
+    }
+
+    .option {
+      width: 100%;
+      text-align: left;
+      border: 1px solid var(--border);
+      background: #ffffff;
+      color: var(--text);
+      border-radius: 14px;
+      padding: 14px 16px;
+      cursor: pointer;
+      transition: 0.18s ease;
+      font-weight: 650;
+    }
+
+    .option:hover {
+      border-color: var(--blue);
+      background: #f8fbff;
+    }
+
+    .letter {
+      font-weight: 900;
+      color: var(--navy);
+      margin-right: 7px;
+    }
+
+    .option.correct {
+      border-color: rgba(31, 157, 85, 0.65);
+      background: #e9f8ef;
+      color: #14532d;
+    }
+
+    .option.wrong {
+      border-color: rgba(214, 69, 69, 0.65);
+      background: #fff0f0;
+      color: #7f1d1d;
+    }
+
+    .option.disabled {
+      cursor: default;
+      opacity: 0.78;
+    }
+
+    .feedback {
+      display: none;
+      margin-top: 14px;
+      border-radius: 14px;
+      padding: 13px 15px;
+      font-weight: 650;
+    }
+
+    .feedback.show {
+      display: block;
+    }
+
+    .feedback.good {
+      background: #e9f8ef;
+      color: #14532d;
+      border: 1px solid rgba(31, 157, 85, 0.25);
+    }
+
+    .feedback.bad {
+      background: #fff5f5;
+      color: #7f1d1d;
+      border: 1px solid rgba(214, 69, 69, 0.25);
+    }
+
+    .footer-note {
+      margin-top: 36px;
+      color: var(--muted);
+      font-size: 0.95rem;
+      text-align: center;
+    }
+
+    @media print {
+      .controls { display: none; }
+      body { background: #fff; }
+      .hero, .question-card { box-shadow: none; break-inside: avoid; }
+      .question-card { page-break-inside: avoid; }
+      .feedback { display: block; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <section class="hero">
+      <div class="eyebrow">GreekDoc Quiz</div>
+      <h1>Συστηματική Φαρμακολογία</h1>
+      <p class="subtitle"><strong>Οφθαλμολογία</strong> | Θέματα εξετάσεων</p>
+
+      <div class="source-box">
+        <strong>Συστηματική Φαρμακολογία — Οφθαλμολογία</strong> 
+        <br><br>
+        Περιλαμβάνονται ερωτήσεις από τις εξεταστικές
+        <strong>Ιουνίου-Ιουλίου 2024</strong>,
+        <strong>Ιουνίου-Ιουλίου 2023</strong> και
+        <strong>Σεπτεμβρίου 2023</strong>.
+      </div>
+    </section>
+
+    <section class="controls">
+      <div class="filter-buttons">
+        <button class="chip active" data-filter="all">Όλα</button>
+        <button class="chip" data-filter="Ιούνιος-Ιούλιος 2024">Ιούνιος-Ιούλιος 2024</button>
+        <button class="chip" data-filter="Ιούνιος-Ιούλιος 2023">Ιούνιος-Ιούλιος 2023</button>
+        <button class="chip" data-filter="Σεπτέμβριος 2023">Σεπτέμβριος 2023</button>
+      </div>
+      <div style="display:flex; gap:8px; align-items:center; flex-wrap:wrap;">
+        <span class="score-pill" id="score">Σκορ: 0 / 0</span>
+        <button class="action-btn" onclick="resetQuiz()">Επαναφορά</button>
+        <button class="action-btn" onclick="window.print()">Εκτύπωση</button>
+      </div>
+      <div class="progress-wrap"><div class="progress" id="progress"></div></div>
+    </section>
+
+    <h2 class="section-title" data-title="Ιούνιος-Ιούλιος 2024">Ιούνιος-Ιούλιος 2024</h2>
+    
+      <article class="question-card" data-section="Ιούνιος-Ιούλιος 2024">
+        <div class="question-meta">
+          <span>Ιούνιος-Ιούλιος 2024</span>
+          <span>Ερώτηση 1</span>
+        </div>
+        <h2>1. Επιλέξτε τη λανθασμένη φράση:</h2>
+        <div class="options">
+          
+          <button class="option" data-q="0" data-a="0">
+            <span class="letter">a)</span> τα τοπικά αναισθητικά κολλύρια μπορούν να προκαλέσουν άμεση επιθηλιακή και ενδοθηλιακή τοξικότητα
+          </button>
+          <button class="option" data-q="0" data-a="1">
+            <span class="letter">b)</span> τα αντιχολινεργικά κολλύρια μπορούν να προκαλέσουν διαταραχή στην αναγνώριση και την οδήγηση
+          </button>
+          <button class="option" data-q="0" data-a="2">
+            <span class="letter">c)</span> με τα αντιβιοτικά κολλύρια δεν υπάρχει κίνδυνος μόλυνσης
+          </button>
+          <button class="option" data-q="0" data-a="3">
+            <span class="letter">d)</span> οι χορηγούμενοι β-αποκλειστές σε μορφή κολλυρίου μπορούν να προκαλέσουν ασθματική κρίση
+          </button>
+        </div>
+        <div class="feedback" id="feedback-0"></div>
+      </article>
+    
+      <article class="question-card" data-section="Ιούνιος-Ιούλιος 2024">
+        <div class="question-meta">
+          <span>Ιούνιος-Ιούλιος 2024</span>
+          <span>Ερώτηση 2</span>
+        </div>
+        <h2>2. Απλαστική αναιμία μπορεί να προκληθεί με τη χρήση κολλυρίου:</h2>
+        <div class="options">
+          
+          <button class="option" data-q="1" data-a="0">
+            <span class="letter">a)</span> πιλοκαρπίνης
+          </button>
+          <button class="option" data-q="1" data-a="1">
+            <span class="letter">b)</span> τιμολόλης
+          </button>
+          <button class="option" data-q="1" data-a="2">
+            <span class="letter">c)</span> δεξαμεθαζόνης
+          </button>
+          <button class="option" data-q="1" data-a="3">
+            <span class="letter">d)</span> χλωραμφενικόλης
+          </button>
+        </div>
+        <div class="feedback" id="feedback-1"></div>
+      </article>
+    
+      <article class="question-card" data-section="Ιούνιος-Ιούλιος 2024">
+        <div class="question-meta">
+          <span>Ιούνιος-Ιούλιος 2024</span>
+          <span>Ερώτηση 3</span>
+        </div>
+        <h2>3. Τα δραστικά φαρμακευτικά συστατικά των κολλυρίων μπορεί να:</h2>
+        <div class="options">
+          
+          <button class="option" data-q="2" data-a="0">
+            <span class="letter">a)</span> έχουν αυξημένη βιοδιαθεσιμότητα γιατί αποφεύγουν το φαινόμενο της 1ης διόδου
+          </button>
+          <button class="option" data-q="2" data-a="1">
+            <span class="letter">b)</span> έχουν αυξημένη βιοδιαθεσιμότητα γιατί εφαρμόζονται μόνο στον οφθαλμό
+          </button>
+          <button class="option" data-q="2" data-a="2">
+            <span class="letter">c)</span> έχουν μειωμένη βιοδιαθεσιμότητα διότι απορροφούνται άμεσα από τον οφθαλμό
+          </button>
+          <button class="option" data-q="2" data-a="3">
+            <span class="letter">d)</span> έχουν την ίδια βιοδιαθεσιμότητα με τα από του στόματος χορηγούμενα φάρμακα
+          </button>
+        </div>
+        <div class="feedback" id="feedback-2"></div>
+      </article>
+    
+      <article class="question-card" data-section="Ιούνιος-Ιούλιος 2024">
+        <div class="question-meta">
+          <span>Ιούνιος-Ιούλιος 2024</span>
+          <span>Ερώτηση 4</span>
+        </div>
+        <h2>4. Τα κολλύρια κορτικοστεροειδών:</h2>
+        <div class="options">
+          
+          <button class="option" data-q="3" data-a="0">
+            <span class="letter">a)</span> μπορούν να είναι αιτία εμφάνισης καταρράκτη
+          </button>
+          <button class="option" data-q="3" data-a="1">
+            <span class="letter">b)</span> τίποτα από τα παραπάνω
+          </button>
+          <button class="option" data-q="3" data-a="2">
+            <span class="letter">c)</span> δεν έχουν συστηματική δράση
+          </button>
+          <button class="option" data-q="3" data-a="3">
+            <span class="letter">d)</span> μπορεί να βελτιώσουν το γλαύκωμα
+          </button>
+        </div>
+        <div class="feedback" id="feedback-3"></div>
+      </article>
+    
+      <article class="question-card" data-section="Ιούνιος-Ιούλιος 2024">
+        <div class="question-meta">
+          <span>Ιούνιος-Ιούλιος 2024</span>
+          <span>Ερώτηση 5</span>
+        </div>
+        <h2>5. Τα αντιχολινεργικά κολλύρια προκαλούν:</h2>
+        <div class="options">
+          
+          <button class="option" data-q="4" data-a="0">
+            <span class="letter">a)</span> παράλυση του σφιγκτήρα της κόρης και του ακτινωτού μυός
+          </button>
+          <button class="option" data-q="4" data-a="1">
+            <span class="letter">b)</span> όλα τα παραπάνω
+          </button>
+          <button class="option" data-q="4" data-a="2">
+            <span class="letter">c)</span> ξηροστομία και ξηροφθαλμία
+          </button>
+          <button class="option" data-q="4" data-a="3">
+            <span class="letter">d)</span> ταχυκαρδία
+          </button>
+        </div>
+        <div class="feedback" id="feedback-4"></div>
+      </article>
+    
+
+    <h2 class="section-title" data-title="Ιούνιος-Ιούλιος 2023">Ιούνιος-Ιούλιος 2023</h2>
+    
+      <article class="question-card" data-section="Ιούνιος-Ιούλιος 2023">
+        <div class="question-meta">
+          <span>Ιούνιος-Ιούλιος 2023</span>
+          <span>Ερώτηση 6</span>
+        </div>
+        <h2>6. Σημειώστε ποια πρόταση είναι ορθή:</h2>
+        <div class="options">
+          
+          <button class="option" data-q="5" data-a="0">
+            <span class="letter">a)</span> Η ανατομική θέση της λοίμωξης λαμβάνεται υπ’ όψιν κατά την επιλογή αντιμικροβιακού φαρμάκου
+          </button>
+          <button class="option" data-q="5" data-a="1">
+            <span class="letter">b)</span> Τα αντιμικροβιακά φάρμακα χρησιμοποιούνται για την αντιμετώπιση των συμπτωμάτων μιας μολυσματικής νόσου
+          </button>
+          <button class="option" data-q="5" data-a="2">
+            <span class="letter">c)</span> Η αντιμικροβιακή θεραπεία περιλαμβάνει πάντοτε συνδυασμό μικροβιοστατικού και μικροβιοκτόνου φαρμάκου
+          </button>
+          <button class="option" data-q="5" data-a="3">
+            <span class="letter">d)</span> Η ανατομική θέση της λοίμωξης λαμβάνεται υπ’ όψιν κατά την επιλογή αντιμικροβιακού φαρμάκου και τα αντιμικροβιακά φάρμακα χρησιμοποιούνται για την αντιμετώπιση των συμπτωμάτων μιας μολυσματικής νόσου
+          </button>
+          <button class="option" data-q="5" data-a="4">
+            <span class="letter">e)</span> Όλα είναι σωστά
+          </button>
+        </div>
+        <div class="feedback" id="feedback-5"></div>
+      </article>
+    
+      <article class="question-card" data-section="Ιούνιος-Ιούλιος 2023">
+        <div class="question-meta">
+          <span>Ιούνιος-Ιούλιος 2023</span>
+          <span>Ερώτηση 7</span>
+        </div>
+        <h2>7. Ποιο από τα παρακάτω φάρμακα προκαλεί μεγάλη τοξικότητα στο αιμοποιητικό σύστημα:</h2>
+        <div class="options">
+          
+          <button class="option" data-q="6" data-a="0">
+            <span class="letter">a)</span> Σιπροφλοξασίνη
+          </button>
+          <button class="option" data-q="6" data-a="1">
+            <span class="letter">b)</span> Τετρακυκλίνη
+          </button>
+          <button class="option" data-q="6" data-a="2">
+            <span class="letter">c)</span> Χλωραμφενικόλη
+          </button>
+          <button class="option" data-q="6" data-a="3">
+            <span class="letter">d)</span> Κλαριθρομυκίνη
+          </button>
+          <button class="option" data-q="6" data-a="4">
+            <span class="letter">e)</span> Βακιτρακίνη
+          </button>
+        </div>
+        <div class="feedback" id="feedback-6"></div>
+      </article>
+    
+      <article class="question-card" data-section="Ιούνιος-Ιούλιος 2023">
+        <div class="question-meta">
+          <span>Ιούνιος-Ιούλιος 2023</span>
+          <span>Ερώτηση 8</span>
+        </div>
+        <h2>8. Τα φάρμακα που προκαλούν μύση:</h2>
+        <div class="options">
+          
+          <button class="option" data-q="7" data-a="0">
+            <span class="letter">a)</span> ελαττώνουν την παραγωγή του υδατοειδούς υγρού
+          </button>
+          <button class="option" data-q="7" data-a="1">
+            <span class="letter">b)</span> ελαττώνουν την παροχέτευση του υδατοειδούς υγρού
+          </button>
+          <button class="option" data-q="7" data-a="2">
+            <span class="letter">c)</span> αυξάνουν την παραγωγή του υδατοειδούς υγρού
+          </button>
+          <button class="option" data-q="7" data-a="3">
+            <span class="letter">d)</span> αυξάνουν την παροχέτευση του υδατοειδούς υγρού
+          </button>
+        </div>
+        <div class="feedback" id="feedback-7"></div>
+      </article>
+    
+      <article class="question-card" data-section="Ιούνιος-Ιούλιος 2023">
+        <div class="question-meta">
+          <span>Ιούνιος-Ιούλιος 2023</span>
+          <span>Ερώτηση 9</span>
+        </div>
+        <h2>9. Η συστηματική χορήγηση αντιμικροβιακών φαρμάκων στην οφθαλμολογία ενδείκνυται για:</h2>
+        <div class="options">
+          
+          <button class="option" data-q="8" data-a="0">
+            <span class="letter">a)</span> Επιφανειακές λοιμώξεις
+          </button>
+          <button class="option" data-q="8" data-a="1">
+            <span class="letter">b)</span> Συστηματικές λοιμώξεις
+          </button>
+          <button class="option" data-q="8" data-a="2">
+            <span class="letter">c)</span> Και τα 2
+          </button>
+          <button class="option" data-q="8" data-a="3">
+            <span class="letter">d)</span> Κανένα από τα παρακάτω
+          </button>
+        </div>
+        <div class="feedback" id="feedback-8"></div>
+      </article>
+    
+      <article class="question-card" data-section="Ιούνιος-Ιούλιος 2023">
+        <div class="question-meta">
+          <span>Ιούνιος-Ιούλιος 2023</span>
+          <span>Ερώτηση 10</span>
+        </div>
+        <h2>10. Ποια από τις παρακάτω φράσεις που αφορούν την λατανοπρόστη ΔΕΝ είναι σωστή;</h2>
+        <div class="options">
+          
+          <button class="option" data-q="9" data-a="0">
+            <span class="letter">a)</span> Δρα αναστέλλοντας τους β2 υποδοχείς στον ακτινωτό μυ
+          </button>
+          <button class="option" data-q="9" data-a="1">
+            <span class="letter">b)</span> Ελαττώνει την ενδοφθάλμια πίεση αυξάνοντας την παροχέτευση του υδατοειδούς υγρού
+          </button>
+          <button class="option" data-q="9" data-a="2">
+            <span class="letter">c)</span> Δρα σε υποδοχείς PGF2α στο ακτινωτό σώμα
+          </button>
+          <button class="option" data-q="9" data-a="3">
+            <span class="letter">d)</span> Δρα σε μεταλλοπρωτεϊνάσες που καταβολίζουν ουσίες που παρεμποδίζουν την έξοδο υδατοειδούς υγρού
+          </button>
+        </div>
+        <div class="feedback" id="feedback-9"></div>
+      </article>
+    
+
+    <h2 class="section-title" data-title="Σεπτέμβριος 2023">Σεπτέμβριος 2023</h2>
+    
+      <article class="question-card" data-section="Σεπτέμβριος 2023">
+        <div class="question-meta">
+          <span>Σεπτέμβριος 2023</span>
+          <span>Ερώτηση 11</span>
+        </div>
+        <h2>11. Ποιο από τα παρακάτω φάρμακα προκαλεί μεγάλη τοξικότητα στο αιμοποιητικό σύστημα;</h2>
+        <div class="options">
+          
+          <button class="option" data-q="10" data-a="0">
+            <span class="letter">a)</span> Κλαριθρομυκίνη
+          </button>
+          <button class="option" data-q="10" data-a="1">
+            <span class="letter">b)</span> Βακιτρακίνη
+          </button>
+          <button class="option" data-q="10" data-a="2">
+            <span class="letter">c)</span> Τετρακυκλίνη
+          </button>
+          <button class="option" data-q="10" data-a="3">
+            <span class="letter">d)</span> Χλωραμφενικόλη
+          </button>
+          <button class="option" data-q="10" data-a="4">
+            <span class="letter">e)</span> Σιπροφλοξασίνη
+          </button>
+        </div>
+        <div class="feedback" id="feedback-10"></div>
+      </article>
+    
+      <article class="question-card" data-section="Σεπτέμβριος 2023">
+        <div class="question-meta">
+          <span>Σεπτέμβριος 2023</span>
+          <span>Ερώτηση 12</span>
+        </div>
+        <h2>12. Ποιο από τα παρακάτω φάρμακα ΔΕΝ παρουσιάζει αντιγλαυκωματική ενέργεια;</h2>
+        <div class="options">
+          
+          <button class="option" data-q="11" data-a="0">
+            <span class="letter">a)</span> λατανοπρόστη
+          </button>
+          <button class="option" data-q="11" data-a="1">
+            <span class="letter">b)</span> δορζολαμίδη
+          </button>
+          <button class="option" data-q="11" data-a="2">
+            <span class="letter">c)</span> τιμολόλη
+          </button>
+          <button class="option" data-q="11" data-a="3">
+            <span class="letter">d)</span> πιλοκαρπίνη
+          </button>
+          <button class="option" data-q="11" data-a="4">
+            <span class="letter">e)</span> ατροπίνη
+          </button>
+        </div>
+        <div class="feedback" id="feedback-11"></div>
+      </article>
+    
+      <article class="question-card" data-section="Σεπτέμβριος 2023">
+        <div class="question-meta">
+          <span>Σεπτέμβριος 2023</span>
+          <span>Ερώτηση 13</span>
+        </div>
+        <h2>13. Η συστηματική χορήγηση αντιμικροβιακών φαρμάκων στην οφθαλμολογία ενδείκνυται για:</h2>
+        <div class="options">
+          
+          <button class="option" data-q="12" data-a="0">
+            <span class="letter">a)</span> και τα δύο
+          </button>
+          <button class="option" data-q="12" data-a="1">
+            <span class="letter">b)</span> κανένα από τα παραπάνω
+          </button>
+          <button class="option" data-q="12" data-a="2">
+            <span class="letter">c)</span> επιφανειακές φλεγμονές
+          </button>
+          <button class="option" data-q="12" data-a="3">
+            <span class="letter">d)</span> συστηματικές φλεγμονές
+          </button>
+        </div>
+        <div class="feedback" id="feedback-12"></div>
+      </article>
+    
+      <article class="question-card" data-section="Σεπτέμβριος 2023">
+        <div class="question-meta">
+          <span>Σεπτέμβριος 2023</span>
+          <span>Ερώτηση 14</span>
+        </div>
+        <h2>14. Ποια από τις παρακάτω προτάσεις είναι η σωστή;</h2>
+        <div class="options">
+          
+          <button class="option" data-q="13" data-a="0">
+            <span class="letter">a)</span> Η ιντερφερόνη-2b είναι φάρμακο εκλογής στη θεραπεία λοιμώξεων από έρπητα
+          </button>
+          <button class="option" data-q="13" data-a="1">
+            <span class="letter">b)</span> Όλα τα παραπάνω είναι λάθος
+          </button>
+          <button class="option" data-q="13" data-a="2">
+            <span class="letter">c)</span> Οι αναστολείς της νευραμινιδάσης είναι φάρμακα για τη θεραπεία βακτηριδιακών λοιμώξεων
+          </button>
+          <button class="option" data-q="13" data-a="3">
+            <span class="letter">d)</span> Η Γανκυκλοβίρη χρησιμοποιείται στη θεραπεία της ηπατίτιδας Β
+          </button>
+          <button class="option" data-q="13" data-a="4">
+            <span class="letter">e)</span> Η ακυκλοβίρη είναι φάρμακο εκλογής στη θεραπεία λοιμώξεων από ερπητοϊούς
+          </button>
+        </div>
+        <div class="feedback" id="feedback-13"></div>
+      </article>
+    
+      <article class="question-card" data-section="Σεπτέμβριος 2023">
+        <div class="question-meta">
+          <span>Σεπτέμβριος 2023</span>
+          <span>Ερώτηση 15</span>
+        </div>
+        <h2>15. Ποια από τις παρακάτω φράσεις ΔΕΝ είναι σωστή;</h2>
+        <div class="options">
+          
+          <button class="option" data-q="14" data-a="0">
+            <span class="letter">a)</span> Στόχος της αντιγλαυκωματικής αγωγής είναι η αύξηση της ενδοφθάλμιας πίεσης
+          </button>
+          <button class="option" data-q="14" data-a="1">
+            <span class="letter">b)</span> Τα αντιγλαυκωματικά φάρμακα δρουν αυξάνοντας την παροχέτευση του υδατοειδούς υγρού
+          </button>
+          <button class="option" data-q="14" data-a="2">
+            <span class="letter">c)</span> Τα αντιγλαυκωματικά φάρμακα δρουν ελαττώνοντας την παραγωγή του υδατοειδούς υγρού
+          </button>
+          <button class="option" data-q="14" data-a="3">
+            <span class="letter">d)</span> Στόχος της αντιγλαυκωματικής αγωγής είναι η ελάττωση της ενδοφθάλμιας πίεσης
+          </button>
+        </div>
+        <div class="feedback" id="feedback-14"></div>
+      </article>
+    
+
+    <p class="footer-note">
+      GreekDoc-style interactive quiz για γρήγορη επανάληψη. Οι απαντήσεις βασίζονται στα θέματα όπως διαβάστηκαν από τις εικόνες.
+    </p>
+  </main>
+
+  <script>
+    const answers = [2, 3, 0, 0, 1, 0, 2, 3, 1, 0, 3, 4, 3, 4, 0];
+    const explanations = ['Λανθασμένη είναι η φράση ότι με τα αντιβιοτικά κολλύρια δεν υπάρχει κίνδυνος μόλυνσης. Τα κολλύρια μπορούν να επιμολυνθούν ή να χρησιμοποιηθούν λανθασμένα.', 'Η χλωραμφενικόλη είναι κλασικά συνδεδεμένη με σπάνια αλλά σοβαρή απλαστική αναιμία.', 'Η τοπική οφθαλμική χορήγηση αποφεύγει σε μεγάλο βαθμό την ηπατική πρώτη δίοδο, αν και μπορεί να υπάρξει και συστηματική απορρόφηση.', 'Τα κορτικοστεροειδή κολλύρια μπορεί να αυξήσουν την ενδοφθάλμια πίεση και να σχετιστούν με καταρράκτη, όχι με βελτίωση γλαυκώματος.', 'Τα αντιχολινεργικά μπορούν να προκαλέσουν μυδρίαση/κυκλοπληγία και συστηματικές αντιμουσκαρινικές δράσεις, όπως ξηροστομία και ταχυκαρδία.', 'Η ανατομική θέση της λοίμωξης επηρεάζει την επιλογή αντιμικροβιακού. Τα αντιμικροβιακά στοχεύουν στο αίτιο της λοίμωξης, όχι απλώς στα συμπτώματα.', 'Η χλωραμφενικόλη μπορεί να προκαλέσει σοβαρή αιματολογική τοξικότητα, όπως απλαστική αναιμία.', 'Τα μυωτικά, όπως η πιλοκαρπίνη, αυξάνουν την αποχέτευση του υδατοειδούς υγρού μέσω του δοκιδωτού δικτύου.', 'Η συστηματική χορήγηση προορίζεται για βαθύτερες/σοβαρότερες ή συστηματικές λοιμώξεις, όχι για απλές επιφανειακές λοιμώξεις που συνήθως αντιμετωπίζονται τοπικά.', 'Η λατανοπρόστη είναι ανάλογο προσταγλανδίνης F2α. Δεν δρα αναστέλλοντας β2 υποδοχείς.', 'Η χλωραμφενικόλη είναι γνωστή για πιθανή σοβαρή αιματολογική τοξικότητα.', 'Η ατροπίνη προκαλεί μυδρίαση και κυκλοπληγία και δεν χρησιμοποιείται ως αντιγλαυκωματικό.', 'Η συστηματική χορήγηση προτιμάται σε σοβαρές/συστηματικές ή βαθύτερες οφθαλμικές φλεγμονές/λοιμώξεις.', 'Η ακυκλοβίρη είναι βασικό φάρμακο για λοιμώξεις από ερπητοϊούς. Οι αναστολείς νευραμινιδάσης αφορούν κυρίως γρίπη, όχι βακτηριακές λοιμώξεις.', 'Στόχος της αντιγλαυκωματικής αγωγής είναι η μείωση, όχι η αύξηση, της ενδοφθάλμιας πίεσης.'];
+    const answered = new Array(answers.length).fill(false);
+    const correct = new Array(answers.length).fill(false);
+
+    const scoreEl = document.getElementById("score");
+    const progressEl = document.getElementById("progress");
+
+    function updateScore() {
+      const answeredCount = answered.filter(Boolean).length;
+      const correctCount = correct.filter(Boolean).length;
+      scoreEl.textContent = `Σκορ: ${correctCount} / ${answeredCount}`;
+      progressEl.style.width = `${(answeredCount / answers.length) * 100}%`;
+    }
+
+    document.querySelectorAll(".option").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const q = Number(btn.dataset.q);
+        const a = Number(btn.dataset.a);
+        if (answered[q]) return;
+
+        answered[q] = true;
+        const isCorrect = a === answers[q];
+        correct[q] = isCorrect;
+
+        const card = btn.closest(".question-card");
+        const allOptions = card.querySelectorAll(".option");
+        allOptions.forEach(opt => {
+          opt.classList.add("disabled");
+          const optAnswer = Number(opt.dataset.a);
+          if (optAnswer === answers[q]) opt.classList.add("correct");
+        });
+
+        if (!isCorrect) btn.classList.add("wrong");
+
+        const fb = document.getElementById(`feedback-${q}`);
+        fb.className = `feedback show ${isCorrect ? "good" : "bad"}`;
+        fb.innerHTML = isCorrect
+          ? `<strong>Σωστό!</strong> ${explanations[q]}`
+          : `<strong>Λάθος.</strong> Σωστή απάντηση: <strong>${String.fromCharCode(97 + answers[q])}</strong>. ${explanations[q]}`;
+
+        updateScore();
+      });
+    });
+
+    function resetQuiz() {
+      answered.fill(false);
+      correct.fill(false);
+      document.querySelectorAll(".option").forEach(opt => {
+        opt.classList.remove("correct", "wrong", "disabled");
+      });
+      document.querySelectorAll(".feedback").forEach(fb => {
+        fb.className = "feedback";
+        fb.textContent = "";
+      });
+      updateScore();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    document.querySelectorAll(".chip").forEach(chip => {
+      chip.addEventListener("click", () => {
+        document.querySelectorAll(".chip").forEach(c => c.classList.remove("active"));
+        chip.classList.add("active");
+        const filter = chip.dataset.filter;
+
+        document.querySelectorAll(".question-card").forEach(card => {
+          const show = filter === "all" || card.dataset.section === filter;
+          card.style.display = show ? "" : "none";
+        });
+
+        document.querySelectorAll(".section-title").forEach(title => {
+          const show = filter === "all" || title.dataset.title === filter;
+          title.style.display = show ? "" : "none";
+        });
+      });
+    });
+
+    updateScore();
+  </script>
+</body>
+</html>
