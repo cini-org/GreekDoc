@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GreekDoc Quiz | Συστηματική Φαρμακολογία ΩΡΛ</title>
+  <style>
+    :root {
+      --bg: #fff7f1;
+      --card: #ffffff;
+      --ink: #2b1f1a;
+      --muted: #7a6358;
+      --brand: #c8502c;
+      --brand2: #f39b4a;
+      --soft: #ffe6d6;
+      --soft2: #fff1c9;
+      --good: #1f8a5b;
+      --bad: #c43b3b;
+      --border: rgba(85, 49, 32, 0.14);
+      --shadow: 0 12px 28px rgba(92, 46, 23, 0.12);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      background: radial-gradient(circle at top left, #fff2d3 0, transparent 38%), linear-gradient(135deg, #fffaf7 0%, var(--bg) 100%);
+      color: var(--ink);
+      line-height: 1.55;
+    }
+    header {
+      padding: 34px 18px 24px;
+      background: linear-gradient(135deg, #8f1f14 0%, var(--brand) 54%, var(--brand2) 100%);
+      color: white;
+      border-bottom-left-radius: 34px;
+      border-bottom-right-radius: 34px;
+      box-shadow: var(--shadow);
+    }
+    .wrap { max-width: 980px; margin: 0 auto; }
+    .tag {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(255,255,255,.18);
+      border: 1px solid rgba(255,255,255,.35);
+      color: #fff7e8;
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-weight: 700;
+      letter-spacing: .02em;
+      font-size: .88rem;
+    }
+    h1 { margin: 18px 0 8px; font-size: clamp(2rem, 4vw, 3.5rem); line-height: 1.05; }
+    .subtitle { max-width: 760px; margin: 0; color: #fff3e4; font-size: 1.05rem; }
+    main { padding: 24px 18px 56px; }
+    .toolbar {
+      position: sticky; top: 0; z-index: 5;
+      margin: 0 auto 18px;
+      max-width: 980px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 12px;
+      align-items: center;
+      background: rgba(255, 250, 247, .92);
+      backdrop-filter: blur(10px);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 12px;
+      box-shadow: 0 10px 22px rgba(92, 46, 23, 0.08);
+    }
+    .stats { display: flex; flex-wrap: wrap; gap: 10px; }
+    .pill {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 8px 12px;
+      font-weight: 700;
+      color: var(--muted);
+      font-size: .93rem;
+    }
+    .actions { display: flex; gap: 8px; flex-wrap: wrap; justify-content: flex-end; }
+    button {
+      border: 0;
+      border-radius: 999px;
+      padding: 10px 14px;
+      font-weight: 800;
+      cursor: pointer;
+      color: white;
+      background: linear-gradient(135deg, var(--brand), var(--brand2));
+      box-shadow: 0 8px 16px rgba(200, 80, 44, .18);
+      transition: transform .15s ease, opacity .15s ease;
+    }
+    button:hover { transform: translateY(-1px); }
+    button.secondary { background: #fff; color: var(--brand); border: 1px solid var(--border); box-shadow: none; }
+    .section-card {
+      margin: 18px 0 12px;
+      padding: 16px 18px;
+      border-radius: 24px;
+      background: linear-gradient(135deg, var(--soft), #fff);
+      border: 1px solid var(--border);
+    }
+    .section-card h2 { margin: 0; font-size: 1.25rem; }
+    .quiz { display: grid; gap: 16px; }
+    .question-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 18px;
+      box-shadow: 0 10px 24px rgba(92, 46, 23, 0.08);
+    }
+    .q-head { display: flex; gap: 10px; align-items: flex-start; margin-bottom: 12px; }
+    .q-num {
+      min-width: 42px; height: 42px; border-radius: 14px;
+      display: grid; place-items: center;
+      background: var(--soft2);
+      color: #8f4c00;
+      font-weight: 900;
+    }
+    .q-title { margin: 0; font-size: 1.05rem; font-weight: 800; }
+    .options { display: grid; gap: 9px; margin-top: 12px; }
+    .option {
+      width: 100%;
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      text-align: left;
+      padding: 12px 13px;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      background: #fffdfb;
+      cursor: pointer;
+      transition: .15s ease;
+    }
+    .option:hover { border-color: rgba(200,80,44,.45); background: #fff7f1; }
+    .letter {
+      min-width: 28px; height: 28px; border-radius: 10px;
+      display: grid; place-items: center;
+      background: #f3e7df;
+      font-weight: 900;
+      color: #7b3a22;
+      text-transform: uppercase;
+    }
+    .option.correct { border-color: rgba(31,138,91,.5); background: #effaf4; }
+    .option.correct .letter { background: #d7f2e4; color: var(--good); }
+    .option.wrong { border-color: rgba(196,59,59,.5); background: #fff0f0; }
+    .option.wrong .letter { background: #ffdada; color: var(--bad); }
+    .feedback {
+      display: none;
+      margin-top: 12px;
+      padding: 12px 14px;
+      border-radius: 16px;
+      font-weight: 750;
+    }
+    .feedback.good { display: block; background: #effaf4; color: var(--good); }
+    .feedback.bad { display: block; background: #fff0f0; color: var(--bad); }
+    .note {
+      margin-top: 20px;
+      padding: 16px 18px;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      color: var(--muted);
+    }
+    .progressbar {
+      height: 10px;
+      border-radius: 999px;
+      background: #f1dfd2;
+      overflow: hidden;
+      margin-top: 10px;
+    }
+    .progressbar span { display: block; height: 100%; width: 0%; background: linear-gradient(90deg, var(--brand), var(--brand2)); transition: width .25s ease; }
+    @media (max-width: 720px) {
+      .toolbar { grid-template-columns: 1fr; }
+      .actions { justify-content: flex-start; }
+    }
+    @media print {
+      body { background: white; }
+      header, .toolbar, .actions, button { box-shadow: none !important; }
+      .toolbar { position: static; }
+      .question-card { break-inside: avoid; box-shadow: none; }
+      .option.correct, .option.wrong { background: white; border-color: var(--border); }
+      .feedback { display: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <span class="tag">GreekDoc Quiz • ΩΡΛ</span>
+      <h1>Συστηματική Φαρμακολογία ΩΡΛ</h1>
+      <p class="subtitle">Βασισμένο στην παρουσίαση: «Συστηματική Φαρμακολογία ΩΡΛ» — Αντώνης Γούλας, Α’ Εργαστήριο Φαρμακολογίας. Περιλαμβάνει αλλεργική ρινίτιδα, αντιβιοτικά, αντοχή και αντικαρκινικά φάρμακα κεφαλής-τραχήλου.</p>
+    </div>
+  </header>
+
+  <main>
+    <div class="toolbar">
+      <div>
+        <div class="stats">
+          <span class="pill" id="answeredPill">Απαντήθηκαν: 0/52</span>
+          <span class="pill" id="scorePill">Σκορ: 0</span>
+          <span class="pill" id="percentPill">Ποσοστό: 0%</span>
+        </div>
+        <div class="progressbar"><span id="progressFill"></span></div>
+      </div>
+      <div class="actions">
+        <button class="secondary" onclick="resetQuiz()">Επαναφορά</button>
+        <button class="secondary" onclick="window.print()">Εκτύπωση</button>
+        <button onclick="showAllAnswers()">Εμφάνιση απαντήσεων</button>
+      </div>
+    </div>
+
+    <div class="wrap">
+      <div class="note">
+        <strong>Tip:</strong> Πάτα μία απάντηση για άμεση ανατροφοδότηση. Το quiz κρατάει το σκορ προσωρινά στη σελίδα, χωρίς σύνδεση με βάση δεδομένων.
+      </div>
+      <div id="quiz" class="quiz"></div>
+    </div>
+  </main>
+
+  <script>
+    const questions = [
+  {
+    "n": 1,
+    "section": "Αλλεργική ρινίτιδα & αντιβιοτικά ΑΑΠ",
+    "question": "Η αλλεργική ρινίτιδα αποτελεί φλεγμονή του ρινικού βλεννογόνου που οφείλεται σε:",
+    "options": {
+      "a": "Αντίδραση υπερευαισθησίας τύπου ΙΙ",
+      "b": "Αντίδραση υπερευαισθησίας τύπου Ι",
+      "c": "Άμεση βακτηριακή λοίμωξη",
+      "d": "Αυτοάνοση καταστροφή του επιθηλίου"
+    },
+    "answer": "b"
+  },
+  {
+    "n": 2,
+    "section": "Αλλεργική ρινίτιδα & αντιβιοτικά ΑΑΠ",
+    "question": "Η θεραπεία της αλλεργικής ρινίτιδας με αντιισταμινικά στοχεύει κυρίως στην αναστολή της δράσης:",
+    "options": {
+      "a": "Της ισταμίνης",
+      "b": "Της ακετυλοχολίνης",
+      "c": "Της ντοπαμίνης",
+      "d": "Της ινσουλίνης"
+    },
+    "answer": "a"
+  },
+  {
+    "n": 3,
+    "section": "Αλλεργική ρινίτιδα & αντιβιοτικά ΑΑΠ",
+    "question": "Οι α-αδρενεργικοί αγωνιστές στην αλλεργική ρινίτιδα προκαλούν:",
+    "options": {
+      "a": "Αγγειοδιαστολή των αρτηριδίων του ρινικού βλεννογόνου",
+      "b": "Αγγειοσύσπαση των διασταλμένων αρτηριδίων",
+      "c": "Αναστολή παραγωγής αντισωμάτων IgE",
+      "d": "Καταστολή των Τ-λεμφοκυττάρων"
+    },
+    "answer": "b"
+  },
+  {
+    "n": 4,
+    "section": "Αλλεργική ρινίτιδα & αντιβιοτικά ΑΑΠ",
+    "question": "Ποιο από τα παρακάτω είναι αντιισταμινικό πρώτης γενιάς;",
+    "options": {
+      "a": "Λοραταδίνη",
+      "b": "Σετιριζίνη",
+      "c": "Προμεθαζίνη",
+      "d": "Λεβοσετιριζίνη"
+    },
+    "answer": "c"
+  },
+  {
+    "n": 5,
+    "section": "Αλλεργική ρινίτιδα & αντιβιοτικά ΑΑΠ",
+    "question": "Ποιο από τα παρακάτω είναι αντιισταμινικό δεύτερης γενιάς;",
+    "options": {
+      "a": "Διφαινυδραμίνη",
+      "b": "Υδροξυζίνη",
+      "c": "Διμετινδένη",
+      "d": "Δεσλοραταδίνη"
+    },
+    "answer": "d"
+  },
+  {
+    "n": 6,
+    "section": "Αλλεργική ρινίτιδα & αντιβιοτικά ΑΑΠ",
+    "question": "Ποιο αντιισταμινικό αναφέρεται ότι έχει και δράση ανταγωνιστή του υποδοχέα PAFR;",
+    "options": {
+      "a": "Ρουπαταδίνη",
+      "b": "Προμεθαζίνη",
+      "c": "Υδροξυζίνη",
+      "d": "Διφαινυδραμίνη"
+    },
+    "answer": "a"
+  },
+  {
+    "n": 7,
+    "section": "Αλλεργική ρινίτιδα & αντιβιοτικά ΑΑΠ",
+    "question": "Κύριες ανεπιθύμητες ενέργειες των αντιισταμινικών, σύμφωνα με την παρουσίαση, είναι:",
+    "options": {
+      "a": "Υπέρταση και ταχυκαρδία",
+      "b": "Καταστολή και αντιμουσκαρινικές δράσεις",
+      "c": "Νεφροτοξικότητα και τενοντίτιδα",
+      "d": "Ηπατοτοξικότητα και φωτοευαισθησία"
+    },
+    "answer": "b"
+  },
+  {
+    "n": 8,
+    "section": "Αλλεργική ρινίτιδα & αντιβιοτικά ΑΑΠ",
+    "question": "Ποιο από τα παρακάτω είναι α-αδρενεργικός αγωνιστής που χρησιμοποιείται τοπικά στη ρινίτιδα;",
+    "options": {
+      "a": "Φαινυλεφρίνη",
+      "b": "Δοξυκυκλίνη",
+      "c": "Κλαριθρομυκίνη",
+      "d": "Κεφτριαξόνη"
+    },
+    "answer": "a"
+  },
+  {
+    "n": 9,
+    "section": "Αλλεργική ρινίτιδα & αντιβιοτικά ΑΑΠ",
+    "question": "Η μακροχρόνια χρήση ρινικών α-αδρενεργικών αγωνιστών αντενδείκνυται κυρίως λόγω κινδύνου:",
+    "options": {
+      "a": "Βακτηριακής αντοχής",
+      "b": "Αντιδραστικής ρινικής συμφόρησης",
+      "c": "Υπερλοίμωξης από μύκητες",
+      "d": "Καταστολής ΚΝΣ"
+    },
+    "answer": "b"
+  },
+  {
+    "n": 10,
+    "section": "Αλλεργική ρινίτιδα & αντιβιοτικά ΑΑΠ",
+    "question": "Ποιο από τα παρακάτω κορτικοστεροειδή αναφέρεται για τοπική ρινική χρήση;",
+    "options": {
+      "a": "Βεκλομεθαζόνη",
+      "b": "Αμοξυκιλλίνη",
+      "c": "Ροξιθρομυκίνη",
+      "d": "Λεβοφλοξασίνη"
+    },
+    "answer": "a"
+  },
+  {
+    "n": 11,
+    "section": "Αλλεργική ρινίτιδα & αντιβιοτικά ΑΑΠ",
+    "question": "Τα κορτικοστεροειδή στην αλλεργική ρινίτιδα περιορίζουν τη φλεγμονή κυρίως μέσω:",
+    "options": {
+      "a": "Άμεσης καταστροφής βακτηρίων",
+      "b": "Καταστολής παραγωγής κυτταροκινών, προσταγλανδινών, λευκοτριενίων και PAF",
+      "c": "Αναστολής της DNA γυράσης",
+      "d": "Αναστολής σύνθεσης βακτηριακού τοιχώματος"
+    },
+    "answer": "b"
+  },
+  {
+    "n": 12,
+    "section": "Αλλεργική ρινίτιδα & αντιβιοτικά ΑΑΠ",
+    "question": "Τα β-λακταμικά αντιβιοτικά δρουν κυρίως με:",
+    "options": {
+      "a": "Αναστολή πρωτεϊνικής σύνθεσης",
+      "b": "Αναστολή σύνθεσης βακτηριακού τοιχώματος",
+      "c": "Αναστολή τοποϊσομεράσης ΙΙ",
+      "d": "Διαταραχή κυτταρικής μεμβράνης ανθρώπινων κυττάρων"
+    },
+    "answer": "b"
+  },
+  {
+    "n": 13,
+    "section": "Αλλεργική ρινίτιδα & αντιβιοτικά ΑΑΠ",
+    "question": "Ποιο αντιβιοτικό αναφέρεται ως Α’ επιλογή σε φαρυγγοαμυγδαλίτιδα;",
+    "options": {
+      "a": "Αμοξυκιλλίνη",
+      "b": "Κεφτριαξόνη",
+      "c": "Μοξιφλοξασίνη",
+      "d": "Δοξυκυκλίνη"
+    },
+    "answer": "a"
+  },
+  {
+    "n": 14,
+    "section": "Αλλεργική ρινίτιδα & αντιβιοτικά ΑΑΠ",
+    "question": "Η αμοξυκιλλίνη + κλαβουλανικό αναφέρεται κυρίως σε:",
+    "options": {
+      "a": "Απλή αλλεργική ρινίτιδα",
+      "b": "Συχνές υποτροπές από β-αιμολυτικό στρεπτόκοκκο ομάδας Α",
+      "c": "Φωτοευαισθησία από τετρακυκλίνες",
+      "d": "Μακροχρόνια αγωγή ρινίτιδας"
+    },
+    "answer": "b"
+  },
+  {
+    "n": 15,
+    "section": "Αλλεργική ρινίτιδα & αντιβιοτικά ΑΑΠ",
+    "question": "Οι μακρολίδες και λινκοζαμίδες παρεμποδίζουν κυρίως:",
+    "options": {
+      "a": "Τη σύνθεση βακτηριακού τοιχώματος",
+      "b": "Τη σύνθεση πρωτεϊνών του βακτηρίου",
+      "c": "Τη σύνθεση ανθρώπινων κυτταροκινών",
+      "d": "Την παραγωγή ισταμίνης από μαστοκύτταρα"
+    },
+    "answer": "b"
+  },
+  {
+    "n": 16,
+    "section": "Αλλεργική ρινίτιδα & αντιβιοτικά ΑΑΠ",
+    "question": "Ποια ανεπιθύμητη ενέργεια/προσοχή αναφέρεται για τις μακρολίδες;",
+    "options": {
+      "a": "Παράταση QT με ορισμένα αντιισταμινικά",
+      "b": "Εναπόθεση σε οστίτη ιστό",
+      "c": "Τενοντίτιδα",
+      "d": "Αντιδραστική ρινική συμφόρηση"
+    },
+    "answer": "a"
+  },
+  {
+    "n": 17,
+    "section": "Αλλεργική ρινίτιδα & αντιβιοτικά ΑΑΠ",
+    "question": "Η κλινδαμυκίνη αναφέρεται ότι καλύπτει κυρίως:",
+    "options": {
+      "a": "Gram− μόνο",
+      "b": "Ιούς του ανώτερου αναπνευστικού",
+      "c": "Gram+ και αναερόβια",
+      "d": "Μύκητες"
+    },
+    "answer": "c"
+  },
+  {
+    "n": 18,
+    "section": "Αλλεργική ρινίτιδα & αντιβιοτικά ΑΑΠ",
+    "question": "Η δοξυκυκλίνη ανήκει στις:",
+    "options": {
+      "a": "Τετρακυκλίνες",
+      "b": "Μακρολίδες",
+      "c": "Β-λακτάμες",
+      "d": "Φθοριοκινολόνες"
+    },
+    "answer": "a"
+  },
+  {
+    "n": 19,
+    "section": "Αλλεργική ρινίτιδα & αντιβιοτικά ΑΑΠ",
+    "question": "Ποια είναι χαρακτηριστική ανεπιθύμητη ενέργεια των τετρακυκλινών;",
+    "options": {
+      "a": "Αντιδραστική ρινική συμφόρηση",
+      "b": "Φωτοευαισθησία",
+      "c": "Καταστολή και αντιμουσκαρινικές δράσεις",
+      "d": "Παράταση QT μόνο με αντιισταμινικά"
+    },
+    "answer": "b"
+  },
+  {
+    "n": 20,
+    "section": "Αλλεργική ρινίτιδα & αντιβιοτικά ΑΑΠ",
+    "question": "Οι φθοριοκινολόνες δρουν ως αναστολείς:",
+    "options": {
+      "a": "Της ισταμίνης",
+      "b": "Του υποδοχέα PAFR",
+      "c": "Της τοποϊσομεράσης ΙΙ / DNA γυράσης",
+      "d": "Της σύνθεσης προσταγλανδινών"
+    },
+    "answer": "c"
+  },
+  {
+    "n": 21,
+    "section": "Αλλεργική ρινίτιδα & αντιβιοτικά ΑΑΠ",
+    "question": "Ποια από τις παρακάτω ανεπιθύμητες ενέργειες αναφέρεται για τις φθοριοκινολόνες;",
+    "options": {
+      "a": "Τενοντίτιδα",
+      "b": "Αντιμουσκαρινικές δράσεις",
+      "c": "Αντιδραστική ρινική συμφόρηση",
+      "d": "Εναπόθεση σε οστίτη ιστό σε παιδιά"
+    },
+    "answer": "a"
+  },
+  {
+    "n": 22,
+    "section": "Αλλεργική ρινίτιδα & αντιβιοτικά ΑΑΠ",
+    "question": "Σύμφωνα με την παρουσίαση, οι φθοριοκινολόνες στην Ελλάδα έχουν πρόβλημα λόγω:",
+    "options": {
+      "a": "Πολύ χαμηλής απορρόφησης",
+      "b": "Υψηλών ποσοστών αντίστασης",
+      "c": "Έλλειψης συστηματικής δράσης",
+      "d": "Αντένδειξης σε κάθε ηλικία"
+    },
+    "answer": "b"
+  },
+  {
+    "n": 23,
+    "section": "Αντοχή στα αντιβιοτικά",
+    "question": "Σύμφωνα με την παρουσίαση, η αντίσταση στα αντιβιοτικά είναι συνάρτηση κυρίως:",
+    "options": {
+      "a": "Της ηλικίας του ασθενούς",
+      "b": "Της έκθεσης στα αντιβιοτικά",
+      "c": "Του φύλου του ασθενούς",
+      "d": "Της ύπαρξης πυρετού"
+    },
+    "answer": "b"
+  },
+  {
+    "n": 24,
+    "section": "Αντοχή στα αντιβιοτικά",
+    "question": "Εσφαλμένη ένδειξη, επιλογή παράγοντα ή διάρκεια θεραπείας αναφέρεται ότι συμβαίνει περίπου στο:",
+    "options": {
+      "a": "5-10% των περιπτώσεων",
+      "b": "10-20% των περιπτώσεων",
+      "c": "30-50% των περιπτώσεων",
+      "d": "80-90% των περιπτώσεων"
+    },
+    "answer": "c"
+  },
+  {
+    "n": 25,
+    "section": "Αντοχή στα αντιβιοτικά",
+    "question": "Η αδόκιμη χρήση αντιβιοτικών στις ΜΕΘ αναφέρεται περίπου στο:",
+    "options": {
+      "a": "1-5%",
+      "b": "10-15%",
+      "c": "30-60%",
+      "d": "90-100%"
+    },
+    "answer": "c"
+  },
+  {
+    "n": 26,
+    "section": "Αντοχή στα αντιβιοτικά",
+    "question": "Ποιος από τους παρακάτω είναι μηχανισμός αντίστασης στα αντιβιοτικά;",
+    "options": {
+      "a": "Αύξηση πρόσληψης αντιβιοτικού από το βακτήριο",
+      "b": "Ενζυμική αδρανοποίηση του αντιβιοτικού",
+      "c": "Ενεργοποίηση ανθρώπινων Τ-λεμφοκυττάρων",
+      "d": "Παραγωγή ισταμίνης"
+    },
+    "answer": "b"
+  },
+  {
+    "n": 27,
+    "section": "Αντοχή στα αντιβιοτικά",
+    "question": "Η ενζυμική αδρανοποίηση αφορά, σύμφωνα με την παρουσίαση, μεταξύ άλλων:",
+    "options": {
+      "a": "Β-λακτάμες, χλωραμφαινικόλη, αμινογλυκοσίδες",
+      "b": "Αντιισταμινικά και κορτικοστεροειδή",
+      "c": "Μόνο φθοριοκινολόνες",
+      "d": "Μόνο τετρακυκλίνες"
+    },
+    "answer": "a"
+  },
+  {
+    "n": 28,
+    "section": "Αντοχή στα αντιβιοτικά",
+    "question": "Η τροποποίηση του μοριακού στόχου είναι:",
+    "options": {
+      "a": "Μηχανισμός αντίστασης στα αντιβιοτικά",
+      "b": "Μηχανισμός δράσης των κορτικοστεροειδών",
+      "c": "Μηχανισμός αλλεργικής ρινίτιδας",
+      "d": "Τρόπος παραγωγής IgE"
+    },
+    "answer": "a"
+  },
+  {
+    "n": 29,
+    "section": "Αντοχή στα αντιβιοτικά",
+    "question": "Η απομάκρυνση αντιβιοτικού από το βακτήριο γίνεται με τη βοήθεια:",
+    "options": {
+      "a": "Υποδοχέων Η1",
+      "b": "Αντλιών εκροής",
+      "c": "Μαστοκυττάρων",
+      "d": "Προσταγλανδινών"
+    },
+    "answer": "b"
+  },
+  {
+    "n": 30,
+    "section": "Αντοχή στα αντιβιοτικά",
+    "question": "Ποιος από τους παρακάτω ΔΕΝ αναφέρεται ως μηχανισμός αντίστασης στα αντιβιοτικά;",
+    "options": {
+      "a": "Ενζυμική αδρανοποίηση",
+      "b": "Τροποποίηση μοριακού στόχου",
+      "c": "Ανάπτυξη μεταβολικής παράκαμψης",
+      "d": "Αναστολή απελευθέρωσης ισταμίνης"
+    },
+    "answer": "d"
+  },
+  {
+    "n": 31,
+    "section": "Αντοχή στα αντιβιοτικά",
+    "question": "Ποιος είναι γενετικός μηχανισμός μεταβίβασης της αντοχής;",
+    "options": {
+      "a": "Βακτηριακή σύζευξη",
+      "b": "Αποκοκκίωση μαστοκυττάρων",
+      "c": "Αγγειοσύσπαση βλεννογόνου",
+      "d": "Αναστολή κυτταροκινών"
+    },
+    "answer": "a"
+  },
+  {
+    "n": 32,
+    "section": "Αντοχή στα αντιβιοτικά",
+    "question": "Η μεταγωγή της αντοχής γίνεται μέσω:",
+    "options": {
+      "a": "Βακτηριοφάγου",
+      "b": "Ισταμίνης",
+      "c": "Κορτικοστεροειδών",
+      "d": "Υποδοχέα EGFR"
+    },
+    "answer": "a"
+  },
+  {
+    "n": 33,
+    "section": "Αντοχή στα αντιβιοτικά",
+    "question": "Η μεταμόρφωση ως μηχανισμός μεταβίβασης αντοχής σχετίζεται με πρόσληψη:",
+    "options": {
+      "a": "Γυμνού DNA",
+      "b": "Γυμνής πρωτεΐνης",
+      "c": "Ισταμίνης",
+      "d": "Προσταγλανδίνης"
+    },
+    "answer": "a"
+  },
+  {
+    "n": 34,
+    "section": "Αντοχή στα αντιβιοτικά",
+    "question": "Η συγκέντρωση αντιβιοτικού στον ασθενή λειτουργεί ως:",
+    "options": {
+      "a": "Αναλγητικό ερέθισμα",
+      "b": "Εξελικτική πίεση για εμφάνιση ανθεκτικών στελεχών",
+      "c": "Αναστολέας παραγωγής IgE",
+      "d": "Αντιφλεγμονώδης κυτταροκίνη"
+    },
+    "answer": "b"
+  },
+  {
+    "n": 35,
+    "section": "Αντοχή στα αντιβιοτικά",
+    "question": "Σύμφωνα με την παρουσίαση, υψηλές συγκεντρώσεις αντιβιοτικού στο περιβάλλον δημιουργούν:",
+    "options": {
+      "a": "Συνθήκες συνεχούς εξελικτικής πίεσης",
+      "b": "Μείωση της βακτηριακής αντοχής",
+      "c": "Άμεση παραγωγή νέων αντιβιοτικών",
+      "d": "Αναστολή όλων των λοιμώξεων"
+    },
+    "answer": "a"
+  },
+  {
+    "n": 36,
+    "section": "Αντοχή στα αντιβιοτικά",
+    "question": "Η Ελλάδα αναφέρεται στην παρουσίαση ως χώρα με κατανάλωση αντιβιοτικών:",
+    "options": {
+      "a": "Πολύ χαμηλή στην Ευρώπη",
+      "b": "Δεύτερη στην Ευρώπη και τέταρτη στον κόσμο",
+      "c": "Μηδενική λόγω περιορισμών",
+      "d": "Πρώτη μόνο στα αντιισταμινικά"
+    },
+    "answer": "b"
+  },
+  {
+    "n": 37,
+    "section": "Αντοχή στα αντιβιοτικά",
+    "question": "Οι ανεπιθύμητες ενέργειες των αντιβιοτικών αναφέρονται κυρίως ως:",
+    "options": {
+      "a": "Μόνο νευρολογικές",
+      "b": "Κυρίως αλλεργικές αντιδράσεις και δράσεις εκτός στόχου",
+      "c": "Μόνο υπέρταση",
+      "d": "Μόνο υπογλυκαιμία"
+    },
+    "answer": "b"
+  },
+  {
+    "n": 38,
+    "section": "Αντοχή στα αντιβιοτικά",
+    "question": "Η υπερλοίμωξη μπορεί να σχετίζεται με:",
+    "options": {
+      "a": "Διαταραχή της φυσιολογικής μικροβιακής χλωρίδας μετά από αντιβιοτικά",
+      "b": "Αναστολή υποδοχέα Η1",
+      "c": "Αγγειοσύσπαση του ρινικού βλεννογόνου",
+      "d": "Χρήση ρινικού spray κορτικοστεροειδών αποκλειστικά"
+    },
+    "answer": "a"
+  },
+  {
+    "n": 39,
+    "section": "Αντοχή στα αντιβιοτικά",
+    "question": "Ποιο από τα παρακάτω αποτελεί μέτρο διαχείρισης και πρόληψης αντοχής στα αντιβιοτικά;",
+    "options": {
+      "a": "Αύξηση άσκοπης χρήσης αντιβιοτικών",
+      "b": "Στενή παρακολούθηση της συχνότητας αντοχής",
+      "c": "Χορήγηση αντιβιοτικών σε κάθε ιογενή λοίμωξη",
+      "d": "Διακοπή όλων των εμβολίων"
+    },
+    "answer": "b"
+  },
+  {
+    "n": 40,
+    "section": "Αντοχή στα αντιβιοτικά",
+    "question": "Η απομόνωση ασθενών με δυνητικά επικίνδυνα ανθεκτικά βακτήρια είναι:",
+    "options": {
+      "a": "Μέτρο πρόληψης διασποράς αντοχής",
+      "b": "Μηχανισμός δράσης των μακρολιδών",
+      "c": "Ανεπιθύμητη ενέργεια των τετρακυκλινών",
+      "d": "Θεραπεία αλλεργικής ρινίτιδας"
+    },
+    "answer": "a"
+  },
+  {
+    "n": 41,
+    "section": "Αντοχή στα αντιβιοτικά",
+    "question": "Το antibiotic stewardship σημαίνει κυρίως:",
+    "options": {
+      "a": "Εποπτεία/ορθολογική χρήση αντιβιοτικών",
+      "b": "Πλήρη απαγόρευση όλων των αντιβιοτικών",
+      "c": "Χρήση μόνο φθοριοκινολονών",
+      "d": "Χρήση αντιισταμινικών αντί για αντιβιοτικά"
+    },
+    "answer": "a"
+  },
+  {
+    "n": 42,
+    "section": "Αντοχή στα αντιβιοτικά",
+    "question": "Ποιο από τα παρακάτω αναφέρεται ως νέα/μελλοντική προσέγγιση για την αντοχή;",
+    "options": {
+      "a": "Ανάπτυξη νέων αντιμικροβιακών φαρμάκων",
+      "b": "Αύξηση διάρκειας θεραπείας χωρίς λόγο",
+      "c": "Χρήση παλαιών αντιβιοτικών σε ενδημική αντοχή",
+      "d": "Χορήγηση αντιβιοτικών χωρίς διάγνωση"
+    },
+    "answer": "a"
+  },
+  {
+    "n": 43,
+    "section": "Αντικαρκινικά φάρμακα ΩΡΛ",
+    "question": "Οι καρκίνοι κεφαλής και τραχήλου που αναφέρονται περιλαμβάνουν:",
+    "options": {
+      "a": "Ρινοφαρυγγικό καρκίνωμα, καρκίνο σιελογόνων αδένων και πλακώδες καρκίνωμα κεφαλής-τραχήλου",
+      "b": "Μόνο καρκίνο πνεύμονα",
+      "c": "Μόνο λέμφωμα Hodgkin",
+      "d": "Μόνο καρκίνο θυρεοειδούς"
+    },
+    "answer": "a"
+  },
+  {
+    "n": 44,
+    "section": "Αντικαρκινικά φάρμακα ΩΡΛ",
+    "question": "Η νιβολουμάμπη και η πεμπρολιζουμάμπη είναι:",
+    "options": {
+      "a": "Αντιβιοτικά β-λακταμικά",
+      "b": "Αντιισταμινικά δεύτερης γενιάς",
+      "c": "Αντι-PD-1 ανοσοθεραπευτικά",
+      "d": "Α-αδρενεργικοί αγωνιστές"
+    },
+    "answer": "c"
+  },
+  {
+    "n": 45,
+    "section": "Αντικαρκινικά φάρμακα ΩΡΛ",
+    "question": "Τα αντι-PD-1 φάρμακα ανήκουν στους:",
+    "options": {
+      "a": "Αναστολείς ανοσιακού ελέγχου",
+      "b": "Αναστολείς DNA γυράσης",
+      "c": "Ανταγωνιστές Η1 υποδοχέα",
+      "d": "Αναστολείς σύνθεσης βακτηριακού τοιχώματος"
+    },
+    "answer": "a"
+  },
+  {
+    "n": 46,
+    "section": "Αντικαρκινικά φάρμακα ΩΡΛ",
+    "question": "Η σετουξιμάμπη είναι:",
+    "options": {
+      "a": "Αντι-EGFR στοχευμένη θεραπεία",
+      "b": "Αντι-PD-1 ανοσοθεραπεία",
+      "c": "Μακρολίδη",
+      "d": "Τετρακυκλίνη"
+    },
+    "answer": "a"
+  },
+  {
+    "n": 47,
+    "section": "Αντικαρκινικά φάρμακα ΩΡΛ",
+    "question": "Η σετουξιμάμπη δρα ως αναστολέας:",
+    "options": {
+      "a": "Διμερισμού EGFR",
+      "b": "Τοποϊσομεράσης ΙΙ",
+      "c": "Υποδοχέα Η1",
+      "d": "Αντλιών εκροής βακτηρίων"
+    },
+    "answer": "a"
+  },
+  {
+    "n": 48,
+    "section": "Αντικαρκινικά φάρμακα ΩΡΛ",
+    "question": "Στον καρκίνο σιελογόνων αδένων, η θεραπεία εξαρτάται κυρίως από:",
+    "options": {
+      "a": "Τον τύπο και τη σταδιοποίηση",
+      "b": "Μόνο την ηλικία του ασθενούς",
+      "c": "Μόνο τη θερμοκρασία σώματος",
+      "d": "Μόνο την παρουσία αλλεργικής ρινίτιδας"
+    },
+    "answer": "a"
+  },
+  {
+    "n": 49,
+    "section": "Αντικαρκινικά φάρμακα ΩΡΛ",
+    "question": "Ποια φάρμακα αναφέρονται στον καρκίνο σιελογόνων αδένων;",
+    "options": {
+      "a": "Σισπλατίνη, δοξορουβικίνη, γεμσιταμπίνη",
+      "b": "Λοραταδίνη, σετιριζίνη, δεσλοραταδίνη",
+      "c": "Φαινυλεφρίνη, οξυμεταζολίνη",
+      "d": "Βεκλομεθαζόνη, φλουτικαζόνη"
+    },
+    "answer": "a"
+  },
+  {
+    "n": 50,
+    "section": "Αντικαρκινικά φάρμακα ΩΡΛ",
+    "question": "Σε καρκίνο σιελογόνων αδένων με θετικό υποδοχέα ανδρογόνων, μπορεί να χρησιμοποιηθεί:",
+    "options": {
+      "a": "Ορμονοθεραπεία",
+      "b": "Αντιισταμινικό",
+      "c": "Ρινικό αποσυμφορητικό",
+      "d": "Κορτικοστεροειδές spray"
+    },
+    "answer": "a"
+  },
+  {
+    "n": 51,
+    "section": "Αντικαρκινικά φάρμακα ΩΡΛ",
+    "question": "Σε καρκίνο σιελογόνων αδένων με HER+ ή γονίδια σύντηξης που ενεργοποιούν τυροσινικές κινάσες, αναφέρεται:",
+    "options": {
+      "a": "Στοχευμένη θεραπεία με αναστολείς τυροσινικής κινάσης",
+      "b": "Μόνο αμοξυκιλλίνη",
+      "c": "Μόνο ρινικά κορτικοστεροειδή",
+      "d": "Μόνο κλαριθρομυκίνη"
+    },
+    "answer": "a"
+  },
+  {
+    "n": 52,
+    "section": "Αντικαρκινικά φάρμακα ΩΡΛ",
+    "question": "Ποιο από τα παρακάτω είναι πιο σωστό για τα αντικαρκινικά φάρμακα που αναφέρονται στην παρουσίαση;",
+    "options": {
+      "a": "Περιλαμβάνουν ανοσοθεραπευτικά και στοχευμένα φάρμακα",
+      "b": "Είναι αποκλειστικά αντιβιοτικά",
+      "c": "Είναι μόνο ρινικά spray",
+      "d": "Δρουν μόνο στον ρινικό βλεννογόνο"
+    },
+    "answer": "a"
+  }
+];
+    const state = {};
+
+    function makeSafeId(n) { return `q${n}`; }
+
+    function renderQuiz() {
+      const quiz = document.getElementById('quiz');
+      quiz.innerHTML = '';
+      let currentSection = '';
+
+      questions.forEach(q => {
+        if (q.section !== currentSection) {
+          currentSection = q.section;
+          const sec = document.createElement('section');
+          sec.className = 'section-card';
+          sec.innerHTML = `<h2>${currentSection}</h2>`;
+          quiz.appendChild(sec);
+        }
+
+        const card = document.createElement('article');
+        card.className = 'question-card';
+        card.id = makeSafeId(q.n);
+        card.innerHTML = `
+          <div class="q-head">
+            <div class="q-num">${q.n}</div>
+            <p class="q-title">${q.question}</p>
+          </div>
+          <div class="options">
+            ${Object.entries(q.options).map(([key, value]) => `
+              <div class="option" data-q="${q.n}" data-choice="${key}" onclick="answerQuestion(${q.n}, '${key}')">
+                <span class="letter">${key}</span>
+                <span>${value}</span>
+              </div>
+            `).join('')}
+          </div>
+          <div class="feedback" id="feedback-${q.n}"></div>
+        `;
+        quiz.appendChild(card);
+      });
+      updateStats();
+    }
+
+    function answerQuestion(n, choice) {
+      const q = questions.find(item => item.n === n);
+      if (!q) return;
+      state[n] = choice;
+
+      const card = document.getElementById(makeSafeId(n));
+      card.querySelectorAll('.option').forEach(opt => {
+        const optChoice = opt.dataset.choice;
+        opt.classList.remove('correct', 'wrong');
+        if (optChoice === q.answer) opt.classList.add('correct');
+        if (optChoice === choice && choice !== q.answer) opt.classList.add('wrong');
+      });
+
+      const fb = document.getElementById(`feedback-${n}`);
+      const answerText = q.options[q.answer];
+      if (choice === q.answer) {
+        fb.className = 'feedback good';
+        fb.textContent = `Σωστό! Η απάντηση είναι ${q.answer.toUpperCase()}: ${answerText}.`;
+      } else {
+        fb.className = 'feedback bad';
+        fb.textContent = `Όχι ακριβώς. Σωστή απάντηση: ${q.answer.toUpperCase()} — ${answerText}.`;
+      }
+      updateStats();
+    }
+
+    function updateStats() {
+      const answered = Object.keys(state).length;
+      const score = questions.filter(q => state[q.n] === q.answer).length;
+      const percent = answered ? Math.round((score / answered) * 100) : 0;
+      document.getElementById('answeredPill').textContent = `Απαντήθηκαν: ${answered}/${questions.length}`;
+      document.getElementById('scorePill').textContent = `Σκορ: ${score}`;
+      document.getElementById('percentPill').textContent = `Ποσοστό: ${percent}%`;
+      document.getElementById('progressFill').style.width = `${Math.round((answered / questions.length) * 100)}%`;
+    }
+
+    function resetQuiz() {
+      Object.keys(state).forEach(k => delete state[k]);
+      document.querySelectorAll('.option').forEach(opt => opt.classList.remove('correct', 'wrong'));
+      document.querySelectorAll('.feedback').forEach(fb => { fb.className = 'feedback'; fb.textContent = ''; });
+      updateStats();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function showAllAnswers() {
+      questions.forEach(q => {
+        state[q.n] = state[q.n] || q.answer;
+        const card = document.getElementById(makeSafeId(q.n));
+        card.querySelectorAll('.option').forEach(opt => {
+          opt.classList.remove('wrong');
+          if (opt.dataset.choice === q.answer) opt.classList.add('correct');
+        });
+        const fb = document.getElementById(`feedback-${q.n}`);
+        fb.className = 'feedback good';
+        fb.textContent = `Σωστή απάντηση: ${q.answer.toUpperCase()} — ${q.options[q.answer]}.`;
+      });
+      updateStats();
+    }
+
+    renderQuiz();
+  </script>
+</body>
+</html>
