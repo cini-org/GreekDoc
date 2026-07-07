@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>GreekDoc | Βασικές έννοιες Κοινωνικής Ιατρικής - Δημόσιας Υγείας</title>
+<style>
+  :root{
+    --bg:#f7f4ef; --paper:#fffaf2; --ink:#24211d; --muted:#6b6258;
+    --green:#476b5d; --mint:#dce9df; --blue:#456a83; --sky:#dbe8f0;
+    --rose:#a85c57; --rosebg:#f3ddd9; --gold:#b38533; --goldbg:#faedcf;
+    --purple:#6b5b8e; --purplebg:#e8e0f5; --line:#dfd6c9; --shadow:0 10px 28px rgba(49,40,29,.08);
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:radial-gradient(circle at top left,#fff8ed 0,#f7f4ef 45%,#eef4f0 100%);color:var(--ink);font-family:Inter, "Segoe UI", Roboto, Arial, sans-serif;line-height:1.55}
+  header{padding:44px 22px 30px;background:linear-gradient(135deg,#415f54,#6d8b7b);color:#fff;position:relative;overflow:hidden}
+  header:after{content:"";position:absolute;right:-90px;top:-90px;width:280px;height:280px;border-radius:50%;background:rgba(255,255,255,.12)}
+  .wrap{max-width:1180px;margin:0 auto}
+  .eyebrow{letter-spacing:.08em;text-transform:uppercase;font-weight:800;font-size:.8rem;opacity:.85}
+  h1{margin:10px 0 8px;font-size:clamp(2rem,5vw,4.2rem);line-height:1.05}
+  .subtitle{max-width:850px;font-size:1.12rem;opacity:.95}
+  .top-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+  button,.btn{border:0;border-radius:999px;padding:10px 16px;background:#fff;color:#36584b;font-weight:800;cursor:pointer;text-decoration:none;box-shadow:var(--shadow)}
+  button:hover,.btn:hover{transform:translateY(-1px)}
+  nav{position:sticky;top:0;z-index:4;background:rgba(255,250,242,.88);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  nav .wrap{display:flex;gap:8px;overflow-x:auto;padding:10px 18px}
+  nav a{white-space:nowrap;text-decoration:none;color:#36584b;background:#eef5ef;border:1px solid #d9e6dc;border-radius:999px;padding:8px 12px;font-weight:750;font-size:.92rem}
+  main{padding:28px 18px 60px}
+  section{margin:28px auto}
+  h2{font-size:clamp(1.55rem,3vw,2.25rem);margin:0 0 12px;color:#2f5045}
+  h3{margin:.2rem 0 .55rem;color:#3a5b50}
+  .lead{color:var(--muted);max-width:900px;margin-top:0}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px}
+  .grid.small{grid-template-columns:repeat(auto-fit,minmax(190px,1fr))}
+  .card{background:rgba(255,250,242,.92);border:1px solid var(--line);border-radius:22px;padding:18px;box-shadow:var(--shadow)}
+  .card strong{color:#2f5045}
+  .tag{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:5px 10px;font-size:.78rem;font-weight:900;margin-bottom:10px;background:var(--mint);color:var(--green)}
+  .tag.blue{background:var(--sky);color:var(--blue)} .tag.rose{background:var(--rosebg);color:var(--rose)} .tag.gold{background:var(--goldbg);color:#805d20} .tag.purple{background:var(--purplebg);color:var(--purple)}
+  .big-number{font-size:2.7rem;font-weight:950;color:#2f5045;line-height:1;margin:4px 0}
+  .compare{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .compare > div{border-radius:18px;padding:16px;border:1px solid var(--line);background:#fffdf8}
+  ul{padding-left:1.18rem;margin:.4rem 0}.tight li{margin:.18rem 0}
+  .memory{border-left:6px solid var(--gold);background:linear-gradient(90deg,#fff4d7,#fffaf2);padding:16px;border-radius:16px;margin:14px 0;font-weight:750}
+  .exam{border-left:6px solid var(--rose);background:#fff7f6;padding:16px;border-radius:16px;margin:14px 0}
+  .flow{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:12px 0}.pill{background:#fff;border:1px solid var(--line);border-radius:999px;padding:9px 12px;font-weight:850}.arrow{font-size:1.4rem;color:var(--muted)}
+  table{width:100%;border-collapse:separate;border-spacing:0;overflow:hidden;border-radius:18px;border:1px solid var(--line);background:#fffaf2;box-shadow:var(--shadow)}
+  th,td{padding:13px 14px;border-bottom:1px solid var(--line);vertical-align:top} th{background:#e6efe8;color:#2f5045;text-align:left} tr:last-child td{border-bottom:0}
+  details{background:#fffaf2;border:1px solid var(--line);border-radius:16px;padding:12px 14px;box-shadow:var(--shadow)}details+details{margin-top:10px}summary{font-weight:900;cursor:pointer;color:#36584b}.answer{margin-top:10px;padding:10px 12px;border-radius:12px;background:#eef5ef}
+  .quiz-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px}.q{background:#fffaf2;border:1px solid var(--line);border-radius:18px;padding:15px;box-shadow:var(--shadow)}.q button{display:block;width:100%;margin:7px 0;text-align:left;background:#fff;border:1px solid var(--line);color:var(--ink);box-shadow:none;border-radius:12px}.q .feedback{font-weight:850;margin-top:8px;min-height:1.4em}.correct{color:#2f6a3f}.wrong{color:#9d3934}
+  .print-note{font-size:.9rem;color:var(--muted)}
+  footer{padding:24px 18px;border-top:1px solid var(--line);color:var(--muted);background:#fffaf2}
+  @media (max-width:760px){.compare{grid-template-columns:1fr}header{padding-top:32px}nav .wrap{padding-inline:12px}}
+  @media print{body{background:#fff;font-size:11pt}header,nav,.top-actions,.no-print,button{display:none!important}main{padding:0}.card,details,table{box-shadow:none;break-inside:avoid}section{page-break-inside:auto}.grid{grid-template-columns:repeat(2,1fr)}h2{page-break-after:avoid}}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <div class="eyebrow">GreekDoc • Κοινωνική Ιατρική - Δημόσια Υγεία</div>
+    <h1>Βασικές έννοιες με grid απομνημόνευσης</h1>
+    <p class="subtitle">Σημειώσεις εξετάσεων από το μάθημα αμφιθεάτρου 02.03.2026: Υγεία, πληθυσμιακή υγεία, δημόσια υγεία, προαγωγή υγείας, παγκόσμια υγεία και κοινωνικοί καθοριστές.</p>
+    <div class="top-actions"><button onclick="window.print()">🖨️ Εκτύπωση / PDF</button><a class="btn" href="#quiz">⚡ Γρήγορο quiz</a><a class="btn" href="#sos">SOS εξετάσεων</a></div>
+  </div>
+</header>
+<nav><div class="wrap"><a href="#map">Χάρτης</a><a href="#history">Ιστορικά</a><a href="#definitions">Ορισμοί</a><a href="#determinants">Καθοριστές</a><a href="#compare">Συγκρίσεις</a><a href="#sos">SOS</a><a href="#quiz">Quiz</a></div></nav>
+<main class="wrap">
+<section id="map">
+  <h2>1. Ο χάρτης του κεφαλαίου</h2>
+  <p class="lead">Το μάθημα δεν είναι “λεπτομέρειες για παπαγαλία”. Είναι ένα σύστημα εννοιών. Αν κρατήσεις αυτόν τον χάρτη, οι ορισμοί βγαίνουν λογικά.</p>
+  <div class="grid small">
+    <div class="card"><span class="tag">1</span><h3>Υγεία</h3><p>Δεν είναι μόνο “δεν είμαι άρρωστος”. Είναι <strong>σωματική, ψυχική και κοινωνική ευεξία</strong>.</p></div>
+    <div class="card"><span class="tag blue">2</span><h3>Πληθυσμιακή υγεία</h3><p>Η <strong>κατάσταση υγείας ενός πληθυσμού</strong>, όπως μετράται με δείκτες και επηρεάζεται από πολλούς παράγοντες.</p></div>
+    <div class="card"><span class="tag rose">3</span><h3>Δημόσια υγεία</h3><p>Οι <strong>οργανωμένες προσπάθειες της κοινωνίας</strong> για πρόληψη νόσων, επιμήκυνση ζωής και προαγωγή υγείας.</p></div>
+    <div class="card"><span class="tag gold">4</span><h3>Προαγωγή υγείας</h3><p>Η διαδικασία που βοηθά τα άτομα να έχουν <strong>περισσότερο έλεγχο</strong> πάνω στην υγεία τους.</p></div>
+    <div class="card"><span class="tag purple">5</span><h3>Παγκόσμια υγεία</h3><p>Προβλήματα υγείας που <strong>ξεπερνούν τα σύνορα</strong> και λύνονται καλύτερα με συνεργασία χωρών.</p></div>
+  </div>
+  <div class="memory">Μνημονικό: <strong>Υγεία = κατάσταση</strong>. <strong>Πληθυσμιακή υγεία = κατάσταση πληθυσμού</strong>. <strong>Δημόσια υγεία = δράσεις/πολιτικές για να βελτιωθεί η κατάσταση</strong>.</div>
+</section>
+
+<section id="history">
+  <h2>2. Γιατί υπάρχει η Δημόσια Υγεία; Η μεγάλη εικόνα</h2>
+  <div class="grid">
+    <div class="card"><span class="tag gold">1900 → σήμερα</span><h3>Τεράστια πρόοδος σε 100 χρόνια</h3><p>Τα τελευταία 100 χρόνια σημειώθηκε μεγάλη πρόοδος στην υγεία και στο προσδόκιμο επιβίωσης. Γύρω στο 1900 το προσδόκιμο ζωής ήταν <strong>κάτω από 50 έτη</strong>, ενώ στη διαφάνεια αναφέρεται ενδεικτικά <strong>81,9 έτη</strong>.</p></div>
+    <div class="card"><span class="tag rose">Τότε</span><h3>Κύριες απειλές</h3><ul class="tight"><li>Μεταδοτικά νοσήματα.</li><li>Ανεπάρκειες βιταμινών.</li><li>Κακή οδοντική υγεία.</li></ul></div>
+    <div class="card"><span class="tag blue">Σήμερα</span><h3>Μετατόπιση ενδιαφέροντος</h3><p>Δεν μας απασχολεί μόνο η θεραπεία του άρρωστου ατόμου, αλλά και <strong>πώς οργανώνεται η κοινωνία</strong> ώστε να προλαμβάνει νόσο, να μειώνει ανισότητες και να προάγει υγεία.</p></div>
+  </div>
+  <h3 style="margin-top:22px">Επιτεύγματα του 20ού αιώνα στη Δημόσια Υγεία</h3>
+  <div class="grid small">
+    <div class="card"><strong>Εμβολιασμοί</strong><p>Πρόληψη λοιμωδών νοσημάτων σε πληθυσμιακό επίπεδο.</p></div>
+    <div class="card"><strong>Έλεγχος μεταδοτικών νοσημάτων</strong><p>Επιτήρηση, πρόληψη, ανίχνευση, αντιμετώπιση.</p></div>
+    <div class="card"><strong>Φθορίωση πόσιμου νερού</strong><p>Παρέμβαση στο περιβάλλον που μειώνει οδοντικά προβλήματα.</p></div>
+    <div class="card"><strong>Καπνός ως κίνδυνος</strong><p>Αναγνώριση της χρήσης προϊόντων καπνού ως κινδύνου για την υγεία.</p></div>
+    <div class="card"><strong>Ασφαλέστερα τρόφιμα</strong><p>Πιο ασφαλή και υγιεινά τρόφιμα.</p></div>
+    <div class="card"><strong>Οικογενειακός προγραμματισμός</strong><p>Σχετίζεται με μητρική, παιδική και κοινωνική υγεία.</p></div>
+    <div class="card"><strong>Υγιείς μητέρες & μωρά</strong><p>Βελτίωση μητρικής και βρεφικής υγείας.</p></div>
+    <div class="card"><strong>Ασφάλεια οχημάτων</strong><p>Μείωση τραυματισμών και θανάτων από τροχαία.</p></div>
+    <div class="card"><strong>Ασφάλεια εργασίας</strong><p>Υγιεινότεροι και ασφαλέστεροι χώροι εργασίας.</p></div>
+  </div>
+</section>
+
+<section id="definitions">
+  <h2>3. Ορισμοί που πρέπει να ξέρεις σχεδόν λέξη-κλειδί</h2>
+  <div class="grid">
+    <div class="card"><span class="tag">WHO 1946</span><h3>Υγεία</h3><p>Κατάσταση <strong>πλήρους σωματικής, ψυχικής και κοινωνικής ευεξίας</strong> και όχι απλώς η απουσία ασθένειας και αναπηρίας.</p><div class="memory">Κρατάς: όχι μόνο “absence of disease”. Θέλει και <strong>ευεξία</strong>.</div></div>
+    <div class="card"><span class="tag blue">Population Health</span><h3>Πληθυσμιακή Υγεία</h3><p>Η υγεία του πληθυσμού, όπως <strong>μετράται μέσω δεικτών υγείας</strong> και επηρεάζεται από κοινωνικούς, οικονομικούς, φυσικούς, βιολογικούς παράγοντες, συμπεριφορές, δεξιότητες αντιμετώπισης και υπηρεσίες υγείας.</p><div class="memory">Κρατάς: <strong>μετράει την κατάσταση</strong> της υγείας πληθυσμού.</div></div>
+    <div class="card"><span class="tag rose">Public Health</span><h3>Δημόσια Υγεία</h3><p>Η επιστήμη της <strong>πρόληψης των ασθενειών</strong>, της <strong>επιμήκυνσης της ζωής</strong> και της <strong>προαγωγής της υγείας</strong> μέσα από οργανωμένες προσπάθειες στην κοινωνία.</p><p>Είναι και το σύνολο δραστηριοτήτων με τις οποίες η κοινωνία εξασφαλίζει τις προϋποθέσεις υγείας του πληθυσμού, μαζί με κοινοτικές παρεμβάσεις για πρόληψη, ανίχνευση και αντιμετώπιση απειλών.</p></div>
+    <div class="card"><span class="tag gold">Ottawa 1986</span><h3>Προαγωγή Υγείας</h3><p>Η διαδικασία που <strong>ενισχύει την ικανότητα των ατόμων</strong> να αυξήσουν τον έλεγχο της υγείας τους και να τη βελτιώσουν.</p><div class="memory">Λέξη-κλειδί: <strong>έλεγχος</strong> από το άτομο/κοινότητα.</div></div>
+    <div class="card"><span class="tag purple">Global Health</span><h3>Παγκόσμια Υγεία</h3><p>Προβλήματα υγείας, ζητήματα και ανησυχίες που <strong>ξεπερνούν τα εθνικά σύνορα</strong>, επηρεάζονται από διαφορετικές συνθήκες σε διαφορετικές χώρες και αντιμετωπίζονται καλύτερα με συνεργατικές ενέργειες.</p></div>
+  </div>
+</section>
+
+<section id="determinants">
+  <h2>4. Τι καθορίζει την υγεία μας;</h2>
+  <p class="lead">Η πιο εξεταστική ιδέα: οι υπηρεσίες υγείας δεν είναι το 100% της υγείας. Μεγάλο μέρος των εκβάσεων υγείας καθορίζεται έξω από το νοσοκομείο.</p>
+  <div class="grid">
+    <div class="card"><span class="tag gold">80%</span><div class="big-number">80%</div><h3>Περιβάλλον + κοινωνία + συμπεριφορές</h3><p>Το φυσικό περιβάλλον, οι κοινωνικοί καθοριστές και οι ατομικές συμπεριφορές υγείας καθορίζουν περίπου <strong>80% των εκβάσεων υγείας</strong>.</p></div>
+    <div class="card"><span class="tag blue">20%</span><div class="big-number">20%</div><h3>Υπηρεσίες υγείας</h3><p>Η παρεχόμενη φροντίδα/υπηρεσίες υγείας εξηγούν περίπου <strong>20% των εκβάσεων υγείας</strong>.</p></div>
+  </div>
+  <h3 style="margin-top:22px">Grid καθοριστών υγείας</h3>
+  <div class="grid small">
+    <div class="card"><span class="tag">Κοινωνικοοικονομικοί</span><ul><li>Εκπαίδευση</li><li>Εργασιακή κατάσταση</li><li>Εισόδημα</li><li>Οικογένεια/κοινωνική υποστήριξη</li><li>Κοινότητα και ασφάλεια</li></ul></div>
+    <div class="card"><span class="tag rose">Συμπεριφορές υγείας</span><ul><li>Χρήση καπνού</li><li>Διατροφή και άσκηση</li><li>Χρήση αλκοόλ</li><li>Σεξουαλική δραστηριότητα</li></ul></div>
+    <div class="card"><span class="tag blue">Φροντίδα υγείας</span><ul><li>Πρόσβαση στη φροντίδα</li><li>Ποιότητα φροντίδας</li></ul></div>
+    <div class="card"><span class="tag purple">Φυσικό περιβάλλον</span><p>Περιβάλλον ζωής, συνθήκες κατοικίας, ρύπανση, ασφάλεια, δομημένο περιβάλλον.</p></div>
+  </div>
+  <div class="exam"><strong>Εξεταστική διατύπωση:</strong> Η Κοινωνική Ιατρική μελετά την επίδραση των <strong>κοινωνικών καθοριστών</strong> στην υγεία.</div>
+</section>
+
+<section id="compare">
+  <h2>5. Οι συγκρίσεις που μπερδεύουν</h2>
+  <h3>Πληθυσμιακή Υγεία vs Δημόσια Υγεία</h3>
+  <div class="compare">
+    <div><span class="tag blue">Πληθυσμιακή Υγεία</span><h3>Τι είναι η κατάσταση;</h3><p>Περιγράφει την <strong>κατάσταση της υγείας του πληθυσμού</strong>.</p><ul><li>Μετριέται με δείκτες υγείας.</li><li>Επηρεάζεται από κοινωνικούς, οικονομικούς, φυσικούς, βιολογικούς παράγοντες.</li><li>Περιλαμβάνει συμπεριφορές και υπηρεσίες υγείας.</li></ul></div>
+    <div><span class="tag rose">Δημόσια Υγεία</span><h3>Τι κάνουμε γι’ αυτήν;</h3><p>Περιλαμβάνει <strong>πολιτικές, προγράμματα, πρακτικές, διαδικασίες, θεσμούς και επιστημονικά πεδία</strong> που απαιτούνται για να πετύχουμε την επιθυμητή υγεία πληθυσμού.</p><ul><li>Πρόληψη.</li><li>Ανίχνευση απειλών.</li><li>Αντιμετώπιση κινδύνων.</li><li>Οργανωμένες παρεμβάσεις.</li></ul></div>
+  </div>
+  <div class="flow"><span class="pill">Πληθυσμιακή υγεία</span><span class="arrow">=</span><span class="pill">τι επίπεδο υγείας έχει ο πληθυσμός</span><span class="arrow">→</span><span class="pill">Δημόσια υγεία</span><span class="arrow">=</span><span class="pill">τι οργανωμένα κάνουμε για να το βελτιώσουμε</span></div>
+
+  <h3 style="margin-top:26px">Κλινική Ιατρική vs Δημόσια Υγεία / Κοινωνική Ιατρική</h3>
+  <table>
+    <thead><tr><th>Κλινική Ιατρική</th><th>Δημόσια Υγεία - Κοινωνική Ιατρική</th></tr></thead>
+    <tbody>
+      <tr><td>Επικεντρώνει στο <strong>άτομο</strong>.</td><td>Ερευνά, σχεδιάζει και παρεμβαίνει σε επίπεδο <strong>πληθυσμού</strong>.</td></tr>
+      <tr><td>Εστιάζει στη <strong>διάγνωση και αντιμετώπιση</strong> της νόσου.</td><td>Εστιάζει στους <strong>πολιτικο-κοινωνικο-οικονομικούς προσδιοριστές</strong> της υγείας.</td></tr>
+      <tr><td>Κέντρο: φροντίδα υγείας/θεραπεία.</td><td>Κέντρο: ευημερία κοινωνίας, προστασία και προαγωγή υγείας, πρόληψη νόσου.</td></tr>
+      <tr><td>Παράδειγμα σκέψης: «Πώς θεραπεύω τον ασθενή;»</td><td>Παράδειγμα σκέψης: «Πώς μειώνω τον κίνδυνο σε ολόκληρη κοινότητα;»</td></tr>
+      <tr><td>Εργαλεία: ιστορικό, κλινική εξέταση, διάγνωση, θεραπεία.</td><td>Εργαλεία: δεδομένα, δείκτες, αξιολόγηση, παρεμβάσεις σε περιβάλλον/συμπεριφορά/τρόπο ζωής/φροντίδα.</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section>
+  <h2>6. Προαγωγή Υγείας: τα 3 κύρια στοιχεία Π.Ο.Υ.</h2>
+  <div class="grid small">
+    <div class="card"><span class="tag gold">1</span><h3>Αποτελεσματική πολιτική υγείας</h3><p>Πολιτικές που κάνουν την υγιεινή επιλογή πιο εύκολη και προστατεύουν την υγεία σε επίπεδο κοινωνίας.</p></div>
+    <div class="card"><span class="tag gold">2</span><h3>«Υγιείς» πόλεις</h3><p>Πόλεις/κοινότητες που οργανώνονται ώστε να διευκολύνουν υγεία, ασφάλεια, πρόσβαση και κοινωνική υποστήριξη.</p></div>
+    <div class="card"><span class="tag gold">3</span><h3>Εγγραμματοσύνη υγείας</h3><p>Η ικανότητα των ατόμων να βρίσκουν, κατανοούν και χρησιμοποιούν πληροφορίες υγείας για καλύτερες αποφάσεις.</p></div>
+  </div>
+</section>
+
+<section>
+  <h2>7. Η Δημόσια Υγεία σήμερα στοχεύει</h2>
+  <div class="grid small">
+    <div class="card"><strong>Προστασία & προαγωγή υγείας πληθυσμού</strong><p>Όχι μόνο θεραπεία, αλλά ενεργή προστασία και βελτίωση υγείας.</p></div>
+    <div class="card"><strong>Πρόληψη σε όλα τα επίπεδα</strong><p>Πρωτογενής, δευτερογενής, τριτογενής πρόληψη ως γενική λογική.</p></div>
+    <div class="card"><strong>Μείωση ανισοτήτων</strong><p>Κοινωνικές και γεωγραφικές ανισότητες στην υγεία.</p></div>
+    <div class="card"><strong>Διαχείριση κινδύνων & ετοιμότητα</strong><p>Ανίχνευση, αντιμετώπιση και προετοιμασία για απειλές δημόσιας υγείας.</p></div>
+    <div class="card"><strong>Διατομεακή συνεργασία</strong><p>Συνεργασία υγείας με εκπαίδευση, εργασία, περιβάλλον, μεταφορές, κοινωνικές υπηρεσίες.</p></div>
+    <div class="card"><strong>Βιωσιμότητα συστήματος</strong><p>Σύστημα υγείας που μπορεί να αντέχει και να λειτουργεί μακροπρόθεσμα.</p></div>
+  </div>
+  <div class="memory">Λειτουργεί με: <strong>Δεδομένα – Δείκτες – Αξιολόγηση</strong>.</div>
+</section>
+
+<section id="sos">
+  <h2>8. SOS εξετάσεων</h2>
+  <div class="grid">
+    <div class="card"><span class="tag rose">SOS</span><h3>Ορισμός Υγείας WHO</h3><p>Πλήρης σωματική, ψυχική, κοινωνική ευεξία — όχι απλή απουσία ασθένειας/αναπηρίας.</p></div>
+    <div class="card"><span class="tag rose">SOS</span><h3>80/20</h3><p>Περιβάλλον + κοινωνικοί καθοριστές + συμπεριφορές ≈ 80% εκβάσεων. Υπηρεσίες υγείας ≈ 20%.</p></div>
+    <div class="card"><span class="tag rose">SOS</span><h3>Πληθυσμιακή vs Δημόσια</h3><p>Πληθυσμιακή = περιγράφει/μετρά κατάσταση υγείας πληθυσμού. Δημόσια = οργανωμένες δράσεις, πολιτικές, προγράμματα για να τη βελτιώσουν.</p></div>
+    <div class="card"><span class="tag rose">SOS</span><h3>Προαγωγή Υγείας</h3><p>Αύξηση ελέγχου των ατόμων πάνω στην υγεία τους και βελτίωσή της. Ottawa Charter 1986.</p></div>
+    <div class="card"><span class="tag rose">SOS</span><h3>Global health</h3><p>Ξεπερνά εθνικά σύνορα και απαιτεί συνεργατικές λύσεις.</p></div>
+    <div class="card"><span class="tag rose">SOS</span><h3>Κλινική vs Δημόσια</h3><p>Κλινική = άτομο/διάγνωση/θεραπεία. Δημόσια = πληθυσμός/προσδιοριστές/πρόληψη/προαγωγή.</p></div>
+  </div>
+  <h3 style="margin-top:22px">Πιθανές ερωτήσεις τύπου “γράψε σύντομα”</h3>
+  <details><summary>Τι είναι η Δημόσια Υγεία;</summary><div class="answer">Είναι η επιστήμη της πρόληψης ασθενειών, της επιμήκυνσης ζωής και της προαγωγής υγείας μέσω οργανωμένων κοινωνικών προσπαθειών. Περιλαμβάνει δράσεις και κοινοτικές παρεμβάσεις για πρόληψη, ανίχνευση και αντιμετώπιση απειλών υγείας.</div></details>
+  <details><summary>Ποια η διαφορά δημόσιας και πληθυσμιακής υγείας;</summary><div class="answer">Η πληθυσμιακή υγεία περιγράφει την κατάσταση υγείας ενός πληθυσμού, ενώ η δημόσια υγεία είναι το σύνολο πολιτικών, προγραμμάτων, πρακτικών, θεσμών και επιστημονικών πεδίων που στοχεύουν στη βελτίωση αυτής της κατάστασης.</div></details>
+  <details><summary>Τι καθορίζει περισσότερο την υγεία μας;</summary><div class="answer">Το φυσικό περιβάλλον, οι κοινωνικοί καθοριστές και οι ατομικές συμπεριφορές υγείας καθορίζουν περίπου 80% των εκβάσεων υγείας, ενώ οι παρεχόμενες υπηρεσίες υγείας περίπου 20%.</div></details>
+  <details><summary>Ποια είναι τα 3 κύρια στοιχεία της προαγωγής υγείας;</summary><div class="answer">Αποτελεσματική πολιτική υγείας, «υγιείς» πόλεις και εγγραμματοσύνη της υγείας.</div></details>
+</section>
+
+<section id="quiz" class="no-print">
+  <h2>9. Γρήγορο mini-quiz</h2>
+  <p class="lead">Πάτα απάντηση και δες άμεσα αν το θυμάσαι.</p>
+  <div class="quiz-grid" id="quizGrid"></div>
+</section>
+</main>
+<footer><div class="wrap"><strong>GreekDoc</strong> • Βασικές έννοιες Κοινωνικής Ιατρικής - Δημόσιας Υγείας • Πηγή: παρουσίαση Ζ. Τσίμτσιου, μάθημα αμφιθεάτρου 02.03.2026. <span class="print-note">Για διάβασμα: πρώτα τα SOS, μετά οι συγκρίσεις, μετά quiz.</span></div></footer>
+<script>
+const questions = [
+  {q:'Ο ορισμός της υγείας κατά WHO τονίζει κυρίως ότι η υγεία είναι:', a:['Απουσία νόσου μόνο','Πλήρης σωματική, ψυχική και κοινωνική ευεξία','Ικανότητα εργασίας','Καλή πρόσβαση σε νοσοκομείο'], correct:1, exp:'Σωστό: δεν είναι απλά απουσία νόσου/αναπηρίας.'},
+  {q:'Η πληθυσμιακή υγεία περιγράφει κυρίως:', a:['Τις πολιτικές πρόληψης','Την κατάσταση υγείας ενός πληθυσμού όπως μετράται με δείκτες','Μόνο τα νοσοκομεία','Μόνο τα μεταδοτικά νοσήματα'], correct:1, exp:'Πληθυσμιακή = κατάσταση/δείκτες πληθυσμού.'},
+  {q:'Η δημόσια υγεία περιλαμβάνει:', a:['Μόνο θεραπεία ατόμων','Οργανωμένες κοινωνικές προσπάθειες για πρόληψη, επιμήκυνση ζωής, προαγωγή υγείας','Μόνο εργαστηριακές εξετάσεις','Μόνο φροντίδα σε ΜΕΘ'], correct:1, exp:'Δημόσια = οργανωμένες δράσεις σε κοινωνικό/πληθυσμιακό επίπεδο.'},
+  {q:'Σύμφωνα με τη διαφάνεια, οι υπηρεσίες υγείας καθορίζουν περίπου:', a:['20% των εκβάσεων υγείας','50% των εκβάσεων υγείας','80% των εκβάσεων υγείας','100% των εκβάσεων υγείας'], correct:0, exp:'Οι υπηρεσίες υγείας ≈ 20%, ενώ περιβάλλον/κοινωνία/συμπεριφορές ≈ 80%.'},
+  {q:'Η προαγωγή υγείας είναι διαδικασία που βοηθά τα άτομα να:', a:['Αποφεύγουν πάντα τα νοσοκομεία','Αυξήσουν τον έλεγχο της υγείας τους και να τη βελτιώσουν','Κάνουν μόνο εμβόλια','Διαγνώσουν μόνοι τους ασθένειες'], correct:1, exp:'Λέξη-κλειδί: έλεγχος της υγείας.'},
+  {q:'Παγκόσμια υγεία σημαίνει ζητήματα υγείας που:', a:['Αφορούν μόνο μία πόλη','Ξεπερνούν εθνικά σύνορα και απαιτούν συνεργασία','Αφορούν μόνο τους ταξιδιώτες','Δεν επηρεάζονται από τις συνθήκες κάθε χώρας'], correct:1, exp:'Global health = πέρα από σύνορα + συνεργατικές λύσεις.'},
+  {q:'Κλινική Ιατρική vs Δημόσια Υγεία: η σωστή αντιστοιχία είναι:', a:['Κλινική = πληθυσμός, Δημόσια = άτομο','Κλινική = διάγνωση/θεραπεία ατόμου, Δημόσια = πρόληψη/προαγωγή σε πληθυσμό','Και οι δύο κάνουν μόνο θεραπεία','Η δημόσια υγεία δεν χρησιμοποιεί δεδομένα'], correct:1, exp:'Αυτό είναι το βασικό contrast.'},
+  {q:'Τα 3 κύρια στοιχεία της προαγωγής υγείας κατά Π.Ο.Υ. είναι:', a:['Νοσοκομεία, φάρμακα, χειρουργεία','Πολιτική υγείας, υγιείς πόλεις, εγγραμματοσύνη υγείας','Μόνο εμβολιασμοί','Μόνο εκπαίδευση και άσκηση'], correct:1, exp:'Αποτελεσματική πολιτική υγείας + υγιείς πόλεις + health literacy.'}
+];
+const grid = document.getElementById('quizGrid');
+questions.forEach((item, idx)=>{
+  const box=document.createElement('div'); box.className='q';
+  box.innerHTML=`<h3>${idx+1}. ${item.q}</h3>`;
+  item.a.forEach((ans,i)=>{
+    const b=document.createElement('button'); b.textContent=ans;
+    b.onclick=()=>{
+      const f=box.querySelector('.feedback');
+      if(i===item.correct){f.className='feedback correct'; f.textContent='✓ Σωστό. '+item.exp}
+      else{f.className='feedback wrong'; f.textContent='✗ Όχι. '+item.exp}
+    };
+    box.appendChild(b);
+  });
+  const fb=document.createElement('div'); fb.className='feedback'; box.appendChild(fb);
+  grid.appendChild(box);
+});
+</script>
+</body>
+</html>
