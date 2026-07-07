@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GreekDoc | Ασύγχρονα Μαθήματα</title>
+<style>
+:root{
+  --bg:#f6f8ff; --ink:#172033; --muted:#5b667a; --card:#ffffff; --line:#dce3f5;
+  --blue:#2f67ff; --cyan:#11a8b5; --green:#16a36a; --orange:#f59e0b; --pink:#e85d9e;
+  --shadow:0 14px 35px rgba(24,40,90,.10);
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,'Helvetica Neue',sans-serif;background:linear-gradient(180deg,#eef4ff,#fff 22%,#f8fbff);color:var(--ink);line-height:1.55}
+header{padding:34px 22px 24px;background:linear-gradient(135deg,#1f4fd6,#18a7b8);color:white}
+.header-inner{max-width:1180px;margin:auto}
+h1{font-size:clamp(2rem,4vw,4rem);margin:0 0 8px;font-weight:900;letter-spacing:-1px}
+.subtitle{font-size:1.15rem;opacity:.95;max-width:900px}
+.toolbar{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+button,.pill{border:0;border-radius:999px;padding:10px 15px;background:white;color:#17418f;font-weight:800;box-shadow:var(--shadow);cursor:pointer}
+.pill{display:inline-block;background:rgba(255,255,255,.18);color:white;box-shadow:none;border:1px solid rgba(255,255,255,.35)}
+main{max-width:1180px;margin:auto;padding:24px 18px 70px}
+nav{position:sticky;top:0;z-index:5;background:rgba(255,255,255,.88);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);padding:10px 0;margin:0 -18px 22px}
+nav .nav-inner{max-width:1180px;margin:auto;display:flex;gap:8px;flex-wrap:wrap;padding:0 18px}
+nav a{font-size:.92rem;text-decoration:none;color:#22406f;font-weight:800;border:1px solid var(--line);background:#fff;border-radius:999px;padding:7px 10px}
+section{margin:28px 0}
+h2{font-size:1.85rem;margin:0 0 14px;color:#15356e}
+h3{margin:0 0 10px;color:#1e3a8a}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:18px;box-shadow:var(--shadow)}
+.card.sos{border-left:7px solid var(--orange)}
+.card.blue{border-left:7px solid var(--blue)}
+.card.green{border-left:7px solid var(--green)}
+.card.cyan{border-left:7px solid var(--cyan)}
+.card.pink{border-left:7px solid var(--pink)}
+.big{font-size:1.1rem;font-weight:800}
+.small{font-size:.92rem;color:var(--muted)}
+ul{margin:8px 0 0;padding-left:20px}
+li{margin:5px 0}
+table{width:100%;border-collapse:collapse;background:#fff;border-radius:18px;overflow:hidden;box-shadow:var(--shadow)}
+th,td{padding:12px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{background:#eaf1ff;color:#17356e;text-align:left}
+tr:last-child td{border-bottom:0}
+.tag{display:inline-block;border-radius:8px;padding:2px 7px;font-size:.78rem;font-weight:800;background:#edf4ff;color:#1d4ed8;margin:2px}
+.exam{background:#fff7ed;border:1px solid #fed7aa;border-radius:18px;padding:14px}
+.mnemo{background:#ecfeff;border:1px solid #a5f3fc;border-radius:18px;padding:14px}
+details{background:#fff;border:1px solid var(--line);border-radius:16px;padding:12px 14px;margin:9px 0;box-shadow:0 8px 20px rgba(24,40,90,.06)}
+summary{cursor:pointer;font-weight:900;color:#1e3a8a}
+.quiz details{border-left:5px solid var(--green)}
+.footer{margin-top:40px;padding:20px;border-top:1px solid var(--line);color:var(--muted);font-size:.9rem}
+@media print{
+  header,nav,.toolbar{display:none}
+  body{background:white;font-size:11pt}
+  main{padding:0;max-width:none}
+  .card,table,details{box-shadow:none;break-inside:avoid}
+  section{break-inside:auto}
+  h2{break-after:avoid}
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <div class="pill">GreekDoc · Κοινωνική Ιατρική – Δημόσια Υγεία</div>
+    <h1>Ασύγχρονα Μαθήματα</h1>
+    <div class="subtitle">Ενιαίο, εξεταστικό GreekDoc για τις 3 παρουσιάσεις: ΠΟΥ & φορείς Δημόσιας Υγείας, «Τροφή για Δράση» / παιδική παχυσαρκία, και εθνικό πρόγραμμα προσυμπτωματικού ελέγχου «ΠΡΟΛΑΜΒΑΝΩ».</div>
+    <div class="toolbar">
+      <button onclick="window.print()">🖨️ Εκτύπωση</button>
+      <button onclick="document.querySelectorAll('details').forEach(d=>d.open=true)">Άνοιγμα quiz</button>
+      <button onclick="document.querySelectorAll('details').forEach(d=>d.open=false)">Κλείσιμο quiz</button>
+    </div>
+  </div>
+</header>
+
+<nav>
+  <div class="nav-inner">
+    <a href="#sos">SOS</a>
+    <a href="#who">ΠΟΥ & φορείς</a>
+    <a href="#europe">Ευρώπη</a>
+    <a href="#greece">Ελλάδα</a>
+    <a href="#trofi">Τροφή για Δράση</a>
+    <a href="#prolamvano">ΠΡΟΛΑΜΒΑΝΩ</a>
+    <a href="#quiz">Mini-quiz</a>
+  </div>
+</nav>
+
+<main>
+
+<section id="sos">
+<h2>1. Τα απολύτως SOS για εξετάσεις</h2>
+<div class="grid">
+  <div class="card sos">
+    <h3>ΠΟΥ / WHO</h3>
+    <ul>
+      <li>Εξειδικευμένος οργανισμός του ΟΗΕ για τη διεθνή δημόσια υγεία.</li>
+      <li>Θέτει πρότυπα, οδηγίες και διεθνείς κανονισμούς· δεν είναι «τοπικό υπουργείο υγείας».</li>
+      <li>Βασικά όργανα: <b>World Health Assembly</b>, <b>Executive Board</b>, <b>Director-General</b>, <b>Secretariat</b>, 6 περιφερειακά γραφεία.</li>
+    </ul>
+  </div>
+  <div class="card sos">
+    <h3>Δημόσια υγεία = πολυεπίπεδη διακυβέρνηση</h3>
+    <ul>
+      <li><b>Παγκόσμιο:</b> UN/WHO, UNICEF, Gavi, Global Fund.</li>
+      <li><b>Ευρωπαϊκό:</b> DG SANTE, ECDC, EMA, EFSA, EEA.</li>
+      <li><b>Εθνικό:</b> Υπουργείο Υγείας, ΕΟΔΥ, ΕΟΠΥΥ, ΥΠΕ, ΕΣΥ.</li>
+      <li><b>Τοπικό:</b> δήμοι, σχολεία, ΚΥ, κοινότητα.</li>
+    </ul>
+  </div>
+  <div class="card sos">
+    <h3>«Τροφή για Δράση»</h3>
+    <ul>
+      <li>Εθνική δράση για αντιμετώπιση παιδικής παχυσαρκίας.</li>
+      <li>4 συμπεριφορές-στόχοι: νερό, ισορροπημένο πρωινό/σνακ, σωματική δραστηριότητα, μείωση καθιστικής ζωής/οθονών.</li>
+      <li>4 πυλώνες: σχολικό περιβάλλον, πρότυπο εκπαιδευτικού, δραστηριότητες, οικογένεια.</li>
+    </ul>
+  </div>
+  <div class="card sos">
+    <h3>«ΠΡΟΛΑΜΒΑΝΩ»</h3>
+    <ul>
+      <li>Εθνικό πρόγραμμα προσυμπτωματικού ελέγχου.</li>
+      <li>Μαστός: γυναίκες 45–74, κάθε 2 χρόνια.</li>
+      <li>Τράχηλος: γυναίκες 21–65, Pap 21–29, HPV-DNA 30–65.</li>
+      <li>Παχύ έντερο: πολίτες 50–69, self-test κοπράνων ± κολονοσκόπηση.</li>
+      <li>Καρδιαγγειακά: πολίτες 30–70, λιπιδαιμικό προφίλ/γλυκόζη/ιατρική εκτίμηση.</li>
+    </ul>
+  </div>
+</div>
+</section>
+
+<section id="who">
+<h2>2. Παγκόσμιος Οργανισμός Υγείας και παγκόσμια αρχιτεκτονική υγείας</h2>
+<div class="grid">
+  <div class="card blue">
+    <h3>Τι είναι η Global Health Architecture;</h3>
+    <p>Είναι το σύνολο των θεσμών, κανόνων, χρηματοδοτήσεων, συνεργασιών και μηχανισμών που οργανώνουν τη δημόσια υγεία σε παγκόσμιο επίπεδο.</p>
+    <div class="exam"><b>Εξεταστικό νόημα:</b> η δημόσια υγεία δεν παράγεται από έναν φορέα, αλλά από δίκτυο φορέων με διαφορετική ισχύ, ρόλο και χρηματοδότηση.</div>
+  </div>
+  <div class="card blue">
+    <h3>Κανονιστικό vs ρυθμιστικό</h3>
+    <ul>
+      <li><b>Κανονιστικό / normative:</b> θέτει πρότυπα, οδηγίες, συστάσεις. Παράδειγμα: ΠΟΥ.</li>
+      <li><b>Ρυθμιστικό / regulatory:</b> εφαρμόζει ή επιβάλλει κανόνες μέσω νομοθεσίας/αδειοδότησης. Παράδειγμα: κράτος, EMA/ΕΟΦ για φάρμακα.</li>
+    </ul>
+  </div>
+  <div class="card blue">
+    <h3>ΠΟΥ: βασική δομή</h3>
+    <ul>
+      <li><b>World Health Assembly:</b> ανώτατο όργανο λήψης αποφάσεων.</li>
+      <li><b>Executive Board:</b> 34 τεχνικά μέλη, υλοποιεί αποφάσεις WHA.</li>
+      <li><b>Director-General:</b> ανώτατος τεχνικός/διοικητικός προϊστάμενος.</li>
+      <li><b>Secretariat:</b> προσωπικό/ειδικοί σε HQ, περιφέρειες και χώρες.</li>
+      <li><b>6 regional offices:</b> AFRO, AMRO, EMRO, EURO, SEARO, WPRO.</li>
+    </ul>
+  </div>
+  <div class="card blue">
+    <h3>Ιστορικά επιτεύγματα ΠΟΥ</h3>
+    <ul>
+      <li>Εξάλειψη ευλογιάς.</li>
+      <li>Πρωτοβουλία εξάλειψης πολιομυελίτιδας.</li>
+      <li>ICD / διεθνής ταξινόμηση νοσημάτων.</li>
+      <li>Διεθνείς Υγειονομικοί Κανονισμοί.</li>
+      <li>Μη μεταδοτικά νοσήματα και SDGs.</li>
+      <li>Προώθηση One Health.</li>
+    </ul>
+  </div>
+</div>
+
+<h3>Παγκόσμιοι φορείς: ποιος κάνει τι;</h3>
+<table>
+<thead><tr><th>Φορέας</th><th>Ρόλος</th><th>Τι να θυμάσαι</th></tr></thead>
+<tbody>
+<tr><td>UN</td><td>Πολιτικό/διεθνές σύστημα</td><td>Η υγεία ως ανθρώπινο δικαίωμα.</td></tr>
+<tr><td>WHO</td><td>Εξειδικευμένος οργανισμός δημόσιας υγείας</td><td>Κατευθυντήριες οδηγίες, πρότυπα, συντονισμός.</td></tr>
+<tr><td>UNICEF</td><td>Παιδιά, μητρική/παιδική υγεία</td><td>Σημαντικός εταίρος σε προγράμματα για παιδιά.</td></tr>
+<tr><td>UNFPA</td><td>Αναπαραγωγική, εφηβική, μητρική υγεία</td><td>Πληθυσμός και reproductive health.</td></tr>
+<tr><td>UNAIDS</td><td>HIV/AIDS</td><td>Κοινό πρόγραμμα ΟΗΕ.</td></tr>
+<tr><td>Gavi</td><td>Εμβόλια και ανοσοποίηση</td><td>Σύμπραξη δημόσιου-ιδιωτικού τομέα.</td></tr>
+<tr><td>Global Fund</td><td>AIDS, TB, malaria</td><td>Μεγάλος χρηματοδοτικός μηχανισμός.</td></tr>
+<tr><td>World Bank</td><td>Χρηματοδότηση/ανάπτυξη</td><td>Συνδέει υγεία και οικονομική ανάπτυξη.</td></tr>
+</tbody>
+</table>
+</section>
+
+<section id="europe">
+<h2>3. Ευρώπη: από παγκόσμιες οδηγίες σε ευρωπαϊκή πολιτική</h2>
+<div class="grid">
+  <div class="card cyan">
+    <h3>DG SANTE</h3>
+    <p>Η Γενική Διεύθυνση Υγείας και Ασφάλειας Τροφίμων της Ευρωπαϊκής Επιτροπής. Ασχολείται με υγεία πολιτών, ζώων, φυτών και ασφάλεια τροφίμων μέσω προσέγγισης One Health.</p>
+    <ul>
+      <li>προτείνει νομοθεσία</li>
+      <li>χρηματοδοτεί δράσεις</li>
+      <li>συντονίζει βέλτιστες πρακτικές</li>
+      <li>υποστηρίζει προαγωγή υγείας</li>
+    </ul>
+  </div>
+  <div class="card cyan">
+    <h3>ECDC</h3>
+    <p>Ευρωπαϊκό Κέντρο Πρόληψης και Ελέγχου Νόσων. Συλλέγει/αναλύει δεδομένα για λοιμώδη νοσήματα και παρέχει εκτιμήσεις κινδύνου.</p>
+    <p class="small">Θέματα: COVID-19, γρίπη, HIV/AIDS, ηπατίτιδα, ιλαρά, φυματίωση, AMR, εμβολιασμός.</p>
+  </div>
+  <div class="card cyan">
+    <h3>EMA / EFSA / EEA</h3>
+    <ul>
+      <li><b>EMA:</b> φάρμακα και εμβόλια.</li>
+      <li><b>EFSA:</b> ασφάλεια τροφίμων.</li>
+      <li><b>EEA:</b> περιβάλλον και υγεία.</li>
+    </ul>
+  </div>
+  <div class="card cyan">
+    <h3>Ροή αποφάσεων στην ΕΕ</h3>
+    <ol>
+      <li>DG SANTE / Επιτροπή: σύλληψη πολιτικής.</li>
+      <li>ECDC/EMA: επιστημονική τεκμηρίωση.</li>
+      <li>Συμβούλιο ΕΕ + Κοινοβούλιο: νομοθέτηση.</li>
+      <li>Εθνικές αρχές: εφαρμογή.</li>
+    </ol>
+  </div>
+</div>
+</section>
+
+<section id="greece">
+<h2>4. Ελλάδα: φορείς δημόσιας υγείας</h2>
+<table>
+<thead><tr><th>Επίπεδο/φορέας</th><th>Κύριος ρόλος</th><th>SOS</th></tr></thead>
+<tbody>
+<tr><td>Υπουργείο Υγείας</td><td>Πολιτική υγείας, σχεδιασμός, νομοθεσία, εκπροσώπηση Ελλάδας σε ΕΕ/διεθνείς οργανισμούς.</td><td>Κεντρική αρχή.</td></tr>
+<tr><td>Γενική Διεύθυνση Δημόσιας Υγείας</td><td>Στρατηγικές δημόσιας υγείας και προαγωγής υγείας.</td><td>Σχεδιαστικός ρόλος.</td></tr>
+<tr><td>ΕΟΔΥ</td><td>Επιτήρηση, πρόληψη, παρέμβαση, λοιμώδη/δημόσια υγεία.</td><td>Επιχειρησιακό/τεχνικό κέντρο.</td></tr>
+<tr><td>ΕΟΠΥΥ</td><td>Αγοραστής υπηρεσιών υγείας, συμβάσεις με παρόχους.</td><td>Χρηματοδότηση/κάλυψη υπηρεσιών.</td></tr>
+<tr><td>ΥΠΕ</td><td>Περιφερειακή διοίκηση υπηρεσιών υγείας.</td><td>7 υγειονομικές περιφέρειες.</td></tr>
+<tr><td>ΕΣΥ</td><td>Παροχή πρωτοβάθμιας, επείγουσας και νοσοκομειακής περίθαλψης.</td><td>ΚΥ, ΤΟΜΥ, δημόσια νοσοκομεία.</td></tr>
+<tr><td>ΕΟΦ</td><td>Αξιολόγηση/άδεια φαρμάκων.</td><td>Ρυθμιστικός ρόλος.</td></tr>
+<tr><td>ΕΚΕΠΥ</td><td>Συντονισμός σε έκτακτες ανάγκες/καταστροφές.</td><td>Emergency health operations.</td></tr>
+</tbody>
+</table>
+<div class="mnemo"><b>Μνημονικό:</b> Υπουργείο = πολιτική, ΕΟΔΥ = επιτήρηση/πρόληψη, ΕΟΠΥΥ = αγοράζει υπηρεσίες, ΥΠΕ = διοικεί περιφερειακά, ΕΣΥ = παρέχει φροντίδα.</div>
+</section>
+
+<section id="trofi">
+<h2>5. «Τροφή για Δράση» και παιδική παχυσαρκία</h2>
+<div class="grid">
+  <div class="card green">
+    <h3>Γιατί μας νοιάζει;</h3>
+    <p>Η παιδική παχυσαρκία θεωρείται χρόνια και σύνθετη νόσος και αποτελεί μείζον πρόβλημα Δημόσιας Υγείας στην Ελλάδα.</p>
+    <ul>
+      <li>συσσώρευση σωματικού λίπους</li>
+      <li>επηρεάζει υγεία, ανάπτυξη και μελλοντικό κίνδυνο νόσων</li>
+      <li>συνδέεται με περιβάλλον, διατροφή, σωματική δραστηριότητα, οθόνες, κοινωνικούς παράγοντες</li>
+    </ul>
+  </div>
+  <div class="card green">
+    <h3>Τι είναι οι εργαλειοθήκες;</h3>
+    <p>Εκπαιδευτικό υλικό για εκπαιδευτικούς, γονείς/φροντιστές και εφήβους, με στόχο υγιεινή διατροφή και άσκηση στο σχολικό περιβάλλον.</p>
+    <ul>
+      <li>επιστημονική τεκμηρίωση</li>
+      <li>παιδαγωγική καταλληλότητα</li>
+      <li>βιωματικές/παιγνιώδεις δραστηριότητες</li>
+      <li>ολιστική σχολική προσέγγιση</li>
+    </ul>
+  </div>
+  <div class="card green">
+    <h3>4 πυλώνες εφαρμογής</h3>
+    <ol>
+      <li>Αλλαγή φυσικού περιβάλλοντος σχολείου.</li>
+      <li>Υιοθέτηση συμπεριφοράς από εκπαιδευτικό και παιδιά.</li>
+      <li>Δραστηριότητες γνώσεων/υποστήριξης.</li>
+      <li>Ενεργός συμμετοχή οικογένειας.</li>
+    </ol>
+  </div>
+  <div class="card green">
+    <h3>Δικαιώματα παιδιού</h3>
+    <ul>
+      <li><b>Άρθρο 24:</b> δικαίωμα στο καλύτερο δυνατό επίπεδο υγείας, θρεπτικά τρόφιμα και καθαρό νερό.</li>
+      <li><b>Άρθρο 27:</b> κατάλληλο επίπεδο ζωής για σωματική/ψυχική/κοινωνική ανάπτυξη.</li>
+      <li><b>Άρθρο 29:</b> εκπαίδευση για πλήρη ανάπτυξη ικανοτήτων.</li>
+    </ul>
+  </div>
+</div>
+
+<h3>Οι 4 συμπεριφορές-στόχοι</h3>
+<table>
+<thead><tr><th>Στόχος</th><th>Τι θέλουμε</th><th>Εξεταστικά παραδείγματα δράσεων</th></tr></thead>
+<tbody>
+<tr>
+<td><b>1. Νερό</b></td>
+<td>Τα παιδιά να πίνουν νερό τακτικά και να μειώσουν ροφήματα/χυμούς με ζάχαρη ή γλυκαντικά.</td>
+<td>Κέντρο Νερού, Διάλειμμα Νερού, διακόσμηση παγουριού, ενημέρωση γονέων.</td>
+</tr>
+<tr>
+<td><b>2. Πρωινό & ενδιάμεσα γεύματα</b></td>
+<td>Καθημερινό ισορροπημένο πρωινό, ιδανικά με 3 από 5 ομάδες τροφίμων, και υγιεινά snacks.</td>
+<td>Ώρα Ανεφοδιασμού, γωνιά γεύματος, ανάγνωση ετικετών, οικογένεια ως πρότυπο.</td>
+</tr>
+<tr>
+<td><b>3. Σωματική δραστηριότητα</b></td>
+<td>Τουλάχιστον 60 λεπτά/ημέρα μέτριας έως υψηλής έντασης. 3 ημέρες/εβδομάδα υψηλής έντασης και ενδυνάμωση μυών/οστών.</td>
+<td>Διάλειμμα κίνησης, κινητικά μαθηματικά, παιχνίδι στα διαλείμματα, ενεργές μετακινήσεις.</td>
+</tr>
+<tr>
+<td><b>4. Μείωση καθιστικής ζωής/οθονών</b></td>
+<td>Διακοπή παρατεταμένης καθιστικής συμπεριφοράς και όσο το δυνατόν λιγότερος ψυχαγωγικός χρόνος οθόνης.</td>
+<td>Διαλείμματα κίνησης κάθε 30–60’, χορός 1.5’, στατική ισορροπία, απουσία οθόνης από δωμάτιο παιδιού.</td>
+</tr>
+</tbody>
+</table>
+
+<div class="grid">
+  <div class="card green">
+    <h3>Ισορροπημένο πρωινό: 5 ομάδες</h3>
+    <ul>
+      <li>Δημητριακά ολικής άλεσης</li>
+      <li>Λαχανικά</li>
+      <li>Φρούτα</li>
+      <li>Γάλα/γαλακτοκομικά</li>
+      <li>Πρωτεΐνη, π.χ. αυγό</li>
+    </ul>
+    <p class="small">Πρωινό = 3 από τις 5 ομάδες. Ενδιάμεσο = 1 ή συνδυασμός 2 ομάδων.</p>
+  </div>
+  <div class="card green">
+    <h3>Γιατί όχι ζαχαρούχα ροφήματα;</h3>
+    <ul>
+      <li>θερμίδες χωρίς κορεσμό</li>
+      <li>αύξηση σωματικού βάρους</li>
+      <li>χειρότερη οδοντική υγεία/τερηδόνα</li>
+      <li>κακή ποιότητα δίαιτας</li>
+      <li>πιθανή επίδραση σε σχολική επίδοση</li>
+    </ul>
+  </div>
+  <div class="card green">
+    <h3>Ρόλος εκπαιδευτικού</h3>
+    <ul>
+      <li>πρότυπο μίμησης</li>
+      <li>διαμορφώνει υγιές σχολικό κλίμα</li>
+      <li>εντάσσει δραστηριότητες στο πρόγραμμα</li>
+      <li>συνδέει σχολείο–γονείς–κοινότητα</li>
+    </ul>
+  </div>
+</div>
+</section>
+
+<section id="prolamvano">
+<h2>6. Εθνικό Πρόγραμμα «ΠΡΟΛΑΜΒΑΝΩ»</h2>
+<div class="card pink">
+  <h3>Κεντρική ιδέα</h3>
+  <p class="big">Από το μοντέλο «θεραπεύουμε ασθένειες» περνάμε στο «διατηρούμε τους πολίτες υγιείς».</p>
+  <p>Το πρόγραμμα αφορά οργανωμένο προσυμπτωματικό έλεγχο για καρκίνο μαστού, τραχήλου μήτρας, παχέος εντέρου και καρδιαγγειακά νοσήματα.</p>
+</div>
+
+<table>
+<thead><tr><th>Πρόγραμμα</th><th>Ποιοι εντάσσονται</th><th>Τι περιλαμβάνει</th><th>Προσοχή στις εξετάσεις</th></tr></thead>
+<tbody>
+<tr>
+<td><b>Καρκίνος μαστού</b></td>
+<td>Γυναίκες 45–74 ετών με ΑΜΚΑ, ασφαλισμένες ή ανασφάλιστες.</td>
+<td>Κάθε 2 χρόνια. SMS. Δωρεάν ψηφιακή μαστογραφία, εξέταση από ειδικό γιατρό, υπερηχογράφημα όπου χρειάζεται.</td>
+<td>Ηλικία 45–74 και ανά 2 χρόνια.</td>
+</tr>
+<tr>
+<td><b>Καρκίνος τραχήλου μήτρας</b></td>
+<td>Γυναίκες 21–65 ετών με ΑΜΚΑ.</td>
+<td>21–29: Pap test. 30–65: HPV-DNA test. Αν εύρημα: κολποσκόπηση ± βιοψία.</td>
+<td>Διαχωρισμός ηλικιών Pap vs HPV-DNA.</td>
+</tr>
+<tr>
+<td><b>Καρκίνος παχέος εντέρου</b></td>
+<td>Πολίτες 50–69 ετών με ΑΜΚΑ, εφόσον δεν έχουν κάνει κολονοσκόπηση τα τελευταία 5 έτη.</td>
+<td>Self-test ανίχνευσης αίματος κοπράνων από φαρμακείο και διαγνωστική κολονοσκόπηση αν χρειάζεται.</td>
+<td>50–69 + κολονοσκόπηση τελευταία 5 έτη ως κριτήριο.</td>
+</tr>
+<tr>
+<td><b>Καρδιαγγειακά νοσήματα</b></td>
+<td>Πολίτες 30–70 ετών με ΑΜΚΑ.</td>
+<td>Δωρεάν επίσκεψη σε ιατρό και αιματολογικές εξετάσεις: TCHOL, LDL-C, HDL-C, TG, non-HDL-C, γλυκόζη, γενική αίματος. Καταγραφή ΑΠ, κάπνισμα, σωματομετρήσεις.</td>
+<td>Εκτίμηση καρδιαγγειακού κινδύνου: άνδρες ≥40, γυναίκες ≥50.</td>
+</tr>
+</tbody>
+</table>
+
+<div class="mnemo"><b>Μνημονικό ηλικιών:</b> Μαστός <b>45–74</b>, Τράχηλος <b>21–65</b>, Παχύ έντερο <b>50–69</b>, Καρδιά <b>30–70</b>.</div>
+</section>
+
+<section id="quiz" class="quiz">
+<h2>7. Mini-quiz εξετάσεων</h2>
+
+<details><summary>1. Ποια είναι η διαφορά κανονιστικού και ρυθμιστικού φορέα;</summary>
+<p><b>Απάντηση:</b> Κανονιστικός φορέας θέτει πρότυπα/οδηγίες, ενώ ρυθμιστικός φορέας εφαρμόζει ή επιβάλλει κανόνες μέσω νομοθεσίας/αδειοδότησης.</p>
+</details>
+
+<details><summary>2. Ποιο είναι το ανώτατο όργανο λήψης αποφάσεων του ΠΟΥ;</summary>
+<p><b>Απάντηση:</b> Η Παγκόσμια Συνέλευση Υγείας, World Health Assembly.</p>
+</details>
+
+<details><summary>3. Τι κάνει το ECDC;</summary>
+<p><b>Απάντηση:</b> Συλλέγει/αναλύει δεδομένα λοιμωδών νοσημάτων, αξιολογεί κινδύνους και παρέχει καθοδήγηση για πρόληψη/αντιμετώπιση επιδημιών στην Ευρώπη.</p>
+</details>
+
+<details><summary>4. Ποιες είναι οι 4 συμπεριφορές-στόχοι του «Τροφή για Δράση»;</summary>
+<p><b>Απάντηση:</b> Νερό, πρωινό/ενδιάμεσα γεύματα, αύξηση σωματικής δραστηριότητας, μείωση καθιστικής ζωής/οθονών.</p>
+</details>
+
+<details><summary>5. Ποια σύσταση σωματικής δραστηριότητας δίνεται για παιδιά;</summary>
+<p><b>Απάντηση:</b> Τουλάχιστον 60 λεπτά ημερησίως μέτριας έως υψηλής έντασης σωματική δραστηριότητα, με ≥3 ημέρες/εβδομάδα υψηλής έντασης και δραστηριότητες ενδυνάμωσης μυών/οστών.</p>
+</details>
+
+<details><summary>6. Τι σημαίνει «πρωινό με 3 από τις 5 ομάδες»;</summary>
+<p><b>Απάντηση:</b> Το πρωινό να περιλαμβάνει τρόφιμα από τουλάχιστον 3 από: δημητριακά ολικής, λαχανικά, φρούτα, γάλα/γαλακτοκομικά, πρωτεΐνη.</p>
+</details>
+
+<details><summary>7. Ποιες γυναίκες εντάσσονται στο πρόγραμμα μαστογραφίας «ΠΡΟΛΑΜΒΑΝΩ»;</summary>
+<p><b>Απάντηση:</b> Γυναίκες 45–74 ετών με ΑΜΚΑ, ασφαλισμένες ή ανασφάλιστες, κάθε 2 χρόνια.</p>
+</details>
+
+<details><summary>8. Στο πρόγραμμα τραχήλου μήτρας, ποια εξέταση γίνεται στις 21–29 και ποια στις 30–65;</summary>
+<p><b>Απάντηση:</b> 21–29: Pap test. 30–65: HPV-DNA test.</p>
+</details>
+
+<details><summary>9. Ποιοι εντάσσονται στο πρόγραμμα παχέος εντέρου;</summary>
+<p><b>Απάντηση:</b> Πολίτες 50–69 ετών με ΑΜΚΑ, εφόσον δεν έχουν υποβληθεί σε κολονοσκόπηση τα τελευταία 5 έτη.</p>
+</details>
+
+<details><summary>10. Στο καρδιαγγειακό πρόγραμμα, από ποια ηλικία γίνεται εκτίμηση καρδιαγγειακού κινδύνου;</summary>
+<p><b>Απάντηση:</b> Για άνδρες από 40 ετών και άνω και γυναίκες από 50 ετών και άνω. Για νεότερους γίνεται κυρίως καταγραφή εξετάσεων και δεδομένων.</p>
+</details>
+
+<details><summary>11. Γιατί το σχολείο θεωρείται κατάλληλο περιβάλλον παρέμβασης;</summary>
+<p><b>Απάντηση:</b> Επειδή τα παιδιά περνούν μεγάλο μέρος της ημέρας εκεί, οι συμπεριφορές είναι εύπλαστες και το σχολείο μπορεί να επηρεάσει περιβάλλον, πρότυπα, γνώση και οικογένεια.</p>
+</details>
+
+<details><summary>12. Ποιο είναι το κεντρικό μήνυμα του «ΠΡΟΛΑΜΒΑΝΩ»;</summary>
+<p><b>Απάντηση:</b> Η πρόληψη σώζει ζωές· μετατόπιση από θεραπεία ασθενειών σε διατήρηση υγείας μέσω οργανωμένου screening.</p>
+</details>
+</section>
+
+<section>
+<h2>8. Τελική συμπύκνωση μιας σελίδας</h2>
+<div class="grid">
+  <div class="card">
+    <h3>Φορείς</h3>
+    <p>Η δημόσια υγεία είναι πολυεπίπεδη: WHO/UN θέτουν παγκόσμια πρότυπα, η ΕΕ τα μεταφράζει σε πολιτικές και συντονισμό, η Ελλάδα τα εφαρμόζει μέσω Υπουργείου Υγείας, ΕΟΔΥ, ΕΟΠΥΥ, ΥΠΕ και ΕΣΥ.</p>
+  </div>
+  <div class="card">
+    <h3>Παιδική παχυσαρκία</h3>
+    <p>Χρόνιο σύνθετο πρόβλημα Δημόσιας Υγείας. Η παρέμβαση γίνεται σε σχολείο και οικογένεια με τέσσερις συμπεριφορές-στόχους και ολιστική σχολική προσέγγιση.</p>
+  </div>
+  <div class="card">
+    <h3>ΠΡΟΛΑΜΒΑΝΩ</h3>
+    <p>Οργανωμένος προσυμπτωματικός έλεγχος. Μάθε τις ηλικίες: μαστός 45–74, τράχηλος 21–65, παχύ έντερο 50–69, καρδιαγγειακά 30–70.</p>
+  </div>
+</div>
+</section>
+
+<div class="footer">
+GreekDoc HTML · Ασύγχρονα Μαθήματα · Φτιαγμένο για γρήγορη επανάληψη και εκτύπωση.
+</div>
+
+</main>
+</body>
+</html>

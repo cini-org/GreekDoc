@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>GreekDoc | Κοινωνικοί Προσδιοριστές & Αναλογική Ισότητα στην Υγεία</title>
+<style>
+  :root{
+    --bg:#fbf7f1; --paper:#fffdfa; --ink:#263238; --muted:#65727a;
+    --rose:#d65f7a; --rose2:#ffe7ee; --blue:#276b8f; --blue2:#e7f5fb;
+    --green:#427a5b; --green2:#eaf7ef; --gold:#b56b10; --gold2:#fff2d8;
+    --purple:#7251a3; --purple2:#f0e9ff; --danger:#a94442; --danger2:#fdeaea;
+    --line:#eadfd2; --shadow:0 12px 28px rgba(52,40,25,.10); --radius:18px;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:linear-gradient(135deg,#fbf7f1 0%,#fff 48%,#eef7fa 100%);color:var(--ink);font-family:"Segoe UI",Arial,sans-serif;line-height:1.55}
+  header{padding:42px 22px 28px;background:radial-gradient(circle at top left,#ffe2ea,transparent 35%),linear-gradient(135deg,#263238,#365b67);color:white}
+  .wrap{max-width:1180px;margin:auto}
+  .topline{letter-spacing:.08em;text-transform:uppercase;font-size:.78rem;opacity:.82;font-weight:700}
+  h1{font-size:clamp(2rem,4vw,4rem);line-height:1.05;margin:12px 0 12px}
+  .subtitle{font-size:1.08rem;max-width:880px;opacity:.92}
+  .toolbar{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+  button,.chip{border:0;border-radius:999px;padding:10px 14px;font-weight:700;cursor:pointer;background:white;color:#263238;box-shadow:0 6px 18px rgba(0,0,0,.12)}
+  button:hover{transform:translateY(-1px)}
+  nav{position:sticky;top:0;z-index:10;background:rgba(255,253,250,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  nav .wrap{display:flex;gap:10px;overflow:auto;padding:10px 16px}
+  nav a{white-space:nowrap;text-decoration:none;color:#345;font-weight:700;border:1px solid var(--line);border-radius:999px;padding:8px 12px;background:white}
+  main{padding:24px 16px 70px}
+  section{margin:28px auto}
+  h2{font-size:clamp(1.55rem,2.5vw,2.25rem);margin:0 0 14px;display:flex;align-items:center;gap:10px}
+  h3{margin:0 0 10px;font-size:1.16rem}
+  .section-intro{color:var(--muted);margin:-4px 0 16px;max-width:900px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+  .grid-2{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:16px}
+  .card{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+  .card::before{content:"";position:absolute;inset:0 0 auto 0;height:6px;background:linear-gradient(90deg,var(--rose),var(--blue),var(--green));opacity:.8}
+  .def{background:linear-gradient(180deg,#fff,#fff8fb)}
+  .sos{background:linear-gradient(180deg,#fff8e8,#fffdfa);border-color:#f1d7a3}
+  .danger{background:linear-gradient(180deg,#fff,#fff1f1);border-color:#f1c4c4}
+  .blue{background:linear-gradient(180deg,#fff,#edf8fc);border-color:#cfe8f2}
+  .green{background:linear-gradient(180deg,#fff,#eef9f2);border-color:#cfe8d7}
+  .purple{background:linear-gradient(180deg,#fff,#f3edff);border-color:#ded0f8}
+  .tag{display:inline-block;font-size:.75rem;text-transform:uppercase;letter-spacing:.06em;font-weight:800;color:white;border-radius:999px;padding:4px 9px;margin-bottom:8px;background:#546e7a}
+  .tag.rose{background:var(--rose)} .tag.blue{background:var(--blue)} .tag.green{background:var(--green)} .tag.gold{background:var(--gold)} .tag.purple{background:var(--purple)} .tag.red{background:var(--danger)}
+  ul{margin:8px 0 0;padding-left:21px} li{margin:5px 0}
+  .big-number{font-size:2.4rem;font-weight:900;color:var(--blue);line-height:1}
+  .memory{border-left:6px solid var(--rose);padding:14px 16px;background:#fff;border-radius:14px;margin:14px 0;box-shadow:var(--shadow)}
+  .compare{width:100%;border-collapse:separate;border-spacing:0;overflow:hidden;border-radius:16px;border:1px solid var(--line);box-shadow:var(--shadow);background:white}
+  .compare th{background:#304b55;color:white;text-align:left;padding:12px}.compare td{padding:12px;border-top:1px solid var(--line);vertical-align:top}.compare tr:nth-child(even) td{background:#fff8f2}
+  .flow{display:flex;gap:10px;flex-wrap:wrap;align-items:center}.step{background:white;border:1px solid var(--line);border-radius:16px;padding:12px 14px;box-shadow:var(--shadow);font-weight:700}.arrow{font-weight:900;color:var(--rose);font-size:1.35rem}
+  details{background:#fff;border:1px solid var(--line);border-radius:16px;margin:10px 0;padding:12px 14px;box-shadow:0 7px 18px rgba(52,40,25,.07)} summary{cursor:pointer;font-weight:800;color:#263238}.answer{margin-top:10px;color:#41545c;border-left:4px solid var(--green);padding-left:12px}
+  .mini{font-size:.92rem;color:var(--muted)} .kbd{font-family:Consolas,monospace;background:#f3eee6;border:1px solid #ddd1c3;border-radius:6px;padding:1px 5px}
+  .checklist{columns:2;column-gap:28px}.checklist li{break-inside:avoid}
+  footer{padding:26px 16px;color:#64727a;text-align:center;border-top:1px solid var(--line);background:#fffdfa}
+  @media(max-width:740px){.checklist{columns:1}.arrow{display:none}.compare{font-size:.9rem}nav .wrap{padding-left:8px} }
+  @media print{body{background:white}header,nav,.toolbar,footer{display:none}.card,details,.compare{box-shadow:none;break-inside:avoid}main{padding:0}.wrap{max-width:100%}section{page-break-inside:auto}.card::before{height:4px}}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <div class="topline">GreekDoc • Κοινωνική Ιατρική – Δημόσια Υγεία</div>
+    <h1>Κοινωνικοί Προσδιοριστές της Υγείας & Αναλογική Ισότητα</h1>
+    <p class="subtitle">Grid σημειώσεις για αποστήθιση και κατανόηση: ορισμοί, διαφορές εννοιών, δείκτες, παραδείγματα, στόχοι δημόσιας υγείας και ρόλος του γιατρού.</p>
+    <div class="toolbar">
+      <button onclick="window.print()">🖨️ Εκτύπωση / Save as PDF</button>
+      <span class="chip">SOS: equality ≠ equity</span>
+      <span class="chip">ΚΠΥ = μη ιατρικές αιτίες</span>
+      <span class="chip">Πληθυσμιακή προσέγγιση</span>
+    </div>
+  </div>
+</header>
+<nav><div class="wrap">
+  <a href="#sos">SOS</a><a href="#definitions">Ορισμοί</a><a href="#numbers">Αριθμοί</a><a href="#inequalities">Ανισότητες</a><a href="#systems">Συστήματα</a><a href="#indicators">Δείκτες</a><a href="#action">Προώθηση ισότητας</a><a href="#doctor">Ρόλος γιατρού</a><a href="#quiz">Mini quiz</a>
+</div></nav>
+<main class="wrap">
+
+<section id="sos">
+  <h2>🧠 Πρώτα αυτά για εξετάσεις</h2>
+  <p class="section-intro">Το κεφάλαιο έχει πολλούς παρόμοιους όρους. Το βασικό είναι να ξέρεις ποιος όρος μιλά για <b>διαφορά</b>, ποιος για <b>άδικη/αποφευκτή διαφορά</b> και ποιος για <b>προσαρμογή πόρων ανάλογα με ανάγκες</b>.</p>
+  <div class="grid">
+    <div class="card sos"><span class="tag gold">1</span><h3>Κοινωνικοί Προσδιοριστές Υγείας</h3><p>Μη ιατρικές συνθήκες ζωής: πού γεννιόμαστε, μεγαλώνουμε, εργαζόμαστε, ζούμε και γερνάμε + τα συστήματα/πολιτικές που διαμορφώνουν αυτές τις συνθήκες.</p></div>
+    <div class="card sos"><span class="tag gold">2</span><h3>Ισότητα / Equality</h3><p>Ίδια πρόσβαση ή ίδιοι πόροι για όλους. Μοιάζει “δίκαιο”, αλλά αγνοεί ότι κάποιοι ξεκινούν με περισσότερα εμπόδια.</p></div>
+    <div class="card sos"><span class="tag gold">3</span><h3>Αναλογική ισότητα / Equity</h3><p>Δικαιοσύνη με βάση τις ανάγκες: δίνω περισσότερη/διαφορετική υποστήριξη όπου υπάρχουν μεγαλύτερα εμπόδια.</p></div>
+    <div class="card sos"><span class="tag gold">4</span><h3>Health inequalities vs inequities</h3><p><b>Inequalities</b>: όλες οι μετρήσιμες διαφορές. <b>Inequities</b>: άδικες, αποφευκτές, συστηματικές διαφορές από κοινωνικούς/οικονομικούς/περιβαλλοντικούς παράγοντες.</p></div>
+    <div class="card sos"><span class="tag gold">5</span><h3>Κοινωνική διαβάθμιση</h3><p>Όσο καλύτερη η κοινωνική θέση, τόσο καλύτερα προοδευτικά τα αποτελέσματα υγείας. Δεν αφορά μόνο τους “πιο φτωχούς”, αλλά όλη την κοινωνική κλίμακα.</p></div>
+    <div class="card sos"><span class="tag gold">6</span><h3>Ρόλος γιατρού</h3><p>Όχι μόνο διάγνωση/θεραπεία. Ρωτά για κοινωνικές ανάγκες, συνδέει με πόρους, προσαρμόζει τη φροντίδα και συνηγορεί για αλλαγές.</p></div>
+  </div>
+  <div class="memory"><b>Μνήμη:</b> Αν η ερώτηση λέει “μετρήσιμη διαφορά” → <b>ανισότητα</b>. Αν λέει “άδικη, αποφευκτή, συστηματική” → <b>αναλογική ανισότητα / inequity</b>. Αν λέει “προσαρμογή πόρων στους μειονεκτούντες” → <b>equity</b>.</div>
+</section>
+
+<section id="definitions">
+  <h2>📌 Ορισμοί σε κάρτες</h2>
+  <div class="grid">
+    <div class="card def"><span class="tag blue">ΚΠΥ / SDOH</span><h3>Κοινωνικοί Προσδιοριστές της Υγείας</h3><p>Οι μη ιατρικές συνθήκες υπό τις οποίες οι άνθρωποι γεννιούνται, αναπτύσσονται, εργάζονται, ζουν και γερνούν. Περιλαμβάνουν και ευρύτερες δυνάμεις όπως οικονομικά συστήματα, αναπτυξιακές ατζέντες, κοινωνικούς κανόνες, κοινωνικές πολιτικές και πολιτικά συστήματα.</p></div>
+    <div class="card def"><span class="tag green">Γιατί έχουν σημασία;</span><h3>Επειδή είναι τροποποιήσιμοι</h3><p>Ποιοτική εκπαίδευση, πρόσβαση σε θρεπτικά τρόφιμα, αξιοπρεπής στέγαση και εργασία είναι “βασικές αιτίες” υγείας. Η αντιμετώπισή τους προλαμβάνει νόσο και προάγει υγιή ζωή και ισότητα.</p></div>
+    <div class="card def"><span class="tag rose">Υγεία</span><h3>Ολιστικός ορισμός WHO</h3><p>Κατάσταση πλήρους σωματικής, ψυχικής και κοινωνικής ευεξίας, όχι απλώς απουσία ασθένειας ή αναπηρίας. Άρα δεν αρκεί μόνο θεραπευτική ιατρική.</p></div>
+    <div class="card def"><span class="tag purple">Global report 2025</span><h3>Κοινωνική αδικία και υγεία</h3><p>Οι αναλογικές ανισότητες είναι άδικες διαφορές στην υγεία που μπορούν να αποφευχθούν και να προληφθούν. Η αναλογική ισότητα στην υγεία είναι προς το συμφέρον όλων.</p></div>
+  </div>
+</section>
+
+<section id="numbers">
+  <h2>🔢 Αριθμοί που αξίζει να θυμάσαι</h2>
+  <div class="grid">
+    <div class="card blue"><div class="big-number">33</div><h3>χρόνια διαφορά</h3><p>Οι άνθρωποι στη χώρα με το υψηλότερο προσδόκιμο ζωής ζουν κατά μέσο όρο 33 χρόνια περισσότερο από εκείνους στη χώρα με το χαμηλότερο προσδόκιμο ζωής.</p></div>
+    <div class="card blue"><div class="big-number">13×</div><h3>παιδική θνησιμότητα</h3><p>Τα παιδιά που γεννιούνται σε χώρες χαμηλού εισοδήματος έχουν 13 φορές μεγαλύτερη πιθανότητα να πεθάνουν πριν τα 5 έτη σε σχέση με παιδιά σε χώρες υψηλού εισοδήματος.</p></div>
+    <div class="card blue"><div class="big-number">21,9%</div><h3>Ελλάδα 2024</h3><p>Από όσους ανέφεραν ανάγκη για ιατρική περίθαλψη, 21,9% ανέφεραν ανεκπλήρωτη ανάγκη λόγω κόστους, αναμονής ή απόστασης.</p></div>
+    <div class="card blue"><div class="big-number">32,3%</div><h3>κίνδυνος φτώχειας</h3><p>Μεταξύ των ατόμων που κινδυνεύουν από φτώχεια στην Ελλάδα, 32,3% ανέφερε ανεκπλήρωτες ανάγκες. Ο μέσος όρος της ΕΕ σε αυτή την ομάδα ήταν 6,0%.</p></div>
+    <div class="card blue"><div class="big-number">~½</div><h3>φάρμακα στην Ελλάδα</h3><p>Περίπου μόνο το ήμισυ των δαπανών για λιανική πώληση φαρμάκων καλύπτεται από ασφαλιστικά προγράμματα υγείας στην Ελλάδα.</p></div>
+    <div class="card blue"><div class="big-number">10 / 35 / 29</div><h3>συσχέτιση ανισοτήτων</h3><p>WHO Ευρώπης 2019: ανισότητες υγείας συσχετίστηκαν με 10% ποιότητα υγειονομικής περίθαλψης, 35% οικονομική ανασφάλεια, 29% κακή ποιότητα στέγασης/γειτονιάς.</p></div>
+  </div>
+</section>
+
+<section id="inequalities">
+  <h2>⚖️ Equality, Equity, Inequality, Inequity</h2>
+  <table class="compare">
+    <thead><tr><th>Έννοια</th><th>Τι σημαίνει</th><th>Πώς να το θυμάσαι</th></tr></thead>
+    <tbody>
+      <tr><td><b>Ισότητα / Equality</b></td><td>Ίδια πρόσβαση ή ίδιοι πόροι για όλους.</td><td>“Σε όλους το ίδιο.”</td></tr>
+      <tr><td><b>Αναλογική ισότητα / Equity</b></td><td>Δίκαιη κατανομή πόρων ανάλογα με τα εμπόδια και τις ανάγκες κάθε ομάδας.</td><td>“Σε όποιον χρειάζεται, αυτό που χρειάζεται.”</td></tr>
+      <tr><td><b>Ανισότητες υγείας / Health inequalities</b></td><td>Όλες οι μετρήσιμες διαφορές στα αποτελέσματα υγείας μεταξύ ατόμων ή ομάδων: προσδόκιμο ζωής, θνησιμότητα, νοσηρότητα.</td><td>“Βλέπω διαφορά σε δείκτη.”</td></tr>
+      <tr><td><b>Αναλογικές ανισότητες / Health inequities</b></td><td>Διαφορές στην κατάσταση υγείας που είναι άδικες, αποφευκτές και συστηματικές, λόγω κοινωνικών, οικονομικών και περιβαλλοντικών μεταβλητών.</td><td>“Η διαφορά είναι άδικη και διορθώσιμη.”</td></tr>
+    </tbody>
+  </table>
+  <div class="grid-2" style="margin-top:16px">
+    <div class="card green"><span class="tag green">Κοινωνική διαβάθμιση</span><p>Διαβαθμισμένη σχέση κοινωνικής θέσης και υγείας: τα αποτελέσματα υγείας βελτιώνονται προοδευτικά όσο βελτιώνεται η κοινωνική θέση.</p></div>
+    <div class="card danger"><span class="tag red">Life-course</span><p>Οι ανισότητες στην υγεία συσσωρεύονται σε όλη τη διάρκεια ζωής: παιδική ηλικία → εκπαίδευση → εργασία/εισόδημα → κατοικία/γειτονιά → πρόσβαση σε περίθαλψη → υγεία.</p></div>
+  </div>
+</section>
+
+<section id="systems">
+  <h2>🕸️ Από το άτομο στο σύστημα</h2>
+  <div class="grid">
+    <div class="card purple"><span class="tag purple">Complex systems</span><h3>Όχι μία αιτία</h3><p>Εισόδημα, εκπαίδευση, στέγαση και περιβάλλον είναι αλληλένδετοι και δυναμικοί παράγοντες μέσα σε σύστημα.</p></div>
+    <div class="card purple"><span class="tag purple">Μη γραμμικότητα</span><h3>Οι αλληλεπιδράσεις μεγεθύνουν</h3><p>Οι παράγοντες δεν προστίθενται απλά. Μπορεί να δημιουργούν μη γραμμικά αποτελέσματα και να ενισχύουν ανισότητες.</p></div>
+    <div class="card purple"><span class="tag purple">Παρεμβάσεις</span><h3>Πολυεπίπεδη δράση</h3><p>Χρειάζονται ολιστικές, πολυεπίπεδες παρεμβάσεις, όχι απλές μονοσήμαντες διορθώσεις.</p></div>
+    <div class="card purple"><span class="tag purple">Συνδημίες</span><h3>Περισσότερο από συννοσηρότητα</h3><p>Συνάθροιση ≥2 ασθενειών/παθήσεων σε πληθυσμό που επιδεινώνονται από κοινωνικούς, οικονομικούς και περιβαλλοντικούς παράγοντες, με μεγαλύτερο φορτίο από το άθροισμα των μεμονωμένων επιδημιών.</p></div>
+  </div>
+  <div class="memory"><b>Παράδειγμα συνδημίας SAVA:</b> Substance Abuse, Violence, AIDS/HIV. Η κατάχρηση ουσιών, η βία και ο HIV/AIDS συνδέονται και ενισχύουν το ένα το άλλο.</div>
+</section>
+
+<section id="indicators">
+  <h2>📊 Δείκτες για ΚΠΥ και ανισότητες</h2>
+  <div class="grid">
+    <div class="card"><span class="tag blue">Δείκτης</span><h3>Προσδόκιμο ζωής κατά τη γέννηση</h3><p>Μέση διάρκεια ζωής που αναμένεται να ζήσει ένα νεογέννητο, με την υπόθεση ότι τα επίπεδα θνησιμότητας ανά ηλικία παραμένουν σταθερά.</p></div>
+    <div class="card"><span class="tag blue">Δείκτης</span><h3>Υγιή χρόνια ζωής κατά τη γέννηση</h3><p>Έτη που ένα άτομο αναμένεται να ζήσει σε υγιή κατάσταση. Χώρα με υψηλό προσδόκιμο ζωής δεν έχει απαραίτητα και υψηλό προσδόκιμο υγιούς ζωής.</p></div>
+    <div class="card"><span class="tag blue">Δείκτης</span><h3>Αυτοαντίληψη υγείας</h3><p>Υποκειμενική αξιολόγηση της υγείας από τον/την ερωτώμενο/η. Χρησιμοποιείται για γενική υγεία, ανισότητες και ανάγκες περίθαλψης.</p></div>
+    <div class="card"><span class="tag blue">Δείκτης</span><h3>Ανεκπλήρωτες ανάγκες περίθαλψης</h3><p>Ποσοστό ανθρώπων που ένιωσαν ότι χρειάστηκαν ιατρική/οδοντιατρική περίθαλψη τους προηγούμενους 12 μήνες, αλλά δεν την έλαβαν. Λόγοι: κόστος, αναμονή, απόσταση.</p></div>
+    <div class="card"><span class="tag green">Σύστημα</span><h3>Οργάνωση και χρηματοδότηση</h3><p>Δείκτες για το πώς είναι οργανωμένο και χρηματοδοτείται το σύστημα υγείας.</p></div>
+    <div class="card"><span class="tag green">Σύστημα</span><h3>Αποτελεσματικότητα, πρόσβαση, ανθεκτικότητα</h3><p>Χρησιμοποιούνται για αξιολόγηση του συστήματος υγείας και της ικανότητας ανταπόκρισης.</p></div>
+  </div>
+</section>
+
+<section id="action">
+  <h2>🌍 Προώθηση αναλογικής ισότητας στην υγεία</h2>
+  <p class="section-intro">Η βασική ιδέα: για equity στην υγεία, πρέπει να δράσουμε στους ΚΠΥ, όχι μόνο στην υγειονομική περίθαλψη.</p>
+  <div class="flow" aria-label="flow">
+    <div class="step">Κοινωνικές συνθήκες</div><div class="arrow">→</div><div class="step">Έκθεση / συμπεριφορές / πόροι</div><div class="arrow">→</div><div class="step">Κίνδυνος νόσου</div><div class="arrow">→</div><div class="step">Αποτελέσματα υγείας</div><div class="arrow">→</div><div class="step">Ανισότητες</div>
+  </div>
+  <div class="grid" style="margin-top:16px">
+    <div class="card green"><span class="tag green">Ολιστική υγεία</span><p>Η υγεία περιλαμβάνει σωματική, ψυχική και κοινωνική ευεξία. Άρα η δράση δεν περιορίζεται σε διάγνωση και θεραπεία.</p></div>
+    <div class="card green"><span class="tag green">Health equity</span><p>Στόχος: εξάλειψη συστημικών διαφορών στην κατάσταση υγείας μεταξύ κοινωνικοοικονομικών ομάδων, συμπεριλαμβανομένης της περίθαλψης.</p></div>
+    <div class="card green"><span class="tag green">Healthcare equity</span><p>Αφορά την ακριβή αντιστοίχιση των υπηρεσιών υγείας με το επίπεδο των αναγκών.</p></div>
+    <div class="card green"><span class="tag green">Συστημική προσέγγιση</span><p>Πολιτικά και οικονομικά συστήματα καθορίζουν φορολογία, μισθούς, κοινωνική πρόνοια, νόμους κατά διακρίσεων και εμπορική δραστηριότητα.</p></div>
+  </div>
+  <h3 style="margin-top:22px">5 βασικές κατηγορίες Κοινωνικών Προσδιοριστών – Healthy People 2030</h3>
+  <div class="grid">
+    <div class="card"><span class="tag rose">1</span><h3>Οικονομική σταθερότητα</h3><ul><li>Εργασία</li><li>Επισιτιστική ανασφάλεια</li><li>Ασταθής στέγαση</li><li>Φτώχεια</li></ul></div>
+    <div class="card"><span class="tag rose">2</span><h3>Εκπαίδευση</h3><ul><li>Πρώιμη παιδική ηλικία</li><li>Ανώτατη εκπαίδευση</li><li>Αποφοίτηση λυκείου</li><li>Γλώσσα και γραμματισμός</li></ul></div>
+    <div class="card"><span class="tag rose">3</span><h3>Υγειονομική περίθαλψη</h3><ul><li>Πρόσβαση σε υπηρεσίες</li><li>Πρόσβαση στην ΠΦΥ</li><li>Υγειονομική παιδεία</li></ul></div>
+    <div class="card"><span class="tag rose">4</span><h3>Γειτονιά & δομημένο περιβάλλον</h3><ul><li>Υγιεινά τρόφιμα</li><li>Έγκλημα και βία</li><li>Περιβαλλοντικές συνθήκες</li><li>Ποιότητα κατοικίας</li></ul></div>
+    <div class="card"><span class="tag rose">5</span><h3>Κοινωνικό & κοινοτικό πλαίσιο</h3><ul><li>Συμμετοχή πολιτών</li><li>Φυλάκιση</li><li>Κοινωνική συνοχή</li></ul></div>
+  </div>
+  <div class="memory"><b>Λέξεις-κλειδιά στόχων:</b> αποτελεσματικότητα, προσβασιμότητα, ανθεκτικότητα, ετοιμότητα, καινοτομία, μακροπρόθεσμη βιωσιμότητα.</div>
+</section>
+
+<section id="examples">
+  <h2>🧩 Παραδείγματα για αποστήθιση</h2>
+  <div class="grid-2">
+    <div class="card sos"><span class="tag gold">Απασχόληση</span><h3>Πώς η εργασία γίνεται υγεία;</h3><ul><li><b>Αμοιβή:</b> καθορίζει δυνατότητα αγοράς στέγασης, τροφίμων, περίθαλψης.</li><li><b>Παροχές:</b> ασφάλιση υγείας, άδεια ασθενείας, γονική άδεια, σύνταξη.</li><li><b>Ασφάλεια χώρου εργασίας:</b> προστατεύει σωματική και ψυχική υγεία.</li></ul></div>
+    <div class="card sos"><span class="tag gold">Συμμετοχή πολιτών</span><h3>Πώς η κοινότητα γίνεται υγεία;</h3><ul><li><b>Κοινοτικές ομάδες:</b> σχέσεις, κοινωνική υποστήριξη, ψυχική/σωματική υγεία.</li><li><b>Φιλανθρωπία:</b> εθελοντισμός ή δωρεές που βελτιώνουν δημόσια και κοινοτική ευημερία.</li><li><b>Κοινοτικές δραστηριότητες:</b> π.χ. κοινοτικοί κήποι, κοινωνική υπερηφάνεια, συμμετοχή.</li></ul></div>
+  </div>
+</section>
+
+<section id="doctor">
+  <h2>🩺 Τι μπορεί να κάνει ένας γιατρός;</h2>
+  <div class="grid">
+    <div class="card blue"><span class="tag blue">Ασθενής / κλινικό</span><h3>Ελέγξτε και ρωτήστε</h3><p>Χρήση εργαλείων όπως PRAPARE, AHC για ανάγκες π.χ. επισιτιστική ανασφάλεια, αστάθεια στέγασης. Ευαίσθητες, εμπιστευτικές ερωτήσεις.</p></div>
+    <div class="card blue"><span class="tag blue">Ασθενής / κλινικό</span><h3>Σύνδεση με πόρους</h3><p>Συνεργασία με κοινωνικούς λειτουργούς, community health workers και οργανισμούς για παραπομπή σε τράπεζες τροφίμων, στήριξη στέγασης κ.ά.</p></div>
+    <div class="card blue"><span class="tag blue">Ασθενής / κλινικό</span><h3>Προσαρμογή φροντίδας</h3><p>Θεραπευτικά πλάνα που ταιριάζουν στην κοινωνική πραγματικότητα: μη ψυχόμενα φάρμακα για άστεγους, ευέλικτα ραντεβού για ασταθή εργασία.</p></div>
+    <div class="card blue"><span class="tag blue">Ασθενής / κλινικό</span><h3>Καταγραφή</h3><p>Καταγραφή κοινωνικών αναγκών στον ιατρικό φάκελο ώστε να ενημερώνεται όλη η ομάδα φροντίδας.</p></div>
+    <div class="card green"><span class="tag green">Πρακτική / σύστημα</span><h3>Συνεργασία ομάδας</h3><p>Νοσηλευτές, κοινωνικοί λειτουργοί και κοινοτικοί εργαζόμενοι υγείας σε ολοκληρωμένες ομάδες φροντίδας.</p></div>
+    <div class="card green"><span class="tag green">Πρακτική / σύστημα</span><h3>Προγράμματα</h3><p>Χρήση Μοντέλου Διαχείρισης Χρόνιων Παθήσεων για ιατρικές και κοινωνικές ανάγκες. Επί τόπου υπηρεσίες όπως νομική βοήθεια ή αποθήκες τροφίμων όπου γίνεται.</p></div>
+    <div class="card purple"><span class="tag purple">Κοινότητα / πολιτική</span><h3>Συνηγορία</h3><p>Υποστήριξη συστημικών αλλαγών σε στέγαση, μεταφορές, εκπαίδευση και οικονομικά ζητήματα που επηρεάζουν την υγεία.</p></div>
+    <div class="card purple"><span class="tag purple">Εκπαίδευση</span><h3>Ιατρική εκπαίδευση</h3><p>Ενσωμάτωση ΚΠΥ στα προγράμματα σπουδών και στην ειδικότητα, ώστε οι γιατροί να κατανοούν κοινωνικούς, οικονομικούς και πολιτικούς παράγοντες υγείας.</p></div>
+  </div>
+</section>
+
+<section id="exam">
+  <h2>✅ Checklist αποστήθισης</h2>
+  <div class="card">
+    <ul class="checklist">
+      <li>Ορισμός ΚΠΥ από WHO.</li>
+      <li>Γιατί οι ΚΠΥ είναι “μη ιατρικές βασικές αιτίες”.</li>
+      <li>Equality ≠ Equity.</li>
+      <li>Health inequalities ≠ health inequities.</li>
+      <li>Κοινωνική διαβάθμιση στην υγεία.</li>
+      <li>Οι ανισότητες συσσωρεύονται σε όλη τη ζωή.</li>
+      <li>Complex systems approach.</li>
+      <li>Ορισμός συνδημίας και παράδειγμα SAVA.</li>
+      <li>Προσδόκιμο ζωής vs υγιή χρόνια ζωής.</li>
+      <li>Αυτοαντίληψη υγείας.</li>
+      <li>Ανεκπλήρωτες ανάγκες περίθαλψης.</li>
+      <li>Ελλάδα: 21,9%, 32,3%, 6,0%, ~½ φάρμακα.</li>
+      <li>5 κατηγορίες Healthy People 2030.</li>
+      <li>Διαφορά health equity vs healthcare equity.</li>
+      <li>Τι μπορεί να κάνει ο γιατρός σε 4 επίπεδα.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="quiz">
+  <h2>📝 Mini quiz με άμεση ανατροφοδότηση</h2>
+  <details><summary>1. Ποιος είναι ο πιο σωστός ορισμός των Κοινωνικών Προσδιοριστών της Υγείας;</summary><div class="answer">Οι μη ιατρικές συνθήκες στις οποίες οι άνθρωποι γεννιούνται, μεγαλώνουν, ζουν, εργάζονται και γερνούν, μαζί με τις ευρύτερες πολιτικές/οικονομικές/κοινωνικές δυνάμεις που τις διαμορφώνουν.</div></details>
+  <details><summary>2. “Όλοι παίρνουν το ίδιο” είναι equality ή equity;</summary><div class="answer">Equality. Equity είναι η προσαρμογή των πόρων ανάλογα με τις ανάγκες και τα εμπόδια.</div></details>
+  <details><summary>3. Μια διαφορά θνησιμότητας μεταξύ δύο ομάδων είναι πάντα inequity;</summary><div class="answer">Όχι. Είναι inequality ως μετρήσιμη διαφορά. Γίνεται inequity όταν είναι άδικη, αποφευκτή και συστηματική, λόγω τροποποιήσιμων κοινωνικών/οικονομικών/περιβαλλοντικών παραγόντων.</div></details>
+  <details><summary>4. Τι σημαίνει κοινωνική διαβάθμιση στην υγεία;</summary><div class="answer">Ότι υπάρχει βαθμιαία σχέση κοινωνικής θέσης και υγείας: όσο βελτιώνεται η κοινωνική θέση, βελτιώνονται προοδευτικά τα αποτελέσματα υγείας.</div></details>
+  <details><summary>5. Γιατί η συνδημία δεν είναι απλή συννοσηρότητα;</summary><div class="answer">Επειδή αφορά αλληλεπίδραση ≥2 παθήσεων/ασθενειών που επιδεινώνεται από κοινωνικούς, οικονομικούς και περιβαλλοντικούς παράγοντες, δημιουργώντας μεγαλύτερο φορτίο από το άθροισμα των μεμονωμένων επιδημιών.</div></details>
+  <details><summary>6. Τι δείχνουν οι ανεκπλήρωτες ανάγκες περίθαλψης;</summary><div class="answer">Πόσοι άνθρωποι ένιωσαν ότι χρειάστηκαν ιατρική/οδοντιατρική φροντίδα αλλά δεν την έλαβαν, συχνά λόγω κόστους, χρόνου αναμονής ή απόστασης.</div></details>
+  <details><summary>7. Γιατί “health equity” δεν είναι ίδιο με “healthcare equity”;</summary><div class="answer">Health equity αφορά την εξάλειψη συστημικών διαφορών στην κατάσταση υγείας μεταξύ κοινωνικοοικονομικών ομάδων. Healthcare equity αφορά την αντιστοίχιση υπηρεσιών υγείας με το επίπεδο αναγκών.</div></details>
+  <details><summary>8. Δώσε 3 πράγματα που μπορεί να κάνει ο γιατρός για ΚΠΥ.</summary><div class="answer">Να ρωτά με ευαισθησία για κοινωνικές ανάγκες, να συνδέει με κοινωνικούς πόρους, να προσαρμόζει τη θεραπεία στην κοινωνική πραγματικότητα, να καταγράφει ανάγκες, να συνηγορεί για συστημικές αλλαγές.</div></details>
+</section>
+
+<section id="last">
+  <h2>💬 Τελευταίο μήνυμα</h2>
+  <div class="card danger"><p><b>Michael Marmot:</b> «Έχουμε τη γνώση για να κλείσουμε το κενό στην υγεία. Έχουμε τα μέσα. Έχουμε τη θέληση;»</p><p class="mini">Για εξετάσεις, αυτό συνοψίζει όλο το μάθημα: οι ανισότητες δεν είναι μόνο βιολογικό ή ατομικό θέμα· είναι κοινωνικά παραγόμενες, άδικες και δυνητικά προλήψιμες.</p></div>
+</section>
+
+</main>
+<footer>
+  GreekDoc HTML • Κοινωνικοί Προσδιοριστές της Υγείας & Αναλογική Ισότητα • φτιαγμένο για γρήγορη επανάληψη και εκτύπωση
+</footer>
+<script>
+  document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{const id=a.getAttribute('href');const el=document.querySelector(id);if(el){e.preventDefault();el.scrollIntoView({behavior:'smooth',block:'start'});}}));
+</script>
+</body>
+</html>

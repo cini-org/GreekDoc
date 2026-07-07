@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GreekDoc | Συμπεριφορικοί Προσδιοριστές Υγείας</title>
+<style>
+:root{
+  --bg:#f7f3ee; --paper:#fffdf9; --ink:#2c2520; --muted:#6b625b;
+  --accent:#9b5d3c; --accent2:#2f6f73; --accent3:#b8892f; --soft:#efe2d6;
+  --soft2:#dceced; --soft3:#fff2cf; --danger:#b84a42; --ok:#4f7f52;
+  --shadow:0 12px 30px rgba(70,48,32,.12); --radius:22px;
+}
+*{box-sizing:border-box}
+body{margin:0;background:linear-gradient(135deg,#f7f3ee 0%,#f2ebe2 48%,#eef7f7 100%);color:var(--ink);font-family:Arial,'Helvetica Neue',sans-serif;line-height:1.55}
+header{padding:42px 24px 28px;text-align:center;background:radial-gradient(circle at top left,#fff6dc,transparent 35%),radial-gradient(circle at top right,#d9f1f2,transparent 35%)}
+.kicker{display:inline-block;padding:7px 13px;border-radius:999px;background:var(--soft2);color:#1e5558;font-weight:700;font-size:.86rem;letter-spacing:.02em}
+h1{font-size:clamp(2rem,5vw,4rem);line-height:1.04;margin:18px auto 12px;max-width:1050px}
+.subtitle{max-width:900px;margin:0 auto;color:var(--muted);font-size:1.08rem}
+.toolbar{position:sticky;top:0;z-index:20;background:rgba(255,253,249,.92);backdrop-filter:blur(10px);border-top:1px solid #eadfd4;border-bottom:1px solid #eadfd4;padding:10px 14px;display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+button,.navbtn{border:0;border-radius:999px;padding:10px 14px;background:var(--ink);color:white;font-weight:700;cursor:pointer;text-decoration:none;font-size:.92rem}.navbtn{background:var(--accent2)}button:hover,.navbtn:hover{opacity:.9}
+main{max-width:1220px;margin:0 auto;padding:28px 18px 70px}.section{margin:28px 0}.section-title{display:flex;align-items:center;gap:10px;margin:0 0 14px}.badge{width:36px;height:36px;border-radius:12px;display:grid;place-items:center;background:var(--accent);color:white;font-weight:900}.section-title h2{margin:0;font-size:1.55rem}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}.card{background:var(--paper);border:1px solid #eadfd4;border-radius:var(--radius);box-shadow:var(--shadow);padding:18px}.card h3{margin:0 0 8px;font-size:1.13rem;color:#3c2c23}.card p{margin:8px 0}.mini{font-size:.92rem;color:var(--muted)}.tag{display:inline-block;background:var(--soft);color:#6d3e26;border-radius:999px;padding:4px 9px;font-weight:700;font-size:.78rem;margin:3px 4px 3px 0}.tag.green{background:var(--soft2);color:#23575a}.tag.yellow{background:var(--soft3);color:#755514}.sos{border-left:7px solid var(--danger);background:#fff7f5}.exam{border-left:7px solid var(--accent3);background:#fffaf0}.ok{border-left:7px solid var(--ok);background:#f6fff5}.wide{grid-column:1/-1}.compare{width:100%;border-collapse:separate;border-spacing:0;overflow:hidden;border-radius:18px;border:1px solid #eadfd4;background:white}.compare th{background:#3a2f29;color:white;text-align:left}.compare th,.compare td{padding:12px 13px;border-bottom:1px solid #eadfd4;vertical-align:top}.compare tr:last-child td{border-bottom:0}.callout{padding:18px;border-radius:var(--radius);background:#2f6f73;color:white;box-shadow:var(--shadow)}.callout h3{margin:0 0 6px;color:white}.callout p{margin:6px 0}.flow{display:flex;gap:10px;flex-wrap:wrap;align-items:stretch}.step{flex:1 1 170px;background:white;border:1px solid #eadfd4;border-radius:18px;padding:14px;position:relative}.step strong{display:block;color:var(--accent)}.arrow{align-self:center;font-weight:900;color:var(--accent)}ul{padding-left:20px;margin:8px 0}.quiz details{background:var(--paper);border:1px solid #eadfd4;border-radius:18px;padding:14px;margin:10px 0;box-shadow:0 8px 18px rgba(70,48,32,.08)}summary{cursor:pointer;font-weight:800}.answer{margin-top:10px;padding:12px;border-radius:14px;background:#f2fbfb;color:#1d5558}.memory{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px}.memory div{background:#fff;border:1px dashed #c9aa8f;border-radius:16px;padding:12px;text-align:center;font-weight:800}.footer{color:var(--muted);text-align:center;margin-top:40px;font-size:.9rem}
+@media print{body{background:white}.toolbar{display:none}.card,.quiz details,.callout{box-shadow:none;break-inside:avoid}header{padding:20px 0}.section{break-inside:auto}main{padding:0}.grid{grid-template-columns:repeat(2,1fr)}.wide{grid-column:1/-1}}
+</style>
+</head>
+<body>
+<header>
+  <span class="kicker">GreekDoc • Κοινωνική Ιατρική – Δημόσια Υγεία</span>
+  <h1>Συμπεριφορικοί Προσδιοριστές Υγείας</h1>
+  <p class="subtitle">Σημειώσεις σε μορφή grid για απομνημόνευση: τι είναι συμπεριφορά υγείας, γιατί δεν είναι απλώς «ατομική επιλογή», ποιοι είναι οι βασικοί παράγοντες κινδύνου, πώς παρεμβαίνει η κοινότητα και ποιος είναι ο ρόλος του κλινικού ιατρού.</p>
+</header>
+<nav class="toolbar">
+  <button onclick="window.print()">🖨️ Εκτύπωση / PDF</button>
+  <a class="navbtn" href="#sos">SOS</a><a class="navbtn" href="#orismoi">Ορισμοί</a><a class="navbtn" href="#comb">COM-B</a><a class="navbtn" href="#epid">Επιδημιολογία</a><a class="navbtn" href="#doctor">Ρόλος ιατρού</a><a class="navbtn" href="#quiz">Quiz</a>
+</nav>
+<main>
+<section class="section" id="sos">
+  <div class="section-title"><span class="badge">!</span><h2>SOS εξετάσεων — τι να θυμάσαι πρώτο</h2></div>
+  <div class="grid">
+    <div class="card sos"><h3>1. Η συμπεριφορά δεν είναι «νησί»</h3><p>Η συμπεριφορά υγείας δεν είναι απλώς προσωπική επιλογή. Διαμορφώνεται από <b>ικανότητα</b>, <b>ευκαιρία</b>, <b>κίνητρο</b>, κοινωνικούς κανόνες, οικονομικές συνθήκες, πρόσβαση σε πόρους και περιβάλλον.</p></div>
+    <div class="card sos"><h3>2. Κύριοι συμπεριφορικοί προσδιοριστές</h3><p><b>Διατροφή</b>, <b>σωματική δραστηριότητα</b>, <b>κάπνισμα/νικοτίνη</b>, <b>αλκοόλ/ουσίες</b>, <b>ύπνος</b>, <b>διαχείριση στρες</b>, <b>κοινωνική σύνδεση</b>, ασφαλείς συμπεριφορές και προληπτική φροντίδα.</p></div>
+    <div class="card sos"><h3>3. Οι ΜΜΝ έχουν 4 βασικές συμπεριφορές</h3><p>Πολλές μη μεταδοτικές νόσοι συνδέονται με: <b>κάπνισμα</b>, <b>σωματική αδράνεια</b>, <b>ανθυγιεινή διατροφή</b>, <b>επιβλαβή χρήση αλκοόλ</b>.</p></div>
+    <div class="card sos"><h3>4. Και 4 μεταβολικές αλλαγές</h3><p>Οι συμπεριφορές οδηγούν συχνά σε: <b>αυξημένη ΑΠ</b>, <b>υπερβαρότητα/παχυσαρκία</b>, <b>αυξημένη γλυκόζη</b>, <b>αυξημένη χοληστερόλη</b>.</p></div>
+    <div class="card sos"><h3>5. COM-B = γιατί γίνεται μια συμπεριφορά</h3><p><b>Capability + Opportunity + Motivation → Behaviour</b>. Χωρίς ικανότητα, ευκαιρία ή κίνητρο, η συμπεριφορά δύσκολα αλλάζει.</p></div>
+    <div class="card sos"><h3>6. Ο γιατρός δεν αρκεί να πει «κόψτε το»</h3><p>Πρέπει να εξηγήσει στοιχεία, να χτίσει εμπιστοσύνη, να βρει εμπόδια, να θέσει SMART στόχους και να συνεργαστεί με διεπιστημονική ομάδα.</p></div>
+  </div>
+</section>
+<section class="section" id="orismoi">
+  <div class="section-title"><span class="badge">1</span><h2>Βασικοί ορισμοί σε κάρτες</h2></div>
+  <div class="grid">
+    <div class="card"><span class="tag">ορισμός</span><h3>Συμπεριφορά υγείας</h3><p>Οποιαδήποτε δραστηριότητα ή ενέργεια αναλαμβάνεται από ένα άτομο, ανεξάρτητα από την αντίληψη της υγείας του, με σκοπό είτε την <b>προαγωγή/προστασία/διατήρηση</b> της υγείας είτε την <b>αύξηση του κινδύνου</b> νόσου.</p></div>
+    <div class="card"><span class="tag green">κλειδί</span><h3>Δεν είναι απλώς επιλογή</h3><p>Είναι αποτέλεσμα σύνθετης αλληλεπίδρασης μεταξύ εσωτερικής κατάστασης του ατόμου και εξωτερικού περιβάλλοντος: εκπαίδευση, εισόδημα, γειτονιά, πρόσβαση σε τρόφιμα, ασφάλεια, κοινωνικοί κανόνες.</p></div>
+    <div class="card"><span class="tag yellow">εξεταστικό</span><h3>Παράγοντες κινδύνου</h3><p>Δυνητικά τροποποιήσιμες αιτίες ασθένειας ή τραυματισμού. Η δυνατότητα τροποποίησης κάνει τους συμπεριφορικούς προσδιοριστές σημαντικό πεδίο παρέμβασης δημόσιας υγείας.</p></div>
+    <div class="card"><span class="tag green">ανισότητες</span><h3>Συμπεριφορές και ανισότητες</h3><p>Οι κοινωνικές ανισότητες επηρεάζουν την πρόσβαση σε πόρους που επιτρέπουν υγιεινές συμπεριφορές: φρέσκα τρόφιμα, ασφαλείς χώροι άσκησης, προληπτικές υπηρεσίες, ύπνος, σταθερή εργασία.</p></div>
+  </div>
+</section>
+<section class="section">
+  <div class="section-title"><span class="badge">2</span><h2>Grid απομνημόνευσης: βασικοί συμπεριφορικοί προσδιοριστές</h2></div>
+  <div class="grid">
+    <div class="card ok"><h3>Φυσική δραστηριότητα</h3><p>Προστατεύει καρδιά, μεταβολισμό, μυοσκελετικό, ψυχική υγεία. Η αδράνεια συνδέεται με ΜΜΝ και χειρότερο προσδόκιμο υγιούς ζωής.</p></div>
+    <div class="card ok"><h3>Διατροφή</h3><p>Ποιότητα, ποσότητα, πρόσβαση σε θρεπτικά τρόφιμα. Δεν είναι μόνο γνώση: επηρεάζεται από κόστος, διαθεσιμότητα, μάρκετινγκ και κοινωνικό περιβάλλον.</p></div>
+    <div class="card exam"><h3>Καπνός / νικοτίνη</h3><p>Κλασικός τροποποιήσιμος παράγοντας κινδύνου. Το άτμισμα μπορεί να είναι λιγότερο επιβλαβές από το κάπνισμα για καπνιστές που θέλουν διακοπή, αλλά δεν είναι ακίνδυνο και δεν πρέπει να χρησιμοποιείται από παιδιά/μη καπνιστές.</p></div>
+    <div class="card exam"><h3>Αλκοόλ</h3><p>Τοξική, ψυχοδραστική και εξαρτησιογόνος ουσία. Συνδέεται με >200 διαταραχές/καταστάσεις: ηπατοπάθεια, τραυματισμούς, βία, καρκίνους, καρδιαγγειακά, αυτοκτονίες, φυματίωση, HIV/AIDS.</p></div>
+    <div class="card ok"><h3>Ύπνος</h3><p>Απαραίτητος για ανοσία, διάθεση, μνήμη, καρδιομεταβολική υγεία και πρόληψη ατυχημάτων. Ενήλικες: τουλάχιστον 7 ώρες/ημέρα. Έφηβοι λυκείου: περίπου 8 ώρες/ημέρα.</p></div>
+    <div class="card ok"><h3>Διαχείριση άγχους</h3><p>Το χρόνιο στρες μπορεί να επηρεάζει ύπνο, διατροφή, ανοσία, καρδιαγγειακό κίνδυνο και δυνατότητα αλλαγής συμπεριφοράς.</p></div>
+    <div class="card ok"><h3>Κοινωνική σύνδεση</h3><p>Οι θετικές κοινωνικές σχέσεις είναι πυλώνας lifestyle medicine και διευκολύνουν βιώσιμη αλλαγή συμπεριφοράς.</p></div>
+    <div class="card ok"><h3>Προληπτική φροντίδα</h3><p>Εμβολιασμοί, screening, τακτικοί έλεγχοι, συμμόρφωση στη θεραπεία. Είναι συμπεριφορές που μειώνουν κίνδυνο ή επιτρέπουν έγκαιρη παρέμβαση.</p></div>
+  </div>
+</section>
+<section class="section">
+  <div class="section-title"><span class="badge">3</span><h2>Εγγύς προσδιοριστές vs απομακρυσμένες αιτίες</h2></div>
+  <table class="compare">
+    <thead><tr><th>Έννοια</th><th>Τι σημαίνει</th><th>Παραδείγματα</th><th>Τι ρωτάμε στην εξέταση</th></tr></thead>
+    <tbody>
+      <tr><td><b>Εγγύς προσδιοριστές</b><br><span class="mini">proximal</span></td><td>Άμεσες ενέργειες ή προσωπικοί παράγοντες που προηγούνται κοντά χρονικά στο αποτέλεσμα υγείας.</td><td>Κάπνισμα, υπερθερμιδική τροφή, καθιστική ζωή, πρόθεση/στάση του ατόμου.</td><td>«Ποια συμπεριφορά βρίσκεται πιο κοντά στο αποτέλεσμα;»</td></tr>
+      <tr><td><b>Απομακρυσμένες αιτίες</b><br><span class="mini">distal</span></td><td>Δομικοί, κοινωνικοί, οικονομικοί ή περιβαλλοντικοί παράγοντες που διαμορφώνουν το πλαίσιο των επιλογών.</td><td>Εκπαίδευση, εισόδημα, κοινωνική υποστήριξη, πολεοδομικός σχεδιασμός, διαθεσιμότητα καπνού/fast food, παιδικές εμπειρίες.</td><td>«Γιατί αυτή η συμπεριφορά είναι πιο πιθανή σε αυτή την ομάδα;»</td></tr>
+    </tbody>
+  </table>
+</section>
+<section class="section" id="comb">
+  <div class="section-title"><span class="badge">4</span><h2>Το μοντέλο COM-B</h2></div>
+  <div class="callout"><h3>Συμπεριφορά = Ικανότητα + Ευκαιρία + Κίνητρο</h3><p>Για να συμβεί ή να αλλάξει μια συμπεριφορά, πρέπει να υπάρχουν και οι τρεις άξονες. Άρα η παρέμβαση δεν είναι μόνο «ενημέρωση», αλλά και αλλαγή περιβάλλοντος, δεξιοτήτων, κινήτρων και συνηθειών.</p></div>
+  <div class="grid" style="margin-top:16px">
+    <div class="card"><h3>C — Capability / Ικανότητα</h3><p>Σωματική και ψυχολογική ικανότητα: γνώση, δεξιότητες, δύναμη, μνήμη, κατανόηση οδηγιών.</p><p class="mini"><b>Παράδειγμα:</b> Δεν περπατά λόγω πόνου ή δεν ξέρει πώς να ξεκινήσει ασφαλή άσκηση.</p></div>
+    <div class="card"><h3>O — Opportunity / Ευκαιρία</h3><p>Εξωτερικοί παράγοντες: πρόσβαση, κόστος, κοινωνικοί κανόνες, χρόνος, ασφαλής γειτονιά, διαθέσιμες υπηρεσίες.</p><p class="mini"><b>Παράδειγμα:</b> Δεν έχει ασφαλές πάρκο ή δουλεύει πολλές ώρες.</p></div>
+    <div class="card"><h3>M — Motivation / Κίνητρο</h3><p>Συνειδητοί στόχοι, συνήθειες, συναισθηματικά ερεθίσματα, επιθυμίες, αυτόματες αντιδράσεις.</p><p class="mini"><b>Παράδειγμα:</b> Το στρες οδηγεί σε comfort food ή το χαμηλό mood μειώνει την άσκηση.</p></div>
+  </div>
+</section>
+<section class="section">
+  <div class="section-title"><span class="badge">5</span><h2>Κοινότητα και βρόχοι ανατροφοδότησης</h2></div>
+  <div class="grid">
+    <div class="card"><h3>Τι είναι κοινότητα;</h3><p>Μπορεί να είναι γεωγραφική περιοχή ή ομάδα ανθρώπων με κοινά χαρακτηριστικά: ενδιαφέρον, θρησκεία, άθλημα, τέχνη, ή συγκεκριμένη νόσο.</p></div>
+    <div class="card"><h3>Αμφίδρομη σχέση</h3><p>Τα μακρο-περιβάλλοντα επηρεάζουν το άτομο, αλλά οι μαζικές ατομικές συμπεριφορές δημιουργούν βάρος νόσου, οικονομικό κόστος και ανάγκη αλλαγής πολιτικής.</p></div>
+    <div class="card"><h3>Παράδειγμα: στρες → διατροφή</h3><p>Στρες/κορτιζόλη → επιθυμία για ζάχαρη/λίπος → χειρότερος ύπνος/έντερο-εγκέφαλος → περισσότερο στρες. Αυτοσυντηρούμενος κύκλος.</p></div>
+    <div class="card"><h3>Παράδειγμα: αδράνεια → κατάθλιψη</h3><p>Σωματική αδράνεια ↔ χαμηλή διάθεση/κίνητρο. Η χαμηλή διάθεση μειώνει την πιθανότητα άσκησης και ενισχύει την αδράνεια.</p></div>
+    <div class="card"><h3>Δομικός βρόχος</h3><p>Περισσότερες ΜΜΝ → αυξημένες δαπάνες υγείας → λιγότεροι πόροι για εκπαίδευση, συγκοινωνίες, πάρκα → πιο νοσογόνο περιβάλλον.</p></div>
+    <div class="card"><h3>Εμπορικός βρόχος</h3><p>Υπερεπεξεργασμένα τρόφιμα → κέρδη → μάρκετινγκ/λόμπι → κοινωνικοί κανόνες υπέρ κατανάλωσης → περισσότερη κατανάλωση.</p></div>
+  </div>
+</section>
+<section class="section" id="epid">
+  <div class="section-title"><span class="badge">6</span><h2>Επιδημιολογικά δεδομένα που μπορεί να ζητηθούν</h2></div>
+  <div class="grid">
+    <div class="card exam"><h3>GBD 2023</h3><p>Σχεδόν το <b>50%</b> της παγκόσμιας επιβάρυνσης νόσου το 2023 αποδόθηκε σε <b>88 τροποποιήσιμους παράγοντες κινδύνου</b>. Κορυφαίοι: υψηλή συστολική πίεση, ρύπανση από σωματίδια, κάπνισμα.</p></div>
+    <div class="card exam"><h3>Χρήση ναρκωτικών</h3><p>Από το 2010 έως το 2023, η χρήση ναρκωτικών αύξησε τη συμβολή της στα DALYs κατά <b>28,2%</b>.</p></div>
+    <div class="card exam"><h3>Σωματική δραστηριότητα ΕΕ</h3><p>Το 2019 μόνο <b>13,6%</b> των ενηλίκων στην ΕΕ έκανε και τους δύο τύπους σωματικής δραστηριότητας σύμφωνα με τις συστάσεις.</p></div>
+    <div class="card exam"><h3>Βάρος ΕΕ</h3><p>Το 2022 πάνω από <b>50%</b> του πληθυσμού της ΕΕ ήταν υπέρβαροι ή παχύσαρκοι. Το ποσοστό ήταν χαμηλότερο στις ηλικίες 16–24.</p></div>
+    <div class="card exam"><h3>Έφηβοι και διατροφή</h3><p>Το 2022, <b>56%</b> των 15χρονων δεν έτρωγαν καθημερινά ούτε φρούτα ούτε λαχανικά.</p></div>
+    <div class="card exam"><h3>Κοινωνική ανισότητα στο βάρος παιδιών</h3><p>Παιδιά από πιο εύπορες οικογένειες στην ΕΕ είχαν <b>40% λιγότερες πιθανότητες</b> να είναι υπέρβαρα/παχύσαρκα σε σχέση με παιδιά από φτωχότερες οικογένειες.</p></div>
+    <div class="card exam"><h3>Ελλάδα — συμπεριφορές</h3><p>Ημερήσιο κάπνισμα <b>24,9%</b> έναντι ΟΟΣΑ 14,8%. Ανεπαρκής σωματική δραστηριότητα <b>40%</b> έναντι ΟΟΣΑ 30%. Παχυσαρκία αυτοαναφερόμενη <b>12%</b> έναντι ΟΟΣΑ 19%.</p></div>
+    <div class="card exam"><h3>Ελλάδα — πρόληψη</h3><p>DTP εμβολιασμός παιδιών <b>95%</b>. Έλεγχος μαστού στις γυναίκες <b>15%</b> έναντι ΟΟΣΑ 55%. Αντιβιοτικά: <b>27 DDD/1000 κατοίκους</b> έναντι ΟΟΣΑ 16.</p></div>
+  </div>
+</section>
+<section class="section">
+  <div class="section-title"><span class="badge">7</span><h2>Επιλεγμένες συστάσεις</h2></div>
+  <div class="grid">
+    <div class="card"><h3>Σωματική δραστηριότητα — παιδιά/έφηβοι 5–17</h3><p>Τουλάχιστον <b>60 λεπτά</b> μέτριας έως έντονης δραστηριότητας καθημερινά. Δραστηριότητες ενδυνάμωσης μυών και οστών τουλάχιστον <b>3 φορές/εβδομάδα</b>.</p></div>
+    <div class="card"><h3>Σωματική δραστηριότητα — ενήλικες</h3><p><b>≥150 λεπτά</b> μέτριας έντασης/εβδομάδα ή <b>≥75 λεπτά</b> έντονης έντασης ή ισοδύναμος συνδυασμός. Για επιπλέον όφελος: έως <b>300 λεπτά</b>. Μυϊκή ενδυνάμωση ≥2 ημέρες/εβδομάδα.</p></div>
+    <div class="card"><h3>Κακή κινητικότητα</h3><p>Δραστηριότητες ισορροπίας και πρόληψης πτώσεων <b>3 ή περισσότερες ημέρες/εβδομάδα</b>.</p></div>
+    <div class="card"><h3>Αλκοόλ</h3><p>Λιγότερο είναι καλύτερο — καθόλου είναι το καλύτερο. Ο κίνδυνος αυξάνει με την ποσότητα για πολλές καταστάσεις.</p></div>
+    <div class="card"><h3>Ύπνος</h3><p>Ενήλικες: <b>≥7 ώρες</b> κάθε μέρα. Μαθητές λυκείου: περίπου <b>8 ώρες</b>. Ο ύπνος συνδέεται με ανοσία, βάρος, διάθεση, καρδιά, μεταβολισμό, μνήμη και ατυχήματα.</p></div>
+    <div class="card"><h3>6 πυλώνες lifestyle medicine</h3><p>Φυτικό/ολικής άλεσης διατροφικό πρότυπο, σωματική δραστηριότητα, αναζωογονητικός ύπνος, διαχείριση άγχους, αποφυγή επικίνδυνων ουσιών, θετικές κοινωνικές συνδέσεις.</p></div>
+  </div>
+</section>
+<section class="section">
+  <div class="section-title"><span class="badge">8</span><h2>Εργαλεία πολιτικής, επιτήρησης και δεδομένων</h2></div>
+  <div class="grid">
+    <div class="card"><h3>Κοινοτική δράση</h3><p>Κινητήρια δύναμη για υγεία και ευημερία, επειδή δρα σε κοινωνικούς, οικονομικούς και περιβαλλοντικούς καθοριστές πέρα από την παραδοσιακή περίθαλψη.</p></div>
+    <div class="card"><h3>Υγιείς Πόλεις</h3><p>Τοπική δράση με διεθνές πλαίσιο: πόλεις που σχεδιάζουν περιβάλλοντα που διευκολύνουν υγιείς επιλογές.</p></div>
+    <div class="card"><h3>BRFSS</h3><p>Μεγάλης κλίμακας τηλεφωνικές έρευνες για συμπεριφορές κινδύνου, χρόνιες παθήσεις και χρήση προληπτικών υπηρεσιών.</p></div>
+    <div class="card"><h3>GIS</h3><p>Χαρτογράφηση συμπεριφορών υγείας σε σχέση με περιβαλλοντικούς παράγοντες, π.χ. παχυσαρκία και πυκνότητα fast food/παντοπωλείων.</p></div>
+    <div class="card"><h3>Ποιοτικά εργαλεία</h3><p>Συνεντεύξεις βασικών πηγών και ομάδες εστίασης για να κατανοηθούν κοινωνικοί κανόνες, εμπόδια και ανάγκες.</p></div>
+    <div class="card"><h3>STEPS WHO</h3><p>Προσέγγιση επιτήρησης παραγόντων κινδύνου μη μεταδοτικών νοσημάτων.</p></div>
+    <div class="card"><h3>Ψηφιακά εργαλεία</h3><p>Wearables/βιοαισθητήρες, mobile apps, machine learning, predictive analytics, ηλεκτρονικά μητρώα υγείας.</p></div>
+    <div class="card"><h3>MAPP</h3><p>Πλαίσιο στρατηγικού σχεδιασμού σε όλη την κοινότητα: Mobilizing for Action through Planning and Partnerships.</p></div>
+  </div>
+</section>
+<section class="section" id="doctor">
+  <div class="section-title"><span class="badge">9</span><h2>Ο ρόλος του κλινικού ιατρού</h2></div>
+  <div class="grid">
+    <div class="card sos"><h3>1. Βάλε τη συμπεριφορά στο πλαίσιο</h3><p>Μην βλέπεις μόνο «ο ασθενής δεν γυμνάζεται». Ρώτα: λείπει ικανότητα, ευκαιρία ή κίνητρο; Υπάρχει ασφαλές μέρος; Υπάρχει χρόνος; Υπάρχει γνώση; Υπάρχει κοινωνική υποστήριξη;</p></div>
+    <div class="card sos"><h3>2. Εξήγησε τα επιστημονικά στοιχεία</h3><p>Η τεκμηρίωση είναι βάση φροντίδας και πολιτικής. Ο γιατρός πρέπει να μεταφράζει τα στοιχεία σε καθαρή, κατανοητή γλώσσα.</p></div>
+    <div class="card sos"><h3>3. Χτίσε εμπιστοσύνη</h3><p>Η εμπιστοσύνη αυξάνει προληπτική φροντίδα, εμβολιαστική συμμόρφωση και καλύτερα αποτελέσματα. Η δυσπιστία οδηγεί σε μη συμμόρφωση.</p></div>
+    <div class="card sos"><h3>4. Κάνε patient-centered επικοινωνία</h3><p>Με σύμπνοια και ενδυνάμωση, όχι ντροπή/κατηγορία. Στόχος: να βρεθεί τι έχει αξία για τον ασθενή.</p></div>
+    <div class="card sos"><h3>5. SMART στόχοι</h3><p>Συγκεκριμένοι, Μετρήσιμοι, Εφικτοί, Σχετικοί, Χρονικά οριοθετημένοι. Π.χ. «10 λεπτά περπάτημα μετά το φαγητό, 5 ημέρες/εβδομάδα για 2 εβδομάδες».</p></div>
+    <div class="card sos"><h3>6. Διεπιστημονική συνεργασία</h3><p>Ιατροί, νοσηλευτές, φαρμακοποιοί, διαιτολόγοι, ψυχική υγεία, κοινωνικοί λειτουργοί. Η αλλαγή συμπεριφοράς δεν είναι δουλειά ενός μόνο επαγγελματία.</p></div>
+  </div>
+</section>
+<section class="section">
+  <div class="section-title"><span class="badge">10</span><h2>Τεχνικές αλλαγής συμπεριφοράς</h2></div>
+  <table class="compare">
+    <thead><tr><th>Συμπεριφορά</th><th>Τεχνική</th><th>Τι κάνουμε πρακτικά</th></tr></thead>
+    <tbody>
+      <tr><td>Όλες</td><td>SMART στόχοι</td><td>Ο στόχος να είναι συγκεκριμένος, μετρήσιμος, εφικτός, σχετικός και χρονικά οριοθετημένος.</td></tr>
+      <tr><td>Όλες</td><td>Επίλυση εμποδίων</td><td>Εντοπισμός πιθανών εμποδίων και δημιουργία λύσεων.</td></tr>
+      <tr><td>Όλες</td><td>Αυτοπαρακολούθηση</td><td>Ημερολόγιο συμπεριφοράς: ύπνος, βήματα, τσιγάρα, γεύματα.</td></tr>
+      <tr><td>Σωματική αδράνεια</td><td>Συνταγογράφηση δραστηριότητας</td><td>Τύπος, ποσότητα, συχνότητα, σύμφωνα με τον ασθενή.</td></tr>
+      <tr><td>Ανθυγιεινή διατροφή</td><td>Μικρές αλλαγές</td><td>Μείωση αναψυκτικών/γλυκών ή αύξηση φρούτων/λαχανικών.</td></tr>
+      <tr><td>Διατροφή</td><td>Μέθοδος πιάτου</td><td>50% φρούτα/λαχανικά, 25% άπαχη πρωτεΐνη, 25% δημητριακά ή αμυλούχα.</td></tr>
+      <tr><td>Ύπνος</td><td>Σύντομη συμπεριφορική θεραπεία</td><td>Ημερολόγιο ύπνου, περιορισμός χρόνου στο κρεβάτι, σταθερή κατάκλιση/αφύπνιση.</td></tr>
+      <tr><td>Φάρμακα</td><td>Εκπαίδευση + ρουτίνα</td><td>Ένδειξη/ασφάλεια/χρήση, σύνδεση λήψης με υπάρχουσα συνήθεια.</td></tr>
+      <tr><td>Κάπνισμα</td><td>5 R</td><td>Relevance, Risks, Rewards, Roadblocks, Repeat.</td></tr>
+      <tr><td>Κάπνισμα</td><td>Ημερομηνία διακοπής</td><td>Συγκεκριμένη ημερομηνία αυξάνει πιθανότητα επιτυχίας.</td></tr>
+    </tbody>
+  </table>
+</section>
+<section class="section">
+  <div class="section-title"><span class="badge">11</span><h2>Τροχός αλλαγής συμπεριφοράς — παρεμβάσεις</h2></div>
+  <div class="grid">
+    <div class="card"><h3>Εκπαίδευση</h3><p>Αύξηση γνώσης/κατανόησης. Π.χ. πληροφορίες για υγιεινή διατροφή.</p></div>
+    <div class="card"><h3>Πειθώ</h3><p>Επικοινωνία που προκαλεί συναίσθημα ή κινητοποιεί δράση. Π.χ. εικόνες/μηνύματα για αύξηση δραστηριότητας.</p></div>
+    <div class="card"><h3>Κίνητρα</h3><p>Προσδοκία ανταμοιβής. Π.χ. δώρα/κληρώσεις για προσπάθεια διακοπής καπνίσματος.</p></div>
+    <div class="card"><h3>Εξαναγκασμός</h3><p>Προσδοκία κόστους/τιμωρίας. Π.χ. αύξηση κόστους για μείωση υπερβολικής κατανάλωσης αλκοόλ.</p></div>
+    <div class="card"><h3>Κατάρτιση</h3><p>Μετάδοση δεξιοτήτων. Π.χ. εκπαίδευση οδηγών για ασφαλή οδήγηση.</p></div>
+    <div class="card"><h3>Περιορισμός</h3><p>Κανόνες που μειώνουν την ευκαιρία εμπλοκής στη συμπεριφορά-στόχο. Π.χ. απαγόρευση πώλησης σε ανηλίκους.</p></div>
+    <div class="card"><h3>Περιβαλλοντική αναδιάρθρωση</h3><p>Αλλαγή φυσικού ή κοινωνικού πλαισίου. Π.χ. pop-up υπενθυμίσεις σε γιατρούς να ρωτούν για κάπνισμα.</p></div>
+  </div>
+</section>
+<section class="section">
+  <div class="section-title"><span class="badge">✓</span><h2>Take-home messages</h2></div>
+  <div class="memory">
+    <div>Συμπεριφορά ≠ απλή επιλογή</div><div>ΚΠΥ → συμπεριφορές → υγεία</div><div>COM-B για αιτία και παρέμβαση</div><div>Οι ΜΜΝ έχουν 4 κύριες συμπεριφορές</div><div>Κοινότητα και άτομο επηρεάζονται αμφίδρομα</div><div>Ο γιατρός χρειάζεται εμπιστοσύνη + τεκμηρίωση</div><div>SMART στόχοι και μικρά βήματα</div><div>Διεπιστημονική ομάδα για βιώσιμη αλλαγή</div>
+  </div>
+</section>
+<section class="section quiz" id="quiz">
+  <div class="section-title"><span class="badge">?</span><h2>Mini-quiz ενεργητικής ανάκλησης</h2></div>
+  <details><summary>1. Ποια είναι τα 3 στοιχεία του COM-B;</summary><div class="answer">Ικανότητα, Ευκαιρία, Κίνητρο → Συμπεριφορά.</div></details>
+  <details><summary>2. Γιατί η συμπεριφορά υγείας δεν θεωρείται απλώς «ατομική επιλογή»;</summary><div class="answer">Επειδή διαμορφώνεται από κοινωνικές, οικονομικές, περιβαλλοντικές και ψυχολογικές συνθήκες, όπως πρόσβαση σε πόρους, κόστος, γειτονιά, εκπαίδευση, κοινωνικοί κανόνες και στρες.</div></details>
+  <details><summary>3. Ποιες 4 συμπεριφορές συνδέονται κυρίως με τις μη μεταδοτικές νόσους;</summary><div class="answer">Χρήση καπνού, σωματική αδράνεια, ανθυγιεινή διατροφή, επιβλαβής χρήση αλκοόλ.</div></details>
+  <details><summary>4. Ποιες 4 μεταβολικές αλλαγές αναφέρονται ως βασικές;</summary><div class="answer">Αυξημένη αρτηριακή πίεση, υπερβαρότητα/παχυσαρκία, αυξημένη γλυκόζη αίματος, αυξημένη χοληστερόλη.</div></details>
+  <details><summary>5. Δώσε παράδειγμα εγγύς προσδιοριστή και απομακρυσμένης αιτίας.</summary><div class="answer">Εγγύς: κάπνισμα ή καθιστική ζωή. Απομακρυσμένη αιτία: χαμηλό εισόδημα, χαμηλή εκπαίδευση, έλλειψη ασφαλούς χώρου άσκησης, διαθεσιμότητα καπνού/fast food.</div></details>
+  <details><summary>6. Τι σημαίνει «η συμπεριφορά δεν είναι νησί»;</summary><div class="answer">Ότι μια συμπεριφορά συνδέεται με κοινωνικό/οικονομικό/φυσικό περιβάλλον και με βρόχους ανατροφοδότησης σε επίπεδο ατόμου και κοινότητας.</div></details>
+  <details><summary>7. Τι πρέπει να κάνει ο γιατρός πριν πει απλώς «γυμνάσου»;</summary><div class="answer">Να διερευνήσει ικανότητα, ευκαιρία και κίνητρο: πόνος/γνώση, ασφαλές περιβάλλον, χρόνος, κόστος, κοινωνική υποστήριξη, διάθεση.</div></details>
+  <details><summary>8. Τι είναι SMART στόχος;</summary><div class="answer">Συγκεκριμένος, Μετρήσιμος, Εφικτός, Σχετικός και Χρονικά οριοθετημένος στόχος.</div></details>
+  <details><summary>9. Ποια είναι η βασική ιδέα της κοινοτικής δράσης;</summary><div class="answer">Ότι η υγεία βελτιώνεται με δράσεις στην κοινότητα που αντιμετωπίζουν κοινωνικούς, οικονομικούς και περιβαλλοντικούς καθοριστές πέρα από την παραδοσιακή περίθαλψη.</div></details>
+  <details><summary>10. Ποιο είναι το μήνυμα για το αλκοόλ;</summary><div class="answer">Λιγότερο αλκοόλ είναι καλύτερο· καθόλου είναι το καλύτερο, επειδή συνδέεται αιτιωδώς με πολλές παθήσεις και τραυματισμούς.</div></details>
+</section>
+<p class="footer">GreekDoc για γρήγορη επανάληψη και εκτύπωση. Διάβασε πρώτα τα SOS, μετά τους πίνακες, και τέλος απάντησε το mini-quiz χωρίς να ανοίγεις τις απαντήσεις.</p>
+</main>
+</body>
+</html>

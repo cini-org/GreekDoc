@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>GreekDoc — Επιδημιολογική Επιτήρηση στη Δημόσια Υγεία</title>
+<style>
+:root{
+  --bg:#f7f8fb; --ink:#18202a; --muted:#5d6b7a; --card:#ffffff;
+  --blue:#2563eb; --cyan:#0891b2; --green:#059669; --orange:#ea580c;
+  --red:#dc2626; --purple:#7c3aed; --border:#d9e2ef; --soft:#eef6ff;
+  --shadow:0 8px 24px rgba(15,23,42,.08);
+}
+*{box-sizing:border-box} body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.55}
+header{background:linear-gradient(135deg,#0f172a,#1e40af 52%,#0891b2);color:white;padding:42px 24px 34px;border-bottom:6px solid #bae6fd}
+header h1{margin:0 0 10px;font-size:clamp(1.8rem,4vw,3rem);line-height:1.1} header p{max-width:980px;margin:0;color:#dbeafe;font-size:1.05rem}
+.toolbar{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}.btn{border:1px solid rgba(255,255,255,.35);background:rgba(255,255,255,.12);color:white;padding:10px 14px;border-radius:999px;cursor:pointer;font-weight:700}.btn:hover{background:rgba(255,255,255,.22)}
+main{max-width:1180px;margin:0 auto;padding:26px 18px 70px}.section{margin:28px 0}.section h2{font-size:1.55rem;margin:0 0 14px;color:#0f172a;display:flex;align-items:center;gap:10px}.section h2:before{content:"";width:10px;height:30px;border-radius:8px;background:var(--blue)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(245px,1fr));gap:16px}.card{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:18px;box-shadow:var(--shadow)}.card h3{margin:0 0 10px;font-size:1.05rem;color:#0f172a}.card p,.card li{color:#334155}.card ul{margin:8px 0 0;padding-left:20px}.tag{display:inline-block;font-size:.78rem;font-weight:800;letter-spacing:.02em;color:#075985;background:#e0f2fe;border:1px solid #bae6fd;border-radius:999px;padding:4px 9px;margin-bottom:8px}.tag.red{color:#991b1b;background:#fee2e2;border-color:#fecaca}.tag.green{color:#065f46;background:#d1fae5;border-color:#a7f3d0}.tag.purple{color:#4c1d95;background:#ede9fe;border-color:#ddd6fe}.tag.orange{color:#9a3412;background:#ffedd5;border-color:#fed7aa}
+.sos{background:#fff7ed;border:1px solid #fed7aa;border-left:7px solid var(--orange);border-radius:18px;padding:18px;box-shadow:var(--shadow)}.sos h3{margin:0 0 8px;color:#9a3412}.definition{background:#eef6ff;border-left:7px solid var(--blue)}.warning{background:#fef2f2;border-left:7px solid var(--red)}.success{background:#ecfdf5;border-left:7px solid var(--green)}
+table{width:100%;border-collapse:separate;border-spacing:0;background:white;border:1px solid var(--border);border-radius:16px;overflow:hidden;box-shadow:var(--shadow)}th,td{padding:12px 13px;border-bottom:1px solid var(--border);vertical-align:top}th{background:#eff6ff;color:#1e3a8a;text-align:left}tr:last-child td{border-bottom:none}.small{font-size:.93rem;color:#475569}.pill{display:inline-block;background:#f1f5f9;border:1px solid #cbd5e1;border-radius:999px;padding:3px 8px;font-weight:700;color:#334155}
+.flow{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px}.step{background:white;border:1px solid var(--border);border-radius:16px;padding:14px;text-align:center;box-shadow:var(--shadow)}.step b{display:block;color:#1d4ed8}.arrow{font-weight:900;color:#64748b}.quiz .q{background:white;border:1px solid var(--border);border-radius:16px;padding:15px;margin:12px 0;box-shadow:var(--shadow)}details{background:#f8fafc;border:1px dashed #cbd5e1;border-radius:12px;padding:10px;margin-top:10px}summary{cursor:pointer;font-weight:800;color:#0f766e}
+.footer{margin-top:30px;color:#64748b;font-size:.9rem;text-align:center}
+@media print{header{padding:22px;color:#000;background:white;border-bottom:2px solid #000}.toolbar{display:none}body{background:white}.card,.sos,table,.step{box-shadow:none;break-inside:avoid}.section{break-inside:avoid}main{max-width:none}.grid{grid-template-columns:repeat(2,1fr)}}
+</style>
+</head>
+<body>
+<header>
+  <h1>Επιδημιολογική Επιτήρηση στη Δημόσια Υγεία</h1>
+  <p>GreekDoc σημειώσεις για εξετάσεις: ορισμοί, κύκλος επιτήρησης, τύποι συστημάτων, δείκτες δημόσιας υγείας, φορείς και παράδειγμα COVID-19.</p>
+  <div class="toolbar"><button class="btn" onclick="window.print()">🖨️ Εκτύπωση / PDF</button><button class="btn" onclick="document.querySelectorAll('details').forEach(d=>d.open=true)">Άνοιγμα απαντήσεων quiz</button></div>
+</header>
+<main>
+<section class="section">
+  <div class="sos">
+    <h3>🎯 SOS εξετάσεων — τι πρέπει να ξέρεις τέλεια</h3>
+    <ul>
+      <li><b>Ορισμός επιτήρησης:</b> συνεχιζόμενη, συστηματική συλλογή, ανάλυση, ερμηνεία και έγκαιρη διάθεση δεδομένων για δράση.</li>
+      <li><b>Δεν είναι απλή καταγραφή:</b> πρέπει να συνδέεται με πρόληψη, έλεγχο και λήψη μέτρων δημόσιας υγείας.</li>
+      <li><b>Κύκλος:</b> ανίχνευση → δήλωση → διερεύνηση/επιβεβαίωση → ανάλυση → μέτρα → feedback → συνεργασία/ανταλλαγή δεδομένων.</li>
+      <li><b>Τύποι:</b> παθητική, ενεργητική, αρνητική επιτήρηση.</li>
+      <li><b>Ανάλυση:</b> χρόνος, τόπος, άτομο.</li>
+      <li><b>Φορείς:</b> WHO, OECD, ECDC/TESSy, WHO Europe, EuroMOMO, EARS-Net, ΕΟΔΥ, ΕΛΣΤΑΤ, ΗΔΙΚΑ, μητρώα.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section">
+  <h2>1. Ορισμός και νόημα της επιτήρησης</h2>
+  <div class="grid">
+    <div class="card definition"><span class="tag">ΟΡΙΣΜΟΣ</span><h3>Επιδημιολογική / Δημόσια Υγειονομική Επιτήρηση</h3><p>Είναι η <b>συνεχιζόμενη και συστηματική</b> συλλογή, ανάλυση και ερμηνεία δεδομένων υγείας, μαζί με την <b>έγκαιρη διάθεση</b> των αποτελεσμάτων σε όσους μπορούν να δράσουν για πρόληψη και έλεγχο.</p></div>
+    <div class="card"><span class="tag green">ΚΛΕΙΔΙ</span><h3>Γιατί υπάρχει;</h3><p>Για να μετατρέπει τα δεδομένα σε <b>πρακτικές δημόσιας υγείας</b>: ανίχνευση επιδημιών, σχεδιασμός πολιτικών, αξιολόγηση παρεμβάσεων και προστασία πληθυσμού.</p></div>
+    <div class="card warning"><span class="tag red">ΠΡΟΣΟΧΗ</span><h3>Δεν είναι απλώς “νούμερα”</h3><p>Η επιτήρηση είναι χρήσιμη μόνο όταν τα δεδομένα οδηγούν σε <b>δράση</b>. Χωρίς feedback και μέτρα, μένει απλή καταγραφή.</p></div>
+    <div class="card"><span class="tag purple">5 ΕΠΙΣΤΗΜΕΣ</span><h3>Πού ανήκει;</h3><ul><li>Επιτήρηση</li><li>Επιδημιολογία</li><li>Εργαστήριο</li><li>Πληροφορική</li><li>Αποτελεσματικότητα πρόληψης</li></ul></div>
+  </div>
+</section>
+
+<section class="section">
+  <h2>2. Η προσέγγιση δημόσιας υγείας</h2>
+  <div class="flow">
+    <div class="step"><b>1. Επιτήρηση</b><span class="small">Τι πρόβλημα υπάρχει;</span></div>
+    <div class="step"><b>2. Παράγοντες κινδύνου</b><span class="small">Γιατί συμβαίνει;</span></div>
+    <div class="step"><b>3. Αξιολόγηση παρέμβασης</b><span class="small">Τι λειτουργεί;</span></div>
+    <div class="step"><b>4. Υλοποίηση</b><span class="small">Πώς εφαρμόζεται στον πληθυσμό;</span></div>
+  </div>
+</section>
+
+<section class="section">
+  <h2>3. Σε τι χρησιμεύουν τα δεδομένα επιτήρησης;</h2>
+  <div class="grid">
+    <div class="card"><span class="tag red">ΑΜΕΣΑ</span><h3>Άμεση ανίχνευση</h3><ul><li>Επιδημίες</li><li>Νέα αναδυόμενα προβλήματα</li><li>Αλλαγές σε πρακτικές υγείας</li><li>Αντοχή στα αντιβιοτικά</li><li>Μεταβολές πληθυσμού σε κίνδυνο</li></ul></div>
+    <div class="card"><span class="tag orange">ΠΕΡΙΟΔΙΚΑ</span><h3>Ενημέρωση και σχεδιασμός</h3><ul><li>Μέγεθος προβλήματος και κόστος</li><li>Αξιολόγηση ελέγχου</li><li>Παρακολούθηση παραγόντων κινδύνου</li><li>Καθορισμός ερευνητικών προτεραιοτήτων</li></ul></div>
+    <div class="card"><span class="tag green">ΜΑΚΡΟΠΡΟΘΕΣΜΑ</span><h3>Αποθηκευμένη γνώση</h3><ul><li>Φυσική ιστορία νόσων</li><li>Βάση για εργαστηριακή/επιδημιολογική έρευνα</li><li>Τεκμηρίωση διασποράς νοσημάτων</li><li>Επικύρωση προκαταρκτικών δεδομένων</li></ul></div>
+  </div>
+</section>
+
+<section class="section">
+  <h2>4. Ποια συμβάντα επιλέγουμε για επιτήρηση;</h2>
+  <table>
+    <thead><tr><th>Κριτήριο</th><th>Τι σημαίνει</th><th>Παραδείγματα δεικτών</th></tr></thead>
+    <tbody>
+      <tr><td><b>Συχνότητα</b></td><td>Πόσο συχνό είναι το πρόβλημα.</td><td>Επίπτωση, επιπολασμός, θνησιμότητα.</td></tr>
+      <tr><td><b>Σοβαρότητα</b></td><td>Πόσο σοβαρή είναι η νόσος ή η έκβαση.</td><td>Θνητότητα, νοσηλείες, αναπηρία, YPLL, QALYs.</td></tr>
+      <tr><td><b>Κοινωνικό/οικονομικό κόστος</b></td><td>Πόσο επιβαρύνει κοινωνία και σύστημα υγείας.</td><td>Άμεσο κόστος θεραπείας, έμμεσο κόστος παραγωγικότητας.</td></tr>
+      <tr><td><b>Λοιπά κριτήρια</b></td><td>Δημόσια σημασία και δυνατότητα παρέμβασης.</td><td>Δυνατότητα πρόληψης, μεταδοτικότητα, δημόσιο ενδιαφέρον.</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section class="section">
+  <h2>5. Ανάλυση δεδομένων: χρόνος – τόπος – άτομο</h2>
+  <div class="grid">
+    <div class="card"><span class="tag">ΠΟΤΕ;</span><h3>Χρόνος</h3><p><b>Δεδομένα:</b> ημερομηνία έναρξης, διάγνωσης ή αναφοράς.</p><p><b>Εργαλείο:</b> επιδημική καμπύλη.</p><p><b>Σκοπός:</b> αναγνώριση αύξησης κρουσμάτων, εποχικότητας ή επιδημίας.</p></div>
+    <div class="card"><span class="tag green">ΠΟΥ;</span><h3>Τόπος</h3><p><b>Δεδομένα:</b> κατοικία, εργασία, σημείο έκθεσης.</p><p><b>Εργαλείο:</b> χάρτες σημείων, GIS, θεματικοί χάρτες.</p><p><b>Σκοπός:</b> εντοπισμός περιοχών υψηλού κινδύνου ή πηγών έκθεσης.</p></div>
+    <div class="card"><span class="tag purple">ΠΟΙΟΣ;</span><h3>Άτομο</h3><p><b>Δεδομένα:</b> ηλικία, φύλο, επάγγελμα, κοινωνικοοικονομική κατάσταση, εμβολιασμός.</p><p><b>Σκοπός:</b> αναγνώριση ομάδων υψηλού κινδύνου και στοχευμένες παρεμβάσεις.</p></div>
+  </div>
+</section>
+
+<section class="section">
+  <h2>6. Δείκτης Δημόσιας Υγείας</h2>
+  <div class="card definition"><p><b>Δείκτης δημόσιας υγείας</b> είναι μια αντικειμενική, μετρήσιμη μεταβλητή που χρησιμοποιείται για ποσοτικοποίηση της κατάστασης υγείας και παρακολούθηση πολιτικών ή παρεμβάσεων.</p></div>
+  <br />
+  <table>
+    <thead><tr><th>Λειτουργία δείκτη</th><th>Παράδειγμα</th></tr></thead>
+    <tbody>
+      <tr><td>Εκτίμηση μεγέθους προβλήματος</td><td>Επιπολασμός παιδικής παχυσαρκίας ανά περιφέρεια.</td></tr>
+      <tr><td>Παρακολούθηση διαδικασίας / output</td><td>Αριθμός τεστ COVID-19 ανά 100.000 κατοίκους ανά εβδομάδα.</td></tr>
+      <tr><td>Μέτρηση αποτελέσματος / impact</td><td>Μείωση νοσηλειών για άσθμα μετά από αντικαπνιστικό νόμο.</td></tr>
+      <tr><td>Evidence-based action</td><td>Η αύξηση κρουσμάτων γρίπης ενεργοποιεί εμβολιαστική εκστρατεία.</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section class="section">
+  <h2>7. Τύποι επιδημιολογικής επιτήρησης</h2>
+  <table>
+    <thead><tr><th>Τύπος</th><th>Τι γίνεται</th><th>Πλεονεκτήματα / μειονεκτήματα</th></tr></thead>
+    <tbody>
+      <tr><td><b>Παθητική</b></td><td>Η υγειονομική αρχή <b>αναμένει</b> να σταλούν δεδομένα από τους συμμετέχοντες.</td><td>Εύκολη και φθηνή, αλλά κινδυνεύει από υποδήλωση.</td></tr>
+      <tr><td><b>Ενεργητική</b></td><td>Η αρχή <b>αναζητά ενεργά</b> δεδομένα σε τακτά διαστήματα.</td><td>Πιο πλήρης και αξιόπιστη, αλλά απαιτεί περισσότερους πόρους.</td></tr>
+      <tr><td><b>Αρνητική</b></td><td>Ζητείται δήλωση ακόμη και όταν <b>δεν υπάρχουν κρούσματα</b>.</td><td>Χρήσιμη για επιβεβαίωση απουσίας νόσου· υποπερίπτωση ενεργητικής επιτήρησης.</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section class="section">
+  <h2>8. Στάδια επιδημιολογικής επιτήρησης</h2>
+  <div class="flow">
+    <div class="step"><b>1</b>Ανίχνευση περιστατικών<br><span class="small">σαφής ορισμός κρούσματος</span></div>
+    <div class="step"><b>2</b>Δήλωση<br><span class="small">δελτία / φόρμες</span></div>
+    <div class="step"><b>3</b>Διερεύνηση & επιβεβαίωση<br><span class="small">επιδημιολογική + εργαστηριακή</span></div>
+    <div class="step"><b>4</b>Ανάλυση & ερμηνεία</div>
+    <div class="step"><b>5</b>Μέτρα ελέγχου</div>
+    <div class="step"><b>6</b>Feedback</div>
+    <div class="step"><b>7</b>Συνεργασία / ανταλλαγή δεδομένων</div>
+  </div>
+</section>
+
+<section class="section">
+  <h2>9. Πηγές δεδομένων</h2>
+  <div class="grid">
+    <div class="card"><h3>Αναφερόμενες νόσοι ή σύνδρομα</h3><p>Π.χ. υποχρεωτικώς δηλούμενα νοσήματα, γριπώδης συνδρομή.</p></div>
+    <div class="card"><h3>Ηλεκτρονικά αρχεία υγείας</h3><p>Π.χ. δεδομένα εξιτηρίων, διαγνώσεις, εργαστηριακά αποτελέσματα.</p></div>
+    <div class="card"><h3>Ζωτικά αρχεία</h3><p>Πιστοποιητικά γέννησης και θανάτου.</p></div>
+    <div class="card"><h3>Μητρώα</h3><p>Καρκίνου, εμβολιασμών, ειδικών νοσημάτων.</p></div>
+    <div class="card"><h3>Έρευνες</h3><p>Πληθυσμιακές έρευνες για συμπεριφορές, νοσηρότητα, πρόσβαση σε υπηρεσίες.</p></div>
+    <div class="card"><h3>Άλλες πηγές</h3><p>Φαρμακεία, κλήσεις, πολιτικές/νόμοι, δεδομένα συνταγογράφησης.</p></div>
+  </div>
+</section>
+
+<section class="section">
+  <h2>10. Νομικό πλαίσιο και προστασία δεδομένων</h2>
+  <div class="grid">
+    <div class="card"><span class="tag purple">GDPR</span><h3>Ευαίσθητα δεδομένα υγείας</h3><p>Η επεξεργασία δεδομένων υγείας γενικά απαγορεύεται, αλλά επιτρέπεται με εξαιρέσεις για <b>δημόσιο συμφέρον στη δημόσια υγεία</b>, έλεγχο πανδημιών και επιστημονική/στατιστική χρήση.</p></div>
+    <div class="card"><span class="tag green">ΕΕ 2022/2371</span><h3>Νέο σύστημα υψηλής απόδοσης</h3><p>Ενσωματώνει ψηφιακά εργαλεία και τεχνητή νοημοσύνη για επικύρωση δεδομένων, ανάλυση, αυτοματοποιημένη αναφορά, μοντελοποίηση και αξιολόγηση κινδύνου.</p></div>
+    <div class="card"><span class="tag orange">ΕΟΔΥ</span><h3>Υποχρεωτική δήλωση</h3><p>Χρήση ειδικών δελτίων δήλωσης και ασφαλής αποστολή/κρυπτογράφηση, όταν απαιτείται.</p></div>
+  </div>
+</section>
+
+<section class="section">
+  <h2>11. Φορείς και συστήματα επιτήρησης</h2>
+  <table>
+    <thead><tr><th>Επίπεδο</th><th>Φορείς / εργαλεία</th><th>Ρόλος</th></tr></thead>
+    <tbody>
+      <tr><td><b>Παγκόσμιο</b></td><td>WHO</td><td>Συντονισμός επιτήρησης, επιδημιών, εμβολίων, Διεθνούς Υγειονομικού Κανονισμού.</td></tr>
+      <tr><td><b>Παγκόσμιο / οικονομικό</b></td><td>OECD + Ευρωπαϊκή Επιτροπή</td><td>Health at a Glance, σύγκριση συστημάτων υγείας.</td></tr>
+      <tr><td><b>Ευρωπαϊκό</b></td><td>ECDC / TESSy</td><td>Κεντρικός κόμβος τυποποιημένης αναφοράς λοιμωδών νοσημάτων.</td></tr>
+      <tr><td><b>Ευρωπαϊκό</b></td><td>WHO/Europe Gateway</td><td>Δείκτες υγείας για χώρες της ευρωπαϊκής περιφέρειας.</td></tr>
+      <tr><td><b>Ευρωπαϊκό</b></td><td>EuroMOMO</td><td>Παρακολούθηση πλεονάζουσας θνησιμότητας.</td></tr>
+      <tr><td><b>Ευρωπαϊκό</b></td><td>EARS-Net</td><td>Επιτήρηση αντιμικροβιακής αντοχής.</td></tr>
+      <tr><td><b>Ελλάδα</b></td><td>ΕΟΔΥ</td><td>Υποχρεωτική δήλωση, sentinel δίκτυα, ενημερωτικά δελτία.</td></tr>
+      <tr><td><b>Ελλάδα</b></td><td>ΕΛΣΤΑΤ</td><td>Ζωτικές στατιστικές, απογραφή, πληθυσμιακοί παρονομαστές, έρευνες υγείας.</td></tr>
+      <tr><td><b>Ελλάδα</b></td><td>ΗΔΙΚΑ</td><td>Ηλεκτρονική συνταγογράφηση, ICD-10, μητρώα.</td></tr>
+      <tr><td><b>Ελλάδα</b></td><td>Μητρώα Υπουργείου Υγείας / Τοπική Αυτοδιοίκηση</td><td>Νεοπλασίες, ειδικά μητρώα, περιβαλλοντικοί/υγειονομικοί παράγοντες.</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section class="section">
+  <h2>12. Παράδειγμα COVID-19</h2>
+  <div class="grid">
+    <div class="card"><span class="tag red">ΧΡΟΝΙΚΟ</span><h3>Από συρροή σε πανδημία</h3><ul><li>31/12/2019: ειδοποίηση WHO για συρροή πνευμονιών στη Wuhan.</li><li>09/01/2020: αναγνώριση νέου κορωνοϊού.</li><li>30/01/2020: WHO κηρύσσει PHEIC.</li><li>26/02/2020: πρώτο κρούσμα στην Ελλάδα.</li><li>11/03/2020: κήρυξη πανδημίας.</li></ul></div>
+    <div class="card"><span class="tag green">ΕΛΛΑΔΑ</span><h3>Εθνικό μητρώο COVID-19</h3><p>Δημιουργήθηκε μέσω ηλεκτρονικής συνταγογράφησης, δείχνοντας πώς τα ψηφιακά συστήματα μπορούν να στηρίξουν επιτήρηση, καταγραφή και λήψη αποφάσεων.</p></div>
+    <div class="card"><span class="tag purple">ΜΑΘΗΜΑ</span><h3>Τι μας δείχνει;</h3><p>Η επιτήρηση χρειάζεται ταχύτητα, συνεργασία φορέων, εργαστηριακή επιβεβαίωση, επικοινωνία δεδομένων και μηχανισμούς που μετατρέπουν πληροφορία σε μέτρα.</p></div>
+  </div>
+</section>
+
+<section class="section quiz">
+  <h2>13. Mini-quiz εξετάσεων</h2>
+  <div class="q"><b>1. Ποιο στοιχείο ξεχωρίζει την επιδημιολογική επιτήρηση από την απλή συλλογή δεδομένων;</b><details><summary>Απάντηση</summary>Η σύνδεση των δεδομένων με έγκαιρη διάδοση και δράση δημόσιας υγείας: πρόληψη, έλεγχος, πολιτικές.</details></div>
+  <div class="q"><b>2. Παθητική ή ενεργητική επιτήρηση: ποια είναι πιθανότερο να έχει υποδήλωση;</b><details><summary>Απάντηση</summary>Η παθητική, γιατί τα δεδομένα αναμένονται από τους συμμετέχοντες και δεν αναζητούνται συστηματικά από την αρχή.</details></div>
+  <div class="q"><b>3. Τι σημαίνει αρνητική επιτήρηση;</b><details><summary>Απάντηση</summary>Δήλωση ακόμη και σε απουσία νόσου. Είναι υποπερίπτωση ενεργητικής επιτήρησης.</details></div>
+  <div class="q"><b>4. Ποιες είναι οι τρεις βασικές διαστάσεις ανάλυσης δεδομένων επιτήρησης;</b><details><summary>Απάντηση</summary>Χρόνος, τόπος, άτομο.</details></div>
+  <div class="q"><b>5. Δώσε παράδειγμα δείκτη δημόσιας υγείας.</b><details><summary>Απάντηση</summary>Π.χ. επιπολασμός παιδικής παχυσαρκίας ανά περιφέρεια ή αριθμός τεστ COVID-19 ανά 100.000 κατοίκους ανά εβδομάδα.</details></div>
+  <div class="q"><b>6. Γιατί χρειάζεται feedback στην επιτήρηση;</b><details><summary>Απάντηση</summary>Για να ενημερώνονται όσοι παρείχαν τα πρωτογενή στοιχεία και οι αρμόδιοι φορείς, ώστε το σύστημα να βελτιώνεται και τα δεδομένα να αξιοποιούνται.</details></div>
+  <div class="q"><b>7. Ποιος είναι ο ρόλος του ECDC/TESSy;</b><details><summary>Απάντηση</summary>Κεντρικός ευρωπαϊκός κόμβος τυποποιημένης αναφοράς δεδομένων λοιμωδών νοσημάτων από τα κράτη-μέλη.</details></div>
+</section>
+
+<section class="section">
+  <h2>14. Τελική σύνοψη σε 6 γραμμές</h2>
+  <div class="sos success">
+    <ul>
+      <li>Η επιτήρηση είναι <b>συνεχής κύκλος δεδομένων → ανάλυσης → δράσης</b>.</li>
+      <li>Αναλύει πάντα κατά <b>χρόνο, τόπο και άτομο</b>.</li>
+      <li>Χρειάζεται σαφή ορισμό κρούσματος, δήλωση, επιβεβαίωση και feedback.</li>
+      <li>Τα συστήματα μπορεί να είναι παθητικά, ενεργητικά ή αρνητικά.</li>
+      <li>Οι δείκτες δημόσιας υγείας είναι μετρήσιμες μεταβλητές για αποφάσεις.</li>
+      <li>Η σύγχρονη επιτήρηση είναι πολυεπίπεδη: ΕΟΔΥ/ΕΛΣΤΑΤ/ΗΔΙΚΑ + ECDC/WHO/OECD.</li>
+    </ul>
+  </div>
+</section>
+
+<div class="footer">GreekDoc • Επιδημιολογική Επιτήρηση στη Δημόσια Υγεία • Εκτύπωση: Ctrl+P</div>
+</main>
+</body>
+</html>

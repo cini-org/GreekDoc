@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>GreekDoc | Ετοιμότητα για Καταστάσεις Έκτακτης Ανάγκης & Διαχείριση Καταστροφών</title>
+<style>
+  :root{
+    --bg:#f7f3ea; --paper:#fffdf8; --ink:#24313f; --muted:#65717e;
+    --blue:#2f6f8f; --cyan:#dff2f4; --green:#4f8a5b; --mint:#e6f3e8;
+    --orange:#d07a35; --peach:#fde8d7; --red:#b94e48; --rose:#f6dddd;
+    --purple:#6c5b9a; --lav:#ece7fb; --border:#e4dccd; --shadow:0 10px 30px rgba(36,49,63,.08);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:linear-gradient(180deg,#f8f5ee 0%,#f3efe6 100%);color:var(--ink);font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;line-height:1.55}
+  header{padding:34px 20px 22px;background:radial-gradient(circle at top left,#e1f3f4,transparent 40%),radial-gradient(circle at top right,#fde8d7,transparent 36%),var(--paper);border-bottom:1px solid var(--border)}
+  .wrap{max-width:1180px;margin:0 auto}
+  .eyebrow{display:inline-block;padding:6px 12px;border-radius:999px;background:var(--cyan);color:#15566d;font-weight:800;font-size:.84rem;letter-spacing:.02em}
+  h1{font-size:clamp(2rem,4vw,4rem);line-height:1.05;margin:16px 0 10px;color:#183142}
+  .subtitle{max-width:880px;color:var(--muted);font-size:1.1rem;margin:0 0 18px}
+  .actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
+  button,.pill{border:0;border-radius:14px;padding:11px 16px;background:var(--blue);color:white;font-weight:800;box-shadow:var(--shadow);cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:8px}
+  .pill.secondary{background:white;color:var(--blue);border:1px solid var(--border)}
+  nav{position:sticky;top:0;z-index:10;background:rgba(255,253,248,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--border)}
+  nav .wrap{display:flex;gap:8px;overflow:auto;padding:10px 20px}
+  nav a{white-space:nowrap;color:#335;text-decoration:none;font-weight:800;font-size:.9rem;background:#fff;border:1px solid var(--border);border-radius:999px;padding:8px 12px}
+  main{padding:26px 20px 60px}
+  section{margin:28px auto;max-width:1180px}
+  h2{font-size:clamp(1.45rem,2.5vw,2.2rem);margin:0 0 14px;color:#1c3f55}
+  h3{margin:0 0 8px;font-size:1.08rem;color:#20364a}
+  .lead{color:var(--muted);margin-top:-4px;max-width:900px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(245px,1fr));gap:14px}
+  .card{background:var(--paper);border:1px solid var(--border);border-radius:22px;padding:18px;box-shadow:var(--shadow)}
+  .card.sos{border-top:6px solid var(--red);background:linear-gradient(180deg,#fffdf8,#fff7f4)}
+  .card.blue{border-top:6px solid var(--blue)} .card.green{border-top:6px solid var(--green)} .card.orange{border-top:6px solid var(--orange)} .card.purple{border-top:6px solid var(--purple)}
+  .tag{display:inline-flex;border-radius:999px;padding:4px 9px;font-size:.78rem;font-weight:900;margin-bottom:10px;background:#eef2f4;color:#42525d}
+  .tag.red{background:var(--rose);color:#8b2c28}.tag.blue{background:var(--cyan);color:#15566d}.tag.green{background:var(--mint);color:#2e6337}.tag.orange{background:var(--peach);color:#9a4d11}.tag.purple{background:var(--lav);color:#4b3f78}
+  ul{margin:8px 0 0 1.1rem;padding:0} li{margin:.28rem 0}.mini{font-size:.92rem;color:var(--muted)}
+  .table-wrap{overflow:auto;background:var(--paper);border:1px solid var(--border);border-radius:22px;box-shadow:var(--shadow)}
+  table{border-collapse:collapse;width:100%;min-width:760px}th,td{border-bottom:1px solid var(--border);padding:13px 14px;text-align:left;vertical-align:top}th{background:#f0f6f7;color:#163f52;font-size:.92rem}tr:last-child td{border-bottom:0}
+  .flow{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:10px;counter-reset:step}.step{position:relative;background:white;border:1px solid var(--border);border-radius:18px;padding:16px 16px 16px 50px;box-shadow:var(--shadow)}.step:before{counter-increment:step;content:counter(step);position:absolute;left:15px;top:16px;background:var(--blue);color:white;border-radius:50%;width:25px;height:25px;display:grid;place-items:center;font-weight:900}
+  details{background:var(--paper);border:1px solid var(--border);border-radius:18px;padding:14px 16px;margin:10px 0;box-shadow:var(--shadow)}summary{cursor:pointer;font-weight:900;color:#23384a}.answer{margin-top:10px;color:#334;background:#f8fbfb;border-left:4px solid var(--green);padding:10px;border-radius:8px}
+  .callout{background:linear-gradient(90deg,var(--cyan),#fff);border:1px solid #cfe7eb;border-radius:24px;padding:20px;box-shadow:var(--shadow)}
+  .exam{background:#fff8ed;border:1px solid #f1d2ae;border-left:8px solid var(--orange);border-radius:20px;padding:18px}
+  .danger{background:#fff4f4;border:1px solid #f1caca;border-left:8px solid var(--red);border-radius:20px;padding:18px}
+  footer{max-width:1180px;margin:30px auto;color:var(--muted);font-size:.9rem;padding:0 20px}
+  @media print{nav,.actions{display:none}body{background:white}.card,.table-wrap,details,.callout,.exam,.danger{box-shadow:none;break-inside:avoid}header{padding:16px 0}main{padding:0}.wrap,section,footer{max-width:none}.grid{grid-template-columns:repeat(2,1fr)}a{color:inherit}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <span class="eyebrow">GreekDoc • Κοινωνική Ιατρική – Δημόσια Υγεία</span>
+  <h1>Ετοιμότητα για Καταστάσεις Έκτακτης Ανάγκης & Διαχείριση Καταστροφών</h1>
+  <p class="subtitle">Σημειώσεις εξετάσεων για ορισμούς, κύκλο διαχείρισης καταστροφών, all-hazards προσέγγιση, δημόσια υγεία, πλαίσια ΕΕ/CDC/NHS, ρόλο γιατρού και πρακτικό σενάριο πλημμύρας.</p>
+  <div class="actions"><button onclick="window.print()">🖨️ Εκτύπωση</button><a class="pill secondary" href="#quiz">Mini quiz</a><a class="pill secondary" href="#sos">SOS σημεία</a></div>
+</div></header>
+<nav><div class="wrap">
+  <a href="#sos">SOS</a><a href="#orismoi">Ορισμοί</a><a href="#risk">Κίνδυνος–Risk</a><a href="#cycle">Κύκλος</a><a href="#approaches">Προσεγγίσεις</a><a href="#data">Δεδομένα</a><a href="#frameworks">Πλαίσια</a><a href="#doctor">Ρόλος γιατρού</a><a href="#flood">Σενάριο πλημμύρας</a><a href="#quiz">Quiz</a>
+</div></nav>
+<main>
+<section id="sos">
+  <h2>1) SOS εξετάσεων — τι να ξέρεις πρώτο</h2>
+  <p class="lead">Η βασική ιδέα: οι καταστροφές δεν είναι μόνο «διάσωση». Είναι φαινόμενα δημόσιας υγείας που απαιτούν πρόληψη, σχεδιασμό, συντονισμό, επικοινωνία, συνέχεια φροντίδας και δικαιοσύνη.</p>
+  <div class="grid">
+    <div class="card sos"><span class="tag red">Ορισμός</span><h3>Καταστροφή</h3><p>Σοβαρή διαταραχή λειτουργίας κοινότητας/κοινωνίας με ανθρώπινες, υλικές, οικονομικές ή περιβαλλοντικές απώλειες που <b>υπερβαίνουν την ικανότητα αντιμετώπισης</b> με ίδιους πόρους.</p></div>
+    <div class="card sos"><span class="tag red">Τύπος</span><h3>Risk = Hazard × Exposure × Vulnerability ÷ Capacity</h3><p>Δεν αρκεί να υπάρχει κίνδυνος. Καταστροφή συμβαίνει όταν ο κίνδυνος πλήττει εκτεθειμένο και ευάλωτο πληθυσμό με ανεπαρκή ικανότητα απόκρισης.</p></div>
+    <div class="card sos"><span class="tag red">Κύκλος</span><h3>4 φάσεις</h3><p><b>Πρόληψη/Μετριασμός → Ετοιμότητα → Απόκριση → Αποκατάσταση</b>. Είναι κύκλος, όχι γραμμικό γεγονός.</p></div>
+    <div class="card sos"><span class="tag red">Προσέγγιση</span><h3>All-hazards</h3><p>Διαφορετικοί κίνδυνοι — σεισμός, πλημμύρα, πανδημία, τεχνολογικό συμβάν — συχνά πιέζουν τα συστήματα με παρόμοιους τρόπους, άρα χρειάζονται κοινές βασικές ικανότητες.</p></div>
+    <div class="card sos"><span class="tag red">Ιατρός</span><h3>Πριν–Κατά–Μετά</h3><p>Ο γιατρός είναι κλινικός, επικοινωνιολόγος, αναφέρων, συντονιστής και υποστηρικτής δημόσιας υγείας.</p></div>
+    <div class="card sos"><span class="tag red">Πλημμύρα</span><h3>Κύριοι κίνδυνοι</h3><p>Μολυσμένο νερό, γαστρεντερίτιδες, λεπτοσπείρωση, τραύματα/τέτανος, δερματικές λοιμώξεις, κουνούπια, χρόνια νοσήματα, ψυχική υγεία.</p></div>
+  </div>
+</section>
+<section id="orismoi">
+  <h2>2) Βασικοί ορισμοί</h2>
+  <div class="table-wrap"><table><thead><tr><th>Όρος</th><th>Τι σημαίνει</th><th>Εξεταστική φράση</th></tr></thead><tbody>
+    <tr><td><b>Έκτακτη ανάγκη</b></td><td>Σοβαρό, συχνά απροσδόκητο γεγονός που απαιτεί άμεση δράση.</td><td>Άμεση λήψη μέτρων για ελαχιστοποίηση συνεπειών.</td></tr>
+    <tr><td><b>Καταστροφή</b></td><td>Σοβαρή διαταραχή με εκτεταμένες απώλειες που υπερβαίνουν την τοπική ικανότητα αντιμετώπισης.</td><td>Το κρίσιμο κριτήριο είναι η υπέρβαση της ικανότητας.</td></tr>
+    <tr><td><b>Κρίση</b></td><td>Ευρύτερη απειλή για υγεία, περιβάλλον, κοινωνία, πολιτική ή ασφάλεια που δυσκολεύει την κανονική λειτουργία.</td><td>Δεν είναι πάντα ξαφνικό γεγονός.</td></tr>
+    <tr><td><b>Άμεση υλική ζημία</b></td><td>Ζημία κατά τη διάρκεια ή αμέσως μετά: σπίτια, δρόμοι, υπηρεσίες, περιουσιακά στοιχεία.</td><td>Μετριέται σε φυσικές μονάδες.</td></tr>
+    <tr><td><b>Επίπτωση καταστροφής</b></td><td>Συνολικό/μακροπρόθεσμο αποτέλεσμα: θάνατοι, τραυματισμοί, κοινωνική ευημερία, οικονομία, περιβάλλον.</td><td>Πιο ευρύ από την άμεση ζημία.</td></tr>
+  </tbody></table></div>
+</section>
+<section id="risk">
+  <h2>3) Κίνδυνος, έκθεση, ευπάθεια, ικανότητα, διακινδύνευση</h2>
+  <div class="grid">
+    <div class="card blue"><span class="tag blue">Hazard</span><h3>Κίνδυνος</h3><p>Δυνητικά επιζήμιο γεγονός ή φαινόμενο: πλημμύρα, πυρκαγιά, καύσωνας, επιδημία, σεισμός, τεχνολογικό συμβάν.</p></div>
+    <div class="card orange"><span class="tag orange">Exposure</span><h3>Έκθεση</h3><p>Άτομα, υποδομές, υπηρεσίες ή συστήματα που βρίσκονται μέσα στο πεδίο του κινδύνου.</p></div>
+    <div class="card red"><span class="tag red">Vulnerability</span><h3>Ευπάθεια / Τρωτότητα</h3><p>Χαρακτηριστικά που αυξάνουν τη βλάβη: φτώχεια, αναπηρία, χρόνια νόσος, ηλικία, κακή υποδομή.</p></div>
+    <div class="card green"><span class="tag green">Capacity</span><h3>Ικανότητα</h3><p>Πόροι, δυνάμεις, συστήματα και μηχανισμοί που επιτρέπουν πρόληψη, απόκριση και αποκατάσταση.</p></div>
+    <div class="card purple"><span class="tag purple">Risk</span><h3>Διακινδύνευση</h3><p>Πιθανές ανθρώπινες, υλικές ή περιβαλλοντικές απώλειες σε συγκεκριμένη περίοδο, ως αποτέλεσμα συνδυασμού κινδύνου, έκθεσης, ευπάθειας και ανεπαρκούς ικανότητας.</p></div>
+  </div>
+  <div class="exam" style="margin-top:14px"><b>Μνημονικό:</b> Καταστροφή = δεν είναι μόνο το hazard. Είναι <b>Hazard + Exposure + Vulnerability − Capacity</b>.</div>
+</section>
+<section id="cycle">
+  <h2>4) Κύκλος Διαχείρισης Καταστροφών</h2>
+  <p class="lead">Οι φάσεις αλληλεπικαλύπτονται. Η ετοιμότητα καθιστά δυνατή την αποτελεσματική απόκριση.</p>
+  <div class="flow">
+    <div class="step"><h3>Πρόληψη / Μετριασμός</h3><p>Μείωση διακινδύνευσης και δυνητικών επιπτώσεων πριν από το φαινόμενο.</p></div>
+    <div class="step"><h3>Ετοιμότητα / Ανθεκτικότητα</h3><p>Σχεδιασμός, εκπαίδευση, αποθέματα, συντονισμός, επικοινωνία, ασκήσεις.</p></div>
+    <div class="step"><h3>Απόκριση / Αντιμετώπιση</h3><p>Επείγουσες ενέργειες για διάσωση ζωών, μείωση βλάβης και διατήρηση βασικών υπηρεσιών.</p></div>
+    <div class="step"><h3>Αποκατάσταση</h3><p>Ανασυγκρότηση, ψυχική υγεία, συνέχεια φροντίδας, ασφαλέστερη ανοικοδόμηση.</p></div>
+  </div>
+</section>
+<section id="approaches">
+  <h2>5) Βασικές προσεγγίσεις ετοιμότητας</h2>
+  <div class="grid">
+    <div class="card blue"><span class="tag blue">Whole Health</span><h3>Σύνολο τομέα υγείας</h3><p>Ο σχεδιασμός και η λειτουργία ετοιμότητας καθοδηγούνται και συντονίζονται από φορέα διαχείρισης έκτακτης ανάγκης σε κεντρικό και τοπικό επίπεδο.</p></div>
+    <div class="card green"><span class="tag green">All-hazards</span><h3>Παντός κινδύνου</h3><p>Παρότι οι κίνδυνοι διαφέρουν, προκαλούν παρόμοιες ανάγκες: διοίκηση, επικοινωνία, υλικά, προσωπικό, επιτήρηση, συνέχεια υπηρεσιών.</p></div>
+    <div class="card orange"><span class="tag orange">Whole-of-government</span><h3>Σύνολο κυβέρνησης/κοινωνίας</h3><p>Συντονισμός υγείας και μη υγειονομικών τομέων: μεταφορές, τρόφιμα, κτηνιατρική, γεωργία, βιομηχανία, τοπική αυτοδιοίκηση.</p></div>
+    <div class="card purple"><span class="tag purple">One Health</span><h3>Ενιαία Υγεία</h3><p>Ανθρώπινη υγεία, υγεία ζώων και περιβάλλον είναι αλληλένδετα. Χρήσιμο σε ζωονόσους, πανδημίες, κλιματικούς και περιβαλλοντικούς κινδύνους.</p></div>
+  </div>
+</section>
+<section>
+  <h2>6) Τι πρέπει να υπάρχει πριν συμβεί η καταστροφή;</h2>
+  <div class="grid">
+    <div class="card"><h3>Σχεδιασμός</h3><ul><li>Εκτιμήσεις κινδύνου</li><li>Χαρτογράφηση κινδύνων</li><li>Σχέδια επιχειρήσεων έκτακτης ανάγκης</li><li>Σχέδια επιχειρησιακής συνέχειας</li></ul></div>
+    <div class="card"><h3>Διοίκηση & συντονισμός</h3><ul><li>Σαφείς δομές διοίκησης</li><li>Διατομεακοί μηχανισμοί συντονισμού</li><li>Πρωτόκολλα επικοινωνίας</li></ul></div>
+    <div class="card"><h3>Κλινική ετοιμότητα</h3><ul><li>Διαλογή</li><li>Παραπομπές</li><li>Αποθέματα</li><li>Υλικοτεχνική υποστήριξη</li></ul></div>
+    <div class="card"><h3>Άνθρωποι</h3><ul><li>Εκπαιδευμένο προσωπικό</li><li>Ασκήσεις προσομοίωσης</li><li>Ξεκάθαροι ρόλοι</li><li>Συνέχεια φροντίδας ευάλωτων ομάδων</li></ul></div>
+  </div>
+</section>
+<section id="data">
+  <h2>7) Δεδομένα και δημόσια υγεία</h2>
+  <div class="grid">
+    <div class="card blue"><span class="tag blue">EM-DAT</span><h3>Emergency Events Database</h3><p>Βάση δεδομένων για επιπτώσεις καταστροφών: θνησιμότητα, τραυματισμοί, άστεγοι, επηρεασμένοι πληθυσμοί, οικονομικές απώλειες.</p></div>
+    <div class="card orange"><span class="tag orange">Ευρώπη</span><h3>Πλημμύρες</h3><p>Οι πλημμύρες είναι η συχνότερη φυσική καταστροφή στην Ευρωπαϊκή Περιφέρεια του ΠΟΥ. Έχουν σημαντικές επιπτώσεις σε υγεία, κοινωνία και οικονομία.</p></div>
+    <div class="card red"><span class="tag red">Κλίμα</span><h3>Ακραία καιρικά φαινόμενα</h3><p>Πλημμύρες, καταιγίδες, άνεμος και χαλάζι προκαλούν μεγάλες ζημίες. Οι περισσότεροι θάνατοι συνδέονται με καύσωνες, ψύχος, ξηρασίες και δασικές πυρκαγιές.</p></div>
+    <div class="card green"><span class="tag green">WHO</span><h3>Τρέχουσες κρίσεις</h3><p>Ο ΠΟΥ παρεμβαίνει σε επιδημικές εξάρσεις και ανθρωπιστικές κρίσεις, όπως χολέρα και mpox, με έμφαση στην παγκόσμια υγειονομική ασφάλεια.</p></div>
+  </div>
+</section>
+<section id="frameworks">
+  <h2>8) Πολιτικές και διεθνή πλαίσια</h2>
+  <div class="table-wrap"><table><thead><tr><th>Φορέας/Πλαίσιο</th><th>Τι δίνει έμφαση</th><th>Να θυμάσαι</th></tr></thead><tbody>
+    <tr><td><b>ΕΕ — Preparedness/Readiness</b></td><td>Πολιτική και στρατιωτική ετοιμότητα, υγεία, μετανάστευση, τεχνολογική ασφάλεια, κλίμα, άμυνα, οικονομία.</td><td>Προστασία ζωής/υγείας, ζωτικών υπηρεσιών, δημοκρατίας, οικονομίας, προσαρμογή στο κλίμα.</td></tr>
+    <tr><td><b>Κανονισμός ΕΕ 2022/2371</b></td><td>Πρόληψη, επιτήρηση, αναφορά και απόκριση σε διασυνοριακές απειλές υγείας.</td><td>Ενισχύει την ευρωπαϊκή υγειονομική ασφάλεια.</td></tr>
+    <tr><td><b>ECDC / EWRS</b></td><td>Επιτήρηση, εκτιμήσεις κινδύνου, σύστημα έγκαιρης προειδοποίησης και αντίδρασης.</td><td>Κεντρικός μηχανισμός για λοιμώδη νοσήματα στην ΕΕ.</td></tr>
+    <tr><td><b>HERA</b></td><td>Ιατρικά αντίμετρα: εμβόλια, φάρμακα, εξοπλισμός, παραγωγή και διανομή.</td><td>Αποφυγή ελλείψεων σε κρίση.</td></tr>
+    <tr><td><b>UCPM</b></td><td>Μηχανισμός Πολιτικής Προστασίας της ΕΕ.</td><td>Συντονίζει βοήθεια και εμπειρογνωμοσύνη.</td></tr>
+    <tr><td><b>CDC</b></td><td>Μετρήσιμες επιχειρησιακές ικανότητες: κοινότητα, συντονισμός, δημόσια ενημέρωση, ιατρικά αντίμετρα.</td><td>Πολύ πρακτικό μοντέλο ετοιμότητας.</td></tr>
+    <tr><td><b>NHS EPRR</b></td><td>Emergency Preparedness, Resilience and Response: διακυβέρνηση, business continuity, training, exercises, HAZMAT/CBRN.</td><td>Παράδειγμα ετοιμότητας ολόκληρου συστήματος υγείας.</td></tr>
+  </tbody></table></div>
+</section>
+<section id="doctor">
+  <h2>9) Ρόλος των γιατρών πριν, κατά τη διάρκεια και μετά</h2>
+  <div class="grid">
+    <div class="card green"><span class="tag green">Πριν</span><h3>Προετοιμασία</h3><ul><li>Σχεδιασμός και εκπαίδευση</li><li>Επικοινωνία κινδύνου</li><li>Εμβολιασμός</li><li>Επιτήρηση</li><li>Προάσπιση δικαιωμάτων υγείας</li></ul></div>
+    <div class="card orange"><span class="tag orange">Κατά</span><h3>Απόκριση</h3><ul><li>Διαλογή και θεραπεία</li><li>Τεκμηρίωση</li><li>Επικοινωνία</li><li>Προστασία ευάλωτων ομάδων</li><li>Συνέχεια φροντίδας</li></ul></div>
+    <div class="card purple"><span class="tag purple">Μετά</span><h3>Αποκατάσταση</h3><ul><li>Παρακολούθηση</li><li>Χρόνια νοσήματα</li><li>Ψυχική υγεία</li><li>Εγρήγορση για επιδημίες</li><li>Lessons learned</li></ul></div>
+    <div class="card blue"><span class="tag blue">Ρόλοι</span><h3>Ο γιατρός λειτουργεί ως</h3><ul><li>Clinician</li><li>Communicator</li><li>Reporter</li><li>Coordinator</li><li>Public health advocate</li></ul></div>
+  </div>
+</section>
+<section id="flood">
+  <h2>10) Σενάριο πλημμύρας στη Θεσσαλία — πρακτική εφαρμογή</h2>
+  <p class="lead">Κλασικό εξεταστικό σενάριο: πλημμύρα → μολυσμένο νερό, εκτοπισμός, διακοπή φαρμάκων, χρόνια νοσήματα, λοιμώξεις, ψυχική υγεία.</p>
+  <div class="grid">
+    <div class="card red"><span class="tag red">Δημόσια υγεία</span><h3>Άμεσες δράσεις</h3><ul><li>Όχι κατανάλωση νερού βρύσης μέχρι επιβεβαίωση ασφάλειας.</li><li>Επιτήρηση γαστρεντερίτιδων και αναπνευστικών λοιμώξεων.</li><li>Πρόληψη λεπτοσπείρωσης: αποφυγή λάσπης/νερών πλημμύρας.</li><li>Έλεγχος φορέων: κουνούπια, στάσιμα νερά.</li></ul></div>
+    <div class="card orange"><span class="tag orange">Κλινική</span><h3>Φροντίδα ασθενών</h3><ul><li>Έλεγχος αντιτετανικού εμβολιασμού.</li><li>Καθαρισμός/αντιμετώπιση τραυμάτων.</li><li>Συνέχεια αγωγής για διαβήτη, ΧΑΠ, ΚΑΝ, εγκυμοσύνη, αναπηρία.</li><li>Απόρριψη φαρμάκων που ήρθαν σε επαφή με νερό πλημμύρας.</li></ul></div>
+    <div class="card green"><span class="tag green">Πεδίο</span><h3>Ασφάλεια & επιχειρησιακή απόκριση</h3><ul><li>ΜΑΠ: μπότες, γάντια, μάσκες.</li><li>Συντονισμός με κινητές μονάδες.</li><li>Παραπομπή για ψυχοκοινωνική υποστήριξη.</li><li>Φροντίδα απομονωμένων/εκτοπισμένων πληθυσμών.</li></ul></div>
+    <div class="card blue"><span class="tag blue">Συμβουλές</span><h3>Τι λέμε στον κόσμο</h3><ul><li>Μην οδηγείτε μέσα σε νερά.</li><li>Πετάξτε τρόφιμα που ακούμπησαν νερό πλημμύρας.</li><li>Πλύσιμο χεριών με ασφαλές νερό και σαπούνι.</li><li>Ζητήστε ιατρική βοήθεια για πυρετό, διάρροια, τραύμα, δύσπνοια.</li></ul></div>
+  </div>
+</section>
+<section>
+  <h2>11) Last-minute checklist</h2>
+  <div class="callout"><ul>
+    <li>Ξέρω να ξεχωρίζω <b>έκτακτη ανάγκη – καταστροφή – κρίση</b>.</li>
+    <li>Ξέρω το σχήμα <b>hazard, exposure, vulnerability, capacity, risk</b>.</li>
+    <li>Ξέρω τον κύκλο: <b>πρόληψη/μετριασμός, ετοιμότητα, απόκριση, αποκατάσταση</b>.</li>
+    <li>Μπορώ να εξηγήσω <b>all-hazards, whole-of-government, whole-of-society, One Health</b>.</li>
+    <li>Μπορώ να πω τι πρέπει να έχει ένα σύστημα υγείας <b>πριν</b> την κρίση.</li>
+    <li>Ξέρω τα βασικά για <b>ΕΕ, HERA, ECDC/EWRS, UCPM, CDC, NHS EPRR</b>.</li>
+    <li>Μπορώ να απαντήσω σε σενάριο πλημμύρας με δομή: <b>νερό–λοιμώξεις–τραύματα–χρόνια νοσήματα–ψυχική υγεία–επικοινωνία</b>.</li>
+  </ul></div>
+</section>
+<section id="quiz">
+  <h2>12) Mini quiz εξετάσεων</h2>
+  <details><summary>1. Ποια είναι η βασική διαφορά έκτακτης ανάγκης και καταστροφής;</summary><div class="answer">Η καταστροφή υπερβαίνει την ικανότητα της κοινότητας/κοινωνίας να ανταποκριθεί με δικούς της πόρους. Μια έκτακτη ανάγκη απαιτεί άμεση δράση, αλλά δεν εξελίσσεται πάντα σε καταστροφή.</div></details>
+  <details><summary>2. Τι σημαίνει all-hazards approach;</summary><div class="answer">Προσέγγιση παντός κινδύνου: διαφορετικοί κίνδυνοι αντιμετωπίζονται με κοινές βασικές ικανότητες ετοιμότητας, επειδή συχνά πιέζουν το σύστημα υγείας με παρόμοιους τρόπους.</div></details>
+  <details><summary>3. Ποιες είναι οι τέσσερις φάσεις του κύκλου διαχείρισης καταστροφών;</summary><div class="answer">Πρόληψη/μετριασμός, ετοιμότητα, απόκριση/αντιμετώπιση, αποκατάσταση.</div></details>
+  <details><summary>4. Ποια στοιχεία αυξάνουν τη διακινδύνευση;</summary><div class="answer">Ο κίνδυνος, η έκθεση και η ευπάθεια/τρωτότητα αυξάνουν τη διακινδύνευση. Η ικανότητα/ανθεκτικότητα τη μειώνει.</div></details>
+  <details><summary>5. Ποια είναι η αξία της One Health προσέγγισης;</summary><div class="answer">Αναγνωρίζει ότι η ανθρώπινη υγεία συνδέεται με την υγεία των ζώων και το περιβάλλον. Είναι κρίσιμη σε ζωονόσους, πανδημίες, περιβαλλοντικούς και κλιματικούς κινδύνους.</div></details>
+  <details><summary>6. Τι ρόλο έχει ο γιατρός κατά τη διάρκεια μιας καταστροφής;</summary><div class="answer">Διαλογή, θεραπεία, τεκμηρίωση, επικοινωνία, προστασία ευάλωτων ομάδων, συνέχεια φροντίδας και συνεργασία σε ομάδες.</div></details>
+  <details><summary>7. Σε πλημμύρα, ποια είναι τα πιο άμεσα δημόσια υγειονομικά ζητήματα;</summary><div class="answer">Ασφάλεια νερού/τροφίμων, υδατογενή νοσήματα, γαστρεντερίτιδες, λεπτοσπείρωση, τραύματα και τέτανος, δερματικές λοιμώξεις, κουνούπια, συνέχεια αγωγής χρόνιων ασθενών και ψυχική υγεία.</div></details>
+  <details><summary>8. Γιατί η ετοιμότητα συνδέεται με κοινωνική δικαιοσύνη;</summary><div class="answer">Επειδή οι καταστροφές πλήττουν δυσανάλογα ευάλωτες ομάδες: ηλικιωμένους, άτομα με αναπηρία, φτωχότερους, χρόνια πάσχοντες, εγκύους, εκτοπισμένους. Η ετοιμότητα πρέπει να σχεδιάζεται για αυτούς, όχι μόνο για τον «μέσο» πολίτη.</div></details>
+</section>
+</main>
+<footer>GreekDoc HTML • Σχεδιασμένο για εκτύπωση και γρήγορη επανάληψη εξετάσεων.</footer>
+</body>
+</html>

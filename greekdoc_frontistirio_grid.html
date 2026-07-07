@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>GreekDoc | Φροντιστήριο</title>
+<style>
+:root{--bg:#f7f3ff;--ink:#211a2e;--muted:#625a72;--card:#ffffff;--line:#ded4f4;--a:#6d28d9;--b:#9333ea;--c:#f5f0ff;--ok:#0f766e;--warn:#b45309;--bad:#be123c;--blue:#2563eb;}
+*{box-sizing:border-box} body{margin:0;font-family:Inter,Arial,'Segoe UI',sans-serif;background:linear-gradient(135deg,#fbf8ff,#f1eaff);color:var(--ink);line-height:1.55} 
+header{padding:42px 24px 28px;background:linear-gradient(135deg,#4c1d95,#7e22ce,#a855f7);color:white;position:relative;overflow:hidden} header:after{content:"";position:absolute;right:-80px;top:-80px;width:260px;height:260px;border-radius:50%;background:rgba(255,255,255,.12)}
+h1{margin:0;font-size:clamp(2rem,4vw,3.7rem);letter-spacing:-.04em} .subtitle{font-size:1.08rem;max-width:980px;opacity:.94;margin-top:12px}.pill{display:inline-block;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.28);padding:7px 12px;border-radius:999px;font-size:.86rem;margin:6px 5px 0 0}
+nav{position:sticky;top:0;z-index:10;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);padding:10px 18px;display:flex;gap:8px;flex-wrap:wrap} nav a{color:var(--a);text-decoration:none;font-weight:700;font-size:.88rem;padding:7px 10px;border-radius:999px;background:#f4efff}
+main{max-width:1180px;margin:auto;padding:22px}.section{margin:26px 0}.section h2{font-size:1.65rem;margin:0 0 12px;color:#3b0764}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px;box-shadow:0 10px 26px rgba(68,39,120,.08)}.card h3{margin:0 0 8px;color:#581c87}.card h4{margin:10px 0 6px;color:#6b21a8}.mini{font-size:.93rem;color:var(--muted)}.sos{border-left:6px solid var(--a);background:#fff}.formula{font-family:'Consolas','Courier New',monospace;background:#f4efff;border:1px solid #ddd6fe;border-radius:12px;padding:10px;margin:8px 0;overflow:auto}.tag{display:inline-block;padding:4px 8px;border-radius:999px;font-size:.75rem;font-weight:800;margin:2px;background:#ede9fe;color:#5b21b6}.warn{background:#fff7ed;border-color:#fed7aa}.warn h3{color:#9a3412}.ok{background:#ecfdf5;border-color:#a7f3d0}.ok h3{color:#047857}.bad{background:#fff1f2;border-color:#fecdd3}.bad h3{color:#be123c} table{width:100%;border-collapse:collapse;background:white;border-radius:14px;overflow:hidden;border:1px solid var(--line)}th,td{padding:10px;border-bottom:1px solid #eee;text-align:left;vertical-align:top}th{background:#ede9fe;color:#4c1d95}.note{background:#fefce8;border:1px solid #fde68a;border-radius:16px;padding:14px}.print{position:fixed;right:18px;bottom:18px;border:0;border-radius:999px;background:#6d28d9;color:white;padding:12px 16px;font-weight:800;box-shadow:0 10px 25px rgba(76,29,149,.25);cursor:pointer}.quiz details{background:#fff;border:1px solid var(--line);border-radius:14px;margin:10px 0;padding:12px}.quiz summary{cursor:pointer;font-weight:800;color:#4c1d95}.avoid{opacity:.9;border-style:dashed}.small{font-size:.9rem}.two{display:grid;grid-template-columns:1fr 1fr;gap:14px}@media(max-width:800px){.two{grid-template-columns:1fr} nav{position:relative}.print{position:static;margin:16px}}
+@media print{nav,.print{display:none}body{background:white}.card{break-inside:avoid;box-shadow:none}.section{break-inside:auto}header{background:#fff;color:#000;border-bottom:2px solid #000}.pill{border:1px solid #777;color:#000;background:#fff}}
+</style>
+</head>
+<body>
+<header>
+<h1>Φροντιστήριο</h1>
+<p class="subtitle">Ενιαίο GreekDoc για τις ασκήσεις: Προαγωγή/Αγωγή Υγείας & επίπεδα πρόληψης, Εμβολιασμός ενηλίκων & διστακτικότητα, Προσυμπτωματικός έλεγχος, Ποιότητα φροντίδας & ασφάλεια ασθενών.</p>
+<span class="pill">Σκοπός: εξετάσεις</span><span class="pill">χωρίς περιττές επαναλήψεις</span><span class="pill">τύποι + SOS πίνακες</span><span class="pill">εκτύπωση</span>
+</header>
+<nav>
+<a href="#sos">SOS</a><a href="#prevention">Πρόληψη</a><a href="#vaccines">Εμβόλια</a><a href="#screening">Screening</a><a href="#quality">Ποιότητα</a><a href="#exam">Πιθανά Θέματα</a><a href="#quiz">Quiz</a>
+</nav>
+<main>
+<section id="sos" class="section">
+<h2>0. Τι να κρατήσεις πρώτο</h2>
+<div class="grid">
+<div class="card sos"><h3>Το μάθημα έχει 4 “σκελετούς”</h3><p><b>Προαγωγή/Αγωγή</b> = πώς αλλάζω υγεία σε επίπεδο ατόμου/κοινότητας. <b>Εμβόλια</b> = πρωτογενής πρόληψη + επικοινωνία. <b>Screening</b> = δευτερογενής πρόληψη + μετρικές τεστ. <b>Ποιότητα/Ασφάλεια</b> = πώς δεν βλάπτω τον ασθενή και βελτιώνω το σύστημα.</p></div>
+<div class="card sos"><h3>Μην ξαναδιαβάζεις αναλυτικά</h3><p>Πολλά έχουν ήδη αναλυθεί σε προηγούμενα GreekDocs: Δημόσια Υγεία, οργανισμοί, cancer screening, ΠΡΟΛΑΜΒΑΝΩ, επικοινωνία κρίσεων. Εδώ κρατάμε κυρίως αυτά που είναι <b>φροντιστηριακά/ασκησιακά</b>: ορισμούς, τύπους, βήματα, πίνακες και εφαρμογή σε σενάρια.</p></div>
+<div class="card sos"><h3>Εξεταστική παγίδα</h3><p>Το screening <b>δεν είναι διάγνωση</b>. Είναι διαλογή ασυμπτωματικών ώστε όσοι βγουν θετικοί να πάνε σε επιβεβαιωτική εξέταση. Γι’ αυτό το screening θέλει υψηλή ευαισθησία, ενώ η επιβεβαίωση υψηλή ειδικότητα.</p></div>
+<div class="card sos"><h3>Μνημονικό ποιότητας</h3><p><b>STEEEPI</b>: Safety, Timely, Efficiency, Effectiveness, Equitable, Patient-centered, Integrated. Στα ελληνικά: ασφαλής, έγκαιρη, αποδοτική, αποτελεσματική, ισότιμη, ασθενοκεντρική, διασυνδεδεμένη.</p></div>
+</div>
+</section>
+<section id="prevention" class="section">
+<h2>1. Προαγωγή Υγείας – Αγωγή Υγείας – Επίπεδα Πρόληψης</h2>
+<div class="grid">
+<div class="card"><h3>Δημόσια Υγεία vs Κλινική Ιατρική</h3><p><b>Κλινική ιατρική:</b> άτομο, διάγνωση, θεραπεία, φροντίδα υγείας.</p><p><b>Δημόσια/Κοινωνική Ιατρική:</b> πληθυσμός, πρόληψη, προσδιοριστές υγείας, περιβάλλον, συμπεριφορά, ανισότητες, ευημερία.</p></div>
+<div class="card"><h3>Προαγωγή Υγείας</h3><p>Η διαδικασία που βοηθά τα άτομα και τις κοινότητες να αυξήσουν τον έλεγχο πάνω στην υγεία τους και να τη βελτιώσουν.</p><span class="tag">Ottawa Charter</span><span class="tag">1986</span><span class="tag">WHO</span></div>
+<div class="card"><h3>3 στοιχεία Προαγωγής Υγείας</h3><ul><li><b>Good governance for health:</b> πολιτικές που βάζουν την υγεία σε προτεραιότητα.</li><li><b>Healthy cities:</b> πόλεις με πράσινο, περπάτημα, ποδήλατο, λιγότερη ρύπανση.</li><li><b>Health literacy:</b> εγγραμματοσύνη υγείας, δηλαδή γνώση/δεξιότητες για σωστές αποφάσεις.</li></ul></div>
+<div class="card"><h3>Αγωγή Υγείας</h3><p>Εργαλείο της προαγωγής υγείας. Είναι οργανωμένες ευκαιρίες μάθησης που αυξάνουν γνώση και δεξιότητες για την υγεία.</p><p class="mini">Κλασικά αντικείμενα: κάπνισμα, διατροφή, αλκοόλ, άσκηση, στοματική υγιεινή, οδική συμπεριφορά, σεξουαλική συμπεριφορά, εμβολιασμοί, screening, αιμοδοσία.</p></div>
+</div>
+<div class="card">
+<h3>Επίπεδα πρόληψης — ο πίνακας που πρέπει να ξέρεις</h3>
+<table><tr><th>Επίπεδο</th><th>Πότε;</th><th>Στόχος</th><th>Παραδείγματα</th></tr>
+<tr><td><b>Πρωτογενής</b></td><td>Πριν εμφανιστεί η νόσος</td><td>Να μην ξεκινήσει η νόσος</td><td>Εμβολιασμός, διακοπή καπνίσματος, χλωρίωση νερού, ασφαλής οδήγηση, διατροφή, άσκηση</td></tr>
+<tr><td><b>Δευτερογενής</b></td><td>Ασυμπτωματική νόσος / πρώιμο στάδιο</td><td>Έγκαιρη ανίχνευση</td><td>Μαστογραφία, Pap/HPV, FIT/κολονοσκόπηση, μέτρηση ΑΠ, έλεγχος λιπιδίων</td></tr>
+<tr><td><b>Τριτογενής</b></td><td>Μετά τη διάγνωση</td><td>Μείωση υποτροπών, επιπλοκών, αναπηρίας</td><td>Αποκατάσταση, συμμόρφωση σε αγωγή, follow-up, ποιοτικές υπηρεσίες υγείας</td></tr></table>
+</div>
+<div class="grid">
+<div class="card"><h3>Στάδια σχεδιασμού Αγωγής Υγείας</h3><ol><li>Επιλογή και περιγραφή πληθυσμού.</li><li>Προσδιορισμός αναγκών.</li><li>Καθορισμός στόχων.</li><li>Εξασφάλιση πόρων.</li><li>Επιλογή μεθοδολογίας.</li><li>Αξιολόγηση.</li></ol></div>
+<div class="card"><h3>Στόχοι αγωγής υγείας</h3><p>Οι στόχοι χωρίζονται σε:</p><ul><li>τι θέλουμε να <b>γνωρίζει</b> το κοινό,</li><li>τι θέλουμε να <b>αισθανθεί/πιστέψει</b>,</li><li>τι θέλουμε να <b>πράξει</b>.</li></ul><p class="mini">Παγίδα: γνώση ≠ αυτόματη αλλαγή συμπεριφοράς.</p></div>
+<div class="card"><h3>Αξιολόγηση προγράμματος</h3><ul><li><b>Quality:</b> ποιότητα υλοποίησης.</li><li><b>Impact:</b> άμεση αλλαγή σε γνώση, στάση, δεξιότητες, συμπεριφορά.</li><li><b>Outcome:</b> τελικό αποτέλεσμα σε νοσηρότητα, θνησιμότητα, συμπτώματα.</li></ul></div>
+</div>
+</section>
+<section id="vaccines" class="section">
+<h2>2. Εμβολιασμός ενηλίκων & διστακτικότητα</h2>
+<div class="grid">
+<div class="card"><h3>Γιατί εμβολιάζονται οι ενήλικες;</h3><ul><li>Η προστασία από παιδικά εμβόλια μπορεί να μειωθεί.</li><li>Υπάρχουν νοσήματα/εμβόλια που αφορούν ενήλικες.</li><li>Προστατεύουν τον ίδιο και τους ευάλωτους γύρω του.</li><li>Προλαμβάνουν σοβαρή νόσηση και επιπλοκές.</li><li>Μπορεί να απαιτούνται για εργασία, ταξίδι, υγειονομικό προσωπικό.</li></ul></div>
+<div class="card"><h3>Ανοσία αγέλης</h3><p>Προστασία πληθυσμού από μετάδοση λοιμώδους νοσήματος λόγω ανοσίας υψηλού ποσοστού ατόμων.</p><p class="mini">Δεν είναι “μαγικό τείχος”: εξαρτάται από μεταδοτικότητα, κάλυψη, αποτελεσματικότητα εμβολίου και κατανομή ανεμβολίαστων.</p></div>
+<div class="card"><h3>Εισαγωγή εμβολίου στο ΕΠΕ</h3><ul><li>Ασφάλεια</li><li>Ανοσογονικότητα</li><li>Αποτελεσματικότητα</li><li>Καθαρότητα / χαμηλή αντιδραστικότητα</li></ul></div>
+<div class="card"><h3>Τι αλλάζει το ΕΠΕ κάθε χρόνο;</h3><ul><li>Επιδημιολογικά δεδομένα.</li><li>Εμβολιαστική κάλυψη.</li><li>Νέα γνώση για διάρκεια προστασίας.</li><li>Νέα ή αποσυρόμενα εμβόλια.</li><li>Κόστος/όφελος.</li></ul></div>
+</div>
+<div class="card">
+<h3>Τέτανος: τι κοιτάς στο τραύμα;</h3>
+<table><tr><th>Ερώτηση</th><th>Γιατί με νοιάζει;</th></tr>
+<tr><td>Είναι καθαρό/ελάσσον ή ρυπαρό/σοβαρό;</td><td>Ρυπαρά, θλαστικά, διατιτραίνοντα, εγκαύματα, κρυοπαγήματα, δήγματα, τραύματα με χώμα/κόπρανα/σίελο έχουν μεγαλύτερο κίνδυνο.</td></tr>
+<tr><td>Έχει ≥3 δόσεις εμβολίου;</td><td>Αν άγνωστο ή &lt;3 δόσεις, συνήθως χρειάζεται εμβόλιο· σε σοβαρά/ρυπαρά τραύματα χρειάζεται και TIG.</td></tr>
+<tr><td>Εμβόλιο ή TIG;</td><td>Εμβόλιο = ενεργητική ανοσοποίηση/μακροχρόνια προστασία. TIG = παθητική ανοσοποίηση/άμεση εξουδετέρωση ελεύθερης τοξίνης.</td></tr></table>
+</div>
+<div class="grid">
+<div class="card"><h3>Διστακτικότητα στα εμβόλια</h3><p>Καθυστέρηση αποδοχής ή άρνηση εμβολίου, παρότι υπάρχει διαθέσιμος εμβολιασμός. Είναι φάσμα, όχι “ναι/όχι”.</p><p><span class="tag">αποδοχή</span><span class="tag">αβεβαιότητα</span><span class="tag">καθυστέρηση</span><span class="tag">μερική άρνηση</span><span class="tag">άρνηση όλων</span></p></div>
+<div class="card"><h3>Vaccine confidence</h3><p>Εμπιστοσύνη:</p><ol><li>στα εμβόλια,</li><li>στις πολιτικές και το σύστημα υγείας,</li><li>στους επαγγελματίες υγείας που τα συστήνουν.</li></ol></div>
+<div class="card ok"><h3>Ο γιατρός έχει τεράστια δύναμη</h3><p>Η σύσταση από “τον γιατρό μου” αυξάνει πολύ την πιθανότητα εμβολιασμού. Άρα στις εξετάσεις: <b>ισχυρή, ξεκάθαρη, προσωποποιημένη σύσταση</b>.</p></div>
+</div>
+<div class="card">
+<h3>WHO επικοινωνιακό μοντέλο — 3 βήματα</h3>
+<table><tr><th>Βήμα</th><th>Τι κάνεις</th><th>Παράδειγμα</th></tr>
+<tr><td><b>1. Προτείνεις</b></td><td>Presumptive approach: ξεκινάς σαν φυσιολογική ιατρική πράξη.</td><td>«Σήμερα μπορούμε να κάνουμε το εμβόλιο για τον τέτανο.»</td></tr>
+<tr><td><b>2. Ανιχνεύεις στάση</b></td><td>Βλέπεις αν είναι θετικός, έχει ερωτήσεις, είναι αβέβαιος ή αρνητής.</td><td>«Τι σας προβληματίζει περισσότερο;»</td></tr>
+<tr><td><b>3. Προσαρμόζεις προσέγγιση</b></td><td>Θετικός → εμβολιάζεις. Διστακτικός → κινητοποιός συνέντευξη. Αρνητής → δεν μαλώνεις, αφήνεις πόρτα ανοιχτή.</td><td>«Αν συμφωνείτε, μπορώ να σας δώσω μερικές πληροφορίες.»</td></tr></table>
+</div>
+<div class="card warn"><h3>Κινητοποιός συνέντευξη: η σειρά που αποστηθίζεις</h3><p><b>Ανοιχτή ερώτηση → αναγνώριση ανησυχίας → ενθάρρυνση → elicit-share-verify → σύνοψη/απόφαση.</b></p><p class="mini">Μην λογομαχείς. Δεν “κερδίζεις debate”, χτίζεις εμπιστοσύνη.</p></div>
+</section>
+<section id="screening" class="section">
+<h2>3. Προσυμπτωματικός έλεγχος διαλογής</h2>
+<div class="grid">
+<div class="card"><h3>Ορισμός</h3><p>Εφαρμογή εξέτασης/δοκιμασίας σε ασυμπτωματική φάση για ανίχνευση πιθανής νόσου ή πρόδρομης κατάστασης, ώστε να ακολουθήσει έγκαιρη παρέμβαση, πρόληψη μετάδοσης ή ενημέρωση κινδύνου.</p><p class="mini"><b>Δεν θέτει τελική διάγνωση</b>· δείχνει ποιος χρειάζεται περαιτέρω διερεύνηση.</p></div>
+<div class="card"><h3>Screening vs early diagnosis</h3><p><b>Screening:</b> πριν από συμπτώματα, σε μεγάλο αριθμό φαινομενικά υγιών.</p><p><b>Πρώιμη διάγνωση:</b> μετά την έναρξη συμπτωμάτων, σε λιγότερα άτομα.</p></div>
+<div class="card"><h3>Κατηγορίες</h3><ul><li><b>Μαζικός:</b> σε όλους, π.χ. νεογνά.</li><li><b>Στοχευμένος:</b> ομάδα υψηλού κινδύνου.</li><li><b>Ευκαιριακός/case finding:</b> με αφορμή άλλο πρόβλημα.</li><li><b>Πολυφασικός:</b> πολλά τεστ μαζί.</li></ul></div>
+<div class="card"><h3>Wilson & Jungner — συμπύκνωση</h3><p>Για να αξίζει screening, η νόσος πρέπει να είναι σημαντική, να έχει αναγνωρίσιμη πρώιμη φάση, γνωστή φυσική ιστορία, αποδεκτή θεραπεία, διαθέσιμες υπηρεσίες, κατάλληλο/αποδεκτό τεστ, συμφωνημένη πολιτική θεραπείας, λογικό κόστος και συνεχή διαδικασία.</p></div>
+</div>
+<div class="card">
+<h3>2x2 πίνακας διαγνωστικής δοκιμασίας</h3>
+<table><tr><th></th><th>Νόσος +</th><th>Νόσος −</th><th>Σύνολο</th></tr>
+<tr><th>Τεστ +</th><td>a = ορθά θετικό</td><td>b = ψευδώς θετικό</td><td>a+b</td></tr>
+<tr><th>Τεστ −</th><td>c = ψευδώς αρνητικό</td><td>d = ορθά αρνητικό</td><td>c+d</td></tr>
+<tr><th>Σύνολο</th><td>a+c</td><td>b+d</td><td>n</td></tr></table>
+<div class="two"><div class="formula">Sensitivity = a / (a+c)</div><div class="formula">Specificity = d / (b+d)</div><div class="formula">PPV = a / (a+b)</div><div class="formula">NPV = d / (c+d)</div></div>
+</div>
+<div class="grid">
+<div class="card ok"><h3>Ευαισθησία</h3><p>Από τους πραγματικά πάσχοντες, πόσους πιάνει το τεστ;</p><div class="formula">Se = TP / όλους τους πάσχοντες</div><p class="mini">Υψηλή ευαισθησία = λίγα ψευδώς αρνητικά. Θέλουμε να μη χάσουμε ασθενείς.</p></div>
+<div class="card ok"><h3>Ειδικότητα</h3><p>Από τους πραγματικά υγιείς, πόσους βγάζει αρνητικούς;</p><div class="formula">Sp = TN / όλους τους υγιείς</div><p class="mini">Υψηλή ειδικότητα = λίγα ψευδώς θετικά. Θέλουμε σιγουριά πριν από διάγνωση/θεραπεία.</p></div>
+<div class="card"><h3>PPV</h3><p>Αν το τεστ βγει θετικό, πόσο πιθανό είναι να πάσχει πραγματικά;</p><p class="mini">Αυξάνει όταν αυξάνει ο επιπολασμός.</p></div>
+<div class="card"><h3>NPV</h3><p>Αν το τεστ βγει αρνητικό, πόσο πιθανό είναι να μην πάσχει;</p><p class="mini">Αυξάνει όταν μειώνεται ο επιπολασμός.</p></div>
+</div>
+<div class="grid">
+<div class="card warn"><h3>Cut-off</h3><p>Σε συνεχείς μετρήσεις, το cut-off χωρίζει το “θετικό” από το “αρνητικό”.</p><p><b>Υψηλότερο cut-off:</b> ↓ ευαισθησία, ↑ ειδικότητα.</p><p><b>Χαμηλότερο cut-off:</b> ↑ ευαισθησία, ↓ ειδικότητα.</p></div>
+<div class="card"><h3>Screening test vs confirmatory test</h3><p><b>Screening:</b> υψηλή ευαισθησία, φθηνό/εύκολο/αποδεκτό.</p><p><b>Επιβεβαίωση:</b> υψηλή ειδικότητα, συχνά ακριβότερο/επεμβατικό.</p><p class="mini">Παράδειγμα: FIT/FOBT → κολονοσκόπηση ± βιοψία.</p></div>
+<div class="card"><h3>Gold/reference standard</h3><p>Η μέθοδος αναφοράς είναι το καλύτερο διαθέσιμο πρότυπο σύγκρισης· όχι απαραίτητα “τέλειο” τεστ. Συχνά είναι επεμβατική, ακριβή ή μη πρακτική για μαζικό έλεγχο.</p></div>
+</div>
+<div class="card bad"><h3>Βλάβες screening</h3><ul><li>Ψευδώς θετικά → άγχος, άχρηστες εξετάσεις.</li><li>Ψευδώς αρνητικά → ψευδής ασφάλεια.</li><li>Υπερδιάγνωση → ανίχνευση καταστάσεων που δεν θα έβλαπταν ποτέ.</li><li>Επιπλοκές επιβεβαιωτικών εξετάσεων.</li><li>Κόστος και κοινωνικές ανισότητες.</li></ul></div>
+</section>
+<section id="quality" class="section">
+<h2>4. Ποιότητα φροντίδας & ασφάλεια ασθενών</h2>
+<div class="grid">
+<div class="card"><h3>Ορισμός ποιότητας</h3><p>Βαθμός στον οποίο οι υπηρεσίες υγείας αυξάνουν την πιθανότητα επιθυμητών αποτελεσμάτων υγείας, σε άτομα και πληθυσμούς, σύμφωνα με την επιστημονικά τεκμηριωμένη γνώση.</p></div>
+<div class="card sos"><h3>7 διαστάσεις ποιότητας — STEEEPI</h3><ul><li><b>S</b>afe = ασφαλής</li><li><b>T</b>imely = έγκαιρη</li><li><b>E</b>fficient = αποδοτική</li><li><b>E</b>ffective = αποτελεσματική</li><li><b>E</b>quitable = ισότιμη</li><li><b>P</b>atient-centered = ασθενοκεντρική</li><li><b>I</b>ntegrated = διασυνδεδεμένη</li></ul></div>
+<div class="card"><h3>Ασθενοκεντρική φροντίδα</h3><p>Συνεργασία ιατρών, ασθενών και οικογένειας, ώστε οι αποφάσεις να σέβονται ανάγκες, προτιμήσεις και αξίες ασθενούς και να τον ενεργοποιούν στη φροντίδα του.</p></div>
+<div class="card"><h3>Κουλτούρα ποιότητας & ασφάλειας</h3><p>Κοινές αξίες/πεποιθήσεις/πρακτικές που στηρίζουν ασφαλή και ποιοτική φροντίδα.</p><p class="mini">Δεν ψάχνουμε μόνο “ποιος φταίει”. Ψάχνουμε τι στο σύστημα επιτρέπει το λάθος.</p></div>
+</div>
+<div class="grid">
+<div class="card"><h3>Ασφάλεια ασθενών</h3><p>Οργανωμένες δραστηριότητες, κουλτούρα, διαδικασίες, συμπεριφορές, τεχνολογίες και περιβάλλον που μειώνουν τον κίνδυνο, τα προλαμβανόμενα συμβάντα, την πιθανότητα λαθών και τις συνέπειές τους.</p><p><b>First do no harm.</b></p></div>
+<div class="card bad"><h3>Συχνά σφάλματα σε νοσοκομείο</h3><ul><li>Medication errors.</li><li>Λοιμώξεις σχετιζόμενες με φροντίδα.</li><li>Μη ασφαλείς χειρουργικές διαδικασίες.</li><li>Ενέσεις/μεταγγίσεις.</li><li>Διαγνωστικά σφάλματα.</li><li>Ακτινοβολία, σήψη, φλεβοθρόμβωση.</li></ul></div>
+<div class="card bad"><h3>Συχνά σφάλματα στην ΠΦΥ</h3><ul><li>Συνταγογράφηση: λάθος φάρμακο/δόση/αντένδειξη.</li><li>Εργαστηριακές εξετάσεις: δεν γίνονται, λάθος τεστ, μη αξιολόγηση παθολογικών.</li><li>Επικοινωνία με ασθενή για θεραπεία.</li><li>Επικοινωνία μεταξύ επιπέδων φροντίδας.</li></ul></div>
+</div>
+<div class="card warn"><h3>Μοντέλο ελβετικού τυριού</h3><p>Κάθε “φέτα” είναι επίπεδο προστασίας. Οι “τρύπες” είναι αδυναμίες/σφάλματα. Όταν οι τρύπες ευθυγραμμιστούν, συμβαίνει ανεπιθύμητο συμβάν. Άρα η λύση είναι να μειώνουμε τις τρύπες σε πολλά επίπεδα, όχι απλά να κατηγορούμε ένα άτομο.</p></div>
+<div class="card">
+<h3>Βελτίωση ποιότητας — 4 γνώσεις</h3>
+<table><tr><th>Στοιχείο</th><th>Τι σημαίνει</th><th>Εργαλείο</th></tr>
+<tr><td>Γνώση του συστήματος</td><td>Καταλαβαίνω πώς λειτουργεί πραγματικά η διαδικασία.</td><td>Παρατήρηση, συνεντεύξεις, brainstorming, fishbone.</td></tr>
+<tr><td>Γνώση της διακύμανσης</td><td>Ξεχωρίζω τυχαία διακύμανση από πραγματική αλλαγή.</td><td>Run chart.</td></tr>
+<tr><td>Θεωρία της γνώσης</td><td>Δοκιμάζω αν μια αλλαγή φέρνει βελτίωση.</td><td>PDSA.</td></tr>
+<tr><td>Ψυχολογία της αλλαγής</td><td>Υπολογίζω αντιστάσεις, κίνητρα, κουλτούρα.</td><td>Συμμετοχή ομάδας, feedback, μικρά βήματα.</td></tr></table>
+</div>
+<div class="grid">
+<div class="card"><h3>Fishbone</h3><p>Διάγραμμα αιτίας-αιτιατού. Βάζεις το πρόβλημα στο “κεφάλι” και ψάχνεις κατηγορίες αιτιών: άνθρωποι, μέθοδοι, εξοπλισμός, περιβάλλον, υλικά, διοίκηση/πολιτική.</p></div>
+<div class="card"><h3>Run chart</h3><p>Γράφημα δείκτη στον χρόνο. Βοηθά να δεις αν η αλλαγή είναι αληθινή βελτίωση ή απλή διακύμανση.</p></div>
+<div class="card"><h3>PDSA</h3><ul><li><b>Plan:</b> σχεδιάζω μικρή αλλαγή.</li><li><b>Do:</b> εφαρμόζω δοκιμαστικά.</li><li><b>Study:</b> μελετώ δεδομένα/αποτέλεσμα.</li><li><b>Act:</b> υιοθετώ, τροποποιώ ή εγκαταλείπω.</li></ul></div>
+</div>
+</section>
+<section id="exam" class="section">
+<h2>5. Πιθανά εξεταστικά θέματα / απαντήσεις κορμού</h2>
+<div class="grid">
+<div class="card"><h3>Θέμα: “Δώστε παραδείγματα πρόληψης”</h3><p>Πρωτογενής: εμβολιασμός, διακοπή καπνίσματος. Δευτερογενής: μαστογραφία, Pap, FIT. Τριτογενής: αποκατάσταση μετά από ΑΕΕ, σωστή αγωγή σε διαβήτη για αποφυγή επιπλοκών.</p></div>
+<div class="card"><h3>Θέμα: “Γιατί screening θέλει υψηλή ευαισθησία;”</h3><p>Επειδή εφαρμόζεται σε ασυμπτωματικούς και στόχος είναι να μη χάσουμε πάσχοντες. Προτιμούμε μερικά ψευδώς θετικά, που θα ξεκαθαριστούν με επιβεβαιωτική εξέταση, παρά ψευδώς αρνητικά.</p></div>
+<div class="card"><h3>Θέμα: “Πώς επηρεάζει ο επιπολασμός PPV/NPV;”</h3><p>Όταν αυξάνεται ο επιπολασμός, αυξάνει η PPV. Όταν μειώνεται ο επιπολασμός, αυξάνει η NPV. Γι’ αυτό το ίδιο τεστ έχει διαφορετική χρησιμότητα σε γενικό πληθυσμό vs ομάδα υψηλού κινδύνου.</p></div>
+<div class="card"><h3>Θέμα: “Πώς μιλάς σε διστακτικό ασθενή;”</h3><p>Κάνεις ισχυρή σύσταση, ανιχνεύεις στάση, κάνεις ανοιχτές ερωτήσεις, αναγνωρίζεις ανησυχίες, ζητάς άδεια να δώσεις πληροφορίες, επαληθεύεις κατανόηση, συνοψίζεις και αφήνεις πόρτα ανοιχτή.</p></div>
+<div class="card"><h3>Θέμα: “Swiss cheese model”</h3><p>Τα ανεπιθύμητα συμβάντα συμβαίνουν όταν ευθυγραμμίζονται αδυναμίες σε πολλά επίπεδα άμυνας. Η ασφάλεια βελτιώνεται με συστημικές παρεμβάσεις, όχι μόνο με απόδοση ευθύνης σε άτομα.</p></div>
+<div class="card"><h3>Θέμα: “PDSA”</h3><p>Κύκλος συνεχούς βελτίωσης: Plan–Do–Study–Act. Ξεκινά με μικρές δοκιμές αλλαγής, μετρά αποτελέσματα και αποφασίζει αν η αλλαγή θα υιοθετηθεί ή θα τροποποιηθεί.</p></div>
+</div>
+</section>
+<section id="quiz" class="section quiz">
+<h2>6. Mini-quiz αυτοελέγχου</h2>
+<details><summary>1. Το Pap test είναι ποιο επίπεδο πρόληψης;</summary><p>Δευτερογενής πρόληψη, γιατί αναζητά πρώιμη/ασυμπτωματική νόσο.</p></details>
+<details><summary>2. Σε screening για σοβαρή νόσο, θέλουμε κυρίως υψηλή ευαισθησία ή ειδικότητα;</summary><p>Υψηλή ευαισθησία, για να μη χαθούν πάσχοντες.</p></details>
+<details><summary>3. Αν αυξήσω το cut-off γλυκόζης, τι γίνεται με ευαισθησία και ειδικότητα;</summary><p>Μειώνεται η ευαισθησία και αυξάνεται η ειδικότητα.</p></details>
+<details><summary>4. Θετικό τεστ: ποιος δείκτης απαντά “πόσο πιθανό είναι να πάσχει”;</summary><p>Η θετική προγνωστική αξία, PPV = a/(a+b).</p></details>
+<details><summary>5. Τι σημαίνει vaccine hesitancy;</summary><p>Καθυστέρηση αποδοχής ή άρνηση εμβολίου παρά τη διαθεσιμότητα εμβολιασμού.</p></details>
+<details><summary>6. Σε αρνητή εμβολίων τι ΔΕΝ κάνω;</summary><p>Δεν λογομαχώ και δεν προσπαθώ να τον “νικήσω”. Αναγνωρίζω ανησυχίες, δίνω πληροφορίες με άδεια, κάνω ισχυρή σύσταση και αφήνω πόρτα ανοιχτή.</p></details>
+<details><summary>7. Ποιο είναι το μνημονικό των 7 διαστάσεων ποιότητας;</summary><p>STEEEPI: Safety, Timely, Efficiency, Effectiveness, Equitable, Patient-centered, Integrated.</p></details>
+<details><summary>8. Τι δείχνει το run chart;</summary><p>Την εξέλιξη ενός δείκτη στον χρόνο, ώστε να δούμε τάση/διακύμανση και αν μια αλλαγή βελτιώνει πραγματικά το σύστημα.</p></details>
+<details><summary>9. Τι είναι το fishbone diagram;</summary><p>Διάγραμμα αιτίας-αιτιατού που οργανώνει πιθανές αιτίες ενός προβλήματος.</p></details>
+<details><summary>10. Τι σημαίνει “no blame culture” στην ασφάλεια ασθενών;</summary><p>Δεν φορτώνουμε όλα τα λάθη σε ένα άτομο· εξετάζουμε τις συστημικές αιτίες που επέτρεψαν το λάθος.</p></details>
+</section>
+<section class="section">
+<div class="note"><b>Σημείωση:</b> Επειδή έχεις ήδη GreekDocs για αρκετά θεωρητικά κομμάτια, εδώ έγινε σκόπιμα συμπύκνωση. Δεν επαναλαμβάνονται αναλυτικά οι οργανισμοί δημόσιας υγείας, τα εθνικά προγράμματα ΠΡΟΛΑΜΒΑΝΩ και το cancer screening ανά όργανο, παρά μόνο ό,τι χρειάζεται για να “δέσουν” οι ασκήσεις.</div>
+</section>
+</main>
+<button class="print" onclick="window.print()">🖨️ Εκτύπωση</button>
+</body></html>

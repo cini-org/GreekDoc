@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GreekDoc | Ασφάλεια Τροφίμων & Δημόσια Υγεία</title>
+<style>
+  :root{
+    --bg:#fff8f0;
+    --ink:#22223b;
+    --muted:#5f6472;
+    --brand:#d97706;
+    --brand2:#16a34a;
+    --brand3:#0ea5e9;
+    --card:#ffffff;
+    --line:#f1d6ad;
+    --soft:#fff1d6;
+    --danger:#b91c1c;
+    --ok:#15803d;
+    --violet:#7c3aed;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;background:linear-gradient(180deg,#fff8f0,#ffffff);color:var(--ink);line-height:1.55}
+  header{padding:36px 22px 24px;background:linear-gradient(135deg,#ffedd5,#dcfce7 55%,#e0f2fe);border-bottom:1px solid var(--line)}
+  .wrap{max-width:1180px;margin:0 auto}
+  h1{font-size:clamp(28px,4vw,46px);line-height:1.05;margin:0 0 10px;font-weight:900}
+  h2{font-size:clamp(22px,3vw,32px);margin:34px 0 14px;border-left:8px solid var(--brand);padding-left:12px}
+  h3{font-size:20px;margin:0 0 10px}
+  p{margin:8px 0}
+  .subtitle{font-size:18px;color:#374151;max-width:930px}
+  .toolbar{position:sticky;top:0;z-index:10;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border-bottom:1px solid #eee}
+  .toolbar .wrap{display:flex;gap:10px;align-items:center;justify-content:space-between;padding:10px 18px}
+  button,.btn{border:0;background:var(--brand);color:white;padding:10px 14px;border-radius:999px;font-weight:800;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:8px}
+  button:hover,.btn:hover{filter:brightness(.95)}
+  .toc{display:flex;gap:8px;flex-wrap:wrap}
+  .toc a{font-size:14px;text-decoration:none;color:#7c2d12;background:#ffedd5;border:1px solid #fed7aa;border-radius:999px;padding:7px 10px;font-weight:700}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px}
+  .grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:14px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:18px;box-shadow:0 8px 24px rgba(120,74,25,.08)}
+  .card strong{color:#7c2d12}
+  .mini{font-size:14px;color:var(--muted)}
+  .tag{display:inline-block;padding:4px 9px;border-radius:999px;font-weight:900;font-size:12px;margin-bottom:8px;background:#ffedd5;color:#9a3412;border:1px solid #fed7aa}
+  .tag.green{background:#dcfce7;color:#166534;border-color:#bbf7d0}
+  .tag.blue{background:#e0f2fe;color:#075985;border-color:#bae6fd}
+  .tag.red{background:#fee2e2;color:#991b1b;border-color:#fecaca}
+  .tag.purple{background:#ede9fe;color:#5b21b6;border-color:#ddd6fe}
+  .sos{background:#fff7ed;border:2px solid #fb923c}
+  .exam{background:#f0fdf4;border:2px solid #22c55e}
+  .warning{background:#fef2f2;border:2px solid #ef4444}
+  .bluebox{background:#f0f9ff;border:2px solid #38bdf8}
+  .purplebox{background:#faf5ff;border:2px solid #a855f7}
+  table{width:100%;border-collapse:separate;border-spacing:0;border:1px solid var(--line);border-radius:18px;overflow:hidden;background:white;margin:12px 0}
+  th,td{padding:12px 13px;text-align:left;vertical-align:top;border-bottom:1px solid #f3e0c2}
+  th{background:#ffedd5;color:#7c2d12;font-weight:900}
+  tr:last-child td{border-bottom:0}
+  ul{padding-left:20px;margin:8px 0}
+  li{margin:5px 0}
+  .pillrow{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+  .pill{background:#f8fafc;border:1px solid #e5e7eb;border-radius:999px;padding:6px 10px;font-weight:700;color:#374151}
+  .flow{display:flex;flex-wrap:wrap;gap:10px;align-items:stretch}
+  .step{flex:1 1 150px;background:white;border:1px solid #fed7aa;border-radius:18px;padding:14px;text-align:center;font-weight:900;position:relative}
+  .step small{display:block;color:var(--muted);font-weight:600;margin-top:4px}
+  .arrow{align-self:center;font-size:24px;color:#ea580c;font-weight:900}
+  details{background:white;border:1px solid var(--line);border-radius:18px;margin:10px 0;padding:12px 14px}
+  summary{cursor:pointer;font-weight:900;color:#7c2d12}
+  .quiz details{border-color:#bbf7d0}
+  .quiz summary{color:#166534}
+  mark{background:#fef3c7;padding:0 4px;border-radius:5px}
+  footer{margin:40px 0 20px;padding:18px;color:#6b7280;text-align:center}
+  @media print{
+    .toolbar{display:none}
+    body{background:white}
+    .card, details, table{box-shadow:none;break-inside:avoid}
+    h2{break-after:avoid}
+  }
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <div class="tag">GreekDoc • Κοινωνική Ιατρική - Δημόσια Υγεία</div>
+    <h1>Ασφάλεια Τροφίμων και Δημόσια Υγεία</h1>
+    <p class="subtitle">Σημειώσεις εξετάσεων σε μορφή grid: τροφιμογενείς ασθένειες, μέτρηση επιβάρυνσης, αιτιολογικοί παράγοντες, διεθνείς οργανισμοί, Codex, WTO/SPS, EFSA, νομοθεσία ΕΕ, HACCP και ρόλος καταναλωτών.</p>
+  </div>
+</header>
+
+<nav class="toolbar">
+  <div class="wrap">
+    <button onclick="window.print()">🖨️ Εκτύπωση / PDF</button>
+    <div class="toc">
+      <a href="#sos">SOS</a>
+      <a href="#burden">Burden</a>
+      <a href="#oroi">Όροι</a>
+      <a href="#organismoi">Οργανισμοί</a>
+      <a href="#nomothesia">Νομοθεσία</a>
+      <a href="#haccp">HACCP</a>
+      <a href="#consumer">Καταναλωτές</a>
+      <a href="#quiz">Quiz</a>
+    </div>
+  </div>
+</nav>
+
+<main class="wrap">
+
+<section id="sos">
+<h2>1. Το κεφάλαιο σε 10 SOS κουτιά</h2>
+<div class="grid">
+  <div class="card sos"><span class="tag red">SOS 1</span><h3>Γιατί μας νοιάζει;</h3><p>Οι τροφιμογενείς ασθένειες είναι πρόβλημα από την αρχαιότητα μέχρι σήμερα. Η σοβαρότητα, οι τύποι και οι επιπτώσεις τους αλλάζουν με τον χρόνο και διαφέρουν ανά χώρα/κοινότητα.</p></div>
+  <div class="card sos"><span class="tag red">SOS 2</span><h3>Το “παγόβουνο”</h3><p>Τα καταγεγραμμένα περιστατικά είναι μόνο η κορυφή. Πολλοί δεν ζητούν ιατρική φροντίδα, δεν γίνεται συσχέτιση με τρόφιμο ή δεν δηλώνεται στις αρχές.</p></div>
+  <div class="card sos"><span class="tag red">SOS 3</span><h3>DALYs</h3><p>Τα DALYs μετρούν το φορτίο νόσου: χαμένα χρόνια υγιούς ζωής λόγω πρόωρου θανάτου και αναπηρίας.</p></div>
+  <div class="card sos"><span class="tag red">SOS 4</span><h3>31 κίνδυνοι WHO/FERG</h3><p>11 διαρροϊκοί παράγοντες, 7 διηθητικών λοιμώξεων, 10 έλμινθες και 3 χημικές ουσίες.</p></div>
+  <div class="card sos"><span class="tag red">SOS 5</span><h3>Food safety</h3><p>Τα τρόφιμα δεν πρέπει να προκαλέσουν βλάβη όταν παρασκευάζονται/καταναλώνονται όπως προορίζονται.</p></div>
+  <div class="card sos"><span class="tag red">SOS 6</span><h3>Τροφολοίμωξη vs τοξίνωση</h3><p><strong>Λοίμωξη:</strong> τρώμε τον μικροοργανισμό. <strong>Τοξίνωση:</strong> τρώμε την τοξίνη/δηλητήριο, συχνά γρήγορη έναρξη, έμετος, χωρίς πυρετό.</p></div>
+  <div class="card sos"><span class="tag red">SOS 7</span><h3>Codex Alimentarius</h3><p>Διεθνή πρότυπα/οδηγίες/κώδικες πρακτικής για ασφαλή τρόφιμα και διαφανές εμπόριο. Εθελοντικά μέχρι να μπουν σε εθνική νομοθεσία.</p></div>
+  <div class="card sos"><span class="tag red">SOS 8</span><h3>WTO/SPS</h3><p>Επιτρέπει μέτρα για προστασία ανθρώπων, ζώων, φυτών, αλλά όχι ως αυθαίρετα εμπόδια στο εμπόριο. Εισάγει έννοιες ALOP και risk assessment.</p></div>
+  <div class="card sos"><span class="tag red">SOS 9</span><h3>EFSA</h3><p>Η Ευρωπαϊκή Αρχή παρέχει ανεξάρτητες επιστημονικές συμβουλές, συλλογή/ανάλυση δεδομένων και επικοινωνία κινδύνων.</p></div>
+  <div class="card sos"><span class="tag red">SOS 10</span><h3>Όλοι έχουν ρόλο</h3><p>Κυβερνήσεις, βιομηχανία, εργαστήρια, έλεγχοι, καταναλωτές. Η ασφάλεια τροφίμων είναι αλυσίδα “farm to fork”.</p></div>
+</div>
+</section>
+
+<section id="intro">
+<h2>2. Εισαγωγή: γιατί είναι δύσκολο να μετρηθούν οι τροφιμογενείς ασθένειες;</h2>
+<div class="grid2">
+  <div class="card">
+    <span class="tag">Πρόβλημα δημόσιας υγείας</span>
+    <p>Οι τροφιμογενείς ασθένειες υπάρχουν σε όλες τις κοινωνίες. Δεν είναι μόνο “γαστρεντερίτιδα”: μπορούν να προκαλέσουν οξείες νόσους αλλά και μακροχρόνιες επιπλοκές ή χρόνιες ασθένειες.</p>
+    <ul>
+      <li>Αφορούν όλες τις χώρες.</li>
+      <li>Αλλάζουν ανά εποχή, περιοχή, οικονομία, διατροφικά πρότυπα.</li>
+      <li>Επηρεάζονται από παγκοσμιοποίηση, κλίμα και παραγωγική αλυσίδα.</li>
+    </ul>
+  </div>
+  <div class="card warning">
+    <span class="tag red">Κορυφή παγόβουνου</span>
+    <p><strong>Τα επίσημα δεδομένα υποεκτιμούν</strong> το πραγματικό πρόβλημα.</p>
+    <ul>
+      <li>Πολλοί ασθενείς έχουν ήπια συμπτώματα και δεν πηγαίνουν σε γιατρό.</li>
+      <li>Δεν γίνεται πάντα μικροβιολογική διάγνωση.</li>
+      <li>Δεν δηλώνονται όλα τα περιστατικά στις αρχές.</li>
+      <li>Χρόνιες εκβάσεις, όπως νεφρική/ηπατική ανεπάρκεια ή καρκίνος, μπορεί να εμφανιστούν αργότερα και να μη συνδεθούν αιτιολογικά με το τρόφιμο.</li>
+    </ul>
+  </div>
+</div>
+
+<div class="card exam">
+  <h3>Εξεταστική φράση</h3>
+  <p>«Τα καταγεγραμμένα τροφιμογενή νοσήματα αποτελούν μόνο την κορυφή του παγόβουνου, λόγω μη αναζήτησης φροντίδας, μη διάγνωσης, μη δήλωσης και δυσκολίας αιτιολογικής συσχέτισης με χρόνιες επιπτώσεις.»</p>
+</div>
+</section>
+
+<section id="burden">
+<h2>3. Διεθνή δεδομένα: WHO/FERG και DALYs</h2>
+<div class="grid">
+  <div class="card">
+    <span class="tag blue">WHO/FERG</span>
+    <h3>Τι είναι;</h3>
+    <p>Η έκθεση WHO 2015 για το παγκόσμιο φορτίο τροφιμογενών ασθενειών έγινε από την FERG, την ομάδα αναφοράς για την επιδημιολογία επιβαρύνσεων τροφιμογενών νόσων.</p>
+  </div>
+  <div class="card">
+    <span class="tag blue">Τι εκτίμησε;</span>
+    <ul>
+      <li>Συχνότητα εμφάνισης.</li>
+      <li>Θνησιμότητα.</li>
+      <li>Επιβάρυνση σε DALYs.</li>
+    </ul>
+  </div>
+  <div class="card">
+    <span class="tag blue">DALY</span>
+    <p><strong>Disability-Adjusted Life Year</strong> = ένα χαμένο έτος υγιούς ζωής. Συνδυάζει θάνατο και αναπηρία.</p>
+  </div>
+  <div class="card">
+    <span class="tag blue">Ελλάδα</span>
+    <p>Στις ευρωπαϊκές περιφέρειες της έκθεσης WHO, η Ελλάδα εντάσσεται στην περιοχή <strong>EUR A</strong>.</p>
+  </div>
+</div>
+
+<table>
+<thead><tr><th>Ομάδα τροφιμογενών κινδύνων WHO</th><th>Τι περιλαμβάνει</th><th>Πώς να το θυμάσαι</th></tr></thead>
+<tbody>
+<tr><td>11 παράγοντες διαρροϊκής νόσου</td><td>1 ιός, 7 βακτήρια, 3 πρωτόζωα</td><td>Κλασική γαστρεντερίτιδα/διάρροια</td></tr>
+<tr><td>7 παράγοντες διηθητικών λοιμωδών νοσημάτων</td><td>1 ιός, 5 βακτήρια, 1 πρωτόζωο</td><td>Πιο συστηματική/διηθητική νόσος</td></tr>
+<tr><td>10 έλμινθες</td><td>Μετάζωα παράσιτα</td><td>Παρασιτικές τροφιμογενείς λοιμώξεις</td></tr>
+<tr><td>3 χημικές ουσίες</td><td>Χημικοί κίνδυνοι</td><td>Τοξικές ουσίες/ρύποι</td></tr>
+</tbody>
+</table>
+</section>
+
+<section id="oroi">
+<h2>4. Όροι και ορισμοί που πρέπει να ξεχωρίζεις</h2>
+<div class="grid2">
+  <div class="card">
+    <span class="tag green">Ασφάλεια τροφίμων</span>
+    <p>Διασφάλιση ότι τα τρόφιμα <strong>δεν θα προκαλέσουν βλάβη</strong> στον καταναλωτή όταν παρασκευάζονται ή/και καταναλώνονται σύμφωνα με τη χρήση για την οποία προορίζονται.</p>
+  </div>
+  <div class="card">
+    <span class="tag green">Τροφιμογενής ασθένεια</span>
+    <p>Νόσος λοιμώδους ή τοξικής φύσης που προκαλείται ή θεωρείται ότι προκαλείται από κατανάλωση μολυσμένων τροφίμων ή νερού.</p>
+    <p class="mini">Τα βακτήρια είναι οι πιο συχνοί αιτιολογικοί παράγοντες.</p>
+  </div>
+</div>
+
+<h3>Τροφολοίμωξη vs Τροφοτοξίνωση</h3>
+<table>
+<thead><tr><th>Χαρακτηριστικό</th><th>Τροφολοίμωξη</th><th>Τροφοτοξίνωση / τροφοδηλητηρίαση</th></tr></thead>
+<tbody>
+<tr><td>Τι καταναλώνεται;</td><td>Ο ίδιος ο παθογόνος μικροοργανισμός.</td><td>Προϋπάρχουσα τοξίνη, βιοτοξίνη ή δηλητηριώδης ουσία.</td></tr>
+<tr><td>Παθογένεια</td><td>Ο μικροοργανισμός μολύνει ΓΕΣ, πολλαπλασιάζεται, παράγει τοξίνες ή καταστρέφει επιθήλιο.</td><td>Η βλάβη γίνεται από τοξίνη/δηλητήριο που ήδη υπάρχει στο τρόφιμο.</td></tr>
+<tr><td>Επώαση</td><td>Ώρες έως ημέρες.</td><td>Σύντομη: λεπτά ή ώρες.</td></tr>
+<tr><td>Συμπτώματα</td><td>Διάρροια, ναυτία, έμετος, κοιλιακό άλγος, κράμπες, πυρετός.</td><td>Συχνά έμετος, σύντομη έναρξη, συνήθως απουσία πυρετού.</td></tr>
+<tr><td>Παραδείγματα</td><td>Salmonella, Campylobacter, Yersinia, Listeria, HAV, Norovirus, HEV, Giardia.</td><td>Staphylococcus aureus, Clostridium botulinum, Bacillus cereus, αφλατοξίνες, θαλάσσιες βιοτοξίνες, βαρέα μέταλλα.</td></tr>
+<tr><td>Μετάδοση</td><td>Κοπρανο-στοματική, διασταυρούμενη μόλυνση, κακή υγιεινή.</td><td>Κατανάλωση τροφής που περιέχει τοξίνη/χημική ουσία.</td></tr>
+<tr><td>Εξεταστικό κλειδί</td><td><strong>Τρώω μικρόβιο → αρρωσταίνω μετά από πολλαπλασιασμό.</strong></td><td><strong>Τρώω τοξίνη → αρρωσταίνω γρήγορα.</strong></td></tr>
+</tbody>
+</table>
+
+<div class="grid">
+  <div class="card">
+    <span class="tag purple">Τοξίνωση από φυτά</span>
+    <p>Π.χ. δηλητηρίαση από μανιτάρια, σολανίνη.</p>
+  </div>
+  <div class="card">
+    <span class="tag purple">Τοξίνωση από ζώα</span>
+    <p>Π.χ. τετροδοτοξίνη σε δηλητηριώδη ψάρια, θαλάσσιες βιοτοξίνες.</p>
+  </div>
+  <div class="card">
+    <span class="tag purple">Βακτηριακή δηλητηρίαση</span>
+    <p>Π.χ. S. aureus, C. botulinum, B. cereus.</p>
+  </div>
+  <div class="card">
+    <span class="tag purple">Μυκητιακή/χημική</span>
+    <p>Μυκοτοξίνες, αφλατοξίνες, διοξίνες, φυτοφάρμακα, βαρέα μέταλλα.</p>
+  </div>
+</div>
+</section>
+
+<section id="challenges">
+<h2>5. Σύγχρονες προκλήσεις</h2>
+<div class="grid">
+  <div class="card"><span class="tag">Παγκοσμιοποίηση</span><p>Η αλυσίδα τροφίμων είναι διεθνής. Ένα πρόβλημα στην παραγωγή/μεταφορά μπορεί να επηρεάσει πολλές χώρες.</p></div>
+  <div class="card"><span class="tag">Κλιματική κρίση</span><p>Αλλάζει την επιβίωση παθογόνων, την κατανομή φορέων, τη θερμοκρασία αποθήκευσης και τον κίνδυνο επιμόλυνσης.</p></div>
+  <div class="card"><span class="tag">Νέα καταναλωτικά πρότυπα</span><p>Αύξηση προτίμησης σε φρέσκα και ελάχιστα επεξεργασμένα τρόφιμα, άρα ανάγκη για αυστηρή υγιεινή σε όλη την αλυσίδα.</p></div>
+</div>
+</section>
+
+<section id="organismoi">
+<h2>6. Ποιος ρυθμίζει την ασφάλεια τροφίμων; Διεθνείς οργανισμοί</h2>
+<div class="grid2">
+  <div class="card bluebox">
+    <span class="tag blue">WTO / ΠΟΕ</span>
+    <h3>World Trade Organization</h3>
+    <p>Ιδρύθηκε το 1995 και θεμελίωσε τη συμφωνία <strong>SPS</strong> για υγειονομικά και φυτοϋγειονομικά μέτρα.</p>
+    <ul>
+      <li>Τα κράτη μπορούν να παίρνουν μέτρα για προστασία ανθρώπων, ζώων και φυτών.</li>
+      <li>Τα μέτρα δεν πρέπει να λειτουργούν ως αυθαίρετη διάκριση ή συγκαλυμμένος περιορισμός εμπορίου.</li>
+      <li>Εισάγει το ALOP: κατάλληλο επίπεδο προστασίας / αποδεκτό επίπεδο κινδύνου.</li>
+    </ul>
+  </div>
+  <div class="card bluebox">
+    <span class="tag blue">SPS Agreement</span>
+    <h3>Τι κάνει;</h3>
+    <ul>
+      <li>Ορίζει απαιτήσεις καραντίνας ζώων και ασφάλειας τροφίμων.</li>
+      <li>Αναγνωρίζει διεθνή πρότυπα ως σημεία αναφοράς.</li>
+      <li>Βοηθά στη διευκόλυνση του εμπορίου και επίλυση διαφορών.</li>
+      <li>Διακρίνει risk assessment για ασθένειες ζώων/ανθρώπων και για ασφάλεια τροφίμων.</li>
+    </ul>
+  </div>
+  <div class="card purplebox">
+    <span class="tag purple">Codex Alimentarius</span>
+    <h3>FAO/WHO Codex</h3>
+    <p>Παρέχει διεθνή πρότυπα, οδηγίες και κώδικες πρακτικής για την ασφάλεια τροφίμων.</p>
+    <ul>
+      <li>Στόχος: προστασία ανθρώπινης υγείας.</li>
+      <li>Στόχος: διαφάνεια στο διεθνές εμπόριο τροφίμων.</li>
+      <li>Βασίζεται σε επιστημονική γνώση και ανεξάρτητες επιτροπές.</li>
+    </ul>
+  </div>
+  <div class="card purplebox">
+    <span class="tag purple">JECFA / JMPR</span>
+    <h3>Επιστημονική βάση</h3>
+    <p>Ανεξάρτητες διεθνείς επιστημονικές επιτροπές και ad hoc διαβουλεύσεις FAO/WHO παρέχουν επιστημονικές συμβουλές στην Codex Alimentarius Commission.</p>
+  </div>
+</div>
+
+<table>
+<thead><tr><th>Οργανισμός / έννοια</th><th>Ρόλος</th><th>Εξεταστικό tip</th></tr></thead>
+<tbody>
+<tr><td>WTO / ΠΟΕ</td><td>Παγκόσμιο εμπόριο και κανόνες για μέτρα προστασίας.</td><td>Να μην συγχέεται με Codex: WTO = εμπόριο/νομικό πλαίσιο.</td></tr>
+<tr><td>SPS</td><td>Υγειονομική και φυτοϋγειονομική συμφωνία.</td><td>Μέτρα προστασίας χωρίς αυθαίρετο εμπόδιο στο εμπόριο.</td></tr>
+<tr><td>ALOP</td><td>Appropriate Level of Protection.</td><td>Αποδεκτός/ανεκτός κίνδυνος που ορίζει κάθε κράτος.</td></tr>
+<tr><td>Codex Alimentarius</td><td>Πρότυπα, οδηγίες, κώδικες πρακτικής για τρόφιμα.</td><td>Codex = επιστημονική “κοινή γραμμή”.</td></tr>
+<tr><td>EFSA</td><td>Επιστημονικές συμβουλές και ανάλυση κινδύνων στην ΕΕ.</td><td>EFSA = ανεξάρτητη επιστημονική αρχή, όχι “αστυνομία τροφίμων”.</td></tr>
+</tbody>
+</table>
+</section>
+
+<section id="nomothesia">
+<h2>7. Βασικές αρχές νομοθεσίας τροφίμων</h2>
+<div class="grid2">
+  <div class="card">
+    <span class="tag green">Διεθνές επίπεδο</span>
+    <p>Τα τρόφιμα, είτε πωλούνται τοπικά είτε εξάγονται, πρέπει να παράγονται σύμφωνα με γενικές αρχές υγιεινής αναγνωρισμένες διεθνώς, όπως αυτές του Codex Alimentarius.</p>
+  </div>
+  <div class="card">
+    <span class="tag green">Ευθύνη βιομηχανίας</span>
+    <p>Η ασφάλεια των τροφίμων είναι παραδοσιακά ευθύνη της βιομηχανίας, η οποία πρέπει να εφαρμόζει μέτρα ελέγχου υγιεινής μέσα σε κανονιστικό πλαίσιο.</p>
+  </div>
+</div>
+
+<h3>Κανονισμοί vs Οδηγίες της ΕΕ</h3>
+<table>
+<thead><tr><th>Είδος νομικής πράξης</th><th>Τι σημαίνει</th><th>Να θυμάσαι</th></tr></thead>
+<tbody>
+<tr><td>Κανονισμοί (Regulations)</td><td>Εφαρμόζονται αυτόματα και ομοιόμορφα σε όλα τα κράτη-μέλη μόλις τεθούν σε ισχύ.</td><td>Δεν χρειάζονται μεταφορά στο εθνικό δίκαιο.</td></tr>
+<tr><td>Οδηγίες (Directives)</td><td>Θέτουν στόχο που πρέπει να επιτευχθεί, αλλά κάθε χώρα επιλέγει πώς θα τον ενσωματώσει.</td><td>Χρειάζονται μεταφορά στο εθνικό δίκαιο.</td></tr>
+</tbody>
+</table>
+
+<h3>Οι βασικές αρχές της ΕΕ για τα τρόφιμα</h3>
+<div class="grid">
+  <div class="card"><span class="tag">1</span><p>Προστασία δημόσιας υγείας, υγείας φυτών, υγείας και ευζωίας ζώων.</p></div>
+  <div class="card"><span class="tag">2</span><p>Ανάλυση επικινδυνότητας βασισμένη σε ανεξάρτητες επιστημονικές συμβουλές.</p></div>
+  <div class="card"><span class="tag">3</span><p>Αρχή προφύλαξης απέναντι σε άγνωστους πιθανούς κινδύνους.</p></div>
+  <div class="card"><span class="tag">4</span><p>Ανιχνευσιμότητα / ιχνηλασιμότητα προέλευσης όλων των προϊόντων.</p></div>
+  <div class="card"><span class="tag">5</span><p>Διαφάνεια και σαφείς πληροφορίες για τρόφιμα και ζωοτροφές.</p></div>
+  <div class="card"><span class="tag">6</span><p>Σαφείς ευθύνες για όλους στην αγροδιατροφική αλυσίδα.</p></div>
+  <div class="card"><span class="tag">7</span><p>Αυστηροί και τακτικοί έλεγχοι.</p></div>
+  <div class="card"><span class="tag">8</span><p>Κατάρτιση και εκπαίδευση.</p></div>
+</div>
+
+<div class="card bluebox">
+  <h3>EFSA — Αποστολή</h3>
+  <ul>
+    <li>Παρέχει επιστημονικές συμβουλές και τεχνική υποστήριξη για νομοθεσία και πολιτικές που επηρεάζουν άμεσα ή έμμεσα την ασφάλεια τροφίμων και ζωοτροφών.</li>
+    <li>Παρέχει ανεξάρτητη ενημέρωση και επικοινωνία κινδύνων.</li>
+    <li>Συμβάλλει σε υψηλό επίπεδο προστασίας ζωής και υγείας ανθρώπου, λαμβάνοντας υπόψη ζώα, φυτά και περιβάλλον.</li>
+    <li>Συλλέγει και αναλύει δεδομένα για χαρακτηρισμό και παρακολούθηση κινδύνων.</li>
+  </ul>
+</div>
+</section>
+
+<section id="haccp">
+<h2>8. Codex, HACCP και Συστήματα Διαχείρισης Ασφάλειας Τροφίμων</h2>
+<div class="grid2">
+  <div class="card exam">
+    <span class="tag green">Farm to Fork</span>
+    <p>Οι Γενικές Αρχές Υγιεινής Τροφίμων του Codex καθορίζουν την προσέγγιση παραγωγής τροφίμων από το αγρόκτημα μέχρι την τελική προετοιμασία και κατανάλωση.</p>
+  </div>
+  <div class="card exam">
+    <span class="tag green">HACCP</span>
+    <p><strong>Hazard Analysis and Critical Control Points</strong>: σύστημα που εντοπίζει, αξιολογεί και ελέγχει πηγές κινδύνων σημαντικές για την ασφάλεια τροφίμων.</p>
+  </div>
+</div>
+
+<table>
+<thead><tr><th>Όρος</th><th>Ορισμός</th><th>Παράδειγμα σκέψης</th></tr></thead>
+<tbody>
+<tr><td>Πηγή κινδύνου / Hazard</td><td>Βιολογικός, χημικός ή φυσικός παράγοντας στο τρόφιμο ή κατάσταση τροφίμου με πιθανότητα αρνητικής επίπτωσης στην υγεία.</td><td>Salmonella, αφλατοξίνη, γυαλί/μέταλλο στο τρόφιμο.</td></tr>
+<tr><td>HACCP</td><td>Σύστημα εντοπισμού, αξιολόγησης και ελέγχου σημαντικών κινδύνων.</td><td>Προληπτική προσέγγιση, όχι απλώς έλεγχος στο τέλος.</td></tr>
+<tr><td>Food safety</td><td>Προστασία από βλάβη.</td><td>Δεν θα νοσήσω από το τρόφιμο.</td></tr>
+<tr><td>Food suitability</td><td>Καταλληλότητα τροφίμου για κατανάλωση.</td><td>Το τρόφιμο είναι αποδεκτό/κατάλληλο για τον άνθρωπο.</td></tr>
+</tbody>
+</table>
+
+<h3>Ρόλοι: κυβερνήσεις – βιομηχανία – καταναλωτές</h3>
+<div class="grid">
+  <div class="card">
+    <span class="tag blue">Κυβερνήσεις</span>
+    <ul>
+      <li>Προστατεύουν καταναλωτές από τροφιμογενείς ασθένειες/τραυματισμούς.</li>
+      <li>Λαμβάνουν υπόψη ευπαθείς ομάδες.</li>
+      <li>Διασφαλίζουν καταλληλότητα τροφίμων.</li>
+      <li>Διατηρούν εμπιστοσύνη στο διεθνές εμπόριο.</li>
+      <li>Παρέχουν εκπαίδευση υγείας σε βιομηχανία και καταναλωτές.</li>
+    </ul>
+  </div>
+  <div class="card">
+    <span class="tag blue">Βιομηχανία</span>
+    <ul>
+      <li>Εφαρμόζει πρακτικές υγιεινής.</li>
+      <li>Παρέχει ασφαλή και κατάλληλα τρόφιμα.</li>
+      <li>Δίνει σαφείς πληροφορίες μέσω επισήμανσης.</li>
+      <li>Βοηθά τον καταναλωτή να αποθηκεύει/χειρίζεται/προετοιμάζει σωστά τα τρόφιμα.</li>
+    </ul>
+  </div>
+  <div class="card">
+    <span class="tag blue">Καταναλωτές</span>
+    <ul>
+      <li>Ακολουθούν οδηγίες.</li>
+      <li>Εφαρμόζουν μέτρα υγιεινής τροφίμων.</li>
+      <li>Διαβάζουν ετικέτες και κάνουν συνειδητές επιλογές.</li>
+    </ul>
+  </div>
+</div>
+
+<div class="card warning">
+  <h3>Σημαντικό για εξετάσεις</h3>
+  <p>Τα πρότυπα Codex είναι <strong>εθελοντικά</strong>. Για να είναι εκτελεστέα πρέπει να μεταφραστούν σε εθνική νομοθεσία ή κανονισμούς.</p>
+</div>
+</section>
+
+<section id="fsms">
+<h2>9. Συστήματα Διαχείρισης Ασφάλειας Τροφίμων (ΣΔΑΤ)</h2>
+<div class="card">
+  <p>Η σύγχρονη βιομηχανία εφαρμόζει Συστήματα Διαχείρισης της Ασφάλειας των Τροφίμων σύμφωνα με διεθνή πρότυπα, όπως <strong>ISO 22000, FSSC 22000, BRC, IFS</strong>.</p>
+</div>
+<div class="grid">
+  <div class="card"><span class="tag">1</span><h3>Νομοθεσία</h3><p>Νομοθετικές και κανονιστικές απαιτήσεις.</p></div>
+  <div class="card"><span class="tag">2</span><h3>Ορθές πρακτικές</h3><p>Ορθές πρακτικές παραγωγής και υγιεινής σύμφωνα με Codex.</p></div>
+  <div class="card"><span class="tag">3</span><h3>HACCP</h3><p>Ανάλυση κινδύνων και κρίσιμα σημεία ελέγχου.</p></div>
+  <div class="card"><span class="tag">4</span><h3>Διαχείριση συστήματος</h3><p>Δομή, αρχεία, ευθύνες, διορθωτικές ενέργειες.</p></div>
+  <div class="card"><span class="tag">5</span><h3>Εκπαίδευση</h3><p>Εκπαίδευση προσωπικού και χειριστών τροφίμων.</p></div>
+  <div class="card"><span class="tag">6</span><h3>Επικοινωνία</h3><p>Σαφής επικοινωνία κινδύνων και οδηγιών σε όλη την αλυσίδα.</p></div>
+</div>
+</section>
+
+<section id="consumer">
+<h2>10. Καταναλωτές και “5 κλειδιά” για ασφαλέστερα τρόφιμα</h2>
+<div class="grid2">
+  <div class="card">
+    <span class="tag green">Όλοι συνεισφέρουν</span>
+    <p>Τα τροφιμογενή νοσήματα μπορούν να προληφθούν. Η ασφάλεια τροφίμων δεν είναι μόνο θέμα βιομηχανίας ή κράτους· αφορά και τον καταναλωτή.</p>
+  </div>
+  <div class="card">
+    <span class="tag green">Τι μπορεί να κάνει ο καταναλωτής;</span>
+    <ul>
+      <li>Να διαβάζει ετικέτες τροφίμων.</li>
+      <li>Να γνωρίζει κοινούς κινδύνους.</li>
+      <li>Να χειρίζεται και να προετοιμάζει τρόφιμα με ασφάλεια.</li>
+      <li>Να εφαρμόζει τα πέντε κλειδιά του WHO.</li>
+    </ul>
+  </div>
+</div>
+
+<div class="grid">
+  <div class="card exam"><span class="tag green">1</span><h3>Καθαριότητα</h3><p>Πλένουμε χέρια, επιφάνειες, εξοπλισμό. Προστατεύουμε τα τρόφιμα από έντομα/ζώα.</p></div>
+  <div class="card exam"><span class="tag green">2</span><h3>Διαχωρισμός ωμών και μαγειρεμένων</h3><p>Αποφεύγουμε διασταυρούμενη μόλυνση. Ξεχωριστές επιφάνειες/μαχαίρια για ωμό κρέας.</p></div>
+  <div class="card exam"><span class="tag green">3</span><h3>Καλό μαγείρεμα</h3><p>Σωστή θερμική επεξεργασία, ειδικά κρέας, πουλερικά, αυγά, θαλασσινά.</p></div>
+  <div class="card exam"><span class="tag green">4</span><h3>Ασφαλείς θερμοκρασίες</h3><p>Δεν αφήνουμε μαγειρεμένα τρόφιμα πολλή ώρα σε θερμοκρασία δωματίου. Σωστή ψύξη/αναθέρμανση.</p></div>
+  <div class="card exam"><span class="tag green">5</span><h3>Ασφαλές νερό και πρώτες ύλες</h3><p>Χρησιμοποιούμε ασφαλές νερό, φρέσκα τρόφιμα, παστεριωμένα προϊόντα όπου χρειάζεται.</p></div>
+</div>
+</section>
+
+<section id="visual">
+<h2>11. Οπτική αποστήθιση: από το τρόφιμο στη δημόσια υγεία</h2>
+<div class="flow">
+  <div class="step">Πηγή κινδύνου<small>βιολογική / χημική / φυσική</small></div>
+  <div class="arrow">→</div>
+  <div class="step">Μόλυνση τροφίμου<small>παραγωγή, μεταφορά, χειρισμός</small></div>
+  <div class="arrow">→</div>
+  <div class="step">Κατανάλωση<small>λανθασμένη προετοιμασία ή αποθήκευση</small></div>
+  <div class="arrow">→</div>
+  <div class="step">Νόσηση<small>λοίμωξη ή τοξίνωση</small></div>
+  <div class="arrow">→</div>
+  <div class="step">Επιτήρηση<small>διάγνωση, δήλωση, δεδομένα</small></div>
+  <div class="arrow">→</div>
+  <div class="step">Πρόληψη<small>HACCP, έλεγχοι, εκπαίδευση</small></div>
+</div>
+</section>
+
+<section id="mistakes">
+<h2>12. Παγίδες εξετάσεων</h2>
+<div class="grid2">
+  <div class="card warning">
+    <h3>Παγίδα 1: «Αφού λίγα περιστατικά καταγράφονται, άρα λίγα υπάρχουν»</h3>
+    <p>Λάθος. Τα επίσημα περιστατικά υποεκτιμούν το πρόβλημα.</p>
+  </div>
+  <div class="card warning">
+    <h3>Παγίδα 2: Τροφολοίμωξη = τροφοτοξίνωση</h3>
+    <p>Λάθος. Στην τροφολοίμωξη τρώμε τον παθογόνο μικροοργανισμό. Στην τροφοτοξίνωση τρώμε τοξίνη/δηλητήριο.</p>
+  </div>
+  <div class="card warning">
+    <h3>Παγίδα 3: Codex = υποχρεωτικός νόμος</h3>
+    <p>Όχι άμεσα. Τα πρότυπα Codex είναι εθελοντικά μέχρι να ενσωματωθούν σε εθνική νομοθεσία/κανονισμούς.</p>
+  </div>
+  <div class="card warning">
+    <h3>Παγίδα 4: EFSA κάνει ελέγχους σαν αστυνομία τροφίμων</h3>
+    <p>Η EFSA κυρίως παρέχει ανεξάρτητη επιστημονική συμβουλή, συλλογή/ανάλυση δεδομένων και επικοινωνία κινδύνων.</p>
+  </div>
+  <div class="card warning">
+    <h3>Παγίδα 5: HACCP = τελικός εργαστηριακός έλεγχος</h3>
+    <p>Όχι. HACCP είναι προληπτικό σύστημα εντοπισμού και ελέγχου κινδύνων σε κρίσιμα σημεία.</p>
+  </div>
+  <div class="card warning">
+    <h3>Παγίδα 6: Food safety = food suitability</h3>
+    <p>Safety αφορά βλάβη στην υγεία. Suitability αφορά καταλληλότητα για ανθρώπινη κατανάλωση.</p>
+  </div>
+</div>
+</section>
+
+<section id="quiz" class="quiz">
+<h2>13. Mini-quiz με άμεση ανατροφοδότηση</h2>
+
+<details><summary>1. Γιατί τα επίσημα δεδομένα τροφιμογενών νοσημάτων θεωρούνται υποεκτίμηση;</summary>
+<p>Γιατί πολλά περιστατικά έχουν ήπια συμπτώματα, δεν ζητούν ιατρική φροντίδα, δεν διαγιγνώσκονται εργαστηριακά, δεν δηλώνονται ή δεν συνδέονται αιτιολογικά με τρόφιμο.</p>
+</details>
+
+<details><summary>2. Τι είναι DALY;</summary>
+<p>Ένα χαμένο έτος υγιούς ζωής. Μετρά συνολική επιβάρυνση από πρόωρο θάνατο και ζωή με αναπηρία.</p>
+</details>
+
+<details><summary>3. Ποια είναι η βασική διαφορά τροφολοίμωξης και τροφοτοξίνωσης;</summary>
+<p>Στην τροφολοίμωξη καταναλώνεται ο παθογόνος μικροοργανισμός και προκαλεί λοίμωξη. Στην τροφοτοξίνωση καταναλώνεται τοξίνη ή δηλητηριώδης ουσία που προκαλεί γρήγορη νόσηση.</p>
+</details>
+
+<details><summary>4. Σύντομη επώαση, έμετος και απουσία πυρετού δείχνουν περισσότερο τι;</summary>
+<p>Τροφοτοξίνωση / τροφοδηλητηρίαση.</p>
+</details>
+
+<details><summary>5. Τι είναι hazard στην ασφάλεια τροφίμων;</summary>
+<p>Βιολογικός, χημικός ή φυσικός παράγοντας μέσα στο τρόφιμο ή κατάσταση του τροφίμου που μπορεί να προκαλέσει αρνητική επίπτωση στην υγεία.</p>
+</details>
+
+<details><summary>6. Τι σημαίνει HACCP;</summary>
+<p>Hazard Analysis and Critical Control Points: σύστημα που εντοπίζει, αξιολογεί και ελέγχει κινδύνους σημαντικούς για την ασφάλεια των τροφίμων.</p>
+</details>
+
+<details><summary>7. Τα πρότυπα Codex είναι άμεσα υποχρεωτικά;</summary>
+<p>Όχι. Είναι εθελοντικά και γίνονται εκτελεστέα όταν μεταφραστούν/ενσωματωθούν σε εθνική νομοθεσία ή κανονισμούς.</p>
+</details>
+
+<details><summary>8. Τι κάνει κυρίως η EFSA;</summary>
+<p>Παρέχει ανεξάρτητες επιστημονικές συμβουλές, τεχνική υποστήριξη, συλλογή/ανάλυση δεδομένων και επικοινωνία κινδύνων για τρόφιμα και ζωοτροφές.</p>
+</details>
+
+<details><summary>9. Ποια είναι τα 5 κλειδιά του WHO για ασφαλέστερα τρόφιμα;</summary>
+<p>Καθαριότητα, διαχωρισμός ωμών/μαγειρεμένων, καλό μαγείρεμα, ασφαλείς θερμοκρασίες, ασφαλές νερό και πρώτες ύλες.</p>
+</details>
+
+<details><summary>10. Τι σημαίνει “farm to fork”;</summary>
+<p>Προσέγγιση ασφάλειας τροφίμων σε όλη την αλυσίδα: από την παραγωγή στο αγρόκτημα μέχρι την τελική κατανάλωση.</p>
+</details>
+</section>
+
+<section id="last">
+<h2>14. Τελική σελίδα αποστήθισης</h2>
+<div class="card exam">
+  <h3>Αν διαβάσεις μόνο αυτό πριν την εξέταση</h3>
+  <ul>
+    <li>Τα τροφιμογενή νοσήματα υποδηλώνονται συχνά ως “κορυφή παγόβουνου”.</li>
+    <li>WHO/FERG: 31 κίνδυνοι → 11 διαρροϊκοί, 7 διηθητικοί, 10 έλμινθες, 3 χημικές ουσίες.</li>
+    <li>Τροφολοίμωξη = τρώω μικρόβιο. Τροφοτοξίνωση = τρώω τοξίνη.</li>
+    <li>Τοξίνωση: μικρή επώαση, έμετος, συνήθως χωρίς πυρετό.</li>
+    <li>WTO/SPS = διεθνές εμπόριο + προστασία υγείας χωρίς αδικαιολόγητους περιορισμούς.</li>
+    <li>Codex = πρότυπα/κώδικες πρακτικής, επιστημονική βάση, εθελοντικά μέχρι ενσωμάτωση σε νόμο.</li>
+    <li>ΕΕ: ανάλυση επικινδυνότητας, προφύλαξη, ιχνηλασιμότητα, διαφάνεια, ευθύνη όλων, έλεγχοι, εκπαίδευση.</li>
+    <li>EFSA = ανεξάρτητη επιστημονική συμβουλή και επικοινωνία κινδύνων.</li>
+    <li>HACCP = προληπτικό σύστημα ελέγχου κινδύνων σε κρίσιμα σημεία.</li>
+    <li>Καταναλωτής: 5 κλειδιά WHO για ασφαλέστερα τρόφιμα.</li>
+  </ul>
+</div>
+</section>
+
+<footer>
+  GreekDoc • Ασφάλεια Τροφίμων και Δημόσια Υγεία • Εκτυπώσιμο αρχείο με grid/cards
+</footer>
+
+</main>
+</body>
+</html>

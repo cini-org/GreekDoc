@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>GreekDoc | Exposome στην Παιδική Υγεία</title>
+<style>
+:root{
+  --bg:#f7f6fb;--paper:#ffffff;--ink:#202033;--muted:#646276;--brand:#6d5bd0;--brand2:#00a6a6;--accent:#ffb703;--soft:#ece9ff;--soft2:#e5fbfb;--danger:#e85d75;--ok:#2a9d8f;--line:#dedbea;
+}
+*{box-sizing:border-box} body{margin:0;background:linear-gradient(135deg,#f8f7ff,#f3fbfb);font-family:Inter,Segoe UI,Roboto,Arial,sans-serif;color:var(--ink);line-height:1.55} 
+header{padding:34px 22px 26px;background:radial-gradient(circle at top left,#ffffff 0,#f1eeff 38%,#eaffff 100%);border-bottom:1px solid var(--line)}
+.wrap{max-width:1180px;margin:auto} h1{font-size:clamp(2rem,4vw,3.7rem);line-height:1.05;margin:0 0 10px;font-weight:900;letter-spacing:-.04em} h2{font-size:1.75rem;margin:38px 0 16px;letter-spacing:-.02em} h3{margin:.2rem 0 .6rem;font-size:1.14rem} p{margin:.35rem 0}.sub{font-size:1.08rem;color:var(--muted);max-width:930px}.pillbar{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}.pill{background:var(--paper);border:1px solid var(--line);border-radius:999px;padding:7px 12px;font-weight:700;color:#36324f}.btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}.btn{border:0;border-radius:14px;padding:12px 16px;font-weight:800;cursor:pointer;background:var(--brand);color:white;box-shadow:0 8px 18px #6d5bd033}.btn.secondary{background:#fff;color:var(--brand);border:1px solid var(--line)}
+.notice{margin:20px 0;padding:16px 18px;border-left:6px solid var(--brand2);background:#fff;border-radius:14px;box-shadow:0 8px 22px #15112a0c}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px}.card{background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:18px;box-shadow:0 9px 24px #19172d0c;break-inside:avoid}.card.big{grid-column:span 2}.tag{display:inline-block;font-size:.78rem;font-weight:900;text-transform:uppercase;letter-spacing:.05em;color:var(--brand);background:var(--soft);padding:4px 8px;border-radius:999px;margin-bottom:8px}.tag.teal{color:#007b7b;background:var(--soft2)}.tag.red{color:#b02745;background:#ffe8ee}.tag.yellow{color:#8a5d00;background:#fff4cc}.formula{font-family:ui-monospace,Menlo,Consolas,monospace;background:#252238;color:#fff;border-radius:16px;padding:14px;margin:10px 0;font-weight:800;overflow:auto}.exam{border-left:6px solid var(--accent)}.danger{border-left:6px solid var(--danger)}.ok{border-left:6px solid var(--ok)}ul{padding-left:1.2rem;margin:.4rem 0}li{margin:.22rem 0}.compare{width:100%;border-collapse:separate;border-spacing:0;overflow:hidden;border-radius:18px;border:1px solid var(--line);background:#fff}.compare th{background:#ebe7ff;color:#282044;text-align:left;padding:12px}.compare td{padding:12px;border-top:1px solid var(--line);vertical-align:top}.flow{display:flex;flex-wrap:wrap;gap:10px;align-items:center}.step{background:#fff;border:1px solid var(--line);border-radius:16px;padding:12px 14px;font-weight:800}.arrow{font-weight:900;color:var(--brand)}.mini{font-size:.92rem;color:var(--muted)}details{background:#fff;border:1px solid var(--line);border-radius:16px;padding:14px;margin:10px 0}summary{cursor:pointer;font-weight:900;color:var(--brand)}.quiz .q{border:1px solid var(--line);border-radius:18px;background:#fff;padding:16px;margin:12px 0}.answer{display:none;margin-top:10px;padding:12px;border-radius:12px;background:#f2fff8;border-left:5px solid var(--ok)}.q:focus-within .answer,.q:hover .answer{display:block}.footer{color:var(--muted);font-size:.9rem;margin:40px 0 60px}.kbd{font-family:ui-monospace,Menlo,Consolas,monospace;background:#f2f0fa;border:1px solid var(--line);border-radius:8px;padding:1px 6px}.toc a{color:var(--brand);font-weight:800;text-decoration:none}.toc li{margin:.35rem 0}
+@media(max-width:720px){.card.big{grid-column:span 1} header{padding:24px 16px}.wrap{padding:0 12px}.compare{font-size:.92rem}.btns{position:sticky;top:0;z-index:5}}
+@media print{body{background:white}.btns,.toc{display:none}.card,details,.notice{box-shadow:none}.wrap{max-width:100%;padding:0 8px} h2{page-break-after:avoid}.card{page-break-inside:avoid} header{background:white}.answer{display:block}.pill{border-color:#bbb}.tag{border:1px solid #ddd}}
+</style>
+</head>
+<body>
+<header>
+ <div class="wrap">
+  <h1>GreekDoc: Exposome στην Παιδική Υγεία</h1>
+  <p class="sub"><b>Environment, Development & Disease</b> — μεταφρασμένο και οργανωμένο στα ελληνικά για αποστήθιση. Κεντρική ιδέα: η υγεία δεν εξηγείται μόνο από τα γονίδια, αλλά από το σύνολο των μη γενετικών εκθέσεων σε όλη τη ζωή, ειδικά στα κρίσιμα παράθυρα ανάπτυξης.</p>
+  <div class="pillbar">
+   <span class="pill">Exposome</span><span class="pill">GxE</span><span class="pill">Multi-omics</span><span class="pill">Critical windows</span><span class="pill">Precision prevention</span><span class="pill">School health</span>
+  </div>
+  <div class="btns"><button class="btn" onclick="window.print()">🖨️ Εκτύπωση / PDF</button><button class="btn secondary" onclick="document.querySelectorAll('details').forEach(d=>d.open=true)">Άνοιγμα όλων</button></div>
+ </div>
+</header>
+<main class="wrap">
+<section class="notice exam">
+ <h2 style="margin-top:0">Τι πρέπει να κρατήσεις για εξετάσεις</h2>
+ <div class="grid">
+  <div class="card"><span class="tag">1</span><h3>Ορισμός exposome</h3><p>Το <b>σύνολο των περιβαλλοντικών επιδράσεων και των βιολογικών αποκρίσεων</b> σε όλη τη διάρκεια ζωής, από τη σύλληψη και μετά.</p></div>
+  <div class="card"><span class="tag">2</span><h3>Γιατί δεν αρκεί το genome;</h3><p>Τα περισσότερα χρόνια νοσήματα και ανθρώπινα χαρακτηριστικά είναι <b>πολυγονιδιακά</b> και <b>πολυεκθεσιακά</b>. Χρειάζεται genotype + exposures + interactions.</p></div>
+  <div class="card"><span class="tag">3</span><h3>Τύπος-κλειδί</h3><div class="formula">Phenotype = Genotype + Environmental Exposures + G×E Interactions</div></div>
+  <div class="card"><span class="tag">4</span><h3>Παιδική υγεία</h3><p>Τα παιδιά έχουν <b>κρίσιμα παράθυρα ευαλωτότητας</b>, όπου η ίδια έκθεση μπορεί να έχει πολύ μεγαλύτερη επίδραση από ό,τι σε άλλη χρονική στιγμή.</p></div>
+  <div class="card"><span class="tag">5</span><h3>Precision prevention</h3><p>Πρόληψη στο <b>σωστό άτομο/υποομάδα κινδύνου</b>, στον <b>σωστό χρόνο</b>, με βάση δεδομένα exposome, biomarkers και multi-omics.</p></div>
+  <div class="card"><span class="tag">6</span><h3>Σχολεία</h3><p>Το σχολείο μπορεί να γίνει πλατφόρμα πρόληψης: περιβάλλον, νερό, αέρας, ύπνος, φυσική δραστηριότητα, ανάπτυξη, νευροανάπτυξη, αναπνευστική υγεία.</p></div>
+ </div>
+</section>
+
+<section class="toc card">
+ <h2 style="margin-top:0">Πλοήγηση</h2>
+ <ol>
+  <li><a href="#definition">Ορισμός και βασική λογική</a></li>
+  <li><a href="#components">Συστατικά του exposome</a></li>
+  <li><a href="#tools">Εργαλεία exposomics</a></li>
+  <li><a href="#gxe">G×E και κρίσιμα παράθυρα</a></li>
+  <li><a href="#children">Παιδιά, σχολεία και CHILDREN FIRST</a></li>
+  <li><a href="#takehome">Take-home messages</a></li>
+  <li><a href="#quiz">Mini quiz</a></li>
+ </ol>
+</section>
+
+<section id="definition">
+<h2>1. Exposome: ορισμός και βασική λογική</h2>
+<div class="grid">
+ <div class="card big ok"><span class="tag teal">Ορισμός Miller & Jones</span><h3>Exposome</h3><p>Το <b>αθροιστικό μέτρο των περιβαλλοντικών επιδράσεων</b> και των <b>σχετιζόμενων βιολογικών αποκρίσεων</b> καθ’ όλη τη διάρκεια ζωής, συμπεριλαμβανομένων εκθέσεων από το περιβάλλον, τη διατροφή, τη συμπεριφορά και τις ενδογενείς διεργασίες.</p><p class="mini">Με απλά λόγια: ό,τι “δέχεται” το σώμα από έξω και ό,τι παράγει/απαντά από μέσα, σε βάθος χρόνου.</p></div>
+ <div class="card"><span class="tag">Life course</span><h3>Από τη σύλληψη και μετά</h3><p>Το exposome δεν είναι μία μέτρηση μιας στιγμής. Είναι <b>δυναμικό</b>, μεταβάλλεται στον χρόνο και στον χώρο, και επηρεάζεται από ηλικία, περιβάλλον, συμπεριφορά και κοινωνικές συνθήκες.</p></div>
+ <div class="card"><span class="tag">Νέα βιολογία</span><h3>Από gene-centric σε multi-omics</h3><p>Η έμφαση μόνο στο γονιδίωμα δεν εξηγεί επαρκώς τα χρόνια νοσήματα. Το exposome προσθέτει το μη γενετικό κομμάτι και το συνδέει με layers όπως metabolomics, genomics, biomarkers κ.ά.</p></div>
+ <div class="card danger"><span class="tag red">Προσοχή</span><h3>Δεν είναι απλώς “ρύπανση”</h3><p>Το exposome περιλαμβάνει ρύπους, αλλά και <b>διατροφή, τρόπο ζωής, κοινωνικοοικονομικές συνθήκες, στρες, επάγγελμα, λοιμώξεις, ενδογενή βιοχημεία</b>.</p></div>
+</div>
+<div class="flow notice">
+ <div class="step">Γονίδια</div><div class="arrow">+</div><div class="step">Εκθέσεις</div><div class="arrow">+</div><div class="step">Χρόνος έκθεσης</div><div class="arrow">+</div><div class="step">Βιολογική απάντηση</div><div class="arrow">→</div><div class="step">Φαινότυπος / νόσος / ανθεκτικότητα</div>
+</div>
+</section>
+
+<section id="components">
+<h2>2. Τα βασικά συστατικά του exposome</h2>
+<table class="compare">
+<tr><th>Κατηγορία</th><th>Τι περιλαμβάνει</th><th>Παράδειγμα για να το θυμάσαι</th></tr>
+<tr><td><b>Γενικό εξωτερικό exposome</b></td><td>Κλίμα/καιρός, φυσικό και δομημένο περιβάλλον, κοινωνικοοικονομική κατάσταση, πολιτικές/προγράμματα, ψυχολογικό και κοινωνικό στρες.</td><td>Πού ζω, τι εισόδημα έχω, τι σχολείο/γειτονιά έχω, πόσο στρες υπάρχει.</td></tr>
+<tr><td><b>Ειδικό εξωτερικό exposome</b></td><td>Σωματίδια αέρα, αέριοι ρύποι, θόρυβος, ρυπαντές εδάφους/νερού/τροφίμων, χημικά, λοιμογόνοι παράγοντες, επάγγελμα, lifestyle.</td><td>PM2.5, μόλυβδος, φυτοφάρμακα, πλαστικοποιητές, VOCs, κάπνισμα, UV.</td></tr>
+<tr><td><b>Εσωτερικό exposome</b></td><td>Ενδογενείς διεργασίες: βιοχημικοί δείκτες, μεταβολίτες, biomarkers έκθεσης, γονιδιακή έκφραση, αναπαραγωγικές μεταβλητές.</td><td>Τι δείχνει το αίμα/ούρα/omics ότι έγινε μέσα στο σώμα μετά την έκθεση.</td></tr>
+</table>
+<div class="grid" style="margin-top:16px">
+ <div class="card"><span class="tag yellow">Mnemonic</span><h3>3 κουτιά</h3><p><b>Έξω-γενικά:</b> κοινωνία/κλίμα/πολιτικές.<br><b>Έξω-ειδικά:</b> συγκεκριμένοι ρύποι/συνήθειες.<br><b>Μέσα:</b> βιολογική απάντηση.</p></div>
+ <div class="card"><span class="tag teal">SOS</span><h3>Exposome ≠ μόνο έκθεση</h3><p>Περιλαμβάνει και τις <b>associated biological responses</b>. Δηλαδή δεν μετρά μόνο “τι υπάρχει στο περιβάλλον”, αλλά και “τι αποτύπωμα άφησε στον οργανισμό”.</p></div>
+</div>
+</section>
+
+<section id="tools">
+<h2>3. Εργαλεία exposomics στην πράξη</h2>
+<div class="grid">
+ <div class="card"><span class="tag">Self-report</span><h3>Ερωτηματολόγια / συνεντεύξεις</h3><p>Δομημένα ερωτηματολόγια, face-to-face interviews. Χρήσιμα για συμπεριφορές, διατροφή, κατοικία, κοινωνικούς παράγοντες.</p></div>
+ <div class="card"><span class="tag">Biomarkers</span><h3>Βιοδείκτες έκθεσης</h3><p>Π.χ. μόλυβδος ή υδράργυρος στο αίμα, VOCs στην εκπνοή, μεταβολίτες ρύπων σε ούρα.</p></div>
+ <div class="card"><span class="tag">Omics</span><h3>Metabolomics / genomics</h3><p>Πλατφόρμες πολλαπλών βιολογικών επιπέδων για να φανεί πώς αλλάζει ο οργανισμός μετά από εκθέσεις.</p></div>
+ <div class="card"><span class="tag">Datasets</span><h3>Υπάρχοντα δεδομένα</h3><p>Κρατικά portals, μετεωρολογικές υπηρεσίες, hospital records, county data.</p></div>
+ <div class="card"><span class="tag">Sensors</span><h3>Προσωπικοί/φορητοί αισθητήρες</h3><p>Air samplers, accelerometers, GPS smartphone, UV wristband dosimeters, μετρητές PM, θερμοκρασίας, υγρασίας, black carbon.</p></div>
+ <div class="card"><span class="tag">Geospatial</span><h3>Χωρική μοντελοποίηση</h3><p>Land-use regression, remote sensing, thermal imagery, χωροχρονική παρεμβολή.</p></div>
+ <div class="card"><span class="tag">Environmental</span><h3>Περιβαλλοντικές δοκιμές</h3><p>Έλεγχος νερού για μικροβιολογικούς/χημικούς ρυπαντές, δείγματα σκόνης από κλινοσκεπάσματα, μέταλλα στον αέρα.</p></div>
+ <div class="card"><span class="tag">Clinical</span><h3>Κλινική αξιολόγηση</h3><p>Βιοχημικός έλεγχος ορού, αμνιοπαρακέντηση, ειδικές αναλύσεις ιστών/μετάλλων κ.ά.</p></div>
+</div>
+<div class="notice exam"><b>Εξεταστικό νόημα:</b> τα exposomics εργαλεία συνδυάζουν <b>υποκειμενικά δεδομένα</b> (ερωτηματολόγια), <b>αντικειμενικές μετρήσεις έκθεσης</b> (αισθητήρες/περιβάλλον), και <b>βιολογικό αποτύπωμα</b> (biomarkers/omics).</div>
+</section>
+
+<section id="gxe">
+<h2>4. G×E, critical windows και χρόνος έκθεσης</h2>
+<div class="grid">
+ <div class="card big"><span class="tag teal">G×E</span><h3>Gene × Environment interactions</h3><p>Η επίδραση μιας έκθεσης μπορεί να εξαρτάται από το γενετικό υπόβαθρο. Αντίστροφα, η επίδραση ενός γενετικού variant μπορεί να φαίνεται μόνο κάτω από συγκεκριμένες περιβαλλοντικές συνθήκες.</p><p><b>Παράδειγμα:</b> γενετικές παραλλαγές κοντά στο <span class="kbd">AS3MT</span> συνδέθηκαν με λιγότερο αποτελεσματικό μεταβολισμό αρσενικού και τοξική έκθεση σε πληθυσμούς με έκθεση σε αρσενικό.</p></div>
+ <div class="card"><span class="tag yellow">Critical window</span><h3>Κρίσιμο παράθυρο ευαλωτότητας</h3><p>Περίοδος αυξημένης ευαισθησίας, όπου η ίδια έκθεση στον ίδιο παράγοντα έχει μεγαλύτερη επίδραση από ό,τι εκτός αυτού του χρονικού παραθύρου.</p></div>
+ <div class="card"><span class="tag red">Παράδειγμα</span><h3>Τερατογόνα</h3><p>Η θαλιδομίδη δρα μόνο σε πολύ στενή περίοδο της εμβρυϊκής ανάπτυξης. Άρα δεν μετρά μόνο η δόση, αλλά και το <b>πότε</b> συμβαίνει η έκθεση.</p></div>
+ <div class="card"><span class="tag">Vulnerability</span><h3>Ευαλωτότητα vs ευαισθησία</h3><p><b>Susceptibility:</b> βιολογική τάση να προκληθεί βλάβη από έκθεση.<br><b>Vulnerability:</b> περιλαμβάνει και πιθανότητα έκθεσης + ικανότητα ανταπόκρισης/προσαρμογής.</p></div>
+ <div class="card"><span class="tag">Chronos</span><h3>Χρονοβιολογία και αποσυγχρονισμός</h3><p>Ο κιρκάδιος ρυθμός και οι επαναλαμβανόμενες εκθέσεις μπορούν να συγχρονίζονται ή να αποσυγχρονίζονται. Αποσυγχρονισμός σε κρίσιμα παράθυρα μπορεί να οδηγήσει σε αυξημένη τοξικότητα και διαφοροποιημένους φαινότυπους νόσου.</p></div>
+</div>
+<div class="flow notice">
+ <div class="step">Ίδια έκθεση</div><div class="arrow">+</div><div class="step">ίδια δόση</div><div class="arrow">αλλά</div><div class="step">άλλο χρονικό παράθυρο</div><div class="arrow">→</div><div class="step">διαφορετικός κίνδυνος νόσου</div>
+</div>
+</section>
+
+<section>
+<h2>5. ExWAS και πέρα από τη “μία αιτία”</h2>
+<div class="grid">
+ <div class="card"><span class="tag">ExWAS</span><h3>Exposure-wide association studies</h3><p>Αντί να εξετάζουμε έναν μόνο ρύπο ή έναν μόνο παράγοντα, εξετάζουμε πολλαπλές εκθέσεις ταυτόχρονα και τη σχέση τους με βιοδείκτες ή νόσο.</p></div>
+ <div class="card"><span class="tag">Παράδειγμα</span><h3>Χρονο-μεταβολισμός xenobiotics</h3><p>RCT με κατανάλωση φρούτων/λαχανικών σε διαφορετικές χρονικές φάσεις έδειξε ότι ο μεταβολισμός ουσιών όπως φυτοφάρμακα, VOCs, parabens, phytoestrogens, flame retardants μπορεί να διαφοροποιείται χρονικά.</p></div>
+ <div class="card"><span class="tag red">Μάθημα</span><h3>Η πραγματική ζωή δεν είναι “καθαρό πείραμα”</h3><p>Διατροφή, συσκευασίες τροφίμων, κάπνισμα, προσωπικά προϊόντα, μαγείρεμα/επεξεργασία τροφίμων μπορούν να επηρεάζουν τα biomarkers. Άρα χρειάζονται repeated measures και καλός σχεδιασμός.</p></div>
+</div>
+</section>
+
+<section id="children">
+<h2>6. Εφαρμογές: Precision prevention και σχολική υγεία</h2>
+<div class="grid">
+ <div class="card big ok"><span class="tag teal">Precision prevention</span><h3>Πρόληψη ακριβείας</h3><p>Προσαρμογή προληπτικών μοντέλων στο <b>σωστό άτομο</b> ή στην <b>σωστή υποομάδα κινδύνου</b>, τη <b>σωστή χρονική στιγμή</b>. Μπορεί να αφορά πρώιμη ανακάλυψη biomarkers, πρόβλεψη νόσου και παρεμβάσεις πρόληψης.</p></div>
+ <div class="card"><span class="tag">Πρωτογενής</span><h3>Primary prevention</h3><p>Μείωση ατομικού κινδύνου πριν αρχίσει η νόσος, π.χ. περιορισμός ρύπων/βελτίωση σχολικού περιβάλλοντος.</p></div>
+ <div class="card"><span class="tag">Δευτερογενής</span><h3>Secondary prevention</h3><p>Επιβράδυνση υποκλινικής νόσου ή πρώιμη αναγνώριση κινδύνου μέσω biomarkers/monitoring.</p></div>
+ <div class="card"><span class="tag">Τριτογενής</span><h3>Tertiary prevention</h3><p>Μείωση επίδρασης εγκατεστημένης νόσου ή παρενεργειών, με εξατομικευμένες παρεμβάσεις.</p></div>
+</div>
+
+<h2>CHILDREN FIRST / Παρατηρητήριο Παιδικής Υγείας και Περιβάλλοντος</h2>
+<div class="grid">
+ <div class="card"><span class="tag teal">Στόχος</span><h3>Κατανόηση παιδικού exposome</h3><p>Μελέτη των περιβαλλοντικών καθοριστών που επηρεάζουν χρόνια νοσήματα, ανάπτυξη και εξέλιξη των παιδιών.</p></div>
+ <div class="card"><span class="tag">Πού</span><h3>Σχολείο + σπίτι</h3><p>Ετήσιες αξιολογήσεις περιβάλλοντος στο σχολείο και στο σπίτι, συνδεδεμένες με εκβάσεις υγείας.</p></div>
+ <div class="card"><span class="tag">Εκβάσεις</span><h3>Τι μετράμε στα παιδιά</h3><p>Καρδιομεταβολικά, νευροαναπτυξιακά, αναπνευστικά, ανάπτυξη/μεγέθυνση, ποιότητα ζωής.</p></div>
+ <div class="card"><span class="tag">Περιβάλλον</span><h3>Τι ελέγχεται</h3><p>Εσωτερικός αέρας, πόσιμο νερό, φυτοφάρμακα, μέταλλα, πλαστικοποιητές, πιθανές περιβαλλοντικές εκθέσεις.</p></div>
+ <div class="card"><span class="tag">Συμπεριφορά</span><h3>Τρόπος ζωής</h3><p>BMI/διατροφή, screen time, ύπνος, φυσική δραστηριότητα.</p></div>
+ <div class="card"><span class="tag">Βιολογία</span><h3>Βιολογική παρακολούθηση</h3><p>Ηπατική/νεφρική λειτουργία, αρτηριακή πίεση, ορμόνες, multi-omics profiles.</p></div>
+</div>
+<div class="notice exam"><b>Κεντρική ιδέα για αποστήθιση:</b> τα σχολεία μπορούν να λειτουργήσουν ως κόμβοι πρωτογενούς πρόληψης: όχι μόνο εκπαίδευση, αλλά και <b>υγεία, ευεξία, περιβάλλον, κοινωνική παρέμβαση</b>.</div>
+</section>
+
+<section>
+<h2>7. Ευρωπαϊκή/πολιτική διάσταση</h2>
+<div class="grid">
+ <div class="card"><span class="tag">EU</span><h3>Precision & preventive health</h3><p>Η Ευρώπη προωθεί το exposome ως βασικό εργαλείο για πρόληψη ακριβείας και πολιτικές δημόσιας υγείας με βάση δεδομένα.</p></div>
+ <div class="card"><span class="tag">Human Exposome Network</span><h3>Ευρωπαϊκό δίκτυο</h3><p>Το European Human Exposome Network, χρηματοδοτημένο από Horizon 2020, τοποθέτησε την Ευρώπη σε ηγετική θέση στη σύνδεση περιβάλλοντος, τρόπου ζωής και δεδομένων υγείας.</p></div>
+ <div class="card"><span class="tag">Health in All Policies</span><h3>Πολιτικό μήνυμα</h3><p>Το exposome μετακινείται από την έρευνα στην πολιτική, υποστηρίζοντας πιο δίκαιες, προληπτικές και data-driven στρατηγικές, ιδιαίτερα για παιδιά.</p></div>
+ <div class="card"><span class="tag">EU Child Guarantee</span><h3>Παιδική ισότητα</h3><p>Το exposome μπορεί να βοηθήσει σε προγράμματα που λαμβάνουν υπόψη πολλαπλούς περιβαλλοντικούς κινδύνους και κοινωνικές ανισότητες, ώστε να μη μένει κανένα παιδί πίσω.</p></div>
+</div>
+</section>
+
+<section id="takehome">
+<h2>8. Take-home messages</h2>
+<div class="grid">
+ <div class="card exam"><span class="tag yellow">SOS</span><h3>Το exposome συμπληρώνει το genome</h3><p>Δεν αντικαθιστά τη γενετική· συμπληρώνει το γονιδίωμα με το μεταβλητό, μη γενετικό περιβάλλον.</p></div>
+ <div class="card exam"><span class="tag yellow">SOS</span><h3>Είναι πιο μεταβλητό από το genome</h3><p>Αλλάζει σε χρόνο, χώρο, ηλικία, συμπεριφορά, κοινωνικές συνθήκες και περιβάλλον.</p></div>
+ <div class="card exam"><span class="tag yellow">SOS</span><h3>Η χρονική στιγμή μετράει</h3><p>Η ίδια έκθεση μπορεί να έχει διαφορετική επίδραση αν συμβεί σε κρίσιμο παράθυρο ευαλωτότητας.</p></div>
+ <div class="card exam"><span class="tag yellow">SOS</span><h3>Τα χρόνια νοσήματα είναι πολυπαραγοντικά</h3><p>Χρειάζεται να δούμε δίκτυα εκθέσεων, omics και αλληλεπιδράσεις, όχι μία αιτία.</p></div>
+ <div class="card exam"><span class="tag yellow">SOS</span><h3>Πρόληψη ακριβείας</h3><p>Το exposome μπορεί να στηρίξει primary, secondary και tertiary prevention.</p></div>
+ <div class="card exam"><span class="tag yellow">SOS</span><h3>Παιδιά και σχολεία</h3><p>Τα σχολεία μπορούν να γίνουν υγιή περιβάλλοντα και υποδομές παρακολούθησης/πρόληψης.</p></div>
+</div>
+</section>
+
+<section>
+<h2>9. Συχνές παγίδες / διευκρινίσεις</h2>
+<details><summary>Exposome και περιβαλλοντική υγεία είναι το ίδιο;</summary><p>Όχι ακριβώς. Η περιβαλλοντική υγεία είναι μέρος της λογικής, αλλά το exposome είναι πιο ολιστικό: περιλαμβάνει εξωτερικές εκθέσεις, κοινωνικές συνθήκες, συμπεριφορές, εσωτερικούς βιοδείκτες και omics σε όλη τη ζωή.</p></details>
+<details><summary>Γιατί έχει τόση έμφαση στα παιδιά;</summary><p>Επειδή η ανάπτυξη έχει κρίσιμα παράθυρα ευαλωτότητας. Μια έκθεση στην κύηση, στη νεογνική περίοδο ή στην παιδική ηλικία μπορεί να επηρεάσει αναπτυξιακές τροχιές και μελλοντικό κίνδυνο χρόνιων νοσημάτων.</p></details>
+<details><summary>Τι σημαίνει “virtual twin” σχολείου/παιδιού;</summary><p>Μοντέλο που συνδυάζει δεδομένα περιβάλλοντος, συμπεριφοράς, υγείας και omics για να προβλέψει κινδύνους και να σχεδιάσει προληπτικές παρεμβάσεις.</p></details>
+<details><summary>Γιατί χρειάζονται repeated measures;</summary><p>Επειδή το exposome είναι δυναμικό. Μια μέτρηση μπορεί να χάσει διακυμάνσεις, εποχικότητα, κιρκάδιους ρυθμούς και έκθεση σε κρίσιμα παράθυρα.</p></details>
+</section>
+
+<section id="quiz" class="quiz">
+<h2>10. Mini quiz με άμεση απάντηση</h2>
+<div class="q"><b>1. Ποια είναι η καλύτερη περιγραφή του exposome;</b><br>Α. Το γονιδίωμα του ανθρώπου<br>Β. Το σύνολο μη γενετικών εκθέσεων και βιολογικών αποκρίσεων σε όλη τη ζωή<br>Γ. Μόνο η ατμοσφαιρική ρύπανση<br>Δ. Μόνο οι κοινωνικοί καθοριστές<br><div class="answer"><b>Σωστό: Β.</b> Περιλαμβάνει περιβάλλον, διατροφή, συμπεριφορά, ενδογενείς διεργασίες και βιολογική απόκριση.</div></div>
+<div class="q"><b>2. Γιατί η ίδια έκθεση μπορεί να έχει διαφορετικό αποτέλεσμα;</b><br>Α. Επειδή η δόση δεν έχει σημασία<br>Β. Επειδή εξαρτάται από το κρίσιμο παράθυρο, το γενετικό υπόβαθρο και τη βιολογική κατάσταση<br>Γ. Επειδή μόνο τα γονίδια μετρούν<br>Δ. Επειδή οι εκθέσεις δεν μπορούν να μετρηθούν<br><div class="answer"><b>Σωστό: Β.</b> Χρόνος έκθεσης + G×E + κατάσταση οργανισμού αλλάζουν τον κίνδυνο.</div></div>
+<div class="q"><b>3. Τι από τα παρακάτω είναι εργαλείο exposomics;</b><br>Α. Φορητός αισθητήρας αέρα<br>Β. Μεταβολομική<br>Γ. Ερωτηματολόγιο<br>Δ. Όλα τα παραπάνω<br><div class="answer"><b>Σωστό: Δ.</b> Το exposomics συνδυάζει πολλά είδη δεδομένων.</div></div>
+<div class="q"><b>4. Τι σημαίνει precision prevention;</b><br>Α. Ίδια παρέμβαση για όλους<br>Β. Πρόληψη στο κατάλληλο άτομο/ομάδα, στον κατάλληλο χρόνο<br>Γ. Θεραπεία μόνο αφού εμφανιστεί νόσος<br>Δ. Μόνο γονιδιακός έλεγχος<br><div class="answer"><b>Σωστό: Β.</b> Χρησιμοποιεί δεδομένα κινδύνου, biomarkers και εκθέσεις για στοχευμένη πρόληψη.</div></div>
+<div class="q"><b>5. Ποιο είναι το βασικό μήνυμα για τα σχολεία;</b><br>Α. Τα σχολεία δεν σχετίζονται με υγεία<br>Β. Τα σχολεία είναι μόνο εκπαιδευτικοί χώροι<br>Γ. Τα σχολεία μπορούν να γίνουν χώροι παρακολούθησης, πρόληψης και προαγωγής υγείας<br>Δ. Τα σχολεία πρέπει να κάνουν μόνο BMI<br><div class="answer"><b>Σωστό: Γ.</b> Η παρουσίαση συνδέει σχολικό περιβάλλον, δεδομένα exposome και προληπτικές παρεμβάσεις.</div></div>
+</section>
+
+<section class="footer">
+<p><b>Πηγή:</b> AUTH Medicine Undergrad 2026, “Exposome in Children’s Health: Environment, Development and Disease”, Konstantinos C. Makris, PhD.</p>
+<p>GreekDoc φτιαγμένο για γρήγορη επανάληψη: κράτα πρώτα τον ορισμό, τα 3 κουτιά του exposome, τα εργαλεία, το G×E/critical windows και την εφαρμογή στα σχολεία.</p>
+</section>
+</main>
+</body>
+</html>

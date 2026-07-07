@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="el">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>GreekDoc | Επιδημιολογία και Πρόληψη Κακώσεων</title>
+<style>
+  :root{
+    --bg:#fff8f3; --paper:#ffffff; --ink:#27211f; --muted:#6f625c;
+    --brand:#c96b35; --brand2:#7b3f9f; --soft:#fde8d7; --soft2:#efe3ff;
+    --danger:#b42318; --ok:#287a4b; --line:#ead7cc;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:linear-gradient(180deg,var(--bg),#fff);font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Noto Sans",Arial,sans-serif;color:var(--ink);line-height:1.55}
+  header{padding:34px 22px 24px;background:linear-gradient(135deg,#fff1e6,#f3e8ff);border-bottom:1px solid var(--line)}
+  .wrap{max-width:1180px;margin:auto}
+  h1{margin:0;font-size:clamp(28px,4vw,46px);line-height:1.08;color:#3a1f11}
+  .subtitle{font-size:18px;color:var(--muted);margin-top:10px;max-width:900px}
+  .toolbar{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+  button,.chip{border:1px solid var(--line);background:#fff;border-radius:999px;padding:10px 14px;color:#3a1f11;font-weight:700;box-shadow:0 2px 8px #0000000a}
+  button{cursor:pointer}.chip{display:inline-flex;align-items:center;gap:6px}
+  nav{position:sticky;top:0;z-index:10;background:#fffdfbcc;border-bottom:1px solid var(--line);backdrop-filter:blur(8px)}
+  nav .wrap{display:flex;gap:8px;overflow:auto;padding:10px 18px}
+  nav a{white-space:nowrap;text-decoration:none;color:#4b2b1d;border:1px solid var(--line);padding:8px 12px;border-radius:999px;background:#fff}
+  section{padding:28px 20px}.section-title{display:flex;align-items:center;gap:10px;margin:0 0 16px}
+  .section-title h2{margin:0;font-size:28px}.tag{font-size:13px;font-weight:800;color:#fff;background:var(--brand);padding:4px 9px;border-radius:999px}
+  .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:14px}
+  .card{grid-column:span 4;background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:18px;box-shadow:0 8px 25px #7b3f9f0d}
+  .card.wide{grid-column:span 8}.card.full{grid-column:1/-1}.card.half{grid-column:span 6}.card.small{grid-column:span 3}
+  .card h3{margin:0 0 10px;color:#46210f;font-size:20px}.card p{margin:8px 0}.card ul{padding-left:22px;margin:8px 0}.card li{margin:6px 0}
+  .note{background:var(--soft);border-left:5px solid var(--brand);padding:12px;border-radius:12px;margin-top:10px}.purple{background:var(--soft2);border-left-color:var(--brand2)}
+  .danger{background:#fff0ee;border-left-color:var(--danger)}.ok{background:#effaf3;border-left-color:var(--ok)}
+  table{width:100%;border-collapse:collapse;background:#fff;border-radius:14px;overflow:hidden;border:1px solid var(--line)}
+  th,td{padding:11px 12px;border-bottom:1px solid var(--line);vertical-align:top}th{background:#fff1e6;text-align:left;color:#3a1f11}tr:last-child td{border-bottom:0}
+  .formula{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;background:#fff7ed;border:1px dashed #d28a55;border-radius:12px;padding:12px;margin:10px 0}
+  details{border:1px solid var(--line);border-radius:14px;padding:12px 14px;background:#fff;margin:10px 0}summary{cursor:pointer;font-weight:800;color:#4b2b1d}
+  .quiz .q{border:1px solid var(--line);border-radius:16px;background:#fff;padding:14px;margin:12px 0}.answer{display:none;margin-top:10px}.q.open .answer{display:block}.q button{margin-top:8px;border-radius:12px}
+  .exam{border:2px solid #d28a55;background:#fffaf6}.mini{font-size:14px;color:var(--muted)}
+  footer{padding:30px 20px;color:var(--muted);border-top:1px solid var(--line)}
+  @media(max-width:900px){.card,.card.wide,.card.half,.card.small{grid-column:1/-1}nav{position:static}}
+  @media print{nav,.toolbar,button{display:none!important}body{background:#fff}.card{break-inside:avoid;box-shadow:none}section{padding:14px 0}header{padding:18px 0}.wrap{max-width:100%}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <h1>Επιδημιολογία & Πρόληψη Κακώσεων</h1>
+  <div class="subtitle">GreekDoc για εξετάσεις: γιατί δεν λέμε απλώς «ατυχήματα», ποιοι κινδυνεύουν, πώς προλαμβάνονται τα τροχαία, και πώς χρησιμοποιείται η μήτρα Haddon.</div>
+  <div class="toolbar"><button onclick="window.print()">🖨️ Εκτύπωση / PDF</button><span class="chip">🧠 Grid αποστήθισης</span><span class="chip">🚗 Haddon matrix</span><span class="chip">⚠️ SOS εξετάσεων</span></div>
+</div></header>
+<nav><div class="wrap">
+  <a href="#sos">SOS</a><a href="#basics">Βασικές έννοιες</a><a href="#traffic">Τροχαία</a><a href="#haddon">Haddon</a><a href="#home">Οικιακές</a><a href="#work">Εργασία</a><a href="#quiz">Mini quiz</a>
+</div></nav>
+
+<section id="sos"><div class="wrap">
+  <div class="section-title"><span class="tag">SOS</span><h2>Τι να ξέρεις πρώτο</h2></div>
+  <div class="grid">
+    <div class="card exam"><h3>1. Οι κακώσεις προλαμβάνονται</h3><p>Το βασικό μήνυμα της παρουσίασης είναι ότι τα γεγονότα που οδηγούν σε κακώσεις είναι <b>προβλέψιμα</b> και η σοβαρότητα/έκβαση μπορεί να μειωθεί με παρεμβάσεις.</p><div class="note">Γι’ αυτό στον επιστημονικό λόγο αποφεύγεται ο όρος «ατύχημα», γιατί αφήνει την εντύπωση ότι είναι τύχη και όχι πρόληψη.</div></div>
+    <div class="card exam"><h3>2. Τρεις μεγάλες κατηγορίες</h3><ul><li>Κακώσεις σχετιζόμενες με <b>τροχαία</b>.</li><li>Κακώσεις <b>οικιακού περιβάλλοντος & ελευθέρου χρόνου</b>.</li><li>Κακώσεις σχετιζόμενες με την <b>εργασία</b>.</li></ul></div>
+    <div class="card exam"><h3>3. Τροχαία: οι 5 κλασικοί παράγοντες</h3><ul><li>Ταχύτητα</li><li>Αλκοόλ</li><li>Κράνος</li><li>Ζώνη ασφαλείας</li><li>Περιορισμοί/καθίσματα για παιδιά</li></ul><p class="mini">Συν: απόσπαση προσοχής, ειδικά κινητό.</p></div>
+    <div class="card exam"><h3>4. Haddon matrix</h3><p>Πίνακας που οργανώνει την πρόληψη ανά <b>φάση</b> και ανά <b>παράγοντα</b>.</p><div class="formula">Φάσεις: πριν το γεγονός → γεγονός → μετά το γεγονός<br>Παράγοντες: άνθρωπος → όχημα → περιβάλλον</div></div>
+    <div class="card exam"><h3>5. Εργατικές κακώσεις</h3><p>Πρόβλημα: ο πραγματικός αριθμός συχνά παραμένει άγνωστος λόγω <b>υποκαταγραφής</b> και διαφορετικών ορισμών/φορέων.</p><div class="note purple">Χωρίς αξιόπιστα δεδομένα, η πρόληψη γίνεται πολύ δύσκολη.</div></div>
+    <div class="card exam"><h3>6. Αριθμοί που αξίζει να θυμάσαι</h3><ul><li>Τροχαία: περίπου <b>1,3 εκατομμύρια θάνατοι/έτος</b> παγκοσμίως.</li><li>1η αιτία θανάτου στις ηλικίες <b>5–29 ετών</b>.</li><li>Χρήση κινητού: περίπου <b>4πλάσιος</b> κίνδυνος τροχαίου.</li></ul></div>
+  </div>
+</div></section>
+
+<section id="basics"><div class="wrap">
+  <div class="section-title"><span class="tag">01</span><h2>Βασικές έννοιες</h2></div>
+  <div class="grid">
+    <div class="card half"><h3>Κάκωση vs γεγονός</h3><table><tr><th>Όρος</th><th>Τι σημαίνει</th></tr><tr><td><b>Γεγονός</b></td><td>Το συμβάν που δημιουργεί συνθήκες κινδύνου, π.χ. σύγκρουση, πτώση, πυρκαγιά.</td></tr><tr><td><b>Κάκωση</b></td><td>Η βλάβη στον οργανισμό που προκύπτει από το γεγονός, π.χ. κάταγμα, έγκαυμα, τραύμα κεφαλής.</td></tr><tr><td><b>«Ατύχημα»</b></td><td>Λέξη που αποφεύγεται, γιατί υπονοεί μη προβλεψιμότητα και κακή τύχη.</td></tr></table></div>
+    <div class="card half"><h3>Γιατί δημόσια υγεία;</h3><ul><li>Οι κακώσεις έχουν μοτίβα στον πληθυσμό.</li><li>Έχουν παράγοντες κινδύνου που αναγνωρίζονται.</li><li>Μπορούν να μειωθούν με νομοθεσία, εκπαίδευση, υποδομές και καλύτερη φροντίδα.</li><li>Ακόμη και όταν συμβεί το γεγονός, μπορεί να μειωθεί η βαρύτητα της κάκωσης.</li></ul></div>
+    <div class="card full"><h3>Κατηγορίες κακώσεων</h3><div class="grid"><div class="card small"><h3>🚗 Τροχαία</h3><p>Σύγκρουση, παράσυρση πεζού, μοτοσικλέτα, ποδήλατο, χρήση δρόμου.</p></div><div class="card small"><h3>🏠 Οικιακές / ελεύθερος χρόνος</h3><p>Πτώσεις, εγκαύματα, δηλητηριάσεις, πνιγμοί, αιχμηρά αντικείμενα.</p></div><div class="card small"><h3>🏭 Εργασιακές</h3><p>Συμβάντα στον χώρο εργασίας ή κατά την εργασία.</p></div><div class="card small"><h3>📊 Καταγραφή</h3><p>Η επιτήρηση είναι απαραίτητη για να σχεδιαστούν παρεμβάσεις.</p></div></div></div>
+  </div>
+</div></section>
+
+<section id="traffic"><div class="wrap">
+  <div class="section-title"><span class="tag">02</span><h2>Τροχαία: επιδημιολογία και παράγοντες κινδύνου</h2></div>
+  <div class="grid">
+    <div class="card wide"><h3>Σημαντικά δεδομένα</h3><ul><li>Περίπου <b>1,3 εκατομμύρια άνθρωποι</b> πεθαίνουν κάθε χρόνο παγκοσμίως από τροχαία.</li><li>Είναι η <b>1η αιτία θανάτου</b> στις ηλικίες 5–29 ετών.</li><li>Περίπου οι μισοί θάνατοι αφορούν <b>ευάλωτους χρήστες δρόμων</b>: πεζούς, ποδηλάτες, μοτοσικλετιστές.</li><li>Λίγες χώρες έχουν πλήρη νομοθεσία και για τους 5 βασικούς παράγοντες κινδύνου.</li></ul></div>
+    <div class="card"><h3>Στην Ελλάδα</h3><p>Η παρουσίαση αναφέρει περίπου <b>65 τροχαία καθημερινά</b>, με <b>4 θανάτους</b> και <b>80 τραυματισμούς</b>.</p><div class="note danger">Συγκριτικά με τα κυκλοφορούντα οχήματα, τα θύματα είναι πολλαπλάσια σε σχέση με άλλες ευρωπαϊκές χώρες.</div></div>
+    <div class="card half"><h3>Κυριότερες αιτίες τροχαίων</h3><ul><li>Υπερβολική ταχύτητα.</li><li>Μη τήρηση ΚΟΚ.</li><li>Κακή κατασκευή, συντήρηση ή φωτισμός δρόμων.</li><li>Ελλιπής/κακή σηματοδότηση.</li><li>Κακή συντήρηση οχήματος.</li><li>Μη χρήση ζώνης.</li><li>Κόπωση, αμέλεια, μέθη οδηγού.</li></ul></div>
+    <div class="card half"><h3>Ποιοι κινδυνεύουν περισσότερο;</h3><table><tr><th>Παράγοντας</th><th>Στοιχείο</th></tr><tr><td>Κοινωνικοοικονομική κατάσταση</td><td>Χαμηλότερη κατάσταση → αυξημένος κίνδυνος, ακόμη και σε χώρες υψηλού εισοδήματος.</td></tr><tr><td>Ηλικία</td><td>15–44 ετών: 59% των τροχαίων παγκοσμίως.</td></tr><tr><td>Φύλο</td><td>Άνδρες: 77% των θανάτων. Άνδρες ≤25 ετών: περίπου 3πλάσια πιθανότητα θανατηφόρου τροχαίου.</td></tr></table></div>
+    <div class="card full"><h3>Οι 6 παράγοντες κινδύνου που πρέπει να θυμάσαι</h3><table><tr><th>Παράγοντας</th><th>Τι λέει η παρουσίαση</th><th>Πρόληψη</th></tr><tr><td><b>Ταχύτητα</b></td><td>Αυξάνει πιθανότητα τροχαίου και σοβαρότητα σύγκρουσης. Πεζοί επιβιώνουν πιο συχνά αν το όχημα κινείται ≤30 km/h.</td><td>Όρια ταχύτητας, 30 km/h σε κατοικημένες περιοχές/σχολεία.</td></tr><tr><td><b>Αλκοόλ</b></td><td>Αυξάνει πιθανότητα και σοβαρότητα. Κρίσιμο όριο 0,04 g/dl, νομοθετική απαγόρευση >0,05 g/dl.</td><td>Αλκοτέστ, νομοθεσία, έλεγχοι.</td></tr><tr><td><b>Κράνος</b></td><td>Μειώνει θάνατο κατά 42% και σοβαρό τραυματισμό κατά 69%.</td><td>Υποχρεωτική χρήση, πιστοποιημένα κράνη.</td></tr><tr><td><b>Ζώνη ασφαλείας</b></td><td>Μειώνει θάνατο 45–50% μπροστά και 25% πίσω.</td><td>Νόμοι, έλεγχοι, εκπαίδευση.</td></tr><tr><td><b>Παιδικοί περιορισμοί</b></td><td>Μπορούν να μειώσουν παιδικούς θανάτους κατά 60%.</td><td>Παιδικά καθίσματα, ηλικιακοί/σωματικοί κανόνες.</td></tr><tr><td><b>Απόσπαση προσοχής</b></td><td>Χρήση κινητού → 4πλάσια πιθανότητα τροχαίου. Hands-free όχι πολύ ασφαλέστερο.</td><td>Απαγόρευση, καμπάνιες, συλλογή δεδομένων.</td></tr></table></div>
+  </div>
+</div></section>
+
+<section id="haddon"><div class="wrap">
+  <div class="section-title"><span class="tag">03</span><h2>Μοντέλο ελέγχου & Haddon matrix</h2></div>
+  <div class="grid">
+    <div class="card half"><h3>Μοντέλο ελέγχου τροχαίων</h3><div class="formula">Επιτήρηση επιπολασμού → Αναζήτηση παραγόντων κινδύνου → Παρέμβαση → Αξιολόγηση</div><p>Αυτό είναι το κλασικό μοντέλο δημόσιας υγείας: πρώτα μετράμε, μετά βρίσκουμε αίτια, μετά παρεμβαίνουμε, και τέλος αξιολογούμε αν δούλεψε.</p></div>
+    <div class="card half"><h3>Παράγοντες κινδύνου τροχαίων</h3><div class="grid"><div class="card small"><h3>Άνθρωπος</h3><p>Αλκοόλ, κόπωση, ταχύτητα, μη χρήση ζώνης/κράνους, κινητό.</p></div><div class="card small"><h3>Όχημα</h3><p>Συντήρηση, αερόσακος, φρένα, τεχνικά χαρακτηριστικά ασφάλειας.</p></div><div class="card small"><h3>Περιβάλλον</h3><p>Δρόμος, φωτισμός, σηματοδότηση, καιρός, εμπόδια κοντά στον δρόμο.</p></div></div></div>
+    <div class="card full"><h3>Η μήτρα Haddon</h3><p>Χρησιμοποιείται για σχεδιασμό πρόληψης, κατανομή κονδυλίων και στρατηγική αναζήτηση παρεμβάσεων.</p><table><tr><th></th><th>Άνθρωπος</th><th>Όχημα</th><th>Περιβάλλον</th></tr><tr><td><b>Πριν το γεγονός</b></td><td>Αλκοόλ, εκπαίδευση, ταχύτητα, χρήση κινητού.</td><td>Συντήρηση οχήματος, φρένα, φώτα.</td><td>Βράδυ, βροχή, κακός φωτισμός, κακή σηματοδότηση.</td></tr><tr><td><b>Κατά το γεγονός</b></td><td>Χωρίς ζώνη/κράνος.</td><td>Χωρίς αερόσακο, χαμηλή παθητική ασφάλεια.</td><td>Δέντρο/εμπόδιο κοντά στον δρόμο, επικίνδυνο οδόστρωμα.</td></tr><tr><td><b>Μετά το γεγονός</b></td><td>Καθυστέρηση κλήσης βοήθειας, πρώτες βοήθειες.</td><td>Δυσκολία απεγκλωβισμού.</td><td>Βραδεία αντίδραση ΕΚΑΒ, μεγάλη απόσταση από νοσοκομείο.</td></tr></table><div class="note">Εξεταστικά: αν σου δώσουν παράδειγμα, σκέψου πάντα σε δύο άξονες: <b>πότε;</b> πριν/κατά/μετά και <b>πού;</b> άνθρωπος/όχημα/περιβάλλον.</div></div>
+    <div class="card full"><h3>Πρόληψη τροχαίων</h3><ul><li>Εμπλοκή πολλών φορέων: μεταφορές, αστυνομία, υγεία, παιδεία.</li><li>Ασφαλέστερα οδικά δίκτυα.</li><li>Βελτίωση χαρακτηριστικών ασφάλειας οχημάτων.</li><li>Βελτίωση διακομιδής και ιατρικής φροντίδας μετά το συμβάν.</li><li>Παρεμβάσεις στη συμπεριφορά: ταχύτητα, αλκοόλ, κράνος, ζώνη, παιδικά καθίσματα, κινητό.</li><li>Νομοθεσία και πραγματική εφαρμογή νόμων.</li></ul></div>
+  </div>
+</div></section>
+
+<section id="home"><div class="wrap">
+  <div class="section-title"><span class="tag">04</span><h2>Κακώσεις οικιακού περιβάλλοντος & ελευθέρου χρόνου</h2></div>
+  <div class="grid">
+    <div class="card full"><h3>Ταξινόμηση με βάση τον αιτιολογικό μηχανισμό</h3><div class="grid"><div class="card small"><h3>Πτώσεις</h3><p>Συχνές σε παιδιά και ηλικιωμένους, σχετίζονται με περιβάλλον και επίβλεψη.</p></div><div class="card small"><h3>Δηλητηριάσεις</h3><p>Χημικές ουσίες, φάρμακα, οικιακά προϊόντα.</p></div><div class="card small"><h3>Εγκαύματα</h3><p>Θερμότητα, φωτιά, καυτά υγρά, ηλεκτρισμός.</p></div><div class="card small"><h3>Πνιγμοί</h3><p>Νερό, πισίνες, θάλασσα, ανεπαρκής επίβλεψη.</p></div><div class="card small"><h3>Μηχανήματα/αιχμηρά</h3><p>Κοψίματα, ακρωτηριασμοί, τραύματα.</p></div><div class="card small"><h3>Όπλα</h3><p>Τραυματισμοί από πυροβόλα ή άλλα όπλα.</p></div><div class="card small"><h3>Φάρμακα</h3><p>Δηλητηριάσεις από φάρμακα, λάθος δόση ή πρόσβαση παιδιών.</p></div></div></div>
+    <div class="card half"><h3>Παιδικές κακώσεις στην Ελλάδα</h3><p>Για παιδιά 0–14 ετών, η παρουσίαση αναφέρει 1.593 ακούσιους θανάτους την περίοδο 1992–2004.</p><table><tr><th>Αίτιο</th><th>Θάνατοι</th></tr><tr><td>Τροχαία</td><td>874</td></tr><tr><td>Πνιγμοί</td><td>135</td></tr><tr><td>Πτώσεις</td><td>82</td></tr><tr><td>Εγκαύματα</td><td>47</td></tr><tr><td>Δηλητηριάσεις</td><td>23</td></tr><tr><td>Αδιευκρίνιστες αιτίες</td><td>432</td></tr></table></div>
+    <div class="card half"><h3>Τι δείχνουν αυτά εξεταστικά;</h3><ul><li>Τα τροχαία είναι πολύ σημαντική αιτία παιδικής θνησιμότητας.</li><li>Οι κακώσεις δεν είναι μόνο “δρόμος”: σπίτι, σχολείο, παιχνίδι και ελεύθερος χρόνος έχουν μεγάλο ρόλο.</li><li>Η πρόληψη συνδέεται με επίβλεψη, ασφαλές περιβάλλον, εκπαίδευση, νομοθεσία και σωστή καταγραφή.</li></ul></div>
+  </div>
+</div></section>
+
+<section id="work"><div class="wrap">
+  <div class="section-title"><span class="tag">05</span><h2>Κακώσεις που σχετίζονται με την εργασία</h2></div>
+  <div class="grid">
+    <div class="card half"><h3>Το βασικό πρόβλημα: υποκαταγραφή</h3><ul><li>Ο αληθινός αριθμός εργατικών συμβάντων παραμένει συχνά άγνωστος.</li><li>Υπάρχουν μεγάλες αποκλίσεις μεταξύ διαφορετικών φορέων.</li><li>Χρειάζεται κοινός ορισμός εργατικού ατυχήματος.</li><li>Χρειάζεται συνεργασία αρμόδιων φορέων.</li></ul></div>
+    <div class="card half"><h3>Γιατί έχει σημασία η καταγραφή;</h3><p>Χωρίς αξιόπιστα στατιστικά στοιχεία, η πρόληψη γίνεται εξαιρετικά δύσκολη, γιατί δεν ξέρουμε με ακρίβεια πού, σε ποιους και γιατί συμβαίνουν οι κακώσεις.</p><div class="note danger">Ειδικό πρόβλημα: πολλά συμβάντα δεν καταγράφονται, ειδικά όταν αφορούν ανασφάλιστους εργαζόμενους ή ευάλωτες εργασιακές ομάδες.</div></div>
+    <div class="card full"><h3>Προτεραιότητες πρόληψης στην εργασία</h3><ul><li>Χωρίς διακρίσεις ασφαλιστική κάλυψη εργαζομένων.</li><li>Πρακτική εφαρμογή μέτρων προστασίας.</li><li>Καλύτερη επιτήρηση και ενιαία καταγραφή.</li><li>Εκπαίδευση εργαζομένων και εργοδοτών.</li><li>Έλεγχοι ασφάλειας στους χώρους εργασίας.</li></ul><div class="note ok">Κεντρικό μήνυμα: η πλειονότητα των κακώσεων στον χώρο εργασίας μπορεί να προληφθεί.</div></div>
+  </div>
+</div></section>
+
+<section id="quiz"><div class="wrap quiz">
+  <div class="section-title"><span class="tag">QUIZ</span><h2>Mini quiz για έλεγχο</h2></div>
+  <div class="q"><b>1. Γιατί αποφεύγεται ο όρος «ατύχημα» στην επιδημιολογία κακώσεων;</b><br><button onclick="this.parentElement.classList.toggle('open')">Δείξε απάντηση</button><div class="answer note">Επειδή υπονοεί ότι το γεγονός είναι τυχαίο, απρόβλεπτο και μη προλήψιμο. Η δημόσια υγεία τονίζει ότι οι κακώσεις έχουν παράγοντες κινδύνου και μπορούν να προληφθούν.</div></div>
+  <div class="q"><b>2. Ποια είναι τα 3 πεδία της μήτρας Haddon οριζόντια;</b><br><button onclick="this.parentElement.classList.toggle('open')">Δείξε απάντηση</button><div class="answer note">Άνθρωπος, όχημα, περιβάλλον.</div></div>
+  <div class="q"><b>3. Ποια είναι τα 3 στάδια της μήτρας Haddon κάθετα;</b><br><button onclick="this.parentElement.classList.toggle('open')">Δείξε απάντηση</button><div class="answer note">Πριν το γεγονός, κατά το γεγονός, μετά το γεγονός.</div></div>
+  <div class="q"><b>4. Ποιοι είναι οι «ευάλωτοι χρήστες δρόμων»;</b><br><button onclick="this.parentElement.classList.toggle('open')">Δείξε απάντηση</button><div class="answer note">Πεζοί, ποδηλάτες και μοτοσικλετιστές.</div></div>
+  <div class="q"><b>5. Ποια ταχύτητα προτείνεται σε κατοικημένες περιοχές ή κοντά σε σχολεία;</b><br><button onclick="this.parentElement.classList.toggle('open')">Δείξε απάντηση</button><div class="answer note">30 km/h.</div></div>
+  <div class="q"><b>6. Πόσο μειώνει το κράνος τον κίνδυνο θανάτου και σοβαρού τραυματισμού;</b><br><button onclick="this.parentElement.classList.toggle('open')">Δείξε απάντηση</button><div class="answer note">Μείωση θανάτου κατά περίπου 42% και σοβαρού τραυματισμού κατά περίπου 69%.</div></div>
+  <div class="q"><b>7. Γιατί τα hands-free δεν θεωρούνται πολύ ασφαλέστερα;</b><br><button onclick="this.parentElement.classList.toggle('open')">Δείξε απάντηση</button><div class="answer note">Γιατί το πρόβλημα δεν είναι μόνο το χέρι που κρατά το κινητό, αλλά και η γνωστική απόσπαση προσοχής από την οδήγηση.</div></div>
+  <div class="q"><b>8. Ποιο είναι το βασικό πρόβλημα στην καταγραφή εργατικών κακώσεων;</b><br><button onclick="this.parentElement.classList.toggle('open')">Δείξε απάντηση</button><div class="answer note">Υποκαταγραφή, διαφορετικοί ορισμοί/φορείς και μη καταγραφή πολλών συμβάντων, ιδιαίτερα σε ευάλωτους ή ανασφάλιστους εργαζόμενους.</div></div>
+</div></section>
+
+<footer><div class="wrap"><p>GreekDoc • Επιδημιολογία και Πρόληψη Κακώσεων • Φτιαγμένο για γρήγορη επανάληψη και εκτύπωση.</p></div></footer>
+<script>
+  document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();document.querySelector(a.getAttribute('href')).scrollIntoView({behavior:'smooth'});}));
+</script>
+</body>
+</html>

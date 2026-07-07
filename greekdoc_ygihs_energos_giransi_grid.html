@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GreekDoc | Υγιής & Ενεργός Γήρανση</title>
+  <style>
+    :root{
+      --bg:#fbfaf7; --paper:#ffffff; --ink:#24313d; --muted:#64748b;
+      --brand:#7c3aed; --brand2:#10b981; --accent:#f59e0b; --danger:#ef4444;
+      --line:#e7e5e4; --soft:#f3eefc; --soft2:#ecfdf5; --soft3:#fff7ed;
+      --shadow:0 10px 30px rgba(30,41,59,.08); --radius:22px;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;background:linear-gradient(135deg,#fbfaf7 0%,#f6f3ff 45%,#ecfdf5 100%);color:var(--ink);font-family:Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,"Segoe UI", sans-serif;line-height:1.55}
+    header{padding:42px 18px 28px;text-align:center;background:radial-gradient(circle at top left,rgba(124,58,237,.18),transparent 38%),radial-gradient(circle at top right,rgba(16,185,129,.16),transparent 34%)}
+    .wrap{max-width:1180px;margin:auto;padding:0 18px 48px}
+    h1{font-size:clamp(2rem,4vw,3.7rem);line-height:1.05;margin:0 0 12px;font-weight:900;letter-spacing:-.04em}
+    h2{font-size:1.55rem;margin:34px 0 16px;letter-spacing:-.02em}
+    h3{font-size:1.05rem;margin:0 0 10px}.subtitle{max-width:880px;margin:auto;color:var(--muted);font-size:1.05rem}.pillbar{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:20px}.pill{padding:8px 13px;border-radius:999px;background:rgba(255,255,255,.78);border:1px solid var(--line);font-size:.88rem;font-weight:700}.toolbar{position:sticky;top:0;z-index:5;backdrop-filter:blur(12px);background:rgba(251,250,247,.86);border-bottom:1px solid var(--line);padding:10px 18px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap}.btn{border:0;border-radius:999px;padding:10px 15px;font-weight:800;cursor:pointer;background:var(--ink);color:#fff}.btn.secondary{background:#fff;color:var(--ink);border:1px solid var(--line)}.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}.card{background:rgba(255,255,255,.92);border:1px solid var(--line);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow);position:relative;overflow:hidden}.card:before{content:"";position:absolute;inset:0 0 auto;height:5px;background:linear-gradient(90deg,var(--brand),var(--brand2));opacity:.9}.span3{grid-column:span 3}.span4{grid-column:span 4}.span5{grid-column:span 5}.span6{grid-column:span 6}.span7{grid-column:span 7}.span8{grid-column:span 8}.span12{grid-column:span 12}.tag{display:inline-block;font-size:.72rem;font-weight:900;letter-spacing:.04em;text-transform:uppercase;color:var(--brand);background:var(--soft);padding:5px 9px;border-radius:999px;margin-bottom:9px}.tag.green{color:#047857;background:var(--soft2)}.tag.orange{color:#b45309;background:var(--soft3)}.tag.red{color:#b91c1c;background:#fef2f2}ul{margin:8px 0 0;padding-left:20px}li{margin:5px 0}.mini{font-size:.92rem;color:var(--muted)}.big{font-size:1.4rem;font-weight:900}.kpi{display:flex;gap:12px;align-items:flex-start}.num{min-width:54px;height:54px;border-radius:18px;background:var(--soft);display:grid;place-items:center;font-weight:900;color:var(--brand);font-size:1.05rem}.table{width:100%;border-collapse:collapse;font-size:.92rem;overflow:hidden;border-radius:16px}.table th,.table td{border:1px solid var(--line);padding:10px;vertical-align:top}.table th{background:#f8fafc;text-align:left}.compare{display:grid;grid-template-columns:1fr 1fr;gap:14px}.box{border:1px dashed #cbd5e1;border-radius:18px;padding:14px;background:#fff}.box.good{background:var(--soft2);border-color:#a7f3d0}.box.warn{background:var(--soft3);border-color:#fed7aa}.flow{display:flex;gap:10px;flex-wrap:wrap;align-items:center}.step{background:#fff;border:1px solid var(--line);border-radius:16px;padding:10px 12px;font-weight:800}.arrow{color:var(--muted);font-weight:900}.quiz details{background:#fff;border:1px solid var(--line);border-radius:18px;padding:13px;margin:10px 0}.quiz summary{cursor:pointer;font-weight:900}.answer{margin-top:10px;padding:10px;border-radius:14px;background:var(--soft2)}.note{border-left:5px solid var(--brand);background:#fff;padding:14px;border-radius:14px;box-shadow:var(--shadow)}.printonly{display:none}
+    @media(max-width:900px){.span3,.span4,.span5,.span6,.span7,.span8{grid-column:span 12}.compare{grid-template-columns:1fr}.toolbar{position:static}}
+    @media print{body{background:#fff}.toolbar{display:none}.card{box-shadow:none;break-inside:avoid}.wrap{max-width:none}.printonly{display:block}a{color:#000;text-decoration:none}}
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Υγιής & Ενεργός Γήρανση</h1>
+    <p class="subtitle">GreekDoc για εξετάσεις Κοινωνικής Ιατρικής – Δημόσιας Υγείας. Στόχος: να ξεχωρίζεις τους ορισμούς, τους δείκτες γήρανσης, το frailty, τις πτώσεις και τις συμπεριφορές πρόληψης στην τρίτη ηλικία.</p>
+    <div class="pillbar">
+      <span class="pill">Healthy ageing</span><span class="pill">Active ageing</span><span class="pill">Frailty</span><span class="pill">Πτώσεις</span><span class="pill">Πρωτογενής πρόληψη</span><span class="pill">UN Decade 2021–2030</span>
+    </div>
+  </header>
+  <div class="toolbar">
+    <button class="btn" onclick="window.print()">🖨️ Εκτύπωση / PDF</button>
+    <button class="btn secondary" onclick="document.querySelectorAll('details').forEach(d=>d.open=true)">Άνοιγμα quiz</button>
+    <button class="btn secondary" onclick="document.querySelectorAll('details').forEach(d=>d.open=false)">Κλείσιμο quiz</button>
+  </div>
+  <main class="wrap">
+    <section class="grid">
+      <article class="card span12">
+        <span class="tag">SOS σε 30 δευτερόλεπτα</span>
+        <div class="grid">
+          <div class="span4"><b>Υγιής γήρανση</b>: όχι «χωρίς νόσο», αλλά δυνατότητα να ζει ο ηλικιωμένος με ευημερία και να κάνει όσα θεωρεί σημαντικά.</div>
+          <div class="span4"><b>Ενεργός γήρανση</b>: διατήρηση ελέγχου ζωής και, όπου γίνεται, συμμετοχή στην οικονομία/κοινωνία.</div>
+          <div class="span4"><b>Frailty</b>: μειωμένα αποθέματα πολλών συστημάτων → μικρό stressor μπορεί να φέρει μεγάλη επιδείνωση.</div>
+        </div>
+      </article>
+    </section>
+
+    <h2>1. Επιδημιολογική εικόνα γήρανσης</h2>
+    <section class="grid">
+      <article class="card span3"><span class="tag green">Δείκτης</span><div class="big">81,9 έτη</div><p>Προσδόκιμο επιβίωσης κατά τη γέννηση. Στην παρουσίαση αναφέρεται: 84,5 έτη για γυναίκες και 79,3 για άνδρες.</p></article>
+      <article class="card span3"><span class="tag green">Πληθυσμός</span><div class="big">23,3%</div><p>Ποσοστιαία αναλογία ατόμων ≥65 ετών στον πληθυσμό.</p></article>
+      <article class="card span3"><span class="tag green">Διάμεση ηλικία</span><div class="big">46,1 / 44,7</div><p>Διάμεση ηλικία πληθυσμού σε Ελλάδα/Ευρώπη, όπως παρουσιάζεται για το 2024.</p></article>
+      <article class="card span3"><span class="tag green">Εξάρτηση</span><div class="big">33,9% / 36,7%</div><p><b>Old-age dependency ratio</b>: άτομα ≥65 προς άτομα εργασιακής ηλικίας 15–64.</p></article>
+      <article class="card span12"><span class="tag orange">Πώς να το θυμάσαι</span><p>Η γήρανση του πληθυσμού δεν είναι μόνο ιατρικό θέμα. Σημαίνει περισσότερη ανάγκη για πρωτοβάθμια φροντίδα, πρόληψη πτώσεων, διαχείριση πολυνοσηρότητας, κοινωνικές υπηρεσίες, μεταφορές και μακροχρόνια φροντίδα.</p></article>
+    </section>
+
+    <h2>2. Υγιής vs Ενεργός Γήρανση</h2>
+    <section class="grid">
+      <article class="card span6">
+        <span class="tag">Healthy ageing</span>
+        <h3>Υγιής γήρανση</h3>
+        <p>Δημιουργία περιβάλλοντος και ευκαιριών ώστε οι άνθρωποι να είναι και να συνεχίζουν να κάνουν ό,τι εκτιμούν σε όλη τη ζωή τους.</p>
+        <ul><li>Συνδέεται με <b>ευημερία</b>.</li><li>Δεν απαιτεί απουσία ασθένειας.</li><li>Ακόμα και με χρόνια νοσήματα, αν ελέγχονται καλά, μπορεί να υπάρχει καλή λειτουργικότητα και ποιότητα ζωής.</li></ul>
+      </article>
+      <article class="card span6">
+        <span class="tag green">Active ageing</span>
+        <h3>Ενεργός γήρανση</h3>
+        <p>Βοηθά τους ανθρώπους να διατηρούν τον έλεγχο της ζωής τους όσο γερνούν και, όπου είναι δυνατόν, να συνεισφέρουν στην οικονομία και την κοινωνία.</p>
+        <ul><li>Πιο έντονη έμφαση στη συμμετοχή.</li><li>Πολιτικό πλαίσιο που προηγήθηκε της έμφασης του ΠΟΥ στην healthy ageing.</li></ul>
+      </article>
+      <article class="card span12">
+        <span class="tag orange">Εξεταστική παγίδα</span>
+        <p><b>Υγιής γήρανση ≠ τέλεια υγεία.</b> Η απουσία νόσου δεν είναι προϋπόθεση. Το κριτήριο είναι η λειτουργική ικανότητα, η ευημερία, η αυτονομία και οι συνθήκες που επιτρέπουν στο άτομο να ζει με νόημα.</p>
+      </article>
+    </section>
+
+    <h2>3. Συχνά προβλήματα υγείας στην τρίτη ηλικία</h2>
+    <section class="grid">
+      <article class="card span8">
+        <span class="tag red">Κλινικό φορτίο</span>
+        <div class="grid">
+          <div class="span6"><ul><li>Αρτηριακή υπέρταση</li><li>Απώλεια ακοής</li><li>Οφθαλμικός καταρράκτης</li><li>Αρθραλγίες / οστεοαρθρίτιδα</li><li>Οστεοπόρωση</li></ul></div>
+          <div class="span6"><ul><li>ΧΑΠ</li><li>Σακχαρώδης διαβήτης</li><li>Κατάθλιψη και άνοια</li><li>Ακράτεια ούρων</li><li>Νεοπλασίες</li></ul></div>
+        </div>
+      </article>
+      <article class="card span4"><span class="tag orange">Συνδυαστικά</span><h3>Οι 4 λέξεις που πρέπει να ξέρεις</h3><ul><li><b>Πολυνοσηρότητα</b></li><li><b>Πολυφαρμακία</b></li><li><b>Frailty / ευπάθεια</b></li><li><b>Πτώσεις</b></li></ul></article>
+    </section>
+
+    <h2>4. Frailty, resilience, sarcopenia</h2>
+    <section class="grid">
+      <article class="card span6"><span class="tag">Frailty</span><h3>Γηριατρική ευθραστότητα / ευπάθεια</h3><p>Γηριατρικό σύνδρομο όπου πολλαπλά συστήματα χάνουν σταδιακά την ικανότητα και τα αποθέματά τους να ανταπεξέρχονται σε σωματικό ή ψυχολογικό stress.</p><ul><li><b>Σωματική</b> ευπάθεια</li><li><b>Ψυχολογική</b> ευπάθεια</li><li><b>Νοητική</b> ευπάθεια</li><li><b>Συναισθηματική</b> ευπάθεια</li></ul></article>
+      <article class="card span6"><span class="tag green">Resilience</span><h3>Ανθεκτικότητα</h3><p>Η ικανότητα επαναφοράς σε φυσιολογική κατάσταση μετά την επίδραση βλαπτικού παράγοντα. Με απλά λόγια: πόσο γρήγορα και πόσο καλά «ξανασηκώνεται» ο οργανισμός μετά από stressor.</p><p class="note">Στο frailty, ένα απλό κρυολόγημα ή μια μικρή πτώση μπορεί να οδηγήσει σε μεγάλη λειτουργική επιδείνωση.</p></article>
+      <article class="card span7"><span class="tag orange">Fried phenotype</span><h3>Frailty Phenotype Model</h3><table class="table"><tr><th>5 χαρακτηριστικά</th><th>Ταξινόμηση</th></tr><tr><td>Απώλεια βάρους, εξάντληση, μυϊκή αδυναμία, έλλειψη ενέργειας, αργό βάδισμα</td><td><b>Frail:</b> ≥3<br><b>Pre-frail:</b> 1–2<br><b>Not frail:</b> 0</td></tr></table></article>
+      <article class="card span5"><span class="tag orange">Rockwood</span><h3>Cumulative Deficit Model</h3><p>Βλέπει το frailty ως συσσώρευση ελλειμμάτων υγείας. Όσο περισσότερα ελλείμματα, τόσο μεγαλύτερη ευπάθεια.</p><p><b>Σαρκοπενία:</b> απώλεια μυϊκής μάζας/δύναμης που επιβαρύνει τη λειτουργικότητα και τον κίνδυνο πτώσεων.</p></article>
+    </section>
+
+    <h2>5. Πτώσεις στην τρίτη ηλικία</h2>
+    <section class="grid">
+      <article class="card span5"><span class="tag red">Δημόσια υγεία</span><h3>Γιατί είναι σημαντικές;</h3><ul><li>Οι πτώσεις είναι σημαντικό διεθνές πρόβλημα δημόσιας υγείας.</li><li>Εκτιμώνται 684.000 θανατηφόρες πτώσεις κάθε χρόνο.</li><li>Είναι η 2η κύρια αιτία θανάτου από ακούσιο τραυματισμό μετά τα τροχαία.</li><li>Ο κίνδυνος θανάτου ή σοβαρού τραυματισμού αυξάνει με την ηλικία.</li></ul></article>
+      <article class="card span7"><span class="tag green">Πρόληψη</span><h3>Παρεμβάσεις για πρόληψη πτώσεων</h3><div class="grid"><div class="span6"><ul><li>Έλεγχος καταλληλότητας σπιτιού.</li><li>Τροποποιήσεις: χαλάκια, έπιπλα, φωτισμός, εμπόδια.</li><li>Μείωση ή αφαίρεση ψυχοτρόπων φαρμάκων όπου ενδείκνυται.</li></ul></div><div class="span6"><ul><li>Πολυπαραγοντικές παρεμβάσεις με εξατομικευμένη αξιολόγηση κινδύνου.</li><li>Παραπομπές ανάλογα με τους κινδύνους.</li><li>Βιταμίνη D όταν υπάρχει έλλειψη.</li></ul></div></div></article>
+    </section>
+
+    <h2>6. Συμπεριφορές στόχοι για πρωτογενή πρόληψη</h2>
+    <section class="grid">
+      <article class="card span4"><span class="tag green">Άσκηση</span><h3>WHO: 150 λεπτά/εβδομάδα</h3><p>Τουλάχιστον 150 λεπτά μέτριας σωματικής δραστηριότητας την εβδομάδα. Η σωματική δραστηριότητα μειώνει τον κίνδυνο ολικής θνησιμότητας κατά 28%.</p><ul><li>Ισορροπία</li><li>Κινητικότητα</li><li>Μυϊκή μάζα</li><li>Οστική πυκνότητα</li></ul></article>
+      <article class="card span4"><span class="tag green">Πιο έντονη άσκηση</span><h3>Έως 35% μείωση</h3><p>Στην ίδια ηλικιακή ομάδα, πιο έντονη σωματική δραστηριότητα μπορεί να μειώσει τον κίνδυνο ολικής θνησιμότητας κατά 35%.</p><p class="mini">Σημαντικό: προσαρμογή στις δυνατότητες, ασφάλεια και αποφυγή πτώσεων.</p></article>
+      <article class="card span4"><span class="tag green">Διατροφή</span><h3>Μεσογειακό πρότυπο</h3><ul><li>Πολλά φρούτα και λαχανικά.</li><li>Λιγότερα υπερ-επεξεργασμένα τρόφιμα.</li><li>Λιγότερη ζάχαρη, αλάτι, κορεσμένα λιπαρά.</li><li>Η μεσογειακή διατροφή είναι καλό παράδειγμα.</li></ul></article>
+      <article class="card span6"><span class="tag orange">Εμβολιασμοί</span><h3>Εμβολιασμοί στην τρίτη ηλικία</h3><p>Στο πλαίσιο πρόληψης, οι ηλικιωμένοι πρέπει να ακολουθούν το Εθνικό Πρόγραμμα Εμβολιασμών Ενηλίκων.</p><p class="mini">Εξεταστικά: μην το ξεχάσεις ως συμπεριφορά-στόχο μαζί με άσκηση και διατροφή.</p></article>
+      <article class="card span6"><span class="tag orange">Τρόπος ζωής</span><h3>Σε σχέση με νεότερες ηλικίες</h3><p>Τα άτομα τρίτης ηλικίας γενικά έχουν λιγότερους συμπεριφορικούς παράγοντες κινδύνου: είναι λιγότερο πιθανό να καταναλώνουν μεγάλες ποσότητες αλκοόλ ή να καπνίζουν. Τα κύρια πεδία βελτίωσης είναι φυσική δραστηριότητα, διατροφή και εμβολιασμοί.</p></article>
+    </section>
+
+    <h2>7. Βασικές ανάγκες και κοινωνική διάσταση</h2>
+    <section class="grid">
+      <article class="card span12"><span class="tag">Beyond medicine</span><h3>Εξυπηρέτηση βασικών αναγκών</h3><p>Η γήρανση επηρεάζει ανάγκες που καθορίζουν τον τρόπο ζωής και την υγεία:</p><div class="flow"><span class="step">Εισόδημα</span><span class="step">Στέγαση</span><span class="step">Προσωπική φροντίδα</span><span class="step">Φροντίδα υγείας</span><span class="step">Μεταφορά</span><span class="step">Κοινοτικές υπηρεσίες</span></div></article>
+      <article class="card span12"><span class="tag green">UN Decade 2021–2030</span><h3>UN Decade of Healthy Ageing</h3><p>Στόχος: μείωση ανισοτήτων υγείας και βελτίωση της ζωής ηλικιωμένων, οικογενειών και κοινοτήτων μέσω συλλογικής δράσης σε 4 τομείς.</p><div class="grid"><div class="span3"><b>1. Ageism</b><br>Αλλαγή του τρόπου που σκεφτόμαστε/αισθανόμαστε/ενεργούμε για την ηλικία.</div><div class="span3"><b>2. Κοινότητες</b><br>Ανάπτυξη κοινοτήτων που ενισχύουν τις ικανότητες ηλικιωμένων.</div><div class="span3"><b>3. Φροντίδα</b><br>Ολοκληρωμένη, ανθρωποκεντρική φροντίδα και ΠΦΥ για ηλικιωμένους.</div><div class="span3"><b>4. Μακροχρόνια φροντίδα</b><br>Πρόσβαση σε ποιοτική μακροπρόθεσμη φροντίδα.</div></div></article>
+    </section>
+
+    <h2>8. Μικρό grid αποστήθισης</h2>
+    <section class="grid">
+      <article class="card span4"><span class="tag">Ορισμός</span><h3>Old-age dependency ratio</h3><p>Άτομα ≥65 ετών / άτομα 15–64 ετών.</p></article>
+      <article class="card span4"><span class="tag">Ορισμός</span><h3>Frailty</h3><p>Μείωση αποθεμάτων πολλών συστημάτων → ευπάθεια σε stressors.</p></article>
+      <article class="card span4"><span class="tag">Ορισμός</span><h3>Resilience</h3><p>Ικανότητα γρήγορης επαναφοράς μετά από βλαπτικό παράγοντα.</p></article>
+      <article class="card span4"><span class="tag green">Πρόληψη</span><h3>Πτώσεις</h3><p>Σπίτι, φάρμακα, πολυπαραγοντική αξιολόγηση, βιταμίνη D αν υπάρχει έλλειψη.</p></article>
+      <article class="card span4"><span class="tag green">Πρόληψη</span><h3>Άσκηση</h3><p>≥150 λεπτά/εβδομάδα + ισορροπία/κινητικότητα/ενδυνάμωση.</p></article>
+      <article class="card span4"><span class="tag green">Πρόληψη</span><h3>Διατροφή</h3><p>Φρούτα/λαχανικά, λιγότερα υπερ-επεξεργασμένα, μεσογειακή διατροφή.</p></article>
+    </section>
+
+    <h2>Mini-quiz εξετάσεων</h2>
+    <section class="quiz">
+      <details><summary>1. Η υγιής γήρανση προϋποθέτει απουσία νοσημάτων; </summary><div class="answer">Όχι. Η παρουσία καλά ελεγχόμενων χρόνιων νοσημάτων δεν αποκλείει την υγιή γήρανση. Το κέντρο είναι η λειτουργικότητα, η ευημερία και το να μπορεί το άτομο να κάνει όσα εκτιμά.</div></details>
+      <details><summary>2. Τι μετρά ο δείκτης εξάρτησης ηλικιωμένων;</summary><div class="answer">Τον λόγο των ατόμων ηλικίας ≥65 προς τα άτομα εργασιακής ηλικίας 15–64. Δείχνει το δημογραφικό βάρος γήρανσης προς τον ενεργό πληθυσμό.</div></details>
+      <details><summary>3. Ποια είναι τα 5 στοιχεία του Fried frailty phenotype;</summary><div class="answer">Απώλεια βάρους, εξάντληση, μυϊκή αδυναμία, έλλειψη ενέργειας, αργό βάδισμα. Frail αν υπάρχουν ≥3, pre-frail αν υπάρχουν 1–2, not frail αν 0.</div></details>
+      <details><summary>4. Γιατί οι πτώσεις είναι θέμα δημόσιας υγείας;</summary><div class="answer">Είναι συχνές, αυξάνουν με την ηλικία, προκαλούν σοβαρούς τραυματισμούς και θανάτους, και πολλές μπορούν να προληφθούν με περιβαλλοντικές, φαρμακευτικές και πολυπαραγοντικές παρεμβάσεις.</div></details>
+      <details><summary>5. Ποιες είναι οι βασικές συμπεριφορές-στόχοι στην τρίτη ηλικία;</summary><div class="answer">Φυσική δραστηριότητα, υγιεινή/μεσογειακή διατροφή και εμβολιασμοί σύμφωνα με το Εθνικό Πρόγραμμα Εμβολιασμών Ενηλίκων.</div></details>
+      <details><summary>6. Ποιοι είναι οι 4 τομείς δράσης της UN Decade of Healthy Ageing;</summary><div class="answer">Καταπολέμηση ageism, κοινότητες που ενισχύουν ικανότητες ηλικιωμένων, ολοκληρωμένη ανθρωποκεντρική φροντίδα/ΠΦΥ, και πρόσβαση σε ποιοτική μακροχρόνια φροντίδα.</div></details>
+    </section>
+  </main>
+</body>
+</html>

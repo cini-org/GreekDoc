@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GreekDoc | Μεταδιδόμενα Νοσήματα: Επιδημιολογία & Πρόληψη</title>
+<style>
+:root{
+  --bg:#f7fbff; --ink:#18202b; --muted:#5a6878; --card:#ffffff; --line:#d8e5f4;
+  --blue:#2563eb; --blue2:#dbeafe; --cyan:#0e7490; --green:#15803d; --orange:#c2410c; --red:#b91c1c; --purple:#7c3aed;
+  --shadow:0 8px 24px rgba(15,23,42,.08); --radius:18px;
+}
+*{box-sizing:border-box} body{margin:0;font-family:Inter,system-ui,-apple-system,"Segoe UI",Arial,sans-serif;background:linear-gradient(180deg,#eef7ff 0%,#f8fbff 45%,#fff 100%);color:var(--ink);line-height:1.55}
+header{padding:38px 22px 24px;background:radial-gradient(circle at top left,#bfdbfe,transparent 32%),linear-gradient(135deg,#0f172a,#1d4ed8);color:#fff}
+.wrap{max-width:1180px;margin:auto} h1{font-size:clamp(2rem,4vw,3.4rem);line-height:1.06;margin:0 0 10px;font-weight:850} h2{font-size:1.65rem;margin:34px 0 15px;border-left:6px solid var(--blue);padding-left:12px} h3{margin:0 0 8px;font-size:1.05rem} p{margin:7px 0}.lead{font-size:1.1rem;max-width:980px;color:#e8f2ff}.toolbar{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}.btn{border:0;border-radius:999px;padding:10px 16px;background:#fff;color:#17315f;font-weight:750;cursor:pointer;box-shadow:0 4px 16px rgba(0,0,0,.12)}.btn:hover{transform:translateY(-1px)}
+main{padding:24px 18px 70px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(245px,1fr));gap:16px}.grid-2{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:16px}.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow)}.card.sos{border-color:#fecaca;background:#fff7f7}.card.exam{border-color:#fed7aa;background:#fffaf3}.tag{display:inline-flex;align-items:center;border-radius:999px;padding:4px 9px;font-size:.78rem;font-weight:800;margin-bottom:8px;background:var(--blue2);color:#1e40af}.tag.red{background:#fee2e2;color:#991b1b}.tag.green{background:#dcfce7;color:#166534}.tag.orange{background:#ffedd5;color:#9a3412}.tag.purple{background:#ede9fe;color:#5b21b6}.tag.cyan{background:#cffafe;color:#155e75}.muted{color:var(--muted)}
+ul{margin:8px 0 0;padding-left:20px} li{margin:5px 0}.def{font-weight:750;color:#0f172a}.formula{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;background:#f1f5f9;border:1px solid #dbe4ef;padding:8px 10px;border-radius:12px;display:inline-block;margin:4px 0}.highlight{background:#fef3c7;padding:1px 5px;border-radius:6px;font-weight:750}.danger{color:var(--red);font-weight:800}.ok{color:var(--green);font-weight:800}.blue{color:var(--blue);font-weight:800}
+table{width:100%;border-collapse:separate;border-spacing:0;overflow:hidden;border-radius:16px;border:1px solid var(--line);background:#fff;box-shadow:var(--shadow);font-size:.95rem} th{background:#1e3a8a;color:#fff;text-align:left;padding:12px} td{padding:11px 12px;border-top:1px solid var(--line);vertical-align:top} tr:nth-child(even) td{background:#f8fbff}.mini{font-size:.9rem}.chain{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}.chain .step{padding:14px;border-radius:16px;border:1px solid #bfdbfe;background:#eff6ff;text-align:center;font-weight:800}.arrow{font-size:1.6rem;text-align:center;color:#2563eb}.quiz details{border:1px solid var(--line);border-radius:14px;background:#fff;margin:10px 0;padding:12px}.quiz summary{font-weight:800;cursor:pointer}.answer{border-left:4px solid var(--green);padding-left:10px;margin-top:8px;color:#124027}.toc{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px;margin-top:16px}.toc a{text-decoration:none;color:#0f3d91;background:#ffffffd9;border:1px solid #bfd7ff;border-radius:14px;padding:10px 12px;font-weight:750}.toc a:hover{background:#dbeafe}.print-note{font-size:.9rem;color:#dbeafe;margin-top:8px}.kbd{font-family:ui-monospace,monospace;border:1px solid #cbd5e1;border-bottom-width:3px;border-radius:8px;padding:1px 6px;background:#fff;color:#0f172a}.two-col{columns:2 280px;column-gap:24px}.callout{border-left:6px solid var(--cyan);background:#ecfeff;border-radius:14px;padding:14px 16px;margin:14px 0}.warning{border-left:6px solid var(--orange);background:#fff7ed;border-radius:14px;padding:14px 16px;margin:14px 0}.footer{margin-top:40px;padding:20px;border-radius:18px;background:#f1f5f9;color:#475569}
+@media print{header{background:#fff;color:#000;padding:12px}.lead,.print-note,.toolbar,.toc{display:none}.card,table{box-shadow:none;break-inside:avoid}main{padding:0}body{background:#fff;font-size:11.5px}h1{font-size:24px}h2{font-size:18px;margin-top:18px}.grid,.grid-2{gap:8px}.card{padding:10px}.quiz details{break-inside:avoid}.footer{display:none}}
+</style>
+</head>
+<body>
+<header>
+ <div class="wrap">
+  <h1>Μεταδιδόμενα Νοσήματα<br>Επιδημιολογία & Πρόληψη</h1>
+  <p class="lead">GreekDoc εξετάσεων για Κοινωνική Ιατρική – Δημόσια Υγεία. Δομημένο σε grid για αποστήθιση: ορισμοί, αλυσίδα μόλυνσης, δεξαμενές, τρόποι μετάδοσης, R₀/R, ανοσία αγέλης, εργαστηριακή επιτήρηση και μέτρα ελέγχου.</p>
+  <div class="toolbar"><button class="btn" onclick="window.print()">🖨️ Εκτύπωση / Αποθήκευση PDF</button><button class="btn" onclick="document.querySelectorAll('details').forEach(d=>d.open=true)">Άνοιγμα quiz</button><button class="btn" onclick="document.querySelectorAll('details').forEach(d=>d.open=false)">Κλείσιμο quiz</button></div>
+  <p class="print-note">Για διάβασμα: πρώτα οι SOS κάρτες, μετά οι πίνακες, μετά το quiz.</p>
+  <nav class="toc">
+   <a href="#sos">SOS εξετάσεων</a><a href="#classify">Ταξινόμηση</a><a href="#chain">Αλυσίδα μόλυνσης</a><a href="#agents">Λοιμογόνοι παράγοντες</a><a href="#transmission">Μετάδοση</a><a href="#outcomes">Έκβαση λοίμωξης</a><a href="#epi">Επιδημιολογικοί όροι</a><a href="#lab">Εργαστήριο</a><a href="#control">Πρόληψη & έλεγχος</a><a href="#quiz">Mini quiz</a>
+  </nav>
+ </div>
+</header>
+<main class="wrap">
+<section id="sos">
+<h2>1. SOS εξετάσεων – τι πρέπει να ξέρεις χωρίς δεύτερη σκέψη</h2>
+<div class="grid">
+ <div class="card sos"><span class="tag red">SOS</span><h3>Ορισμός μεταδιδόμενης νόσου</h3><p>Νόσος που οφείλεται σε <span class="def">παθογόνο/λοιμογόνο παράγοντα</span> ή τοξικό προϊόν του και προκύπτει μέσω μετάδοσης από μολυσμένο άνθρωπο, ζώο ή άψυχο αντικείμενο σε ευαίσθητο ξενιστή.</p></div>
+ <div class="card sos"><span class="tag red">SOS</span><h3>Επιδημιολογική τριάδα</h3><p class="formula">Λοιμογόνος παράγοντας + Ξενιστής + Περιβάλλον</p><p>Η νόσος δεν είναι μόνο “το μικρόβιο”. Εξαρτάται από το ποιος εκτίθεται και σε ποιο περιβάλλον.</p></div>
+ <div class="card sos"><span class="tag red">SOS</span><h3>Αλυσίδα μόλυνσης</h3><p class="formula">Παράγοντας → Δεξαμενή → Πύλη εξόδου → Τρόπος μετάδοσης → Πύλη εισόδου → Ευαίσθητος ξενιστής</p><p>Για πρόληψη/έλεγχο, “σπάμε” έναν ή περισσότερους κρίκους.</p></div>
+ <div class="card sos"><span class="tag red">SOS</span><h3>R₀ vs R</h3><p><span class="def">R₀:</span> δευτερογενή κρούσματα από 1 κρούσμα όταν όλοι είναι επίνοσοι.</p><p><span class="def">R:</span> δευτερογενή κρούσματα λαμβάνοντας υπόψη ανοσία/εμβολιασμό.</p><p><span class="danger">R &gt; 1:</span> αύξηση κρουσμάτων · <span class="ok">R &lt; 1:</span> μείωση.</p></div>
+ <div class="card sos"><span class="tag red">SOS</span><h3>Ανοσία αγέλης/κοινότητας</h3><p>Αν αρκετοί είναι άνοσοι, διακόπτεται η μετάδοση και προστατεύονται και ευαίσθητοι άνθρωποι. Δεν χρειάζεται πάντα 100% εμβολιασμός.</p><p class="formula">Κατώφλι ≈ 1 − 1/R₀</p></div>
+ <div class="card sos"><span class="tag red">SOS</span><h3>Πιο επικίνδυνοι φορείς</h3><p>Οι <span class="highlight">ασυμπτωματικοί φορείς σε μεταδοτική περίοδο</span>, γιατί δεν ξέρουν ότι μεταδίδουν.</p><p>Παραδείγματα: ανεμοβλογιά στην επώαση, χολέρα στην ανάρρωση, μηνιγγιτιδόκοκκος σε ασυμπτωματικούς φορείς.</p></div>
+</div>
+</section>
+
+<section id="classify">
+<h2>2. Ορισμός και ταξινόμηση ασθενειών</h2>
+<div class="grid-2">
+ <div class="card"><span class="tag blue">Βασική ταξινόμηση</span><h3>Οξεία / χρόνια</h3><p><span class="def">Οξεία:</span> συνήθως διάρκεια &lt; 3 μήνες.</p><p><span class="def">Χρόνια:</span> συνήθως διάρκεια &gt; 3 μήνες.</p><p>Και οι δύο μπορούν να είναι μεταδιδόμενες ή μη μεταδιδόμενες.</p></div>
+ <div class="card"><span class="tag cyan">Μεταδιδόμενη / μη</span><h3>Διαφορά</h3><p><span class="def">Μεταδιδόμενη:</span> μπορεί να μεταδοθεί μέσω λοιμογόνου παράγοντα.</p><p><span class="def">Μη μεταδιδόμενη:</span> δεν μεταδίδεται από άτομο σε άτομο.</p></div>
+</div>
+<table>
+<thead><tr><th>Τύπος</th><th>Μεταδιδόμενες</th><th>Μη μεταδιδόμενες</th></tr></thead>
+<tbody>
+<tr><td><b>Οξείες</b></td><td>Κοινό κρυολόγημα, πνευμονία, παρωτίτιδα, ιλαρά, κοκκύτης, τυφοειδής πυρετός, χολέρα, COVID-19</td><td>Σκωληκοειδίτιδα, δηλητηρίαση, τραυματισμός</td></tr>
+<tr><td><b>Χρόνιες</b></td><td>AIDS, νόσος Lyme, φυματίωση, σύφιλη, ρευματικός πυρετός, ηπατίτιδα Β</td><td>Διαβήτης, στεφανιαία νόσος, οστεοαρθρίτιδα, αλκοολική κίρρωση</td></tr>
+</tbody></table>
+<div class="callout"><b>ICD-11:</b> διεθνές ψηφιακό σύστημα ταξινόμησης νόσων. Για λοιμώδη νοσήματα μπορεί να χρησιμοποιεί “cluster coding”, δηλαδή συνδυασμό κωδικών για ανατομική θέση, παθογόνο, αντοχή κ.λπ.</div>
+</section>
+
+<section id="chain">
+<h2>3. Επιδημιολογική τριάδα και αλυσίδα μόλυνσης</h2>
+<div class="grid">
+ <div class="card"><span class="tag purple">Τριάδα</span><h3>Λοιμογόνος παράγοντας</h3><p>Το παθογόνο: βακτήριο, ιός, μύκητας, παράσιτο, prion.</p></div>
+ <div class="card"><span class="tag purple">Τριάδα</span><h3>Ξενιστής</h3><p>Ο άνθρωπος/οργανισμός που μπορεί να μολυνθεί. Η ευαισθησία εξαρτάται από γενετική, ανοσία, διατροφή, ηλικία, στρες, εγκυμοσύνη, συννοσηρότητες, φάρμακα.</p></div>
+ <div class="card"><span class="tag purple">Τριάδα</span><h3>Περιβάλλον</h3><p>Φυσικοί, κοινωνικοί, πολιτιστικοί, οικονομικοί και πολιτικοί παράγοντες που επηρεάζουν έκθεση και ευαισθησία.</p></div>
+</div>
+<h3 style="margin-top:18px">Η αλυσίδα μόλυνσης</h3>
+<div class="chain">
+ <div class="step">1. Λοιμογόνος παράγοντας</div>
+ <div class="step">2. Δεξαμενή</div>
+ <div class="step">3. Πύλη εξόδου</div>
+ <div class="step">4. Τρόπος μετάδοσης</div>
+ <div class="step">5. Πύλη εισόδου</div>
+ <div class="step">6. Ευαίσθητος ξενιστής</div>
+</div>
+<p class="muted">Σκέψη εξετάσεων: κάθε μέτρο πρόληψης αντιστοιχεί σε κρίκο. Π.χ. εμβόλιο → ξενιστής, απολύμανση → δεξαμενή/μετάδοση, απομόνωση → πύλη εξόδου/μετάδοση.</p>
+</section>
+
+<section id="agents">
+<h2>4. Λοιμογόνοι παράγοντες: infectivity, pathogenicity, virulence</h2>
+<table>
+<thead><tr><th>English</th><th>Ελληνικά</th><th>Τι σημαίνει πρακτικά</th><th>Πώς εκτιμάται</th></tr></thead>
+<tbody>
+<tr><td><b>Infectivity</b></td><td>Μολυσματικότητα</td><td>Πιθανότητα να μολύνει ξενιστή μετά από έκθεση.</td><td>ID50 ή ποσοστό μόλυνσης.</td></tr>
+<tr><td><b>Pathogenicity</b></td><td>Παθογονικότητα</td><td>Ικανότητα να προκαλεί νόσο, αφού γίνει μόλυνση.</td><td>Ποσοστό προσβολής.</td></tr>
+<tr><td><b>Virulence</b></td><td>Λοιμογόνος ικανότητα / λοιμοτοξικότητα</td><td>Πιθανότητα σοβαρής νόσου μεταξύ των ασθενών.</td><td>Θνητότητα.</td></tr>
+</tbody></table>
+<div class="grid" style="margin-top:16px">
+ <div class="card exam"><span class="tag orange">Παράδειγμα</span><h3>ID50</h3><p>Η Shigella dysenteriae μπορεί να έχει πολύ μικρή λοιμογόνο δόση, ενώ το Vibrio cholerae χρειάζεται πολύ μεγαλύτερη.</p></div>
+ <div class="card exam"><span class="tag orange">Παράδειγμα</span><h3>Ευλογιά</h3><p>Υψηλή μολυσματικότητα: προσβάλλει σχεδόν όλα τα άτομα που εκτίθενται.</p></div>
+ <div class="card exam"><span class="tag orange">Παράδειγμα</span><h3>Φυματίωση</h3><p>Μολύνει κυρίως άτομα με ευπάθεια, υποσιτισμό, ανοσοκαταστολή ή συνωστισμό.</p></div>
+ <div class="card exam"><span class="tag orange">Παράδειγμα</span><h3>Χολέρα</h3><p>Η λοιμογόνος ικανότητα σχετίζεται με τοξίνη που προκαλεί άφθονη υδαρή διάρροια.</p></div>
+</div>
+</section>
+
+<section id="reservoirs">
+<h2>5. Δεξαμενές και πύλες</h2>
+<div class="grid">
+ <div class="card"><span class="tag green">Δεξαμενή</span><h3>Ορισμός</h3><p>Το φυσικό περιβάλλον όπου ζει και πολλαπλασιάζεται ο λοιμογόνος παράγοντας.</p></div>
+ <div class="card"><span class="tag green">Ανθρώπινη</span><h3>Άνθρωποι</h3><p>Μετάδοση από μολυσμένο σε μη μολυσμένο άτομο. Μπορεί να είναι συμπτωματικοί ή ασυμπτωματικοί, στην επώαση, νόσηση ή ανάρρωση.</p><p><b>Παραδείγματα:</b> ΣΜΝ, ιλαρά, παρωτίτιδα, στρεπτόκοκκος, αναπνευστικές λοιμώξεις.</p></div>
+ <div class="card"><span class="tag green">Ζωική</span><h3>Ζώα → άνθρωπος</h3><p><span class="def">Ζωονόσος:</span> λοιμώδης νόσος που μεταδίδεται φυσικά από ζώα στον άνθρωπο ή μεταξύ ζώων.</p><p>Οι ζωονόσοι είναι μεγάλο μέρος των λοιμώξεων και των αναδυόμενων νοσημάτων.</p></div>
+ <div class="card"><span class="tag green">Περιβαλλοντική</span><h3>Έδαφος/νερό/άψυχη ύλη</h3><p>Παραδείγματα: τέτανος, αλλαντίαση, νόσος λεγεωνάριων, ασκαρίαση.</p></div>
+</div>
+<table style="margin-top:16px">
+<thead><tr><th>Πύλη</th><th>Ορισμός</th><th>Παραδείγματα</th></tr></thead>
+<tbody>
+<tr><td><b>Πύλη εξόδου</b></td><td>Διαδρομή με την οποία ο παράγοντας φεύγει από τον ξενιστή.</td><td>TB από αναπνευστική οδό, σχιστόσωμα από ούρα, χολέρα από κόπρανα, ερυθρά μέσω πλακούντα.</td></tr>
+<tr><td><b>Πύλη εισόδου</b></td><td>Θέση όπου ο παράγοντας εισέρχεται στον ευαίσθητο ξενιστή.</td><td>Αναπνευστικό, γαστρεντερικό, ουρογεννητικό, δέρμα, βλεννογόνοι. Ο άνθρακας έχει δερματική/γαστρεντερική/πνευμονική μορφή ανάλογα με την είσοδο.</td></tr>
+</tbody></table>
+</section>
+
+<section id="transmission">
+<h2>6. Τρόποι μετάδοσης</h2>
+<div class="grid-2">
+ <div class="card"><span class="tag cyan">Άμεση μετάδοση</span><h3>Χωρίς ενδιάμεσο</h3><ul><li><b>Άμεση επαφή:</b> HPV, HIV μέσω βλεννογόνων.</li><li><b>Σταγονίδια:</b> κοκκύτης, μηνιγγιτιδοκοκκική μηνιγγίτιδα.</li><li><b>Άμεση έκθεση στο περιβάλλον:</b> αγκυλόστομα από έδαφος.</li><li><b>Δάγκωμα:</b> λύσσα από σάλιο σκύλου/νυχτερίδας.</li><li><b>Διαπλακουντιακά:</b> Ζίκα, σύφιλη.</li><li><b>Περιγεννητικά:</b> νεογνικός HSV, ηπατίτιδα Β.</li></ul></div>
+ <div class="card"><span class="tag cyan">Έμμεση μετάδοση</span><h3>Με ενδιάμεσο φορέα ή όχημα</h3><ul><li><b>Βιολογικός φορέας:</b> Plasmodium στο κουνούπι Anopheles → ελονοσία.</li><li><b>Ενδιάμεσος ξενιστής:</b> σαλιγκάρια στη σχιστοσωμίαση.</li><li><b>Μηχανικός φορέας:</b> μύγες που μεταφέρουν Shigella/Salmonella.</li><li><b>Όχημα:</b> μολυσμένο νερό/τροφή, νοροϊός, ηπατίτιδα Α.</li><li><b>Αερογενής:</b> ιλαρά, Mycobacterium tuberculosis.</li></ul></div>
+</div>
+<div class="warning"><b>Σταγονίδια vs αερογενής:</b> σταγονίδια = μεγαλύτερα/βαριά σωματίδια, κοντινή απόσταση, πέφτουν γρήγορα. Αερογενής = μικροσκοπικά σωματίδια που αιωρούνται και ταξιδεύουν περισσότερο.</div>
+</section>
+
+<section id="hostenv">
+<h2>7. Ευαίσθητος ξενιστής και περιβαλλοντικοί παράγοντες</h2>
+<table>
+<thead><tr><th>Παράγοντας</th><th>Παράδειγμα</th><th>Μηχανισμός</th><th>Νόσος</th></tr></thead>
+<tbody>
+<tr><td>Κλίμα/καιρός</td><td>El Niño, έντονες βροχοπτώσεις</td><td>Αύξηση βλάστησης, τρωκτικών, κουνουπιών, έκθεση σε μολυσμένο νερό</td><td>Hantavirus, Rift Valley, λεπτοσπείρωση, χολέρα</td></tr>
+<tr><td>Φυσική καταστροφή</td><td>Τσουνάμι, σεισμός</td><td>Περιβαλλοντική διαταραχή και τραύματα/έκθεση</td><td>Τέτανος, δερματική βλεννομυκητίαση</td></tr>
+<tr><td>Υποδομές</td><td>Νερό/υδραυλικά</td><td>Ανεπαρκή μικροβιακά εμπόδια, διασπορά παθογόνων</td><td>Κρυπτοσποριδίωση, λεγεωνέλλωση</td></tr>
+<tr><td>Χρήση γης</td><td>Αποψίλωση, διαχείριση νερού</td><td>Απώλεια βιοποικιλότητας, επαφή δεξαμενής-ξενιστή</td><td>Σχιστοσωμίαση, ελονοσία</td></tr>
+<tr><td>Τεχνολογία/βιομηχανία</td><td>Ακατάλληλη χρήση αντιβιοτικών</td><td>Επιλογή ανθεκτικών στελεχών</td><td>Ανθεκτικές λοιμώξεις</td></tr>
+<tr><td>Οικονομία</td><td>Χαμηλό εισόδημα</td><td>Κακή υγιεινή, έλλειψη προστασίας από φορείς</td><td>Δάγκειος πυρετός, τράχωμα</td></tr>
+</tbody></table>
+</section>
+
+<section id="outcomes">
+<h2>8. Τι μπορεί να συμβεί μετά την έκθεση;</h2>
+<div class="callout">Η <b>μόλυνση</b> δεν σημαίνει πάντα <b>νόσο</b>. Η νόσος εμφανίζεται όταν η αλληλεπίδραση ξενιστή–μικροβίου προκαλέσει αρκετή βλάβη ώστε να υπάρξουν συμπτώματα ή κλινικά σημεία.</div>
+<table>
+<thead><tr><th>Όρος</th><th>Ορισμός</th><th>Παράδειγμα</th></tr></thead>
+<tbody>
+<tr><td>Μικροβιακή μόλυνση</td><td>Απόκτηση μικροοργανισμού από ξενιστή.</td><td>Αρχική μόλυνση HIV.</td></tr>
+<tr><td>Κομενσαλισμός</td><td>Μικρόβια που παραμένουν χωρίς νόσο, αλλά μπορούν να προκαλέσουν νόσο αν διαταραχθούν φραγμοί/ανοσία.</td><td>Candida albicans ως φυσιολογική χλωρίδα.</td></tr>
+<tr><td>Αποικισμός</td><td>Παροδική παρουσία, μπορεί να εξελιχθεί σε νόσο.</td><td>Ρινοφαρυγγική φορεία N. meningitidis ή S. pneumoniae.</td></tr>
+<tr><td>Επιμονή</td><td>Ο μικροοργανισμός παραμένει χωρίς απαραίτητα κλινική νόσο.</td><td>M. tuberculosis σε κοκκίωμα.</td></tr>
+<tr><td>Ασθένεια</td><td>Κλινικό αποτέλεσμα βλάβης του ξενιστή.</td><td>Μηνιγγίτιδα από S. pneumoniae.</td></tr>
+<tr><td>Αμοιβαιότητα</td><td>Ωφελούνται και ξενιστής και μικροοργανισμός.</td><td>Εντερική χλωρίδα που συνθέτει βιταμίνη Κ.</td></tr>
+</tbody></table>
+<div class="grid" style="margin-top:16px">
+ <div class="card"><span class="tag purple">Λανθάνουσα</span><h3>Λανθάνουσα λοίμωξη</h3><p>Διαλείπουσα αναπαραγωγή ± αποβολή. Μεταξύ επεισοδίων δεν αποδεικνύεται εύκολα ο παράγοντας.</p><p><b>Παραδείγματα:</b> HSV, VZV, CMV, EBV.</p></div>
+ <div class="card"><span class="tag purple">Χρόνια</span><h3>Χρόνια λοίμωξη</h3><p>Συνεχής παρουσία/αναπαραγωγή του μολυσματικού παράγοντα μετά την πρωτοπαθή λοίμωξη.</p><p><b>Παραδείγματα:</b> HIV, HBV, HCV, HTLV-1, HPV.</p></div>
+</div>
+</section>
+
+<section id="epi">
+<h2>9. Επιδημιολογικοί όροι στον χώρο και τον χρόνο</h2>
+<table>
+<thead><tr><th>Όρος</th><th>Ερμηνεία</th><th>Πώς να το θυμάσαι</th></tr></thead>
+<tbody>
+<tr><td>Σποραδική νόσος</td><td>Περιστασιακή και απρόβλεπτη εμφάνιση.</td><td>“Εμφανίζεται πού και πού”.</td></tr>
+<tr><td>Ενδημική νόσος</td><td>Προβλέψιμη κανονικότητα σε περιοχή/πληθυσμό.</td><td>“Υπάρχει σταθερά εκεί”.</td></tr>
+<tr><td>Επιδημία</td><td>Αύξηση κρουσμάτων πάνω από το αναμενόμενο ή εμφάνιση νέας νόσου σε πληθυσμό.</td><td>“Ξεπερνά το baseline”.</td></tr>
+<tr><td>Έξαρση</td><td>Συνώνυμο επιδημίας, συνήθως πιο περιορισμένο γεωγραφικά.</td><td>“Μικρή/τοπική επιδημία”.</td></tr>
+<tr><td>Πανδημία</td><td>Επιδημία σε πολλές χώρες/ηπείρους ή παγκόσμια.</td><td>“Παντού”.</td></tr>
+</tbody></table>
+<div class="grid" style="margin-top:16px">
+ <div class="card"><span class="tag orange">Κρούσματα</span><h3>Πρωτογενές → δευτερογενές</h3><p><b>Πρωτογενές περιστατικό:</b> αρχικό κρούσμα επιδημίας.</p><p><b>Δευτερογενή/τριτογενή:</b> μολύνονται από προηγούμενα κρούσματα.</p><p><b>Συστάδα:</b> άθροισμα περιπτώσεων σχετιζόμενων σε χρόνο/τόπο, μεγαλύτερο από αναμενόμενο.</p></div>
+ <div class="card"><span class="tag orange">Συχνότητα</span><h3>Επιπολασμός vs επίπτωση</h3><p><b>Επιπολασμός:</b> όλα τα υπάρχοντα κρούσματα σε χρονική στιγμή/περίοδο.</p><p><b>Επίπτωση:</b> νέα κρούσματα σε πληθυσμό σε συγκεκριμένη περίοδο.</p></div>
+</div>
+<div class="warning"><b>Παγίδα:</b> αυξημένος επιπολασμός δεν σημαίνει πάντα περισσότερα νέα κρούσματα. Μπορεί να σημαίνει μεγαλύτερη επιβίωση, χρόνια πορεία ή καλύτερη καταγραφή.</div>
+<h3>R₀, R και ανοσία κοινότητας</h3>
+<div class="grid">
+ <div class="card"><span class="tag red">R₀</span><p>Μέσος αριθμός δευτερογενών λοιμώξεων από 1 κρούσμα όταν όλοι είναι ευαίσθητοι.</p><p>Εξαρτάται από επαφές, πιθανότητα μετάδοσης ανά επαφή, διάρκεια μολυσματικότητας.</p></div>
+ <div class="card"><span class="tag red">R</span><p>Πραγματικός αριθμός αναπαραγωγής σε πληθυσμό όπου μέρος έχει ανοσία.</p><p><b>R&gt;1:</b> αύξηση · <b>R=1:</b> σταθερό/ενδημικό · <b>R&lt;1:</b> μείωση.</p></div>
+ <div class="card"><span class="tag red">Παράδειγμα</span><p>Αν R₀ γρίπης = 12 και το 50% έχει ανοσία, τότε R ≈ 6.</p><p class="formula">12 × 0,5 = 6</p></div>
+ <div class="card"><span class="tag red">Ανοσία αγέλης</span><p>Αρκετή ανοσία στον πληθυσμό ώστε να διακοπεί η αλυσίδα μετάδοσης.</p><p>Όσο υψηλότερο R₀, τόσο μεγαλύτερη κάλυψη χρειάζεται.</p></div>
+</div>
+</section>
+
+<section id="lab">
+<h2>10. Ρόλος εργαστηρίου</h2>
+<div class="grid-2">
+ <div class="card"><span class="tag cyan">Διάγνωση</span><h3>Γιατί χρειάζεται</h3><p>Απαραίτητη για το άτομο και για επιδημιολογικό έλεγχο/πρόληψη.</p><ul><li>Άμεση ανίχνευση παράγοντα.</li><li>Έμμεση ανίχνευση μόλυνσης μέσω ειδικής ανοσίας.</li><li>Το δείγμα και η μέθοδος εξαρτώνται από παθογόνο και στάδιο νόσου.</li></ul></div>
+ <div class="card"><span class="tag cyan">Test properties</span><h3>Ευαισθησία & ειδικότητα</h3><p><b>Ευαισθησία:</b> βρίσκει σωστά τους μολυσμένους.</p><p><b>Ειδικότητα:</b> βρίσκει σωστά τους μη μολυσμένους.</p></div>
+</div>
+<table style="margin-top:16px">
+<thead><tr><th>Ρόλος εργαστηριακής επιτήρησης</th><th>Σημασία</th></tr></thead>
+<tbody>
+<tr><td>Ακριβής ταυτοποίηση παθογόνων</td><td>Καθοδηγεί θεραπεία και δημόσια υγεία.</td></tr>
+<tr><td>Επιτήρηση επίπτωσης/επιπολασμού</td><td>Έγκαιρη ανίχνευση εστιών και αξιολόγηση παρεμβάσεων.</td></tr>
+<tr><td>Αντιμικροβιακή ευαισθησία</td><td>Σωστή θεραπεία και μείωση αντοχής.</td></tr>
+<tr><td>Λήψη αποφάσεων</td><td>Εμβολιασμοί, απομόνωση, καραντίνα, μέτρα ελέγχου.</td></tr>
+<tr><td>One Health</td><td>Σύνδεση ανθρώπινης, ζωικής και περιβαλλοντικής υγείας.</td></tr>
+</tbody></table>
+</section>
+
+<section id="control">
+<h2>11. Πρόληψη, ετοιμότητα και έλεγχος</h2>
+<table>
+<thead><tr><th>Όρος</th><th>Ερμηνεία</th></tr></thead>
+<tbody>
+<tr><td><b>Πρόληψη</b></td><td>Παρεμβάσεις σε πληθυσμιακό ή ατομικό επίπεδο για πρόληψη εστιών και μείωση επιβάρυνσης. Περιλαμβάνει πρωταρχική, πρωτογενή, δευτερογενή, τριτογενή, τεταρτογενή.</td></tr>
+<tr><td><b>Ετοιμότητα</b></td><td>Ικανότητα συστημάτων/κοινοτήτων να ανταποκριθούν πριν την επιδημική έξαρση.</td></tr>
+<tr><td><b>Έλεγχος</b></td><td>Περιορισμός εξάπλωσης νόσου σε εξέλιξη, μετριασμός επιπτώσεων, αποτροπή περαιτέρω μετάδοσης.</td></tr>
+</tbody></table>
+<h3 style="margin-top:18px">Στόχοι πέρα από τον έλεγχο</h3>
+<table>
+<thead><tr><th>English</th><th>Ελληνικά</th><th>Τι σημαίνει</th><th>Παράδειγμα</th></tr></thead>
+<tbody>
+<tr><td>Elimination of disease</td><td>Εξάλειψη νόσου</td><td>Μηδενική επίπτωση νόσου σε καθορισμένη περιοχή.</td><td>Νεογνικός τέτανος.</td></tr>
+<tr><td>Elimination of infections</td><td>Εξάλειψη μολύνσεων</td><td>Μηδενική συχνότητα μόλυνσης από παράγοντα σε καθορισμένη περιοχή.</td><td>Ιλαρά, πολιομυελίτιδα.</td></tr>
+<tr><td>Eradication</td><td>Εκρίζωση</td><td>Μόνιμη παγκόσμια μηδενική συχνότητα μόλυνσης.</td><td>Ευλογιά.</td></tr>
+<tr><td>Extinction</td><td>Εξαφάνιση</td><td>Ο παράγοντας δεν υπάρχει ούτε στη φύση ούτε στο εργαστήριο.</td><td>Κανένα.</td></tr>
+</tbody></table>
+<h3 style="margin-top:18px">Πού στοχεύουν τα μέτρα ελέγχου;</h3>
+<div class="grid">
+ <div class="card"><span class="tag green">1ος στόχος</span><h3>Παράγοντας & δεξαμενή</h3><p>Μείωση ποσότητας παράγοντα με απομόνωση/θεραπεία, έλεγχο φορέων και ζωικών υποδόχων, απολύμανση.</p></div>
+ <div class="card"><span class="tag green">2ος στόχος</span><h3>Πύλες & μετάδοση</h3><p>Διακοπή μετάδοσης με μείωση συνωστισμού, ατομική/περιβαλλοντική υγιεινή, καταπολέμηση ενδιάμεσων φορέων.</p></div>
+ <div class="card"><span class="tag green">3ος στόχος</span><h3>Ξενιστής</h3><p>Βελτίωση άμυνας με σίτιση, αντιμετώπιση συννοσηροτήτων, εμβολιασμό, οροπροφύλαξη ή χημειοπροφύλαξη.</p></div>
+</div>
+<h3 style="margin-top:18px">Παραδείγματα δράσεων</h3>
+<div class="two-col card">
+<ul>
+<li><b>Άνθρακας/λύσσα:</b> στόχευση στο ζώο/δεξαμενή.</li>
+<li><b>Ebola:</b> απομόνωση μολυσμένων ατόμων.</li>
+<li><b>Γρίπη πτηνών:</b> θανάτωση μολυσμένων κοπαδιών.</li>
+<li><b>HIV σε εγκυμοσύνη/θηλασμό:</b> αντιρετροϊκά.</li>
+<li><b>Διαρροϊκές λοιμώξεις:</b> προσωπική/οικιακή υγιεινή, ασφαλές νερό.</li>
+<li><b>Χειρουργείο:</b> αντιβιοτική προφύλαξη όπου ενδείκνυται.</li>
+<li><b>Μηνιγγιτιδοκοκκική μηνιγγίτιδα:</b> χημειοπροφύλαξη σε επαφές.</li>
+</ul>
+</div>
+</section>
+
+<section id="quiz" class="quiz">
+<h2>12. Mini quiz αποστήθισης</h2>
+<details><summary>1. Ποια είναι η διαφορά μεταξύ R₀ και R;</summary><div class="answer">R₀ υπολογίζεται όταν όλοι είναι ευαίσθητοι. R υπολογίζεται στον πραγματικό πληθυσμό, όπου κάποιοι έχουν ανοσία από νόσηση ή εμβολιασμό.</div></details>
+<details><summary>2. Γιατί οι ασυμπτωματικοί φορείς είναι σημαντικοί στη δημόσια υγεία;</summary><div class="answer">Γιατί μπορεί να μεταδίδουν χωρίς να γνωρίζουν ότι είναι μολυσματικοί, άρα δυσκολεύουν την ανίχνευση και τον έλεγχο.</div></details>
+<details><summary>3. Τι δείχνει ο επιπολασμός και τι η επίπτωση;</summary><div class="answer">Ο επιπολασμός δείχνει όλα τα υπάρχοντα κρούσματα σε δεδομένη στιγμή/περίοδο. Η επίπτωση δείχνει τα νέα κρούσματα σε δεδομένη περίοδο.</div></details>
+<details><summary>4. Ποιος κρίκος της αλυσίδας σπάει με τον εμβολιασμό;</summary><div class="answer">Κυρίως ο ευαίσθητος ξενιστής, γιατί αυξάνει την αντίσταση/ανοσία. Σε πληθυσμιακό επίπεδο συμβάλλει και στη διακοπή μετάδοσης μέσω ανοσίας κοινότητας.</div></details>
+<details><summary>5. Τι είναι δεξαμενή;</summary><div class="answer">Το φυσικό περιβάλλον όπου ζει και πολλαπλασιάζεται ο λοιμογόνος παράγοντας: άνθρωπος, ζώο, έδαφος, νερό, τρόφιμα κ.λπ.</div></details>
+<details><summary>6. Άμεση και έμμεση μετάδοση: βασική διαφορά;</summary><div class="answer">Άμεση = μεταφορά από δεξαμενή σε ξενιστή χωρίς ενδιάμεσο. Έμμεση = μέσω φορέα ή οχήματος, π.χ. κουνούπι, νερό, τρόφιμο, αντικείμενο.</div></details>
+<details><summary>7. Αν R₀ = 15 και το 80% του πληθυσμού έχει ανοσία, περίπου πόσο είναι το R;</summary><div class="answer">Αν ευαίσθητο είναι το 20%, τότε R ≈ 15 × 0,20 = 3. Άρα τα κρούσματα ακόμη αυξάνονται, γιατί R&gt;1.</div></details>
+<details><summary>8. Ποια είναι η διαφορά εξάλειψης και εκρίζωσης;</summary><div class="answer">Εξάλειψη = μηδενισμός σε συγκεκριμένη γεωγραφική περιοχή. Εκρίζωση = μόνιμος παγκόσμιος μηδενισμός της μόλυνσης, όπως η ευλογιά.</div></details>
+<details><summary>9. Πώς το εργαστήριο βοηθά την επιτήρηση;</summary><div class="answer">Ταυτοποιεί παθογόνα, παρακολουθεί επίπτωση/επιπολασμό, ανιχνεύει εστίες, ελέγχει αντοχή και καθοδηγεί πολιτικές όπως εμβολιασμό, απομόνωση και καραντίνα.</div></details>
+<details><summary>10. Τι σημαίνει ότι η μόλυνση δεν οδηγεί πάντα σε ασθένεια;</summary><div class="answer">Ο μικροοργανισμός μπορεί να αποικίσει, να επιμείνει ή να υπάρχει ως κομενσαλικός χωρίς κλινική νόσο. Νόσος εμφανίζεται όταν ξεπεραστεί κατώφλι βλάβης στον ξενιστή.</div></details>
+</section>
+
+<section>
+<h2>13. Τελική συμπύκνωση για τελευταία επανάληψη</h2>
+<div class="card sos">
+<p><b>Μεταδιδόμενο νόσημα = παθογόνο + μετάδοση + ευαίσθητος ξενιστής.</b></p>
+<p><b>Πρόληψη = σπάω κρίκο της αλυσίδας.</b> Άρα κάθε μέτρο πρέπει να το συνδέεις με κρίκο: δεξαμενή, πύλη εξόδου, μετάδοση, πύλη εισόδου ή ξενιστή.</p>
+<p><b>Στην επιδημιολογία:</b> επίπτωση = νέα κρούσματα, επιπολασμός = υπάρχοντα κρούσματα, R₀ = θεωρητικό σε πλήρως ευαίσθητο πληθυσμό, R = πραγματικό με ανοσία.</p>
+<p><b>Στη δημόσια υγεία:</b> οι ασυμπτωματικοί φορείς, η εργαστηριακή επιτήρηση, η ανοσία κοινότητας και η γρήγορη εφαρμογή μέτρων είναι κλειδιά ελέγχου.</p>
+</div>
+</section>
+
+<div class="footer">GreekDoc για εκτύπωση και γρήγορη αποστήθιση. Προτεινόμενη χρήση: 1) διάβασε τις SOS κάρτες, 2) κάλυψε τη δεξιά στήλη των πινάκων και προσπάθησε να την ανακαλέσεις, 3) κάνε το mini quiz.</div>
+</main>
+</body>
+</html>

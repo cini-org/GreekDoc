@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>GreekDoc | Επικοινωνιακή Διαχείριση Κρίσεων & Infodemiology</title>
+<style>
+:root{
+  --bg:#f8f5ef; --paper:#fffdf8; --ink:#263238; --muted:#667085;
+  --brand:#7b3f72; --brand2:#0f766e; --accent:#f4b183; --soft:#f4e8f2;
+  --green:#e8f5ef; --blue:#eaf2ff; --red:#fff0ee; --yellow:#fff8db;
+  --border:#e3d8cc; --shadow:0 10px 30px rgba(44,38,31,.10);
+}
+*{box-sizing:border-box} body{margin:0;background:linear-gradient(180deg,#f7efe8 0%,#f8f5ef 32%,#fff 100%);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans",Arial,sans-serif;line-height:1.55}
+header{padding:42px 22px 24px;background:radial-gradient(circle at top left,#f9d6c8,transparent 30%),radial-gradient(circle at top right,#dceffd,transparent 30%),linear-gradient(135deg,#7b3f72,#0f766e);color:white}
+.header-inner{max-width:1180px;margin:auto} h1{font-size:clamp(2rem,4vw,4rem);line-height:1.05;margin:0 0 10px;font-weight:900;letter-spacing:-.03em}.subtitle{font-size:1.12rem;opacity:.95;max-width:900px}.chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}.chip{background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.30);padding:8px 12px;border-radius:999px;font-weight:700;backdrop-filter:blur(8px)}
+nav{position:sticky;top:0;z-index:10;background:rgba(255,253,248,.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--border)}.nav-inner{max-width:1180px;margin:auto;display:flex;gap:10px;overflow-x:auto;padding:10px 18px}.nav-inner a,.print-btn{white-space:nowrap;text-decoration:none;color:var(--brand);font-weight:800;border:1px solid var(--border);border-radius:999px;padding:8px 12px;background:white}.print-btn{cursor:pointer;color:#0f766e}
+main{max-width:1180px;margin:auto;padding:28px 18px 70px}section{margin:28px 0;padding:26px;border:1px solid var(--border);border-radius:28px;background:rgba(255,253,248,.82);box-shadow:var(--shadow)}h2{font-size:clamp(1.45rem,2.3vw,2.2rem);margin:0 0 16px;color:var(--brand);letter-spacing:-.02em}.section-note{color:var(--muted);margin-top:-6px;margin-bottom:18px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}.card{background:white;border:1px solid var(--border);border-radius:22px;padding:18px;box-shadow:0 4px 16px rgba(0,0,0,.04)}.card h3{margin:0 0 8px;color:#17324d;font-size:1.06rem}.tag{display:inline-block;font-size:.78rem;font-weight:900;text-transform:uppercase;letter-spacing:.06em;color:white;background:var(--brand2);border-radius:999px;padding:4px 8px;margin-bottom:10px}.tag.pink{background:var(--brand)}.tag.orange{background:#c75c2b}.tag.red{background:#b42318}.tag.blue{background:#2563eb}.tag.gray{background:#475467}.big{font-size:1.18rem;font-weight:850}.formula{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;background:#1f2937;color:#fff;padding:12px 14px;border-radius:14px;display:block;margin:10px 0}.callout{border-left:6px solid var(--brand2);background:var(--green);padding:16px 18px;border-radius:18px;margin:16px 0}.warning{border-left-color:#b42318;background:var(--red)}.exam{border-left-color:#f59e0b;background:var(--yellow)}.blue{border-left-color:#2563eb;background:var(--blue)}
+table{width:100%;border-collapse:separate;border-spacing:0;margin:14px 0;background:white;border:1px solid var(--border);border-radius:18px;overflow:hidden}th,td{padding:12px 14px;border-bottom:1px solid var(--border);vertical-align:top}th{background:#f4e8f2;color:#5b2854;text-align:left}tr:last-child td{border-bottom:0}ul{padding-left:20px;margin:8px 0}li{margin:5px 0}.two{display:grid;grid-template-columns:1fr 1fr;gap:16px}.timeline{display:grid;gap:12px}.timeitem{display:grid;grid-template-columns:130px 1fr;gap:14px;align-items:start;background:#fff;border:1px solid var(--border);border-radius:18px;padding:14px}.date{font-weight:900;color:var(--brand)}details{background:white;border:1px solid var(--border);border-radius:18px;padding:14px;margin:10px 0}summary{cursor:pointer;font-weight:900;color:var(--brand)}.quiz .q{margin:14px 0;padding:16px;border:1px solid var(--border);border-radius:18px;background:#fff}.quiz button{display:block;width:100%;text-align:left;margin:8px 0;padding:10px 12px;border-radius:12px;border:1px solid var(--border);background:#fbfbfb;cursor:pointer}.quiz button:hover{background:#f4e8f2}.feedback{font-weight:800;margin-top:8px}.ok{color:#087443}.no{color:#b42318}.footer{color:var(--muted);font-size:.92rem;text-align:center;margin-top:26px}
+@media(max-width:760px){section{padding:18px;border-radius:22px}.two{grid-template-columns:1fr}.timeitem{grid-template-columns:1fr}.nav-inner{padding:8px}}
+@media print{header,nav,.quiz button{display:none}body{background:white}main{padding:0}section{box-shadow:none;border:1px solid #ddd;break-inside:avoid}.card,details,table{break-inside:avoid}.quiz .feedback{display:block}}
+</style>
+</head>
+<body>
+<header><div class="header-inner">
+<h1>Επικοινωνιακή Διαχείριση Κρίσεων & Infodemiology</h1>
+<p class="subtitle">GreekDoc εξετάσεων για το πώς η δημόσια υγεία επικοινωνεί σε κρίσεις: PHEIC, Διεθνής Υγειονομικός Κανονισμός, πληροφοριοδημία, παραπληροφόρηση, CERC και εργαλεία παρακολούθησης πληροφορίας.</p>
+<div class="chips"><span class="chip">PHEIC / ΔΥΚ</span><span class="chip">Infodemic</span><span class="chip">Misinformation vs Disinformation</span><span class="chip">CERC</span><span class="chip">COVID-19 case studies</span></div>
+</div></header>
+<nav><div class="nav-inner">
+<a href="#map">Χάρτης</a><a href="#pheic">PHEIC</a><a href="#infodemic">Infodemic</a><a href="#misinfo">Παραπληροφόρηση</a><a href="#cerc">CERC</a><a href="#covid">COVID</a><a href="#tools">Εργαλεία</a><a href="#sos">SOS</a><a href="#quiz">Quiz</a><button class="print-btn" onclick="window.print()">🖨️ Εκτύπωση</button>
+</div></nav>
+<main>
+<section id="map">
+<h2>1. Ο χάρτης του κεφαλαίου</h2>
+<p class="section-note">Το κεφάλαιο δεν είναι απλώς «επικοινωνία». Είναι δημόσια υγεία: αν η πληροφορία χαλάσει, χαλάει και η συμπεριφορά του πληθυσμού.</p>
+<div class="grid">
+<div class="card"><span class="tag pink">κρίση</span><h3>PHEIC</h3><p>Κατάσταση Έκτακτης Ανάγκης Δημόσιας Υγείας Διεθνούς Ενδιαφέροντος. Δηλώνεται από τον Γενικό Διευθυντή του WHO με βάση τον ΔΥΚ και τη γνώμη Επιτροπής Έκτακτης Ανάγκης.</p></div>
+<div class="card"><span class="tag">πληροφορία</span><h3>Infodemic</h3><p>Υπερπληθώρα πληροφοριών, σωστών και λανθασμένων, που προκαλεί σύγχυση, δυσπιστία και επικίνδυνες συμπεριφορές.</p></div>
+<div class="card"><span class="tag blue">επιστήμη</span><h3>Infodemiology</h3><p>Η μελέτη της κατανομής και των προσδιοριστών της πληροφορίας στο διαδίκτυο, με σκοπό τη δημόσια υγεία και την πολιτική.</p></div>
+<div class="card"><span class="tag orange">επικοινωνία</span><h3>CERC</h3><p>Πλαίσιο επικοινωνίας κρίσεων: να είσαι πρώτος, σωστός, αξιόπιστος, με ενσυναίσθηση, σεβασμό και σαφή δράση.</p></div>
+</div>
+<div class="callout exam"><b>Μνημονικό:</b> Σε κρίση δημόσιας υγείας δεν αρκεί το «έχουμε δεδομένα». Πρέπει να περάσουν σωστά στον πληθυσμό: <b>δεδομένα → εμπιστοσύνη → συμπεριφορά → αποτέλεσμα υγείας</b>.</div>
+</section>
+
+<section id="pheic">
+<h2>2. PHEIC & Διεθνής Υγειονομικός Κανονισμός</h2>
+<div class="callout"><b>Ορισμός PHEIC:</b> Έκτακτο γεγονός που αποτελεί κίνδυνο δημόσιας υγείας για άλλα κράτη μέσω διεθνούς εξάπλωσης νόσου και μπορεί να απαιτεί συντονισμένη διεθνή απόκριση.</div>
+<div class="grid">
+<div class="card"><h3>Νομική βάση</h3><p>Ο Διεθνής Υγειονομικός Κανονισμός, ΔΥΚ/IHR 2005, είναι δεσμευτικό εργαλείο του WHO. Τα 196 κράτη έχουν υποχρέωση εντοπισμού, αξιολόγησης, κοινοποίησης και ανταπόκρισης.</p></div>
+<div class="card"><h3>Ποιος αποφασίζει;</h3><p>Ο Γενικός Διευθυντής του WHO, μετά από συμβουλή Επιτροπής Έκτακτης Ανάγκης.</p></div>
+<div class="card"><h3>Τι ακολουθεί;</h3><p>Εκδίδονται προσωρινές συστάσεις προς τα κράτη. Επανεξετάζονται τουλάχιστον κάθε 3 μήνες όσο ισχύει η PHEIC.</p></div>
+<div class="card"><h3>Τρέχον παράδειγμα 2026</h3><p>Η πολιομυελίτιδα παραμένει PHEIC. Η PHEIC για mpox έληξε στις 5/9/2025, με πάγιες συστάσεις έως Αύγουστο 2026.</p></div>
+</div>
+<h3>Άρθρο 12: τι λαμβάνει υπόψη ο WHO;</h3>
+<table><tr><th>Κριτήριο</th><th>Τι σημαίνει πρακτικά</th></tr>
+<tr><td>Πληροφορίες κράτους</td><td>Τα δεδομένα από τη χώρα όπου συμβαίνει το γεγονός.</td></tr>
+<tr><td>Παράρτημα 2 ΔΥΚ</td><td>Αλγόριθμος αξιολόγησης συμβάντος.</td></tr>
+<tr><td>Επιτροπή Έκτακτης Ανάγκης</td><td>Γνωμοδότηση ανεξάρτητων τεχνικών ειδικών.</td></tr>
+<tr><td>Επιστημονικά στοιχεία</td><td>Διαθέσιμη τεκμηρίωση και επιστημονικές αρχές.</td></tr>
+<tr><td>Κίνδυνος</td><td>Για υγεία ανθρώπων, διεθνή εξάπλωση, ταξίδια και εμπόριο.</td></tr>
+</table>
+<h3>Παράρτημα 2: πορεία κοινοποίησης</h3>
+<div class="timeline">
+<div class="timeitem"><div class="date">1</div><div><b>Εντοπισμός συμβάντος</b>: σήμα από επιτήρηση, εργαστήριο, κλινική ή φήμες.</div></div>
+<div class="timeitem"><div class="date">2</div><div><b>Εθνική αξιολόγηση</b>: εφαρμογή αλγορίθμου με 4 κριτήρια.</div></div>
+<div class="timeitem"><div class="date">3</div><div><b>≥2 από 4 κριτήρια;</b> Σοβαρότητα, ασυνήθιστο/μη αναμενόμενο, κίνδυνος διεθνούς εξάπλωσης, κίνδυνος περιορισμών ταξιδιού/εμπορίου.</div></div>
+<div class="timeitem"><div class="date">4</div><div><b>Κοινοποίηση στον WHO εντός 24 ωρών</b> μέσω Εθνικού Εστιακού Πόλου.</div></div>
+<div class="timeitem"><div class="date">5</div><div><b>Αξιολόγηση WHO</b> μαζί με το κράτος.</div></div>
+<div class="timeitem"><div class="date">6</div><div><b>Προσδιορισμός PHEIC</b> από Γενικό Διευθυντή μετά από Επιτροπή Έκτακτης Ανάγκης.</div></div>
+</div>
+<div class="callout warning"><b>Άμεση κοινοποίηση ανεξάρτητα από τα 4 κριτήρια:</b> ευλογιά, πολιομυελίτιδα από άγριο τύπο ιού, ανθρώπινη γρίπη από νέο υπότυπο και SARS.</div>
+<table><tr><th>Χαρακτηριστικό</th><th>Προσωρινές συστάσεις</th><th>Μόνιμες/πάγιες συστάσεις</th></tr>
+<tr><td>Πλαίσιο</td><td>Ειδική PHEIC</td><td>Συνήθεις/συνεχιζόμενοι κίνδυνοι</td></tr>
+<tr><td>Διάρκεια</td><td>3 μήνες, με δυνατότητα ανανέωσης</td><td>Αόριστη</td></tr>
+<tr><td>Επιτροπή</td><td>Επιτροπή Έκτακτων Αναγκών</td><td>Επιτροπή Αναθεώρησης</td></tr>
+<tr><td>Παράδειγμα</td><td>Μέτρα COVID-19</td><td>Πιστοποιητικά κίτρινου πυρετού</td></tr>
+</table>
+</section>
+
+<section id="infodemic">
+<h2>3. Infodemic, Infodemiology, Infodemic management</h2>
+<div class="grid">
+<div class="card"><span class="tag pink">Infodemic</span><h3>Πληροφοριοδημία</h3><p>Υπερπληθώρα πληροφοριών, μαζί με ψευδείς ή παραπλανητικές πληροφορίες, σε ψηφιακά και φυσικά περιβάλλοντα κατά τη διάρκεια έξαρσης νόσου.</p><p><b>Επίπτωση:</b> σύγχυση, ριψοκίνδυνες συμπεριφορές, δυσπιστία στις αρχές, υπονόμευση απόκρισης δημόσιας υγείας.</p></div>
+<div class="card"><span class="tag blue">Infodemiology</span><h3>Πληροφοριοεπιδημιολογία</h3><p>Επιστήμη που μελετά την κατανομή και τους προσδιοριστικούς παράγοντες της πληροφορίας σε ηλεκτρονικά μέσα, ώστε να ενημερώσει τη δημόσια υγεία.</p></div>
+<div class="card"><span class="tag">Management</span><h3>Διαχείριση πληροφοριοδημίας</h3><p>Συστηματική, βασισμένη σε κινδύνους και στοιχεία χρήση αναλύσεων για μείωση των επιπτώσεων στις συμπεριφορές υγείας.</p></div>
+</div>
+<div class="callout blue"><b>Γιατί μοιάζει με επιδημιολογία;</b> Η επιδημιολογία παρακολουθεί νόσο. Η πληροφοριοεπιδημιολογία παρακολουθεί πληροφορία — σωστή ή λανθασμένη — γιατί η πληροφορία αλλάζει τη συμπεριφορά υγείας.</div>
+<h3>Το μονοπάτι με το οποίο η πληροφοριοδημία βλάπτει</h3>
+<table><tr><th>Στάδιο</th><th>Τι συμβαίνει</th><th>Παράδειγμα</th></tr>
+<tr><td>1. Έκθεση</td><td>Μεγάλος όγκος πληροφοριών, ψευδείς ισχυρισμοί, συνωμοσίες.</td><td>«Το 5G προκαλεί COVID».</td></tr>
+<tr><td>2. Γνώση/αντίληψη</td><td>Σύγχυση, δυσπιστία, δυσκολία διάκρισης αξιόπιστων πηγών.</td><td>«Δεν ξέρω ποιον να πιστέψω».</td></tr>
+<tr><td>3. Συμπεριφορά</td><td>Διστακτικότητα εμβολιασμού, χρήση μη τεκμηριωμένων θεραπειών, εγκατάλειψη μέτρων.</td><td>Υδροξυχλωροκίνη/ιβερμεκτίνη χωρίς ένδειξη.</td></tr>
+<tr><td>4. Αποτελέσματα</td><td>Νοσηρότητα, θνησιμότητα, ψυχική επιβάρυνση, στίγμα, απώλεια εμπιστοσύνης.</td><td>Δηλητηρίαση με μεθανόλη στο Ιράν.</td></tr>
+</table>
+<h3>Google Trends / αναζητήσεις ως επιτήρηση</h3>
+<div class="callout"><b>Ιδέα Eysenbach:</b> οι αναζητήσεις στο διαδίκτυο μπορούν να συσχετιστούν με επιδημιολογικά δεδομένα, π.χ. γρίπη. Άρα η ζήτηση πληροφορίας μπορεί να λειτουργήσει σαν πρώιμο σήμα, αλλά μπορεί να συγχέεται από «επιδημίες φόβου».</div>
+</section>
+
+<section id="misinfo">
+<h2>4. Παραπληροφόρηση: misinformation vs disinformation</h2>
+<div class="two">
+<div class="card"><span class="tag orange">Misinformation</span><h3>Μη σκόπιμη παραπληροφόρηση</h3><p><b>Πρόθεση:</b> δεν υπάρχει κακόβουλη πρόθεση.</p><p><b>Χαρακτηριστικό:</b> ο χρήστης πιστεύει ότι η πληροφορία είναι αληθής.</p><p><b>Παράδειγμα:</b> κοινοποίηση παλιάς είδησης σαν να είναι σημερινή ή ανακριβής ιατρική συμβουλή «για να βοηθήσω».</p></div>
+<div class="card"><span class="tag red">Disinformation</span><h3>Σκόπιμη παραπληροφόρηση</h3><p><b>Πρόθεση:</b> σκόπιμη εξαπάτηση/βλάβη.</p><p><b>Χαρακτηριστικό:</b> ο δημιουργός γνωρίζει ότι η πληροφορία είναι ψευδής ή παραποιημένη.</p><p><b>Παράδειγμα:</b> fake news για πολιτικό, οικονομικό ή ιδεολογικό όφελος.</p></div>
+</div>
+<h3>Συντελεστές παραπληροφόρησης</h3>
+<div class="grid">
+<div class="card"><h3>Επιστημονικό οικοσύστημα</h3><p>Περιοδικά που δημοσιεύουν ανακριβείς ή μη επαληθευμένες πληροφορίες.</p></div>
+<div class="card"><h3>Επαγγελματίες υγείας</h3><p>Μπορεί να λειτουργήσουν ως αξιόπιστοι δίαυλοι ή, αν κάνουν λάθος, ως ισχυροί πολλαπλασιαστές ψευδών πληροφοριών.</p></div>
+<div class="card"><h3>ΜΜΕ</h3><p>Λανθασμένη παρουσίαση επιστημονικής έρευνας.</p></div>
+<div class="card"><h3>Αλγόριθμοι social media</h3><p>Ενισχύουν περιεχόμενο με έντονο συναίσθημα/σύγκρουση.</p></div>
+<div class="card"><h3>Κενό αξιόπιστης πληροφορίας</h3><p>Όταν δεν υπάρχει εύκολα κατανοητή αξιόπιστη πληροφορία, το κενό καλύπτεται από φήμες.</p></div>
+<div class="card"><h3>Άτομο/κοινό</h3><p>Συναισθήματα, πολιτικές απόψεις, ηλικία και ικανότητα επεξεργασίας πληροφοριών.</p></div>
+</div>
+<h3>6 τακτικές που χρησιμοποιούνται για να μας ξεγελάσουν</h3>
+<div class="grid">
+<div class="card"><b>1. Χρήση συναισθημάτων</b><p>Φόβος, θυμός, πανικός → μειώνεται η κριτική σκέψη.</p></div>
+<div class="card"><b>2. Πόλωση</b><p>«Εμείς εναντίον αυτών».</p></div>
+<div class="card"><b>3. Αντιφατικές εκδοχές</b><p>Πλημμύρα εκδοχών ώστε να μην ξέρεις τι ισχύει.</p></div>
+<div class="card"><b>4. Επιβεβαίωση πεποιθήσεων</b><p>Δίνει στο κοινό αυτό που ήδη θέλει να πιστέψει.</p></div>
+<div class="card"><b>5. Χειρισμός πλαισίου</b><p>Αληθινό στοιχείο σε παραπλανητικό πλαίσιο.</p></div>
+<div class="card"><b>6. Φίμωση κριτικών φωνών</b><p>Απαξίωση ή επίθεση σε όσους διορθώνουν.</p></div>
+</div>
+<div class="callout exam"><b>Pre-bunking:</b> Προκαταλαμβάνω τον μύθο πριν διαδοθεί: λέω την αλήθεια, προειδοποιώ για την τεχνική χειραγώγησης, και δίνω απλή οδηγία δράσης.</div>
+</section>
+
+<section id="cerc">
+<h2>5. CERC: Crisis and Emergency Risk Communication</h2>
+<div class="callout"><b>Σκοπός CERC:</b> έγκυρες, έγκαιρες και αξιόπιστες πληροφορίες ώστε το κοινό να παίρνει καλύτερες αποφάσεις σε συνθήκες φόβου, πίεσης και αβεβαιότητας.</div>
+<h3>Οι 6 αρχές του CERC</h3>
+<div class="grid">
+<div class="card"><span class="tag pink">1</span><h3>Be First — Να είστε πρώτοι</h3><p>Η κρίση δημιουργεί κενό πληροφορίας. Αν δεν μιλήσουν οι αρχές, θα μιλήσουν οι φήμες.</p></div>
+<div class="card"><span class="tag pink">2</span><h3>Be Right — Να είστε ακριβείς</h3><p>Ακρίβεια, διορθώσεις όταν χρειάζεται, όχι υπερβολικές βεβαιότητες.</p></div>
+<div class="card"><span class="tag pink">3</span><h3>Be Credible — Να είστε αξιόπιστοι</h3><p>Εντιμότητα, διαφάνεια, συνέπεια.</p></div>
+<div class="card"><span class="tag pink">4</span><h3>Express Empathy — Ενσυναίσθηση</h3><p>Αναγνώριση φόβου, πόνου, απώλειας και αβεβαιότητας.</p></div>
+<div class="card"><span class="tag pink">5</span><h3>Show Respect — Σεβασμός</h3><p>Όχι ειρωνεία, όχι πατερναλισμός, όχι υποτίμηση του κοινού.</p></div>
+<div class="card"><span class="tag pink">6</span><h3>Promote Action — Δράση</h3><p>Σύντομες, σαφείς, εφαρμόσιμες οδηγίες: «τι κάνω τώρα».</p></div>
+</div>
+<h3>Ρυθμός επικοινωνίας CERC</h3>
+<table><tr><th>Φάση</th><th>Τι κάνουμε</th></tr>
+<tr><td>Pre-crisis / Πριν</td><td>Προετοιμασία, εκπαίδευση, προ-μηνύματα, συνεργασίες.</td></tr>
+<tr><td>Initial event / Έναρξη</td><td>Ταχεία αναγνώριση, ενσυναίσθηση, οδηγίες άμεσης δράσης.</td></tr>
+<tr><td>Maintenance / Διατήρηση</td><td>Συνεχής ενημέρωση, κατάρριψη φημών, προσαρμογή μηνυμάτων.</td></tr>
+<tr><td>Resolution / Επίλυση</td><td>Ενημέρωση για βελτίωση, αποκατάσταση, πρόληψη μελλοντικών κρίσεων.</td></tr>
+<tr><td>Evaluation / Αξιολόγηση</td><td>Τι λειτούργησε, τι απέτυχε, τι αλλάζουμε.</td></tr>
+</table>
+<h3>Παγίδες προς αποφυγή</h3>
+<div class="grid">
+<div class="card"><h3>Mixed messages</h3><p>Αντικρουόμενα μηνύματα από ειδικούς/φορείς → σύγχυση.</p></div>
+<div class="card"><h3>Information released late</h3><p>Καθυστερημένη ενημέρωση → το κενό γεμίζει με φήμες.</p></div>
+<div class="card"><h3>Paternalistic attitude</h3><p>«Εμείς ξέρουμε, εσείς ακούστε» → αντίδραση και απώλεια εμπιστοσύνης.</p></div>
+<div class="card"><h3>Not countering rumors</h3><p>Αν δεν διαψευστεί νωρίς ένας μύθος, παγιώνεται.</p></div>
+<div class="card"><h3>Public power struggles</h3><p>Δημόσιες συγκρούσεις εξουσίας → αίσθηση χάους.</p></div>
+</div>
+<div class="callout blue"><b>WHO ERC:</b> Η επικοινωνία πρέπει να είναι διαφανής, έγκαιρη, κατανοητή, να αναγνωρίζει την αβεβαιότητα, να εμπλέκει τους πληγέντες πληθυσμούς και να χρησιμοποιεί πολλαπλά κανάλια.</div>
+</section>
+
+<section id="covid">
+<h2>6. Μελέτες περίπτωσης COVID-19</h2>
+<h3>Χρονοδιάγραμμα PHEIC/COVID</h3>
+<div class="timeline">
+<div class="timeitem"><div class="date">1 Δεκ. 2019</div><div>Αναφορά συρροής πνευμονίας άγνωστης αιτιολογίας στη Γουχάν.</div></div>
+<div class="timeitem"><div class="date">30 Ιαν. 2020</div><div>Ο WHO κηρύσσει PHEIC. Υπήρχαν 7.711 επιβεβαιωμένα κρούσματα και 170 θάνατοι παγκοσμίως.</div></div>
+<div class="timeitem"><div class="date">11 Μαρ. 2020</div><div>Ο WHO χαρακτηρίζει την έξαρση ως πανδημία: >118.000 κρούσματα, 114 χώρες, 4.291 θάνατοι.</div></div>
+<div class="timeitem"><div class="date">30 Ιαν. 2023</div><div>Μεταβατική φάση: παραμένει PHEIC, αλλά αναγνωρίζεται αλλαγή φάσης.</div></div>
+<div class="timeitem"><div class="date">5 Μαΐου 2023</div><div>Λήξη PHEIC για COVID-19, ενώ η νόσος παραμένει συνεχιζόμενο ζήτημα υγείας.</div></div>
+</div>
+<div class="grid">
+<div class="card"><span class="tag red">5G</span><h3>Συνωμοσίες 5G</h3><p>Ισχυρισμοί σύνδεσης 5G με COVID-19 οδήγησαν σε εμπρηστικές επιθέσεις σε τηλεπικοινωνιακές υποδομές. Μάθημα: χρειάζεται γρήγορη αναγνώριση τοπικών μύθων και συνεργασία με πλατφόρμες.</p></div>
+<div class="card"><span class="tag orange">θεραπείες</span><h3>HCQ & Ιβερμεκτίνη</h3><p>Πολιτική/κοινωνική προώθηση μη τεκμηριωμένων λύσεων αύξησε off-label χρήση, ελλείψεις και τοξικότητα. Μάθημα: εξηγούμε τα επίπεδα τεκμηρίωσης και τον φόβο πίσω από την ανάγκη για «άμεση λύση».</p></div>
+<div class="card"><span class="tag">Mayo Clinic</span><h3>Καλή κατάρριψη μύθων</h3><p>Υπογεγραμμένο, χρονολογημένο, απλό κείμενο από αξιόπιστο φορέα. Εμπιστοσύνη + σαφήνεια + ημερομηνία = καλύτερη επικοινωνία.</p></div>
+</div>
+</section>
+
+<section id="tools">
+<h2>7. Εργαλεία παρακολούθησης ακεραιότητας πληροφοριών</h2>
+<div class="grid">
+<div class="card"><h3>FactFlow AI</h3><p>Εντοπισμός παραπληροφόρησης με τεχνητή νοημοσύνη.</p></div>
+<div class="card"><h3>WHO EARS</h3><p>Early AI-supported Response with Social listening: κοινωνική ακρόαση σε πραγματικό χρόνο.</p></div>
+<div class="card"><h3>UNICEF VDO</h3><p>Vaccination Demand Observatory: δημόσιο αίσθημα και παραπληροφόρηση για εμβολιασμό.</p></div>
+<div class="card"><h3>Google Fact Check Explorer</h3><p>Επαλήθευση ισχυρισμών μέσω συγκεντρωτικών δεδομένων fact-checking.</p></div>
+<div class="card"><h3>NewsGuard</h3><p>Αξιολόγηση αξιοπιστίας πηγών ειδήσεων.</p></div>
+<div class="card"><h3>IFCN</h3><p>International Fact-Checking Network: διεθνές δίκτυο ελέγχου γεγονότων.</p></div>
+</div>
+<h3>10 πρακτικά βήματα προστασίας από παραπληροφόρηση</h3>
+<div class="grid">
+<div class="card"><b>1. Επαγρύπνηση</b><p>Προσοχή σε clickbait τίτλους.</p></div>
+<div class="card"><b>2. Αποκωδικοποίηση</b><p>Συναισθηματική γλώσσα + ασαφείς ισχυρισμοί = κόκκινη σημαία.</p></div>
+<div class="card"><b>3. Πηγή</b><p>Ελέγχουμε ποιος το λέει.</p></div>
+<div class="card"><b>4. Επαλήθευση</b><p>Δεν κοινοποιούμε πριν ελέγξουμε.</p></div>
+<div class="card"><b>5. Διασταύρωση</b><p>Πολλαπλές αξιόπιστες πηγές.</p></div>
+<div class="card"><b>6. Παύση πριν το share</b><p>Μικρό διάλειμμα μειώνει παρορμητική διάδοση.</p></div>
+<div class="card"><b>7. Εικόνες/βίντεο</b><p>Έλεγχος πλαισίου και γνησιότητας.</p></div>
+<div class="card"><b>8. Εκπαίδευση</b><p>Μαθαίνουμε τεχνικές χειραγώγησης.</p></div>
+<div class="card"><b>9. Κριτική σκέψη</b><p>Ενίσχυση ανθεκτικότητας κοινότητας.</p></div>
+<div class="card"><b>10. Αναφορά</b><p>Αναφορά ύποπτου περιεχομένου στις πλατφόρμες/αρχές.</p></div>
+</div>
+</section>
+
+<section id="sos">
+<h2>8. SOS για εξετάσεις</h2>
+<div class="grid">
+<div class="card"><span class="tag red">SOS</span><h3>Ορισμός PHEIC</h3><p>Κίνδυνος για άλλα κράτη μέσω διεθνούς εξάπλωσης + πιθανή ανάγκη συντονισμένης διεθνούς απόκρισης.</p></div>
+<div class="card"><span class="tag red">SOS</span><h3>4 κριτήρια Παραρτήματος 2</h3><p>Σοβαρότητα, ασυνήθιστο/μη αναμενόμενο, διεθνής εξάπλωση, ταξίδια/εμπόριο. Αν ≥2 → κοινοποίηση εντός 24h.</p></div>
+<div class="card"><span class="tag red">SOS</span><h3>Infodemic</h3><p>Υπερπληθώρα πληροφοριών κατά έξαρση νόσου, που προκαλεί σύγχυση, δυσπιστία και βλαβερές συμπεριφορές.</p></div>
+<div class="card"><span class="tag red">SOS</span><h3>Misinformation vs Disinformation</h3><p>Το πρώτο χωρίς πρόθεση εξαπάτησης, το δεύτερο με σκόπιμη εξαπάτηση.</p></div>
+<div class="card"><span class="tag red">SOS</span><h3>6 αρχές CERC</h3><p>First, Right, Credible, Empathy, Respect, Action.</p></div>
+<div class="card"><span class="tag red">SOS</span><h3>Παγίδες CERC</h3><p>Αντικρουόμενα μηνύματα, καθυστέρηση, πατερναλισμός, αργή κατάρριψη φημών, δημόσιες συγκρούσεις εξουσίας.</p></div>
+</div>
+<details><summary>Πιθανή ερώτηση: Γιατί η παραπληροφόρηση είναι πρόβλημα δημόσιας υγείας;</summary><p>Γιατί αλλάζει τη συμπεριφορά: μπορεί να μειώσει εμβολιασμό, να αυξήσει χρήση επικίνδυνων «θεραπειών», να μειώσει εμπιστοσύνη στους θεσμούς και να αυξήσει νοσηρότητα/θνησιμότητα.</p></details>
+<details><summary>Πιθανή ερώτηση: Τι πρέπει να κάνει ένας γιατρός σε πληροφοριοδημία;</summary><p>Να λειτουργεί ως αξιόπιστος δίαυλος: να μιλά έγκαιρα, με απλή γλώσσα, να αναγνωρίζει αβεβαιότητα, να δείχνει ενσυναίσθηση, να διορθώνει μύθους χωρίς ειρωνεία και να δίνει εφαρμόσιμες οδηγίες.</p></details>
+<details><summary>Πιθανή ερώτηση: Ποια είναι η αξία του Google Trends στην infodemiology;</summary><p>Μπορεί να δείξει τη ζήτηση πληροφορίας και να χρησιμοποιηθεί ως πρώιμο σήμα για ενδιαφέρον/ανησυχία του κοινού, αλλά μπορεί να επηρεάζεται από φόβο ή media attention.</p></details>
+</section>
+
+<section id="quiz" class="quiz">
+<h2>9. Mini-quiz</h2>
+<div class="q"><b>1. Ποιος δηλώνει μια PHEIC;</b><button data-ok="0">Το ECDC</button><button data-ok="1">Ο Γενικός Διευθυντής του WHO, με συμβουλή Επιτροπής Έκτακτης Ανάγκης</button><button data-ok="0">Το Ευρωπαϊκό Κοινοβούλιο</button><div class="feedback"></div></div>
+<div class="q"><b>2. Ποιο ΔΕΝ είναι κριτήριο του Παραρτήματος 2;</b><button data-ok="0">Σοβαρότητα</button><button data-ok="0">Κίνδυνος διεθνούς εξάπλωσης</button><button data-ok="1">Αριθμός followers στα social media</button><div class="feedback"></div></div>
+<div class="q"><b>3. Misinformation σημαίνει:</b><button data-ok="1">Λανθασμένη πληροφορία χωρίς πρόθεση εξαπάτησης</button><button data-ok="0">Πάντα σκόπιμη προπαγάνδα</button><button data-ok="0">Μόνο επιστημονική αβεβαιότητα</button><div class="feedback"></div></div>
+<div class="q"><b>4. Disinformation σημαίνει:</b><button data-ok="0">Παλιό άρθρο που κοινοποιήθηκε κατά λάθος</button><button data-ok="1">Σκόπιμη ψευδής/παραποιημένη πληροφορία για εξαπάτηση ή βλάβη</button><button data-ok="0">Κάθε πληροφορία που δεν είναι από WHO</button><div class="feedback"></div></div>
+<div class="q"><b>5. Ποια είναι αρχή CERC;</b><button data-ok="1">Be First</button><button data-ok="0">Be Silent</button><button data-ok="0">Be Vague</button><div class="feedback"></div></div>
+<div class="q"><b>6. Ποια είναι παγίδα CERC;</b><button data-ok="0">Έγκαιρη ενημέρωση</button><button data-ok="1">Αντικρουόμενα μηνύματα από πολλούς ειδικούς</button><button data-ok="0">Ενσυναίσθηση</button><div class="feedback"></div></div>
+<div class="q"><b>7. Infodemiology μελετά κυρίως:</b><button data-ok="0">Τη φαρμακοκινητική των εμβολίων</button><button data-ok="1">Την κατανομή και τους προσδιοριστές της πληροφορίας, ιδίως σε ηλεκτρονικά μέσα</button><button data-ok="0">Μόνο τη θνητότητα από πανδημίες</button><div class="feedback"></div></div>
+<div class="q"><b>8. Καλό μήνυμα δημόσιας υγείας σε κρίση πρέπει να:</b><button data-ok="1">Αναγνωρίζει αβεβαιότητα και να δίνει σαφή δράση</button><button data-ok="0">Κρύβει ό,τι δεν ξέρουμε</button><button data-ok="0">Ειρωνεύεται όσους φοβούνται</button><div class="feedback"></div></div>
+</section>
+<p class="footer">GreekDoc • Επικοινωνιακή Διαχείριση Κρίσεων & Infodemiology • για γρήγορη επανάληψη και εκτύπωση.</p>
+</main>
+<script>
+document.querySelectorAll('.quiz button').forEach(btn=>{btn.addEventListener('click',()=>{const fb=btn.parentElement.querySelector('.feedback');const ok=btn.dataset.ok==='1';fb.textContent=ok?'Σωστό ✅':'Όχι ακριβώς — ξανασκέψου το σημείο-κλειδί. ❌';fb.className='feedback '+(ok?'ok':'no');});});
+</script>
+</body>
+</html>

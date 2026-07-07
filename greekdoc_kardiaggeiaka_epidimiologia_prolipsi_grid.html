@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>GreekDoc | Επιδημιολογία & Πρόληψη Καρδιαγγειακών Νοσημάτων</title>
+<style>
+:root{
+  --bg:#f7f7fb;--ink:#1f2937;--muted:#6b7280;--card:#ffffff;--brand:#b91c1c;--brand2:#ef4444;--soft:#fee2e2;--soft2:#fff1f2;--line:#e5e7eb;--ok:#047857;--warn:#b45309;--blue:#1d4ed8;--purple:#7e22ce;
+}
+*{box-sizing:border-box} body{margin:0;background:linear-gradient(180deg,#fff7f7 0%,var(--bg) 320px);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans",Arial,sans-serif;line-height:1.55} 
+header{padding:36px 20px 22px;max-width:1180px;margin:auto} 
+.badge{display:inline-flex;gap:8px;align-items:center;background:var(--soft);color:#991b1b;border:1px solid #fecaca;border-radius:999px;padding:6px 12px;font-weight:700;font-size:.9rem}
+h1{font-size:clamp(2rem,5vw,4rem);line-height:1.04;margin:16px 0 12px;color:#111827;letter-spacing:-.04em} 
+.subtitle{max-width:850px;color:#374151;font-size:1.1rem}.meta{color:var(--muted);font-size:.95rem;margin-top:10px}
+nav{position:sticky;top:0;z-index:10;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border-block:1px solid var(--line)}
+nav .wrap{max-width:1180px;margin:auto;padding:10px 20px;display:flex;gap:10px;overflow-x:auto} nav a{white-space:nowrap;text-decoration:none;color:#374151;background:#f9fafb;border:1px solid var(--line);border-radius:999px;padding:7px 12px;font-weight:650;font-size:.9rem} nav a:hover{background:var(--soft);color:#991b1b}
+main{max-width:1180px;margin:auto;padding:22px 20px 70px}.section{margin:28px 0 46px}.section h2{font-size:clamp(1.45rem,3vw,2.2rem);margin:0 0 14px;color:#111827;letter-spacing:-.025em}.section>p.lead{color:#4b5563;margin-top:0;max-width:900px}
+.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:14px}.card{grid-column:span 4;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px;box-shadow:0 8px 24px rgba(17,24,39,.06)}.card.wide{grid-column:span 6}.card.full{grid-column:1/-1}.card h3{margin:0 0 10px;font-size:1.12rem;color:#111827}.card h4{margin:12px 0 6px}.card p{margin:.45rem 0}.tag{display:inline-block;border-radius:999px;background:#f3f4f6;color:#374151;padding:3px 9px;font-size:.78rem;font-weight:800;margin-bottom:8px}.tag.red{background:var(--soft);color:#991b1b}.tag.green{background:#dcfce7;color:#166534}.tag.blue{background:#dbeafe;color:#1e40af}.tag.amber{background:#fef3c7;color:#92400e}.tag.purple{background:#f3e8ff;color:#6b21a8}
+ul,ol{padding-left:1.2rem;margin:.5rem 0} li{margin:.28rem 0}.key{background:linear-gradient(135deg,#991b1b,#ef4444);color:white}.key h3,.key p,.key li{color:white}.key .tag{background:rgba(255,255,255,.18);color:white;border:1px solid rgba(255,255,255,.25)}
+.tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:14px;background:white}table{width:100%;border-collapse:collapse;font-size:.95rem}th,td{border-bottom:1px solid var(--line);padding:10px 12px;text-align:left;vertical-align:top}th{background:#fef2f2;color:#7f1d1d;font-weight:900}tr:last-child td{border-bottom:0}.small{font-size:.9rem;color:#4b5563}.formula{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;background:#111827;color:#fff;border-radius:12px;padding:10px 12px;display:inline-block;margin:.25rem 0}.exam{border-left:5px solid var(--brand)}.memory{background:#fff7ed;border-color:#fed7aa}.printbtn{position:fixed;right:18px;bottom:18px;z-index:20;border:0;border-radius:999px;background:#111827;color:white;padding:12px 16px;font-weight:800;box-shadow:0 10px 26px rgba(0,0,0,.25);cursor:pointer}.printbtn:hover{background:#991b1b}
+details{background:#f9fafb;border:1px solid var(--line);border-radius:14px;padding:12px;margin:10px 0}summary{font-weight:900;cursor:pointer}.answer{margin-top:8px;padding:10px;border-left:4px solid var(--ok);background:#ecfdf5;border-radius:8px}.wrong{border-left-color:#ef4444;background:#fef2f2}.callout{border:1px solid #fecaca;background:#fff1f2;border-radius:18px;padding:16px}.two{columns:2;column-gap:24px}.pill{display:inline-block;margin:3px 4px 3px 0;padding:4px 9px;border-radius:999px;background:#f3f4f6;border:1px solid #e5e7eb;font-weight:700;font-size:.86rem}
+@media(max-width:900px){.card,.card.wide{grid-column:1/-1}.two{columns:1}h1{font-size:2.2rem}}
+@media print{nav,.printbtn{display:none}body{background:white}.card{break-inside:avoid;box-shadow:none}.section{break-inside:auto}header{padding-top:10px}.badge{border:1px solid #ccc}.key{background:#fff;color:#111;border:2px solid #991b1b}.key h3,.key p,.key li{color:#111}}
+</style>
+</head>
+<body>
+<button class="printbtn" onclick="window.print()">🖨️ Εκτύπωση / PDF</button>
+<header>
+  <span class="badge">GreekDoc • Κοινωνική Ιατρική – Δημόσια Υγεία</span>
+  <h1>Επιδημιολογία & Πρόληψη Καρδιαγγειακών Νοσημάτων</h1>
+  <p class="subtitle">Σημειώσεις αποστήθισης σε grid για τις βασικές έννοιες της πρόληψης στεφανιαίας/καρδιαγγειακής νόσου: παράγοντες κινδύνου, διατροφή, φυσική άσκηση, κάπνισμα, φάρμακα και εξεταστικές ερωτήσεις.</p>
+  <p class="meta">Με βάση την παρουσίαση: «Μη Μεταδοτικά νοσήματα: Επιδημιολογία και πρόληψη καρδιοαγγειακών νοσημάτων» — Ηλίας Τυροδήμος, 30.03.2026.</p>
+</header>
+<nav><div class="wrap">
+<a href="#sos">SOS</a><a href="#risk">Παράγοντες κινδύνου</a><a href="#nutrition">Διατροφή</a><a href="#exercise">Άσκηση</a><a href="#smoking">Κάπνισμα</a><a href="#meds">Φάρμακα</a><a href="#updated">Updated θέματα</a><a href="#questions">Ερωτήσεις</a><a href="#quiz">Mini-quiz</a>
+</div></nav>
+<main>
+<section id="sos" class="section">
+<h2>1. SOS εξετάσεων — τι να θυμάμαι πρώτο</h2>
+<p class="lead">Η παρουσίαση έχει δύο μεγάλα “κουτιά”: <b>παράγοντες κινδύνου</b> και <b>προληπτικές παρεμβάσεις</b>. Για εξετάσεις είναι πολύ πιθανό να ζητηθούν ταξινομήσεις, παραδείγματα και οι ερωτήσεις στο τέλος.</p>
+<div class="grid">
+  <article class="card key"><span class="tag">Κεντρική ιδέα</span><h3>Η πρόληψη σώζει γιατί η ΣΝ μπορεί να είναι αιφνίδια</h3><p>Στη στεφανιαία νόσο, σημαντικό ποσοστό μπορεί να εκδηλωθεί μοιραία/αιφνίδια. Άρα η πρόληψη πριν την πρώτη εκδήλωση έχει τεράστια αξία.</p></article>
+  <article class="card exam"><span class="tag red">SOS</span><h3>Μη τροποποιήσιμοι παράγοντες</h3><ul><li>Φύλο</li><li>Ηλικία</li><li>Οικογενειακό/κληρονομικό ιστορικό</li></ul></article>
+  <article class="card exam"><span class="tag red">SOS</span><h3>Τροποποιήσιμοι παράγοντες</h3><ul><li>Δυσλιπιδαιμία</li><li>Αρτηριακή υπέρταση</li><li>Σακχαρώδης διαβήτης</li><li>Συμπεριφορές: κάπνισμα, καθιστική ζωή, κακή διατροφή</li></ul></article>
+  <article class="card wide memory"><span class="tag amber">Μνήμη</span><h3>Risk SCORE: τι μπαίνει;</h3><p>Στον κλασικό πίνακα καρδιαγγειακού κινδύνου μπαίνουν κυρίως: <b>χοληστερόλη, αρτηριακή πίεση, κάπνισμα</b> μαζί με ηλικία/φύλο. Στην ερώτηση της παρουσίασης, η <b>λιποπρωτεΐνη Α</b> είναι το “πλην”.</p></article>
+  <article class="card wide memory"><span class="tag amber">Εξεταστικό κόλπο</span><h3>Θνητότητα ↓ αλλά επιπολασμός ↑</h3><p>Η θνητότητα από ΚΑΝ μπορεί να πέφτει λόγω καλύτερης διάγνωσης/θεραπείας, αλλά ο επιπολασμός να αυξάνει λόγω μεγαλύτερου προσδόκιμου επιβίωσης. Δηλαδή ζουν περισσότεροι άνθρωποι με τη νόσο.</p></article>
+</div>
+</section>
+
+<section id="risk" class="section">
+<h2>2. Παράγοντες κινδύνου καρδιαγγειακής νόσου</h2>
+<div class="grid">
+<article class="card"><span class="tag blue">Μη τροποποιήσιμοι</span><h3>Δεν αλλάζουν, αλλά καθορίζουν το baseline risk</h3><ul><li><b>Ηλικία:</b> ο κίνδυνος αυξάνει με την ηλικία.</li><li><b>Φύλο:</b> σχετίζεται και με την ηλικία.</li><li><b>Οικογενειακό ιστορικό:</b> δείχνει γενετική/οικογενειακή προδιάθεση.</li></ul></article>
+<article class="card"><span class="tag red">Τροποποιήσιμοι</span><h3>Οι “κλασικοί” ιατρικοί παράγοντες</h3><ul><li>Δυσλιπιδαιμία</li><li>Αρτηριακή υπέρταση</li><li>Σακχαρώδης διαβήτης</li></ul><p class="small">Αυτοί συχνά γίνονται στόχοι φαρμακευτικής και υγιεινοδιαιτητικής παρέμβασης.</p></article>
+<article class="card"><span class="tag green">Συμπεριφορικοί</span><h3>Οι καθημερινές συνήθειες</h3><ul><li>Κάπνισμα</li><li>Καθιστική ζωή</li><li>Κακή διατροφή</li><li>Λίγος ύπνος/στρες μπορεί να συζητηθεί ως σύγχρονο πλαίσιο, αλλά στην ερώτηση “παράγοντες συμπεριφοράς” το βασικό τρίπτυχο είναι κάπνισμα–άσκηση–διατροφή.</li></ul></article>
+<article class="card wide"><span class="tag purple">Αναδυόμενοι</span><h3>Νεότεροι/κοινωνικοί παράγοντες</h3><ul><li>Χαμηλή κοινωνικοοικονομική στάθμη</li><li>Κατάθλιψη</li><li>Κατοικία σε λεωφόρο: θόρυβος και ρύποι</li></ul><p>Η δημόσια υγεία τα βλέπει όχι μόνο ως “ατομική επιλογή”, αλλά ως περιβάλλον που κάνει πιο εύκολη ή πιο δύσκολη την υγιεινή ζωή.</p></article>
+<article class="card wide"><span class="tag amber">Framingham</span><h3>Γιατί μιλάμε για “risk factors”;</h3><p>Η έννοια των παραγόντων κινδύνου συνδέεται ιστορικά με προοπτικές μελέτες όπως η Framingham, που έδειξαν ότι συγκεκριμένοι παράγοντες προβλέπουν μελλοντικά καρδιαγγειακά συμβάματα.</p></article>
+</div>
+</section>
+
+<section id="nutrition" class="section">
+<h2>3. Διατροφή — υδατάνθρακες, λίπη, πρωτεΐνες</h2>
+<p class="lead">Η διατροφή στην παρουσίαση δίνεται πολύ “βιοχημικά”: ποια θρεπτικά συστατικά είναι απαραίτητα, ποια είναι προτιμότερα και πώς επηρεάζουν LDL/HDL/γλυκόζη.</p>
+<div class="grid">
+<article class="card"><span class="tag blue">Υδατάνθρακες</span><h3>Γιατί είναι απαραίτητοι;</h3><ul><li>Δίνουν καύσιμα χωρίς απαραίτητη χρήση οξυγόνου.</li><li>Είναι χρήσιμοι σε προσπάθεια μεγάλης έντασης.</li><li>Προτιμώνται από τον εγκέφαλο.</li><li>Η ενέργειά τους βοηθά και στην καύση λιπών.</li></ul></article>
+<article class="card"><span class="tag green">Σύνθετοι > απλοί</span><h3>Είδη υδατανθράκων</h3><ul><li><b>Απλοί:</b> γλυκόζη, φρουκτόζη — ζάχαρη, μέλι, φρούτα.</li><li><b>Σύνθετοι:</b> άμυλο — δημητριακά, καλαμπόκι, πατάτες.</li><li>Οι σύνθετοι θεωρούνται ωφελιμότεροι: λιγότερες απότομες αυξήσεις γλυκόζης/ινσουλίνης.</li></ul></article>
+<article class="card"><span class="tag amber">Γλυκαιμικός δείκτης</span><h3>Τι μετρά;</h3><p>Πόσο μια τροφή που περιέχει 50 g υδατανθράκων αυξάνει τη γλυκόζη αίματος σε 2 ώρες. Η γλυκόζη έχει ΓΔ 100.</p></article>
+<article class="card"><span class="tag blue">Λίπη</span><h3>Γιατί είναι απαραίτητα;</h3><ul><li>Καλύπτουν ενεργειακές ανάγκες, ειδικά σε παρατεταμένη προσπάθεια.</li><li>Συμμετέχουν στην κυτταρική μεμβράνη.</li><li>Χρησιμοποιούνται για ορμόνες.</li><li>Λειτουργούν ως “μονωτικό” και προστασία οργάνων.</li></ul></article>
+<article class="card"><span class="tag red">Όχι</span><h3>Κορεσμένα & trans</h3><p>Κορεσμένα λίπη, trans λιπαρά και περίσσεια ζωικού λίπους αυξάνουν κυρίως την LDL.</p><p class="small">Παραδείγματα: βούτυρο, τυριά, ζωικά λίπη.</p></article>
+<article class="card"><span class="tag green">Ναι</span><h3>Ακόρεστα λίπη</h3><ul><li><b>Μονοακόρεστα:</b> ελαιόλαδο → ↓ ολική χοληστερόλη, ↓ LDL, ↑ HDL.</li><li><b>Πολυακόρεστα:</b> ω-6, ω-3 → ↓ LDL/VLDL. Τα ω-3 επιδρούν και στην πηκτικότητα.</li></ul></article>
+<article class="card full">
+<h3>Πίνακας αποστήθισης: “ΝΑΙ / ΟΧΙ” στη διατροφή</h3>
+<div class="tablewrap"><table><thead><tr><th>ΝΑΙ / προτιμώνται</th><th>ΟΧΙ / περιορίζονται</th><th>Γιατί;</th></tr></thead><tbody>
+<tr><td>Σύνθετοι υδατάνθρακες: άμυλο, δημητριακά</td><td>Απλοί υδατάνθρακες: γλυκόζη, φρουκτόζη σε υπερβολή</td><td>Οι απλοί αυξάνουν απότομα τη γλυκόζη και μπορεί να ευνοούν πείνα, ινσουλινοαντοχή, παχυσαρκία/ΣΔ.</td></tr>
+<tr><td>Μονοακόρεστα: ελαιόλαδο</td><td>Κορεσμένα: βούτυρο, ζωικό λίπος, πολλά τυριά</td><td>Τα μονοακόρεστα βελτιώνουν λιπιδαιμικό προφίλ, τα κορεσμένα αυξάνουν LDL.</td></tr>
+<tr><td>Πολυακόρεστα: ω-3/ω-6, ψάρια, φυτικά έλαια</td><td>Trans λιπαρά</td><td>Τα trans είναι ιδιαίτερα αθηρογόνα.</td></tr>
+<tr><td>Πρωτεΐνες, βιταμίνες, αντιοξειδωτικά</td><td>Υπερεπεξεργασμένα/υπερθερμιδικά πρότυπα</td><td>Στόχος: καρδιομεταβολική προστασία και καλύτερο συνολικό πρότυπο ζωής.</td></tr>
+</tbody></table></div>
+</article>
+<article class="card wide memory"><span class="tag amber">Ποσοστά ενέργειας</span><h3>Ημερήσια διατροφή — χονδρικά</h3><ul><li>Απλοί υδατάνθρακες: ~10%</li><li>Σύνθετοι υδατάνθρακες: ~50%</li><li>Κορεσμένα λίπη: ~10%</li><li>Ακόρεστα λίπη: ~20%</li><li>Πρωτεΐνες: ~15%</li></ul></article>
+<article class="card wide"><span class="tag purple">Μελέτη ΑΤΤΙΚΗ</span><h3>Μεσογειακή δίαιτα και βιοχημικοί δείκτες</h3><p>Όσοι ήταν πιο κοντά στη Μεσογειακή δίαιτα είχαν καλύτερες τιμές σε ολική χοληστερόλη, HDL, γλυκόζη και συστολική ΑΠ. Τα p-values δείχνουν στατιστικά σημαντικές διαφορές, όχι απαραίτητα τεράστιες κλινικές διαφορές.</p></article>
+<article class="card full">
+<h3>Θερμίδες — βασικές μετατροπές</h3>
+<p><span class="formula">1 g υδατανθράκων ή πρωτεΐνης = 4 kcal</span> <span class="formula">1 g λίπους = 9 kcal</span></p>
+<p>Στον “πρότυπο άνθρωπο FAO” αναφέρονται ημερήσιες θερμίδες περίπου 2300–3200 kcal. Για πρακτική εκτίμηση: 1000 kcal ≈ 250 g υδατανθράκων/πρωτεϊνών ή 111 g λιπών.</p>
+</article>
+</div>
+</section>
+
+<section id="exercise" class="section">
+<h2>4. Φυσική άσκηση</h2>
+<div class="grid">
+<article class="card key"><span class="tag">SOS</span><h3>Η άσκηση μειώνει καρδιομεταβολικό κίνδυνο</h3><ul><li>Μείωση αρτηριακής πίεσης.</li><li>Αύξηση HDL.</li><li>Επηρεασμός παραγόντων πηκτικότητας: ↓ ινωδογόνο, ↓ PLT.</li><li>Μείωση δράσης συμπαθητικού.</li><li>Μείωση κινδύνου ΣΔ.</li></ul></article>
+<article class="card"><span class="tag green">Συνταγή άσκησης</span><h3>Πώς;</h3><ul><li><b>Συχνότητα:</b> 3–5 φορές/εβδομάδα.</li><li><b>Διάρκεια:</b> 30–60 λεπτά.</li><li>Μπορεί και διαλειμματικά, αλλά όχι λιγότερο από 15 λεπτά ανά τμήμα.</li><li><b>Ένταση:</b> μέτρια, 60–80% της μέγιστης καρδιακής συχνότητας.</li><li><b>Τύπος:</b> αερόβια.</li></ul></article>
+<article class="card"><span class="tag amber">Τύπος</span><h3>Μέγιστη καρδιακή συχνότητα</h3><p><span class="formula">ΜΚΣ ≈ 220 − ηλικία</span></p><p>Μέτρια ένταση = περίπου 60–80% αυτής.</p></article>
+<article class="card"><span class="tag red">Πριν ξεκινήσει κάποιος</span><h3>Έλεγχος για ΣΝ/sudden death αν:</h3><ul><li>Υπάρχουν παράγοντες κινδύνου.</li><li>Υπάρχει θετικό οικογενειακό ιστορικό.</li><li>Είναι μέσης ηλικίας, >40 ετών, και ξεκινά άσκηση για πρώτη φορά.</li></ul></article>
+</div>
+</section>
+
+<section id="smoking" class="section">
+<h2>5. Κάπνισμα</h2>
+<div class="grid">
+<article class="card wide exam"><span class="tag red">Πολύ SOS</span><h3>Κύρια δράση στο καρδιαγγειακό</h3><p>Το κάπνισμα προκαλεί <b>ενδοθηλιακή δυσλειτουργία</b>, αυξάνει μηχανισμούς πηκτικότητας, ευνοεί αγγειόσπασμο και δρα συνεργικά με άλλους παράγοντες κινδύνου.</p></article>
+<article class="card wide"><span class="tag green">Μετά τη διακοπή</span><h3>Βελτιώνονται δείκτες</h3><p>Σε μελέτη διακοπής καπνίσματος για 12 εβδομάδες αναφέρονται: ↓ LDL 5,6%, ↑ HDL 3,4%, ↓ αρτηριακή πίεση και ↓ κατεχολαμίνες στα ούρα.</p></article>
+<article class="card full"><span class="tag purple">Και εκτός καρδιάς</span><h3>Συνδέεται και με καρκίνο/ΣΔ</h3><p>Στην παρουσίαση αναφέρεται ότι περίπου 30% όλων των θανάτων από καρκίνο στις ΗΠΑ οφείλονται στο ενεργητικό κάπνισμα, με ενοχοποίηση για πολλούς τύπους καρκίνου. Άρα το ίδιο “υγιεινοδιαιτητικό πακέτο” λειτουργεί διατομεακά: καρδιά, καρκίνος, σακχαρώδης διαβήτης.</p></article>
+</div>
+</section>
+
+<section id="meds" class="section">
+<h2>6. Άλλα προληπτικά μέτρα & φάρμακα</h2>
+<div class="grid">
+<article class="card"><span class="tag blue">Φάρμακα</span><h3>Αναφέρονται</h3><ul><li>Στατίνες</li><li>Α-ΜΕΑ</li><li>Ασπιρίνη</li><li>Νεότερα αντιπηκτικά</li></ul></article>
+<article class="card exam"><span class="tag red">Ερώτηση παρουσίασης</span><h3>Ποιο φάρμακο βελτίωσε πρόγνωση/επιβίωση;</h3><p><b>Οι στατίνες.</b></p><p class="small">Όχι αντικαταθλιπτικά, αντιφλεγμονώδη ή αντιβιοτικά.</p></article>
+<article class="card"><span class="tag amber">Προσοχή</span><h3>ASA, αντιοξειδωτικά, κρασί</h3><p>Αναφέρονται ως “άλλα προληπτικά μέτρα”, αλλά δεν πρέπει να τα αποστηθίζεις σαν καθολική οδηγία για όλους. Ειδικά η ασπιρίνη στην πρωτογενή πρόληψη θέλει εξατομίκευση λόγω αιμορραγικού κινδύνου.</p></article>
+<article class="card"><span class="tag purple">Lifestyle</span><h3>Άλλα που αναφέρονται</h3><ul><li>Οδοντιατρική φροντίδα</li><li>Siesta</li><li>Οριακός επηρεασμός παραγόντων κινδύνου</li></ul></article>
+</div>
+</section>
+
+<section id="updated" class="section">
+<h2>7. Updated θέματα — τα “παράδοξα” της πρόληψης</h2>
+<div class="grid">
+<article class="card"><span class="tag purple">Αναδυόμενοι παράγοντες</span><h3>Κοινωνία & ψυχική υγεία</h3><ul><li>Κοινωνικοοικονομική τάξη</li><li>Κατάθλιψη</li></ul><p>Σημαίνουν ότι ο καρδιαγγειακός κίνδυνος δεν είναι μόνο βιοχημεία, αλλά και κοινωνικό/ψυχολογικό περιβάλλον.</p></article>
+<article class="card"><span class="tag amber">Παράδοξα</span><h3>Να τα αναγνωρίζεις ως έννοιες</h3><ul><li><b>Fat but fit:</b> παχύσαρκος αλλά με καλή φυσική κατάσταση.</li><li><b>Obese paradox:</b> σε ορισμένες μελέτες/ομάδες η παχυσαρκία φαίνεται “προστατευτική”, συχνά λόγω συγχυτικών παραγόντων.</li><li><b>Αλκοόλ:</b> “παν μέτρον άριστον” αμφισβητείται ανάλογα με outcome και μελέτη.</li><li><b>Άσκηση:</b> πολύ ευεργετική, αλλά η υπερβολή/λάθος πλαίσιο θέλει προσοχή.</li></ul></article>
+<article class="card"><span class="tag red">Μεθοδολογία</span><h3>Μειονέκτημα αναδρομικών μελετών</h3><p>Οι αναδρομικές μελέτες επηρεάζονται εύκολα από <b>συγχυτικούς παράγοντες</b>. Π.χ. όσοι πίνουν “λίγο κρασί” μπορεί να έχουν και άλλες διαφορές τρόπου ζωής/κοινωνικοοικονομικής κατάστασης.</p></article>
+<article class="card"><span class="tag blue">Περιβάλλον</span><h3>Κατοικία σε λεωφόρο</h3><p>Ρύποι και θόρυβος μπορεί να συνδέονται με καρδιαγγειακό κίνδυνο. Αυτό είναι παράδειγμα ότι η πρόληψη δεν είναι μόνο ατομική επιλογή.</p></article>
+</div>
+</section>
+
+<section id="questions" class="section">
+<h2>8. Οι ερωτήσεις της παρουσίασης — απαντήσεις με εξήγηση</h2>
+<div class="grid">
+<article class="card full">
+<details open><summary>1. Φάρμακο που βελτίωσε την πρόγνωση και επιβίωση των ασθενών με καρδιαγγειακή νόσο;</summary><div class="answer"><b>Σωστό: Δ) οι στατίνες.</b><br>Οι στατίνες μειώνουν LDL και καρδιαγγειακά συμβάματα. Τα άλλα δεν αποτελούν κλασικά φάρμακα βελτίωσης πρόγνωσης ΚΑΝ.</div></details>
+<details><summary>2. Στον πίνακα κινδύνου για ΚΑΝ/RISK SCORE περιλαμβάνονται όλα πλην;</summary><div class="answer"><b>Σωστό: Α) η λιποπρωτεΐνη Α.</b><br>Στο κλασικό SCORE περιλαμβάνονται χοληστερόλη, αρτηριακή πίεση, κάπνισμα, ηλικία/φύλο. Η Lp(a) είναι σημαντικός παράγοντας αλλά δεν είναι από τα βασικά στοιχεία του κλασικού πίνακα.</div></details>
+<details><summary>3. Η θνητότητα ΚΑΝ στον ελληνικό πληθυσμό μειώνεται διαχρονικά λόγω;</summary><div class="answer"><b>Πιθανότερο σωστό: Δ) έχουν βρει εφαρμογή νέες και σωτήριες μέθοδοι διάγνωσης και θεραπείας.</b><br>Η παρουσίαση λέει ότι η θνητότητα πέφτει αλλά ο επιπολασμός ανεβαίνει λόγω αύξησης προσδόκιμου επιβίωσης. Δεν λέει ότι η νόσος εξαφανίζεται ή ότι μειώνεται κυρίως επειδή όλοι εφαρμόζουν υγιεινότερες συνήθειες.</div></details>
+<details><summary>4. Στους παράγοντες συμπεριφοράς για αποφυγή ΚΑΝ περιλαμβάνονται όλα πλην;</summary><div class="answer"><b>Σωστό: Γ) οι λίγες ώρες ύπνου.</b><br>Στην παρουσίαση ως βασικοί παράγοντες συμπεριφοράς δίνονται κάπνισμα, άσκηση/καθιστική ζωή και υγιεινή διατροφή. Ο ύπνος μπορεί να σχετίζεται με υγεία, αλλά εδώ δεν ανήκει στην κλασική τριάδα που ζητά η ερώτηση.</div></details>
+<details><summary>5. Στους μη τροποποιήσιμους παράγοντες κινδύνου συμπεριλαμβάνονται;</summary><div class="answer"><b>Σωστά: Β) κληρονομικό ιστορικό, Γ) ηλικία, Δ) φύλο.</b><br>Ο τόπος γέννησης δεν δίνεται ως βασικός μη τροποποιήσιμος παράγοντας στην παρουσίαση.</div></details>
+</article>
+</div>
+</section>
+
+<section id="quiz" class="section">
+<h2>9. Mini-quiz αποστήθισης</h2>
+<div class="grid">
+<article class="card full">
+<details><summary>Ποιο λίπος αυξάνει LDL;</summary><div class="answer">Κορεσμένα και trans λιπαρά.</div></details>
+<details><summary>Ποιο λίπος μειώνει ολική χοληστερόλη/LDL και αυξάνει HDL;</summary><div class="answer">Τα μονοακόρεστα, με κλασικό παράδειγμα το ελαιόλαδο.</div></details>
+<details><summary>Τι κάνει η φυσική άσκηση στην HDL;</summary><div class="answer">Την αυξάνει.</div></details>
+<details><summary>Ποια ένταση άσκησης προτείνεται;</summary><div class="answer">Μέτρια ένταση, περίπου 60–80% της μέγιστης καρδιακής συχνότητας, όπου ΜΚΣ ≈ 220 − ηλικία.</div></details>
+<details><summary>Πότε χρειάζεται έλεγχος για ΣΝ πριν την άσκηση;</summary><div class="answer">Αν υπάρχουν παράγοντες κινδύνου, θετικό οικογενειακό ιστορικό ή ηλικία >40 με έναρξη άσκησης για πρώτη φορά.</div></details>
+<details><summary>Γιατί η θνητότητα μπορεί να πέφτει ενώ ο επιπολασμός ανεβαίνει;</summary><div class="answer">Γιατί με καλύτερη θεραπεία/διάγνωση οι ασθενείς ζουν περισσότερο με τη νόσο, άρα συσσωρεύονται περισσότερα άτομα που πάσχουν.</div></details>
+<details><summary>Ποιο είναι το κεντρικό μήνυμα implementation;</summary><div class="answer">Η γνώση των μέτρων δεν αρκεί· το δύσκολο είναι η εφαρμογή τους στην καθημερινή ζωή και σε επίπεδο πληθυσμού.</div></details>
+</article>
+</div>
+</section>
+
+<section class="section">
+<h2>10. Τελική καρτέλα μνήμης</h2>
+<div class="callout">
+<p><b>Καρδιαγγειακή πρόληψη = μείωση τροποποιήσιμων παραγόντων κινδύνου.</b></p>
+<p><span class="pill">Όχι κάπνισμα</span><span class="pill">Μεσογειακή διατροφή</span><span class="pill">Σύνθετοι υδατάνθρακες</span><span class="pill">Ακόρεστα λίπη</span><span class="pill">Άσκηση 3–5 φορές/εβδομάδα</span><span class="pill">Έλεγχος ΑΠ</span><span class="pill">Έλεγχος LDL</span><span class="pill">Έλεγχος ΣΔ</span><span class="pill">Στατίνες όταν ενδείκνυνται</span></p>
+<p class="small">Η πιο εξεταστική φράση: <b>μη τροποποιήσιμοι = φύλο, ηλικία, οικογενειακό ιστορικό · τροποποιήσιμοι = δυσλιπιδαιμία, υπέρταση, ΣΔ, κάπνισμα, καθιστική ζωή, κακή διατροφή.</b></p>
+</div>
+</section>
+</main>
+</body>
+</html>
