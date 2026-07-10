@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="el">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Bunya / Filo — Microbiology II Speed Learning</title>
+<style>
+:root{--bg:#f7f8fc;--paper:#fff;--ink:#111827;--muted:#667085;--line:#e5e7eb;--accent:#991b1b;--accent2:#b45309;--green:#dcfce7;--blue:#dbeafe;--rose:#ffe4e6;--amber:#fef3c7;--violet:#ede9fe;--shadow:0 14px 35px rgba(16,24,40,.10);--radius:24px}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(circle at top left,#fee2e2 0,#f8fafc 42%,#eef2ff 100%);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--ink);line-height:1.55}.wrap{max-width:1180px;margin:auto;padding:24px}a{color:inherit}.back{display:inline-flex;gap:8px;align-items:center;text-decoration:none;background:#fff;border:1px solid var(--line);border-radius:999px;padding:9px 14px;color:var(--muted);box-shadow:0 6px 18px rgba(0,0,0,.05)}h1{font-size:clamp(38px,7vw,76px);letter-spacing:-.055em;margin:18px 0 8px;line-height:.95}.subtitle{font-size:18px;color:var(--muted);max-width:920px}.pills{display:flex;flex-wrap:wrap;gap:9px;margin-top:18px}.pill{background:#fff;border:1px solid var(--line);border-radius:999px;padding:8px 12px;font-size:13px;color:#475467}.pill.hot{background:#111827;color:#fff;border-color:#111827}.layout{display:grid;grid-template-columns:310px 1fr;gap:22px;margin-top:24px}.side{position:sticky;top:18px;align-self:start;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px}.side h3{margin:0 0 10px}.navbtn{width:100%;text-align:left;border:1px solid var(--line);background:#fff;border-radius:16px;padding:12px 14px;margin:8px 0;cursor:pointer;font-weight:760;color:#344054}.navbtn:hover{transform:translateY(-1px);box-shadow:0 10px 20px rgba(0,0,0,.07)}.card{background:rgba(255,255,255,.95);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:22px;margin-bottom:22px}.card h2{margin:0 0 13px;font-size:28px;letter-spacing:-.03em}.tiny-note{color:var(--muted);font-size:14px;margin-top:-3px}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.mini{border:1px solid var(--line);border-radius:20px;background:#fff;padding:16px}.mini h3{margin:0 0 8px}.tag{display:inline-flex;border-radius:999px;padding:5px 9px;font-size:12px;font-weight:800;margin:3px 4px 4px 0}.tag.orange{background:#ffedd5;color:#9a3412}.tag.blue{background:var(--blue);color:#1d4ed8}.tag.green{background:var(--green);color:#166534}.tag.rose{background:var(--rose);color:#be123c}.tag.violet{background:var(--violet);color:#5b21b6}.tag.amber{background:var(--amber);color:#92400e}.virus-visual{height:190px;border-radius:22px;border:1px solid var(--line);background:linear-gradient(135deg,#fff1f2,#eff6ff);position:relative;overflow:hidden}.seg{position:absolute;border-radius:50%;background:#991b1b;box-shadow:0 0 0 8px rgba(153,27,27,.08);}.seg.s1{width:70px;height:70px;left:44px;top:52px}.seg.s2{width:58px;height:58px;left:108px;top:78px;background:#b45309}.filo{position:absolute;right:48px;top:40px;width:42px;height:132px;border-radius:24px;background:#111827;transform:rotate(-32deg);box-shadow:inset 0 0 0 8px rgba(255,255,255,.16)}.filo:after{content:"";position:absolute;right:-24px;top:6px;width:58px;height:58px;border:14px solid #111827;border-left-color:transparent;border-bottom-color:transparent;border-radius:50%;transform:rotate(35deg)}.virus-visual .label{position:absolute;left:50%;bottom:18px;transform:translateX(-50%);font-weight:900;color:#7f1d1d;letter-spacing:.04em;white-space:nowrap}.flashcard{min-height:300px;display:flex;align-items:center;justify-content:center;text-align:center;border:2px dashed #ef4444;border-radius:24px;background:linear-gradient(135deg,#fff,#fff1f2);padding:28px;cursor:pointer;user-select:none}.flashcard .q{font-size:clamp(24px,4vw,36px);font-weight:900;letter-spacing:-.04em}.flashcard .a{display:none;font-size:clamp(21px,3vw,29px);font-weight:820}.flashcard.show .q{display:none}.flashcard.show .a{display:block}.controls{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}.ctrl{border:1px solid var(--line);background:#fff;border-radius:14px;padding:10px 14px;cursor:pointer;font-weight:800}.ctrl.primary{background:var(--accent);color:#fff;border-color:var(--accent)}.counter{color:var(--muted);align-self:center;font-size:14px}.quizq{border:1px solid var(--line);background:#fff;border-radius:20px;padding:16px;margin:13px 0}.quizq h3{margin:0 0 10px;font-size:18px}.opt{display:block;width:100%;text-align:left;border:1px solid var(--line);background:#fff;border-radius:13px;padding:11px;margin:8px 0;cursor:pointer}.opt.correct{background:#ecfdf3;border-color:#22c55e}.opt.wrong{background:#fff1f2;border-color:#f43f5e}.explain{display:none;color:#475467;margin-top:9px}.showexp .explain{display:block}.trap{border-left:6px solid #dc2626;background:#fff1f2}.skip{border-left:6px solid #94a3b8;background:#f8fafc}.flash-grid{display:grid;grid-template-columns:1fr 260px;gap:16px}.queue{background:#fff;border:1px solid var(--line);border-radius:22px;padding:16px}.queue h3{margin-top:0}.queue ol{padding-left:20px;color:#667085;font-size:14px;max-height:420px;overflow:auto}.queue li{cursor:pointer;margin-bottom:6px}.queue li.active{color:#111827;font-weight:900}.footer{color:var(--muted);font-size:13px;text-align:center;padding:22px}@media(max-width:900px){.layout{grid-template-columns:1fr}.side{position:relative;top:0}.grid,.flash-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap hero">
+  <a class="back" href="microbiology_speed_homepage_grid.html">← Πίσω στο Microbiology Speed Grid</a>
+  <h1>Bunya / Filo</h1>
+  <p class="subtitle">Speed-learning: όχι διάβασμα σεντονιών. Οι πληροφορίες που αξίζει να μείνουν είναι σε flashcards + MCQ.</p>
+  <div class="pills"><span class="pill hot">21ο μάθημα</span><span class="pill">Bunyaviridae</span><span class="pill">Filoviridae</span><span class="pill">αιμορραγικοί πυρετοί</span><span class="pill">Hantavirus</span><span class="pill">CCHF</span><span class="pill">Ebola</span></div>
+</div>
+<div class="wrap layout">
+<aside class="side">
+  <h3>Πλοήγηση</h3>
+  <button class="navbtn" onclick="go('mini')">⚡ Μικρό orientation</button>
+  <button class="navbtn" onclick="go('flash')">🎴 Flashcards</button>
+  <button class="navbtn" onclick="go('quiz')">✅ MCQ quiz</button>
+  <button class="navbtn" onclick="go('traps')">⚠️ Exam traps</button>
+  <button class="navbtn" onclick="go('skip')">⏭️ Skip list</button>
+</aside>
+<main>
+<section class="card" id="mini">
+  <h2>⚡ Orientation μόνο — όλα τα σημαντικά παίζονται στις κάρτες</h2>
+  <p class="tiny-note">Κεντρική λογική: RNA ιοί με περίβλημα, ζωο/εντομο-εξαρτώμενοι, γεωγραφικά περιορισμένοι. Κλινικά θα ρωτηθούν ως αιμορραγικοί πυρετοί, Hanta, CCHF, Ebola/Marburg.</p>
+  <div class="grid">
+    <div class="mini"><div class="virus-visual"><span class="seg s1"></span><span class="seg s2"></span><span class="filo"></span><span class="label">segmented Bunya + filamentous Filo</span></div></div>
+    <div class="mini"><h3>Bunya story</h3><p><b>Περίβλημα + (-) segmented ssRNA</b> με 3 τμήματα: S, M, L. Μεταδίδονται με σκνίπες, τρωκτικά, κρότωνες ή κουνούπια.</p><span class="tag rose">3 RNA segments</span><span class="tag blue">S/M/L</span></div>
+    <div class="mini"><h3>Filo story</h3><p><b>Ebola / Marburg</b>: περιβληματοφόροι, ελικοειδείς, γραμμικό (-)ssRNA, νηματοειδές σχήμα. Μετάδοση με αίμα/σωματικά υγρά και επαφή με μολυσμένα ζώα.</p><span class="tag amber">Ebola</span><span class="tag orange">Marburg</span></div>
+    <div class="mini"><h3>Exam focus</h3><p>Μάθε: αιμορραγικός πυρετός = αγγειακή διαπερατότητα/κυτταροκίνες, CCHF = Hyalomma + ριμπαβιρίνη, Hanta = HFRS vs HPS, Ebola = 2–21 μέρες + ενδοθήλιο/DIC.</p></div>
+  </div>
+</section>
+<section class="card" id="flash">
+  <h2>🎴 Flashcards — active recall</h2>
+  <p class="subtitle">Πάτα την κάρτα για απάντηση. Έβαλα αρκετές γιατί αυτή η παρουσίαση έχει πολλά “ποιος φορέας → ποια νόσος”.</p>
+  <div class="flash-grid">
+    <div>
+      <div class="flashcard" id="fc" onclick="flip()"><div class="q" id="q"></div><div class="a" id="a"></div></div>
+      <div class="controls"><button class="ctrl" onclick="prevCard(event)">← Προηγούμενη</button><button class="ctrl primary" onclick="nextCard(event)">Επόμενη →</button><button class="ctrl" onclick="shuffleCards(event)">Ανακάτεμα</button><span class="counter" id="count"></span></div>
+    </div>
+    <div class="queue"><h3>Flashcard queue</h3><ol id="queue"></ol></div>
+  </div>
+</section>
+<section class="card" id="quiz">
+  <h2>✅ Multiple choice — εξεταστικό mode</h2>
+  <div id="quizbox"></div>
+  <div class="controls"><button class="ctrl primary" onclick="resetQuiz()">Reset quiz</button><span class="counter" id="score"></span></div>
+</section>
+<section class="card trap" id="traps">
+  <h2>⚠️ Exam traps</h2>
+  <ul>
+    <li><b>Bunyaviridae:</b> περίβλημα + 3 τμήματα (-)ssRNA: S=N, M=Gn/Gc, L=RNA πολυμεράση.</li>
+    <li><b>Φλεβοϊοί:</b> σκνίπες, θερινοί μήνες, Μεσόγειος/Ελλάδα, Toscana → μηνιγγίτιδα/εγκεφαλίτιδα.</li>
+    <li><b>Hantavirus:</b> εισπνοή εκκριμάτων τρωκτικών, όχι κλασικά δήγμα. Old World → HFRS/νεφρό, New World → HPS/πνεύμονας.</li>
+    <li><b>CCHF:</b> Hyalomma + αίμα/ιστοί ασθενών/ζώων, άνθρωπο-σε-άνθρωπο/νοσοκομειακή μετάδοση, απομόνωση.</li>
+    <li><b>Ebola:</b> όχι αερογενώς ως κλασικός μηχανισμός· θέλει άμεση επαφή με αίμα/σωματικά υγρά/μολυσμένα ζώα ή αντικείμενα.</li>
+    <li><b>Εργαστήριο:</b> PCR/αντιγόνο/IgM/4x IgG, απομόνωση BSL-4, όχι φυγοκέντρηση ανοιχτών σωληναρίων.</li>
+  </ul>
+</section>
+<section class="card skip" id="skip">
+  <h2>⏭️ Τι κάνουμε skip τώρα</h2>
+  <p>Δεν θα μάθαινα όλα τα phylogenetic trees, όλα τα ονόματα στελεχών/lineages και όλους τους χάρτες. Κράτα τα ελληνικά “specials” μόνο ως αναγνώριση: φλεβοϊοί στην Ελλάδα καλοκαίρι/παραλιακά, Toscana στο ΕΝΥ, CCHF στην Ελλάδα με AP92/2008/2025. Τα εξεταστικά είναι οι φορείς, τα σύνδρομα, η διάγνωση και η προφύλαξη.</p>
+</section>
+</main>
+</div>
+<div class="footer">Microbiology II Speed Learning • Bunyaviridae / Filoviridae</div>
+<script>
+function go(id){document.getElementById(id).scrollIntoView({behavior:'smooth',block:'start'});}
+let cards=[
+ ['Τι κοινό έχουν Bunyaviruses και Filoviruses;','Είναι RNA ιοί με λιπιδικό φάκελο και η επιβίωσή τους εξαρτάται από ζώο ή έντομο, άρα είναι συχνά γεωγραφικά περιορισμένοι.'],
+ ['Τι σημαίνει arbovirus;','Arthropod-borne virus: ιός που μεταδίδεται με αρθρόποδα, π.χ. κουνούπια, κρότωνες, φλεβοτόμους/σκνίπες.'],
+ ['Τι σημαίνει robovirus;','Rodent-borne virus: ιός που συνδέεται με τρωκτικά, κλασικά οι hantaviruses.'],
+ ['Ποιοι είναι βασικοί φορείς μετάδοσης αυτών των ιών;','Κουνούπια, κρότωνες/τσιμπούρια, φλεβοτόμοι/σκνίπες και τρωκτικά.'],
+ ['Ποιοι είναι οι βασικοί τρόποι μετάδοσης Toga/Flavi/Arena/Bunya/Filo στη διαφάνεια;','Νύγμα αρθροπόδων, εισπνοή σκόνης με εκκρίματα τρωκτικών, επαφή με ιστούς μολυσμένων ζώων, άνθρωπο-σε-άνθρωπο σε κάποιους αιμορραγικούς πυρετούς, και άγνωστος για Filoviridae.'],
+ ['Ποιες είναι οι 3 βασικές κλινικές εκβάσεις arboviruses/roboviruses;','Ασυμπτωματικές ή ήπιες λοιμώξεις, λοιμώξεις ΚΝΣ, αιμορραγικός πυρετός.'],
+ ['Από τι εξαρτάται η πορεία της λοίμωξης;','Ιικό φορτίο, είδος/τύπος ιού, ιστικός τροπισμός και ανοσολογική απάντηση ξενιστή.'],
+ ['Τι είναι οι ιογενείς αιμορραγικοί πυρετοί;','Πολυσυστηματικά νοσήματα από ιούς διαφόρων οικογενειών με κύριο χαρακτηριστικό την καταστροφή του αγγειακού συστήματος.'],
+ ['Ποια είναι η παθοφυσιολογία των αιμορραγικών πυρετών;','Αυξημένη αγγειακή διαπερατότητα από ανεξέλεγκτη παραγωγή κυτταροκινών.'],
+ ['Ποια συμπτώματα χαρακτηρίζουν τους αιμορραγικούς πυρετούς;','Πυρετός, κεφαλαλγία, μυαλγίες/αρθραλγίες, ναυτία/διάρροια και μετά αιμορραγικά συμπτώματα: πετέχειες, αιματουρία, αιματέμεση, μέλαινα, DIC/καταπληξία.'],
+ ['Ποια εργαστηριακά ευρήματα είναι γενικά στους αιμορραγικούς πυρετούς;','Λευκοπενία, αιμοσυμπύκνωση, θρομβοπενία, αυξημένα ηπατικά ένζυμα και διαταραχές πήξης.'],
+ ['Ποια είναι η θνητότητα γενικά στους αιμορραγικούς πυρετούς;','Ποικίλλει πολύ: από 0,5% στον Omsk έως 90% στον Ebola, σύμφωνα με τη διαφάνεια.'],
+ ['Ποια είναι τα γενικά χαρακτηριστικά Bunyaviridae;','Περιβληματοφόροι (-) segmented ssRNA ιοί.'],
+ ['Πόσα τμήματα RNA έχουν οι Bunyaviridae;','3 τμήματα RNA μονής αλύσου αρνητικής πολικότητας: S, M, L.'],
+ ['Τι κωδικοποιεί το S segment των Bunyaviridae;','Την πρωτεΐνη του νουκλεοκαψιδίου N.'],
+ ['Τι κωδικοποιεί το M segment των Bunyaviridae;','Τις ιικές γλυκοπρωτεΐνες Gn και Gc.'],
+ ['Τι κωδικοποιεί το L segment των Bunyaviridae;','Την RNA πολυμεράση L.'],
+ ['Ποια Bunya ομάδα συνδέεται με σκνίπες/φλεβοτόμους;','Phenuiviridae / φλεβοϊοί.'],
+ ['Ποια Bunya ομάδα συνδέεται με τρωκτικά;','Hantaviridae / χανταϊοί.'],
+ ['Ποια Bunya ομάδα συνδέεται με κρότωνες;','Nairoviridae, κλασικά Crimean-Congo hemorrhagic fever virus.'],
+ ['Ποια Bunya ομάδα συνδέεται με κουνούπια;','Orthobunyaviridae, και στους φλεβοϊούς το Rift Valley Fever μεταδίδεται με κουνούπια.'],
+ ['Πώς μεταδίδονται οι φλεβοϊοί;','Με νύγμα φλεβοτόμων/σκνιπών. Κυρίως Μάιο έως Αύγουστο ή θερινούς μήνες.'],
+ ['Ποιος φλεβοϊός είναι κλασικός για μηνιγγίτιδα/εγκεφαλίτιδα στη Μεσόγειο;','Ο ιός Toscana (TOSV).'],
+ ['Ποιοι φλεβοϊοί προκαλούν νόσο στον άνθρωπο στη διαφάνεια;','Toscana, οι ιοί πυρετού εκ φλεβοτόμου τύπου Σικελίας/Νάπολης, και Rift Valley Fever.'],
+ ['Τι κρατάω για φλεβοϊούς στην Ελλάδα;','Υπάρχουν τους θερινούς μήνες, κυρίως σε παραλιακά μέρη. Αναφέρονται Corfou, Lefkas, Adria, Chios, Cyprus, Toscana.'],
+ ['Τι έγινε στην Αθαλάσσα Κύπρου το 2002;','Επιδημία εμπύρετου με μυαλγίες/αρθραλγίες σε στρατιώτες της ΕΛΔΥΚ, απομόνωση Cyprus virus.'],
+ ['Τι ήταν σημαντικό με τον Adria virus;','Ανιχνεύτηκε αρχικά σε σκνίπες στην Αλβανία και αργότερα δείχθηκε παθογόνος για ανθρώπους σε παιδί με πυρετό/σπασμούς στην Ελλάδα.'],
+ ['Τι ήταν σημαντικό με Toscana virus στην Ελλάδα;','Σε γυναίκα με εγκεφαλίτιδα στα Τρίκαλα ανιχνεύτηκε Toscana virus lineage C στο ΕΝΥ από τη 2η μέρα νόσου.'],
+ ['Ποια είναι η κύρια οδός μετάδοσης των Hantaviruses στον άνθρωπο;','Εισπνοή μολυσμένων εκκριμάτων τρωκτικών.'],
+ ['Τι προκαλούν οι χανταϊοί στους φυσικούς ξενιστές τους;','Χρόνιες εμμένουσες μολύνσεις.'],
+ ['Από πού πήραν το όνομά τους οι χανταϊοί;','Από τον πρότυπο ιό Hantaan, κοντά στον ποταμό Hantaan στη Νότια Κορέα.'],
+ ['Ποιο τρωκτικό είναι ξενιστής Hantaan και Dobrava;','Apodemus agrarius / striped field mouse.'],
+ ['Ποιο τρωκτικό είναι ξενιστής Dobrava;','Apodemus flavicollis / yellow-necked mouse.'],
+ ['Ποια νόσο προκαλούν κυρίως οι χανταϊοί Παλαιού Κόσμου;','HFRS: Hemorrhagic Fever with Renal Syndrome.'],
+ ['Ποια νόσο προκαλούν κυρίως οι χανταϊοί Νέου Κόσμου;','HPS: Hantavirus Pulmonary Syndrome.'],
+ ['Ποιοι Old World hantaviruses κρατάω;','Hantaan, Seoul, Dobrava, Puumala → HFRS.'],
+ ['Ποιος New World hantavirus είναι κλασικός για HPS;','Sin Nombre, με ξενιστή το deer mouse / Peromyscus maniculatus.'],
+ ['Τι είναι το HFRS;','Οξεία εμπύρετη νεφροπάθεια με αιματολογικές διαταραχές, νεφρική εμπλοκή και αυξημένη αγγειακή διαπερατότητα.'],
+ ['Ποιες είναι οι φάσεις του HFRS;','Εμπύρετη, υποτασική, ολιγουρική, πολυουρική, ανάρρωση.'],
+ ['Ποια εργαστηριακά ευρήματα έχει το HFRS;','Αυξημένη ουρία/κρεατινίνη, αιματοκρίτης, λευκοκυττάρωση με αριστερή απόκλιση, άτυπα λεμφοκύτταρα, θρομβοπενία, χαμηλή αλβουμίνη.'],
+ ['Τι είναι το HPS;','Εμπύρετο νόσημα με αμφοτερόπλευρες διάχυτες διηθήσεις, ταχύ μη καρδιογενές πνευμονικό οίδημα και αναπνευστική ανεπάρκεια.'],
+ ['Ποια είναι η κύρια βλάβη στο HPS;','Πνεύμονες → πνευμονικό οίδημα, με κύριο χαρακτηριστικό την τριχοειδική διαφυγή.'],
+ ['Ποιος ιός προκαλεί Crimean-Congo hemorrhagic fever;','Crimean-Congo hemorrhagic fever virus, γένος Nairovirus / Nairoviridae.'],
+ ['Ποιος είναι ο κύριος φορέας του CCHF;','Κρότωνες, κυρίως Hyalomma marginatum.'],
+ ['Πώς μεταδίδεται το CCHF στον άνθρωπο;','Τσίμπημα κροτώνων ή επαφή με ιστούς/αίμα ασθενών ή ζώων σε φάση ιαιμίας.'],
+ ['Γιατί το CCHF είναι σημαντικό για νοσοκομεία;','Μπορεί να μεταδοθεί από άνθρωπο σε άνθρωπο και να προκαλέσει νοσοκομειακές λοιμώξεις· χρειάζεται απομόνωση.'],
+ ['Ποια είναι η επώαση του CCHF;','7–12 ημέρες.'],
+ ['Ποια είναι τα βασικά συμπτώματα του CCHF;','Απότομη έναρξη με ρίγος, πυρετό, πονοκέφαλο, γαστρεντερικά, ερυθρότητα/οίδημα προσώπου, πετέχειες και αιμορραγίες.'],
+ ['Ποια εργαστηριακά έχει το CCHF;','Λευκοπενία και θρομβοκυτταροπενία.'],
+ ['Ποια είναι η θνητότητα του CCHF στη διαφάνεια;','30–50%.'],
+ ['Ποια είναι η θεραπεία του CCHF;','Υποστηρικτική θεραπεία και έγκαιρη ριμπαβιρίνη για 10 ημέρες.'],
+ ['Τι κρατάω για CCHF στην Ελλάδα;','1975 AP92 από κρότωνες στη Βεργίνα χωρίς νόσο, 2008 πρώτο θανατηφόρο περιστατικό, 2025 περιστατικά στη Θεσσαλία με νοσοκομειακή έκθεση ιατρού.'],
+ ['Ποια γένη/ιοί ανήκουν στα Filoviridae;','Ebola και Marburg. Ο Marburg είναι παρόμοιος αλλά όχι ίδιος με Ebola.'],
+ ['Ποια είναι η μορφολογία του Ebola;','Περιβληματοφόρος, νηματοειδής/filamentous, ελικοειδές καψίδιο, γραμμικό μονόκλωνο αρνητικής πολικότητας RNA.'],
+ ['Πότε ταυτοποιήθηκε ο Ebola;','Το 1976 στο Ζαΐρ/Δημοκρατία του Κογκό.'],
+ ['Ποιο είδος Ebola είναι το πιο μολυσματικό/συχνό;','Zaire ebolavirus (EBOV), υπεύθυνο για πολλές μεγάλες επιδημίες, όπως 2014–2016.'],
+ ['Ποιο Ebola species δεν προκαλεί νόσο σε ανθρώπους στη διαφάνεια;','Reston ebolavirus: ασθένεια σε πρωτεύοντα και χοίρους, όχι σε ανθρώπους.'],
+ ['Πώς μεταδίδεται ο Ebola;','Άμεση επαφή με αίμα/σωματικά υγρά ασθενούς ή νεκρού, μολυσμένα αντικείμενα όπως βελόνες, ή μολυσμένα ζώα/κρέας τους.'],
+ ['Για πόσο μπορεί να μεταδίδεται με σπέρμα σύμφωνα με τη διαφάνεια;','Έως 2 μήνες μετά.'],
+ ['Ποια ζώα θεωρούνται βασικός φορέας/δεξαμενή Ebola;','Φρουτοφάγες νυχτερίδες, που πιστεύεται ότι φέρουν τον ιό χωρίς συμπτώματα.'],
+ ['Ποια είναι τα 2 κύρια χαρακτηριστικά της νόσου Ebola;','Καταστροφή ενδοθηλίου/τοξικές κυτταροκίνες → αγγειακή διαπερατότητα και DIC → σοβαρή θρομβοπενία.'],
+ ['Ποια είναι η επώαση Ebola;','2–21 ημέρες, συνήθως 8–10 ημέρες.'],
+ ['Ποια είναι η κλινική εικόνα Ebola;','Πυρετός >38,6°C, έντονη κεφαλαλγία, μυαλγία, αδυναμία, κόκκινα μάτια, εξάνθημα, διάρροια/έμετοι, κοιλιακοί πόνοι, αιμορραγίες.'],
+ ['Ποια είναι η θεραπεία Ebola στη διαφάνεια;','Συντηρητική/υποστηρικτική, κυρίως ενυδάτωση per os ή IV.'],
+ ['Ποιοι παράγοντες ευνόησαν επιδημίες Ebola;','Καθυστέρηση διάγνωσης/μέτρων, αδύναμα συστήματα υγείας, ταφικά έθιμα και κοινωνικές αντιλήψεις.'],
+ ['Υπάρχει εμβόλιο για Ebola;','Ναι. Ervebo και το σχήμα Zabdeno + Mvabea αναφέρονται ως αδειοδοτημένα εμβόλια.'],
+ ['Πώς γίνεται εργαστηριακή διάγνωση αιμορραγικών πυρετών;','PCR για ιικό γονιδίωμα, απομόνωση ιού σε BSL-4, αντιγόνο, IgM, ή 4x αύξηση IgG.'],
+ ['Τι παγίδα υπάρχει με τα αντισώματα σε αιμορραγικούς πυρετούς;','Μπορεί να μην ανιχνεύονται έως τη 2η εβδομάδα και σε θανατηφόρες περιπτώσεις μπορεί να μην παράγονται.'],
+ ['Ποιο επίπεδο βιοασφάλειας απαιτεί απομόνωση ιού αιμορραγικού πυρετού;','BSL-4.'],
+ ['Ποιο εργαστηριακό μέτρο προφύλαξης είναι πολύ εξεταστικό;','Ποτέ φυγοκέντρηση ανοιχτών σωληναρίων και έγκαιρη ενημέρωση εργαστηρίου για πιθανό αιμορραγικό πυρετό.']
+];
+let ci=0;function renderCard(){fc.classList.remove('show');q.textContent=cards[ci][0];a.textContent=cards[ci][1];count.textContent=(ci+1)+' / '+cards.length;renderQueue();}function flip(){fc.classList.toggle('show')}function nextCard(e){e.stopPropagation();ci=(ci+1)%cards.length;renderCard()}function prevCard(e){e.stopPropagation();ci=(ci-1+cards.length)%cards.length;renderCard()}function shuffleCards(e){e.stopPropagation();for(let i=cards.length-1;i>0;i--){let j=Math.floor(Math.random()*(i+1));[cards[i],cards[j]]=[cards[j],cards[i]];}ci=0;renderCard()}function renderQueue(){queue.innerHTML='';cards.forEach((c,i)=>{let li=document.createElement('li');li.textContent=c[0].slice(0,54)+(c[0].length>54?'…':'');if(i===ci)li.className='active';li.onclick=()=>{ci=i;renderCard()};queue.appendChild(li)})}
+const quiz=[
+ {q:'Ποιο είναι σωστό για Bunyaviridae;',o:['Γυμνοί dsDNA ιοί','Περιβληματοφόροι (-) segmented ssRNA ιοί','ss(+)RNA χωρίς περίβλημα','Ρετροϊοί'],a:1,e:'Bunyaviridae: περίβλημα και 3 τμήματα (-)ssRNA.'},
+ {q:'Ποιο segment των Bunyaviridae κωδικοποιεί την RNA πολυμεράση;',o:['S','M','L','Κανένα'],a:2,e:'L segment → RNA πολυμεράση.'},
+ {q:'Ποιοι μεταδίδουν τους φλεβοϊούς τύπου Toscana/Sandfly fever;',o:['Σκνίπες/φλεβοτόμοι','Κρότωνες Hyalomma','Τρωκτικά','Σκύλοι'],a:0,e:'Phenuiviridae/φλεβοϊοί → φλεβοτόμοι/σκνίπες, κυρίως θερινοί μήνες.'},
+ {q:'Ο ιός Toscana συνδέεται κυρίως με:',o:['Ηπατίτιδα','Μηνιγγίτιδα/εγκεφαλίτιδα','Ορχίτιδα','Κονδυλώματα'],a:1,e:'Toscana virus → μηνιγγίτιδα/εγκεφαλίτιδα.'},
+ {q:'Η κύρια οδός μετάδοσης Hantavirus στον άνθρωπο είναι:',o:['Εισπνοή εκκριμάτων τρωκτικών','Σεξουαλική μετάδοση','Μητρικό γάλα','Τσίμπημα κουνουπιού πάντα'],a:0,e:'Χανταϊοί: εισπνοή μολυσμένων εκκριμάτων τρωκτικών.'},
+ {q:'Old World hantaviruses προκαλούν κυρίως:',o:['HPS','HFRS','Λύσσα','Ιλαρά'],a:1,e:'Παλαιός Κόσμος: Hantaan/Seoul/Dobrava/Puumala → HFRS.'},
+ {q:'New World hantaviruses όπως Sin Nombre προκαλούν κυρίως:',o:['HFRS','HPS','Παρωτίτιδα','Ερυθρά'],a:1,e:'Νέος Κόσμος/Sin Nombre → Hantavirus Pulmonary Syndrome.'},
+ {q:'Το HFRS είναι κυρίως:',o:['Εμπύρετη νεφροπάθεια','Γαστρεντερίτιδα','Ρινίτιδα','Δερματίτιδα'],a:0,e:'HFRS = Hemorrhagic Fever with Renal Syndrome, οξεία εμπύρετη νεφροπάθεια.'},
+ {q:'Το HPS χαρακτηρίζεται κυρίως από:',o:['Μη καρδιογενές πνευμονικό οίδημα και αναπνευστική ανεπάρκεια','Κηλίδες Koplik','Παρωτίτιδα','Αιμορραγική κυστίτιδα'],a:0,e:'HPS: διάχυτες διηθήσεις, ταχύ προοδευτικό μη καρδιογενές πνευμονικό οίδημα.'},
+ {q:'Ο CCHF μεταδίδεται κυρίως με:',o:['Hyalomma κρότωνες και αίμα/ιστούς ασθενών ή ζώων','Μόνο αερογενώς','Μόνο μολυσμένο νερό','Μόνο σεξουαλικά'],a:0,e:'CCHF: τσίμπημα κροτώνων, επαφή με αίμα/ιστούς, δυνατότητα νοσοκομειακής μετάδοσης.'},
+ {q:'Ποια είναι η θεραπεία που αναφέρεται για CCHF;',o:['Oseltamivir','Ribavirin + υποστηρικτική','Acyclovir','Καμία υποστηρικτική αγωγή'],a:1,e:'CCHF: υποστηρικτική και έγκαιρη ριμπαβιρίνη.'},
+ {q:'Η θνητότητα CCHF στη διαφάνεια είναι:',o:['0%','1%','30–50%','Πάντα 90%'],a:2,e:'CCHF: θνητότητα 30–50%.'},
+ {q:'Ποιοι ανήκουν στα Filoviridae;',o:['Ebola και Marburg','HAV και HBV','HSV και VZV','Polio και Coxsackie'],a:0,e:'Filoviridae: Ebola και Marburg.'},
+ {q:'Ποια είναι η μορφολογία/γονιδίωμα Ebola;',o:['Γυμνός dsDNA','Περιβληματοφόρος νηματοειδής (-)ssRNA','ss(+)RNA γυμνός','Τμηματοποιημένος DNA'],a:1,e:'Ebola: φάκελος, ελικοειδές καψίδιο, linear (-)ssRNA, filamentous.'},
+ {q:'Ποια είναι η επώαση Ebola;',o:['2–21 ημέρες','16–18 ημέρες','50–180 ημέρες','20–90 ημέρες'],a:0,e:'Ebola: 2–21 ημέρες, συνήθως 8–10.'},
+ {q:'Ποιο είναι το βασικό pathogenesis Ebola;',o:['Καταστροφή ενδοθηλίου + DIC/θρομβοπενία','Προσβολή παρωτίδας','Latency σε γάγγλια','Απλαστική κρίση μέσω ερυθροβλαστών'],a:0,e:'Ebola: αγγειακή διαπερατότητα από ενδοθηλιακή βλάβη/κυτταροκίνες + DIC.'},
+ {q:'Πώς μεταδίδεται Ebola;',o:['Άμεση επαφή με αίμα/σωματικά υγρά/μολυσμένα ζώα ή αντικείμενα','Με το νερό πισίνας','Μόνο με κουνούπια','Μόνο με κόπρανα'],a:0,e:'Η διαφάνεια δίνει άμεση επαφή με αίμα/σωματικά υγρά, βελόνες/αντικείμενα, ζώα/κρέας.'},
+ {q:'Ποια ζώα θεωρούνται κύριος φορέας/δεξαμενή Ebola;',o:['Φρουτοφάγες νυχτερίδες','Σκύλοι μόνο','Περιστέρια','Κουνέλια'],a:0,e:'Φρουτοφάγες νυχτερίδες στα τροπικά δάση θεωρούνται κύριος φορέας χωρίς συμπτώματα.'},
+ {q:'Η απομόνωση ιού αιμορραγικού πυρετού απαιτεί:',o:['BSL-1','BSL-2','BSL-4','Καμία προφύλαξη'],a:2,e:'Απομόνωση ιού αιμορραγικών πυρετών → BSL-4.'},
+ {q:'Ποιο είναι σωστό για ορολογία αιμορραγικών πυρετών;',o:['Αντισώματα πάντα θετικά από 1η μέρα','Μπορεί να μην ανιχνεύονται έως 2η εβδομάδα ή σε θανατηφόρες περιπτώσεις','IgM δεν χρησιμοποιείται ποτέ','PCR δεν χρησιμοποιείται'],a:1,e:'Παγίδα: σε θανατηφόρες περιπτώσεις δεν παράγονται αντισώματα· πιθανόν μη ανιχνεύσιμα έως 2η εβδομάδα.'}
+];
+function renderQuiz(){quizbox.innerHTML='';quiz.forEach((it,idx)=>{let div=document.createElement('div');div.className='quizq';div.innerHTML='<h3>'+(idx+1)+'. '+it.q+'</h3>';it.o.forEach((op,i)=>{let b=document.createElement('button');b.className='opt';b.textContent=['Α','Β','Γ','Δ'][i]+'. '+op;b.onclick=()=>answer(div,b,i,it.a);div.appendChild(b)});let ex=document.createElement('div');ex.className='explain';ex.textContent=it.e;div.appendChild(ex);quizbox.appendChild(div)});updateScore()}let answered=0,correct=0;function answer(div,b,i,a){if(div.dataset.done)return;div.dataset.done=1;answered++;if(i===a){b.classList.add('correct');correct++}else{b.classList.add('wrong');div.querySelectorAll('.opt')[a].classList.add('correct')}div.classList.add('showexp');updateScore()}function updateScore(){score.textContent='Score: '+correct+' / '+answered}function resetQuiz(){answered=0;correct=0;renderQuiz()}renderCard();renderQuiz();
+</script>
+</body>
+</html>

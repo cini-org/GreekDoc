@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="el">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Παρωτίτιδα — Microbiology II Speed Learning</title>
+<style>
+:root{--bg:#f7f8fc;--paper:#fff;--ink:#111827;--muted:#667085;--line:#e5e7eb;--accent:#7c3aed;--accent2:#f59e0b;--green:#dcfce7;--blue:#dbeafe;--rose:#ffe4e6;--amber:#fef3c7;--violet:#ede9fe;--shadow:0 14px 35px rgba(16,24,40,.10);--radius:24px}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(circle at top left,#fff7ed 0,#f7f8fc 42%,#eef2ff 100%);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--ink);line-height:1.55}.wrap{max-width:1180px;margin:auto;padding:24px}a{color:inherit}.back{display:inline-flex;gap:8px;align-items:center;text-decoration:none;background:#fff;border:1px solid var(--line);border-radius:999px;padding:9px 14px;color:var(--muted);box-shadow:0 6px 18px rgba(0,0,0,.05)}h1{font-size:clamp(38px,7vw,76px);letter-spacing:-.055em;margin:18px 0 8px;line-height:.95}.subtitle{font-size:18px;color:var(--muted);max-width:920px}.pills{display:flex;flex-wrap:wrap;gap:9px;margin-top:18px}.pill{background:#fff;border:1px solid var(--line);border-radius:999px;padding:8px 12px;font-size:13px;color:#475467}.pill.hot{background:#111827;color:#fff;border-color:#111827}.layout{display:grid;grid-template-columns:310px 1fr;gap:22px;margin-top:24px}.side{position:sticky;top:18px;align-self:start;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px}.side h3{margin:0 0 10px}.navbtn{width:100%;text-align:left;border:1px solid var(--line);background:#fff;border-radius:16px;padding:12px 14px;margin:8px 0;cursor:pointer;font-weight:760;color:#344054}.navbtn:hover{transform:translateY(-1px);box-shadow:0 10px 20px rgba(0,0,0,.07)}.card{background:rgba(255,255,255,.95);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:22px;margin-bottom:22px}.card h2{margin:0 0 13px;font-size:28px;letter-spacing:-.03em}.tiny-note{color:var(--muted);font-size:14px;margin-top:-3px}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.mini{border:1px solid var(--line);border-radius:20px;background:#fff;padding:16px}.mini h3{margin:0 0 8px}.tag{display:inline-flex;border-radius:999px;padding:5px 9px;font-size:12px;font-weight:800;margin:3px 4px 4px 0}.tag.orange{background:#ffedd5;color:#9a3412}.tag.blue{background:var(--blue);color:#1d4ed8}.tag.green{background:var(--green);color:#166534}.tag.rose{background:var(--rose);color:#be123c}.tag.violet{background:var(--violet);color:#5b21b6}.tag.amber{background:var(--amber);color:#92400e}.virus-visual{height:180px;border-radius:22px;border:1px solid var(--line);background:radial-gradient(circle at 50% 50%,#fee2e2 0 19%,#ef4444 20% 28%,transparent 29%),linear-gradient(135deg,#fff7ed,#eff6ff);position:relative;overflow:hidden}.virus-visual:before{content:"";position:absolute;inset:34px;border-radius:46% 54% 52% 48%;border:7px solid rgba(245,158,11,.35);outline:7px dotted #f59e0b}.virus-visual:after{content:"MUMPS";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);font-weight:900;color:#7c2d12;letter-spacing:.1em}.flashcard{min-height:290px;display:flex;align-items:center;justify-content:center;text-align:center;border:2px dashed #fbbf24;border-radius:24px;background:linear-gradient(135deg,#fff,#fffbeb);padding:28px;cursor:pointer;user-select:none}.flashcard .q{font-size:clamp(24px,4vw,36px);font-weight:900;letter-spacing:-.04em}.flashcard .a{display:none;font-size:clamp(21px,3vw,29px);font-weight:820}.flashcard.show .q{display:none}.flashcard.show .a{display:block}.controls{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}.ctrl{border:1px solid var(--line);background:#fff;border-radius:14px;padding:10px 14px;cursor:pointer;font-weight:800}.ctrl.primary{background:var(--accent);color:#fff;border-color:var(--accent)}.counter{color:var(--muted);align-self:center;font-size:14px}.quizq{border:1px solid var(--line);background:#fff;border-radius:20px;padding:16px;margin:13px 0}.quizq h3{margin:0 0 10px;font-size:18px}.opt{display:block;width:100%;text-align:left;border:1px solid var(--line);background:#fff;border-radius:13px;padding:11px;margin:8px 0;cursor:pointer}.opt.correct{background:#ecfdf3;border-color:#22c55e}.opt.wrong{background:#fff1f2;border-color:#f43f5e}.explain{display:none;color:#475467;margin-top:9px}.showexp .explain{display:block}.trap{border-left:6px solid #f97316;background:#fff7ed}.skip{border-left:6px solid #94a3b8;background:#f8fafc}.flash-grid{display:grid;grid-template-columns:1fr 260px;gap:16px}.queue{background:#fff;border:1px solid var(--line);border-radius:22px;padding:16px}.queue h3{margin-top:0}.queue ol{padding-left:20px;color:#667085;font-size:14px}.queue li.active{color:#111827;font-weight:900}.footer{color:var(--muted);font-size:13px;text-align:center;padding:22px}@media(max-width:900px){.layout{grid-template-columns:1fr}.side{position:relative;top:0}.grid,.flash-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap hero">
+  <a class="back" href="microbiology_speed_homepage_grid.html">← Πίσω στο Microbiology Speed Grid</a>
+  <h1>Παρωτίτιδα</h1>
+  <p class="subtitle">Νέο format: το “διάβασμα” είναι κυρίως σε flashcards και MCQ. Η σύνοψη πάνω είναι επίτηδες μικρή, μόνο για προσανατολισμό.</p>
+  <div class="pills"><span class="pill hot">14ο μάθημα</span><span class="pill">Mumps virus</span><span class="pill">Paramyxoviridae</span><span class="pill">παρωτίδες</span><span class="pill">ορχίτιδα</span><span class="pill">άσηπτη μηνιγγίτιδα</span><span class="pill">MMR</span></div>
+</div>
+<div class="wrap layout">
+<aside class="side">
+  <h3>Πλοήγηση</h3>
+  <button class="navbtn" onclick="go('mini')">⚡ Μικρό orientation</button>
+  <button class="navbtn" onclick="go('flash')">🎴 Flashcards</button>
+  <button class="navbtn" onclick="go('quiz')">✅ MCQ quiz</button>
+  <button class="navbtn" onclick="go('traps')">⚠️ Exam traps</button>
+  <button class="navbtn" onclick="go('skip')">⏭️ Skip list</button>
+</aside>
+<main>
+<section class="card" id="mini">
+  <h2>⚡ Orientation μόνο — όχι για παπαγαλία</h2>
+  <p class="tiny-note">Τα υπόλοιπα τα έβαλα σε κάρτες/MCQ για να τα μάθεις ενεργητικά.</p>
+  <div class="grid">
+    <div class="mini"><div class="virus-visual"></div></div>
+    <div class="mini"><h3>Το κεντρικό story</h3><p><b>Mumps virus</b> = RNA παραμυξοϊός που κάνει κυρίως επώδυνη διόγκωση σιελογόνων/παρωτίδων, αλλά μπορεί να πάει και σε ΚΝΣ, όρχεις, πάγκρεας, ωοθήκες.</p><span class="tag orange">παρωτίδες</span><span class="tag blue">Paramyxovirus</span></div>
+    <div class="mini"><h3>Τρία exam hooks</h3><p>Επώαση 16–18 ημέρες, μεταδοτικότητα 1 εβδομάδα πριν έως 9 ημέρες μετά, επιπλοκές: ορχίτιδα σε μετεφηβικούς άνδρες, άσηπτη μηνιγγίτιδα/ΚΝΣ, παγκρεατίτιδα.</p></div>
+    <div class="mini"><h3>Πρόληψη</h3><p>MMR: ζων εξασθενημένο συνδυασμένο εμβόλιο για ιλαρά–παρωτίτιδα–ερυθρά, 1η δόση 12–15 μηνών, 2η 4–6 ετών.</p><span class="tag green">MMR</span></div>
+  </div>
+</section>
+<section class="card" id="flash">
+  <h2>🎴 Flashcards — εδώ είναι όλη η γνώση</h2>
+  <p class="subtitle">Πάτα την κάρτα για απάντηση. Αυτές είναι οι πληροφορίες που αξίζει να θυμάσαι.</p>
+  <div class="flash-grid">
+    <div>
+      <div class="flashcard" id="fc" onclick="flip()"><div class="q" id="q"></div><div class="a" id="a"></div></div>
+      <div class="controls"><button class="ctrl" onclick="prevCard(event)">← Προηγούμενη</button><button class="ctrl primary" onclick="nextCard(event)">Επόμενη →</button><button class="ctrl" onclick="shuffleCards(event)">Ανακάτεμα</button><span class="counter" id="count"></span></div>
+    </div>
+    <div class="queue"><h3>Flashcard queue</h3><ol id="queue"></ol></div>
+  </div>
+</section>
+<section class="card" id="quiz">
+  <h2>✅ Multiple choice — ίδια γνώση σε εξεταστικό mode</h2>
+  <div id="quizbox"></div>
+  <div class="controls"><button class="ctrl primary" onclick="resetQuiz()">Reset quiz</button><span class="counter" id="score"></span></div>
+</section>
+<section class="card trap" id="traps">
+  <h2>⚠️ Exam traps</h2>
+  <ul>
+    <li><b>Παρωτίτιδα ≠ μόνο παρωτίδες:</b> μπορεί να προσβάλει ΚΝΣ, όρχεις, πάγκρεας, ωοθήκες, όργανο Corti.</li>
+    <li><b>Ορχίτιδα:</b> κλασική επιπλοκή σε μετεφηβικούς άνδρες, 20–50% σύμφωνα με τη διαφάνεια.</li>
+    <li><b>ΚΝΣ:</b> προσβολή σε αρκετούς, αλλά συμπτωματολογία σε μικρότερο ποσοστό· άσηπτη μηνιγγίτιδα είναι κλασική.</li>
+    <li><b>Απομόνωση ιού:</b> σάλιο, ούρα, φάρυγγας, ΕΝΥ. Σάλιο μέχρι 5 ημέρες μετά, ούρα μέχρι 15 ημέρες μετά την έναρξη συμπτωμάτων.</li>
+    <li><b>Anti-V</b> αντισώματα δίνουν μόνιμη ανοσία· το V είναι επιφανειακό, το S εσωτερικό/soluble.</li>
+  </ul>
+</section>
+<section class="card skip" id="skip">
+  <h2>⏭️ Τι κάνουμε skip τώρα</h2>
+  <p>Δεν θα μάθαινα χρονολογίες απομόνωσης 1945/1955, λεπτομέρειες επιδημιολογικών χαρτών και ακριβή γραφή όλων των παλιών διαγνωστικών μεθόδων. Θα κρατούσα μόνο αυτά που έγιναν flashcards/MCQ.</p>
+</section>
+</main>
+</div>
+<div class="footer">Microbiology II Speed Learning • Παρωτίτιδα</div>
+<script>
+function go(id){document.getElementById(id).scrollIntoView({behavior:'smooth',block:'start'});}
+let cards=[
+ ['Τι ιός είναι ο ιός της παρωτίτιδας;','RNA ιός που ανήκει στους παραμυξοϊούς/Paramyxoviridae.'],
+ ['Ποια είναι η κλασική νόσος που προκαλεί;','Παρωτίτιδα: οξεία ιογενής νόσος με επώδυνη διόγκωση σιελογόνων αδένων, κυρίως παρωτίδων.'],
+ ['Ποια γλυκοπρωτεϊνική/αντιγονική λεπτομέρεια πρέπει να θυμάμαι;','Έχει αιμοσυγκολλητίνες, νευραμινιδάσες και αιμολυσίνες. Αντιγόνο V στην επιφάνεια, S στο εσωτερικό. Anti-V → μόνιμη ανοσία.'],
+ ['Τι αδρανοποιεί τον ιό της παρωτίτιδας;','Ζέστη, αιθέρας, φορμόλη, χλωροφόρμιο και υπεριώδης ακτινοβολία.'],
+ ['Από πού απομονώνεται ο ιός;','Σάλιο, ούρα, φάρυγγας, ΕΝΥ.'],
+ ['Ποια είναι η πορεία παθογένειας σε μία πρόταση;','Είσοδος από αναπνευστικό → πολλαπλασιασμός σε ρινοφάρυγγα/επιχώριους λεμφαδένες → ιαιμία 3–5 ημέρες → διασπορά σε αδένες/ΚΝΣ/πάγκρεας/όρχεις/ωοθήκες.'],
+ ['Ποια όργανα μπορεί να προσβληθούν;','Παρωτίδες/σιελογόνοι, μήνιγγες-ΚΝΣ, πάγκρεας, όρχεις, ωοθήκες, νεφρά, οπτικό νεύρο, όργανο Corti, μαστοί, θυρεοειδής.'],
+ ['Πώς μεταδίδεται η παρωτίτιδα;','Από άτομο σε άτομο με σταγονίδια από το στόμα και με πρόσφατα μολυσμένα αντικείμενα.'],
+ ['Ποιος είναι ο χρόνος επώασης;','Συνήθως 16–18 ημέρες, εύρος 12–25 ημέρες.'],
+ ['Πότε είναι μεταδοτική;','Περίπου 1 εβδομάδα πριν έως 9 ημέρες μετά την έναρξη της νόσου/διόγκωση παρωτίδων.'],
+ ['Πόσο συχνή είναι η διόγκωση παρωτίδας;','Σε 60–70% όλων των λοιμώξεων και 95% των συμπτωματικών.'],
+ ['Η διόγκωση παρωτίδας είναι συνήθως μονόπλευρη ή αμφοτερόπλευρη;','Μπορεί να είναι ετερόπλευρη, αλλά συνήθως είναι αμφοτερόπλευρη περίπου 90%.'],
+ ['Ποια είναι τα γενικά συμπτώματα;','Πυρετός, κεφαλαλγία, κακουχία, ανορεξία + επώδυνη διόγκωση παρωτίδων/σιαλογόνων.'],
+ ['Ποια είναι η κλασική επιπλοκή σε μετεφηβικούς άνδρες;','Επιδιδυμο-ορχίτιδα/ορχίτιδα, με κίνδυνο στείρωσης.'],
+ ['Πόσο συχνή είναι η ορχίτιδα σε μετεφηβικούς άνδρες σύμφωνα με τη διαφάνεια;','20–50% σε post-pubertal males.'],
+ ['Ποια επιπλοκή από ΚΝΣ πρέπει να θυμάμαι;','Άσηπτη μηνιγγίτιδα/μηνιγγοεγκεφαλίτιδα. Προσβολή ΚΝΣ αναφέρεται σε 50%, συμπτωματολογία σε 10% ή CNS involvement 15% των κλινικών περιπτώσεων.'],
+ ['Ποιες άλλες επιπλοκές κρατάω;','Παγκρεατίτιδα 2–5%, κώφωση 1/20.000, θάνατος 1–3/10.000, μαστίτιδα, θυρεοειδίτιδα.'],
+ ['Για πόσες ημέρες βρίσκουμε ιό στο σάλιο;','Στο σάλιο μέχρι περίπου 5 ημέρες μετά την έναρξη συμπτωμάτων.'],
+ ['Για πόσες ημέρες βρίσκουμε ιό στα ούρα;','Στα ούρα μέχρι περίπου 15 ημέρες μετά την έναρξη συμπτωμάτων.'],
+ ['Πώς επιβεβαιώνεται εργαστηριακά;','Καλλιέργεια/απομόνωση από σάλιο, ούρα, ΕΝΥ ή αίμα, αύξηση ειδικών IgG σε δύο δείγματα, ειδικό IgM, ή RT-PCR.'],
+ ['Πότε κορυφώνεται το ειδικό IgM;','Τις πρώτες ημέρες της νόσου και κορυφώνεται περίπου 1 εβδομάδα μετά την έναρξη συμπτωμάτων.'],
+ ['Ποια είναι η πρόληψη;','Εμβόλιο MMR, ζων εξασθενημένο για ιλαρά–παρωτίτιδα–ερυθρά.'],
+ ['Πότε δίνονται οι δόσεις MMR στη διαφάνεια;','1η δόση 12–15 μηνών, 2η δόση 4–6 ετών.'],
+ ['Τι προσφέρει η 2η δόση MMR;','9 φορές μικρότερος κίνδυνος νόσησης, ηπιότερη νόσος αν συμβεί, μικρότερη μετάδοση σε άλλους.']
+];
+let ci=0;function renderCard(){fc.classList.remove('show');q.textContent=cards[ci][0];a.textContent=cards[ci][1];count.textContent=(ci+1)+' / '+cards.length;renderQueue();}function flip(){fc.classList.toggle('show')}function nextCard(e){e.stopPropagation();ci=(ci+1)%cards.length;renderCard()}function prevCard(e){e.stopPropagation();ci=(ci-1+cards.length)%cards.length;renderCard()}function shuffleCards(e){e.stopPropagation();for(let i=cards.length-1;i>0;i--){let j=Math.floor(Math.random()*(i+1));[cards[i],cards[j]]=[cards[j],cards[i]];}ci=0;renderCard()}function renderQueue(){queue.innerHTML='';cards.forEach((c,i)=>{let li=document.createElement('li');li.textContent=c[0].slice(0,54)+(c[0].length>54?'…':'');if(i===ci)li.className='active';li.onclick=()=>{ci=i;renderCard()};queue.appendChild(li)})}
+const quiz=[
+ {q:'Ο ιός της παρωτίτιδας ανήκει σε ποια ομάδα;',o:['Picornaviridae','Paramyxoviridae','Herpesviridae','Retroviridae'],a:1,e:'Είναι RNA ιός της ομάδας των παραμυξοϊών.'},
+ {q:'Η παρωτίτιδα χαρακτηρίζεται κυρίως από:',o:['Φυσαλιδώδες εξάνθημα σε όλα τα στάδια','Επώδυνη διόγκωση σιελογόνων/παρωτίδων','Κηλίδες Koplik','Παράλυση προσθίων κεράτων'],a:1,e:'Κλασικό: επώδυνη διόγκωση των σιελογόνων αδένων, κυρίως παρωτίδων.'},
+ {q:'Ποιο αντιγόνο βρίσκεται στην επιφάνεια του ιού και τα αντισώματα εναντίον του δίνουν μόνιμη ανοσία;',o:['S','V','p24','EBNA'],a:1,e:'V = viral επιφανειακό αντιγόνο. Anti-V → μόνιμη ανοσία.'},
+ {q:'Ποιος είναι ο συνήθης χρόνος επώασης της παρωτίτιδας;',o:['2–4 ημέρες','4–5 ημέρες','16–18 ημέρες','6 μήνες'],a:2,e:'Συνήθως 16–18 ημέρες, με εύρος 12–25.'},
+ {q:'Η μεταδοτική περίοδος της παρωτίτιδας είναι περίπου:',o:['Μόνο μετά την εξαφάνιση διόγκωσης','1 εβδομάδα πριν έως 9 ημέρες μετά την έναρξη','Μόνο τις πρώτες 24 ώρες','Μόνο στην επώαση'],a:1,e:'Μεταδίδεται από περίπου 1 εβδομάδα πριν μέχρι 9 ημέρες μετά την έναρξη νόσου.'},
+ {q:'Ποια επιπλοκή είναι κλασική σε μετεφηβικούς άνδρες;',o:['Ορχίτιδα','SSPE','Croup','Ηπατίτιδα Β'],a:0,e:'Ορχίτιδα/επιδιδυμο-ορχίτιδα, με πιθανό κίνδυνο στείρωσης.'},
+ {q:'Ποιο από τα παρακάτω ΔΕΝ είναι τυπικό όργανο-στόχος στην παρωτίτιδα;',o:['Πάγκρεας','Όρχεις','ΚΝΣ','Πρόσθια κέρατα νωτιαίου μυελού'],a:3,e:'Πρόσθια κέρατα = πολιομυελίτιδα, όχι παρωτίτιδα.'},
+ {q:'Για εργαστηριακή διάγνωση, ο ιός μπορεί να απομονωθεί από:',o:['Μόνο κόπρανα','Σάλιο, ούρα, φάρυγγα, ΕΝΥ','Μόνο δέρμα','Μόνο ορό'],a:1,e:'Σάλιο, ούρα, φάρυγγας, ΕΝΥ αναφέρονται στη διαφάνεια.'},
+ {q:'Στα ούρα ο ιός μπορεί να ανιχνεύεται περίπου για:',o:['1 ημέρα','5 ημέρες','15 ημέρες','6 μήνες'],a:2,e:'Στα ούρα έως περίπου 15 ημέρες μετά την έναρξη συμπτωμάτων.'},
+ {q:'Ποιο εμβόλιο προλαμβάνει την παρωτίτιδα;',o:['BCG','MMR','IPV μόνο','DTP'],a:1,e:'MMR = Measles, Mumps, Rubella.'},
+ {q:'Ποια είναι η σωστή πληροφορία για την 2η δόση MMR;',o:['Αυξάνει τον κίνδυνο μετάδοσης','Δίνει 9 φορές μικρότερο κίνδυνο νόσησης','Δεν αλλάζει τη βαρύτητα','Δίνεται μόνο σε ανοσοκατεσταλμένους'],a:1,e:'Η διαφάνεια λέει: 9-fold lower risk, milder disease, less transmission.'},
+ {q:'Ποια επιπλοκή έχει συχνότητα 2–5% στη διαφάνεια;',o:['Παγκρεατίτιδα','Κώφωση','Θάνατος','Ορχίτιδα'],a:0,e:'Pancreatitis 2–5%.'}
+];
+function renderQuiz(){quizbox.innerHTML='';quiz.forEach((it,idx)=>{let div=document.createElement('div');div.className='quizq';div.innerHTML='<h3>'+(idx+1)+'. '+it.q+'</h3>';it.o.forEach((op,i)=>{let b=document.createElement('button');b.className='opt';b.textContent=['Α','Β','Γ','Δ'][i]+'. '+op;b.onclick=()=>answer(div,b,i,it.a);div.appendChild(b)});let ex=document.createElement('div');ex.className='explain';ex.textContent=it.e;div.appendChild(ex);quizbox.appendChild(div)});updateScore()}let answered=0,correct=0;function answer(div,b,i,a){if(div.dataset.done)return;div.dataset.done=1;answered++;if(i===a){b.classList.add('correct');correct++}else{b.classList.add('wrong');div.querySelectorAll('.opt')[a].classList.add('correct')}div.classList.add('showexp');updateScore()}function updateScore(){score.textContent='Score: '+correct+' / '+answered}function resetQuiz(){answered=0;correct=0;renderQuiz()}renderCard();renderQuiz();
+</script>
+</body>
+</html>

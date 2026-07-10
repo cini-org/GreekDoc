@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="el">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Ηπατίτιδες I — Microbiology II Speed Learning</title>
+<style>
+:root{--bg:#f8fafc;--paper:#fff;--ink:#111827;--muted:#667085;--line:#e5e7eb;--accent:#7c3aed;--accent2:#dc2626;--blue:#dbeafe;--green:#dcfce7;--amber:#fef3c7;--rose:#ffe4e6;--violet:#ede9fe;--shadow:0 14px 35px rgba(16,24,40,.10);--radius:24px}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(circle at 10% 0%,#ede9fe 0,#f8fafc 42%,#fff7ed 100%);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--ink)}
+a{color:inherit}.wrap{max-width:1180px;margin:0 auto;padding:22px}.back{display:inline-flex;align-items:center;gap:8px;margin-bottom:14px;color:#334155;text-decoration:none;font-weight:850}.hero{background:linear-gradient(135deg,#581c87,#111827 55%,#92400e);color:white;border-radius:32px;padding:26px;box-shadow:var(--shadow);position:relative;overflow:hidden}.hero:after{content:"HBV";position:absolute;right:18px;top:4px;font-size:140px;font-weight:950;opacity:.12;transform:rotate(-12deg)}.hero h1{margin:0 0 8px;font-size:clamp(31px,5vw,60px);letter-spacing:-.04em}.hero p{margin:0;max-width:860px;line-height:1.6;color:#ede9fe}.nav{display:flex;gap:10px;flex-wrap:wrap;margin:18px 0}.pill{border:1px solid var(--line);background:white;border-radius:999px;padding:10px 14px;text-decoration:none;box-shadow:0 8px 20px rgba(16,24,40,.06);font-weight:800}.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:16px;margin:18px 0}.card{grid-column:span 12;background:rgba(255,255,255,.95);border:1px solid var(--line);border-radius:var(--radius);padding:20px;box-shadow:0 10px 26px rgba(16,24,40,.07)}@media(min-width:850px){.half{grid-column:span 6}.third{grid-column:span 4}.two{grid-column:span 8}}
+h2{margin:0 0 12px;font-size:28px;letter-spacing:-.03em}.muted{color:var(--muted)}.small{font-size:13px}.mini{display:flex;flex-wrap:wrap;gap:8px}.tag{border-radius:999px;padding:8px 10px;font-weight:850;font-size:13px;background:#f3f4f6}.tag.blue{background:var(--blue)}.tag.green{background:var(--green)}.tag.amber{background:var(--amber)}.tag.rose{background:var(--rose)}.tag.violet{background:var(--violet)}
+.visuals{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-top:12px}.virus-icon{border:1px solid var(--line);border-radius:20px;background:linear-gradient(145deg,#ffffff,#f8fafc);padding:14px;text-align:center}.orb{width:82px;height:82px;margin:4px auto 10px;border-radius:50%;border:5px solid #7c3aed;background:radial-gradient(circle,#fef3c7 0 20%,#fde68a 21% 38%,#fff 39%);position:relative}.orb:before{content:"";position:absolute;inset:-10px;border-radius:50%;background:repeating-conic-gradient(from 0deg,#7c3aed 0 8deg,transparent 8deg 18deg);z-index:-1}.minihex{width:82px;height:82px;margin:4px auto 10px;background:#fef3c7;clip-path:polygon(25% 3%,75% 3%,100% 50%,75% 97%,25% 97%,0 50%);border:4px solid #d97706}.delta{width:82px;height:82px;margin:4px auto 10px;border-radius:50%;background:conic-gradient(#a855f7,#f97316,#a855f7);display:grid;place-items:center;color:white;font-size:34px;font-weight:950;border:5px solid white;box-shadow:0 0 0 2px #a855f7}.callout{border:1px dashed #c4b5fd;background:#f5f3ff;border-radius:20px;padding:16px}.list{margin:0;padding-left:20px;line-height:1.65}.danger{color:#be123c;font-weight:900}.good{color:#047857;font-weight:900}
+.flash-toolbar{display:flex;gap:10px;align-items:center;justify-content:space-between;flex-wrap:wrap;margin-bottom:12px}.btn{border:0;border-radius:14px;background:var(--accent);color:white;padding:10px 14px;font-weight:900;cursor:pointer}.btn.secondary{background:#111827}.btn.ghost{background:#f3f4f6;color:#111827;border:1px solid var(--line)}.progress{font-weight:900;color:var(--muted)}
+.flashcard{min-height:305px;border:1px solid var(--line);border-radius:26px;background:linear-gradient(145deg,#fff,#f5f3ff);display:flex;align-items:center;justify-content:center;text-align:center;padding:26px;cursor:pointer;box-shadow:inset 0 0 0 1px rgba(255,255,255,.6)}.flashcard .q{font-size:clamp(24px,4vw,40px);font-weight:950;letter-spacing:-.03em}.flashcard .a{display:none;font-size:clamp(21px,3vw,32px);line-height:1.35;font-weight:850}.flashcard.flipped{background:linear-gradient(145deg,#fff7ed,#eef2ff)}.flashcard.flipped .q{display:none}.flashcard.flipped .a{display:block}.hint{font-size:13px;color:var(--muted);margin-top:9px;text-align:center}
+.quiz-item{border:1px solid var(--line);border-radius:22px;padding:16px;margin:14px 0;background:white}.quiz-q{font-weight:950;font-size:18px;margin-bottom:12px}.option{display:block;width:100%;text-align:left;border:1px solid var(--line);border-radius:14px;background:#f9fafb;margin:8px 0;padding:12px;cursor:pointer;font-weight:700}.option.correct{background:#dcfce7;border-color:#86efac}.option.wrong{background:#ffe4e6;border-color:#fda4af}.explain{display:none;border-left:4px solid var(--accent);background:#f5f3ff;padding:10px 12px;border-radius:12px;margin-top:10px;color:#312e81}.quiz-item.done .explain{display:block}.score{position:sticky;top:0;z-index:2;background:#111827;color:white;border-radius:18px;padding:12px 14px;margin-bottom:14px;display:flex;justify-content:space-between;gap:12px;align-items:center}.table{width:100%;border-collapse:separate;border-spacing:0 8px}.table td,.table th{text-align:left;padding:10px 12px;background:#f8fafc;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}.table th{background:#ede9fe}.table td:first-child,.table th:first-child{border-left:1px solid var(--line);border-radius:12px 0 0 12px;font-weight:900}.table td:last-child,.table th:last-child{border-right:1px solid var(--line);border-radius:0 12px 12px 0}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="microbiology_speed_homepage_grid.html">← Πίσω στο Microbiology Grid</a>
+  <section class="hero">
+    <h1>Ηπατίτιδες I</h1>
+    <p>Speed-learning κυρίως με flashcards + MCQ. Εδώ καλύπτονται όσα είχε η παρουσίαση: HBV, HDV και HAV, με έμφαση στους δείκτες της HBV.</p>
+  </section>
+
+  <div class="nav">
+    <a class="pill" href="#flashcards">Flashcards</a>
+    <a class="pill" href="#quiz">Multiple choice</a>
+    <a class="pill" href="#traps">Exam traps</a>
+  </div>
+
+  <section class="grid">
+    <div class="card half">
+      <h2>Orientation μόνο</h2>
+      <p class="muted">Μη χαθείς στα πολλά. Η αποστήθιση είναι στις κάρτες.</p>
+      <div class="mini">
+        <span class="tag amber">HBV: DNA, HBsAg, anti-HBs, anti-HBc</span>
+        <span class="tag rose">HDV: ατελής RNA, θέλει HBsAg</span>
+        <span class="tag green">HAV: RNA, κόπρανα/εντερική οδός</span>
+        <span class="tag violet">serology = exam favorite</span>
+      </div>
+      <div class="visuals">
+        <div class="virus-icon"><div class="orb"></div><b>HBV</b><br><span class="muted small">Dane particle, HBsAg</span></div>
+        <div class="virus-icon"><div class="delta">δ</div><b>HDV</b><br><span class="muted small">ατελής, HBsAg coat</span></div>
+        <div class="virus-icon"><div class="minihex"></div><b>HAV</b><br><span class="muted small">ssRNA, fecal-oral</span></div>
+      </div>
+    </div>
+    <div class="card half callout">
+      <h2>Το ένα πράγμα</h2>
+      <p><b>HBV = δείκτες. HAV = αντι-HAV IgM για οξεία. HDV = υπάρχει μόνο αν υπάρχει HBsAg.</b></p>
+      <table class="table">
+        <tr><th>Δείκτης</th><th>Τι σημαίνει γρήγορα</th></tr>
+        <tr><td>HBsAg</td><td>λοίμωξη HBV, αν >6 μήνες → χρόνια</td></tr>
+        <tr><td>anti-HBs μόνο</td><td>εμβολιασμός</td></tr>
+        <tr><td>anti-HBc IgM</td><td>οξεία HBV ή έξαρση</td></tr>
+        <tr><td>HBeAg</td><td>πολλαπλασιασμός/μολυσματικότητα</td></tr>
+      </table>
+    </div>
+  </section>
+
+  <section id="flashcards" class="card">
+    <div class="flash-toolbar">
+      <div><h2>Flashcards — αυτά είναι οι σημειώσεις</h2><div class="muted small">Πάτα την κάρτα για απάντηση. Όσα πρέπει να θυμάσαι είναι εδώ.</div></div>
+      <div class="progress"><span id="fcNum">1</span>/<span id="fcTotal"></span></div>
+    </div>
+    <div id="flashcard" class="flashcard" role="button" tabindex="0" aria-label="flashcard"><div class="q"></div><div class="a"></div></div>
+    <div class="hint">click = απάντηση · ←/→ = προηγούμενη/επόμενη · space = γύρισμα</div>
+    <div class="flash-toolbar" style="margin-top:14px">
+      <button class="btn ghost" id="prevBtn">← Πίσω</button>
+      <button class="btn secondary" id="flipBtn">Γύρισμα</button>
+      <button class="btn" id="nextBtn">Επόμενη →</button>
+      <button class="btn ghost" id="shuffleBtn">Shuffle</button>
+    </div>
+  </section>
+
+  <section id="quiz" class="card">
+    <div class="score"><b>Multiple choice</b><span id="scoreBox">Score: 0/0</span></div>
+    <h2>Quiz στο στυλ εξετάσεων</h2>
+    <p class="muted">Ίδιες γνώσεις, σε μορφή που αναγκάζει το μυαλό να διαλέξει.</p>
+    <div id="quizBox"></div>
+    <button class="btn secondary" id="resetQuiz">Reset quiz</button>
+  </section>
+
+  <section id="traps" class="grid">
+    <div class="card half">
+      <h2>Exam traps</h2>
+      <ul class="list">
+        <li><b>HBsAg</b> = κύριος δείκτης λοίμωξης, πρώτος που εμφανίζεται.</li>
+        <li><b>HBsAg &gt; 6 μήνες</b> = χρόνια HBV.</li>
+        <li><b>anti-HBs μόνο</b> = εμβολιασμός.</li>
+        <li><b>anti-HBc IgM</b> = οξεία νόσος ή έξαρση χρόνιας.</li>
+        <li><b>HBeAg(-), HBV-DNA(+)</b> = σκέψου precore mutant.</li>
+        <li><b>HDV</b> δεν στέκεται μόνο του: θέλει HBsAg.</li>
+        <li><b>HAV</b>: αντι-HAV IgM για πρόσφατη/οξεία λοίμωξη, IgG για παλιά/ανοσία.</li>
+      </ul>
+    </div>
+    <div class="card half">
+      <h2>Skip τώρα</h2>
+      <ul class="list">
+        <li>Υπερλεπτομέρειες α-αντιγονικού καθοριστή, αμινοξέα 124–147, δισουλφιδικοί δεσμοί.</li>
+        <li>Πολύ ειδικές μεταλλάξεις εκτός από την ιδέα: precore mutation → HBeAg αρνητικό αλλά DNA θετικό.</li>
+        <li>Ιστορικά/παγκόσμια νούμερα, εκτός αν σας τα έχουν δώσει ως MCQ.</li>
+        <li>HGV και δυνητικά ηπατοτρόποι — κράτα μόνο ότι υπάρχουν, όχι λεπτομέρειες.</li>
+      </ul>
+    </div>
+  </section>
+</div>
+<script>
+const cards = [
+  {q:'Ποιοι είναι οι κατ’ εξοχήν ηπατοτρόποι ιοί;', a:'HAV, HBV, HCV, HDV, HEV, HGV.'},
+  {q:'Ποιοι είναι δυνητικά ηπατοτρόποι ιοί που μπορεί να κάνουν ηπατίτιδα;', a:'EBV, CMV, ιοί αιμορραγικών πυρετών, ECHO, Coxsackie, ερυθρά, HSV, VZV, ιλαρά.'},
+  {q:'Ηπατίτιδα Β: χρόνος επώασης;', a:'Περίπου 50–180 ημέρες.'},
+  {q:'Ηπατίτιδα Β: έναρξη νόσου;', a:'Βραδεία και ύπουλη.'},
+  {q:'HBV: τι ποσοστό αναρρώνει πλήρως στην παρουσίαση;', a:'Περίπου 90% πλήρης αποκατάσταση.'},
+  {q:'HBV: τι ποσοστό γίνεται χρόνια ενεργός ηπατίτιδα;', a:'Περίπου 3%.'},
+  {q:'HBV: τι ποσοστό γίνονται χρόνιοι φορείς;', a:'5–10% γενικά· στα νεογνά πολύ υψηλότερα, περίπου 50% στην παρουσίαση.'},
+  {q:'HBV: τι κινδύνους έχει η χρόνια λοίμωξη;', a:'Κίρρωση και ηπατοκυτταρικό καρκίνωμα.'},
+  {q:'Περιγεννητική HBV: πότε υπάρχει μεγάλη πιθανότητα μόλυνσης νεογνού;', a:'Στο 2ο και 3ο τρίμηνο και κυρίως κατά τη γέννηση/λίγο μετά με έκθεση σε αίμα μητέρας.'},
+  {q:'Γιατί μας νοιάζει πολύ η HBV στα νεογνά;', a:'Τα περισσότερα μολυσμένα νεογνά τείνουν να γίνουν χρόνιοι φορείς.'},
+  {q:'HBV: τι είναι το Dane particle;', a:'Το πλήρες ιικό σωματίδιο του HBV, περίπου 42 nm.'},
+  {q:'HBV: ποιο αντιγόνο αντιστοιχεί στην πρωτεΐνη S του περιβλήματος;', a:'HBsAg.'},
+  {q:'HBsAg: τι είναι;', a:'Επιφανειακό αντιγόνο του HBV και κύριος δείκτης HBV λοίμωξης.'},
+  {q:'Ποιος δείκτης HBV εμφανίζεται πρώτος;', a:'HBsAg.'},
+  {q:'HBsAg θετικό πάνω από 6 μήνες σημαίνει;', a:'Χρόνια ηπατίτιδα/χρόνια HBV λοίμωξη.'},
+  {q:'anti-HBs: τι δείχνει;', a:'Ανοσία/αποδρομή λοίμωξης ή εμβολιασμό.'},
+  {q:'Μόνο anti-HBs θετικό, χωρίς anti-HBc: τι σημαίνει;', a:'Εμβολιασμός.'},
+  {q:'Μετά από φυσική πλήρη αποκατάσταση HBV, ποια αντισώματα περιμένεις;', a:'anti-HBs + anti-HBc IgG, συχνά anti-HBe. Στην οξεία φάση υπήρχε anti-HBc IgM.'},
+  {q:'HBcAg ανιχνεύεται συνήθως στον ορό;', a:'Όχι. Το HBcAg είναι κυρίως στα ηπατοκύτταρα· στον ορό μετράμε anti-HBc.'},
+  {q:'anti-HBc IgM: τι σημαίνει;', a:'Οξεία HBV λοίμωξη ή έξαρση κατά τη διάρκεια χρόνιας HBV.'},
+  {q:'anti-HBc IgG: τι σημαίνει γενικά;', a:'Παλαιά/προηγηθείσα επαφή με HBV ή χρόνια λοίμωξη, ανάλογα με τους άλλους δείκτες.'},
+  {q:'Μεμονωμένη anti-HBc θετικότητα μπορεί να σημαίνει;', a:'Παλαιά λοίμωξη με χαμένο anti-HBs, occult/χρόνια HBV με μη ανιχνεύσιμο HBsAg, ή ψευδώς θετική αντίδραση.'},
+  {q:'HBeAg θετικό σημαίνει;', a:'Πολλαπλασιασμό του ιού, μολυσματικότητα και ενεργό ηπατική νόσο.'},
+  {q:'anti-HBe θετικό συνήθως σημαίνει;', a:'Απουσία/μείωση HBV-DNA, αυτοπεριορισμό οξείας νόσου ή ύφεση χρόνιας νόσου.'},
+  {q:'HBeAg αρνητικό αλλά HBV-DNA θετικό: τι σκέφτεσαι;', a:'Προπυρηνικό/precore μεταλλαγμένο στέλεχος HBV με συνεχή πολλαπλασιασμό.'},
+  {q:'Τι κάνει η μετάλλαξη G1896A στην προπυρηνική περιοχή;', a:'Δημιουργεί κωδικόνιο τερματισμού και αποτυχία παραγωγής HBeAg.'},
+  {q:'Μεταλλάξεις στον α-αντιγονικό καθοριστή του HBsAg τι μπορούν να προκαλέσουν;', a:'Διαφυγή ανοσίας/αντισωμάτων και αδυναμία ανίχνευσης → σιωπηρές HBV λοιμώξεις.'},
+  {q:'Μπορούν να συνυπάρχουν HBsAg και anti-HBs;', a:'Ναι, σε χρόνιους φορείς, πιθανώς λόγω μεταλλάξεων στον α-αντιγονικό επίτοπο.'},
+  {q:'Ποιος είναι ο καλύτερος τρόπος πιστοποίησης ιαιμίας HBV;', a:'Μέτρηση HBV DNA στον ορό.'},
+  {q:'HBV DNA βοηθάει σε τι;', a:'Ενεργότητα νόσου, πρόγνωση/κίνδυνο HCC, διάκριση ενεργού λοίμωξης από ανενεργό φορεία, απόφαση και παρακολούθηση θεραπείας.'},
+  {q:'Οξεία πρωτοδιαγνωσμένη HBV: κλασικοί δείκτες;', a:'HBsAg, HBeAg, anti-HBc IgM.'},
+  {q:'Χρόνια ενεργός HBV: κλασικοί δείκτες;', a:'HBsAg, HBeAg, anti-HBc, HBV-DNA.'},
+  {q:'Απλή φορεία HBV: κλασικοί δείκτες στην παρουσίαση;', a:'HBsAg και anti-HBc IgG.'},
+  {q:'HBV: οι 3 βασικοί τρόποι μετάδοσης;', a:'Περιγεννητική, σεξουαλική και παρεντερική.'},
+  {q:'HBV: πες παραδείγματα παρεντερικής μετάδοσης.', a:'Κοινές σύριγγες/βελόνες, μολυσμένα αιχμηρά, τατουάζ/piercing με μη αποστειρωμένα εργαλεία, μετάγγιση μολυσμένου αίματος, τραυματισμός επαγγελματιών υγείας.'},
+  {q:'HBV μεταδίδεται με φιλί, ποτήρια, τουαλέτες, βήχα ή φτέρνισμα;', a:'Όχι, σύμφωνα με τη διαφάνεια “Δεν μεταδίδεται”.'},
+  {q:'HBV: ομάδες υψηλού κινδύνου;', a:'Σεξουαλικοί σύντροφοι/συγκάτοικοι φορέων χωρίς ανοσία, πολλαπλοί σύντροφοι, χρήστες ναρκωτικών, επαγγελματίες με βιολογικά υγρά, πολυμεταγγιζόμενοι, αιμοκαθαιρόμενοι, μεταμοσχευμένοι, ταξιδιώτες σε ενδημικές χώρες.'},
+  {q:'Μετά από έκθεση σε HBV, τι κάνουμε προφυλακτικά;', a:'Εμβόλιο και άνοση σφαιρίνη όσο το δυνατόν ταχύτερα μετά τη μόλυνση.'},
+  {q:'HBV εμβόλιο: από τι αποτελείται;', a:'HBsAg με τεχνική ανασυνδυασμένου DNA.'},
+  {q:'HBV εμβόλιο: σχήμα δόσεων;', a:'Ενδομυικά σε 3 δόσεις: 0, 1, 6 μήνες.'},
+  {q:'HBV εμβόλιο: επιτρέπεται σε κύηση/γαλουχία;', a:'Ναι, στην παρουσίαση αναφέρεται “ΝΑΙ στην κύηση ή γαλουχία”.'},
+  {q:'HBV εμβόλιο: βασικές αντενδείξεις;', a:'Σοβαρή αλλεργία σε συστατικά ή προηγούμενη δόση, και οξύ εμπύρετο νόσημα.'},
+  {q:'HDV: τι γονιδίωμα έχει και τι ιδιαιτερότητα;', a:'RNA ιός, ατελής/defective, χρειάζεται HBsAg για να μολύνει.'},
+  {q:'HDV λοίμωξη γίνεται χωρίς HBV/HBsAg;', a:'Όχι. Η μόλυνση είναι δυνατή μόνο αν το άτομο είναι φορέας HBsAg ή συνμολυνθεί με HBV.'},
+  {q:'HDV: τι είναι η σύγχρονη λοίμωξη;', a:'Ταυτόχρονη μόλυνση HBV + HDV από την ίδια πηγή → οξεία ηπατίτιδα από τους δύο ιούς.'},
+  {q:'HDV: τι είναι επιλοίμωξη;', a:'Μόλυνση φορέα HBV με HDV, προκαλεί οξεία ηπατίτιδα από HDV και μπορεί να είναι βαρύτερη.'},
+  {q:'HDV: διάγνωση;', a:'Ανίχνευση HDAg ή αντισωμάτων έναντι HDV με ELISA.'},
+  {q:'Υπάρχει εμβόλιο ειδικά έναντι HDV;', a:'Όχι. Το εμβόλιο HBV προφυλάσσει και από HDV επειδή ο HDV χρειάζεται HBsAg.'},
+  {q:'HAV: τι γονιδίωμα έχει;', a:'RNA, συγκεκριμένα ssRNA.'},
+  {q:'HAV: κύριος τρόπος μετάδοσης;', a:'Εντερική/κοπρανοστοματική οδός.'},
+  {q:'HAV: πότε αποβάλλεται με τα κόπρανα πριν από τα συμπτώματα;', a:'Περίπου 14 ημέρες πριν από την εμφάνιση των συμπτωμάτων.'},
+  {q:'HAV: στάδιο επώασης σε σχέση με HBV;', a:'HAV 2–6 εβδομάδες, ενώ HBV 2–6 μήνες/50–180 ημέρες.'},
+  {q:'HAV vs HBV: αρχή νόσου;', a:'HAV: οξεία. HBV: βραδεία/ύπουλη.'},
+  {q:'HAV vs HBV: μετάδοση;', a:'HAV: εντερική οδός. HBV: παρεντερική και σεξουαλική/περιγεννητική.'},
+  {q:'HAV: ποιο αντίσωμα δείχνει πρόσφατη/οξεία λοίμωξη;', a:'anti-HAV IgM.'},
+  {q:'HAV: anti-HAV IgM πόσο διαρκεί περίπου;', a:'Συνήθως πέφτει σε μη ανιχνεύσιμα επίπεδα 3–6 μήνες μετά τη λοίμωξη.'},
+  {q:'HAV: anti-HAV IgG τι σημαίνει;', a:'Παλαιά λοίμωξη/ανοσία, παραμένει για πολλά χρόνια ή δια βίου.'},
+  {q:'Αν βρεις θετικά anti-HAV, τι ζητάς για πρόσφατη ηπατίτιδα Α;', a:'Προσδιορισμό anti-HAV IgM.'},
+  {q:'HAV: υπάρχει εμβόλιο;', a:'Ναι, αδρανοποιημένο με φορμαλδεΰδη, από καλλιέργεια σε ανθρώπινα διπλοειδή κύτταρα.'}
+];
+let order = cards.map((_,i)=>i), idx = 0;
+const fc = document.getElementById('flashcard');
+const qEl = fc.querySelector('.q');
+const aEl = fc.querySelector('.a');
+const numEl = document.getElementById('fcNum');
+document.getElementById('fcTotal').textContent = cards.length;
+function renderCard(){fc.classList.remove('flipped'); const c = cards[order[idx]]; qEl.textContent = c.q; aEl.textContent = c.a; numEl.textContent = idx + 1;}
+function flip(){fc.classList.toggle('flipped')}
+function next(){idx = (idx + 1) % order.length; renderCard()}
+function prev(){idx = (idx - 1 + order.length) % order.length; renderCard()}
+fc.addEventListener('click', flip);
+document.getElementById('flipBtn').onclick = flip;
+document.getElementById('nextBtn').onclick = next;
+document.getElementById('prevBtn').onclick = prev;
+document.getElementById('shuffleBtn').onclick = ()=>{order.sort(()=>Math.random()-.5); idx=0; renderCard()};
+document.addEventListener('keydown', e=>{if(e.key==='ArrowRight') next(); if(e.key==='ArrowLeft') prev(); if(e.key===' ') {e.preventDefault(); flip();}});
+renderCard();
+
+const quiz = [
+  {q:'Ποιος δείκτης είναι ο κύριος και πρώτος δείκτης HBV λοίμωξης;', opts:['anti-HBs','HBsAg','anti-HBe','anti-HAV IgG'], ans:1, ex:'HBsAg = επιφανειακό αντιγόνο, κύριος δείκτης HBV και πρώτος που εμφανίζεται.'},
+  {q:'HBsAg θετικό για πάνω από 6 μήνες σημαίνει:', opts:['εμβολιασμό','χρόνια HBV λοίμωξη','μόνο παλιά λοίμωξη','HAV λοίμωξη'], ans:1, ex:'HBsAg(+) > 6 μήνες → χρόνια ηπατίτιδα Β.'},
+  {q:'Μόνο anti-HBs θετικό σημαίνει πιο πιθανό:', opts:['οξεία HBV','εμβολιασμός','HDV επιλοίμωξη','HAV λοίμωξη'], ans:1, ex:'Ο μόνος δείκτης μετά από εμβολιασμό είναι anti-HBs.'},
+  {q:'Ποιος δείκτης δείχνει οξεία HBV ή έξαρση χρόνιας HBV;', opts:['anti-HBc IgM','anti-HBs','anti-HAV IgG','anti-HBe μόνο'], ans:0, ex:'anti-HBc IgM εμφανίζεται στην οξεία νόσο και σε εξάρσεις χρόνιας HBV.'},
+  {q:'HBeAg θετικό σημαίνει κυρίως:', opts:['ανοσία','πολλαπλασιασμό/μολυσματικότητα','εμβολιασμό','λοίμωξη HAV'], ans:1, ex:'HBeAg(+) συνδέεται με πολλαπλασιασμό ιού, μολυσματικότητα και ενεργό νόσο.'},
+  {q:'HBeAg(-), anti-HBe(+), αλλά HBV-DNA(+) δείχνει:', opts:['σίγουρα ίαση','precore mutant HBV','εμβολιασμό','HAV'], ans:1, ex:'Precore mutant: δεν παράγει HBeAg αλλά συνεχίζει να πολλαπλασιάζεται.'},
+  {q:'Ποια μετάλλαξη συνδέεται με αποτυχία παραγωγής HBeAg;', opts:['G1896A','CCR5-Δ32','Sickle mutation','D614G'], ans:0, ex:'Η παρουσίαση αναφέρει G1896A → stop codon → αποτυχία παραγωγής HBeAg.'},
+  {q:'Ποιο είναι σωστό για HDV;', opts:['Μολύνει ανεξάρτητα από HBV','Χρειάζεται HBsAg','Είναι DNA ιός','Έχει δικό του εμβόλιο'], ans:1, ex:'HDV = ατελής RNA ιός που χρειάζεται HBsAg.'},
+  {q:'Ποια πρόταση είναι σωστή για το εμβόλιο HBV;', opts:['Είναι ζωντανό εξασθενημένο','Είναι HBsAg με ανασυνδυασμένο DNA','Απαγορεύεται στην κύηση','Γίνεται μόνο από το στόμα'], ans:1, ex:'Το εμβόλιο HBV είναι HBsAg με recombinant DNA, ενδομυικά.'},
+  {q:'Το κλασικό σχήμα εμβολίου HBV είναι:', opts:['0,1,6 μήνες','μία δόση μόνο','12ος και 15ος μήνας μόνο','κάθε εβδομάδα για 3 εβδομάδες'], ans:0, ex:'Στην παρουσίαση: 3 δόσεις, 0–1–6 μήνες.'},
+  {q:'Ποιος συνδυασμός δείχνει οξεία πρωτοδιαγνωσμένη HBV;', opts:['HBsAg, HBeAg, anti-HBc IgM','anti-HBs μόνο','anti-HAV IgG μόνο','HDAg μόνο χωρίς HBsAg'], ans:0, ex:'Οξεία HBV: HBsAg, HBeAg, anti-HBc IgM.'},
+  {q:'Ποιος συνδυασμός ταιριάζει περισσότερο σε χρόνια ενεργό HBV;', opts:['HBsAg, HBeAg, anti-HBc, HBV-DNA','anti-HBs μόνο','anti-HAV IgM','anti-HAV IgG'], ans:0, ex:'Χρόνια ενεργός: HBsAg + δείκτες αντι-HBc + HBV DNA, συχνά HBeAg.'},
+  {q:'Ποια ΔΕΝ είναι κλασική μετάδοση HBV;', opts:['σεξουαλική','παρεντερική','περιγεννητική','βήχας/φτέρνισμα'], ans:3, ex:'HBV δεν μεταδίδεται με βήχα ή φτέρνισμα.'},
+  {q:'Μετά από έκθεση σε HBV πρέπει να δοθεί όσο πιο γρήγορα:', opts:['μόνο αντιβίωση','εμβόλιο + άνοση σφαιρίνη','MMR','τίποτα'], ans:1, ex:'Η παρουσίαση δίνει εμβόλιο και άνοση σφαιρίνη το ταχύτερο δυνατό.'},
+  {q:'HAV έχει κυρίως μετάδοση:', opts:['παρεντερική','σεξουαλική μόνο','εντερική/κοπρανοστοματική','με αίμα όπως HBV'], ans:2, ex:'HAV: εντερική οδός.'},
+  {q:'Ποιο αντίσωμα επιβεβαιώνει πρόσφατη ηπατίτιδα Α;', opts:['anti-HAV IgM','anti-HAV IgG','anti-HBs','anti-HBe'], ans:0, ex:'anti-HAV IgM = πρόσφατη/οξεία HAV.'},
+  {q:'anti-HAV IgG σημαίνει:', opts:['οξεία λοίμωξη μόνο','παλιά λοίμωξη/ανοσία','HBV χρονιότητα','HDV'], ans:1, ex:'anti-HAV IgG παραμένει για πολλά χρόνια/δια βίου.'},
+  {q:'HAV αποβάλλεται με τα κόπρανα περίπου:', opts:['14 ημέρες πριν τα συμπτώματα','μόνο μετά από 6 μήνες','ποτέ','μόνο μετά το εμβόλιο'], ans:0, ex:'Η παρουσίαση αναφέρει αποβολή με κόπρανα 14 ημέρες πριν την εμφάνιση συμπτωμάτων.'},
+  {q:'HAV vs HBV: ποιο είναι σωστό;', opts:['HAV έχει βραδεία ύπουλη έναρξη και HBV οξεία','HAV μεταδίδεται εντερικά και HBV παρεντερικά/σεξουαλικά','HAV είναι DNA και HBV RNA','HBV δεν έχει HBsAg'], ans:1, ex:'HAV = εντερική οδός/οξεία, HBV = DNA με παρεντερική και σεξουαλική μετάδοση.'},
+  {q:'Ποιο από τα παρακάτω είναι λάθος για HDV;', opts:['είναι ατελής','χρειάζεται HBsAg','έχει ειδικό εμβόλιο ανεξάρτητο από HBV','μπορεί να είναι συνλοίμωξη ή επιλοίμωξη'], ans:2, ex:'Δεν υπάρχει ειδικό εμβόλιο HDV· το HBV εμβόλιο προστατεύει έμμεσα.'},
+  {q:'Ποιο είναι καλύτερο για πιστοποίηση ιαιμίας HBV;', opts:['HBV DNA στον ορό','anti-HAV IgG','Monospot','VCA-IgM'], ans:0, ex:'HBV DNA = καλύτερος τρόπος για ιαιμία/ενεργότητα.'},
+  {q:'Μεμονωμένο anti-HBc μπορεί να σημαίνει όλα εκτός από:', opts:['παλιά λοίμωξη με χαμένο anti-HBs','occult HBV','ψευδώς θετικό','σίγουρο εμβολιασμό'], ans:3, ex:'Εμβολιασμός δίνει anti-HBs μόνο, όχι anti-HBc.'},
+  {q:'Ποια είναι βασική αντένδειξη HBV εμβολίου;', opts:['κύηση','γαλουχία','σοβαρή αλλεργία σε προηγούμενη δόση/συστατικά','ιατρικό επάγγελμα'], ans:2, ex:'Η παρουσίαση γράφει ΝΑΙ σε κύηση/γαλουχία· αντένδειξη είναι σοβαρή αλλεργία ή οξύ εμπύρετο νόσημα.'},
+  {q:'Ο αποκλεισμός ηπατίτιδας Β αποκλείει επίσης:', opts:['HDV λοίμωξη','HAV λοίμωξη','EBV λοίμωξη','CMV λοίμωξη'], ans:0, ex:'HDV χρειάζεται HBV/HBsAg, άρα αν αποκλειστεί HBV, αποκλείεται και HDV.'},
+  {q:'Ποια ομάδα έχει ιδιαίτερα υψηλό κίνδυνο χρόνιας HBV μετά από μόλυνση;', opts:['νεογνά','όλοι οι ενήλικες στο 90%','εμβολιασμένοι με anti-HBs','άτομα με anti-HAV IgG'], ans:0, ex:'Τα νεογνά μετά από περιγεννητική λοίμωξη συχνά γίνονται χρόνιοι φορείς.'}
+];
+const quizBox = document.getElementById('quizBox');
+let answered=0, correct=0;
+function updateScore(){document.getElementById('scoreBox').textContent = `Score: ${correct}/${answered}`;}
+function renderQuiz(){quizBox.innerHTML=''; answered=0; correct=0; updateScore(); quiz.forEach((item,i)=>{const el=document.createElement('div'); el.className='quiz-item'; el.innerHTML=`<div class="quiz-q">${i+1}. ${item.q}</div>`; item.opts.forEach((op,j)=>{const b=document.createElement('button'); b.className='option'; b.textContent=op; b.onclick=()=>{if(el.classList.contains('done')) return; el.classList.add('done'); answered++; if(j===item.ans){correct++; b.classList.add('correct')} else {b.classList.add('wrong')} [...el.querySelectorAll('.option')].forEach((x,k)=>{x.disabled=true; if(k===item.ans)x.classList.add('correct')}); updateScore();}; el.appendChild(b)}); const ex=document.createElement('div'); ex.className='explain'; ex.textContent=item.ex; el.appendChild(ex); quizBox.appendChild(el)});}
+document.getElementById('resetQuiz').onclick=renderQuiz;
+renderQuiz();
+</script>
+</body>
+</html>

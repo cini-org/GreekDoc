@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="el">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Ραβδοϊοί / Λύσσα — Microbiology II Speed Learning</title>
+<style>
+:root{--bg:#f7f8fc;--paper:#fff;--ink:#111827;--muted:#667085;--line:#e5e7eb;--accent:#dc2626;--accent2:#f59e0b;--green:#dcfce7;--blue:#dbeafe;--rose:#ffe4e6;--amber:#fef3c7;--violet:#ede9fe;--shadow:0 14px 35px rgba(16,24,40,.10);--radius:24px}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(circle at top left,#fee2e2 0,#f7f8fc 42%,#eef2ff 100%);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--ink);line-height:1.55}.wrap{max-width:1180px;margin:auto;padding:24px}a{color:inherit}.back{display:inline-flex;gap:8px;align-items:center;text-decoration:none;background:#fff;border:1px solid var(--line);border-radius:999px;padding:9px 14px;color:var(--muted);box-shadow:0 6px 18px rgba(0,0,0,.05)}h1{font-size:clamp(38px,7vw,76px);letter-spacing:-.055em;margin:18px 0 8px;line-height:.95}.subtitle{font-size:18px;color:var(--muted);max-width:920px}.pills{display:flex;flex-wrap:wrap;gap:9px;margin-top:18px}.pill{background:#fff;border:1px solid var(--line);border-radius:999px;padding:8px 12px;font-size:13px;color:#475467}.pill.hot{background:#111827;color:#fff;border-color:#111827}.layout{display:grid;grid-template-columns:310px 1fr;gap:22px;margin-top:24px}.side{position:sticky;top:18px;align-self:start;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px}.side h3{margin:0 0 10px}.navbtn{width:100%;text-align:left;border:1px solid var(--line);background:#fff;border-radius:16px;padding:12px 14px;margin:8px 0;cursor:pointer;font-weight:760;color:#344054}.navbtn:hover{transform:translateY(-1px);box-shadow:0 10px 20px rgba(0,0,0,.07)}.card{background:rgba(255,255,255,.95);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:22px;margin-bottom:22px}.card h2{margin:0 0 13px;font-size:28px;letter-spacing:-.03em}.tiny-note{color:var(--muted);font-size:14px;margin-top:-3px}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.mini{border:1px solid var(--line);border-radius:20px;background:#fff;padding:16px}.mini h3{margin:0 0 8px}.tag{display:inline-flex;border-radius:999px;padding:5px 9px;font-size:12px;font-weight:800;margin:3px 4px 4px 0}.tag.orange{background:#ffedd5;color:#9a3412}.tag.blue{background:var(--blue);color:#1d4ed8}.tag.green{background:var(--green);color:#166534}.tag.rose{background:var(--rose);color:#be123c}.tag.violet{background:var(--violet);color:#5b21b6}.tag.amber{background:var(--amber);color:#92400e}.virus-visual{height:190px;border-radius:22px;border:1px solid var(--line);background:linear-gradient(135deg,#fff1f2,#eff6ff);position:relative;overflow:hidden}.virus-visual:before{content:"";position:absolute;left:50%;top:50%;width:72px;height:170px;background:#b91c1c;border-radius:40px 40px 18px 18px;transform:translate(-50%,-50%) rotate(-18deg);box-shadow:inset 0 0 0 10px rgba(255,255,255,.25),0 0 0 9px rgba(185,28,28,.18)}.virus-visual:after{content:"bullet-shaped (-)RNA";position:absolute;left:50%;bottom:18px;transform:translateX(-50%);font-weight:900;color:#7f1d1d;letter-spacing:.04em;white-space:nowrap}.flashcard{min-height:300px;display:flex;align-items:center;justify-content:center;text-align:center;border:2px dashed #f87171;border-radius:24px;background:linear-gradient(135deg,#fff,#fff1f2);padding:28px;cursor:pointer;user-select:none}.flashcard .q{font-size:clamp(24px,4vw,36px);font-weight:900;letter-spacing:-.04em}.flashcard .a{display:none;font-size:clamp(21px,3vw,29px);font-weight:820}.flashcard.show .q{display:none}.flashcard.show .a{display:block}.controls{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}.ctrl{border:1px solid var(--line);background:#fff;border-radius:14px;padding:10px 14px;cursor:pointer;font-weight:800}.ctrl.primary{background:var(--accent);color:#fff;border-color:var(--accent)}.counter{color:var(--muted);align-self:center;font-size:14px}.quizq{border:1px solid var(--line);background:#fff;border-radius:20px;padding:16px;margin:13px 0}.quizq h3{margin:0 0 10px;font-size:18px}.opt{display:block;width:100%;text-align:left;border:1px solid var(--line);background:#fff;border-radius:13px;padding:11px;margin:8px 0;cursor:pointer}.opt.correct{background:#ecfdf3;border-color:#22c55e}.opt.wrong{background:#fff1f2;border-color:#f43f5e}.explain{display:none;color:#475467;margin-top:9px}.showexp .explain{display:block}.trap{border-left:6px solid #dc2626;background:#fff1f2}.skip{border-left:6px solid #94a3b8;background:#f8fafc}.flash-grid{display:grid;grid-template-columns:1fr 260px;gap:16px}.queue{background:#fff;border:1px solid var(--line);border-radius:22px;padding:16px}.queue h3{margin-top:0}.queue ol{padding-left:20px;color:#667085;font-size:14px}.queue li.active{color:#111827;font-weight:900}.footer{color:var(--muted);font-size:13px;text-align:center;padding:22px}@media(max-width:900px){.layout{grid-template-columns:1fr}.side{position:relative;top:0}.grid,.flash-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap hero">
+  <a class="back" href="microbiology_speed_homepage_grid.html">← Πίσω στο Microbiology Speed Grid</a>
+  <h1>Ραβδοϊοί / Λύσσα</h1>
+  <p class="subtitle">Speed-learning format: ελάχιστο orientation, και όλα τα εξεταστικά σημεία σε flashcards + MCQ.</p>
+  <div class="pills"><span class="pill hot">19ο μάθημα</span><span class="pill">Rhabdoviridae</span><span class="pill">Lyssavirus</span><span class="pill">(-)RNA</span><span class="pill">σχήμα σφαίρας</span><span class="pill">Negri</span><span class="pill">PEP</span></div>
+</div>
+<div class="wrap layout">
+<aside class="side">
+  <h3>Πλοήγηση</h3>
+  <button class="navbtn" onclick="go('mini')">⚡ Μικρό orientation</button>
+  <button class="navbtn" onclick="go('flash')">🎴 Flashcards</button>
+  <button class="navbtn" onclick="go('quiz')">✅ MCQ quiz</button>
+  <button class="navbtn" onclick="go('traps')">⚠️ Exam traps</button>
+  <button class="navbtn" onclick="go('skip')">⏭️ Skip list</button>
+</aside>
+<main>
+<section class="card" id="mini">
+  <h2>⚡ Orientation μόνο — όλα τα σημαντικά είναι στις κάρτες</h2>
+  <p class="tiny-note">Για αυτή την παρουσίαση κράτα “λύσσα = νευροτρόπος ζωονόσος, θανατηφόρα όταν εμφανιστεί κλινικά, αλλά προλαμβάνεται μετά το δήγμα”.</p>
+  <div class="grid">
+    <div class="mini"><div class="virus-visual"></div></div>
+    <div class="mini"><h3>Το κεντρικό story</h3><p><b>Rhabdoviridae / Lyssavirus</b>: περιβληματοφόρος, σφαιροειδής/bullet-shaped, (-)RNA ιός που πολλαπλασιάζεται στο κυτταρόπλασμα και προκαλεί λύσσα.</p><span class="tag rose">(-)RNA</span><span class="tag blue">κυτταρόπλασμα</span></div>
+    <div class="mini"><h3>Γιατί είναι exam-favorite</h3><p>Θέλουν: μετάδοση με σίελο/δήγμα, επώαση 20–90 ημέρες, υδροφοβία, Negri σωμάτια, άμεσος ανοσοφθορισμός, εμβόλιο + ειδικός αντιλυσσικός ορός μετά από ύποπτο δήγμα.</p></div>
+    <div class="mini"><h3>Visual memory</h3><p>Σχήμα “σφαίρας/σφαίρας όπλου” + πορεία κατά μήκος νεύρων → εγκέφαλος → σιελογόνοι αδένες → μετάδοση.</p><span class="tag amber">δήγμα</span><span class="tag green">PEP</span></div>
+  </div>
+</section>
+<section class="card" id="flash">
+  <h2>🎴 Flashcards — μάθηση με ενεργή ανάκληση</h2>
+  <p class="subtitle">Πάτα την κάρτα για απάντηση. Έβαλα περισσότερες κάρτες γιατί είπες ότι έτσι σου μένουν καλύτερα.</p>
+  <div class="flash-grid">
+    <div>
+      <div class="flashcard" id="fc" onclick="flip()"><div class="q" id="q"></div><div class="a" id="a"></div></div>
+      <div class="controls"><button class="ctrl" onclick="prevCard(event)">← Προηγούμενη</button><button class="ctrl primary" onclick="nextCard(event)">Επόμενη →</button><button class="ctrl" onclick="shuffleCards(event)">Ανακάτεμα</button><span class="counter" id="count"></span></div>
+    </div>
+    <div class="queue"><h3>Flashcard queue</h3><ol id="queue"></ol></div>
+  </div>
+</section>
+<section class="card" id="quiz">
+  <h2>✅ Multiple choice — εξεταστικό mode</h2>
+  <div id="quizbox"></div>
+  <div class="controls"><button class="ctrl primary" onclick="resetQuiz()">Reset quiz</button><span class="counter" id="score"></span></div>
+</section>
+<section class="card trap" id="traps">
+  <h2>⚠️ Exam traps</h2>
+  <ul>
+    <li><b>Μετά την κλινική νόσο = σχεδόν πάντα θανατηφόρος:</b> η πρόληψη μετά το δήγμα είναι το κρίσιμο σημείο.</li>
+    <li><b>Επώαση</b> εξαρτάται από απόσταση δήγματος από ΚΝΣ, ποσότητα ιού, σοβαρότητα τραύματος, ηλικία και ανοσία.</li>
+    <li><b>Negri σωμάτια:</b> παθογνωμονικά αλλά νεκροτομικά· στα μεγάλα πυραμοειδή κύτταρα του αμμωνίου κέρατος/ιπποκάμπου.</li>
+    <li><b>Διάγνωση:</b> άμεσος ανοσοφθορισμός σε δέρμα/κερατοειδή/εγκέφαλο, εξουδετερωτικά αντισώματα σε ορό/ΕΝΥ.</li>
+    <li><b>Αντιλυσσικός ορός:</b> δόση 20 IU/kg, ιδανικά μεγάλο μέρος μέσα/γύρω από το τραύμα.</li>
+  </ul>
+</section>
+<section class="card skip" id="skip">
+  <h2>⏭️ Τι κάνουμε skip τώρα</h2>
+  <p>Δεν θα μάθαινα όλα τα ονόματα των bat lyssaviruses ή λεπτομέρειες χαρτών παγκόσμιας διασποράς. Για εξετάσεις κράτα: μορφολογία, μετάδοση/επώαση, πορεία προς ΚΝΣ, Negri, διάγνωση, εμβόλιο/ορός.</p>
+</section>
+</main>
+</div>
+<div class="footer">Microbiology II Speed Learning • Ραβδοϊοί / Λύσσα</div>
+<script>
+function go(id){document.getElementById(id).scrollIntoView({behavior:'smooth',block:'start'});}
+let cards=[
+ ['Σε ποια οικογένεια ανήκουν οι ιοί της λύσσας;','Στην οικογένεια Rhabdoviridae. Η λύσσα ανήκει στο γένος Lyssavirus.'],
+ ['Ποιο είναι το πιο εξεταστικό γένος των Rhabdoviridae;','Lyssavirus → rabies/λύσσα. Το Vesiculovirus αφορά φλυκταινώδη στοματίτιδα αλλά είναι λιγότερο high-yield εδώ.'],
+ ['Ποια είναι η βασική μορφολογία των ραβδοϊών;','Μεσαίου μεγέθους, σχήμα σφαίρας/βολίδας, με περίβλημα.'],
+ ['Τι γονιδίωμα έχουν οι ραβδοϊοί;','Μονόκλωνο αρνητικής πολικότητας RNA, δηλαδή (-)RNA.'],
+ ['Τι ένζυμο κωδικοποιούν;','RNA πολυμεράση εξαρτώμενη από RNA, απαραίτητη γιατί είναι (-)RNA ιός.'],
+ ['Πού πολλαπλασιάζονται οι ραβδοϊοί;','Στο κυτταρόπλασμα.'],
+ ['Ποιοι υποδοχείς αναφέρονται για τον ιό της λύσσας;','Νικοτινικός υποδοχέας ακετυλοχολίνης ή NCAM/μόριο προσκόλλησης νευρικού κυττάρου.'],
+ ['Η λύσσα είναι τι είδους νόσος;','Ζωονόσος. Μεταδίδεται από ζώα στον άνθρωπο, κυρίως μέσω σιέλου/δήγματος.'],
+ ['Ποια ζώα κρατάω ως κλασικές δεξαμενές/πηγές;','Σκύλοι, γάτες, αλεπούδες, λύκοι, τσακάλια, νυχτερίδες και άλλα άγρια/οικόσιτα ζώα.'],
+ ['Πού βρίσκεται ο ιός στα ζώα πριν εμφανίσουν συμπτώματα;','Στον σίελο των ζώων περίπου 2 εβδομάδες πριν από την εμφάνιση συμπτωμάτων.'],
+ ['Ποιος είναι ο βασικός τρόπος μετάδοσης στον άνθρωπο;','Δήγμα ή επαφή μολυσμένου σιέλου με τραύμα/βλεννογόνο.'],
+ ['Ποια είναι η πορεία του ιού μετά το δήγμα;','Τοπική είσοδος → νευρική εξάπλωση προς ΚΝΣ → εγκέφαλος → φυγόκεντρη διασπορά σε σιελογόνους αδένες και άλλους ιστούς.'],
+ ['Γιατί το δήγμα στο πρόσωπο/κεφάλι είναι πιο επικίνδυνο;','Γιατί η επώαση εξαρτάται από την εγγύτητα του δήγματος προς το ΚΝΣ. Όσο πιο κοντά στον εγκέφαλο, τόσο μικρότερη επώαση/μεγαλύτερος κίνδυνος.'],
+ ['Ποια είναι η επώαση στον άνθρωπο στη διαφάνεια;','20–90 ημέρες.'],
+ ['Ποια είναι η επώαση στον σκύλο στη διαφάνεια;','21–60 ημέρες.'],
+ ['Από τι εξαρτάται η περίοδος επώασης;','Ποσότητα ιού στο ενοφθάλμισμα, γειτνίαση τραύματος με εγκέφαλο, σοβαρότητα τραύματος, ηλικία, ανοσιακή κατάσταση.'],
+ ['Ποιες κλινικές εκδηλώσεις είναι κλασικές στη λύσσα;','Νευρολογική συμπτωματολογία, σπασμοί, υδροφοβία, και τελικά θάνατος.'],
+ ['Τι σημαίνει το “η λύσσα είναι θανατηφόρος όταν φανεί η κλινική νόσος”;','Ότι μετά την έναρξη συμπτωμάτων η πρόγνωση είναι εξαιρετικά κακή. Γι’ αυτό προφύλαξη άμεσα μετά από ύποπτο δήγμα.'],
+ ['Ποιες ανατομικές περιοχές προσβάλλονται κλασικά;','Ιππόκαμπος, εγκεφαλικό στέλεχος, γαγγλιακά κύτταρα πυρήνων γέφυρας, Purkinje παρεγκεφαλίδας.'],
+ ['Τι είναι τα σωμάτια Negri;','Παθογνωμονικά ενδοκυττάρια έγκλειστα της λύσσας, κυρίως σε μεγάλα πυραμοειδή κύτταρα του αμμωνίου κέρατος/ιπποκάμπου.'],
+ ['Τα σωμάτια Negri χρησιμοποιούνται κυρίως πότε;','Νεκροτομικά/μεταθανατίως, όχι ως πρακτική πρώιμη διάγνωση σε ζωντανό ασθενή.'],
+ ['Ποια διαγνωστική μέθοδος αναφέρει η παρουσίαση ως άμεση;','Άμεσος ανοσοφθορισμός.'],
+ ['Σε ποια δείγματα γίνεται άμεσος ανοσοφθορισμός;','Δέρμα, κερατοειδής, εγκεφαλική ουσία μεταθανατίως.'],
+ ['Πού αναζητούνται εξουδετερωτικά αντισώματα;','Σε ορό και ΕΝΥ.'],
+ ['Τι κάνουμε μετά από ύποπτο δήγμα;','Άμεση αντιμετώπιση: αντιλυσσικό εμβόλιο + ειδικός άνοσος αντιλυσσικός ορός όπου ενδείκνυται.'],
+ ['Πόσες δόσεις εμβολίου σε δήγμα υπόπτου ζώου αναφέρει η διαφάνεια;','5 δόσεις τις ημέρες 0, 3, 7, 14, 28. Προαιρετική αναμνηστική την 90ή ημέρα.'],
+ ['Ποιο είναι το προφυλακτικό σχήμα σε άτομα με επαγγελματική έκθεση;','3 δόσεις τις ημέρες 0, 7, 21 ή 28 και αναμνηστική κάθε 2 χρόνια.'],
+ ['Πώς χορηγείται το αντιλυσσικό εμβόλιο στη διαφάνεια;','Ενδομυϊκά.'],
+ ['Τι είναι ο ειδικός άνοσος αντιλυσσικός ορός;','Ανοσοσφαιρίνη από πλάσμα ανοσοποιημένων ανθρώπων. Παθητική ανοσοποίηση.'],
+ ['Ποια είναι η δόση του ειδικού αντιλυσσικού ορού;','20 IU/kg.'],
+ ['Πώς κατανέμεται ο ειδικός αντιλυσσικός ορός;','Το μισό ενδομυϊκά και το άλλο μισό στο τραύμα. Σε βαριά τραύματα όλη η ποσότητα να ενσταλάζεται/ενίεται μέσα και γύρω από το τραύμα.'],
+ ['Πώς γίνεται έλεγχος της νόσου σε πληθυσμιακό επίπεδο;','Εμβολιασμός σκύλων/γατών ανά 1–3 χρόνια, έλεγχος εισαγόμενων ζώων, αντιλυσσικά εμβόλια σε δολώματα για άγρια ζώα.']
+];
+let ci=0;function renderCard(){fc.classList.remove('show');q.textContent=cards[ci][0];a.textContent=cards[ci][1];count.textContent=(ci+1)+' / '+cards.length;renderQueue();}function flip(){fc.classList.toggle('show')}function nextCard(e){e.stopPropagation();ci=(ci+1)%cards.length;renderCard()}function prevCard(e){e.stopPropagation();ci=(ci-1+cards.length)%cards.length;renderCard()}function shuffleCards(e){e.stopPropagation();for(let i=cards.length-1;i>0;i--){let j=Math.floor(Math.random()*(i+1));[cards[i],cards[j]]=[cards[j],cards[i]];}ci=0;renderCard()}function renderQueue(){queue.innerHTML='';cards.forEach((c,i)=>{let li=document.createElement('li');li.textContent=c[0].slice(0,54)+(c[0].length>54?'…':'');if(i===ci)li.className='active';li.onclick=()=>{ci=i;renderCard()};queue.appendChild(li)})}
+const quiz=[
+ {q:'Ο ιός της λύσσας ανήκει κυρίως σε ποιο γένος;',o:['Vesiculovirus','Lyssavirus','Morbillivirus','Rubivirus'],a:1,e:'Rabies/λύσσα = Lyssavirus της οικογένειας Rhabdoviridae.'},
+ {q:'Ποιο είναι σωστό για τους ραβδοϊούς;',o:['Γυμνοί dsDNA ιοί','Περιβληματοφόροι (-)RNA ιοί με σχήμα σφαίρας/βολίδας','ss(+)RNA χωρίς περίβλημα','Ρετροϊοί με reverse transcriptase'],a:1,e:'Η παρουσίαση δίνει: περίβλημα, (-)RNA, μεσαίο μέγεθος, σχήμα σφαίρας.'},
+ {q:'Πού πολλαπλασιάζονται οι ραβδοϊοί;',o:['Πυρήνα','Κυτταρόπλασμα','Μιτοχόνδρια','Ριβοσώματα βακτηρίων'],a:1,e:'Η διαφάνεια αναφέρει πολλαπλασιασμό στο κυτταρόπλασμα.'},
+ {q:'Ο χρόνος επώασης της λύσσας στον άνθρωπο είναι συνήθως:',o:['1–5 ημέρες','4–5 ημέρες','20–90 ημέρες','6–12 μήνες πάντα'],a:2,e:'Στη διαφάνεια: άνθρωπος 20–90 ημέρες.'},
+ {q:'Η επώαση εξαρτάται κυρίως από:',o:['Μόνο από την ηλικία','Εγγύτητα τραύματος προς ΚΝΣ, ποσότητα ιού, σοβαρότητα τραύματος κ.ά.','Μόνο από το φύλο','Μόνο από την εποχή'],a:1,e:'Κλασική παγίδα: όσο πιο κοντά στον εγκέφαλο και όσο μεγαλύτερο/βαρύτερο τραύμα, τόσο χειρότερα.'},
+ {q:'Ποια κλινική εκδήλωση είναι χαρακτηριστική στη λύσσα;',o:['Υδροφοβία','Κηλίδες Koplik','Εξάνθημα σε όλα τα στάδια','Παρωτίτιδα'],a:0,e:'Κλινικά: νευρολογική συμπτωματολογία, σπασμοί, υδροφοβία, θάνατος.'},
+ {q:'Τα σωμάτια Negri είναι:',o:['Ειδικά αντισώματα στον ορό','Παθογνωμονικά έγκλειστα, κυρίως νεκροτομικά','Εμβόλιο','Υποδοχείς στο ήπαρ'],a:1,e:'Negri: παθογνωμονικά, νεκροτομικά, σε πυραμοειδή κύτταρα αμμωνίου κέρατος/ιπποκάμπου.'},
+ {q:'Ποια μέθοδος χρησιμοποιείται για άμεση διάγνωση στη διαφάνεια;',o:['Άμεσος ανοσοφθορισμός','Widal','Mantoux','Western blot μόνο'],a:0,e:'Άμεσος ανοσοφθορισμός σε δέρμα, κερατοειδή, εγκεφαλική ουσία μεταθανατίως.'},
+ {q:'Μετά από δήγμα υπόπτου ζώου, το εμβόλιο δίνεται:',o:['Μία μόνο δόση','5 δόσεις: 0, 3, 7, 14, 28 ημέρες','Μόνο μετά από συμπτώματα','Μόνο από το στόμα'],a:1,e:'Στη διαφάνεια: 5 δόσεις 0,3,7,14,28 και προαιρετικά 90ή ημέρα.'},
+ {q:'Η δόση του ειδικού άνοσου αντιλυσσικού ορού είναι:',o:['0,25 ml/kg','20 IU/kg','100 mg ημερησίως','Δεν δίνεται ποτέ'],a:1,e:'Ειδικός αντιλυσσικός ορός: 20 IU/kg.'},
+ {q:'Πού πρέπει να δοθεί ο αντιλυσσικός ορός σε βαριά τραύματα;',o:['Μόνο ενδοφλέβια','Όλη η ποσότητα στο τραύμα και γύρω από αυτό','Μόνο από το στόμα','Μόνο στο άλλο χέρι'],a:1,e:'Η παρουσίαση τονίζει ότι σε βαριά τραύματα όλη η ποσότητα πρέπει να ενσταλάζεται/ενίεται στο τραύμα και γύρω από αυτό.'},
+ {q:'Ποιο είναι σωστό για έλεγχο της λύσσας;',o:['Δεν εμβολιάζονται ζώα','Εμβολιασμός οικιακών σκύλων/γατών και δολώματα σε άγρια ζώα','Μόνο καραντίνα ανθρώπων','Αντιβιοτικά στα ζώα'],a:1,e:'Έλεγχος: εμβολιασμός σκύλων/γατών, έλεγχος εισαγόμενων ζώων, εμβόλια σε δολώματα για άγρια ζώα.'}
+];
+function renderQuiz(){quizbox.innerHTML='';quiz.forEach((it,idx)=>{let div=document.createElement('div');div.className='quizq';div.innerHTML='<h3>'+(idx+1)+'. '+it.q+'</h3>';it.o.forEach((op,i)=>{let b=document.createElement('button');b.className='opt';b.textContent=['Α','Β','Γ','Δ'][i]+'. '+op;b.onclick=()=>answer(div,b,i,it.a);div.appendChild(b)});let ex=document.createElement('div');ex.className='explain';ex.textContent=it.e;div.appendChild(ex);quizbox.appendChild(div)});updateScore()}let answered=0,correct=0;function answer(div,b,i,a){if(div.dataset.done)return;div.dataset.done=1;answered++;if(i===a){b.classList.add('correct');correct++}else{b.classList.add('wrong');div.querySelectorAll('.opt')[a].classList.add('correct')}div.classList.add('showexp');updateScore()}function updateScore(){score.textContent='Score: '+correct+' / '+answered}function resetQuiz(){answered=0;correct=0;renderQuiz()}renderCard();renderQuiz();
+</script>
+</body>
+</html>

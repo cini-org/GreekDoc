@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="el">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Ιλαρά — Microbiology II Speed Learning</title>
+<style>
+:root{--bg:#f7f8fc;--paper:#fff;--ink:#111827;--muted:#667085;--line:#e5e7eb;--accent:#dc2626;--accent2:#f59e0b;--green:#dcfce7;--blue:#dbeafe;--rose:#ffe4e6;--amber:#fef3c7;--violet:#ede9fe;--shadow:0 14px 35px rgba(16,24,40,.10);--radius:24px}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(circle at top left,#fff1f2 0,#f7f8fc 42%,#eff6ff 100%);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--ink);line-height:1.55}.wrap{max-width:1180px;margin:auto;padding:24px}a{color:inherit}.back{display:inline-flex;gap:8px;align-items:center;text-decoration:none;background:#fff;border:1px solid var(--line);border-radius:999px;padding:9px 14px;color:var(--muted);box-shadow:0 6px 18px rgba(0,0,0,.05)}h1{font-size:clamp(40px,7vw,78px);letter-spacing:-.055em;margin:18px 0 8px;line-height:.95}.subtitle{font-size:18px;color:var(--muted);max-width:900px}.pills{display:flex;flex-wrap:wrap;gap:9px;margin-top:18px}.pill{background:#fff;border:1px solid var(--line);border-radius:999px;padding:8px 12px;font-size:13px;color:#475467}.pill.hot{background:#111827;color:#fff;border-color:#111827}.layout{display:grid;grid-template-columns:315px 1fr;gap:22px;margin-top:24px}.side{position:sticky;top:18px;align-self:start;background:rgba(255,255,255,.9);backdrop-filter:blur(10px);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px}.side h3{margin:0 0 10px}.navbtn{width:100%;text-align:left;border:1px solid var(--line);background:#fff;border-radius:16px;padding:12px 14px;margin:8px 0;cursor:pointer;font-weight:760;color:#344054}.navbtn:hover{transform:translateY(-1px);box-shadow:0 10px 20px rgba(0,0,0,.07)}.card{background:rgba(255,255,255,.92);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:22px;margin-bottom:22px}.card h2{margin:0 0 13px;font-size:28px;letter-spacing:-.03em}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.mini{border:1px solid var(--line);border-radius:20px;background:#fff;padding:16px}.mini h3{margin:0 0 8px}.tag{display:inline-flex;border-radius:999px;padding:5px 9px;font-size:12px;font-weight:800;margin:3px 4px 4px 0}.tag.orange{background:#ffedd5;color:#9a3412}.tag.blue{background:var(--blue);color:#1d4ed8}.tag.green{background:var(--green);color:#166534}.tag.rose{background:var(--rose);color:#be123c}.tag.violet{background:var(--violet);color:#5b21b6}.table{width:100%;border-collapse:separate;border-spacing:0;overflow:hidden;border-radius:18px;border:1px solid var(--line);background:#fff}.table th,.table td{padding:12px;border-bottom:1px solid var(--line);vertical-align:top}.table th{background:#f9fafb;text-align:left}.table tr:last-child td{border-bottom:0}.virus-visual{height:160px;border-radius:22px;border:1px solid var(--line);background:radial-gradient(circle at 50% 50%,#fee2e2 0 20%,#ef4444 21% 34%,transparent 35%),radial-gradient(circle at 32% 30%,#fff 0 2%,transparent 3%),radial-gradient(circle at 66% 65%,#fff 0 2%,transparent 3%),linear-gradient(135deg,#fff1f2,#fff7ed);position:relative;overflow:hidden}.virus-visual:before{content:"";position:absolute;inset:26px;border-radius:50%;border:7px dotted #dc2626}.virus-visual:after{content:"H  F";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);font-weight:900;color:#991b1b;letter-spacing:.15em}.timeline{display:grid;gap:10px}.step{background:#fff;border:1px solid var(--line);border-radius:18px;padding:14px}.step b{color:#991b1b}.flashcard{min-height:230px;display:flex;align-items:center;justify-content:center;text-align:center;border:2px dashed #fca5a5;border-radius:24px;background:linear-gradient(135deg,#fff,#fff1f2);padding:28px;cursor:pointer;user-select:none}.flashcard .q{font-size:26px;font-weight:850;letter-spacing:-.03em}.flashcard .a{display:none;font-size:23px;font-weight:780}.flashcard.show .q{display:none}.flashcard.show .a{display:block}.controls{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}.ctrl{border:1px solid var(--line);background:#fff;border-radius:14px;padding:10px 14px;cursor:pointer;font-weight:800}.ctrl.primary{background:var(--accent);color:#fff;border-color:var(--accent)}.counter{color:var(--muted);align-self:center;font-size:14px}.quizq{border:1px solid var(--line);background:#fff;border-radius:20px;padding:16px;margin:13px 0}.quizq h3{margin:0 0 10px;font-size:18px}.opt{display:block;width:100%;text-align:left;border:1px solid var(--line);background:#fff;border-radius:13px;padding:11px;margin:8px 0;cursor:pointer}.opt.correct{background:#ecfdf3;border-color:#22c55e}.opt.wrong{background:#fff1f2;border-color:#f43f5e}.explain{display:none;color:#475467;margin-top:9px}.showexp .explain{display:block}.trap{border-left:6px solid var(--accent2);background:#fff7ed}.skip{border-left:6px solid #94a3b8;background:#f8fafc}.footer{color:var(--muted);font-size:13px;text-align:center;padding:22px}@media(max-width:900px){.layout{grid-template-columns:1fr}.side{position:relative;top:0}.grid{grid-template-columns:1fr}.table{font-size:14px}}
+</style>
+</head>
+<body>
+<div class="wrap hero">
+  <a class="back" href="microbiology_speed_homepage_grid.html">← Πίσω στο Microbiology Speed Grid</a>
+  <h1>Ιλαρά</h1>
+  <p class="subtitle">Speed-learning για Measles / Morbillivirus: 3C, Koplik, εξάνθημα, επιπλοκές, διάγνωση, πρόληψη με MMR και εξεταστικές παγίδες.</p>
+  <div class="pills"><span class="pill hot">11ο μάθημα</span><span class="pill">Paramyxoviridae</span><span class="pill">Morbillivirus</span><span class="pill">RNA ιός</span><span class="pill">H + F proteins</span><span class="pill">1 ορότυπος</span><span class="pill">MMR</span></div>
+</div>
+<div class="wrap layout">
+<aside class="side">
+  <h3>Πλοήγηση</h3>
+  <button class="navbtn" onclick="go('must')">⚡ Must know</button>
+  <button class="navbtn" onclick="go('clinical')">🤒 Κλινική εικόνα</button>
+  <button class="navbtn" onclick="go('comp')">🧠 Επιπλοκές</button>
+  <button class="navbtn" onclick="go('diag')">🧪 Διάγνωση / πρόληψη</button>
+  <button class="navbtn" onclick="go('flash')">🎴 Flashcards</button>
+  <button class="navbtn" onclick="go('quiz')">✅ MCQ quiz</button>
+  <button class="navbtn" onclick="go('traps')">⚠️ Exam traps</button>
+</aside>
+<main>
+<section class="card" id="must">
+  <h2>⚡ Must know σε 2 λεπτά</h2>
+  <div class="grid">
+    <div class="mini"><div class="virus-visual"></div></div>
+    <div class="mini"><h3>Ταυτότητα</h3><p><b>Ιλαρά = Paramyxoviridae, γένος Morbillivirus</b>. RNA ιός με ελικοειδή συμμετρία. Έχει <b>Hemagglutinin H</b> και <b>Fusion protein F</b>.</p><span class="tag rose">Morbillivirus</span></div>
+    <div class="mini"><h3>Ορότυποι</h3><p>Υπάρχει <b>μόνο ένας ορολογικός τύπος</b>, άρα η φυσική νόσηση αφήνει <b>διά βίου ανοσία</b>. Υπάρχουν όμως γενότυποι για επιδημιολογική/φυλογενετική ανάλυση.</p><span class="tag green">1 ορότυπος</span></div>
+    <div class="mini"><h3>Μετάδοση</h3><p>Πολύ μεταδοτική, με αναπνευστικές εκκρίσεις. Περίπου <b>90% των μη ανόσων</b> νοσούν. Ο ιός μένει ενεργός στον αέρα/επιφάνειες έως 2 ώρες.</p><span class="tag orange">very contagious</span></div>
+    <div class="mini"><h3>Κλασικό κλινικό μοτίβο</h3><p>Πυρετός + <b>3C</b>: Cough, Coryza, Conjunctivitis. Μετά: κηλίδες Koplik και κηλιδοβλατιδώδες εξάνθημα που ξεκινά από πρόσωπο/πίσω από αυτιά και κατεβαίνει.</p><span class="tag blue">3C + Koplik</span></div>
+    <div class="mini"><h3>Πρόληψη</h3><p><b>MMR</b>, ζων εξασθενημένος ιός. 2 δόσεις: 12–15 μηνών και 4–6 ετών. Αντενδείκνυται σε εγκυμοσύνη και ανοσοκαταστολή.</p><span class="tag violet">MMR</span></div>
+  </div>
+</section>
+<section class="card" id="clinical">
+  <h2>🤒 Κλινική εικόνα / πορεία</h2>
+  <div class="timeline">
+    <div class="step"><b>Επώαση:</b> 8–12 ή 9–12 ημέρες, ασυμπτωματική.</div>
+    <div class="step"><b>Πρόδρομο / καταρροϊκό στάδιο 2–4 ημέρες:</b> πυρετός 38,5–40°C, βήχας, ρινόρροια/καταρροή, επιπεφυκίτιδα, φωτοφοβία, κεφαλαλγία/κακουχία. Είναι η φάση των 3C.</div>
+    <div class="step"><b>Κηλίδες Koplik:</b> παθογνωμονικές αλλά όχι πάντα συχνές. Λευκόφαιες σαν κόκκος άμμου, απέναντι από κάτω γομφίους, σε ερυθρή άλω.</div>
+    <div class="step"><b>Εξανθηματικό στάδιο:</b> κηλιδοβλατιδώδες εξάνθημα 2–5 ή 5–6 ημέρες. Αρχίζει πίσω από τα αυτιά/πρόσωπο και επεκτείνεται σε κορμό και άκρα.</div>
+    <div class="step"><b>Ανάρρωση:</b> 10–14 ημέρες, πτώση πυρετού και εξαφάνιση εξανθήματος με τη σειρά που εμφανίστηκε.</div>
+  </div>
+  <div class="grid" style="margin-top:14px">
+    <div class="mini"><h3>Μολυσματικότητα</h3><p>Συνολικά 4–9 ημέρες: περίπου <b>2–4 ημέρες πριν</b> μέχρι <b>2–5 ημέρες μετά</b> την εμφάνιση του εξανθήματος.</p></div>
+    <div class="mini"><h3>Παθογένεση</h3><p>Είσοδος από αναπνευστικό → πολλαπλασιασμός σε αναπνευστικό βλεννογόνο/λεμφαδένες → 1η ιαιμία → δέρμα, κατώτερο αναπνευστικό, νεφροί, έντερο, ΚΝΣ/λεμφικό → 2η ιαιμία.</p></div>
+  </div>
+</section>
+<section class="card" id="comp">
+  <h2>🧠 Επιπλοκές / ειδικές μορφές</h2>
+  <table class="table"><thead><tr><th>Επιπλοκή</th><th>Τι να θυμάμαι</th></tr></thead><tbody>
+    <tr><td>Διάρροια</td><td>Συχνή επιπλοκή, περίπου 10%.</td></tr>
+    <tr><td>Μέση ωτίτιδα</td><td>5–15%.</td></tr>
+    <tr><td>Λαρυγγοτραχειίτιδα</td><td>5–20%.</td></tr>
+    <tr><td>Πνευμονία / βρογχιολίτιδα</td><td>Μπορεί να είναι ιογενής, μικροβιακή, βρογχοπνευμονία. Σε ανοσοανεπάρκεια: γιγαντοκυτταρική πνευμονία.</td></tr>
+    <tr><td>Εγκεφαλίτιδα</td><td>Σοβαρή, με μεγάλη θνητότητα/νευρολογικές διαταραχές.</td></tr>
+    <tr><td>SSPE</td><td>Υποξεία σκληρυντική πανεγκεφαλίτιδα: χρόνια νευρολογική νόσος, 1–10 έτη μετά, ειδικά αν νόσηση &lt;2 ετών.</td></tr>
+  </tbody></table>
+  <div class="grid" style="margin-top:14px">
+    <div class="mini"><h3>Ποιοι κινδυνεύουν περισσότερο;</h3><p>Παιδιά &lt;5 ετών, ενήλικες &gt;20 ετών, υποσιτισμός/έλλειψη βιταμίνης A, ανοσοκαταστολή/HIV/AIDS, εγκυμοσύνη.</p></div>
+    <div class="mini"><h3>Άλλες μορφές</h3><p>Τροποποιημένη σε μερική ανοσία: ήπια/υποκλινική, χωρίς Koplik. Ανοσοκατασταλμένοι: πολύ βαριά μορφή με γιγαντοκυτταρική πνευμονία/εγκεφαλίτιδα.</p></div>
+  </div>
+</section>
+<section class="card" id="diag">
+  <h2>🧪 Διάγνωση / πρόληψη / θεραπεία</h2>
+  <div class="grid">
+    <div class="mini"><h3>Κλινική υποψία</h3><p>Πυρετός ≥3 ημέρες + τουλάχιστον ένα από τα 3C + Koplik/εξάνθημα + επιδημιολογική επαφή.</p></div>
+    <div class="mini"><h3>Εργαστηριακή διάγνωση</h3><p><b>IgM αντισώματα ιλαράς</b> ή <b>PCR για RNA ιού ιλαράς</b> σε αναπνευστικές εκκρίσεις.</p><span class="tag blue">IgM / PCR</span></div>
+    <div class="mini"><h3>MMR</h3><p>Measles-Mumps-Rubella. Ζων εξασθενημένο. 1η δόση 12–15 μηνών, 2η δόση 4–6 ετών. Η παρουσίαση δίνει ~99% προστατευτικά αντισώματα.</p></div>
+    <div class="mini"><h3>Μετά έκθεση</h3><p>Εμβόλιο σε ανεμβολίαστους εντός 3 ημερών μπορεί να προλάβει νόσηση. Ειδική άνοση σφαιρίνη εντός 5–6 ημερών μπορεί να προλάβει/τροποποιήσει νόσο.</p></div>
+    <div class="mini"><h3>Αντενδείξεις εμβολίου</h3><p>Εγκυμοσύνη, ανοσοανεπάρκεια/ανοσοκαταστολή, εμπύρετο νόσημα, πρόσφατη γ-σφαιρίνη.</p></div>
+    <div class="mini"><h3>Θεραπεία</h3><p>Υποστηρικτική. Αντιβιοτικά μόνο για δευτεροπαθείς μικροβιακές λοιμώξεις. Βιταμίνη A σε υποσιτισμένα παιδιά. Ριμπαβιρίνη ίσως σε ανοσοκατεσταλμένους/βαριά νόσο.</p></div>
+  </div>
+</section>
+<section class="card" id="flash">
+  <h2>🎴 Flashcards</h2>
+  <div class="flashcard" id="fc" onclick="flip()"><div class="q" id="fcq"></div><div class="a" id="fca"></div></div>
+  <div class="controls"><button class="ctrl" onclick="prevCard(event)">← Πίσω</button><button class="ctrl primary" onclick="nextCard(event)">Επόμενη →</button><span class="counter" id="fccount"></span></div>
+</section>
+<section class="card" id="quiz">
+  <h2>✅ Multiple choice quiz</h2>
+  <div id="quizbox"></div>
+  <div class="controls"><button class="ctrl primary" onclick="resetQuiz()">Ξαναπαίξε quiz</button><span class="counter" id="score"></span></div>
+</section>
+<section class="card trap" id="traps">
+  <h2>⚠️ Exam traps</h2>
+  <ul>
+    <li><b>Ιλαρά = Paramyxoviridae / Morbillivirus</b>, όχι orthomyxo.</li>
+    <li><b>1 ορότυπος</b> → νόσηση αφήνει διά βίου ανοσία.</li>
+    <li><b>3C</b> = cough, coryza, conjunctivitis.</li>
+    <li><b>Koplik</b> = παθογνωμονικές κηλίδες στις παρειές απέναντι από κάτω γομφίους.</li>
+    <li><b>Εξάνθημα</b> ξεκινά πίσω από αυτιά/πρόσωπο → κορμός → άκρα.</li>
+    <li><b>Πολύ μεταδοτική</b>: 90% των μη ανόσων νοσούν.</li>
+    <li><b>Εργαστηριακά</b>: IgM ή PCR RNA από αναπνευστικές εκκρίσεις.</li>
+    <li><b>SSPE</b>: χρόνια όψιμη νευρολογική επιπλοκή, 1–10 χρόνια μετά, ιδιαίτερα νόσηση &lt;2 ετών.</li>
+    <li><b>MMR</b> ζων εξασθενημένο — όχι σε εγκύους/ανοσοκατεσταλμένους.</li>
+  </ul>
+</section>
+<section class="card skip">
+  <h2>🧹 Skip τώρα, εκτός αν μείνει χρόνος</h2>
+  <p>Αναλυτικοί πίνακες με όλους τους γονότυπους, λεπτομέρειες φυλογενετικών δέντρων Ελλάδας/Βαλκανίων και ακριβείς επιδημιολογικοί αριθμοί ανά έτος. Κράτα μόνο ότι οι γονότυποι βοηθούν στην επιδημιολογική ιχνηλάτηση και ότι οι επιδημίες σχετίζονται με ανεμβολίαστους/μερικώς εμβολιασμένους.</p>
+</section>
+</main>
+</div>
+<div class="footer">GreekDoc Speed Learning • Ιλαρά</div>
+<script>
+function go(id){document.getElementById(id).scrollIntoView({behavior:'smooth',block:'start'});}
+const cards=[
+['Σε ποια οικογένεια και γένος ανήκει ο ιός της ιλαράς;','Οικογένεια Paramyxoviridae / Παραβλεννοϊών, γένος Morbillivirus.'],
+['Τι γενετικό υλικό έχει ο ιός της ιλαράς;','RNA ιός με ελικοειδή συμμετρία.'],
+['Ποιες δύο επιφανειακές πρωτεΐνες θυμάμαι;','Hemagglutinin H και Fusion protein F.'],
+['Πόσοι ορότυποι ιλαράς υπάρχουν;','Ένας ορολογικός τύπος. Γι’ αυτό η νόσηση αφήνει διά βίου ανοσία.'],
+['Ποια είναι τα 3C της ιλαράς;','Cough, Coryza, Conjunctivitis = βήχας, καταρροή/ρινόρροια, επιπεφυκίτιδα.'],
+['Τι είναι οι κηλίδες Koplik;','Παθογνωμονικές λευκόφαιες κηλίδες σαν κόκκος άμμου, σε ερυθρή άλω, στις παρειές απέναντι από κάτω γομφίους.'],
+['Πώς εξαπλώνεται το εξάνθημα της ιλαράς;','Ξεκινά πίσω από τα αυτιά/πρόσωπο και κατεβαίνει σε κορμό και άκρα.'],
+['Πόσο μεταδοτική είναι η ιλαρά;','Πολύ: περίπου 90% των μη ανόσων ατόμων νοσούν μετά από έκθεση.'],
+['Πόσο παραμένει μεταδοτικός ο ιός στον αέρα/επιφάνειες;','Έως 2 ώρες.'],
+['Ποια εργαστηριακή διάγνωση κρατάω;','IgM αντισώματα ιλαράς ή PCR για RNA ιού σε αναπνευστικές εκκρίσεις.'],
+['Ποιες είναι σοβαρές επιπλοκές ΚΝΣ;','Μεταλοιμώδης εγκεφαλομυελίτιδα και υποξεία σκληρυντική πανεγκεφαλίτιδα (SSPE).'],
+['Τι είναι η SSPE;','Όψιμη χρόνια νευρολογική επιπλοκή, 1–10 χρόνια μετά, ειδικά αν νόσηση σε ηλικία <2 ετών.'],
+['Τι τύπου είναι το εμβόλιο MMR;','Ζων εξασθενημένο εμβόλιο. Αντενδείκνυται σε εγκυμοσύνη/ανοσοκαταστολή.'],
+['Πότε δίνονται οι 2 δόσεις MMR;','1η 12–15 μηνών και 2η 4–6 ετών.']
+];let idx=0;function renderCard(){fc.classList.remove('show');fcq.textContent=cards[idx][0];fca.textContent=cards[idx][1];fccount.textContent=(idx+1)+' / '+cards.length;}function flip(){fc.classList.toggle('show')}function nextCard(e){e.stopPropagation();idx=(idx+1)%cards.length;renderCard()}function prevCard(e){e.stopPropagation();idx=(idx-1+cards.length)%cards.length;renderCard()}renderCard();
+const qs=[
+{q:'Ο ιός της ιλαράς ανήκει στο γένος:',o:['Morbillivirus','Lentivirus','Enterovirus','Flavivirus'],a:0,ex:'Η ιλαρά είναι Paramyxoviridae, γένος Morbillivirus.'},
+{q:'Ποιο είναι σωστό για τον ιό της ιλαράς;',o:['Έχει πολλούς ορότυπους','Έχει έναν ορολογικό τύπο','Είναι DNA ιός','Δεν έχει περίβλημα'],a:1,ex:'Η παρουσίαση τονίζει έναν ορολογικό τύπο.'},
+{q:'Τα 3C της ιλαράς είναι:',o:['Cough, Coryza, Conjunctivitis','Cystitis, Cough, Cancer','Coryza, Cyanosis, Croup','Conjunctivitis, Candidiasis, Colitis'],a:0,ex:'Κλασική εικόνα: πυρετός και 3C.'},
+{q:'Οι κηλίδες Koplik είναι:',o:['Παθογνωμονικές βλάβες στο βλεννογόνο της παρειάς','Δερματικές βλάβες στις παλάμες','Βλάβες του κερατοειδούς','Εργαστηριακός δείκτης'],a:0,ex:'Λευκόφαιες κηλίδες απέναντι από κάτω γομφίους, παθογνωμονικές.'},
+{q:'Το εξάνθημα της ιλαράς συνήθως αρχίζει:',o:['Από τις παλάμες','Πίσω από τα αυτιά/πρόσωπο','Από τα πέλματα','Από τον ομφαλό'],a:1,ex:'Αρχίζει πίσω από τα αυτιά/πρόσωπο και επεκτείνεται σε κορμό και άκρα.'},
+{q:'Ποιο ποσοστό μη ανόσων νοσεί μετά από έκθεση;',o:['Περίπου 10%','Περίπου 30%','Περίπου 90%','Κανείς χωρίς άμεση επαφή αίματος'],a:2,ex:'Η παρουσίαση δίνει 90% των μη ανόσων.'},
+{q:'Εργαστηριακή διάγνωση ιλαράς γίνεται με:',o:['HBsAg','IgM ιλαράς ή PCR RNA','Monospot','VDRL'],a:1,ex:'IgM αντισώματα ιλαράς ή PCR για RNA ιού στις αναπνευστικές εκκρίσεις.'},
+{q:'Ποια επιπλοκή είναι όψιμη χρόνια νευρολογική νόσος μετά από ιλαρά;',o:['SSPE','Σύνδρομο Reye','Guillain-Barré','Πυελονεφρίτιδα'],a:0,ex:'Υποξεία σκληρυντική πανεγκεφαλίτιδα.'},
+{q:'Το εμβόλιο της ιλαράς στο MMR είναι:',o:['Νεκρό εμβόλιο','Ζων εξασθενημένο','Πολυσακχαριδικό','mRNA μόνο'],a:1,ex:'Το MMR είναι ζων εξασθενημένο.'},
+{q:'Το MMR αντενδείκνυται σε:',o:['Υγιείς εφήβους','Έγκυες και ανοσοκατεσταλμένους','Παιδιά χωρίς πυρετό','Άτομα με παλιά ρινίτιδα'],a:1,ex:'Ζων εξασθενημένο: όχι σε εγκυμοσύνη και ανοσοκαταστολή.'},
+{q:'Μετά από έκθεση, εμβόλιο σε ανεμβολίαστο άτομο μπορεί να βοηθήσει αν δοθεί:',o:['Εντός 3 ημερών','Μετά από 2 μήνες','Μόνο μετά το εξάνθημα','Ποτέ'],a:0,ex:'Η παρουσίαση αναφέρει εμβόλιο εντός 3 ημερών από έκθεση.'},
+{q:'Ποιο από τα παρακάτω ΔΕΝ ταιριάζει με κλασική ιλαρά;',o:['Πυρετός','Βήχας','Κηλίδες Koplik','Αιμορραγική κυστίτιδα'],a:3,ex:'Αιμορραγική κυστίτιδα είναι κλασικά αδενοϊοί, όχι ιλαρά.'}
+];function renderQuiz(){let html='';qs.forEach((x,i)=>{html+=`<div class="quizq" id="q${i}"><h3>${i+1}. ${x.q}</h3>`;x.o.forEach((op,j)=>{html+=`<button class="opt" onclick="answer(${i},${j},this)">${String.fromCharCode(65+j)}. ${op}</button>`});html+=`<div class="explain">${x.ex}</div></div>`});quizbox.innerHTML=html;score.textContent='0 / '+qs.length;}let answered={};function answer(i,j,btn){if(answered[i])return;answered[i]=j+1;let box=document.getElementById('q'+i);box.classList.add('showexp');[...box.querySelectorAll('.opt')].forEach((b,k)=>{if(k===qs[i].a)b.classList.add('correct');else if(k===j)b.classList.add('wrong')});let s=Object.keys(answered).filter(k=>answered[k]-1===qs[k].a).length;score.textContent=s+' / '+qs.length;}function resetQuiz(){answered={};renderQuiz();}renderQuiz();
+</script>
+</body></html>

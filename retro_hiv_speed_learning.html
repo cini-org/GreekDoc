@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="el">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Retro / HIV — Microbiology II Speed Learning</title>
+<style>
+  :root{
+    --bg:#f6f7fb; --paper:#ffffff; --ink:#151827; --muted:#667085; --line:#e4e7ec;
+    --accent:#be123c; --dark:#111827; --blue:#dbeafe; --green:#dcfce7; --rose:#ffe4e6; --amber:#fef3c7; --violet:#ede9fe; --cyan:#cffafe;
+    --shadow:0 14px 35px rgba(16,24,40,.10); --radius:24px;
+  }
+  *{box-sizing:border-box} body{margin:0;background:radial-gradient(circle at top left,#fff5f6 0,#f6f7fb 44%,#eef2ff 100%);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--ink);line-height:1.55}
+  a{color:inherit}.wrap{max-width:1180px;margin:auto;padding:24px}.hero{padding-top:30px}.back{display:inline-flex;gap:8px;align-items:center;text-decoration:none;background:#fff;border:1px solid var(--line);border-radius:999px;padding:9px 14px;color:var(--muted);box-shadow:0 6px 18px rgba(0,0,0,.05)}
+  h1{font-size:clamp(34px,6vw,70px);letter-spacing:-.05em;margin:18px 0 8px;line-height:.95}.subtitle{font-size:18px;color:var(--muted);max-width:900px}.pills{display:flex;flex-wrap:wrap;gap:9px;margin-top:18px}.pill{background:#fff;border:1px solid var(--line);border-radius:999px;padding:8px 12px;font-size:13px;color:#4b5563}.pill.hot{background:var(--dark);color:#fff;border-color:var(--dark)}
+  .layout{display:grid;grid-template-columns:320px 1fr;gap:22px;margin-top:24px}.side{position:sticky;top:18px;align-self:start;background:rgba(255,255,255,.86);backdrop-filter:blur(10px);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px}.side h3{margin:0 0 10px}.navbtn{width:100%;text-align:left;border:1px solid var(--line);background:#fff;border-radius:16px;padding:12px 14px;margin:8px 0;cursor:pointer;font-weight:750;color:#344054}.navbtn:hover{transform:translateY(-1px);box-shadow:0 10px 20px rgba(0,0,0,.07)}
+  .card{background:rgba(255,255,255,.90);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:24px;margin-bottom:22px}.card h2{font-size:30px;letter-spacing:-.03em;margin:0 0 6px}.note{color:var(--muted);margin-top:0}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.mini{border:1px solid var(--line);border-radius:20px;background:#fff;padding:16px}.mini h3{margin:0 0 8px}.mini p,.mini li{color:#475467}.mini ul{margin:0;padding-left:20px}.tag{display:inline-flex;border-radius:999px;padding:5px 9px;font-size:12px;margin:3px 3px 0 0;background:#f3f4f6;color:#374151;font-weight:700}.blue{background:var(--blue)}.green{background:var(--green)}.rose{background:var(--rose)}.amber{background:var(--amber)}.violet{background:var(--violet)}.cyan{background:var(--cyan)}
+  .virusmap{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:14px}.virusbox{background:#fff;border:1px solid var(--line);border-radius:22px;padding:16px;min-height:180px;display:flex;flex-direction:column;gap:10px}.vtop{display:flex;align-items:center;gap:12px}.vsvg{width:58px;height:58px;flex:0 0 58px}.virusbox h3{margin:0;font-size:18px}.virusbox p{margin:0;color:var(--muted);font-size:14px}.keyline{font-weight:850;color:#111827}
+  .flow{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:14px}.step{background:#fff;border:1px solid var(--line);border-radius:18px;padding:13px;position:relative}.step b{display:block;color:#be123c}.step:not(:last-child):after{content:"→";position:absolute;right:-10px;top:38%;font-weight:900;color:#98a2b3}
+  .flash-controls{display:flex;gap:10px;flex-wrap:wrap;margin:12px 0}.button{border:0;background:#111827;color:#fff;border-radius:15px;padding:11px 15px;cursor:pointer;font-weight:850}.button.secondary{background:#fff;color:#111827;border:1px solid var(--line)}.flashcard{min-height:260px;border-radius:28px;border:1px solid var(--line);background:linear-gradient(135deg,#fff,#fff1f2);box-shadow:var(--shadow);display:flex;align-items:center;justify-content:center;text-align:center;padding:34px;cursor:pointer;user-select:none}.flashcard .q{font-size:28px;font-weight:850;letter-spacing:-.02em}.flashcard .hint{display:block;font-size:14px;color:var(--muted);margin-top:18px;font-weight:500}.progress{color:var(--muted);font-weight:750}.answer{color:#047857}.hidden{display:none}
+  .quiz-q{border:1px solid var(--line);background:#fff;border-radius:22px;padding:18px;margin:14px 0}.quiz-q h3{margin:0 0 12px;font-size:18px}.option{display:block;width:100%;text-align:left;border:1px solid var(--line);background:#fff;border-radius:14px;padding:11px 12px;margin:8px 0;cursor:pointer}.option.correct{border-color:#16a34a;background:#dcfce7}.option.wrong{border-color:#dc2626;background:#fee2e2}.explain{display:none;background:#f8fafc;border:1px dashed #cbd5e1;border-radius:14px;padding:10px 12px;margin-top:10px;color:#334155}.quiz-q.done .explain{display:block}.skip{background:#fff7ed;border-color:#fed7aa}.footer{color:var(--muted);font-size:13px;text-align:center;padding:30px}
+  @media(max-width:950px){.layout{grid-template-columns:1fr}.side{position:static}.grid,.virusmap,.flow{grid-template-columns:1fr}.step:after{display:none}h1{font-size:44px}}
+  @media print{.side,.back,.flash-controls,.button{display:none}.layout{display:block}.card{box-shadow:none;break-inside:avoid}.flashcard{min-height:auto}.wrap{max-width:none}}
+</style>
+</head>
+<body>
+<div class="wrap hero">
+  <a class="back" href="microbiology_speed_homepage_grid.html">← Πίσω στο homepage grid</a>
+  <h1>🧬 Retro / HIV</h1>
+  <p class="subtitle">Speed-learning για ρετροϊούς, HTLV και HIV/AIDS. Στόχος: να θυμάσαι τα κλασικά exam hooks — reverse transcriptase, CD4, μετάδοση, διάγνωση, HAART, HTLV-1.</p>
+  <div class="pills"><span class="pill hot">high-yield</span><span class="pill">flashcards</span><span class="pill">MCQ style</span><span class="pill">skip τα βαριά research details</span></div>
+</div>
+
+<div class="wrap layout">
+  <aside class="side">
+    <h3>Πλοήγηση</h3>
+    <button class="navbtn" onclick="jump('must')">1. Must know</button>
+    <button class="navbtn" onclick="jump('map')">2. Visual map</button>
+    <button class="navbtn" onclick="jump('cycle')">3. Κύκλος + φάρμακα</button>
+    <button class="navbtn" onclick="jump('flash')">4. Flashcards</button>
+    <button class="navbtn" onclick="jump('quiz')">5. MCQ quiz</button>
+    <button class="navbtn" onclick="jump('skip')">6. Skip list</button>
+  </aside>
+
+  <main>
+    <section id="must" class="card">
+      <h2>1. Τι πρέπει να ξέρω σε 3 λεπτά</h2>
+      <p class="note">Η παρουσίαση έχει πολλά ερευνητικά slides· εξεταστικά κράτα τον κορμό: τι είναι ρετροϊός, HTLV-1/2, HIV-1/2, CD4, μετάδοση, εργαστηριακή διάγνωση, θεραπεία.</p>
+      <div class="grid">
+        <div class="mini"><h3>Ρετροϊοί = RNA → DNA</h3><p>Το κοινό χαρακτηριστικό είναι η <b>αντίστροφη μεταγραφάση</b>: μετατρέπει το RNA σε DNA, που μπορεί να ενσωματωθεί στο γονιδίωμα του κυττάρου ως <b>προϊός</b>.</p></div>
+        <div class="mini"><h3>Δομή που αξίζει</h3><p>Έχουν <b>περίβλημα</b>, νουκλεοκαψίδιο, δύο μόρια μονόκλωνου RNA, tRNA και ένζυμα: <b>RT, ιντεγκράση, πρωτεάση</b>.</p></div>
+        <div class="mini"><h3>Γονίδια ρετροϊών</h3><p><b>gag</b> → δομικές πρωτεΐνες πυρήνα/καψιδίου.<br><b>pol</b> → RT, integrase, protease.<br><b>env</b> → γλυκοπρωτεΐνες περιβλήματος.</p></div>
+        <div class="mini"><h3>Παθογόνοι για άνθρωπο</h3><p><b>HIV</b> → ανοσοανεπάρκεια/AIDS, CD4 πτώση.<br><b>HTLV-1</b> → adult T-cell leukemia/lymphoma και τροπική σπαστική παραπάρεση.</p></div>
+        <div class="mini"><h3>HIV είσοδος</h3><p>Κύριος στόχος: <b>ενεργοποιημένα CD4+ T λεμφοκύτταρα</b>. Είσοδος με <b>CD4 + CCR5 ή CXCR4</b>. Το env/gp120 συνδέεται με CD4/co-receptor.</p></div>
+        <div class="mini"><h3>Exam hooks</h3><p><b>CD4 & CD4/CD8</b> → παρακολούθηση HIV.<br><b>p24 + Ab</b> → αρχικός έλεγχος 4ης γενιάς.<br><b>HIV RNA</b> → οξεία λοίμωξη / πολύ πρώιμο στάδιο.</p></div>
+      </div>
+    </section>
+
+    <section id="map" class="card">
+      <h2>2. Visual map — τι να βλέπεις στο μυαλό σου</h2>
+      <p class="note">Τα κουτάκια είναι “εικονική μνήμη”: κάθε θέμα έχει ένα σχήμα + μία εξεταστική φράση.</p>
+      <div class="virusmap">
+        <div class="virusbox"><div class="vtop"><svg class="vsvg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="34" fill="#ffe4e6" stroke="#be123c" stroke-width="5"/><path d="M34 55 C45 35,55 65,66 45" stroke="#be123c" stroke-width="5" fill="none"/><circle cx="28" cy="30" r="5" fill="#be123c"/><circle cx="70" cy="28" r="5" fill="#be123c"/><circle cx="75" cy="67" r="5" fill="#be123c"/><circle cx="25" cy="68" r="5" fill="#be123c"/></svg><h3>Retroviridae</h3></div><p><span class="keyline">RNA οικογένεια με RT.</span> Το “retro” είναι το ανάποδο RNA → DNA.</p><div><span class="tag rose">reverse transcriptase</span><span class="tag violet">provirus</span></div></div>
+        <div class="virusbox"><div class="vtop"><svg class="vsvg" viewBox="0 0 100 100"><rect x="17" y="24" width="66" height="52" rx="14" fill="#ede9fe" stroke="#6d28d9" stroke-width="5"/><text x="50" y="58" text-anchor="middle" font-size="20" font-weight="900" fill="#6d28d9">T</text></svg><h3>HTLV-1</h3></div><p><span class="keyline">T-cell leukemia/lymphoma.</span> Επίσης τροπική σπαστική παραπάρεση / μυελοπάθεια.</p><div><span class="tag violet">oncogenic</span><span class="tag amber">breastfeeding</span></div></div>
+        <div class="virusbox"><div class="vtop"><svg class="vsvg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="35" fill="#dbeafe" stroke="#1d4ed8" stroke-width="5"/><text x="50" y="58" text-anchor="middle" font-size="20" font-weight="900" fill="#1d4ed8">CD4</text></svg><h3>HIV</h3></div><p><span class="keyline">Δραματική πτώση CD4.</span> AIDS όταν CD4 &lt;200/μL ή AIDS-defining νόσος.</p><div><span class="tag blue">CD4</span><span class="tag rose">AIDS</span></div></div>
+        <div class="virusbox"><div class="vtop"><svg class="vsvg" viewBox="0 0 100 100"><path d="M20 70 C30 30,70 30,80 70" fill="none" stroke="#047857" stroke-width="7"/><circle cx="30" cy="66" r="6" fill="#047857"/><circle cx="70" cy="66" r="6" fill="#047857"/></svg><h3>Μετάδοση HIV</h3></div><p><span class="keyline">Σεξουαλική, αίμα/βελόνες, κάθετη, θηλασμός.</span> Όχι κουνούπια.</p><div><span class="tag green">blood</span><span class="tag amber">sex</span><span class="tag blue">vertical</span></div></div>
+        <div class="virusbox"><div class="vtop"><svg class="vsvg" viewBox="0 0 100 100"><rect x="18" y="26" width="64" height="48" rx="12" fill="#dcfce7" stroke="#16a34a" stroke-width="5"/><text x="50" y="57" text-anchor="middle" font-size="15" font-weight="900" fill="#166534">p24</text></svg><h3>Διάγνωση</h3></div><p><span class="keyline">4ης γενιάς: p24 Ag + Ab.</span> Επιβεβαίωση HIV-1/2 Ab. Οξεία λοίμωξη: HIV RNA.</p><div><span class="tag green">p24</span><span class="tag blue">Ab</span><span class="tag violet">RNA</span></div></div>
+        <div class="virusbox"><div class="vtop"><svg class="vsvg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="34" fill="#fef3c7" stroke="#d97706" stroke-width="5"/><path d="M28 62 h44 M34 48 h32 M42 34 h16" stroke="#d97706" stroke-width="7" stroke-linecap="round"/></svg><h3>HAART / ART</h3></div><p><span class="keyline">Αναστέλλει τον πολλαπλασιασμό.</span> Κλασικά: 2 NRTIs + NNRTI ή PI ή INSTI.</p><div><span class="tag amber">NRTI</span><span class="tag rose">PI</span><span class="tag violet">INSTI</span></div></div>
+      </div>
+    </section>
+
+    <section id="cycle" class="card">
+      <h2>3. Κύκλος HIV + πού πιάνουν τα φάρμακα</h2>
+      <p class="note">Αυτό είναι πολύ ωραίο για MCQ: αν ξέρεις το βήμα, ξέρεις και την κατηγορία φαρμάκου.</p>
+      <div class="flow">
+        <div class="step"><b>1. Είσοδος</b>gp120 + CD4 + CCR5/CXCR4 → entry/fusion inhibitors, CCR5 antagonist.</div>
+        <div class="step"><b>2. Reverse transcription</b>RNA → DNA με RT → NRTIs / NNRTIs.</div>
+        <div class="step"><b>3. Integration</b>DNA ενσωματώνεται → integrase inhibitors.</div>
+        <div class="step"><b>4. Ωρίμανση</b>Πρωτεάση κόβει πολυπρωτεΐνες → protease inhibitors.</div>
+      </div>
+      <div class="grid" style="margin-top:14px">
+        <div class="mini"><h3>Πορεία χωρίς θεραπεία</h3><p>Οξεία φάση: υψηλό HIV RNA, πτώση CD4, μετά ασυμπτωματική περίοδος. AIDS όταν CD4 πέσουν έντονα, κλασικά <b>&lt;200/μL</b>.</p></div>
+        <div class="mini"><h3>Οξεία HIV λοίμωξη</h3><p>Συμπτωματική σε αρκετούς: πυρετός, εξάνθημα, λεμφαδενοπάθεια, φαρυγγίτιδα/έλκη/μυαλγίες. Αντισώματα αργούν — γι’ αυτό σκέψου <b>RNA</b>.</p></div>
+        <div class="mini"><h3>Περίοδος παραθύρου</h3><p>Πρώτα εμφανίζεται <b>HIV RNA</b>, μετά <b>p24</b>, μετά <b>αντισώματα</b>. Άρα αρνητικά αντισώματα νωρίς δεν αποκλείουν οξεία λοίμωξη.</p></div>
+        <div class="mini"><h3>Πρόληψη</h3><p>Συνδυαστική προσέγγιση: condoms, testing/counselling, θεραπεία ως πρόληψη, καθαρές σύριγγες, PMTCT, PrEP. Δεν υπάρχει κλασικό διαθέσιμο εμβόλιο λόγω γενετικής ποικιλομορφίας.</p></div>
+      </div>
+    </section>
+
+    <section id="flash" class="card">
+      <h2>4. Flashcards</h2>
+      <p class="note">Πάτα την κάρτα για απάντηση. Είναι λίγες και εξεταστικές.</p>
+      <div class="flash-controls"><button class="button" onclick="prevCard()">← Πίσω</button><button class="button" onclick="flipCard()">Γύρνα κάρτα</button><button class="button" onclick="nextCard()">Επόμενη →</button><button class="button secondary" onclick="shuffleCards()">Shuffle</button></div>
+      <div class="progress" id="fprogress"></div>
+      <div class="flashcard" onclick="flipCard()"><div><div id="fq" class="q"></div><div id="fa" class="q answer hidden"></div><span class="hint">click / γύρνα κάρτα</span></div></div>
+    </section>
+
+    <section id="quiz" class="card">
+      <h2>5. Multiple choice quiz</h2>
+      <p class="note">Στο ύφος “ποιο ισχύει / ποιο ΔΕΝ ισχύει / ποιος δείκτης / ποια μετάδοση”.</p>
+      <div id="quizBox"></div>
+    </section>
+
+    <section id="skip" class="card skip">
+      <h2>6. Τι κάνουμε skip τώρα</h2>
+      <div class="grid">
+        <div class="mini"><h3>Πολύ βαθιά research figures</h3><p>Μη χαθείς σε όλες τις λεπτομέρειες για exhaustion, host restriction factors, Tat/Rev blocks, reservoirs. Κράτα μόνο: latency/reservoir = ενσωματωμένο προϊικό DNA που μένει.</p></div>
+        <div class="mini"><h3>Επιδημιολογικά νούμερα</h3><p>Τα παγκόσμια/Ελλάδας στατιστικά είναι context. Για εξέταση μάλλον αρκεί “παραμένει σημαντικό πρόβλημα δημόσιας υγείας”.</p></div>
+        <div class="mini"><h3>Υπότυποι HIV</h3><p>Κράτα: HIV-1 παγκόσμια, HIV-2 Δυτική Αφρική. Group M = main/global. Όχι όλες τις CRFs.</p></div>
+        <div class="mini"><h3>Ιστορικές χρονολογίες</h3><p>1981 πρώτα AIDS cases, 1983 HIV ως αίτιο, 1996 HAART — μόνο αν σου μένει χρόνος.</p></div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<div class="footer">GreekDoc Speed Learning — Retro / HIV</div>
+
+<script>
+function jump(id){document.getElementById(id).scrollIntoView({behavior:'smooth',block:'start'});}
+const cards=[
+  ['Ποιο είναι το βασικό χαρακτηριστικό των ρετροϊών;','Η αντίστροφη μεταγραφάση: RNA → DNA και δυνατότητα ενσωμάτωσης ως προϊός.'],
+  ['Ποια είναι τα τρία βασικά γονίδια των απλών ρετροϊών;','gag, pol, env.'],
+  ['Τι κωδικοποιεί το pol;','Αντίστροφη μεταγραφάση, ιντεγκράση, πρωτεάση.'],
+  ['Ποια κύτταρα είναι ο κύριος στόχος του HIV;','Ενεργοποιημένα CD4+ T λεμφοκύτταρα.'],
+  ['Ποιοι συνυποδοχείς χρειάζονται για είσοδο HIV;','CCR5 ή CXCR4, μαζί με CD4.'],
+  ['Ποιο είναι το κύριο χαρακτηριστικό HIV λοίμωξης;','Δραματική πτώση CD4 κυττάρων.'],
+  ['AIDS ορίζεται κλασικά όταν CD4 είναι…','<200/μL ή με AIDS-defining νόσο.'],
+  ['Ποιος δείκτης εμφανίζεται πρώτος μετά τη μόλυνση HIV;','HIV RNA, μετά p24, μετά αντισώματα.'],
+  ['Τι χρησιμοποιούμε στον αρχικό εργαστηριακό έλεγχο HIV;','Ανοσομέθοδο 4ης γενιάς: p24 Ag + αντισώματα.'],
+  ['Τι ζητάμε όταν υποπτευόμαστε οξεία HIV λοίμωξη;','HIV-1 RNA με μοριακή τεχνική.'],
+  ['Με ποιους τρόπους μεταδίδεται HIV;','Σεξουαλικά, αίμα/βελόνες/μεταγγίσεις, κάθετα, θηλασμός. Όχι κουνούπια.'],
+  ['HTLV-1 με τι συνδέεται εξεταστικά;','Adult T-cell leukemia/lymphoma και HTLV-associated myelopathy/tropical spastic paraparesis.'],
+  ['Πώς μεταδίδεται HTLV;','Σεξουαλικά, θηλασμός, αίμα/παράγωγα, μεταμόσχευση, κοινή χρήση βελόνας.'],
+  ['Τι είναι HAART/ART;','Συνδυασμένη αντιρετροϊκή θεραπεία που αναστέλλει τον πολλαπλασιασμό του HIV.'],
+  ['Κλασικό σχήμα ART στην παρουσίαση;','2 NRTIs + 1 NNRTI ή PI ή INSTI.'],
+  ['Γιατί είναι δύσκολο το εμβόλιο HIV;','Μεγάλη γενετική ποικιλομορφία και ανάγκη ευρέως εξουδετερωτικών αντισωμάτων/κυτταρικών απαντήσεων.']
+];
+let idx=0, flipped=false;
+function renderCard(){document.getElementById('fq').textContent=cards[idx][0];document.getElementById('fa').textContent=cards[idx][1];document.getElementById('fq').classList.remove('hidden');document.getElementById('fa').classList.add('hidden');flipped=false;document.getElementById('fprogress').textContent=`Κάρτα ${idx+1}/${cards.length}`;}
+function flipCard(){flipped=!flipped;document.getElementById('fq').classList.toggle('hidden',flipped);document.getElementById('fa').classList.toggle('hidden',!flipped);}
+function nextCard(){idx=(idx+1)%cards.length;renderCard();}
+function prevCard(){idx=(idx-1+cards.length)%cards.length;renderCard();}
+function shuffleCards(){for(let i=cards.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[cards[i],cards[j]]=[cards[j],cards[i]];}idx=0;renderCard();}
+
+const quiz=[
+  {q:'Ποιο ένζυμο χαρακτηρίζει τους ρετροϊούς;',opts:['DNA πολυμεράση','Αντίστροφη μεταγραφάση','Νευραμινιδάση','Αιμοσυγκολλητίνη'],a:1,e:'Το “retro” σημαίνει RNA → DNA μέσω reverse transcriptase.'},
+  {q:'Ποιος συνδυασμός γονιδίων είναι βασικός στους απλούς ρετροϊούς;',opts:['HA, NA, M','gag, pol, env','E1, E2, NS1','VP1, VP2, VP3'],a:1,e:'gag = δομικά, pol = ένζυμα, env = πρωτεΐνες περιβλήματος.'},
+  {q:'Ποιο είναι το κύριο κύτταρο-στόχος του HIV;',opts:['Β λεμφοκύτταρο','Ενεργοποιημένο CD4+ T λεμφοκύτταρο','Ουδετερόφιλο','Ερυθροκύτταρο'],a:1,e:'Η παρουσίαση τονίζει τα ενεργοποιημένα CD4+ T κύτταρα ως κύριο στόχο.'},
+  {q:'Η είσοδος του HIV στο κύτταρο χρειάζεται CD4 και:',opts:['CCR5 ή CXCR4','ACE2','CD21','ICAM-1 μόνο'],a:0,e:'Οι χημειοκινητικοί συνυποδοχείς είναι CCR5 ή CXCR4.'},
+  {q:'Ποιο από τα παρακάτω ΔΕΝ έχει αποδειχθεί ως τρόπος μετάδοσης HIV;',opts:['Σεξουαλική επαφή','Κοινή χρήση βελόνας','Θηλασμός','Κουνούπια'],a:3,e:'Κλασική παγίδα: HIV δεν μεταδίδεται με κουνούπια.'},
+  {q:'Στον αρχικό έλεγχο HIV χρησιμοποιείται συνήθως:',opts:['Μόνο καλλιέργεια σε άγαρ','p24 Ag και αντισώματα με ανοσομέθοδο 4ης γενιάς','Monospot','VDRL'],a:1,e:'Η διαφάνεια “Συνοψίζοντας” δίνει p24 Ag & Ab για αρχικό έλεγχο.'},
+  {q:'Σε υποψία οξείας HIV λοίμωξης, ποια εξέταση είναι πιο κατάλληλη;',opts:['HIV-1 RNA','Καλλιέργεια κοπράνων','IgG μόνο','CD4/CD8 μόνο'],a:0,e:'Στην οξεία λοίμωξη τα αντισώματα μπορεί να μην έχουν εμφανιστεί, άρα ζητάμε HIV RNA.'},
+  {q:'AIDS συνδέεται κλασικά με CD4:',opts:['>1000/μL','500–800/μL','<200/μL','Δεν έχει σχέση με CD4'],a:2,e:'Στην πορεία χωρίς θεραπεία σημειώνεται AIDS με CD4+ T cell <200/μL.'},
+  {q:'Το HTLV-1 έχει συσχετιστεί κυρίως με:',opts:['Κρυολόγημα','Adult T-cell leukemia/lymphoma και τροπική σπαστική παραπάρεση','Ηπατίτιδα Α','Πολιομυελίτιδα'],a:1,e:'Αυτό είναι το βασικό high-yield του HTLV-1.'},
+  {q:'Ποιο αντιρετροϊκό βήμα μπλοκάρουν οι integrase inhibitors;',opts:['Σύνδεση gp120-CD4','Ενσωμάτωση προϊικού DNA','Ωρίμανση με πρωτεάση','Έξοδος από το κύτταρο μόνο'],a:1,e:'Η ιντεγκράση ενσωματώνει το ιικό DNA στο γονιδίωμα του ξενιστή.'},
+  {q:'Κλασικό σχήμα ART στην παρουσίαση:',opts:['Μόνο ένα NRTI','2 NRTIs + 1 NNRTI ή PI ή INSTI','Αντιβιοτικό + κορτιζόνη','Μόνο εμβόλιο'],a:1,e:'Η παρουσίαση γράφει 2 NRTIs + 1 NNRTI ή PI ή InSTI.'},
+  {q:'Ποιο είναι το βασικό εμπόδιο για εμβόλιο HIV;',opts:['Δεν έχει RNA','Είναι βακτήριο','Εκπληκτική γενετική ποικιλομορφία','Δεν προκαλεί ανοσιακή απάντηση ποτέ'],a:2,e:'Η παρουσίαση τονίζει τη γενετική ποικιλομορφία του HIV ως πρόβλημα.'}
+];
+function renderQuiz(){const box=document.getElementById('quizBox');box.innerHTML='';quiz.forEach((item,qi)=>{const div=document.createElement('div');div.className='quiz-q';div.innerHTML=`<h3>${qi+1}. ${item.q}</h3><div class="opts"></div><div class="explain">${item.e}</div>`;const opts=div.querySelector('.opts');item.opts.forEach((op,oi)=>{const b=document.createElement('button');b.className='option';b.textContent=op;b.onclick=()=>{div.classList.add('done');Array.from(opts.children).forEach((x,k)=>{x.disabled=true;if(k===item.a)x.classList.add('correct');});if(oi!==item.a)b.classList.add('wrong');};opts.appendChild(b);});box.appendChild(div);});}
+renderCard();renderQuiz();
+</script>
+</body>
+</html>

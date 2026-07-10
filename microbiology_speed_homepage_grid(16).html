@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>GreekDoc Microbiology II — Speed Learning Grid</title>
+<style>
+:root{
+  --bg:#f7f8fc; --paper:#fff; --ink:#182033; --muted:#647084; --line:#dfe5ef;
+  --blue:#2563eb; --blue-soft:#eaf1ff; --green:#10b981; --green-soft:#e9fbf4;
+  --orange:#f59e0b; --orange-soft:#fff6e6; --purple:#7c3aed; --purple-soft:#f3edff;
+  --pink:#db2777; --pink-soft:#fff0f7; --red:#ef4444; --red-soft:#fff1f1;
+  --shadow:0 12px 30px rgba(18,32,63,.08); --radius:22px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:radial-gradient(circle at top left,#edf4ff 0,#f7f8fc 36%,#fbfbfe 100%);color:var(--ink);line-height:1.45}
+header{position:sticky;top:0;z-index:10;background:rgba(247,248,252,.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.wrap{max-width:1220px;margin:0 auto;padding:20px}
+.hero{padding:28px 20px 18px}
+h1{margin:0 0 8px;font-size:clamp(28px,5vw,52px);letter-spacing:-.04em;line-height:1}
+.subtitle{margin:0;max-width:900px;color:var(--muted);font-size:17px}.pill{display:inline-flex;align-items:center;gap:7px;border:1px solid var(--line);border-radius:999px;background:#fff;padding:7px 11px;font-size:13px;color:var(--muted);margin:10px 8px 0 0}.toolbar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:18px}.search{flex:1 1 290px;border:1px solid var(--line);background:#fff;border-radius:15px;padding:13px 15px;font-size:15px;color:var(--ink);outline:none}.btn{border:1px solid var(--line);background:#fff;color:var(--ink);padding:11px 14px;border-radius:14px;cursor:pointer;font-weight:700}.btn:hover,.btn.active{border-color:var(--blue);background:var(--blue-soft);color:#123ea5}.section{margin:34px 0}.section-head{display:flex;align-items:flex-end;justify-content:space-between;gap:14px;margin:0 0 14px}.section h2{margin:0;font-size:24px;letter-spacing:-.02em}.section-note{margin:4px 0 0;color:var(--muted);font-size:14px}.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:14px}.tile{position:relative;min-height:172px;border:1px solid var(--line);border-radius:var(--radius);background:var(--paper);padding:16px;box-shadow:var(--shadow);display:flex;flex-direction:column;justify-content:space-between;overflow:hidden;cursor:pointer;text-align:left;color:inherit;text-decoration:none}.tile:before{content:"";position:absolute;right:-35px;top:-35px;width:120px;height:120px;border-radius:50%;background:var(--blue-soft);opacity:.85}.tile:hover{transform:translateY(-2px);border-color:#bdd0ff}.tile h3{margin:0 0 6px;font-size:20px;letter-spacing:-.02em}.tile p{margin:0;color:var(--muted);font-size:14px}.topline{display:flex;align-items:center;justify-content:space-between;position:relative;z-index:1}.num{font-weight:900;font-size:13px;color:var(--muted);background:#f3f5fa;border:1px solid var(--line);padding:5px 8px;border-radius:999px}.emoji{font-size:32px}.badges{display:flex;gap:6px;flex-wrap:wrap;position:relative;z-index:1}.badge{font-size:12px;border-radius:999px;padding:5px 8px;font-weight:800;background:#f4f6fb;color:var(--muted);border:1px solid var(--line)}.ready{background:var(--green-soft);color:#087a56;border-color:#b8efd8}.hy{background:var(--orange-soft);color:#975c00;border-color:#fedc94}.core{background:var(--blue-soft);color:#194baa;border-color:#c4d6ff}.coming{opacity:.75}.basic:before{background:var(--purple-soft)}.virus:before{background:var(--blue-soft)}.parasite:before{background:var(--green-soft)}.fungi:before{background:var(--orange-soft)}.clinical:before{background:var(--pink-soft)}
+.panel{display:none;margin:34px 0 60px;border:1px solid var(--line);border-radius:30px;background:#fff;box-shadow:0 18px 45px rgba(18,32,63,.1);overflow:hidden}.panel.active{display:block}.panel-header{padding:24px;background:linear-gradient(135deg,#eaf1ff,#f3fff9);border-bottom:1px solid var(--line);display:flex;gap:18px;align-items:center;justify-content:space-between;flex-wrap:wrap}.panel-title h2{margin:0;font-size:34px;letter-spacing:-.04em}.panel-title p{margin:7px 0 0;color:var(--muted)}.close{border:1px solid var(--line);border-radius:14px;background:#fff;padding:10px 12px;cursor:pointer;font-weight:900}.panel-body{padding:22px}.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}.tab{border:1px solid var(--line);border-radius:999px;background:#fff;padding:9px 13px;cursor:pointer;font-weight:800}.tab.active{background:#14213d;color:#fff;border-color:#14213d}.tab-content{display:none}.tab-content.active{display:block}.must-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px}.mini{border:1px solid var(--line);border-radius:18px;padding:14px;background:#fbfcff}.mini h4{margin:0 0 8px;font-size:15px}.mini p,.mini li{font-size:14px;color:var(--muted)}.mini ul{margin:0;padding-left:18px}.trap{background:#fff8eb;border-color:#ffd89a}.danger{background:#fff4f4;border-color:#ffc7c7}.flash-wrap{display:grid;grid-template-columns:minmax(0,1fr) 280px;gap:18px}.flashcard{min-height:260px;border:1px solid #c9d7ff;background:linear-gradient(135deg,#ffffff,#f2f6ff);border-radius:26px;padding:28px;display:flex;align-items:center;justify-content:center;text-align:center;cursor:pointer;box-shadow:var(--shadow);position:relative}.flashcard .label{position:absolute;left:18px;top:14px;font-size:12px;font-weight:900;color:#4460a8;background:#eaf1ff;border-radius:999px;padding:5px 9px}.flashcard .q{font-size:clamp(22px,4vw,34px);font-weight:900;letter-spacing:-.03em}.flashcard .a{display:none;font-size:clamp(20px,3.2vw,30px);font-weight:900;color:#0f766e;letter-spacing:-.02em}.flashcard.flipped .q{display:none}.flashcard.flipped .a{display:block}.flash-side{border:1px solid var(--line);border-radius:22px;padding:16px;background:#fff}.flash-side h4{margin:0 0 10px}.flash-controls{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}.flash-controls button,.quiz button{border:1px solid var(--line);background:#fff;border-radius:14px;padding:11px;cursor:pointer;font-weight:900}.flash-controls button:hover,.quiz button:hover{background:var(--blue-soft);border-color:#bdd0ff}.counter{color:var(--muted);font-size:14px}.quiz-card{border:1px solid var(--line);border-radius:22px;background:#fff;padding:18px;margin-bottom:14px}.quiz-card h4{margin:0 0 12px;font-size:18px}.options{display:grid;gap:8px}.option{border:1px solid var(--line);border-radius:14px;background:#fbfcff;padding:11px;cursor:pointer;text-align:left}.option.correct{background:#ecfdf5;border-color:#7ee6bd}.option.wrong{background:#fff1f1;border-color:#ffb4b4}.explain{display:none;margin:12px 0 0;color:var(--muted);font-size:14px}.explain.show{display:block}.empty-state{border:1px dashed #c9d1e3;border-radius:22px;padding:20px;background:#fff;color:var(--muted)}.footer-note{color:var(--muted);font-size:13px;margin-top:25px}@media(max-width:780px){.flash-wrap{grid-template-columns:1fr}.hero{padding-top:18px}.tile{min-height:150px}.panel-title h2{font-size:28px}}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap hero">
+    <h1>Μικροβιολογία ΙΙ — Speed Learning</h1>
+    <p class="subtitle">Homepage grid με 1 κουτάκι ανά παρουσίαση. Πατάς παρουσίαση → ανοίγει ξεχωριστή speed-learning σελίδα με must-know, flashcards και MCQ.</p>
+    <div><span class="pill">🧠 flashcards</span><span class="pill">✅ MCQ exam-style</span><span class="pill">⚡ skip τα περιττά</span></div>
+    <div class="toolbar">
+      <input class="search" id="search" placeholder="Αναζήτηση: picorna, HIV, ηπατίτιδες, μύκητες..." />
+      <button class="btn active" data-filter="all">Όλα</button>
+      <button class="btn" data-filter="basic">Βάση</button>
+      <button class="btn" data-filter="virus">Ιοί</button>
+      <button class="btn" data-filter="parasite">Παράσιτα</button>
+      <button class="btn" data-filter="fungi">Μύκητες</button>
+      <button class="btn" data-filter="clinical">Κλινικά</button>
+    </div>
+  </div>
+</header>
+<main class="wrap">
+  <section class="section" data-section>
+    <div class="section-head"><div><h2>Α. Βασική Ιολογία</h2><p class="section-note">Τα γενικά που επανέρχονται σε MCQ.</p></div></div>
+    <div class="grid">
+      <button class="tile basic coming" data-category="basic" data-title="γενικά περί ιών δομή αντιγραφή καψίδιο περίβλημα"><div class="topline"><span class="num">1ο</span><span class="emoji">🧬</span></div><div><h3>Γενικά περί ιών</h3><p>δομή, αντιγραφή, καψίδιο, περίβλημα</p></div><div class="badges"><span class="badge core">core</span><span class="badge">θα γεμίσει</span></div></button>
+      <button class="tile basic coming" data-category="basic" data-title="παθογένεια ιώσεων"><div class="topline"><span class="num">2ο</span><span class="emoji">⚔️</span></div><div><h3>Παθογένεια ιώσεων</h3><p>τροπισμός, βλάβη, λανθάνουσα λοίμωξη</p></div><div class="badges"><span class="badge core">core</span></div></button>
+      <button class="tile basic coming" data-category="basic" data-title="ανοσολογία ιογενών λοιμώξεων"><div class="topline"><span class="num">3ο</span><span class="emoji">🛡️</span></div><div><h3>Ανοσολογία ιογενών λοιμώξεων</h3><p>IFN, κυτταροτοξικά Τ, αντισώματα</p></div><div class="badges"><span class="badge core">core</span></div></button>
+      <button class="tile basic coming" data-category="basic" data-title="εμβόλια ιών"><div class="topline"><span class="num">4ο</span><span class="emoji">💉</span></div><div><h3>Εμβόλια ιών</h3><p>ζώντα, αδρανοποιημένα, ποια υπάρχουν</p></div><div class="badges"><span class="badge hy">exam</span></div></button>
+      <button class="tile basic coming" data-category="basic" data-title="αντιικοί παράγοντες"><div class="topline"><span class="num">5ο</span><span class="emoji">💊</span></div><div><h3>Αντιικοί παράγοντες</h3><p>νουκλεοσιδικά/νουκλεοτιδικά, στόχοι</p></div><div class="badges"><span class="badge hy">exam</span></div></button>
+    </div>
+  </section>
+
+  <section class="section" data-section>
+    <div class="section-head"><div><h2>Β. Ειδική Ιολογία</h2><p class="section-note">Οικογένειες/παρουσιάσεις ιών.</p></div></div>
+    <div class="grid">
+      <a class="tile virus" href="picorna_speed_learning.html" data-category="virus" data-title="picorna rhino entero polio coxsackie echo hav"><div class="topline"><span class="num">6ο</span><span class="emoji">🦠</span></div><div><h3>PICORNA</h3><p>ρινοϊοί, polio, Coxsackie, ECHO, εντεροϊοί</p></div><div class="badges"><span class="badge ready">έτοιμο</span><span class="badge hy">high yield</span></div></a>
+      <a class="tile virus" href="retro_hiv_speed_learning.html" data-category="virus" data-title="retro hiv cd4 aids"><div class="topline"><span class="num">7ο</span><span class="emoji">🧬</span></div><div><h3>Retro / HIV</h3><p>CD4, μετάδοση, διάγνωση, HAART</p></div><div class="badges"><span class="badge ready">ready</span><span class="badge hy">exam</span></div></a>
+      <a class="tile virus" href="corona_sars2_speed_learning.html" data-category="virus" data-title="corona sars cov 2 covid ace2 rt-pcr"><div class="topline"><span class="num">8ο</span><span class="emoji">👑</span></div><div><h3>Corona / SARS-2</h3><p>ACE2, SARS-CoV-2, RT-PCR, εμβόλια S</p></div><div class="badges"><span class="badge ready">ready</span><span class="badge hy">exam</span></div></a>
+      <a class="tile virus" href="orthomyxo_influenza_speed_learning.html" data-category="virus" data-title="ορθοβλεννοϊοί γρίπη influenza shift drift rt-pcr εμβόλιο"><div class="topline"><span class="num">9ο</span><span class="emoji">🤧</span></div><div><h3>Ορθοβλεννοϊοί</h3><p>γρίπη, εμβόλιο, antigenic shift/drift</p></div><div class="badges"><span class="badge ready">ready</span><span class="badge hy">exam</span></div></a>
+      <a class="tile virus" href="parainfluenza_rsv_speed_learning.html" data-category="virus" data-title="παραϊνφλουέντζα rsv parainfluenza croup βρογχιολίτιδα rt-pcr"><div class="topline"><span class="num">10ο</span><span class="emoji">🫁</span></div><div><h3>Παραϊνφλουέντζα / RSV</h3><p>croup, βρογχιολίτιδα, RT-PCR, F protein</p></div><div class="badges"><span class="badge ready">ready</span><span class="badge hy">exam</span></div></a>
+      <a class="tile virus" href="measles_ilara_speed_learning.html" data-category="virus" data-title="ιλαρά measles morbillivirus koplik mmr sspe"><div class="topline"><span class="num">11ο</span><span class="emoji">🔴</span></div><div><h3>Ιλαρά</h3><p>3C, Koplik, εξάνθημα, SSPE, MMR</p></div><div class="badges"><span class="badge ready">ready</span><span class="badge hy">exam</span></div></a>
+      <a class="tile virus" href="herpes_i_speed_learning.html" data-category="virus" data-title="ερπητοϊοί I hsv vzv απλός έρπητας ανεμευλογιά ζωστήρας"><div class="topline"><span class="num">12ο</span><span class="emoji">🔥</span></div><div><h3>Ερπητοϊοί I</h3><p>HSV-1/2, VZV, latency, ζωστήρας</p></div><div class="badges"><span class="badge ready">ready</span><span class="badge hy">exam</span></div></a>
+      <a class="tile virus" href="herpes_ii_speed_learning.html" data-category="virus" data-title="ερπητοϊοί II ebv cmv hhv6 hhv7 hhv8"><div class="topline"><span class="num">13ο</span><span class="emoji">🧩</span></div><div><h3>Ερπητοϊοί II</h3><p>EBV, CMV, HHV-6/7/8</p></div><div class="badges"><span class="badge ready">ready</span><span class="badge hy">exam</span></div></a>
+      <a class="tile virus" href="mumps_parotitida_speed_learning.html" data-category="virus" data-title="παρωτίτιδα mumps παρωτίδες ορχίτιδα mmr"><div class="topline"><span class="num">14ο</span><span class="emoji">🙂</span></div><div><h3>Παρωτίτιδα</h3><p>παρωτίδες, ορχίτιδα, MMR, ΚΝΣ</p></div><div class="badges"><span class="badge ready">ready</span><span class="badge hy">exam</span></div></a>
+      <a class="tile virus" href="rubella_erythra_speed_learning.html" data-category="virus" data-title="ερυθρά rubella συγγενής κύηση mmr"><div class="topline"><span class="num">15ο</span><span class="emoji">🤰</span></div><div><h3>Ερυθρά</h3><p>συγγενής ερυθρά, κύηση, MMR</p></div><div class="badges"><span class="badge ready">ready</span><span class="badge hy">exam</span></div></a>
+      <a class="tile virus" href="adenovirus_parvo_speed_learning.html" data-category="virus" data-title="αδενοϊοί parvo b19 αιμορραγική κυστίτιδα ερυθροβλάστες απλαστική κρίση"><div class="topline"><span class="num">16ο & 20ο</span><span class="emoji">🧪</span></div><div><h3>Αδενοϊοί & PARVO</h3><p>αιμορραγική κυστίτιδα, 5η νόσος, ερυθροβλάστης</p></div><div class="badges"><span class="badge ready">ready</span><span class="badge hy">exam</span></div></a>
+      <a class="tile virus" href="hepatitis_i_speed_learning.html" data-category="virus" data-title="ηπατίτιδες hav hbv hdv δείκτες hbsag antihbs antihbc"><div class="topline"><span class="num">18ο</span><span class="emoji">🟤</span></div><div><h3>Ηπατίτιδες I</h3><p>HAV, HBV, HDV, δείκτες, εμβόλιο, χρονιότητα</p></div><div class="badges"><span class="badge ready">ready</span><span class="badge hy">exam</span></div></a>
+      <a class="tile virus" href="rhabdoviruses_rabies_speed_learning.html" data-category="virus" data-title="ραβδοϊοί λύσσα rabies negri υδροφοβία αντιλυσσικό"><div class="topline"><span class="num">19ο</span><span class="emoji">🐕</span></div><div><h3>Ραβδοϊοί</h3><p>λύσσα, Negri, υδροφοβία, εμβόλιο/ορός</p></div><div class="badges"><span class="badge ready">ready</span><span class="badge hy">exam</span></div></a>
+      <a class="tile virus" href="bunya_filo_speed_learning.html" data-category="virus" data-title="bunya filo bunyaviridae filoviridae hantavirus cchf ebola marburg αιμορραγικοί πυρετοί"><div class="topline"><span class="num">21ο</span><span class="emoji">🩸</span></div><div><h3>Bunya / Filo</h3><p>αιμορραγικοί πυρετοί, Hanta, CCHF, Ebola/Marburg</p></div><div class="badges"><span class="badge ready">ready</span><span class="badge hy">exam</span></div></a>
+      <button class="tile virus coming" data-category="virus" data-title="papilloma hpv ογκογόνοι"><div class="topline"><span class="num">22ο</span><span class="emoji">🎗️</span></div><div><h3>Papilloma / HPV</h3><p>κονδυλώματα, καρκίνος τραχήλου</p></div><div class="badges"><span class="badge hy">exam</span></div></button>
+      <button class="tile virus coming" data-category="virus" data-title="toga flavi arena west nile yellow fever"><div class="topline"><span class="num">23ο</span><span class="emoji">🦟</span></div><div><h3>Toga / Flavi / Arena</h3><p>αρμποϊοί, κουνούπια, κίτρινος πυρετός</p></div><div class="badges"><span class="badge hy">exam</span></div></button>
+    </div>
+  </section>
+
+  <section class="section" data-section>
+    <div class="section-head"><div><h2>Γ. Παρασιτολογία</h2><p class="section-note">Πρωτόζωα και μετάζωα.</p></div></div>
+    <div class="grid">
+      <button class="tile parasite coming" data-category="parasite" data-title="πρωτόζωα αμοιβάδα λάμβλια τριχομονάδα πλασμώδια τοξόπλασμα λεισμάνια"><div class="topline"><span class="num">24ο</span><span class="emoji">🪱</span></div><div><h3>Πρωτόζωα</h3><p>αμοιβάδα, λάμβλια, τριχομονάδα, πλασμώδιο</p></div><div class="badges"><span class="badge hy">exam</span></div></button>
+      <button class="tile parasite coming" data-category="parasite" data-title="μετάζωα οξύουρος ασκαρίδα ταινίες εχινόκοκκος"><div class="topline"><span class="num">25ο</span><span class="emoji">🪱</span></div><div><h3>Μετάζωα</h3><p>οξύουρος, ασκαρίδα, ταινίες, εχινόκοκκος</p></div><div class="badges"><span class="badge hy">exam</span></div></button>
+    </div>
+  </section>
+
+  <section class="section" data-section>
+    <div class="section-head"><div><h2>Δ. Μυκητολογία</h2><p class="section-note">Γενικά + συστηματικές/επιφανειακές.</p></div></div>
+    <div class="grid">
+      <button class="tile fungi coming" data-category="fungi" data-title="γενικά περί μυκήτων"><div class="topline"><span class="num">26ο</span><span class="emoji">🍄</span></div><div><h3>Γενικά περί μυκήτων</h3><p>δομή, καλλιέργεια, κατηγορίες</p></div><div class="badges"><span class="badge core">core</span></div></button>
+      <button class="tile fungi coming" data-category="fungi" data-title="συστηματικές μυκητιάσεις ζυμομύκητες candida cryptococcus"><div class="topline"><span class="num">27ο</span><span class="emoji">🧫</span></div><div><h3>Συστηματικές μυκητιάσεις</h3><p>ζυμομύκητες, ευκαιριακές</p></div><div class="badges"><span class="badge hy">exam</span></div></button>
+      <button class="tile fungi coming" data-category="fungi" data-title="επιφανειακές μυκητιάσεις δερματόφυτα μικρόσπορο"><div class="topline"><span class="num">28ο</span><span class="emoji">🧴</span></div><div><h3>Επιφανειακές μυκητιάσεις</h3><p>δερματόφυτα, Microsporum, Malassezia</p></div><div class="badges"><span class="badge hy">exam</span></div></button>
+    </div>
+  </section>
+
+  <section class="section" data-section>
+    <div class="section-head"><div><h2>Ε. Κλινικές / Συνδρομικές παρουσιάσεις</h2><p class="section-note">Θα τις κάνουμε σαν διαφορική διάγνωση + MCQ.</p></div></div>
+    <div class="grid">
+      <button class="tile clinical coming" data-category="clinical" data-title="μη βακτηριακές λοιμώξεις αναπνευστικού"><div class="topline"><span class="num">30ο</span><span class="emoji">🫁</span></div><div><h3>Μη βακτηριακές λοιμώξεις αναπνευστικού</h3><p>ιοί αναπνευστικού, κλινικές εικόνες</p></div><div class="badges"><span class="badge">clinical</span></div></button>
+      <button class="tile clinical coming" data-category="clinical" data-title="ιογενείς λοιμώξεις γες γαστρεντερικού rota noro"><div class="topline"><span class="num">31ο</span><span class="emoji">🤢</span></div><div><h3>Ιογενείς λοιμώξεις ΓΕΣ</h3><p>διάρροια, Rota/Noro/Calici/Astro</p></div><div class="badges"><span class="badge hy">exam</span></div></button>
+      <button class="tile clinical coming" data-category="clinical" data-title="ιογενείς λοιμώξεις νευρικού συστήματος μηνιγγίτιδα εγκεφαλίτιδα"><div class="topline"><span class="num">32ο</span><span class="emoji">🧠</span></div><div><h3>Ιογενείς λοιμώξεις Νευρικού Συστήματος</h3><p>άσηπτη μηνιγγίτιδα, εγκεφαλίτιδα</p></div><div class="badges"><span class="badge hy">exam</span></div></button>
+      <button class="tile clinical coming" data-category="clinical" data-title="σεξουαλικώς μεταδιδόμενα νοσήματα πρωτοζωαρίου τριχομονάδα"><div class="topline"><span class="num">33ο</span><span class="emoji">⚕️</span></div><div><h3>ΣΜΝ πρωτοζωαρίου</h3><p>κυρίως τριχομονάδα</p></div><div class="badges"><span class="badge hy">exam</span></div></button>
+      <button class="tile clinical coming" data-category="clinical" data-title="λοιμώξεις αισθητηρίων οργάνων οφθαλμός αυτί"><div class="topline"><span class="num">34ο</span><span class="emoji">👁️</span></div><div><h3>Λοιμώξεις αισθητηρίων οργάνων</h3><p>οφθαλμός/αισθητήρια, κλινική λογική</p></div><div class="badges"><span class="badge">clinical</span></div></button>
+      <button class="tile clinical coming" data-category="clinical" data-title="λοιμώξεις σε ανοσοκατεσταλμένους ασθενείς opportunistic"><div class="topline"><span class="num">36ο</span><span class="emoji">🛡️</span></div><div><h3>Λοιμώξεις σε ανοσοκατεσταλμένους</h3><p>opportunistic infections, μύκητες/ιοί</p></div><div class="badges"><span class="badge hy">exam</span></div></button>
+    </div>
+  </section>
+
+  <section id="picorna-panel" class="panel">
+    <div class="panel-header">
+      <div class="panel-title"><h2>🦠 PICORNA</h2><p>Ρινοϊοί, πολιοϊός, Coxsackie A/B, ECHO, εντεροϊοί 68/70/71 — σε speed-learning μορφή.</p></div>
+      <button class="close" id="closePicorna">Κλείσιμο ↑</button>
+    </div>
+    <div class="panel-body">
+      <div class="tabs">
+        <button class="tab active" data-tab="must">Must know</button>
+        <button class="tab" data-tab="flash">Flashcards</button>
+        <button class="tab" data-tab="quiz">MCQ quiz</button>
+        <button class="tab" data-tab="skip">Skip list</button>
+      </div>
+
+      <div class="tab-content active" id="tab-must">
+        <div class="must-grid">
+          <div class="mini"><h4>Γενικά Picorna</h4><ul><li>Μικροί RNA ιοί.</li><li>Εικοσαεδρικό καψίδιο.</li><li>Αντιγραφή στο κυτταρόπλασμα.</li><li>Δεν χρειάζεται να κολλήσεις σε VP λεπτομέρειες τώρα.</li></ul></div>
+          <div class="mini"><h4>Ρινοϊοί</h4><ul><li>Κοινό κρυολόγημα.</li><li>Επώαση περίπου 2–4 ημέρες.</li><li>Πολλοί ορότυποι → όχι καλή/μακρά προστατευτική ανοσία.</li><li>Άφθονες ρινικές εκκρίσεις, ερεθισμός ανωτέρου αναπνευστικού.</li></ul></div>
+          <div class="mini"><h4>Πολιοϊός</h4><ul><li>Επώαση 4–35 ημέρες.</li><li>Συχνότερα ασυμπτωματικός.</li><li>Μπορεί να κάνει άσηπτη μηνιγγίτιδα ή παραλυτική πολιομυελίτιδα.</li><li>Στόχος: κινητικά κύτταρα προσθίων κεράτων.</li></ul></div>
+          <div class="mini trap"><h4>Sabin vs Salk</h4><ul><li><b>Sabin OPV:</b> ζωντανό εξασθενημένο, per os, IgA, όχι σε ανοσοκατεσταλμένους, κίνδυνος νόσησης.</li><li><b>Salk IPV:</b> νεκρό/αδρανοποιημένο, παρεντερικό, ασφαλές για όλους.</li></ul></div>
+          <div class="mini"><h4>Coxsackie A</h4><ul><li>Ερπητική κυνάγχη.</li><li>Νόσος χειρών-ποδών-στόματος.</li><li>Μπορεί και άσηπτη μηνιγγίτιδα/θερινό εμπύρετο.</li></ul></div>
+          <div class="mini danger"><h4>Coxsackie B = αγαπημένη παγίδα</h4><ul><li>Μυοκαρδίτιδα / περικαρδίτιδα.</li><li>Επιδημική μυαλγία ή πλευρωδυνία, νόσος Bornholm.</li><li>Άσηπτη μηνιγγίτιδα.</li></ul></div>
+          <div class="mini"><h4>ECHO</h4><ul><li>Enteric Cytopathogenic Human Orphan.</li><li>Άσηπτη μηνιγγίτιδα.</li><li>Λοιμώξεις αναπνευστικού.</li><li>Εμπύρετα εξανθηματικά.</li></ul></div>
+          <div class="mini"><h4>Άλλοι εντεροϊοί</h4><ul><li>68 → αναπνευστικά.</li><li>70 → οξεία αιμορραγική επιπεφυκίτιδα.</li><li>71 → μηνιγγίτιδες / παραλυτικά.</li></ul></div>
+        </div>
+      </div>
+
+      <div class="tab-content" id="tab-flash">
+        <div class="flash-wrap">
+          <div class="flashcard" id="flashcard"><span class="label" id="flashLabel">Flashcard</span><div class="q" id="flashQ"></div><div class="a" id="flashA"></div></div>
+          <aside class="flash-side"><h4>Πώς παίζεται</h4><p class="counter" id="flashCounter"></p><p>Πάτα την κάρτα για να γυρίσει. Μετά “Επόμενη”. Οι κάρτες είναι λίγες και high-yield.</p><div class="flash-controls"><button id="prevCard">Πίσω</button><button id="nextCard">Επόμενη</button><button id="shuffleCards">Shuffle</button><button id="resetCards">Reset</button></div></aside>
+        </div>
+      </div>
+
+      <div class="tab-content" id="tab-quiz">
+        <div class="quiz" id="quiz"></div>
+      </div>
+
+      <div class="tab-content" id="tab-skip">
+        <div class="empty-state"><b>Δεν θα μάθαινα τώρα, εκτός αν μείνει χρόνος:</b><br><br>
+          Ιστορικές εικόνες πολιομυελίτιδας, λεπτομερή παλιά επιδημιολογικά νούμερα/χάρτες, ακριβείς τύποι σε όλες τις υποομάδες Coxsackie/ECHO, λεπτομέρειες VP1-4/Vpg πέρα από το ότι υπάρχει καψίδιο/λειτουργικές πρωτεΐνες. Για την εξέταση πιο πιθανό είναι να ρωτήσουν κλινική συσχέτιση, εμβόλιο, δείγμα, και “ποιο ΔΕΝ ισχύει”.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <p class="footer-note">Tip: προς το παρόν μόνο το PICORNA έχει ξεχωριστή πλήρη speed-learning σελίδα. Τα υπόλοιπα είναι έτοιμα σαν κουτάκια για να τα γεμίζουμε μία-μία.</p>
+</main>
+<script>
+const filterBtns=[...document.querySelectorAll('[data-filter]')];
+const tiles=[...document.querySelectorAll('.tile')];
+const search=document.getElementById('search');
+let currentFilter='all';
+function applyFilter(){const q=(search.value||'').toLowerCase().trim();tiles.forEach(t=>{const cat=t.dataset.category;const title=(t.dataset.title+' '+t.innerText).toLowerCase();const okCat=currentFilter==='all'||cat===currentFilter;const okQ=!q||title.includes(q);t.style.display=(okCat&&okQ)?'flex':'none';});}
+filterBtns.forEach(b=>b.addEventListener('click',()=>{filterBtns.forEach(x=>x.classList.remove('active'));b.classList.add('active');currentFilter=b.dataset.filter;applyFilter();}));search.addEventListener('input',applyFilter);
+
+document.querySelectorAll('.tab').forEach(tab=>{tab.addEventListener('click',()=>{document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));document.querySelectorAll('.tab-content').forEach(c=>c.classList.remove('active'));tab.classList.add('active');document.getElementById('tab-'+tab.dataset.tab).classList.add('active');});});
+const cards=[
+ ['Ποια είναι η βασική δομή των Picorna;','Μικροί, εικοσαεδρικοί, RNA ιοί με αντιγραφή στο κυτταρόπλασμα.'],
+ ['Ρινοϊοί: γιατί δεν αφήνουν πολύ καλή ανοσία;','Έχουν πολλούς ορότυπους, οπότε η ανοσία μετά από νόσηση είναι βραχύχρονη/όχι πολύ αποτελεσματική.'],
+ ['Ποια είναι η κλασική κλινική εικόνα ρινοϊών;','Κοινό κρυολόγημα: ρινικές εκκρίσεις, ερεθισμός ανώτερου αναπνευστικού, βήχας, κεφαλαλγία, κακουχία.'],
+ ['Πού δρα ο πολιοϊός όταν προκαλεί παράλυση;','Στα κινητικά κύτταρα των προσθίων κεράτων του νωτιαίου μυελού και κινητικούς πυρήνες εγκεφαλικών νεύρων.'],
+ ['Ποιο κλινικό δείγμα είναι καλύτερο για ανεύρεση ιού πολιομυελίτιδας;','Κόπρανα.'],
+ ['Sabin OPV: τι πρέπει να θυμάσαι;','Ζωντανό εξασθενημένο, per os, κάνει IgA, όχι σε ανοσοκατεσταλμένους, έχει κίνδυνο νόσησης/μετάδοσης.'],
+ ['Salk IPV: τι πρέπει να θυμάσαι;','Αδρανοποιημένο/νεκρό, παρεντερικό, μπορεί να χορηγηθεί σε όλους, χωρίς κίνδυνο νόσησης.'],
+ ['Coxsackie A: δύο πολύ κλασικές εικόνες;','Ερπητική κυνάγχη και νόσος χειρών-ποδών-στόματος.'],
+ ['Coxsackie B: αγαπημένη εξεταστική σύνδεση;','Μυοκαρδίτιδα / περικαρδίτιδα. Επίσης Bornholm disease.'],
+ ['ECHO: τι προκαλεί κλασικά;','Άσηπτη μηνιγγίτιδα, αναπνευστικές λοιμώξεις, εμπύρετα εξανθηματικά.'],
+ ['Enterovirus 70;','Οξεία αιμορραγική επιπεφυκίτιδα.'],
+ ['Enterovirus 71;','Μηνιγγίτιδες και παραλυτικά σύνδρομα.']
+];
+let order=cards.map((_,i)=>i), idx=0;
+const fc=document.getElementById('flashcard'), fq=document.getElementById('flashQ'), fa=document.getElementById('flashA'), fcnt=document.getElementById('flashCounter');
+function renderCard(){fc.classList.remove('flipped');const c=cards[order[idx]];fq.textContent=c[0];fa.textContent=c[1];fcnt.textContent=`Κάρτα ${idx+1} / ${cards.length}`;}
+fc.addEventListener('click',()=>fc.classList.toggle('flipped'));document.getElementById('nextCard').onclick=()=>{idx=(idx+1)%order.length;renderCard()};document.getElementById('prevCard').onclick=()=>{idx=(idx-1+order.length)%order.length;renderCard()};document.getElementById('resetCards').onclick=()=>{order=cards.map((_,i)=>i);idx=0;renderCard()};document.getElementById('shuffleCards').onclick=()=>{order.sort(()=>Math.random()-.5);idx=0;renderCard()};renderCard();
+const quiz=[
+ {q:'Μυοκαρδίτιδα/περικαρδίτιδα μπορεί να προκαλέσει κυρίως:',opts:['Coxsackie','ECHO','Parvo B19','HHV-7'],ans:0,ex:'Η κλασική εξεταστική σύνδεση είναι Coxsackie, ιδιαίτερα Coxsackie B.'},
+ {q:'Ποιο είναι το καλύτερο δείγμα για ανεύρεση ιού πολιομυελίτιδας;',opts:['Αίμα','Ούρα','Κόπρανα','ΕΝΥ'],ans:2,ex:'Στις ερωτήσεις το σωστό είναι κόπρανα.'},
+ {q:'Ποιο ΔΕΝ ταιριάζει στους ρινοϊούς;',opts:['Προκαλούν κοινό κρυολόγημα','Έχουν πολλούς ορότυπους','Αφήνουν ισόβια αποτελεσματική ανοσία','Έχουν επώαση περίπου 2–4 ημέρες'],ans:2,ex:'Λόγω πολλών οροτύπων, η ανοσία δεν είναι ισόβια/αποτελεσματική.'},
+ {q:'Το Sabin OPV είναι:',opts:['Νεκρό, παρεντερικό','Ζωντανό εξασθενημένο, per os','Νεκρό, per os','Ζωντανό, αλλά χορηγείται μόνο παρεντερικά'],ans:1,ex:'Sabin = oral live attenuated vaccine.'},
+ {q:'Το Salk IPV είναι:',opts:['Ζωντανό εξασθενημένο','Αδρανοποιημένο/νεκρό, παρεντερικό','Per os και κάνει IgA','Απαγορεύεται σε όλους τους ανοσοεπαρκείς'],ans:1,ex:'Salk = inactivated poliovirus vaccine, παρεντερικό.'},
+ {q:'Η νόσος χειρών-ποδών-στόματος συνδέεται κυρίως με:',opts:['Coxsackie A','Rhinovirus','ECHO μόνο','Poliovirus'],ans:0,ex:'Στην παρουσίαση δίνεται κάτω από Coxsackie A.'},
+ {q:'Ποιος εντεροϊός συνδέεται με οξεία αιμορραγική επιπεφυκίτιδα;',opts:['68','70','71','Polio τύπος 3'],ans:1,ex:'Enterovirus 70 → οξεία αιμορραγική επιπεφυκίτιδα.'},
+ {q:'Ποιος εντεροϊός συνδέεται με μηνιγγίτιδες/παραλυτικά;',opts:['68','70','71','Rhinovirus'],ans:2,ex:'Enterovirus 71 → μηνιγγίτιδες και παραλυτικά.'},
+ {q:'Οι ECHO προκαλούν κλασικά:',opts:['Άσηπτη μηνιγγίτιδα','Μόνο ηπατίτιδα','Μόνο πνευμονία σε ανοσοκατεσταλμένους','Λύσσα'],ans:0,ex:'ECHO → άσηπτη μηνιγγίτιδα, αναπνευστικές λοιμώξεις, εμπύρετα εξανθηματικά.'},
+ {q:'Η παραλυτική πολιομυελίτιδα οφείλεται κυρίως σε βλάβη:',opts:['αισθητικών γαγγλίων','προσθίων κεράτων νωτιαίου μυελού','νεφρικών σωληναρίων','ηπατοκυττάρων'],ans:1,ex:'Στόχος είναι τα κινητικά κύτταρα των προσθίων κεράτων.'}
+];
+const quizEl=document.getElementById('quiz');
+quiz.forEach((item,i)=>{const card=document.createElement('div');card.className='quiz-card';card.innerHTML=`<h4>${i+1}. ${item.q}</h4><div class="options"></div><p class="explain">${item.ex}</p>`;const opts=card.querySelector('.options');item.opts.forEach((op,j)=>{const b=document.createElement('button');b.className='option';b.textContent=op;b.onclick=()=>{[...opts.children].forEach((x,k)=>{x.disabled=true;if(k===item.ans)x.classList.add('correct')});if(j!==item.ans)b.classList.add('wrong');card.querySelector('.explain').classList.add('show')};opts.appendChild(b)});quizEl.appendChild(card)});
+tiles.forEach(t=>{if(!t.dataset.open){t.addEventListener('click',()=>{alert('Αυτό το κουτάκι είναι placeholder. Θα το γεμίσουμε όταν στείλεις/δουλέψουμε την αντίστοιχη παρουσίαση.')}})} });
+</script>
+
+<a href="papilloma_oncogenic_viruses_speed_learning.html" style="display:none">Papilloma Speed Learning</a>
+</body>
+</html>

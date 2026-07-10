@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="el">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Αδενοϊοί & Parvo B19 — Microbiology II Speed Learning</title>
+<style>
+:root{--bg:#f7f8fc;--paper:#fff;--ink:#111827;--muted:#667085;--line:#e5e7eb;--accent:#2563eb;--accent2:#dc2626;--green:#dcfce7;--blue:#dbeafe;--rose:#ffe4e6;--amber:#fef3c7;--violet:#ede9fe;--shadow:0 14px 35px rgba(16,24,40,.10);--radius:24px}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(circle at 12% 0%,#e0f2fe 0,#f7f8fc 40%,#fff7ed 100%);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--ink)}
+a{color:inherit}.wrap{max-width:1180px;margin:0 auto;padding:22px}.hero{background:linear-gradient(135deg,#1d4ed8,#111827 55%,#b91c1c);color:white;border-radius:32px;padding:26px;box-shadow:var(--shadow);position:relative;overflow:hidden}.hero:after{content:"⬡";position:absolute;right:24px;top:-20px;font-size:180px;opacity:.13;transform:rotate(20deg)}.hero h1{margin:0 0 8px;font-size:clamp(30px,5vw,58px);letter-spacing:-.04em}.hero p{margin:0;max-width:850px;line-height:1.6;color:#e0f2fe}.nav{display:flex;gap:10px;flex-wrap:wrap;margin:18px 0}.pill{border:1px solid var(--line);background:white;border-radius:999px;padding:10px 14px;text-decoration:none;box-shadow:0 8px 20px rgba(16,24,40,.06);font-weight:750}.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:16px;margin:18px 0}.card{grid-column:span 12;background:rgba(255,255,255,.94);border:1px solid var(--line);border-radius:var(--radius);padding:20px;box-shadow:0 10px 26px rgba(16,24,40,.07)}@media(min-width:850px){.half{grid-column:span 6}.third{grid-column:span 4}.two{grid-column:span 8}}
+h2{margin:0 0 12px;font-size:28px;letter-spacing:-.03em}.muted{color:var(--muted)}.mini{display:flex;flex-wrap:wrap;gap:8px}.tag{border-radius:999px;padding:8px 10px;font-weight:800;font-size:13px;background:#f3f4f6}.tag.rose{background:var(--rose)}.tag.blue{background:var(--blue)}.tag.amber{background:var(--amber)}.tag.green{background:var(--green)}.tag.violet{background:var(--violet)}
+.visuals{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}.virus-icon{border:1px solid var(--line);border-radius:20px;background:linear-gradient(145deg,#ffffff,#f8fafc);padding:14px;text-align:center}.hex{width:92px;height:92px;margin:4px auto 10px;background:#dbeafe;clip-path:polygon(25% 3%,75% 3%,100% 50%,75% 97%,25% 97%,0 50%);border:4px solid #1d4ed8;position:relative}.hex:before,.hex:after{content:"";position:absolute;inset:28px;border-radius:50%;background:#60a5fa}.dots{width:92px;height:92px;margin:4px auto 10px;border-radius:50%;background:radial-gradient(circle at 50% 50%,#fecaca 0 15%,#fee2e2 16% 55%,transparent 56%),radial-gradient(circle at 25% 25%,#dc2626 0 5%,transparent 6%),radial-gradient(circle at 70% 30%,#dc2626 0 5%,transparent 6%),radial-gradient(circle at 35% 75%,#dc2626 0 5%,transparent 6%),#fff;border:4px solid #b91c1c}.flash-toolbar{display:flex;gap:10px;align-items:center;justify-content:space-between;flex-wrap:wrap;margin-bottom:12px}.btn{border:0;border-radius:14px;background:var(--accent);color:white;padding:10px 14px;font-weight:850;cursor:pointer}.btn.secondary{background:#111827}.btn.ghost{background:#f3f4f6;color:#111827;border:1px solid var(--line)}.progress{font-weight:850;color:var(--muted)}
+.flashcard{min-height:285px;border:1px solid var(--line);border-radius:26px;background:linear-gradient(145deg,#fff,#eff6ff);display:flex;align-items:center;justify-content:center;text-align:center;padding:26px;cursor:pointer;box-shadow:inset 0 0 0 1px rgba(255,255,255,.6)}.flashcard .q{font-size:clamp(24px,4vw,40px);font-weight:900;letter-spacing:-.03em}.flashcard .a{display:none;font-size:clamp(21px,3vw,32px);line-height:1.35;font-weight:850}.flashcard.flipped{background:linear-gradient(145deg,#fff7ed,#eef2ff)}.flashcard.flipped .q{display:none}.flashcard.flipped .a{display:block}.hint{font-size:13px;color:var(--muted);margin-top:9px;text-align:center}
+.quiz-item{border:1px solid var(--line);border-radius:22px;padding:16px;margin:14px 0;background:white}.quiz-q{font-weight:900;font-size:18px;margin-bottom:12px}.option{display:block;width:100%;text-align:left;border:1px solid var(--line);border-radius:14px;background:#f9fafb;margin:8px 0;padding:12px;cursor:pointer;font-weight:650}.option.correct{background:#dcfce7;border-color:#86efac}.option.wrong{background:#ffe4e6;border-color:#fda4af}.explain{display:none;border-left:4px solid var(--accent);background:#eff6ff;padding:10px 12px;border-radius:12px;margin-top:10px;color:#172554}.quiz-item.done .explain{display:block}.score{position:sticky;top:0;z-index:2;background:#111827;color:white;border-radius:18px;padding:12px 14px;margin-bottom:14px;display:flex;justify-content:space-between;gap:12px;align-items:center}.small{font-size:13px}.danger{color:#be123c;font-weight:900}.good{color:#047857;font-weight:900}.list{margin:0;padding-left:20px;line-height:1.65}.callout{border:1px dashed #93c5fd;background:#eff6ff;border-radius:20px;padding:16px}.back{display:inline-flex;align-items:center;gap:8px;margin-bottom:14px;color:#334155;text-decoration:none;font-weight:800}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="microbiology_speed_homepage_grid.html">← Πίσω στο Microbiology Grid</a>
+  <section class="hero">
+    <h1>Αδενοϊοί & Parvo B19</h1>
+    <p>Νέο format: όχι μεγάλες σημειώσεις. Ό,τι πρέπει να μείνει στη μνήμη είναι κυρίως σε flashcards και μετά ξαναπαίζεται ως MCQ.</p>
+  </section>
+
+  <div class="nav">
+    <a class="pill" href="#flashcards">Flashcards</a>
+    <a class="pill" href="#quiz">Multiple choice</a>
+    <a class="pill" href="#traps">Exam traps</a>
+  </div>
+
+  <section class="grid">
+    <div class="card half">
+      <h2>Orientation μόνο</h2>
+      <p class="muted">Δες το μόνο σαν χάρτη. Η πραγματική αποστήθιση είναι στις κάρτες.</p>
+      <div class="mini">
+        <span class="tag blue">Αδενοϊοί: dsDNA, γυμνοί</span>
+        <span class="tag amber">αναπνευστικό / οφθαλμός / ΚΥΠ</span>
+        <span class="tag rose">Parvo B19: μικρότερος DNA ιός</span>
+        <span class="tag green">ερυθροβλάστες / απλαστική κρίση</span>
+      </div>
+      <div class="visuals">
+        <div class="virus-icon"><div class="hex"></div><b>Αδενοϊός</b><br><span class="muted small">εικοσαεδρικός, γυμνός DNA</span></div>
+        <div class="virus-icon"><div class="dots"></div><b>Parvo B19</b><br><span class="muted small">πολύ μικρός ssDNA</span></div>
+      </div>
+    </div>
+    <div class="card half callout">
+      <h2>Το ένα πράγμα</h2>
+      <p><b>Αδενοϊός = πολλά συστήματα και “πισίνα/μάτι/κυστίτιδα”. Parvo B19 = ερυθροβλάστης, 5η νόσος, απλαστική κρίση, κύηση.</b></p>
+    </div>
+  </section>
+
+  <section id="flashcards" class="card">
+    <div class="flash-toolbar">
+      <div><h2>Flashcards — όλα όσα πρέπει να θυμάσαι</h2><div class="muted small">Πάτα την κάρτα για απάντηση. Αυτές είναι οι “σημειώσεις”.</div></div>
+      <div class="progress"><span id="fcNum">1</span>/<span id="fcTotal"></span></div>
+    </div>
+    <div id="flashcard" class="flashcard" role="button" tabindex="0" aria-label="flashcard"><div class="q"></div><div class="a"></div></div>
+    <div class="hint">click = απάντηση · ←/→ = προηγούμενη/επόμενη · space = γύρισμα</div>
+    <div class="flash-toolbar" style="margin-top:14px">
+      <button class="btn ghost" id="prevBtn">← Πίσω</button>
+      <button class="btn secondary" id="flipBtn">Γύρισμα</button>
+      <button class="btn" id="nextBtn">Επόμενη →</button>
+    </div>
+  </section>
+
+  <section id="quiz" class="card">
+    <div class="score"><b>Multiple choice</b><span id="scoreBox">Score: 0/0</span></div>
+    <h2>Quiz στο στυλ εξετάσεων</h2>
+    <p class="muted">Οι ίδιες γνώσεις από τις flashcards, αλλά σε ερωτήσεις τύπου “ποιο είναι σωστό/λάθος/κλασικός συνδυασμός”.</p>
+    <div id="quizBox"></div>
+    <button class="btn secondary" id="resetQuiz">Reset quiz</button>
+  </section>
+
+  <section id="traps" class="grid">
+    <div class="card half">
+      <h2>Exam traps</h2>
+      <ul class="list">
+        <li><b>Αδενοϊός</b>: γυμνός dsDNA, άρα ανθεκτικός στον αιθέρα.</li>
+        <li><b>Φαρυγγοεπιπεφυκιτικός πυρετός</b> + πισίνα/μάτι → σκέψου αδενοϊό.</li>
+        <li><b>Οξεία αιμορραγική κυστίτιδα</b> σε αγόρια/ανοσοκατεσταλμένους → αδενοϊός.</li>
+        <li><b>Parvo B19</b>: τροπισμός για ανθρώπειο ερυθροβλάστη → απλαστική κρίση.</li>
+        <li><b>Parvo B19 σε κύηση</b>: εμβρυϊκός ύδρωπας/ενδομήτριος θάνατος.</li>
+      </ul>
+    </div>
+    <div class="card half">
+      <h2>Skip τώρα</h2>
+      <ul class="list">
+        <li>Λεπτομέρειες όλων των αντιγονικών τύπων αδενοϊών, εκτός από κλασικούς τύπους 4/7 για νεοσύλλεκτους.</li>
+        <li>Πίνακες πρωτεϊνών/μοριακών μαζών αδενοϊού.</li>
+        <li>Μηχανιστική λεπτομέρεια πολλαπλασιασμού Parvo πέρα από “χρειάζεται διαιρούμενα κύτταρα / ερυθροβλάστες”.</li>
+      </ul>
+    </div>
+  </section>
+</div>
+<script>
+const cards = [
+  {q:'Αδενοϊοί: τι γονιδίωμα έχουν;', a:'Δίκλωνο DNA (dsDNA).'},
+  {q:'Αδενοϊοί: έχουν περίβλημα;', a:'Όχι. Είναι γυμνοί ιοί, άρα πιο ανθεκτικοί στο περιβάλλον και στον αιθέρα.'},
+  {q:'Ποια είναι η συμμετρία/μορφή του αδενοϊού;', a:'Κυβική/εικοσαεδρική συμμετρία με καψίδιο.'},
+  {q:'Πού γίνεται η αναπαραγωγή/σύνθεση του DNA των αδενοϊών;', a:'Στον πυρήνα του μολυσμένου κυττάρου.'},
+  {q:'Πώς ελευθερώνονται τα πλήρη σωματίδια αδενοϊού;', a:'Με καταστροφή/λύση του κυττάρου.'},
+  {q:'Ποια οικογένεια ανήκουν οι αδενοϊοί;', a:'Adenoviridae.'},
+  {q:'Περίπου πόσοι τύποι αδενοϊών ανθρώπου αναφέρονται;', a:'Περίπου 49 τύποι, σε 6 υποομάδες.'},
+  {q:'Ποια καλλιεργητικά κύτταρα χρησιμοποιούνται για αδενοϊούς;', a:'Καλλιέργειες κυττάρων ανθρώπου όπως HEK, HEp-2, HeLa, KB.'},
+  {q:'Ποιο είναι το κλασικό αναπνευστικό σύνδρομο αδενοϊών που πρέπει να θυμάσαι;', a:'Φαρυγγοεπιπεφυκιτικός πυρετός.'},
+  {q:'Ποια αναπνευστική νόσος αδενοϊών είναι κλασική σε νεοσύλλεκτους;', a:'Οξεία αναπνευστική νόσος των νεοσυλλέκτων.'},
+  {q:'Ποια οφθαλμική εικόνα συνδέεται με αδενοϊούς και πισίνες;', a:'Επιπεφυκίτιδα των κολυμβητικών δεξαμενών / φαρυγγοεπιπεφυκιτικός πυρετός.'},
+  {q:'Ποια σοβαρότερη οφθαλμική νόσος προκαλείται από αδενοϊούς;', a:'Επιδημική κερατοεπιπεφυκίτιδα.'},
+  {q:'Ποια ουρολογική εικόνα είναι κλασική για αδενοϊό;', a:'Οξεία αιμορραγική κυστίτιδα, κυρίως σε αγόρια και ανοσοκατεσταλμένους.'},
+  {q:'Ποιες γαστρεντερικές εικόνες μπορεί να κάνει ο αδενοϊός;', a:'Οξεία γαστρεντερίτιδα σε παιδιά, μεσεντέριος αδενίτιδα, εγκολεασμός εντέρου.'},
+  {q:'Οι αδενοϊοί μπορούν να προκαλέσουν ΚΝΣ λοίμωξη;', a:'Ναι, αλλά πολύ σπάνια ως αίτια μηνιγγοεγκεφαλίτιδας.'},
+  {q:'Ποια κλινικά υλικά μπορούν να χρησιμοποιηθούν για διάγνωση αδενοϊού;', a:'Έκπλυμα ρινοφάρυγγα, οφθαλμικό έκκριμα, κόπρανα.'},
+  {q:'Ποια μοριακή μέθοδος ανιχνεύει αδενοϊό σε κλινικά δείγματα;', a:'PCR για ανίχνευση DNA αδενοϊών.'},
+  {q:'Υπάρχει εμβόλιο αδενοϊών για τον γενικό πληθυσμό;', a:'Όχι. Δεν γίνεται εμβολιασμός αστικού πληθυσμού.'},
+  {q:'Πού χρησιμοποιείται εμβόλιο αδενοϊών;', a:'Σε νεοσύλλεκτους στρατιώτες: ζώντες τύποι 4 και 7, από το στόμα.'},
+  {q:'Πώς προλαμβάνεται η επιδημική κερατοεπιπεφυκίτιδα από αδενοϊό;', a:'Με αυστηρή ασηψία κατά την οφθαλμολογική εξέταση.'},
+  {q:'Γιατί οι αδενοϊοί έχουν σημασία στη βιοτεχνολογία;', a:'Χρησιμοποιούνται/μελετώνται ως οχήματα μεταφοράς ξένου DNA σε κύτταρα.'},
+  {q:'Κλινικό σενάριο: πυρετός + πονόλαιμος + κόκκινο μάτι “σαν άμμος” σε έφηβη. Τι σκέφτεσαι;', a:'Αδενοϊό — φαρυγγοεπιπεφυκιτικός πυρετός.'},
+  {q:'Parvo B19: σε ποια οικογένεια ανήκει;', a:'Parvoviridae, γένος Erythrovirus για τον ανθρώπειο Parvo B19.'},
+  {q:'Parvo B19: τι γονιδίωμα έχει;', a:'Μονόκλωνο DNA (ssDNA).'},
+  {q:'Parvo B19: έχει περίβλημα;', a:'Όχι. Έχει γυμνό εικοσαεδρικό καψίδιο.'},
+  {q:'Ποια είναι η “μοναδική” ιδιότητα μεγέθους του Parvo B19;', a:'Είναι ο μικρότερος DNA ιός, περίπου 18–26 nm.'},
+  {q:'Ποιος είναι ο βασικός ξενιστής/στόχος του Parvo B19;', a:'Ο ανθρώπειος ερυθροβλάστης, μέσω P αντιγόνου/υποδοχέα.'},
+  {q:'Γιατί ο Parvo B19 προκαλεί απλαστική κρίση;', a:'Επειδή μολύνει ερυθροειδείς πρόδρομες μορφές στον μυελό και μειώνει παραγωγή ερυθρών.'},
+  {q:'Πώς διασπείρεται αρχικά ο Parvo B19;', a:'Από το ανώτερο αναπνευστικό, με τοπικό πολλαπλασιασμό και μετά ιαιμία.'},
+  {q:'Ποια είναι η κλασική παιδική νόσος του Parvo B19;', a:'Λοιμώδες ερύθημα = 5η εξανθηματική νόσος.'},
+  {q:'Ποια είναι η κλασική εικόνα στο πρόσωπο στο λοιμώδες ερύθημα;', a:'“Slapped cheek” / ερύθημα παρειών.'},
+  {q:'Ποιο εξάνθημα στα άκρα/κορμό είναι χαρακτηριστικό στο Parvo B19;', a:'Δανδελοειδές / δικτυωτό εξάνθημα.'},
+  {q:'Τι αρθρική εικόνα μπορεί να κάνει ο Parvo B19;', a:'Αρθραλγίες ή αρθρίτιδες, συχνότερα ως εξεταστική σύνδεση στους ενήλικες.'},
+  {q:'Ποια σοβαρή αιματολογική επιπλοκή κάνει ο Parvo B19 σε άτομα με χρόνια αιμολυτική αναιμία;', a:'Απλαστική κρίση, δυνητικά απειλητική για τη ζωή.'},
+  {q:'Τι κάνει ο Parvo B19 στο έμβρυο;', a:'Εμβρυϊκό ύδρωπα και ενδομήτριο θάνατο, ειδικά στην αρχή της κύησης ή στο 2ο τρίμηνο.'},
+  {q:'Πώς διαγιγνώσκεται εργαστηριακά λοίμωξη από Parvo B19;', a:'Οροαναστροφή IgG, ειδικά IgM, ή ανίχνευση DNA του ιού.'},
+  {q:'Σε εμβρυϊκή λοίμωξη Parvo B19, πού μπορεί να ανιχνευθεί DNA του ιού;', a:'Σε εμβρυϊκό αίμα ή ιστούς.'},
+  {q:'Γίνεται καλλιέργεια για Parvo B19;', a:'Όχι, δεν γίνεται καλλιέργεια.'},
+  {q:'Υπάρχει ειδική θεραπεία ή εμβόλιο για Parvo B19;', a:'Όχι θεραπεία, όχι εμβόλιο.'},
+  {q:'Ποια είναι η μεγάλη διαφορά αδενοϊού vs Parvo B19 στο DNA;', a:'Αδενοϊός = dsDNA. Parvo B19 = ssDNA.'}
+];
+
+const questions = [
+  {q:'Ποιο χαρακτηριστικό ταιριάζει με αδενοϊούς;', opts:['ssRNA με περίβλημα','dsDNA χωρίς περίβλημα','ssDNA με περίβλημα','RNA segmented'], ans:1, ex:'Οι αδενοϊοί είναι δίκλωνοι DNA ιοί, εικοσαεδρικοί, χωρίς περίβλημα.'},
+  {q:'Γιατί οι αδενοϊοί είναι ανθεκτικοί στον αιθέρα;', opts:['Έχουν RNA','Δεν έχουν περίβλημα','Έχουν νευραμινιδάση','Πολλαπλασιάζονται στο κυτταρόπλασμα'], ans:1, ex:'Ο αιθέρας καταστρέφει λιπιδικά περιβλήματα. Οι αδενοϊοί είναι γυμνοί.'},
+  {q:'Η αναπαραγωγή του αδενοϊού γίνεται κυρίως:', opts:['Στον πυρήνα','Στο μιτοχόνδριο','Στο κυτταρόπλασμα μόνο','Στο ER'], ans:0, ex:'Η σύνθεση/αναπαραγωγή του ιού γίνεται στον πυρήνα.'},
+  {q:'Ποιο σύνδρομο είναι κλασικά αδενοϊικό;', opts:['Κηλίδες Koplik','Φαρυγγοεπιπεφυκιτικός πυρετός','Μονοπυρήνωση με VCA-IgM','Έρπητας ζωστήρας'], ans:1, ex:'Πυρετός + φαρυγγίτιδα + επιπεφυκίτιδα είναι κλασικό για αδενοϊούς.'},
+  {q:'“Κόκκινο μάτι σαν άμμος” μετά από πισίνα → πιθανότερο:', opts:['Αδενοϊός','Parvo B19','Ιός παρωτίτιδας','CMV'], ans:0, ex:'Η επιπεφυκίτιδα κολυμβητικών δεξαμενών συνδέεται με αδενοϊούς.'},
+  {q:'Οξεία αιμορραγική κυστίτιδα σε αγόρι μπορεί να οφείλεται σε:', opts:['Αδενοϊό','Ιλαρά','Rubella','EBV'], ans:0, ex:'Η αιμορραγική κυστίτιδα είναι κλασική παγίδα αδενοϊού.'},
+  {q:'Ποιο από τα παρακάτω ΔΕΝ είναι κλασικό για αδενοϊό;', opts:['Επιδημική κερατοεπιπεφυκίτιδα','Οξεία αναπνευστική νόσος νεοσυλλέκτων','Οξεία αιμορραγική κυστίτιδα','Slapped cheek εξάνθημα'], ans:3, ex:'Slapped cheek = Parvo B19, όχι αδενοϊός.'},
+  {q:'Το εμβόλιο αδενοϊών, όπου χρησιμοποιείται, αφορά:', opts:['Όλο τον αστικό πληθυσμό','Νεοσύλλεκτους στρατιώτες, τύποι 4 και 7 per os','Μόνο εγκύους','Μόνο βρέφη'], ans:1, ex:'Η παρουσίαση αναφέρει εμβολιασμό νεοσυλλέκτων με ζώντες τύπους 4 και 7 από το στόμα.'},
+  {q:'Ποιο υλικό μπορεί να χρησιμοποιηθεί για διάγνωση αδενοϊού;', opts:['Έκπλυμα ρινοφάρυγγα','Οφθαλμικό έκκριμα','Κόπρανα','Όλα τα παραπάνω'], ans:3, ex:'Αναφέρονται και τα τρία ως υλικά.'},
+  {q:'Ποια μέθοδος ανιχνεύει DNA αδενοϊών σε κλινικό δείγμα;', opts:['PCR','Paul-Bunnel','Monospot','Mantoux'], ans:0, ex:'PCR για DNA αδενοϊών.'},
+  {q:'Parvo B19: ποια δήλωση είναι σωστή;', opts:['Είναι dsDNA με περίβλημα','Είναι ο μικρότερος DNA ιός','Πολλαπλασιάζεται σε Β-λεμφοκύτταρα CD21','Προκαλεί παρωτίτιδα'], ans:1, ex:'Parvo B19 = μικρότερος DNA ιός, γυμνό εικοσαεδρικό καψίδιο, ssDNA.'},
+  {q:'Ο Parvo B19 έχει τροπισμό κυρίως για:', opts:['Ηπατοκύτταρα','Ανθρώπειους ερυθροβλάστες','Β-λεμφοκύτταρα','Νευρώνες τριδύμου'], ans:1, ex:'Κλασικά στοχεύει ερυθροειδείς προδρόμους/ερυθροβλάστες.'},
+  {q:'Η 5η εξανθηματική νόσος προκαλείται από:', opts:['Αδενοϊό','Parvo B19','CMV','HSV-2'], ans:1, ex:'Λοιμώδες ερύθημα = 5η εξανθηματική νόσος = Parvo B19.'},
+  {q:'Slapped cheek + δικτυωτό/δανδελοειδές εξάνθημα →', opts:['Parvo B19','Ιλαρά','Παρωτίτιδα','Γρίπη Α'], ans:0, ex:'Είναι η κλασική εικόνα του λοιμώδους ερυθήματος.'},
+  {q:'Σε ασθενή με χρόνια αιμολυτική αναιμία, ο Parvo B19 μπορεί να προκαλέσει:', opts:['SSPE','Απλαστική κρίση','Ηπατίτιδα Β','Κερατίτιδα'], ans:1, ex:'Λόγω αναστολής παραγωγής ερυθρών από προσβολή ερυθροβλαστών.'},
+  {q:'Parvo B19 στην κύηση συνδέεται κυρίως με:', opts:['Συγγενή καταρράκτη','Εμβρυϊκό ύδρωπα/ενδομήτριο θάνατο','Κώφωση από όργανο Corti','Παρωτίτιδα νεογνού'], ans:1, ex:'Η εμβρυϊκή προσβολή οδηγεί σε ύδρωπα και ενδομήτριο θάνατο.'},
+  {q:'Για Parvo B19 ισχύει:', opts:['Γίνεται εύκολα καλλιέργεια','Υπάρχει εμβόλιο','Δεν γίνεται καλλιέργεια και δεν υπάρχει θεραπεία/εμβόλιο','Θεραπεία πρώτης γραμμής acyclovir'], ans:2, ex:'Η διαφάνεια τονίζει: δεν γίνεται καλλιέργεια, δεν υπάρχει θεραπεία, δεν υπάρχει εμβόλιο.'},
+  {q:'Εργαστηριακή διάγνωση Parvo B19 μπορεί να γίνει με:', opts:['IgM ειδικά αντισώματα','Οροαναστροφή IgG','DNA σε εμβρυϊκό αίμα/ιστούς','Όλα τα παραπάνω'], ans:3, ex:'Όλες αυτές οι μέθοδοι αναφέρονται.'},
+  {q:'Ποια αντιστοίχιση είναι σωστή;', opts:['Αδενοϊός—ssDNA','Parvo B19—dsDNA','Αδενοϊός—αιμορραγική κυστίτιδα','Parvo B19—παρωτίτιδα'], ans:2, ex:'Αδενοϊός μπορεί να κάνει οξεία αιμορραγική κυστίτιδα.'},
+  {q:'Ποια αντιστοίχιση είναι ΛΑΘΟΣ;', opts:['Parvo B19—5η νόσος','Parvo B19—απλαστική κρίση','Αδενοϊός—φαρυγγοεπιπεφυκιτικός πυρετός','Αδενοϊός—Koplik'], ans:3, ex:'Koplik = ιλαρά, όχι αδενοϊός.'},
+  {q:'Ο αδενοϊός ως όχημα γονιδίων σχετίζεται με:', opts:['Μεταφορά ξένου DNA σε κύτταρα','Παραγωγή IgM νεογνού','Αντιγονική μεταβολή H/N','Λανθάνουσα φάση σε γάγγλια'], ans:0, ex:'Οι αδενοϊοί μελετώνται ως vectors μεταφοράς DNA.'},
+  {q:'Ποιο από τα παρακάτω είναι πιο “ειδικό” για Parvo B19;', opts:['Ανθρώπειος ερυθροβλάστης','ACE2','CD21','Τρίδυμο γάγγλιο'], ans:0, ex:'Parvo B19 → ερυθροβλάστης/P αντιγόνο.'},
+  {q:'Ποιος ιός είναι γυμνός DNA αλλά δίκλωνος;', opts:['Αδενοϊός','Parvo B19','Influenza','Rubella'], ans:0, ex:'Αδενοϊός = γυμνός dsDNA. Parvo = γυμνός ssDNA.'},
+  {q:'Ποιος ιός είναι γυμνός DNA αλλά μονόκλωνος;', opts:['Αδενοϊός','Parvo B19','HSV','CMV'], ans:1, ex:'Parvo B19 = ssDNA.'},
+  {q:'Ποιο σενάριο ταιριάζει περισσότερο με αδενοϊό;', opts:['Παιδί με εξάνθημα “χαστούκι”','Έφηβη με πονόλαιμο, πυρετό και κόκκινο μάτι','Έγκυος με καταρράκτη εμβρύου','Νεογνό με owl-eye κύτταρα'], ans:1, ex:'Φαρυγγίτιδα + επιπεφυκίτιδα + πυρετός = αδενοϊός.'},
+  {q:'Ποιο σενάριο ταιριάζει περισσότερο με Parvo B19;', opts:['Παιδί με ροδοκόκκινα μάγουλα και δικτυωτό εξάνθημα','Νεοσύλλεκτος με τύπο 4/7 εμβόλιο','Κηλίδες Koplik','Παρωτίδες + ορχίτιδα'], ans:0, ex:'Slapped cheek/λοιμώδες ερύθημα = Parvo B19.'}
+];
+let idx=0, flipped=false;
+const fc=document.getElementById('flashcard'), qEl=fc.querySelector('.q'), aEl=fc.querySelector('.a'), fcNum=document.getElementById('fcNum'), fcTotal=document.getElementById('fcTotal');
+fcTotal.textContent=cards.length;
+function renderCard(){qEl.innerHTML=cards[idx].q; aEl.innerHTML=cards[idx].a; fcNum.textContent=idx+1; flipped=false; fc.classList.remove('flipped')}
+function flip(){flipped=!flipped; fc.classList.toggle('flipped',flipped)}
+function next(){idx=(idx+1)%cards.length;renderCard()} function prev(){idx=(idx-1+cards.length)%cards.length;renderCard()}
+fc.addEventListener('click',flip); document.getElementById('flipBtn').addEventListener('click',flip); document.getElementById('nextBtn').addEventListener('click',next); document.getElementById('prevBtn').addEventListener('click',prev);
+document.addEventListener('keydown',e=>{if(e.key==='ArrowRight')next(); if(e.key==='ArrowLeft')prev(); if(e.key===' '){e.preventDefault(); flip();}}); renderCard();
+const quizBox=document.getElementById('quizBox'), scoreBox=document.getElementById('scoreBox'); let answered=0, correct=0;
+function updateScore(){scoreBox.textContent=`Score: ${correct}/${answered}`}
+function renderQuiz(){quizBox.innerHTML=''; answered=0; correct=0; updateScore(); questions.forEach((it,i)=>{const div=document.createElement('div'); div.className='quiz-item'; const q=document.createElement('div'); q.className='quiz-q'; q.textContent=(i+1)+'. '+it.q; div.appendChild(q); it.opts.forEach((op,j)=>{const b=document.createElement('button'); b.className='option'; b.textContent=op; b.onclick=()=>{ if(div.classList.contains('done')) return; div.classList.add('done'); answered++; if(j===it.ans){correct++; b.classList.add('correct')} else {b.classList.add('wrong'); div.querySelectorAll('.option')[it.ans].classList.add('correct')} updateScore();}; div.appendChild(b);}); const ex=document.createElement('div'); ex.className='explain'; ex.textContent=it.ex; div.appendChild(ex); quizBox.appendChild(div);});}
+document.getElementById('resetQuiz').onclick=renderQuiz; renderQuiz();
+</script>
+</body>
+</html>

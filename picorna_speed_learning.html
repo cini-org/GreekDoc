@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="el">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>PICORNA — Microbiology II Speed Learning</title>
+<style>
+  :root{
+    --bg:#f7f4ef; --paper:#fffdf8; --ink:#231f20; --muted:#6d625a; --line:#e5ddd2;
+    --accent:#334155; --blue:#dbeafe; --green:#dcfce7; --rose:#ffe4e6; --amber:#fef3c7; --violet:#ede9fe;
+    --shadow:0 14px 35px rgba(30,26,23,.10); --radius:24px;
+  }
+  *{box-sizing:border-box} body{margin:0;background:radial-gradient(circle at top left,#fff 0,#f7f4ef 42%,#efe7dc 100%);font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;color:var(--ink);line-height:1.55}
+  a{color:inherit}.wrap{max-width:1180px;margin:auto;padding:24px}.hero{padding-top:30px}.back{display:inline-flex;gap:8px;align-items:center;text-decoration:none;background:#fff;border:1px solid var(--line);border-radius:999px;padding:9px 14px;color:var(--muted);box-shadow:0 6px 18px rgba(0,0,0,.05)}
+  h1{font-size:clamp(34px,6vw,70px);letter-spacing:-.05em;margin:18px 0 8px;line-height:.95}.subtitle{font-size:18px;color:var(--muted);max-width:850px}.pills{display:flex;flex-wrap:wrap;gap:9px;margin-top:18px}.pill{background:#fff;border:1px solid var(--line);border-radius:999px;padding:8px 12px;font-size:13px;color:#4b5563}.pill.hot{background:#111827;color:#fff;border-color:#111827}
+  .layout{display:grid;grid-template-columns:320px 1fr;gap:22px;margin-top:24px}.side{position:sticky;top:18px;align-self:start;background:rgba(255,255,255,.82);backdrop-filter:blur(10px);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px}.side h3{margin:0 0 10px}.navbtn{width:100%;text-align:left;border:1px solid var(--line);background:#fff;border-radius:16px;padding:12px 14px;margin:8px 0;cursor:pointer;font-weight:700;color:#3b332e}.navbtn:hover{transform:translateY(-1px);box-shadow:0 10px 20px rgba(0,0,0,.07)}
+  .card{background:rgba(255,255,255,.86);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:24px;margin-bottom:22px}.card h2{font-size:30px;letter-spacing:-.03em;margin:0 0 6px}.note{color:var(--muted);margin-top:0}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.mini{border:1px solid var(--line);border-radius:20px;background:#fff;padding:16px}.mini h3{margin:0 0 8px}.tag{display:inline-flex;border-radius:999px;padding:5px 9px;font-size:12px;margin:3px 3px 0 0;background:#f3f4f6;color:#374151}.blue{background:var(--blue)}.green{background:var(--green)}.rose{background:var(--rose)}.amber{background:var(--amber)}.violet{background:var(--violet)}
+  .virusmap{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:14px}.virusbox{background:#fff;border:1px solid var(--line);border-radius:22px;padding:16px;min-height:170px;display:flex;flex-direction:column;gap:10px}.vtop{display:flex;align-items:center;gap:12px}.vsvg{width:58px;height:58px;flex:0 0 58px}.virusbox h3{margin:0;font-size:18px}.virusbox p{margin:0;color:var(--muted);font-size:14px}.keyline{font-weight:800;color:#111827}
+  .flash-area{display:grid;grid-template-columns:1fr;gap:14px}.flash-controls{display:flex;gap:10px;flex-wrap:wrap;margin:12px 0}.button{border:0;background:#111827;color:#fff;border-radius:15px;padding:11px 15px;cursor:pointer;font-weight:800}.button.secondary{background:#fff;color:#111827;border:1px solid var(--line)}.flashcard{min-height:260px;border-radius:28px;border:1px solid var(--line);background:linear-gradient(135deg,#fff,#fef7ed);box-shadow:var(--shadow);display:flex;align-items:center;justify-content:center;text-align:center;padding:34px;cursor:pointer;user-select:none}.flashcard .q{font-size:28px;font-weight:850;letter-spacing:-.02em}.flashcard .hint{display:block;font-size:14px;color:var(--muted);margin-top:18px;font-weight:500}.progress{color:var(--muted);font-weight:700}.answer{color:#065f46}.hidden{display:none}
+  .quiz-q{border:1px solid var(--line);background:#fff;border-radius:22px;padding:18px;margin:14px 0}.quiz-q h3{margin:0 0 12px;font-size:18px}.option{display:block;width:100%;text-align:left;border:1px solid var(--line);background:#fff;border-radius:14px;padding:11px 12px;margin:8px 0;cursor:pointer}.option.correct{border-color:#16a34a;background:#dcfce7}.option.wrong{border-color:#dc2626;background:#fee2e2}.explain{display:none;background:#f8fafc;border:1px dashed #cbd5e1;border-radius:14px;padding:10px 12px;margin-top:10px;color:#334155}.quiz-q.done .explain{display:block}.skip{background:#fff7ed;border-color:#fed7aa}.footer{color:var(--muted);font-size:13px;text-align:center;padding:30px}
+  @media(max-width:900px){.layout{grid-template-columns:1fr}.side{position:static}.grid,.virusmap{grid-template-columns:1fr}h1{font-size:44px}}
+  @media print{.side,.back,.flash-controls,.button{display:none}.layout{display:block}.card{box-shadow:none;break-inside:avoid}.flashcard{min-height:auto}.wrap{max-width:none}}
+</style>
+</head>
+<body>
+<div class="wrap hero">
+  <a class="back" href="microbiology_speed_homepage_grid.html">← Πίσω στο homepage grid</a>
+  <h1>🦠 PICORNA</h1>
+  <p class="subtitle">Speed-learning για Ρινοϊούς, Πολιοϊό, Coxsackie A/B, ECHO, Enterovirus 68/70/71 και HAV. Κρατάμε μόνο ό,τι είναι πιθανό να γίνει ερώτηση.</p>
+  <div class="pills"><span class="pill hot">high-yield</span><span class="pill">flashcards</span><span class="pill">MCQ style</span><span class="pill">skip τα περιττά</span></div>
+</div>
+
+<div class="wrap layout">
+  <aside class="side">
+    <h3>Πλοήγηση</h3>
+    <button class="navbtn" onclick="jump('must')">1. Must know</button>
+    <button class="navbtn" onclick="jump('map')">2. Visual map</button>
+    <button class="navbtn" onclick="jump('flash')">3. Flashcards</button>
+    <button class="navbtn" onclick="jump('quiz')">4. MCQ quiz</button>
+    <button class="navbtn" onclick="jump('skip')">5. Skip list</button>
+  </aside>
+
+  <main>
+    <section id="must" class="card">
+      <h2>1. Τι πρέπει να ξέρω σε 2 λεπτά</h2>
+      <p class="note">Τα Picorna είναι μικροί, μη ελυτροφόροι RNA ιοί. Εξεταστικά εδώ ενδιαφέρουν κυρίως: κρυολόγημα, polio, μυοκαρδίτιδα/περικαρδίτιδα, άσηπτη μηνιγγίτιδα, hand-foot-mouth, HAV.</p>
+      <div class="grid">
+        <div class="mini"><h3>Core ιδιότητες</h3><p><b>Μικροί, γυμνοί, εικοσαεδρικοί, +ssRNA.</b> Αντιγραφή στο κυτταρόπλασμα. Αντέχουν σχετικά στο περιβάλλον επειδή δεν έχουν έλυτρο.</p></div>
+        <div class="mini"><h3>Οικογένεια μέσα στην ύλη</h3><p>Ρινοϊοί, εντεροϊοί: <b>Polio, Coxsackie A/B, ECHO, Enterovirus 68/70/71</b>, και <b>HAV</b>.</p></div>
+        <div class="mini"><h3>Κλασικές ερωτήσεις</h3><p><b>Coxsackie B → μυοκαρδίτιδα/περικαρδίτιδα.</b><br><b>Polio → καλύτερο δείγμα: κόπρανα.</b><br><b>Rhinovirus → πολλοί ορότυποι, βραχεία/μη αποτελεσματική ανοσία.</b></p></div>
+        <div class="mini"><h3>Παγίδα</h3><p>Μη μάθεις “όλα τα νούμερα”. Μάθε τα associations. Αν δεις “τι ΔΕΝ ισχύει”, ψάξε για λάθος τύπου: λάθος δείγμα, λάθος νόσος, λάθος ανοσία, λάθος εμβόλιο.</p></div>
+      </div>
+    </section>
+
+    <section id="map" class="card">
+      <h2>2. Visual map — κάθε ιός με το exam hook του</h2>
+      <p class="note">Δεν είναι “ιστολογία”, είναι μνημονικός χάρτης. Το σχέδιο βοηθάει να θυμάσαι το σχήμα/οικογένεια και το clinical hook.</p>
+      <div class="virusmap">
+        <div class="virusbox"><div class="vtop"><svg class="vsvg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="34" fill="#dbeafe" stroke="#1e40af" stroke-width="5"/><circle cx="35" cy="42" r="5" fill="#1e40af"/><circle cx="58" cy="35" r="5" fill="#1e40af"/><circle cx="61" cy="59" r="5" fill="#1e40af"/><circle cx="41" cy="64" r="5" fill="#1e40af"/></svg><h3>Ρινοϊοί</h3></div><p><span class="keyline">Κρυολόγημα.</span> Επώαση 2–4 ημέρες. Πολλοί ορότυποι → ανοσία όχι πολύ χρήσιμη.</p><div><span class="tag blue">common cold</span><span class="tag amber">113 ορότυποι</span></div></div>
+        <div class="virusbox"><div class="vtop"><svg class="vsvg" viewBox="0 0 100 100"><polygon points="50,8 86,30 78,74 50,94 22,74 14,30" fill="#ede9fe" stroke="#6d28d9" stroke-width="5"/><circle cx="50" cy="50" r="12" fill="#6d28d9"/></svg><h3>Poliovirus</h3></div><p><span class="keyline">Πρόσθια κέρατα.</span> Ασυμπτωματικό συχνά, σπάνια παράλυση. Δείγμα: κόπρανα.</p><div><span class="tag violet">paralysis</span><span class="tag green">κόπρανα</span></div></div>
+        <div class="virusbox"><div class="vtop"><svg class="vsvg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="35" fill="#ffe4e6" stroke="#be123c" stroke-width="5"/><path d="M32 53 C38 28, 62 28, 68 53 C62 72, 38 72, 32 53Z" fill="#be123c" opacity=".25"/></svg><h3>Coxsackie A</h3></div><p><span class="keyline">Στόμα/άκρα.</span> Herpangina, hand-foot-mouth, άσηπτη μηνιγγίτιδα.</p><div><span class="tag rose">HFMD</span><span class="tag amber">herpangina</span></div></div>
+        <div class="virusbox"><div class="vtop"><svg class="vsvg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="35" fill="#fee2e2" stroke="#991b1b" stroke-width="5"/><path d="M50 72 C22 51,34 25,50 38 C66 25,78 51,50 72Z" fill="#991b1b"/></svg><h3>Coxsackie B</h3></div><p><span class="keyline">Καρδιά.</span> Μυοκαρδίτιδα/περικαρδίτιδα, Bornholm, άσηπτη μηνιγγίτιδα.</p><div><span class="tag rose">myocarditis</span><span class="tag violet">meningitis</span></div></div>
+        <div class="virusbox"><div class="vtop"><svg class="vsvg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="35" fill="#dcfce7" stroke="#166534" stroke-width="5"/><text x="50" y="57" text-anchor="middle" font-size="24" font-weight="900" fill="#166534">E</text></svg><h3>ECHO</h3></div><p><span class="keyline">Άσηπτη μηνιγγίτιδα.</span> Επίσης αναπνευστικές λοιμώξεις και εμπύρετα εξανθηματικά.</p><div><span class="tag green">aseptic meningitis</span></div></div>
+        <div class="virusbox"><div class="vtop"><svg class="vsvg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="34" fill="#fef3c7" stroke="#92400e" stroke-width="5"/><path d="M24 50h52M50 24v52" stroke="#92400e" stroke-width="6"/></svg><h3>EV 68/70/71</h3></div><p><span class="keyline">68 αναπνευστικό, 70 οξεία αιμορραγική επιπεφυκίτιδα, 71 μηνιγγίτιδα/παράλυση.</span></p><div><span class="tag amber">68 resp</span><span class="tag rose">70 eye</span><span class="tag violet">71 CNS</span></div></div>
+        <div class="virusbox"><div class="vtop"><svg class="vsvg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="34" fill="#dcfce7" stroke="#15803d" stroke-width="5"/><path d="M30 58 C42 25,58 25,70 58" fill="none" stroke="#15803d" stroke-width="7" stroke-linecap="round"/><path d="M30 65h40" stroke="#15803d" stroke-width="7" stroke-linecap="round"/></svg><h3>HAV</h3></div><p><span class="keyline">Ηπατίτιδα Α.</span> Κοπρανοστοματική μετάδοση, οξεία, υπάρχει εμβόλιο.</p><div><span class="tag green">fecal-oral</span><span class="tag blue">vaccine</span></div></div>
+      </div>
+    </section>
+
+    <section id="flash" class="card">
+      <h2>3. Flashcards</h2>
+      <p class="note">Πάτα την κάρτα για απάντηση. Είναι λίγες και εξεταστικές.</p>
+      <div class="flash-controls"><button class="button" onclick="prevCard()">← Πίσω</button><button class="button" onclick="flipCard()">Γύρνα κάρτα</button><button class="button" onclick="nextCard()">Επόμενη →</button><button class="button secondary" onclick="shuffleCards()">Shuffle</button></div>
+      <div class="progress" id="fprogress"></div>
+      <div class="flashcard" onclick="flipCard()"><div><div id="fq" class="q"></div><div id="fa" class="q answer hidden"></div><span class="hint">click / γύρνα κάρτα</span></div></div>
+    </section>
+
+    <section id="quiz" class="card">
+      <h2>4. Multiple choice quiz</h2>
+      <p class="note">Στο ύφος “ποιο ισχύει / ποιο ΔΕΝ ισχύει / ποιο δείγμα / ποιος ιός”.</p>
+      <div id="quizBox"></div>
+      <button class="button secondary" onclick="resetQuiz()">Reset quiz</button>
+    </section>
+
+    <section id="skip" class="card skip">
+      <h2>5. Τι κάνουμε skip τώρα</h2>
+      <p>Για πρώτη ανάγνωση δεν θα κόλλαγα σε: όλα τα ιστορικά slides, λεπτομερείς χρονολογίες επιδημιών, όλους τους αριθμούς τύπων Coxsackie/ECHO, ιστολογικές εικόνες polio. Τα κρατάμε μόνο αν μείνει χρόνος.</p>
+      <p><b>Αντί γι’ αυτά:</b> μάθε τις “ζεύξεις” ιός → νόσος → δείγμα/εμβόλιο/παγίδα.</p>
+    </section>
+  </main>
+</div>
+<div class="footer">Microbiology II Speed Learning · PICORNA · GreekDoc-style page</div>
+
+<script>
+function jump(id){document.getElementById(id).scrollIntoView({behavior:'smooth',block:'start'});}
+const flashcards = [
+  ['Τι είναι γενικά τα Picorna;', 'Μικροί, γυμνοί, εικοσαεδρικοί, +ssRNA ιοί· αντιγραφή στο κυτταρόπλασμα.'],
+  ['Ποιοι Picorna είναι high-yield στην παρουσίαση;', 'Ρινοϊοί, Polio, Coxsackie A/B, ECHO, Enterovirus 68/70/71, HAV.'],
+  ['Ρινοϊοί: τι προκαλούν και ποια παγίδα έχουν;', 'Κοινό κρυολόγημα· πολλοί ορότυποι → βραχεία/μη αποτελεσματική ανοσία.'],
+  ['Ποιο είναι το καλύτερο δείγμα για ανεύρεση ιού πολιομυελίτιδας;', 'Κόπρανα.'],
+  ['Ποια κύτταρα προσβάλλει κλασικά ο πολιοϊός;', 'Κινητικά κύτταρα προσθίων κεράτων νωτιαίου μυελού και κινητικούς πυρήνες εγκεφαλικών νεύρων.'],
+  ['Ποια είναι η κλασική επιπλοκή Coxsackie B;', 'Μυοκαρδίτιδα / περικαρδίτιδα, και σε ενήλικες και σε νεογνά.'],
+  ['Coxsackie A: τι να θυμάμαι;', 'Herpangina και νόσος χειρών-ποδών-στόματος.'],
+  ['ECHO: τι ρωτιέται συχνά;', 'Άσηπτη μηνιγγίτιδα, αναπνευστικές λοιμώξεις, εμπύρετα εξανθηματικά.'],
+  ['Enterovirus 68, 70, 71: γρήγορη αντιστοίχιση;', '68 αναπνευστικά · 70 οξεία αιμορραγική επιπεφυκίτιδα · 71 μηνιγγίτιδες/παραλυτικά.'],
+  ['Sabin vs Salk: η πιο σημαντική διαφορά;', 'Sabin OPV ζωντανό από το στόμα με IgA/διακοπή κυκλοφορίας αλλά όχι σε ανοσοκαταστολή· Salk IPV νεκρό παρεντερικό, ασφαλέστερο.'],
+  ['HAV: τι να θυμάμαι εδώ;', 'Κοπρανοστοματική μετάδοση, οξεία ηπατίτιδα, υπάρχει εμβόλιο.']
+];
+let idx=0, flipped=false;
+function renderCard(){document.getElementById('fprogress').textContent=`Κάρτα ${idx+1}/${flashcards.length}`;document.getElementById('fq').textContent=flashcards[idx][0];document.getElementById('fa').textContent=flashcards[idx][1];document.getElementById('fq').classList.toggle('hidden',flipped);document.getElementById('fa').classList.toggle('hidden',!flipped);}
+function flipCard(){flipped=!flipped;renderCard();}
+function nextCard(){idx=(idx+1)%flashcards.length;flipped=false;renderCard();}
+function prevCard(){idx=(idx-1+flashcards.length)%flashcards.length;flipped=false;renderCard();}
+function shuffleCards(){for(let i=flashcards.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[flashcards[i],flashcards[j]]=[flashcards[j],flashcards[i]];}idx=0;flipped=false;renderCard();}
+renderCard();
+const questions = [
+  {q:'Μυοκαρδίτιδα/περικαρδίτιδα μπορεί να προκαλέσει κλασικά:', a:['Coxsackie B','ECHO','Parvo B19','HHV-7'], c:0, e:'Η εξεταστική σύνδεση είναι Coxsackie B → μυοκαρδίτιδα/περικαρδίτιδα.'},
+  {q:'Καλύτερο κλινικό δείγμα για ανεύρεση ιού πολιομυελίτιδας:', a:['Αίμα','Ούρα','Κόπρανα','ΕΝΥ'], c:2, e:'Ο πολιοϊός αποβάλλεται στα κόπρανα· αυτό είναι κλασική MCQ.'},
+  {q:'Ποιο αφήνει βραχυχρόνια / μη αποτελεσματική ανοσία μετά από νόσηση;', a:['Ιός ιλαράς','Ρινοϊοί','Πολιοϊός','HAV'], c:1, e:'Οι ρινοϊοί έχουν πολλούς ορότυπους, άρα το κρυολόγημα επανέρχεται.'},
+  {q:'Η νόσος χειρών, ποδών και στόματος συνδέεται περισσότερο με:', a:['Coxsackie A','HCV','CMV','Rabies'], c:0, e:'Coxsackie A → herpangina και hand-foot-mouth.'},
+  {q:'Ποιο ΔΕΝ ταιριάζει με Enterovirus 68/70/71;', a:['68 → αναπνευστικά','70 → αιμορραγική επιπεφυκίτιδα','71 → μηνιγγίτιδες/παραλυτικά','68 → ηπατίτιδα χρόνια'], c:3, e:'HAV κάνει ηπατίτιδα Α· το 68 συνδέεται με αναπνευστικά.'},
+  {q:'Το Sabin OPV:', a:['Είναι νεκρό παρεντερικό εμβόλιο','Δίνεται per os και προκαλεί εκκριτική IgA','Χορηγείται άφοβα σε ανοσοκατεσταλμένους','Δεν μεταδίδεται ποτέ στο περιβάλλον'], c:1, e:'Sabin = ζωντανό εξασθενημένο, από το στόμα, IgA· όχι σε ανοσοκατεσταλμένους.'},
+  {q:'Ο πολιοϊός προσβάλλει κυρίως:', a:['Ερυθροβλάστες','Ηπατοκύτταρα','Κινητικά κύτταρα προσθίων κεράτων','Β-λεμφοκύτταρα'], c:2, e:'Αυτό εξηγεί την παραλυτική πολιομυελίτιδα.'},
+  {q:'Οι ECHO ιοί είναι κλασικά αίτια:', a:['Άσηπτης μηνιγγίτιδας','Λύσσας','Κονδυλωμάτων','Μονοπυρήνωσης'], c:0, e:'ECHO → άσηπτη μηνιγγίτιδα, αναπνευστικά, εμπύρετα εξανθηματικά.'},
+  {q:'Η ηπατίτιδα Α μεταδίδεται κυρίως:', a:['Με κουνούπια','Κοπρανοστοματικά','Με αερολύματα μόνο','Με ενσωμάτωση στο γονιδίωμα'], c:1, e:'HAV = Picorna, fecal-oral, οξεία λοίμωξη, υπάρχει εμβόλιο.'},
+  {q:'Τρόπος αναπαραγωγής των ιών γενικά:', a:['Διχοτόμηση','Επί μέρους σύνθεση τμημάτων και συναρμολόγηση','Τυχαίος διπλασιασμός','Σπόρια'], c:1, e:'Οι ιοί δεν διχοτομούνται· συνθέτουν κομμάτια και συναρμολογούνται.'}
+];
+function renderQuiz(){const box=document.getElementById('quizBox');box.innerHTML='';questions.forEach((qq,i)=>{const div=document.createElement('div');div.className='quiz-q';div.innerHTML=`<h3>${i+1}. ${qq.q}</h3>`;qq.a.forEach((op,j)=>{const b=document.createElement('button');b.className='option';b.textContent=String.fromCharCode(Α.charCodeAt(0)+j)+'. '+op;b.onclick=()=>answer(div,b,j,qq.c);div.appendChild(b);});const ex=document.createElement('div');ex.className='explain';ex.textContent=qq.e;div.appendChild(ex);box.appendChild(div);});}
+const Α='Α';
+function answer(div,b,j,c){if(div.classList.contains('done'))return;div.classList.add('done');[...div.querySelectorAll('.option')].forEach((x,k)=>{if(k===c)x.classList.add('correct');});if(j!==c)b.classList.add('wrong');}
+function resetQuiz(){renderQuiz();jump('quiz');}
+renderQuiz();
+</script>
+</body>
+</html>
