@@ -1,0 +1,2170 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+<title>Μελανινοκυτταρικές Βλάβες | GreekDoc</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+    --bg:#f5f6fb;
+    --card:#ffffff;
+    --text:#1f2937;
+
+    --pink:#ffe3ec;
+    --peach:#ffe8d6;
+    --yellow:#fff5cc;
+    --green:#dff7e6;
+    --blue:#dceeff;
+    --violet:#ece4ff;
+
+    --shadow:0 8px 25px rgba(0,0,0,0.08);
+    --radius:22px;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Inter',sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    line-height:1.7;
+    padding:40px 20px;
+}
+
+.container{
+    max-width:1300px;
+    margin:auto;
+}
+
+.hero{
+    background:linear-gradient(135deg,#fbc2eb,#a6c1ee);
+    border-radius:30px;
+    padding:50px;
+    color:white;
+    margin-bottom:35px;
+    box-shadow:var(--shadow);
+}
+
+.hero h1{
+    font-size:3rem;
+    margin-bottom:15px;
+}
+
+.hero p{
+    font-size:1.1rem;
+    max-width:850px;
+}
+
+.tag{
+    display:inline-block;
+    padding:7px 14px;
+    border-radius:999px;
+    font-size:0.9rem;
+    font-weight:600;
+    margin-bottom:15px;
+    background:rgba(255,255,255,0.25);
+    backdrop-filter:blur(5px);
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    gap:25px;
+    margin-bottom:30px;
+}
+
+.box{
+    border-radius:var(--radius);
+    padding:28px;
+    background:var(--card);
+    box-shadow:var(--shadow);
+}
+
+.box h2{
+    margin-bottom:15px;
+    font-size:1.5rem;
+}
+
+.box h3{
+    margin-top:18px;
+    margin-bottom:8px;
+    font-size:1.05rem;
+}
+
+.box ul{
+    padding-left:20px;
+}
+
+.box li{
+    margin-bottom:8px;
+}
+
+.pink{background:var(--pink);}
+.peach{background:var(--peach);}
+.yellow{background:var(--yellow);}
+.green{background:var(--green);}
+.blue{background:var(--blue);}
+.violet{background:var(--violet);}
+
+.section-title{
+    margin:50px 0 20px;
+    font-size:2rem;
+    font-weight:700;
+}
+
+.highlight{
+    background:white;
+    border-left:8px solid #ff5f8f;
+    padding:25px;
+    border-radius:20px;
+    margin:25px 0;
+    box-shadow:var(--shadow);
+}
+
+.image-card{
+    background:white;
+    border-radius:25px;
+    overflow:hidden;
+    box-shadow:var(--shadow);
+}
+
+.image-card img{
+    width:100%;
+    display:block;
+}
+
+.image-card .caption{
+    padding:18px;
+    font-size:0.95rem;
+}
+
+.exam-box{
+    background:#fff3f3;
+    border:2px dashed #ff6b6b;
+    border-radius:25px;
+    padding:30px;
+    margin-top:40px;
+}
+
+.exam-box h2{
+    margin-bottom:15px;
+}
+
+.print-btn{
+    position:fixed;
+    bottom:25px;
+    right:25px;
+    border:none;
+    background:#111827;
+    color:white;
+    padding:15px 22px;
+    border-radius:999px;
+    cursor:pointer;
+    font-weight:600;
+    box-shadow:var(--shadow);
+}
+
+.print-btn:hover{
+    opacity:0.9;
+}
+
+@media print{
+
+    body{
+        background:white;
+        padding:0;
+    }
+
+    .print-btn{
+        display:none;
+    }
+
+    .box,
+    .image-card,
+    .highlight,
+    .hero,
+    .exam-box{
+        box-shadow:none;
+        break-inside:avoid;
+    }
+
+    .grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+}
+
+</style>
+</head>
+<body>
+
+<div class="container">
+
+    <section class="hero">
+
+        <div class="tag">GreekDoc • Δερματολογία</div>
+
+        <h1>Μελανινοκυτταρικές Βλάβες</h1>
+
+        <p>
+            Καλοήθεις, δυσπλαστικές και κακοήθεις μελανινοκυτταρικές βλάβες.
+            Εστίαση σε εφηλίδες, φακές, μελανωτικές κηλίδες χειλέων και βασικά στοιχεία
+            κακοήθους μελανώματος.
+        </p>
+
+    </section>
+
+    <div class="highlight">
+
+        <h2>🧠 Γενική ιδέα</h2>
+
+        <p>
+            Οι μελανινοκυτταρικές βλάβες σχετίζονται με τα μελανινοκύτταρα και τη μελανίνη.
+            Υπάρχει αλληλοεπικάλυψη μεταξύ:
+        </p>
+
+        <ul>
+            <li>Συγγενών βλαβών</li>
+            <li>Κληρονομικών βλαβών</li>
+            <li>Επίκτητων βλαβών</li>
+        </ul>
+
+    </div>
+
+    <h2 class="section-title">Φακίδα / Εφηλίδα (Freckle - Ephelis)</h2>
+
+    <div class="grid">
+
+        <div class="box peach">
+
+            <h2>Επιδημιολογία & Αιτιολογία</h2>
+
+            <ul>
+                <li>Περιοχή δέρματος με υπερδραστήρια μελανινοκύτταρα</li>
+                <li>Έντονη αντίδραση στην UV ακτινοβολία</li>
+                <li>Εμφανίζονται κυρίως σε νέους</li>
+                <li>Συσχετίζονται με ανοιχτό φωτότυπο</li>
+                <li>Συχνότερες σε ξανθά ή κοκκινωπά μαλλιά</li>
+            </ul>
+
+        </div>
+
+        <div class="box yellow">
+
+            <h2>Κλινική Εικόνα</h2>
+
+            <ul>
+                <li>Επίπεδες κηλίδες</li>
+                <li>Διάμετρος 1–5 mm</li>
+                <li>Μεταβάλλονται ανά εποχή</li>
+                <li>Σκουραίνουν το καλοκαίρι</li>
+                <li>Ανοίγουν τον χειμώνα</li>
+            </ul>
+
+        </div>
+
+        <div class="box green">
+
+            <h2>Θέσεις Εντόπισης</h2>
+
+            <ul>
+                <li>Πρόσωπο</li>
+                <li>Παρειές</li>
+                <li>Μύτη</li>
+                <li>Άνω κορμός</li>
+                <li>Βραχίονες</li>
+            </ul>
+
+        </div>
+
+        <div class="box blue">
+
+            <h2>Ιστοπαθολογία & Θεραπεία</h2>
+
+            <ul>
+                <li>Φυσιολογικός αριθμός μελανινοκυττάρων</li>
+                <li>Αυξημένη λειτουργική δραστηριότητα</li>
+                <li>Δεν απαιτείται θεραπεία</li>
+            </ul>
+
+        </div>
+
+    </div>
+
+    <h2 class="section-title">Φακές (Lentigo / Lentigines)</h2>
+
+    <div class="grid">
+
+        <div class="box violet">
+
+            <h2>Βασικά Χαρακτηριστικά</h2>
+
+            <ul>
+                <li>Επίπεδες υπερχρωματικές κηλίδες</li>
+                <li>Πιο σκούρες από τις εφηλίδες</li>
+                <li>Δεν σχετίζονται απαραίτητα με ήλιο</li>
+                <li>Μπορούν να εμφανιστούν οπουδήποτε</li>
+            </ul>
+
+        </div>
+
+        <div class="box pink">
+
+            <h2>Συσχετίσεις</h2>
+
+            <ul>
+                <li>LEOPARD syndrome</li>
+                <li>Peutz-Jeghers syndrome</li>
+                <li>Ηλιακές φακές σε φωτογηρασμένο δέρμα</li>
+            </ul>
+
+        </div>
+
+        <div class="box peach">
+
+            <h2>Ιστοπαθολογία</h2>
+
+            <ul>
+                <li>Αυξημένος αριθμός μελανινοκυττάρων</li>
+                <li>Στη βασική στιβάδα</li>
+                <li>Χωρίς nesting</li>
+            </ul>
+
+        </div>
+
+        <div class="box yellow">
+
+            <h2>Διερεύνηση</h2>
+
+            <ul>
+                <li>Βιοψία αν υπάρχει αμφιβολία</li>
+                <li>Αποκλεισμός κακοήθους φακής</li>
+                <li>Πολλές φακές → έλεγχος συνδρόμων</li>
+            </ul>
+
+        </div>
+
+    </div>
+
+    <h2 class="section-title">Μελανωτική Κηλίδα Χειλέων</h2>
+
+    <div class="grid">
+
+        <div class="box blue">
+
+            <h2>Κλινικά Στοιχεία</h2>
+
+            <ul>
+                <li>Υπερχρωματική επίπεδη κηλίδα</li>
+                <li>Εντοπίζεται κυρίως στα χείλη</li>
+                <li>Μπορεί να εμφανιστεί και στα γεννητικά όργανα</li>
+                <li>Άγνωστη αιτιολογία</li>
+            </ul>
+
+        </div>
+
+        <div class="box green">
+
+            <h2>Ιστοπαθολογία</h2>
+
+            <ul>
+                <li>Μικρή αύξηση μελανινοκυττάρων</li>
+                <li>Στη βασική στιβάδα</li>
+            </ul>
+
+        </div>
+
+        <div class="box pink">
+
+            <h2>Διαφορική Διάγνωση</h2>
+
+            <ul>
+                <li>Κακόηθες μελάνωμα</li>
+                <li>Βιοψία χρήσιμη σε ύποπτες βλάβες</li>
+            </ul>
+
+        </div>
+
+    </div>
+
+    <h2 class="section-title">⚠️ SOS Στοιχεία για Σπίλους</h2>
+
+    <div class="highlight">
+
+        <ul>
+
+            <li>Οι συγγενείς σπίλοι υπάρχουν από τη γέννηση</li>
+
+            <li>
+                Μεγάλοι συγγενείς σπίλοι → αυξημένος κίνδυνος κακοήθειας
+            </li>
+
+            <li>
+                Οι περισσότεροι σπίλοι είναι επίκτητοι
+            </li>
+
+            <li>
+                Οι επίκτητοι σπίλοι περνούν 3 φάσεις:
+                συμβολική → σύνθετη → ενδοδερμική
+            </li>
+
+            <li>
+                Άτυπος σπίλος:
+                διάμετρος >5 mm + ανώμαλο περίγραμμα
+            </li>
+
+            <li>
+                Σπίλοι με άλω → λευκωπό περίγραμμα
+            </li>
+
+            <li>
+                Οι σπίλοι Spitz και οι κυανοί σπίλοι μπορεί να μοιάζουν με μελάνωμα
+            </li>
+
+            <li>
+                Οι εφηλίδες σκουραίνουν στον ήλιο
+            </li>
+
+            <li>
+                Οι φακές είναι πιο σκούρες και συχνές σε ηλικιωμένους
+            </li>
+
+        </ul>
+
+    </div>
+
+    <h2 class="section-title">Κακόηθες Μελάνωμα</h2>
+
+    <div class="grid">
+
+        <div class="box pink">
+
+            <h2>Σημασία</h2>
+
+            <ul>
+                <li>Πιο θανατηφόρος καρκίνος δέρματος</li>
+                <li>Δραματική αύξηση επίπτωσης</li>
+                <li>Ιδιαίτερα συχνό σε λευκούς πληθυσμούς</li>
+            </ul>
+
+        </div>
+
+        <div class="box peach">
+
+            <h2>Παράγοντες Κινδύνου</h2>
+
+            <ul>
+                <li>Έκθεση στον ήλιο</li>
+                <li>Διαλείπουσα έντονη UV έκθεση</li>
+                <li>Ηλιακά εγκαύματα παιδικής ηλικίας</li>
+                <li>Οικογενειακό ιστορικό</li>
+                <li>Μεγάλος αριθμός σπίλων</li>
+            </ul>
+
+        </div>
+
+        <div class="box yellow">
+
+            <h2>Εξετάσεις</h2>
+
+            <ul>
+                <li>Κλινική εξέταση</li>
+                <li>Δερματοσκόπηση</li>
+                <li>Βιοψία</li>
+            </ul>
+
+        </div>
+
+    </div>
+
+    <div class="exam-box">
+
+        <h2>📌 Για τις εξετάσεις</h2>
+
+        <ul>
+
+            <li>
+                Εφηλίδα = φυσιολογικός αριθμός μελανινοκυττάρων
+            </li>
+
+            <li>
+                Φακή = αυξημένος αριθμός μελανινοκυττάρων
+            </li>
+
+            <li>
+                Οι εφηλίδες εξαρτώνται από UV
+            </li>
+
+            <li>
+                Οι φακές όχι απαραίτητα
+            </li>
+
+            <li>
+                Άτυπος σπίλος:
+                >5 mm + ακανόνιστο περίγραμμα
+            </li>
+
+            <li>
+                Μεγάλοι συγγενείς σπίλοι → ↑ κίνδυνος μελανώματος
+            </li>
+
+            <li>
+                Το μελάνωμα σχετίζεται έντονα με UV ακτινοβολία
+            </li>
+
+        </ul>
+
+    </div>
+
+</div>
+
+<!-- Συνέχεια: Κακόηθες Μελάνωμα -->
+
+<h2 class="section-title">Κακόηθες Μελάνωμα — Πρόγνωση & Ταξινόμηση</h2>
+
+<div class="grid">
+
+    <div class="box peach">
+        <h2>Παράγοντες κινδύνου</h2>
+        <ul>
+            <li>Κληρονομικότητα</li>
+            <li>Ηλιακή έκθεση στην παιδική ηλικία</li>
+            <li>Ανοιχτός φωτότυπος δέρματος</li>
+            <li>Ξανθά ή κόκκινα μαλλιά</li>
+            <li>Φακίδες</li>
+            <li>Μεγάλος αριθμός σπίλων</li>
+        </ul>
+    </div>
+
+    <div class="box pink">
+        <h2>Πρόγνωση</h2>
+        <p>
+            Η πρόγνωση σχετίζεται κυρίως με την αρχική εντόπιση
+            και τον βαθμό διήθησης κατά την πρώτη εκτομή.
+        </p>
+        <ul>
+            <li>Clark: επίπεδο ανατομικής διήθησης</li>
+            <li>Breslow: πάχος σε χιλιοστά</li>
+            <li>Το Breslow είναι ιδιαίτερα σημαντικό προγνωστικά</li>
+        </ul>
+    </div>
+
+    <div class="box blue">
+        <h2>Τύποι κακοήθους μελανώματος</h2>
+        <ul>
+            <li>Κακοήθης εφηλίδα</li>
+            <li>Μελάνωμα κακοήθους εφηλίδας</li>
+            <li>In situ επιπολής επεκτεινόμενο μελάνωμα</li>
+            <li>Διηθητικό επιπολής επεκτεινόμενο μελάνωμα</li>
+            <li>Οζώδες μελάνωμα</li>
+            <li>Φακοειδές μελάνωμα των άκρων</li>
+        </ul>
+    </div>
+
+</div>
+
+<div class="highlight">
+    <h2>📊 Πάχος κατά Breslow & 5ετής επιβίωση</h2>
+    <ul>
+        <li>&lt; 0,75 mm → 5ετής επιβίωση &gt;95%</li>
+        <li>0,76–1,5 mm → 5ετής επιβίωση &gt;80%</li>
+        <li>1,6–3,5 mm → 5ετής επιβίωση περίπου 60–70%</li>
+        <li>&gt; 3,5 mm → 5ετής επιβίωση &lt;40%</li>
+    </ul>
+</div>
+
+<h2 class="section-title">Κακοήθης Εφηλίδα</h2>
+
+<div class="grid">
+
+    <div class="box yellow">
+        <h2>Τι είναι;</h2>
+        <p>
+            Η κακοήθης εφηλίδα είναι βλάβη που εμφανίζεται σε δέρμα
+            καταστραμμένο από τον ήλιο.
+        </p>
+        <ul>
+            <li>Συχνή σε ηλικιωμένους ασθενείς</li>
+            <li>Αυξάνεται σε νεότερες ηλικίες</li>
+            <li>Σχετίζεται με χρόνια ηλιακή βλάβη</li>
+        </ul>
+    </div>
+
+    <div class="box green">
+        <h2>Κλινική εικόνα</h2>
+        <ul>
+            <li>Αρχικά μικρή καφέ κηλίδα</li>
+            <li>Σταδιακή επέκταση</li>
+            <li>Ανώμαλη περιφέρεια</li>
+            <li>Άνιση χρωματική κατανομή</li>
+            <li>Μπορεί να φτάσει σε μεγάλο μέγεθος</li>
+        </ul>
+    </div>
+
+    <div class="box violet">
+        <h2>Περιοχές προτίμησης</h2>
+        <ul>
+            <li>Πρόσωπο</li>
+            <li>Δέρμα με έντονη ηλιακή βλάβη</li>
+            <li>Σπανιότερα: άνω επιφάνεια βραχίονα</li>
+            <li>Σπανιότερα: κορμός</li>
+        </ul>
+    </div>
+
+    <div class="box blue">
+        <h2>Ιστοπαθολογία</h2>
+        <ul>
+            <li>Άτυπα μελανινοκύτταρα κατά μήκος του επιδερμικού φραγμού</li>
+            <li>Μπορεί να υπάρχουν αλλαγές γύρω από τριχικούς θυλάκους</li>
+            <li>Σχεδόν πάντα υπάρχει λύση ελαστικού ιστού στο χόριο</li>
+        </ul>
+    </div>
+
+</div>
+
+<div class="box pink">
+    <h2>Διερεύνηση & Θεραπεία</h2>
+    <ul>
+        <li>Βιοψία με νυστέρι ή punch για επιβεβαίωση διάγνωσης</li>
+        <li>Μπορεί να θεραπευτεί με κρυοθεραπεία</li>
+        <li>Η χειρουργική εξαίρεση συνιστάται στις περισσότερες περιπτώσεις</li>
+        <li>Ιδιαίτερα σημαντική σε μεγάλες βλάβες λόγω κινδύνου υποτροπής ή κακοήθους εξαλλαγής</li>
+    </ul>
+</div>
+
+<h2 class="section-title">Μελάνωμα Κακοήθους Εφηλίδας</h2>
+
+<div class="grid">
+
+    <div class="box peach">
+        <h2>Ορισμός</h2>
+        <p>
+            Διηθητικό μελάνωμα που αναπτύσσεται πάνω σε έδαφος
+            κακοήθους εφηλίδας.
+        </p>
+    </div>
+
+    <div class="box yellow">
+        <h2>Κλινική μορφή</h2>
+        <ul>
+            <li>Οζώδης ή πεπαχυσμένη περιοχή</li>
+            <li>Αναπτύσσεται μέσα σε προϋπάρχουσα κακοήθη εφηλίδα</li>
+        </ul>
+    </div>
+
+    <div class="box green">
+        <h2>Ιστοπαθολογία</h2>
+        <p>
+            Ιστολογικά υπάρχει διηθητική συνιστώσα επιπλέον των αλλαγών
+            της κακοήθους εφηλίδας.
+        </p>
+    </div>
+
+</div>
+
+<h2 class="section-title">Επιπολής Επεκτεινόμενο Κακόηθες Μελάνωμα</h2>
+
+<div class="grid">
+
+    <div class="box blue">
+        <h2>Βασικά</h2>
+        <p>
+            Το επιπολής επεκτεινόμενο κακόηθες μελάνωμα είναι ο πιο κοινός
+            τύπος μελανώματος σε λευκούς πληθυσμούς.
+        </p>
+        <ul>
+            <li>Ξεκινά ως οριζόντια / ακτινωτή ανάπτυξη</li>
+            <li>Μοιάζει με κακοήθη εφηλίδα</li>
+            <li>Πριν διηθήσει το υποκείμενο χόριο</li>
+            <li>Η ακτινωτή φάση μπορεί να διαρκέσει χρόνια</li>
+        </ul>
+    </div>
+
+    <div class="box violet">
+        <h2>Κλινικές μορφές</h2>
+        <ul>
+            <li>Μέγεθος από λίγα mm έως αρκετά cm</li>
+            <li>Συνήθως διάμετρος περίπου 1 cm όταν εξετάζεται</li>
+            <li>Ακανόνιστη παρυφή</li>
+            <li>Συχνά ψηλαφητή βλάβη</li>
+            <li>Ποικιλοχρωμία</li>
+            <li>Περιοχές υποστροφής</li>
+            <li>Μπορεί να εμφανίσει απολέπιση, αιμορραγία ή εξέλκωση</li>
+        </ul>
+    </div>
+
+    <div class="box pink">
+        <h2>In situ βλάβες</h2>
+        <ul>
+            <li>Χωρίς διείσδυση στο χόριο</li>
+            <li>Κηλίδες ή ουσιαστικά μη ψηλαφητές βλάβες</li>
+        </ul>
+    </div>
+
+    <div class="box peach">
+        <h2>Περιοχές προτίμησης</h2>
+        <ul>
+            <li>Στις γυναίκες: συχνότερα στις κνήμες</li>
+            <li>Στους άνδρες: συχνότερα στον κορμό, ειδικά στη ράχη</li>
+            <li>Μπορεί να εμφανιστεί οπουδήποτε</li>
+        </ul>
+    </div>
+
+</div>
+
+<div class="exam-box">
+    <h2>📌 Μέθοδος ABCD(E)</h2>
+    <ul>
+        <li><strong>A — Asymmetry:</strong> Ασυμμετρία</li>
+        <li><strong>B — Border:</strong> Ακανόνιστη παρυφή</li>
+        <li><strong>C — Colour:</strong> Χρωματική ποικιλομορφία</li>
+        <li><strong>D — Diameter:</strong> Διάμετρος μεγαλύτερη από 6 mm</li>
+        <li><strong>E — Enlargement:</strong> Αύξηση μεγέθους</li>
+    </ul>
+</div>
+
+<!-- Συνέχεια: Μελάνωμα -->
+
+<div class="exam-box">
+
+    <h2>📌 Seven-point checklist</h2>
+
+    <div class="grid">
+
+        <div class="box pink">
+
+            <h3>Μείζονα κριτήρια</h3>
+
+            <ul>
+                <li>Αλλαγή μεγέθους</li>
+                <li>Αλλαγή σχήματος</li>
+                <li>Αλλαγή χρώματος</li>
+            </ul>
+
+        </div>
+
+        <div class="box yellow">
+
+            <h3>Ελάσσονα κριτήρια</h3>
+
+            <ul>
+                <li>Διάμετρος &gt; 7 mm</li>
+                <li>Φλεγμονή</li>
+                <li>Κνησμός</li>
+                <li>Οζίδια</li>
+                <li>Αιμορραγία</li>
+            </ul>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="grid">
+
+    <div class="box violet">
+
+        <h2>Ιστοπαθολογία ΕΕΚΜ</h2>
+
+        <ul>
+            <li>Υπερπλασία άτυπων μελανινοκυττάρων μέσα στην επιδερμίδα</li>
+            <li>Τα κύτταρα συχνά οργανώνονται σε φωλιές</li>
+            <li>Μονήρη κύτταρα μπορεί να βρεθούν σε ανώτερα στρώματα της επιδερμίδας</li>
+            <li>Στο διηθητικό ΕΕΚΜ υπάρχει επέκταση κακοήθων κυττάρων στο χόριο</li>
+        </ul>
+
+    </div>
+
+    <div class="box peach">
+
+        <h2>Διερεύνηση & Θεραπεία</h2>
+
+        <ul>
+            <li>Κάθε ύποπτη βλάβη αφαιρείται με υγιή όρια</li>
+            <li>Συχνά χρειάζεται ευρεία εκτομή</li>
+            <li>Το ιστολογικό πόρισμα πρέπει να περιλαμβάνει Clark και Breslow</li>
+            <li>Η δερματοσκόπηση βοηθά σημαντικά στη διάγνωση</li>
+            <li>Η σημασία χημειοθεραπείας είναι περιορισμένη στα πρώιμα στάδια</li>
+        </ul>
+
+    </div>
+
+</div>
+
+<h2 class="section-title">Οζώδες Μελάνωμα (Nodular Melanoma)</h2>
+
+<div class="grid">
+
+    <div class="box pink">
+
+        <h2>Κλινικές μορφές</h2>
+
+        <ul>
+            <li>Παρουσιάζεται ως όζος</li>
+            <li>Μπορεί να είναι λείος ή θολωτός</li>
+            <li>Μπορεί να είναι ανώμαλος ή μυρμηκιώδης</li>
+            <li>Συνήθως υπάρχει υπέρχρωση</li>
+            <li>Μικρή μελαχρωματική άλως μπορεί να περιβάλλει τη βάση</li>
+        </ul>
+
+    </div>
+
+    <div class="box yellow">
+
+        <h2>Συμπεριφορά</h2>
+
+        <ul>
+            <li>Συνήθως εμφανίζεται και αυξάνεται γρήγορα</li>
+            <li>Κατά τη διάγνωση συχνά είναι ήδη μεγάλο</li>
+            <li>Έχει πιο επιθετική συμπεριφορά</li>
+        </ul>
+
+    </div>
+
+    <div class="box green">
+
+        <h2>Περιοχές προτίμησης</h2>
+
+        <ul>
+            <li>Συχνότερα στην άνω περιοχή της ράχης</li>
+            <li>Μπορεί όμως να εμφανιστεί παντού</li>
+        </ul>
+
+    </div>
+
+    <div class="box blue">
+
+        <h2>Ιστοπαθολογία</h2>
+
+        <ul>
+            <li>Μάζα καρκινικών κυττάρων διηθεί το χόριο</li>
+            <li>Συχνά αντικαθιστά το χόριο</li>
+            <li>Δεν υπάρχει σημαντική παράπλευρη εξάπλωση</li>
+        </ul>
+
+    </div>
+
+</div>
+
+<div class="highlight">
+
+    <h2>Θεραπεία Οζώδους Μελανώματος</h2>
+
+    <ul>
+        <li>Άμεση αφαίρεση</li>
+        <li>Ιστολογική εξέταση</li>
+        <li>Αξιολόγηση βάθους εισβολής</li>
+    </ul>
+
+</div>
+
+<h2 class="section-title">Μελάνωμα των Άκρων (Acral Melanoma)</h2>
+
+<div class="grid">
+
+    <div class="box violet">
+
+        <h2>Επιδημιολογία</h2>
+
+        <ul>
+            <li>Σπανιότερη μορφή σε λευκούς πληθυσμούς</li>
+            <li>Συχνότερη σε Ασιατικούς και Αφρο-Καραϊβικούς πληθυσμούς</li>
+            <li>Εντοπίζεται σε παλάμες, πέλματα και υπονύχια</li>
+        </ul>
+
+    </div>
+
+    <div class="box peach">
+
+        <h2>Κλινική εικόνα</h2>
+
+        <ul>
+            <li>Επίπεδη μελαχρωματική περιοχή</li>
+            <li>Συχνά σε παλάμη ή πέλμα</li>
+            <li>Μπορεί να εμφανιστεί κάτω από νύχι</li>
+            <li>Δύσκολη διαφορική διάγνωση από υπονύχιο αιμάτωμα</li>
+        </ul>
+
+    </div>
+
+    <div class="box pink">
+
+        <h2>Σημείο Hutchinson</h2>
+
+        <ul>
+            <li>Μελάγχρωση γύρω από το παρωνύχιο</li>
+            <li>Αυξάνει την υποψία κακοήθειας</li>
+            <li>Συχνά απαιτείται βιοψία</li>
+        </ul>
+
+    </div>
+
+    <div class="box green">
+
+        <h2>Ιστοπαθολογία</h2>
+
+        <ul>
+            <li>Υπερπλασία άτυπων μελανινοκυττάρων</li>
+            <li>Μπορεί να υπάρχουν “skip areas” φυσιολογικού ιστού</li>
+            <li>Μικροσκοπικά πολυεστιακή κατανομή</li>
+        </ul>
+
+    </div>
+
+</div>
+
+<div class="box blue">
+
+    <h2>Διερεύνηση & Θεραπεία</h2>
+
+    <ul>
+        <li>Η βιοψία είναι απαραίτητη</li>
+        <li>Απαιτείται κατάλληλη χειρουργική εξαίρεση</li>
+        <li>Μπορεί να χρειαστεί μερικός ή πλήρης ακρωτηριασμός δακτύλου</li>
+    </ul>
+
+</div>
+
+<h2 class="section-title">Πρόληψη & Τελικό Στάδιο Μελανώματος</h2>
+
+<div class="grid">
+
+    <div class="box yellow">
+
+        <h2>Πρόληψη</h2>
+
+        <ul>
+            <li>Εκπαίδευση πληθυσμού για έκθεση στον ήλιο</li>
+            <li>Αποφυγή εγκαυμάτων</li>
+            <li>Έγκαιρη διάγνωση</li>
+            <li>Όσο νωρίτερα αφαιρείται τόσο καλύτερη πρόγνωση</li>
+        </ul>
+
+    </div>
+
+    <div class="box pink">
+
+        <h2>Μεταστάσεις</h2>
+
+        <ul>
+            <li>Το μελάνωμα δίνει μεταστάσεις</li>
+            <li>Συχνά σε λεμφαδένες</li>
+            <li>Μπορεί σε οστά, εγκέφαλο, πνεύμονες και ήπαρ</li>
+        </ul>
+
+    </div>
+
+    <div class="box violet">
+
+        <h2>Αντιμετώπιση τελικού σταδίου</h2>
+
+        <ul>
+            <li>Λεμφαδενεκτομή σε ορισμένες περιπτώσεις</li>
+            <li>Ανοσοθεραπεία με ενθαρρυντικά αποτελέσματα</li>
+            <li>Η έγκαιρη χειρουργική εξαίρεση παραμένει το σημαντικότερο βήμα</li>
+        </ul>
+
+    </div>
+
+</div>
+
+<div class="exam-box">
+
+    <h2>📌 SOS για εξετάσεις</h2>
+
+    <ul>
+
+        <li>Το Breslow είναι σημαντικότερο προγνωστικό κριτήριο από Clark</li>
+
+        <li>Οζώδες μελάνωμα = γρήγορη κάθετη ανάπτυξη</li>
+
+        <li>ΕΕΚΜ = συχνότερος τύπος μελανώματος</li>
+
+        <li>Μελάνωμα άκρων → παλάμες, πέλματα, υπονύχια</li>
+
+        <li>Σημείο Hutchinson = υποψία υπονύχιου μελανώματος</li>
+
+        <li>ABCD(E) και seven-point checklist χρησιμοποιούνται στη διάγνωση</li>
+
+        <li>Το μελάνωμα μεταστασιοποιείται συχνά</li>
+
+    </ul>
+
+</div>
+
+<h2 class="section-title">Σπίλοι από Δερματικά Συστατικά</h2>
+
+<div class="highlight">
+
+    <h2>Γενικά</h2>
+
+    <p>
+        Οι σπίλοι από δερματικά συστατικά αποτελούν δυσπλασίες ή αμαρτώματα
+        του συνδετικού ιστού. Μπορεί να σχετίζονται με πολυσυστηματικά σύνδρομα.
+    </p>
+
+</div>
+
+<h2 class="section-title">Σπίλοι Συνδετικού Ιστού</h2>
+
+<div class="grid">
+
+    <div class="box peach">
+
+        <h2>Βασικά χαρακτηριστικά</h2>
+
+        <ul>
+            <li>Αποτελούνται από κολλαγόνο ή ελαστίνη</li>
+            <li>Μπορεί να σχετίζονται με σύνδρομα</li>
+            <li>Παράδειγμα: οζώδης σκλήρυνση</li>
+            <li>Παράδειγμα: Buschke-Ollendorff syndrome</li>
+        </ul>
+
+    </div>
+
+</div>
+
+<h2 class="section-title">Σπίλοι Κολλαγόνου (Collagen Naevi)</h2>
+
+<div class="grid">
+
+    <div class="box green">
+
+        <h2>Επιδημιολογία & Αιτιολογία</h2>
+
+        <ul>
+            <li>Χαρακτηριστική βλάβη στην οζώδη σκλήρυνση</li>
+            <li>Μπορεί να είναι οικογενείς ή σποραδικοί</li>
+            <li>Μερικές φορές συνδυάζονται με καρδιακές ανωμαλίες</li>
+        </ul>
+
+    </div>
+
+    <div class="box yellow">
+
+        <h2>Κλινικά χαρακτηριστικά</h2>
+
+        <ul>
+            <li>Πολλαπλοί δερματικοί όζοι</li>
+            <li>Χρώμα φυσιολογικού δέρματος</li>
+            <li>Συχνά εκρηκτική εμφάνιση</li>
+        </ul>
+
+    </div>
+
+    <div class="box pink">
+
+        <h2>Περιοχές προτίμησης</h2>
+
+        <ul>
+            <li>Συχνότερα στα άκρα</li>
+            <li>Μπορεί και στον κορμό</li>
+        </ul>
+
+    </div>
+
+    <div class="box blue">
+
+        <h2>Ιστοπαθολογία</h2>
+
+        <ul>
+            <li>Συμπυκνωμένες δεσμίδες κολλαγόνου</li>
+        </ul>
+
+    </div>
+
+</div>
+
+<div class="box violet">
+
+    <h2>Διερεύνηση & Θεραπεία</h2>
+
+    <ul>
+        <li>Μπορεί να χρειαστεί βιοψία</li>
+        <li>Ακτινολογικός έλεγχος για οστεοποικίλωση</li>
+        <li>Στις οικογενείς μορφές χρειάζεται καρδιολογικός έλεγχος</li>
+    </ul>
+
+</div>
+
+<h2 class="section-title">Σπίλοι από Ελαστικό Ιστό (Elastic Naevi)</h2>
+
+<div class="grid">
+
+    <div class="box peach">
+
+        <h2>Χαρακτηριστικά</h2>
+
+        <ul>
+            <li>Παρόμοιες βλάβες με collagen naevi</li>
+            <li>Περιέχουν ανώμαλες συνδετικές ίνες</li>
+            <li>Συχνά εμφανίζονται στον κορμό</li>
+            <li>Μπορεί να σχηματίζουν μεγάλες πλάκες</li>
+        </ul>
+
+    </div>
+
+</div>
+
+<!-- 🎨 EXTRA COLOR SYSTEM FOR IMPORTANT WORDS -->
+
+<style>
+
+/* ===== NEW HIGHLIGHT SYSTEM ===== */
+
+.hl-red{
+    color:#d62828;
+    font-weight:700;
+}
+
+.hl-blue{
+    color:#1565c0;
+    font-weight:700;
+}
+
+.hl-green{
+    color:#2e7d32;
+    font-weight:700;
+}
+
+.hl-purple{
+    color:#7b2cbf;
+    font-weight:700;
+}
+
+.hl-orange{
+    color:#ef6c00;
+    font-weight:700;
+}
+
+.hl-pink{
+    color:#d63384;
+    font-weight:700;
+}
+
+.hl-teal{
+    color:#00897b;
+    font-weight:700;
+}
+
+.hl-yellow{
+    background:#fff59d;
+    padding:2px 6px;
+    border-radius:8px;
+    font-weight:700;
+}
+
+.hl-dark{
+    background:#1f2937;
+    color:white;
+    padding:2px 7px;
+    border-radius:8px;
+    font-weight:700;
+}
+
+.hl-soft-red{
+    background:#ffd6d6;
+    padding:2px 6px;
+    border-radius:8px;
+    font-weight:600;
+}
+
+.hl-soft-blue{
+    background:#dceeff;
+    padding:2px 6px;
+    border-radius:8px;
+    font-weight:600;
+}
+
+.hl-soft-green{
+    background:#dff7e6;
+    padding:2px 6px;
+    border-radius:8px;
+    font-weight:600;
+}
+
+.hl-soft-purple{
+    background:#ece4ff;
+    padding:2px 6px;
+    border-radius:8px;
+    font-weight:600;
+}
+
+</style>
+
+<!-- ✨ EXAMPLE OF HOW TO USE THEM -->
+
+<div class="box peach">
+
+    <h2>Αγγειακοί σπίλοι</h2>
+
+    <p>
+        Οι <span class="hl-red">αγγειακές κηλίδες</span> οφείλονται σε
+        <span class="hl-blue">διαστολή</span> ή
+        <span class="hl-purple">καταστροφή αγγείων</span>.
+    </p>
+
+    <ul>
+
+        <li>
+            <span class="hl-soft-red">Port-wine stain</span>
+            → συγγενής αγγειακή δυσπλασία
+        </li>
+
+        <li>
+            <span class="hl-soft-blue">Salmon patch</span>
+            → συχνό σε νεογνά
+        </li>
+
+        <li>
+            Βλάβες κοντά στα βλέφαρα →
+            <span class="hl-dark">κίνδυνος γλαυκώματος</span>
+        </li>
+
+        <li>
+            Βλάβες στην περιοχή του
+            <span class="hl-orange">τριδύμου νεύρου</span>
+            μπορεί να σχετίζονται με
+            <span class="hl-pink">Sturge-Weber</span>
+        </li>
+
+    </ul>
+
+</div>
+
+<!-- ========================= -->
+<!-- CONTINUATION OF NOTES -->
+<!-- ========================= -->
+
+<h2 class="section-title">Αγγειακοί Σπίλοι</h2>
+
+<div class="highlight">
+
+    <h2>📌 Βασικά</h2>
+
+    <p>
+        Οι <span class="hl-red">αγγειακές κηλίδες</span> οφείλονται σε
+        <span class="hl-blue">διαστολή</span> ή
+        <span class="hl-purple">καταστροφή αγγείων</span>
+        είτε επιφανειακά είτε βαθύτερα στο χόριο.
+    </p>
+
+</div>
+
+<h2 class="section-title">Τελαγγειεκτατικοί Σπίλοι</h2>
+
+<div class="grid">
+
+    <div class="box pink">
+
+        <h2>Τύποι</h2>
+
+        <ul>
+            <li>
+                <span class="hl-soft-red">Επιφανειακός τριχοειδικός τύπος</span>
+            </li>
+
+            <li>
+                <span class="hl-soft-purple">Port-wine stain</span>
+            </li>
+        </ul>
+
+    </div>
+
+    <div class="box yellow">
+
+        <h2>Salmon patch</h2>
+
+        <ul>
+
+            <li>
+                Πολύ συχνό σε <span class="hl-blue">νεογνά</span>
+            </li>
+
+            <li>
+                Εμφανίζεται σε:
+                <span class="hl-green">αυχένα</span>,
+                <span class="hl-green">μέτωπο</span>,
+                <span class="hl-green">βλέφαρα</span>
+            </li>
+
+            <li>
+                Συνήθως υποχωρεί αυτόματα
+            </li>
+
+            <li>
+                Δεν απαιτείται θεραπεία
+            </li>
+
+        </ul>
+
+    </div>
+
+</div>
+
+<h2 class="section-title">Port-Wine Stain</h2>
+
+<div class="grid">
+
+    <div class="box violet">
+
+        <h2>Χαρακτηριστικά</h2>
+
+        <ul>
+
+            <li>
+                Βαθύτερη αγγειακή δυσπλασία
+            </li>
+
+            <li>
+                Οι βλάβες είναι
+                <span class="hl-red">μόνιμες</span>
+            </li>
+
+            <li>
+                Με τα χρόνια:
+                <span class="hl-dark">σκουραίνουν & παχαίνουν</span>
+            </li>
+
+            <li>
+                Συχνά σε:
+                <span class="hl-orange">κεφάλι & λαιμό</span>
+            </li>
+
+        </ul>
+
+    </div>
+
+    <div class="box peach">
+
+        <h2>Συσχετίσεις</h2>
+
+        <ul>
+
+            <li>
+                Περιοχή τριδύμου →
+                <span class="hl-pink">Sturge-Weber syndrome</span>
+            </li>
+
+            <li>
+                Βλέφαρα →
+                <span class="hl-soft-red">κίνδυνος γλαυκώματος</span>
+            </li>
+
+            <li>
+                Απαιτείται
+                <span class="hl-blue">νευρολογική</span>
+                και
+                <span class="hl-green">οφθαλμολογική</span>
+                εκτίμηση
+            </li>
+
+        </ul>
+
+    </div>
+
+    <div class="box blue">
+
+        <h2>Θεραπεία</h2>
+
+        <ul>
+
+            <li>
+                Laser θεραπεία εκλογής
+            </li>
+
+            <li>
+                Εξάλειψη των πασχόντων αγγείων
+            </li>
+
+        </ul>
+
+    </div>
+
+</div>
+
+<h2 class="section-title">Εν Τω Βάθει Αρτηριοφλεβικές Δυσπλασίες</h2>
+
+<div class="grid">
+
+    <div class="box green">
+
+        <h2>Χαρακτηριστικά</h2>
+
+        <ul>
+
+            <li>
+                Εντοπίζονται στο
+                <span class="hl-purple">υποδόριο</span>
+            </li>
+
+            <li>
+                Η περιοχή είναι:
+                <span class="hl-yellow">θερμή & απαλή</span>
+            </li>
+
+            <li>
+                Μπορεί να προκαλούν
+                καταστροφή φυσιολογικής αρχιτεκτονικής
+            </li>
+
+            <li>
+                Μερικές φορές χρειάζεται
+                <span class="hl-dark">χειρουργική διόρθωση</span>
+            </li>
+
+        </ul>
+
+    </div>
+
+</div>
+
+<h2 class="section-title">Αιμαγγειεκτατική Υπερτροφία</h2>
+
+<div class="box pink">
+
+    <ul>
+
+        <li>
+            Συνδυασμός:
+            <span class="hl-soft-purple">port-wine stain</span>
+            ή
+            <span class="hl-soft-blue">AV malformation</span>
+        </li>
+
+        <li>
+            Συνοδεύεται από
+            <span class="hl-red">υπερτροφία</span>
+            της περιοχής
+        </li>
+
+        <li>
+            Συχνότερα επηρεάζεται
+            <span class="hl-orange">ολόκληρο άκρο</span>
+        </li>
+
+    </ul>
+
+</div>
+
+<h2 class="section-title">Αγγειωματώδεις Σπίλοι</h2>
+
+<div class="grid">
+
+    <div class="box peach">
+
+        <h2>Επιδημιολογία</h2>
+
+        <ul>
+
+            <li>
+                Εμφανίζονται στο
+                <span class="hl-blue">10% των βρεφών</span>
+            </li>
+
+            <li>
+                Συχνότεροι σε
+                <span class="hl-purple">πρόωρα βρέφη</span>
+            </li>
+
+            <li>
+                Υπάρχουν:
+                <span class="hl-soft-red">επιφανειακοί</span>
+                και
+                <span class="hl-soft-blue">εν τω βάθει</span>
+                τύποι
+            </li>
+
+        </ul>
+
+    </div>
+
+    <div class="box yellow">
+
+        <h2>Κλινικά χαρακτηριστικά</h2>
+
+        <ul>
+
+            <li>
+                Ταχέως αναπτυσσόμενο
+                <span class="hl-red">αγγειακό οίδημα</span>
+            </li>
+
+            <li>
+                Οι επιφανειακές βλάβες είναι
+                <span class="hl-pink">έντονα ερυθρές</span>
+            </li>
+
+            <li>
+                Οι βαθύτερες καλύπτονται από
+                σχετικά φυσιολογικό δέρμα
+            </li>
+
+        </ul>
+
+    </div>
+
+</div>
+
+<div class="exam-box">
+
+    <h2>📌 Επιπλοκές Αγγειωματωδών Σπίλων</h2>
+
+    <ul>
+
+        <li><span class="hl-red">Αιμορραγία</span></li>
+
+        <li><span class="hl-orange">Ουλοποίηση</span></li>
+
+        <li><span class="hl-pink">Μόλυνση</span></li>
+
+        <li>
+            Προβλήματα σε
+            <span class="hl-blue">αναπνοή</span>,
+            <span class="hl-green">σίτιση</span>,
+            <span class="hl-purple">όραση</span>
+        </li>
+
+        <li>
+            <span class="hl-dark">Αμβλυωπία</span>
+        </li>
+
+        <li>
+            <span class="hl-soft-purple">Kasabach-Merritt syndrome</span>
+        </li>
+
+    </ul>
+
+</div>
+
+<!-- ========================= -->
+<!-- ΑΓΓΕΙΟΚΕΡΑΤΩΜΑΤΑ -->
+<!-- ========================= -->
+
+<h2 class="section-title">Αγγειοκερατώματα (Angiokeratomas)</h2>
+
+<div class="highlight">
+
+    <p>
+        Ορισμένες
+        <span class="hl-red">αγγειακές δυσπλασίες</span>
+        συνοδεύονται από:
+
+        <span class="hl-orange">επιδερμική ακάνθωση</span>,
+        <span class="hl-purple">θηλωμάτωση</span>
+        και
+        <span class="hl-pink">υπερκεράτωση</span>.
+
+    </p>
+
+    <p>
+        Αυτές οι βλάβες ονομάζονται
+        <span class="hl-dark">αγγειοκερατώματα</span>.
+    </p>
+
+</div>
+
+<div class="exam-box">
+
+    <h2>📌 Μορφές Αγγειοκερατώματος</h2>
+
+    <ul>
+
+        <li>
+            <span class="hl-soft-red">
+                Αγγειοκεράτωμα περιγεγραμμένο
+            </span>
+        </li>
+
+        <li>
+            <span class="hl-soft-blue">
+                Αγγειοκεράτωμα του Mibelli
+            </span>
+        </li>
+
+        <li>
+            <span class="hl-soft-purple">
+                Αγγειοκεράτωμα του Fordyce
+            </span>
+        </li>
+
+        <li>
+            <span class="hl-soft-green">
+                Διάχυτο αγγειοκεράτωμα κορμού
+                (Anderson-Fabry)
+            </span>
+        </li>
+
+    </ul>
+
+</div>
+
+<!-- ========================= -->
+<!-- ΣΥΝΔΡΟΜΑ -->
+<!-- ========================= -->
+
+<h2 class="section-title">
+    Διαταραχές με Αγγειώματα & Αγγειακές Δυσπλασίες
+</h2>
+
+<div class="grid">
+
+    <div class="box pink">
+
+        <h2>Struge-Weber</h2>
+
+        <ul>
+            <li>
+                <span class="hl-red">PWS αιμαγγείωμα προσώπου</span>
+            </li>
+
+            <li>
+                <span class="hl-purple">Κρανιακό αγγείωμα</span>
+            </li>
+        </ul>
+
+    </div>
+
+    <div class="box yellow">
+
+        <h2>Maffuci syndrome</h2>
+
+        <ul>
+            <li>Αιμαγγειώματα</li>
+            <li>Δυσχονδροπλασία</li>
+        </ul>
+
+    </div>
+
+    <div class="box violet">
+
+        <h2>Blue rubber bleb naevus</h2>
+
+        <ul>
+            <li>
+                <span class="hl-blue">Φλεβικές ανωμαλίες</span>
+            </li>
+
+            <li>Δέρμα</li>
+
+            <li>Γαστρεντερικός σωλήνας</li>
+
+            <li>Άλλα όργανα</li>
+
+        </ul>
+
+    </div>
+
+    <div class="box green">
+
+        <h2>Von Hippel-Lindau</h2>
+
+        <ul>
+
+            <li>Αμφιβληστροειδικά αγγειώματα</li>
+
+            <li>Παρεγκεφαλιδικά αιμαγγειοβλαστώματα</li>
+
+            <li>
+                <span class="hl-soft-purple">Port-wine stain</span>
+            </li>
+
+        </ul>
+
+    </div>
+
+</div>
+
+<!-- ========================= -->
+<!-- ΑΓΓΕΙΟΚΕΡΑΤΩΜΑ ΠΕΡΙΓΕΓΡΑΜΜΕΝΟ -->
+<!-- ========================= -->
+
+<h2 class="section-title">
+    Αγγειοκεράτωμα Περιγεγραμμένο
+</h2>
+
+<div class="grid">
+
+    <div class="box peach">
+
+        <h2>Κλινική εικόνα</h2>
+
+        <ul>
+
+            <li>
+                Μονήρης
+                <span class="hl-purple">ιώδης πλάκα</span>
+            </li>
+
+            <li>
+                <span class="hl-orange">Μυρμηκιώδης επιφάνεια</span>
+            </li>
+
+        </ul>
+
+    </div>
+
+    <div class="box blue">
+
+        <h2>Περιοχές προτίμησης</h2>
+
+        <ul>
+
+            <li>Κάτω άκρα</li>
+
+            <li>Γλουτοί</li>
+
+            <li>Σπανιότερα παντού</li>
+
+        </ul>
+
+    </div>
+
+    <div class="box pink">
+
+        <h2>Θεραπεία</h2>
+
+        <ul>
+
+            <li>Διαθερμία</li>
+
+            <li>Διαθερμοπηξία</li>
+
+            <li>
+                <span class="hl-red">Laser</span>
+            </li>
+
+            <li>
+                Μεγάλες βλάβες →
+                <span class="hl-dark">πλαστικός χειρουργός</span>
+            </li>
+
+        </ul>
+
+    </div>
+
+</div>
+
+<!-- ========================= -->
+<!-- MIBELLI -->
+<!-- ========================= -->
+
+<h2 class="section-title">
+    Αγγειοκεράτωμα του Mibelli
+</h2>
+
+<div class="grid">
+
+    <div class="box violet">
+
+        <h2>Συσχετίσεις</h2>
+
+        <ul>
+
+            <li>
+                Προκαλείται από
+                <span class="hl-blue">κρύο</span>
+            </li>
+
+            <li>Ακροκυάνωση</li>
+
+            <li>Χιονίστρες</li>
+
+        </ul>
+
+    </div>
+
+    <div class="box yellow">
+
+        <h2>Κλινικά χαρακτηριστικά</h2>
+
+        <ul>
+
+            <li>
+                Πολλαπλές μικρές βλάβες
+            </li>
+
+            <li>
+                Διάμετρος έως
+                <span class="hl-dark">5 mm</span>
+            </li>
+
+            <li>
+                Έναρξη στην
+                <span class="hl-pink">εφηβεία</span>
+            </li>
+
+        </ul>
+
+    </div>
+
+    <div class="box green">
+
+        <h2>Εντόπιση</h2>
+
+        <ul>
+
+            <li>Δάκτυλα χεριών</li>
+
+            <li>Δάκτυλα ποδιών</li>
+
+        </ul>
+
+    </div>
+
+</div>
+
+<!-- ========================= -->
+<!-- FORDYCE -->
+<!-- ========================= -->
+
+<h2 class="section-title">
+    Αγγειοκεράτωμα του Fordyce
+</h2>
+
+<div class="grid">
+
+    <div class="box peach">
+
+        <h2>Γενικά</h2>
+
+        <ul>
+
+            <li>
+                Συχνό σε
+                <span class="hl-orange">μεγαλύτερες ηλικίες</span>
+            </li>
+
+            <li>
+                Μπορεί να περνά απαρατήρητο
+            </li>
+
+            <li>
+                Μέχρι να εμφανιστεί
+                <span class="hl-red">αιμορραγία</span>
+            </li>
+
+        </ul>
+
+    </div>
+
+    <div class="box pink">
+
+        <h2>Κλινική εικόνα</h2>
+
+        <ul>
+
+            <li>
+                Μικρές
+                <span class="hl-purple">ιώδεις βλατίδες</span>
+            </li>
+
+            <li>Πέος</li>
+
+            <li>Όσχεο</li>
+
+            <li>Αιδοίο</li>
+
+            <li>
+                Αυξάνονται σταδιακά
+            </li>
+
+        </ul>
+
+    </div>
+
+    <div class="box blue">
+
+        <h2>Θεραπεία</h2>
+
+        <ul>
+
+            <li>Κρυοθεραπεία</li>
+
+            <li>Διαθερμοπηξία</li>
+
+            <li>Laser</li>
+
+            <li>Αφαίρεση</li>
+
+        </ul>
+
+    </div>
+
+</div>
+
+<!-- ========================= -->
+<!-- FABRY -->
+<!-- ========================= -->
+
+<h2 class="section-title">
+    Διάχυτο Αγγειοκεράτωμα Κορμού
+</h2>
+
+<div class="box green">
+
+    <ul>
+
+        <li>
+            <span class="hl-dark">
+                Νόσος Anderson-Fabry
+            </span>
+        </li>
+
+        <li>
+            Σπάνια συστηματική διαταραχή
+        </li>
+
+        <li>
+            Πολλαπλά δερματικά αγγειοκερατώματα
+        </li>
+
+        <li>
+            Συνδέεται με
+            <span class="hl-red">συστηματικές ανωμαλίες</span>
+        </li>
+
+    </ul>
+
+</div>
+
+<!-- ========================= -->
+<!-- ΛΕΜΦΑΓΓΕΙΩΜΑ -->
+<!-- ========================= -->
+
+<h2 class="section-title">
+    Λεμφαγγείωμα Περιγεγραμμένο
+</h2>
+
+<div class="grid">
+
+    <div class="box yellow">
+
+        <h2>Επιδημιολογία</h2>
+
+        <ul>
+
+            <li>
+                Συγγενές έλλειμμα
+            </li>
+
+            <li>
+                Μπορεί να γίνει πολύ ενοχλητικό
+            </li>
+
+            <li>
+                Συμμετέχουν κυρίως
+                <span class="hl-blue">λεμφαγγεία</span>
+            </li>
+
+        </ul>
+
+    </div>
+
+    <div class="box violet">
+
+        <h2>Κλινική εικόνα</h2>
+
+        <ul>
+
+            <li>
+                Μικρές φυσαλίδες
+            </li>
+
+            <li>
+                Εικόνα “
+                <span class="hl-green">frogspawn</span>
+                ”
+            </li>
+
+            <li>
+                Μπορεί να έχουν
+                <span class="hl-pink">ρόδινο χρώμα</span>
+            </li>
+
+        </ul>
+
+    </div>
+
+    <div class="box peach">
+
+        <h2>Περιοχές προτίμησης</h2>
+
+        <ul>
+
+            <li>Ώμοι</li>
+
+            <li>Ισχία</li>
+
+            <li>Χέρια</li>
+
+            <li>Περίνεο</li>
+
+            <li>Στόμα</li>
+
+        </ul>
+
+    </div>
+
+    <div class="box blue">
+
+        <h2>Ιστοπαθολογία</h2>
+
+        <ul>
+
+            <li>
+                Το χόριο περιέχει
+                <span class="hl-purple">
+                    διατεταμένα λεμφαγγεία
+                </span>
+            </li>
+
+        </ul>
+
+    </div>
+
+</div>
+
+<div class="box pink">
+
+    <h2>Διερεύνηση & Θεραπεία</h2>
+
+    <ul>
+
+        <li>
+            Συνήθως αποφεύγεται παρέμβαση
+        </li>
+
+        <li>
+            Ανεπαρκής αφαίρεση →
+            <span class="hl-red">υποτροπή</span>
+        </li>
+
+        <li>
+            Μπορεί να εμφανιστούν νέα αγγεία
+        </li>
+
+    </ul>
+
+</div>
+
+<!-- ========================= -->
+<!-- ΜΑΣΤΟΚΥΤΤΑΡΩΝ -->
+<!-- ========================= -->
+
+<h2 class="section-title">
+    Σπίλοι Μαστοκυττάρων
+</h2>
+
+<div class="grid">
+
+    <div class="box green">
+
+        <h2>Επιδημιολογία</h2>
+
+        <ul>
+
+            <li>
+                Δερματική μαστοκύττωση
+            </li>
+
+            <li>
+                Συλλογή
+                <span class="hl-orange">μαστοκυττάρων</span>
+            </li>
+
+            <li>
+                Ονομάζεται
+                <span class="hl-dark">μαστοκύτωμα</span>
+            </li>
+
+        </ul>
+
+    </div>
+
+    <div class="box yellow">
+
+        <h2>Κλινικά χαρακτηριστικά</h2>
+
+        <ul>
+
+            <li>
+                Μονήρεις ή πολλαπλές βλάβες
+            </li>
+
+            <li>
+                Συχνά
+                <span class="hl-purple">>1 cm</span>
+            </li>
+
+            <li>
+                Κοκκινωπή βλατίδα ή όζος
+            </li>
+
+            <li>
+                Γίνεται
+                <span class="hl-red">κνιδωτική με τριβή</span>
+            </li>
+
+        </ul>
+
+    </div>
+
+</div>
+
+<div class="exam-box">
+
+    <h2>📌 SOS Εξετάσεων</h2>
+
+    <ul>
+
+        <li>
+            Port-wine stain κοντά σε βλέφαρο →
+            <span class="hl-red">γλαύκωμα</span>
+        </li>
+
+        <li>
+            Sturge-Weber →
+            <span class="hl-purple">PWS + νευρολογικές βλάβες</span>
+        </li>
+
+        <li>
+            Strawberry naevi →
+            <span class="hl-pink">βρέφη</span>
+        </li>
+
+        <li>
+            Mibelli →
+            <span class="hl-blue">κρύο & ακροκυάνωση</span>
+        </li>
+
+        <li>
+            Fordyce →
+            <span class="hl-orange">όσχεο / γεννητικά όργανα</span>
+        </li>
+
+        <li>
+            Mastocytoma →
+            <span class="hl-dark">κνίδωση μετά από τριβή</span>
+        </li>
+
+    </ul>
+
+</div>
+
+<button class="print-btn" onclick="window.print()">
+    🖨 Εκτύπωση
+</button>
+
+</body>
+</html>
