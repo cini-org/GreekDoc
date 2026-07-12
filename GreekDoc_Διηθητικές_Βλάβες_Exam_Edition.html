@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Διηθητικές Βλάβες — GreekDoc Exam Edition</title>
+<style>
+:root{
+  --bg:#f4f1ea; --paper:#fffdfa; --ink:#202225; --muted:#6a6f75;
+  --accent:#7a294d; --accent2:#2c6673; --gold:#b8860b; --line:#ded8cf;
+  --sos:#fff1b8; --red:#ffe0df; --green:#e8f4e8; --blue:#e8f1f8;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,Arial,"Noto Sans",sans-serif;line-height:1.45}
+.container{max-width:1180px;margin:auto;padding:24px}
+.hero{background:linear-gradient(135deg,#72264a,#2d6571);color:#fff;border-radius:22px;padding:34px 36px;box-shadow:0 14px 32px #0002}
+.hero h1{margin:0 0 8px;font-size:clamp(2rem,5vw,3.8rem);letter-spacing:-.04em}
+.hero p{margin:4px 0;max-width:850px}
+.badges{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}
+.badge{border:1px solid #ffffff66;background:#ffffff1a;padding:6px 11px;border-radius:999px;font-size:.88rem}
+.toolbar{display:flex;gap:10px;flex-wrap:wrap;margin:18px 0}
+button{border:0;border-radius:12px;padding:10px 14px;background:var(--accent);color:#fff;font-weight:700;cursor:pointer}
+button.secondary{background:var(--accent2)}
+h2{font-size:1.65rem;margin:34px 0 14px;border-bottom:3px solid var(--accent);padding-bottom:7px}
+h3{margin:0 0 8px;color:var(--accent)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:17px;box-shadow:0 5px 15px #0000000b}
+.card.sos{background:var(--sos);border-color:#e8ce68}
+.card.red{background:var(--red)}
+.card.green{background:var(--green)}
+.card.blue{background:var(--blue)}
+.kicker{font-size:.76rem;text-transform:uppercase;letter-spacing:.12em;font-weight:800;color:var(--accent2)}
+ul{margin:8px 0 0 20px;padding:0}
+li{margin:4px 0}
+strong{color:#4e1732}
+.table-wrap{overflow:auto;background:var(--paper);border-radius:16px;border:1px solid var(--line)}
+table{border-collapse:collapse;width:100%;min-width:760px}
+th,td{padding:11px 12px;border-bottom:1px solid var(--line);vertical-align:top;text-align:left}
+th{background:#efe8e3;color:#54203b;position:sticky;top:0}
+tr:last-child td{border-bottom:0}
+.callout{border-left:5px solid var(--gold);background:#fff7d6;padding:14px 16px;border-radius:0 14px 14px 0;margin:14px 0}
+.memory{font-weight:800;color:#274d55}
+details{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:12px 14px;margin:9px 0}
+summary{cursor:pointer;font-weight:800;color:var(--accent)}
+.quiz-item{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:15px;margin:10px 0}
+.option{display:block;margin:6px 0;padding:8px 10px;border-radius:9px;background:#f4f2ef}
+.answer{display:none;margin-top:10px;padding:10px;border-radius:10px;background:var(--green);font-weight:700}
+.small{font-size:.9rem;color:var(--muted)}
+footer{margin:34px 0 10px;text-align:center;color:var(--muted);font-size:.88rem}
+@media print{
+ body{background:#fff;font-size:10.5pt}
+ .container{max-width:none;padding:0}
+ .hero{box-shadow:none;border-radius:0;padding:20px}
+ .toolbar{display:none}
+ .card,details,.quiz-item{break-inside:avoid;box-shadow:none}
+ h2{break-after:avoid}
+ .answer{display:block!important}
+}
+</style>
+</head>
+<body>
+<div class="container">
+<section class="hero">
+  <div class="kicker" style="color:#f5dbe8">GreekDoc • Exam Edition</div>
+  <h1>Διηθητικές Βλάβες</h1>
+  <p>Συμπυκνωμένες σημειώσεις για εξετάσεις Δερματολογίας, βασισμένες στο κεφάλαιο που ανέβασες. Έμφαση σε <b>κλινική εικόνα, τυπική εντόπιση, βασική συσχέτιση και διαφορική διάγνωση</b>.</p>
+  <div class="badges">
+    <span class="badge">SOS σημεία</span><span class="badge">Πίνακες σύγκρισης</span>
+    <span class="badge">Flashcards</span><span class="badge">MCQ quiz</span><span class="badge">Print friendly</span>
+  </div>
+</section>
+
+<div class="toolbar">
+  <button onclick="window.print()">🖨 Εκτύπωση / PDF</button>
+  <button class="secondary" onclick="document.querySelectorAll('details').forEach(x=>x.open=true)">Άνοιγμα flashcards</button>
+  <button class="secondary" onclick="document.querySelectorAll('details').forEach(x=>x.open=false)">Κλείσιμο flashcards</button>
+</div>
+
+<h2>1. Γρήγορος χάρτης του κεφαλαίου</h2>
+<div class="grid">
+  <div class="card sos"><h3>Νεκροβιοτικές διαταραχές</h3><ul><li>Λιποειδική νεκροβίωση</li><li>Δακτυλιοειδές κοκκίωμα</li><li>Ρευματοειδή οζίδια</li><li>Νεκροβιοτικό ξανθοκοκκίωμα</li></ul></div>
+  <div class="card"><h3>Σαρκοείδωση / κοκκιώματα</h3><ul><li>Δερματική σαρκοείδωση</li><li>Χειμετλώδης λύκος</li><li>Νόσος Crohn</li><li>Κοκκιωματώδης χειλίτιδα</li></ul></div>
+  <div class="card"><h3>Μαστοκύτταρα / ιστιοκύτταρα</h3><ul><li>Μαστοκυττάρωση</li><li>Μελαγχρωματική κνίδωση</li><li>Νεανικό ξανθοκοκκίωμα</li><li>Ιστιοκύττωση Χ</li></ul></div>
+  <div class="card"><h3>Εναποθέσεις / διηθήσεις</h3><ul><li>Αμυλοείδωση</li><li>Λεμφοκυτταρικές διηθήσεις</li><li>Βλεννινώσεις</li></ul></div>
+</div>
+
+<h2>2. Νεκροβιοτικές διαταραχές</h2>
+<div class="callout"><b>Νεκροβίωση:</b> παθολογική μεταβολή του κολλαγόνου του χορίου, συχνά με κοκκιωματώδη φλεγμονώδη αντίδραση γύρω από την αλλοιωμένη περιοχή.</div>
+
+<div class="grid">
+<div class="card sos">
+  <div class="kicker">SOS</div><h3>Λιποειδική νεκροβίωση</h3>
+  <ul>
+    <li>Τυπικά <strong>κνήμες</strong>, συχνά αμφοτερόπλευρα.</li>
+    <li>Πλάκες ερυθροκαστανές/κιτρινωπές με <strong>ατροφικό κιτρινωπό κέντρο</strong> και πιο ενεργό υπερυψωμένο όριο.</li>
+    <li>Μπορεί να εμφανίσει <strong>τηλεαγγειεκτασίες</strong> και εξέλκωση.</li>
+    <li>Κλασική συσχέτιση με <strong>σακχαρώδη διαβήτη</strong>, αλλά δεν υπάρχει σε όλους.</li>
+    <li>Τραύμα μπορεί να προκαλέσει νέα βλάβη: <strong>φαινόμενο Koebner</strong>.</li>
+  </ul>
+  <p class="memory">Μνήμη: «Κνήμη + κίτρινο ατροφικό κέντρο = λιποειδική νεκροβίωση».</p>
+</div>
+
+<div class="card">
+  <h3>Δακτυλιοειδές κοκκίωμα</h3>
+  <ul>
+    <li>Δακτυλιοειδής διάταξη μικρών, λείων, συμπαγών βλατίδων.</li>
+    <li>Συχνά <strong>ράχες χεριών/ποδιών</strong>, δάκτυλα, αγκώνες.</li>
+    <li>Το κέντρο συνήθως δεν έχει λέπια.</li>
+    <li>Η εντοπισμένη μορφή μπορεί να υποχωρήσει αυτόματα.</li>
+    <li>Η γενικευμένη μορφή έχει αναφερθεί σε συσχέτιση με διαβήτη.</li>
+  </ul>
+</div>
+
+<div class="card">
+  <h3>Ρευματοειδή οζίδια</h3>
+  <ul>
+    <li>Υποδόρια, σκληρά οζίδια σε <strong>εκτατικές επιφάνειες</strong> και σημεία πίεσης.</li>
+    <li>Συνοδεύουν κυρίως <strong>οροθετική ρευματοειδή αρθρίτιδα</strong>.</li>
+    <li>Ιστολογικά: πασσαλοειδής διάταξη ιστιοκυττάρων γύρω από νεκροβίωση.</li>
+  </ul>
+</div>
+
+<div class="card red">
+  <h3>Νεκροβιοτικό ξανθοκοκκίωμα</h3>
+  <ul>
+    <li>Σπάνια διαταραχή, συνήθως σε μεγαλύτερους ενήλικες.</li>
+    <li>Κίτρινες/ερυθροκάστανες διηθημένες πλάκες, συχνά <strong>περιοφθαλμικά</strong>.</li>
+    <li>Ισχυρή κλινική συσχέτιση με <strong>παραπρωτεϊναιμία / μονοκλωνική γαμμαπάθεια</strong>.</li>
+  </ul>
+</div>
+</div>
+
+<h2>3. Σαρκοείδωση και κοκκιωματώδεις διηθήσεις</h2>
+<div class="table-wrap">
+<table>
+<thead><tr><th>Νόσημα</th><th>Κλινική εικόνα</th><th>Κλασικό exam clue</th></tr></thead>
+<tbody>
+<tr><td><b>Δερματική σαρκοείδωση</b></td><td>Ποικιλία βλαβών: βλατίδες, πλάκες, οζίδια, διήθηση ουλών.</td><td>«Μήλο-ζελέ» χροιά στη διασκόπηση· μη τυροειδοποιημένα κοκκιώματα.</td></tr>
+<tr><td><b>Χειμετλώδης λύκος</b></td><td>Χρόνιες κυανέρυθρες διηθημένες πλάκες σε μύτη, παρειές, αυτιά, δάκτυλα.</td><td>Χρόνια μορφή σαρκοείδωσης με δυσμενέστερη πρόγνωση και πιθανή προσβολή ανώτερου αναπνευστικού.</td></tr>
+<tr><td><b>Νόσος Crohn</b></td><td>Περιπρωκτικές πλάκες/οζίδια, ρωγμές, συρίγγια ή μεταστατικές δερματικές βλάβες.</td><td>Κοκκιωματώδης φλεγμονή σε ασθενή με εντερική νόσο.</td></tr>
+<tr><td><b>Κοκκιωματώδης χειλίτιδα</b></td><td>Επίμονο, ανώδυνο οίδημα ενός ή και των δύο χειλέων.</td><td>Μπορεί να αποτελεί μέρος του συνδρόμου Melkersson–Rosenthal.</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="grid" style="margin-top:14px">
+<div class="card sos">
+  <h3>Σύνδρομο Melkersson–Rosenthal</h3>
+  <ul>
+    <li><strong>Κοκκιωματώδης χειλίτιδα</strong></li>
+    <li><strong>Υποτροπιάζουσα πάρεση προσωπικού</strong></li>
+    <li><strong>Πτυχωτή/οσχεοειδής γλώσσα</strong></li>
+  </ul>
+  <p class="memory">Τριάδα που αξίζει αποστήθιση.</p>
+</div>
+<div class="card">
+  <h3>Μικρό αλλά εξεταστικό</h3>
+  <p>Η κοκκιωματώδης χειλίτιδα μπορεί να είναι μεμονωμένη ή να συνδέεται με Crohn/σαρκοείδωση. Η βιοψία δείχνει μη τυροειδοποιημένα κοκκιώματα.</p>
+</div>
+</div>
+
+<h2>4. Μαστοκυττάρωση</h2>
+<div class="grid">
+<div class="card sos">
+  <h3>Μελαγχρωματική κνίδωση</h3>
+  <ul>
+    <li>Συχνότερη δερματική μορφή μαστοκυττάρωσης.</li>
+    <li>Πολλαπλές καστανές/ερυθροκάστανες κηλίδες ή βλατίδες.</li>
+    <li>Τριβή της βλάβης → πομφός, ερύθημα, κνησμός: <strong>σημείο Darier</strong>.</li>
+    <li>Στα παιδιά συχνά υποχωρεί· στους ενήλικες μπορεί να επιμένει και απαιτεί έλεγχο για συστηματική νόσο.</li>
+  </ul>
+</div>
+<div class="card">
+  <h3>Διάχυτη δερματική μαστοκυττάρωση</h3>
+  <ul>
+    <li>Διάχυτη πάχυνση και διήθηση του δέρματος.</li>
+    <li>Μπορεί να σχηματίζει πομφό μετά από τριβή.</li>
+    <li>Κυρίως παιδική ηλικία.</li>
+  </ul>
+</div>
+<div class="card">
+  <h3>Μαστοκύττωμα</h3>
+  <ul>
+    <li>Μονήρης ή λίγες κιτρινοκαστανές πλάκες/οζίδια.</li>
+    <li>Συχνό σε βρέφη/παιδιά.</li>
+    <li>Μπορεί να εμφανίζει θετικό Darier.</li>
+  </ul>
+</div>
+</div>
+
+<h2>5. Ιστιοκυτταρικές διαταραχές</h2>
+<div class="grid">
+<div class="card sos">
+  <h3>Νεανικό ξανθοκοκκίωμα</h3>
+  <ul>
+    <li>Καλοήθης ιστιοκυττάρωση της παιδικής ηλικίας.</li>
+    <li>Αρχικά ερυθρές βλατίδες που γίνονται <strong>κίτρινες/πορτοκαλί</strong>.</li>
+    <li>Συχνά κεφαλή, τράχηλος, άνω κορμός.</li>
+    <li>Συνήθως υποχωρεί αυτόματα.</li>
+    <li>Πολλαπλές βλάβες μπορεί να σχετίζονται με οφθαλμική προσβολή· απαιτείται κλινική επαγρύπνηση.</li>
+  </ul>
+</div>
+<div class="card red">
+  <h3>Ιστιοκύττωση από κύτταρα Langerhans</h3>
+  <ul>
+    <li>Ποικίλη νόσος: από εντοπισμένη δερματική έως πολυσυστηματική.</li>
+    <li>Δέρμα: σμηγματορροϊκού τύπου, εφελκιδοποιημένες/κρουστωμένες βλάβες, συχνά τριχωτό και πτυχές.</li>
+    <li>Μπορεί να προσβάλει οστά, πνεύμονες, υποθάλαμο/υπόφυση.</li>
+    <li>Κλασικό clue: <strong>άποιος διαβήτης</strong> σε πολυσυστηματική νόσο.</li>
+  </ul>
+</div>
+</div>
+
+<h2>6. Αμυλοείδωση</h2>
+<div class="callout"><b>Ορισμός:</b> εξωκυττάρια εναπόθεση παθολογικού ινιδιακού υλικού. Η κλινική εικόνα εξαρτάται από το εάν η νόσος είναι εντοπισμένη στο δέρμα ή συστηματική.</div>
+<div class="table-wrap">
+<table>
+<thead><tr><th>Μορφή</th><th>Τυπική εικόνα</th><th>Πού;</th></tr></thead>
+<tbody>
+<tr><td><b>Κηλιδώδης αμυλοείδωση</b></td><td>Κνησμώδης, κυματοειδής/δικτυωτή υπέρχρωση («rippled»).</td><td>Άνω ράχη, μεσοπλάτια περιοχή.</td></tr>
+<tr><td><b>Βλατιδώδης αμυλοείδωση / λειχήνας</b></td><td>Πολλαπλές πολύ κνησμώδεις υπερκερατωσικές βλατίδες.</td><td>Κνήμες, εκτατικές επιφάνειες.</td></tr>
+<tr><td><b>Οζώδης αμυλοείδωση</b></td><td>Μονήρεις ή πολλαπλοί όζοι/πλάκες.</td><td>Πρόσωπο, άκρα, κορμός· χρειάζεται αξιολόγηση για συστηματική συμμετοχή.</td></tr>
+<tr><td><b>Πρωτοπαθής συστηματική</b></td><td>Πορφύρα, πετέχειες, κηρώδεις βλατίδες, μακρογλωσσία.</td><td>Περιοφθαλμικά και πτυχές συχνά χαρακτηριστικά.</td></tr>
+</tbody>
+</table>
+</div>
+
+<h2>7. Λεμφοκυτταρικές διηθήσεις</h2>
+<div class="grid">
+<div class="card">
+  <h3>Jessner–Kanof</h3>
+  <ul>
+    <li>Καλοήθης, χρόνια, υποτροπιάζουσα λεμφοκυτταρική διήθηση.</li>
+    <li>Λείες ερυθρές βλατίδες/πλάκες, συνήθως πρόσωπο, τράχηλος, άνω κορμός.</li>
+    <li>Χωρίς λέπια ή ουλοποίηση.</li>
+  </ul>
+</div>
+<div class="card">
+  <h3>Δερματικό λεμφοκύττωμα</h3>
+  <ul>
+    <li>Καλοήθης ψευδολεμφωματώδης αντίδραση.</li>
+    <li>Ερυθροϊώδης βλατίδα/όζος, συχνά πρόσωπο ή λοβός ωτός.</li>
+    <li>Μπορεί να σχετίζεται με τσίμπημα, φάρμακο, tattoo ή Borrelia.</li>
+  </ul>
+</div>
+<div class="card sos">
+  <h3>Ψευδολέμφωμα</h3>
+  <p>Κλινικά και ιστολογικά μιμείται λέμφωμα, αλλά είναι αντιδραστική και καλοήθης διεργασία. Συχνά χρειάζεται στενή κλινικοϊστολογική συσχέτιση.</p>
+</div>
+</div>
+
+<h2>8. Βλεννινώσεις</h2>
+<div class="table-wrap">
+<table>
+<thead><tr><th>Νόσημα</th><th>Τυπικά στοιχεία</th><th>Εξεταστικό clue</th></tr></thead>
+<tbody>
+<tr><td><b>Προκνημιαίο μυξοίδημα</b></td><td>Σκληρές πλάκες με όψη «φλοιού πορτοκαλιού» στις κνήμες.</td><td>Graves, συχνά με οφθαλμοπάθεια.</td></tr>
+<tr><td><b>Μυξοιδηματώδης λειχήνας / σκληρομυξοίδημα</b></td><td>Κηρώδεις βλατίδες, σκλήρυνση, μειωμένη κινητικότητα.</td><td>Συσχέτιση με μονοκλωνική γαμμαπάθεια· πιθανή συστηματική προσβολή.</td></tr>
+<tr><td><b>Σκληρομύξωμα Buschke</b></td><td>Συμμετρική ξυλώδης σκλήρυνση αυχένα και άνω κορμού.</td><td>Συχνά μετά από λοίμωξη· συσχέτιση με ΣΔ.</td></tr>
+<tr><td><b>Θυλακική βλεννίνωση</b></td><td>Θυλακικές βλατίδες/πλάκες με αλωπεκία.</td><td>Μπορεί να είναι ιδιοπαθής ή να συνδέεται με δερματικό Τ-λέμφωμα.</td></tr>
+<tr><td><b>Εντοπισμένη περιτονιίτιδα (Shulman)</b></td><td>Επώδυνο οίδημα → σκλήρυνση άκρων, συχνά συμμετρικά.</td><td>«Groove sign» κατά μήκος φλεβών, πιθανή ηωσινοφιλία.</td></tr>
+</tbody>
+</table>
+</div>
+
+<h2>9. Οι 10 φράσεις που πρέπει να θυμάσαι</h2>
+<div class="grid">
+<div class="card sos"><b>1.</b> Κνήμη + κιτρινωπό ατροφικό κέντρο → λιποειδική νεκροβίωση.</div>
+<div class="card sos"><b>2.</b> Δακτυλιοειδείς λείες βλατίδες χωρίς λέπι → δακτυλιοειδές κοκκίωμα.</div>
+<div class="card sos"><b>3.</b> Περιοφθαλμικές ξανθές πλάκες + παραπρωτεϊναιμία → νεκροβιοτικό ξανθοκοκκίωμα.</div>
+<div class="card sos"><b>4.</b> Μη τυροειδοποιημένα κοκκιώματα → σαρκοείδωση.</div>
+<div class="card sos"><b>5.</b> Χείλος + πάρεση προσωπικού + πτυχωτή γλώσσα → Melkersson–Rosenthal.</div>
+<div class="card sos"><b>6.</b> Τριβή βλάβης → πομφός = σημείο Darier.</div>
+<div class="card sos"><b>7.</b> Κίτρινο οζίδιο παιδιού → νεανικό ξανθοκοκκίωμα.</div>
+<div class="card sos"><b>8.</b> Άποιος διαβήτης + δερματικές βλάβες → σκέψου Langerhans.</div>
+<div class="card sos"><b>9.</b> Rippled υπέρχρωση πλάτης → κηλιδώδης αμυλοείδωση.</div>
+<div class="card sos"><b>10.</b> Προκνημιαίες πλάκες φλοιού πορτοκαλιού + Graves → προκνημιαίο μυξοίδημα.</div>
+</div>
+
+<h2>10. Flashcards</h2>
+<details><summary>Ποια είναι η κλασική εντόπιση της λιποειδικής νεκροβίωσης;</summary><p>Οι κνήμες, συνήθως αμφοτερόπλευρα.</p></details>
+<details><summary>Ποια κλινική δοκιμασία είναι χαρακτηριστική της μαστοκυττάρωσης;</summary><p>Το σημείο Darier: τριβή της βλάβης προκαλεί ερύθημα, οίδημα/πομφό και κνησμό.</p></details>
+<details><summary>Ποια είναι η τριάδα Melkersson–Rosenthal;</summary><p>Κοκκιωματώδης χειλίτιδα, υποτροπιάζουσα πάρεση προσωπικού, πτυχωτή γλώσσα.</p></details>
+<details><summary>Με τι συνδέεται το νεκροβιοτικό ξανθοκοκκίωμα;</summary><p>Με παραπρωτεϊναιμία ή μονοκλωνική γαμμαπάθεια.</p></details>
+<details><summary>Ποιο είναι το βασικό στοιχείο της πρωτοπαθούς δερματικής αμυλοείδωσης;</summary><p>Η εναπόθεση αμυλοειδούς περιορίζεται στο δέρμα, χωρίς υποχρεωτική συστηματική προσβολή.</p></details>
+<details><summary>Ποιο νόσημα δίνει «φλοιό πορτοκαλιού» στις κνήμες;</summary><p>Το προκνημιαίο μυξοίδημα της Graves.</p></details>
+
+<h2>11. Mini quiz</h2>
+<div id="quiz">
+<div class="quiz-item">
+  <b>1. Ποια βλάβη συνδέεται περισσότερο με το σημείο Darier;</b>
+  <label class="option"><input type="radio" name="q1"> Δακτυλιοειδές κοκκίωμα</label>
+  <label class="option"><input type="radio" name="q1" data-correct> Μελαγχρωματική κνίδωση</label>
+  <label class="option"><input type="radio" name="q1"> Κηλιδώδης αμυλοείδωση</label>
+  <div class="answer">Σωστό: μελαγχρωματική κνίδωση.</div>
+</div>
+<div class="quiz-item">
+  <b>2. Ποια συσχέτιση είναι πιο χαρακτηριστική;</b>
+  <label class="option"><input type="radio" name="q2" data-correct> Νεκροβιοτικό ξανθοκοκκίωμα — παραπρωτεϊναιμία</label>
+  <label class="option"><input type="radio" name="q2"> Νεανικό ξανθοκοκκίωμα — Graves</label>
+  <label class="option"><input type="radio" name="q2"> Jessner–Kanof — διαβήτης</label>
+  <div class="answer">Σωστό: νεκροβιοτικό ξανθοκοκκίωμα — παραπρωτεϊναιμία.</div>
+</div>
+<div class="quiz-item">
+  <b>3. Επίμονο οίδημα χειλέων + πάρεση προσωπικού + πτυχωτή γλώσσα σημαίνει:</b>
+  <label class="option"><input type="radio" name="q3"> Behçet</label>
+  <label class="option"><input type="radio" name="q3" data-correct> Melkersson–Rosenthal</label>
+  <label class="option"><input type="radio" name="q3"> Sweet</label>
+  <div class="answer">Σωστό: σύνδρομο Melkersson–Rosenthal.</div>
+</div>
+<div class="quiz-item">
+  <b>4. Ποιο εύρημα σε παιδί ταιριάζει περισσότερο με νεανικό ξανθοκοκκίωμα;</b>
+  <label class="option"><input type="radio" name="q4" data-correct> Κίτρινη/πορτοκαλί βλατίδα κεφαλής ή τραχήλου</label>
+  <label class="option"><input type="radio" name="q4"> Rippled υπέρχρωση ράχης</label>
+  <label class="option"><input type="radio" name="q4"> Προκνημιαία πλάκα φλοιού πορτοκαλιού</label>
+  <div class="answer">Σωστό: κίτρινη ή πορτοκαλί βλατίδα κεφαλής/τραχήλου.</div>
+</div>
+<div class="quiz-item">
+  <b>5. Ποια διάγνωση προτείνει ripple-like υπέρχρωση της άνω ράχης;</b>
+  <label class="option"><input type="radio" name="q5"> Οζώδης αμυλοείδωση</label>
+  <label class="option"><input type="radio" name="q5" data-correct> Κηλιδώδης αμυλοείδωση</label>
+  <label class="option"><input type="radio" name="q5"> Σαρκοείδωση</label>
+  <div class="answer">Σωστό: κηλιδώδης αμυλοείδωση.</div>
+</div>
+</div>
+<button onclick="gradeQuiz()">Έλεγχος απαντήσεων</button>
+<p id="score" style="font-weight:800"></p>
+
+<footer>GreekDoc Exam Edition • Διηθητικές Βλάβες • Δημιουργήθηκε από το υλικό του ανεβασμένου κεφαλαίου</footer>
+</div>
+
+<script>
+function gradeQuiz(){
+  const qs=[...document.querySelectorAll('.quiz-item')];
+  let score=0;
+  qs.forEach(q=>{
+    const checked=q.querySelector('input:checked');
+    if(checked && checked.hasAttribute('data-correct')) score++;
+    q.querySelector('.answer').style.display='block';
+  });
+  document.getElementById('score').textContent=`Σκορ: ${score}/${qs.length}`;
+}
+</script>
+</body>
+</html>
