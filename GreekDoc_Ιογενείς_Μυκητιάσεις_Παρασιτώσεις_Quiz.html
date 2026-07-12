@@ -1,0 +1,323 @@
+<!doctype html>
+<html lang="el">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GreekDoc | Ιογενείς, Μυκητιάσεις & Παρασιτώσεις</title>
+<style>
+:root {
+  --ink:#16202a; --muted:#5c6873; --paper:#fffdf8; --panel:#ffffff;
+  --accent:#7a3e65; --accent2:#e9d9e4; --ok:#18794e; --okbg:#e8f7ef;
+  --bad:#b42318; --badbg:#fdecea; --line:#e8e1d8; --gold:#b98b2f;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Arial,sans-serif;background:#f5f1eb;color:var(--ink);line-height:1.55}
+.wrap{max-width:1120px;margin:auto;padding:28px 18px 80px}
+.hero{background:linear-gradient(135deg,#4d2741,#8b4f76);color:white;border-radius:24px;padding:34px;box-shadow:0 18px 50px rgba(50,30,45,.18)}
+.hero h1{margin:0 0 8px;font-size:clamp(28px,5vw,48px);line-height:1.05}
+.hero p{margin:0;opacity:.9;max-width:760px}
+.toolbar{display:flex;gap:10px;flex-wrap:wrap;margin:18px 0 28px}
+.toolbar button,.tabbtn{border:0;border-radius:999px;padding:11px 16px;font-weight:700;cursor:pointer}
+.toolbar button{background:#fff;color:var(--accent);box-shadow:0 4px 16px rgba(0,0,0,.06)}
+.tabs{display:flex;gap:10px;flex-wrap:wrap;margin:26px 0 18px}
+.tabbtn{background:#ece5dd;color:#4a4038}
+.tabbtn.active{background:var(--accent);color:#fff}
+.view{display:none} .view.active{display:block}
+.priority{background:#fff7df;border:1px solid #ecd9a0;border-radius:18px;padding:18px 20px;margin-bottom:22px}
+.priority h2{margin:0 0 8px;color:#7a5913}
+.priority ul{margin:8px 0 0;padding-left:22px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:18px}
+.topic{background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:20px;box-shadow:0 8px 24px rgba(40,30,20,.05)}
+.topic h2{margin:0 0 14px;font-size:1.25rem;color:var(--accent)}
+.facts{display:grid;gap:10px}
+.fact{background:#faf7f3;border-left:4px solid var(--accent2);padding:10px 12px;border-radius:10px}
+.label{font-weight:800;color:#4c3042;margin-bottom:2px}
+.quiztop{display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap;margin-bottom:14px}
+.score{font-weight:800;background:white;border:1px solid var(--line);padding:10px 14px;border-radius:999px}
+.question{background:white;border:1px solid var(--line);border-radius:20px;padding:20px;margin:14px 0;box-shadow:0 8px 24px rgba(40,30,20,.04)}
+.qhead{display:flex;gap:12px;align-items:flex-start}
+.qnum{min-width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:var(--accent);color:#fff;font-weight:900}
+.question h3{margin:3px 0 14px;font-size:1.05rem}
+.options{display:grid;gap:9px}
+.option{text-align:left;border:1px solid #ddd4cb;background:#fff;border-radius:13px;padding:11px 12px;cursor:pointer;font-size:1rem;display:flex;gap:10px;align-items:center}
+.option:hover{border-color:var(--accent);background:#fbf7fa}
+.option.correct{background:var(--okbg);border-color:var(--ok);color:var(--ok)}
+.option.wrong{background:var(--badbg);border-color:var(--bad);color:var(--bad)}
+.option:disabled{cursor:default;opacity:1}
+.letter{font-weight:900;min-width:22px}
+.feedback{display:none;margin-top:12px;padding:11px 13px;border-radius:12px;background:#f5f2ee;color:#463e37}
+.feedback.show{display:block}
+.small{color:var(--muted);font-size:.92rem}
+footer{margin-top:32px;text-align:center;color:var(--muted)}
+@media print{
+ body{background:#fff} .wrap{max-width:none;padding:0} .hero{box-shadow:none;border-radius:0;background:#fff;color:#000;border-bottom:2px solid #000} 
+ .toolbar,.tabs,#quiz{display:none!important} #notes{display:block!important} .topic{break-inside:avoid;box-shadow:none}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="hero">
+    <h1>Ιογενείς, Μυκητιάσεις & Παρασιτώσεις</h1>
+    <p>Exam edition • Συμπυκνωμένες σημειώσεις + 30 multiple choice ερωτήσεις με άμεσο έλεγχο και επεξήγηση.</p>
+  </header>
+
+  <div class="toolbar">
+    <button onclick="window.print()">🖨️ Εκτύπωση σημειώσεων</button>
+    <button onclick="resetQuiz()">↻ Επαναφορά quiz</button>
+  </div>
+
+  <div class="tabs">
+    <button class="tabbtn active" onclick="showView('notes',this)">Σημειώσεις</button>
+    <button class="tabbtn" onclick="showView('quiz',this)">Multiple Choice Quiz</button>
+  </div>
+
+  <main>
+    <div id="notes" class="view active">
+      <div class="priority">
+        <h2>Τι να μάθεις πρώτο</h2>
+        <ul>
+          <li><strong>Αίτιο → χαρακτηριστική βλάβη → τυπική εντόπιση → βασική θεραπεία.</strong></li>
+          <li>Πολύ υψηλή προτεραιότητα: μολυσματική τέρμινθος, HSV, ζωστήρας, tinea corporis, καντιντίαση, ψώρα.</li>
+          <li>Χαμηλότερη προτεραιότητα: σπάνια είδη, λεπτομερείς δοσολογίες και όλες οι εναλλακτικές θεραπείες.</li>
+        </ul>
+      </div>
+      <div class="grid"><section class="topic"><h2>Μυρμηκίες (HPV)</h2><div class="facts"><div class="fact"><div class="label">Αίτιο</div><div>Ιός ανθρώπινων θηλωμάτων (HPV).</div></div><div class="fact"><div class="label">Κοινές μυρμηκίες</div><div>Συχνά σε άκρα χεριών, δάκτυλα και γύρω από τα νύχια. Τραχεία, υπερκερατωσική επιφάνεια.</div></div><div class="fact"><div class="label">Πελματιαίες</div><div>Επώδυνες στην πίεση, συχνά καλύπτονται από υπερκεράτωση. Μπορεί να σχηματίζουν «μωσαϊκό».</div></div><div class="fact"><div class="label">Επίπεδες</div><div>Πιο συχνές σε παιδιά/νεαρούς, κυρίως σε πρόσωπο και ραχιαία επιφάνεια χεριών.</div></div><div class="fact"><div class="label">Σημείο Köbner</div><div>Εμφάνιση νέων βλαβών σε σημεία τραυματισμού.</div></div><div class="fact"><div class="label">Βασική θεραπεία</div><div>Σαλικυλικό οξύ, κρυοθεραπεία ή άλλες καταστροφικές μέθοδοι.</div></div></div></section>
+<section class="topic"><h2>Μολυσματική τέρμινθος</h2><div class="facts"><div class="fact"><div class="label">Αίτιο</div><div>Molluscum contagiosum virus, οικογένεια Poxviridae.</div></div><div class="fact"><div class="label">Τυπική βλάβη</div><div>Μικρή, στιλπνή βλατίδα με χαρακτηριστική κεντρική ομφαλωτή εντύπωση.</div></div><div class="fact"><div class="label">Ποιοι προσβάλλονται</div><div>Συχνά παιδιά. Σε ενήλικες μπορεί να μεταδίδεται σεξουαλικά.</div></div><div class="fact"><div class="label">Ανοσοκαταστολή</div><div>Οι βλάβες μπορεί να είναι πολλές, μεγάλες ή άτυπες.</div></div><div class="fact"><div class="label">Θεραπεία</div><div>Αναμονή, απόξεση ή κρυοθεραπεία.</div></div></div></section>
+<section class="topic"><h2>Απλός έρπης (HSV)</h2><div class="facts"><div class="fact"><div class="label">HSV-1</div><div>Στοματικός/χειλικός έρπης, πρωτοπαθής ουλοστοματίτιδα, κερατίτιδα, εγκεφαλίτιδα, παρωνυχία.</div></div><div class="fact"><div class="label">HSV-2</div><div>Κυρίως γεννητικός έρπης και νεογνικός έρπης.</div></div><div class="fact"><div class="label">Τυπική βλάβη</div><div>Ομαδοποιημένες φυσαλίδες πάνω σε ερυθηματώδη βάση, με πόνο ή καύσο.</div></div><div class="fact"><div class="label">Λανθάνουσα φάση</div><div>Ο ιός παραμένει στα αισθητικά γάγγλια.</div></div><div class="fact"><div class="label">Εκλυτικοί παράγοντες</div><div>Πυρετός, στρες, ήλιος, τραυματισμός, ανοσοκαταστολή.</div></div><div class="fact"><div class="label">Θεραπεία</div><div>Ακυκλοβίρη, βαλακυκλοβίρη ή φαμσικλοβίρη. Μειώνουν διάρκεια και βαρύτητα, αλλά δεν εκριζώνουν τον ιό.</div></div></div></section>
+<section class="topic"><h2>Ανεμευλογιά &amp; Έρπης ζωστήρας</h2><div class="facts"><div class="fact"><div class="label">Κοινό αίτιο</div><div>Varicella-zoster virus (VZV).</div></div><div class="fact"><div class="label">Ανεμευλογιά</div><div>Πρωτολοίμωξη. Φυσαλιδώδες εξάνθημα με βλάβες σε διαφορετικά στάδια, κυρίως στον κορμό.</div></div><div class="fact"><div class="label">Έρπης ζωστήρας</div><div>Επανενεργοποίηση του VZV. Μονόπλευρες επώδυνες βλάβες σε ένα δερμοτόμιο.</div></div><div class="fact"><div class="label">Κρίσιμο σημείο</div><div>Συνήθως δεν περνά τη μέση γραμμή.</div></div><div class="fact"><div class="label">Επιπλοκή</div><div>Μεθερπητική νευραλγία.</div></div><div class="fact"><div class="label">Οφθαλμικός ζωστήρας</div><div>Προσβολή του οφθαλμικού κλάδου του τριδύμου μπορεί να απειλήσει την όραση.</div></div></div></section>
+<section class="topic"><h2>Δερματοφυτίες</h2><div class="facts"><div class="fact"><div class="label">Κύρια γένη</div><div>Trichophyton, Microsporum, Epidermophyton.</div></div><div class="fact"><div class="label">Τι προσβάλλουν</div><div>Κερατινοποιημένους ιστούς: δέρμα, τρίχες, νύχια.</div></div><div class="fact"><div class="label">Tinea capitis</div><div>Τριχωτό κεφαλής.</div></div><div class="fact"><div class="label">Tinea corporis</div><div>Κορμός/άκρα. Δακτυλιοειδής λεπιδώδης πλάκα με ενεργό περιφερικό όριο και σχετική κεντρική υποχώρηση.</div></div><div class="fact"><div class="label">Tinea cruris</div><div>Βουβωνική χώρα.</div></div><div class="fact"><div class="label">Tinea pedis</div><div>Πόδι.</div></div><div class="fact"><div class="label">Tinea unguium</div><div>Νύχια.</div></div><div class="fact"><div class="label">Διάγνωση</div><div>Άμεση μικροσκόπηση με KOH ± καλλιέργεια.</div></div><div class="fact"><div class="label">Θεραπεία</div><div>Τοπική σε περιορισμένη νόσο. Συστηματική σε τριχωτό κεφαλής, νύχια ή εκτεταμένη νόσο.</div></div></div></section>
+<section class="topic"><h2>Ποικιλόχρους πιτυρίαση</h2><div class="facts"><div class="fact"><div class="label">Αίτιο</div><div>Malassezia.</div></div><div class="fact"><div class="label">Κλινική εικόνα</div><div>Υποχρωματικές, υπερχρωματικές ή ερυθρές κηλίδες με λεπτή απολέπιση.</div></div><div class="fact"><div class="label">Εντόπιση</div><div>Κυρίως κορμός και ώμοι.</div></div><div class="fact"><div class="label">Διάγνωση</div><div>Άμεση εξέταση: υφές και σπόρια — κλασικά «μακαρόνια με κεφτεδάκια».</div></div><div class="fact"><div class="label">Σημαντικό</div><div>Συχνά υποτροπιάζει.</div></div></div></section>
+<section class="topic"><h2>Καντιντίαση</h2><div class="facts"><div class="fact"><div class="label">Συχνές μορφές</div><div>Στοματική καντιντίαση, μεσοτριβή, αιδοιοκολπική καντιντίαση, παρωνυχία.</div></div><div class="fact"><div class="label">Τυπική μεσοτριβή</div><div>Ερυθρή υγρή πλάκα σε πτυχές με δορυφόρες βλατίδες/φλύκταινες.</div></div><div class="fact"><div class="label">Παράγοντες κινδύνου</div><div>Υγρασία, αντιβιοτικά, σακχαρώδης διαβήτης, παχυσαρκία, ανοσοκαταστολή, εγκυμοσύνη.</div></div></div></section>
+<section class="topic"><h2>Φθειρίαση</h2><div class="facts"><div class="fact"><div class="label">Μορφές</div><div>Κεφαλής, σώματος και εφηβαίου.</div></div><div class="fact"><div class="label">Κεφαλής</div><div>Κνησμός και κόνιδες κολλημένες στην τρίχα, συχνά πίσω από τα αυτιά και στην ινιακή περιοχή.</div></div><div class="fact"><div class="label">Σώματος</div><div>Τα έντομα ζουν κυρίως στις ραφές των ρούχων.</div></div></div></section>
+<section class="topic"><h2>Ψώρα</h2><div class="facts"><div class="fact"><div class="label">Αίτιο</div><div>Sarcoptes scabiei.</div></div><div class="fact"><div class="label">Κύριο σύμπτωμα</div><div>Έντονος κνησμός, χειρότερος τη νύχτα.</div></div><div class="fact"><div class="label">Τυπικές θέσεις</div><div>Μεσοδακτύλια, καρποί, μασχάλες, ομφαλός, γλουτοί, γεννητικά όργανα.</div></div><div class="fact"><div class="label">Τυπικό εύρημα</div><div>Σήραγγες.</div></div><div class="fact"><div class="label">Μετάδοση</div><div>Στενή και παρατεταμένη δερματική επαφή.</div></div><div class="fact"><div class="label">Θεραπεία</div><div>Περμεθρίνη και ταυτόχρονη θεραπεία στενών επαφών. Πλύσιμο/απομόνωση ρούχων και κλινοσκεπασμάτων.</div></div><div class="fact"><div class="label">Παγίδα</div><div>Ο κνησμός μπορεί να επιμένει για λίγο μετά την επιτυχή θεραπεία.</div></div></div></section></div>
+    </div>
+
+    <div id="quiz" class="view">
+      <div class="quiztop">
+        <div>
+          <h2 style="margin:0">Multiple Choice Quiz</h2>
+          <div class="small">Πατάς μία απάντηση: η σωστή πρασινίζει, η λάθος κοκκινίζει και εμφανίζεται η επεξήγηση.</div>
+        </div>
+        <div class="score" id="score">Σκορ: 0 / 0</div>
+      </div>
+      
+    <article class="question" id="q1">
+      <div class="qhead"><span class="qnum">1</span><h3>Οι κοινές μυρμηκίες προκαλούνται από:</h3></div>
+      <div class="options"><button class="option" data-correct="false" onclick="answer(this,1)"><span class="letter">Α</span>HSV-1</button><button class="option" data-correct="true" onclick="answer(this,1)"><span class="letter">Β</span>HPV</button><button class="option" data-correct="false" onclick="answer(this,1)"><span class="letter">Γ</span>VZV</button><button class="option" data-correct="false" onclick="answer(this,1)"><span class="letter">Δ</span>Molluscum contagiosum virus</button></div>
+      <div class="feedback" id="f1"><strong>Επεξήγηση:</strong> Οι μυρμηκίες είναι εκδηλώσεις λοίμωξης από HPV.</div>
+    </article>
+
+    <article class="question" id="q2">
+      <div class="qhead"><span class="qnum">2</span><h3>Χαρακτηριστικό εύρημα της μολυσματικής τερμίνθου είναι:</h3></div>
+      <div class="options"><button class="option" data-correct="false" onclick="answer(this,2)"><span class="letter">Α</span>Δακτυλιοειδής πλάκα</button><button class="option" data-correct="true" onclick="answer(this,2)"><span class="letter">Β</span>Κεντρική ομφαλωτή εντύπωση</button><button class="option" data-correct="false" onclick="answer(this,2)"><span class="letter">Γ</span>Σήραγγα</button><button class="option" data-correct="false" onclick="answer(this,2)"><span class="letter">Δ</span>Δορυφόρες φλύκταινες</button></div>
+      <div class="feedback" id="f2"><strong>Επεξήγηση:</strong> Η ομφαλωτή εντύπωση είναι το κλασικό μορφολογικό εύρημα.</div>
+    </article>
+
+    <article class="question" id="q3">
+      <div class="qhead"><span class="qnum">3</span><h3>Η μολυσματική τέρμινθος ανήκει στην οικογένεια:</h3></div>
+      <div class="options"><button class="option" data-correct="false" onclick="answer(this,3)"><span class="letter">Α</span>Herpesviridae</button><button class="option" data-correct="false" onclick="answer(this,3)"><span class="letter">Β</span>Papillomaviridae</button><button class="option" data-correct="true" onclick="answer(this,3)"><span class="letter">Γ</span>Poxviridae</button><button class="option" data-correct="false" onclick="answer(this,3)"><span class="letter">Δ</span>Retroviridae</button></div>
+      <div class="feedback" id="f3"><strong>Επεξήγηση:</strong> Ο υπεύθυνος ιός ανήκει στους Poxviridae.</div>
+    </article>
+
+    <article class="question" id="q4">
+      <div class="qhead"><span class="qnum">4</span><h3>Οι επίπεδες μυρμηκίες εμφανίζονται συχνότερα:</h3></div>
+      <div class="options"><button class="option" data-correct="true" onclick="answer(this,4)"><span class="letter">Α</span>Σε πρόσωπο παιδιών/νεαρών</button><button class="option" data-correct="false" onclick="answer(this,4)"><span class="letter">Β</span>Μόνο στα πέλματα</button><button class="option" data-correct="false" onclick="answer(this,4)"><span class="letter">Γ</span>Μόνο στα γεννητικά όργανα</button><button class="option" data-correct="false" onclick="answer(this,4)"><span class="letter">Δ</span>Στα νύχια ηλικιωμένων</button></div>
+      <div class="feedback" id="f4"><strong>Επεξήγηση:</strong> Συχνή εντόπιση είναι το πρόσωπο και η ραχιαία επιφάνεια των χεριών.</div>
+    </article>
+
+    <article class="question" id="q5">
+      <div class="qhead"><span class="qnum">5</span><h3>Ποιο σχετίζεται περισσότερο με HSV-1;</h3></div>
+      <div class="options"><button class="option" data-correct="true" onclick="answer(this,5)"><span class="letter">Α</span>Χειλικός έρπης</button><button class="option" data-correct="false" onclick="answer(this,5)"><span class="letter">Β</span>Έρπης ζωστήρας</button><button class="option" data-correct="false" onclick="answer(this,5)"><span class="letter">Γ</span>Ψώρα</button><button class="option" data-correct="false" onclick="answer(this,5)"><span class="letter">Δ</span>Ποικιλόχρους πιτυρίαση</button></div>
+      <div class="feedback" id="f5"><strong>Επεξήγηση:</strong> Ο HSV-1 σχετίζεται κυρίως με στοματοχειλικό έρπη.</div>
+    </article>
+
+    <article class="question" id="q6">
+      <div class="qhead"><span class="qnum">6</span><h3>Η τυπική πρωτολοίμωξη από HSV-1 σε παιδί είναι:</h3></div>
+      <div class="options"><button class="option" data-correct="true" onclick="answer(this,6)"><span class="letter">Α</span>Ουλοστοματίτιδα</button><button class="option" data-correct="false" onclick="answer(this,6)"><span class="letter">Β</span>Κηρίο</button><button class="option" data-correct="false" onclick="answer(this,6)"><span class="letter">Γ</span>Ερυσίπελας</button><button class="option" data-correct="false" onclick="answer(this,6)"><span class="letter">Δ</span>Tinea corporis</button></div>
+      <div class="feedback" id="f6"><strong>Επεξήγηση:</strong> Η πρωτοπαθής ερπητική ουλοστοματίτιδα είναι κλασική.</div>
+    </article>
+
+    <article class="question" id="q7">
+      <div class="qhead"><span class="qnum">7</span><h3>Οι ερπητικές βλάβες εμφανίζονται συνήθως ως:</h3></div>
+      <div class="options"><button class="option" data-correct="false" onclick="answer(this,7)"><span class="letter">Α</span>Μονήρης οζίδιο</button><button class="option" data-correct="true" onclick="answer(this,7)"><span class="letter">Β</span>Ομαδοποιημένες φυσαλίδες σε ερυθηματώδη βάση</button><button class="option" data-correct="false" onclick="answer(this,7)"><span class="letter">Γ</span>Υποχρωματικές κηλίδες</button><button class="option" data-correct="false" onclick="answer(this,7)"><span class="letter">Δ</span>Σήραγγες</button></div>
+      <div class="feedback" id="f7"><strong>Επεξήγηση:</strong> Η ομαδοποίηση των φυσαλίδων είναι χαρακτηριστική.</div>
+    </article>
+
+    <article class="question" id="q8">
+      <div class="qhead"><span class="qnum">8</span><h3>Η ακυκλοβίρη:</h3></div>
+      <div class="options"><button class="option" data-correct="false" onclick="answer(this,8)"><span class="letter">Α</span>Εκριζώνει τον HSV</button><button class="option" data-correct="true" onclick="answer(this,8)"><span class="letter">Β</span>Μειώνει διάρκεια και βαρύτητα</button><button class="option" data-correct="false" onclick="answer(this,8)"><span class="letter">Γ</span>Είναι αντιβιοτικό</button><button class="option" data-correct="false" onclick="answer(this,8)"><span class="letter">Δ</span>Αποτρέπει κάθε υποτροπή</button></div>
+      <div class="feedback" id="f8"><strong>Επεξήγηση:</strong> Τα αντιικά δεν εκριζώνουν τη λανθάνουσα λοίμωξη.</div>
+    </article>
+
+    <article class="question" id="q9">
+      <div class="qhead"><span class="qnum">9</span><h3>Η ανεμευλογιά και ο έρπης ζωστήρας προκαλούνται από:</h3></div>
+      <div class="options"><button class="option" data-correct="false" onclick="answer(this,9)"><span class="letter">Α</span>HSV-1</button><button class="option" data-correct="false" onclick="answer(this,9)"><span class="letter">Β</span>HSV-2</button><button class="option" data-correct="true" onclick="answer(this,9)"><span class="letter">Γ</span>VZV</button><button class="option" data-correct="false" onclick="answer(this,9)"><span class="letter">Δ</span>HPV</button></div>
+      <div class="feedback" id="f9"><strong>Επεξήγηση:</strong> Είναι δύο διαφορετικές εκδηλώσεις του ίδιου ιού.</div>
+    </article>
+
+    <article class="question" id="q10">
+      <div class="qhead"><span class="qnum">10</span><h3>Ο έρπης ζωστήρας αποτελεί:</h3></div>
+      <div class="options"><button class="option" data-correct="false" onclick="answer(this,10)"><span class="letter">Α</span>Πρωτολοίμωξη από VZV</button><button class="option" data-correct="true" onclick="answer(this,10)"><span class="letter">Β</span>Επανενεργοποίηση λανθάνοντος VZV</button><button class="option" data-correct="false" onclick="answer(this,10)"><span class="letter">Γ</span>Μυκητίαση</button><button class="option" data-correct="false" onclick="answer(this,10)"><span class="letter">Δ</span>Αλλεργική αντίδραση</button></div>
+      <div class="feedback" id="f10"><strong>Επεξήγηση:</strong> Ο VZV παραμένει λανθάνων στα αισθητικά γάγγλια.</div>
+    </article>
+
+    <article class="question" id="q11">
+      <div class="qhead"><span class="qnum">11</span><h3>Χαρακτηριστικό του έρπητα ζωστήρα είναι:</h3></div>
+      <div class="options"><button class="option" data-correct="false" onclick="answer(this,11)"><span class="letter">Α</span>Συμμετρική κατανομή</button><button class="option" data-correct="true" onclick="answer(this,11)"><span class="letter">Β</span>Μονόπλευρη δερμοτομιακή κατανομή</button><button class="option" data-correct="false" onclick="answer(this,11)"><span class="letter">Γ</span>Απουσία πόνου</button><button class="option" data-correct="false" onclick="answer(this,11)"><span class="letter">Δ</span>Αποκλειστική προσβολή παιδιών</button></div>
+      <div class="feedback" id="f11"><strong>Επεξήγηση:</strong> Το εξάνθημα ακολουθεί ένα αισθητικό δερμοτόμιο.</div>
+    </article>
+
+    <article class="question" id="q12">
+      <div class="qhead"><span class="qnum">12</span><h3>Συχνή επιπλοκή έρπητα ζωστήρα είναι:</h3></div>
+      <div class="options"><button class="option" data-correct="true" onclick="answer(this,12)"><span class="letter">Α</span>Μεθερπητική νευραλγία</button><button class="option" data-correct="false" onclick="answer(this,12)"><span class="letter">Β</span>Ρευματικός πυρετός</button><button class="option" data-correct="false" onclick="answer(this,12)"><span class="letter">Γ</span>Σπειραματονεφρίτιδα</button><button class="option" data-correct="false" onclick="answer(this,12)"><span class="letter">Δ</span>Ψωρίαση</button></div>
+      <div class="feedback" id="f12"><strong>Επεξήγηση:</strong> Ιδίως σε μεγαλύτερες ηλικίες.</div>
+    </article>
+
+    <article class="question" id="q13">
+      <div class="qhead"><span class="qnum">13</span><h3>Τα δερματόφυτα προσβάλλουν κυρίως:</h3></div>
+      <div class="options"><button class="option" data-correct="false" onclick="answer(this,13)"><span class="letter">Α</span>Υποδόριο λίπος</button><button class="option" data-correct="true" onclick="answer(this,13)"><span class="letter">Β</span>Κερατινοποιημένους ιστούς</button><button class="option" data-correct="false" onclick="answer(this,13)"><span class="letter">Γ</span>Αιμοφόρα αγγεία</button><button class="option" data-correct="false" onclick="answer(this,13)"><span class="letter">Δ</span>Έντερο</button></div>
+      <div class="feedback" id="f13"><strong>Επεξήγηση:</strong> Προσβάλλουν δέρμα, τρίχες και νύχια.</div>
+    </article>
+
+    <article class="question" id="q14">
+      <div class="qhead"><span class="qnum">14</span><h3>Ποιο είναι γένος δερματοφύτων;</h3></div>
+      <div class="options"><button class="option" data-correct="true" onclick="answer(this,14)"><span class="letter">Α</span>Trichophyton</button><button class="option" data-correct="false" onclick="answer(this,14)"><span class="letter">Β</span>Candida</button><button class="option" data-correct="false" onclick="answer(this,14)"><span class="letter">Γ</span>Malassezia</button><button class="option" data-correct="false" onclick="answer(this,14)"><span class="letter">Δ</span>Sarcoptes</button></div>
+      <div class="feedback" id="f14"><strong>Επεξήγηση:</strong> Το Trichophyton είναι ένα από τα τρία βασικά γένη.</div>
+    </article>
+
+    <article class="question" id="q15">
+      <div class="qhead"><span class="qnum">15</span><h3>Η tinea capitis αφορά:</h3></div>
+      <div class="options"><button class="option" data-correct="false" onclick="answer(this,15)"><span class="letter">Α</span>Νύχια</button><button class="option" data-correct="true" onclick="answer(this,15)"><span class="letter">Β</span>Τριχωτό κεφαλής</button><button class="option" data-correct="false" onclick="answer(this,15)"><span class="letter">Γ</span>Βουβωνική χώρα</button><button class="option" data-correct="false" onclick="answer(this,15)"><span class="letter">Δ</span>Πέλματα</button></div>
+      <div class="feedback" id="f15"><strong>Επεξήγηση:</strong> Capitis = κεφαλή.</div>
+    </article>
+
+    <article class="question" id="q16">
+      <div class="qhead"><span class="qnum">16</span><h3>Η tinea cruris αφορά:</h3></div>
+      <div class="options"><button class="option" data-correct="true" onclick="answer(this,16)"><span class="letter">Α</span>Βουβωνική χώρα</button><button class="option" data-correct="false" onclick="answer(this,16)"><span class="letter">Β</span>Τριχωτό κεφαλής</button><button class="option" data-correct="false" onclick="answer(this,16)"><span class="letter">Γ</span>Νύχια</button><button class="option" data-correct="false" onclick="answer(this,16)"><span class="letter">Δ</span>Στοματικό βλεννογόνο</button></div>
+      <div class="feedback" id="f16"><strong>Επεξήγηση:</strong> Cruris = βουβωνική/μηρογεννητική περιοχή.</div>
+    </article>
+
+    <article class="question" id="q17">
+      <div class="qhead"><span class="qnum">17</span><h3>Τυπική βλάβη tinea corporis είναι:</h3></div>
+      <div class="options"><button class="option" data-correct="true" onclick="answer(this,17)"><span class="letter">Α</span>Δακτυλιοειδής λεπιδώδης πλάκα</button><button class="option" data-correct="false" onclick="answer(this,17)"><span class="letter">Β</span>Ομφαλωτή βλατίδα</button><button class="option" data-correct="false" onclick="answer(this,17)"><span class="letter">Γ</span>Δερμοτομιακές φυσαλίδες</button><button class="option" data-correct="false" onclick="answer(this,17)"><span class="letter">Δ</span>Σήραγγα</button></div>
+      <div class="feedback" id="f17"><strong>Επεξήγηση:</strong> Το ενεργό περιφερικό όριο και η κεντρική υποχώρηση είναι χαρακτηριστικά.</div>
+    </article>
+
+    <article class="question" id="q18">
+      <div class="qhead"><span class="qnum">18</span><h3>Για άμεση διάγνωση δερματοφυτίας χρησιμοποιείται:</h3></div>
+      <div class="options"><button class="option" data-correct="false" onclick="answer(this,18)"><span class="letter">Α</span>Mantoux</button><button class="option" data-correct="true" onclick="answer(this,18)"><span class="letter">Β</span>KOH</button><button class="option" data-correct="false" onclick="answer(this,18)"><span class="letter">Γ</span>Tzanck</button><button class="option" data-correct="false" onclick="answer(this,18)"><span class="letter">Δ</span>Coombs</button></div>
+      <div class="feedback" id="f18"><strong>Επεξήγηση:</strong> Το KOH διαλύει την κερατίνη και βοηθά να φανούν οι υφές.</div>
+    </article>
+
+    <article class="question" id="q19">
+      <div class="qhead"><span class="qnum">19</span><h3>Η ποικιλόχρους πιτυρίαση προκαλείται από:</h3></div>
+      <div class="options"><button class="option" data-correct="true" onclick="answer(this,19)"><span class="letter">Α</span>Malassezia</button><button class="option" data-correct="false" onclick="answer(this,19)"><span class="letter">Β</span>Candida albicans</button><button class="option" data-correct="false" onclick="answer(this,19)"><span class="letter">Γ</span>Trichophyton rubrum</button><button class="option" data-correct="false" onclick="answer(this,19)"><span class="letter">Δ</span>Sarcoptes scabiei</button></div>
+      <div class="feedback" id="f19"><strong>Επεξήγηση:</strong> Η Malassezia είναι λιπόφιλος ζυμομύκητας.</div>
+    </article>
+
+    <article class="question" id="q20">
+      <div class="qhead"><span class="qnum">20</span><h3>Συχνότερη εντόπιση ποικιλόχρου πιτυρίασης:</h3></div>
+      <div class="options"><button class="option" data-correct="true" onclick="answer(this,20)"><span class="letter">Α</span>Κορμός και ώμοι</button><button class="option" data-correct="false" onclick="answer(this,20)"><span class="letter">Β</span>Παλάμες</button><button class="option" data-correct="false" onclick="answer(this,20)"><span class="letter">Γ</span>Μεσοδακτύλια</button><button class="option" data-correct="false" onclick="answer(this,20)"><span class="letter">Δ</span>Νύχια</button></div>
+      <div class="feedback" id="f20"><strong>Επεξήγηση:</strong> Προσβάλλει κυρίως σμηγματορροϊκές περιοχές του άνω κορμού.</div>
+    </article>
+
+    <article class="question" id="q21">
+      <div class="qhead"><span class="qnum">21</span><h3>Χαρακτηριστικό καντιντιασικής μεσοτριβής:</h3></div>
+      <div class="options"><button class="option" data-correct="false" onclick="answer(this,21)"><span class="letter">Α</span>Ομφαλωτή βλατίδα</button><button class="option" data-correct="true" onclick="answer(this,21)"><span class="letter">Β</span>Δορυφόρες βλατίδες/φλύκταινες</button><button class="option" data-correct="false" onclick="answer(this,21)"><span class="letter">Γ</span>Δερμοτομιακή κατανομή</button><button class="option" data-correct="false" onclick="answer(this,21)"><span class="letter">Δ</span>Σήραγγες</button></div>
+      <div class="feedback" id="f21"><strong>Επεξήγηση:</strong> Οι δορυφόρες βλάβες γύρω από την κύρια πλάκα είναι πολύ χαρακτηριστικές.</div>
+    </article>
+
+    <article class="question" id="q22">
+      <div class="qhead"><span class="qnum">22</span><h3>Ποιος παράγοντας προδιαθέτει σε καντιντίαση;</h3></div>
+      <div class="options"><button class="option" data-correct="false" onclick="answer(this,22)"><span class="letter">Α</span>Ξηρό περιβάλλον</button><button class="option" data-correct="true" onclick="answer(this,22)"><span class="letter">Β</span>Αντιβιοτικά</button><button class="option" data-correct="false" onclick="answer(this,22)"><span class="letter">Γ</span>Χαμηλή θερμοκρασία</button><button class="option" data-correct="false" onclick="answer(this,22)"><span class="letter">Δ</span>Άσκηση</button></div>
+      <div class="feedback" id="f22"><strong>Επεξήγηση:</strong> Τα αντιβιοτικά μεταβάλλουν τη φυσιολογική χλωρίδα.</div>
+    </article>
+
+    <article class="question" id="q23">
+      <div class="qhead"><span class="qnum">23</span><h3>Οι κόνιδες στη φθειρίαση κεφαλής:</h3></div>
+      <div class="options"><button class="option" data-correct="false" onclick="answer(this,23)"><span class="letter">Α</span>Απομακρύνονται εύκολα σαν πιτυρίδα</button><button class="option" data-correct="true" onclick="answer(this,23)"><span class="letter">Β</span>Είναι κολλημένες πάνω στην τρίχα</button><button class="option" data-correct="false" onclick="answer(this,23)"><span class="letter">Γ</span>Βρίσκονται μόνο στα ρούχα</button><button class="option" data-correct="false" onclick="answer(this,23)"><span class="letter">Δ</span>Είναι μυκητιασικές υφές</button></div>
+      <div class="feedback" id="f23"><strong>Επεξήγηση:</strong> Οι κόνιδες προσκολλώνται σταθερά στον άξονα της τρίχας.</div>
+    </article>
+
+    <article class="question" id="q24">
+      <div class="qhead"><span class="qnum">24</span><h3>Η ψώρα προκαλείται από:</h3></div>
+      <div class="options"><button class="option" data-correct="false" onclick="answer(this,24)"><span class="letter">Α</span>Trichophyton rubrum</button><button class="option" data-correct="true" onclick="answer(this,24)"><span class="letter">Β</span>Sarcoptes scabiei</button><button class="option" data-correct="false" onclick="answer(this,24)"><span class="letter">Γ</span>Malassezia</button><button class="option" data-correct="false" onclick="answer(this,24)"><span class="letter">Δ</span>HPV</button></div>
+      <div class="feedback" id="f24"><strong>Επεξήγηση:</strong> Το Sarcoptes scabiei είναι άκαρι.</div>
+    </article>
+
+    <article class="question" id="q25">
+      <div class="qhead"><span class="qnum">25</span><h3>Ο κνησμός στην ψώρα είναι συνήθως:</h3></div>
+      <div class="options"><button class="option" data-correct="false" onclick="answer(this,25)"><span class="letter">Α</span>Χειρότερος το πρωί</button><button class="option" data-correct="true" onclick="answer(this,25)"><span class="letter">Β</span>Χειρότερος τη νύχτα</button><button class="option" data-correct="false" onclick="answer(this,25)"><span class="letter">Γ</span>Απών</button><button class="option" data-correct="false" onclick="answer(this,25)"><span class="letter">Δ</span>Μόνο στο τριχωτό</button></div>
+      <div class="feedback" id="f25"><strong>Επεξήγηση:</strong> Ο νυχτερινός κνησμός είναι κλασικός.</div>
+    </article>
+
+    <article class="question" id="q26">
+      <div class="qhead"><span class="qnum">26</span><h3>Τυπική θέση ψώρας σε ενήλικα:</h3></div>
+      <div class="options"><button class="option" data-correct="true" onclick="answer(this,26)"><span class="letter">Α</span>Μεσοδακτύλια διαστήματα</button><button class="option" data-correct="false" onclick="answer(this,26)"><span class="letter">Β</span>Μόνο πρόσωπο</button><button class="option" data-correct="false" onclick="answer(this,26)"><span class="letter">Γ</span>Κερατοειδής</button><button class="option" data-correct="false" onclick="answer(this,26)"><span class="letter">Δ</span>Γλώσσα</button></div>
+      <div class="feedback" id="f26"><strong>Επεξήγηση:</strong> Μεσοδακτύλια και καρποί είναι από τις πιο συχνές θέσεις.</div>
+    </article>
+
+    <article class="question" id="q27">
+      <div class="qhead"><span class="qnum">27</span><h3>Στη θεραπεία της ψώρας πρέπει:</h3></div>
+      <div class="options"><button class="option" data-correct="false" onclick="answer(this,27)"><span class="letter">Α</span>Να θεραπεύεται μόνο ο συμπτωματικός ασθενής</button><button class="option" data-correct="true" onclick="answer(this,27)"><span class="letter">Β</span>Να θεραπεύονται ταυτόχρονα οι στενές επαφές</button><button class="option" data-correct="false" onclick="answer(this,27)"><span class="letter">Γ</span>Να μη πλένονται τα ρούχα</button><button class="option" data-correct="false" onclick="answer(this,27)"><span class="letter">Δ</span>Να δίνονται μόνο αντιβιοτικά</button></div>
+      <div class="feedback" id="f27"><strong>Επεξήγηση:</strong> Αλλιώς είναι συχνή η επαναμόλυνση.</div>
+    </article>
+
+    <article class="question" id="q28">
+      <div class="qhead"><span class="qnum">28</span><h3>Ποια αντιστοίχιση είναι σωστή;</h3></div>
+      <div class="options"><button class="option" data-correct="false" onclick="answer(this,28)"><span class="letter">Α</span>Ομφαλωτή βλατίδα — ψώρα</button><button class="option" data-correct="true" onclick="answer(this,28)"><span class="letter">Β</span>Δερμοτομιακές φυσαλίδες — ζωστήρας</button><button class="option" data-correct="false" onclick="answer(this,28)"><span class="letter">Γ</span>Δορυφόρες φλύκταινες — μυρμηκίες</button><button class="option" data-correct="false" onclick="answer(this,28)"><span class="letter">Δ</span>Νυχτερινός κνησμός — ποικιλόχρους πιτυρίαση</button></div>
+      <div class="feedback" id="f28"><strong>Επεξήγηση:</strong> Ο ζωστήρας ακολουθεί δερμοτόμιο.</div>
+    </article>
+
+    <article class="question" id="q29">
+      <div class="qhead"><span class="qnum">29</span><h3>Ποια αντιστοίχιση είναι λανθασμένη;</h3></div>
+      <div class="options"><button class="option" data-correct="false" onclick="answer(this,29)"><span class="letter">Α</span>HPV — μυρμηκίες</button><button class="option" data-correct="false" onclick="answer(this,29)"><span class="letter">Β</span>VZV — ζωστήρας</button><button class="option" data-correct="false" onclick="answer(this,29)"><span class="letter">Γ</span>Malassezia — ποικιλόχρους πιτυρίαση</button><button class="option" data-correct="true" onclick="answer(this,29)"><span class="letter">Δ</span>Candida — tinea capitis</button></div>
+      <div class="feedback" id="f29"><strong>Επεξήγηση:</strong> Η tinea capitis προκαλείται από δερματόφυτα, όχι Candida.</div>
+    </article>
+
+    <article class="question" id="q30">
+      <div class="qhead"><span class="qnum">30</span><h3>Ασθενής με έντονο νυχτερινό κνησμό και βλάβες στα μεσοδακτύλια έχει πιθανότερα:</h3></div>
+      <div class="options"><button class="option" data-correct="true" onclick="answer(this,30)"><span class="letter">Α</span>Ψώρα</button><button class="option" data-correct="false" onclick="answer(this,30)"><span class="letter">Β</span>Έρπητα ζωστήρα</button><button class="option" data-correct="false" onclick="answer(this,30)"><span class="letter">Γ</span>Ποικιλόχρου πιτυρίαση</button><button class="option" data-correct="false" onclick="answer(this,30)"><span class="letter">Δ</span>Μολυσματική τέρμινθο</button></div>
+      <div class="feedback" id="f30"><strong>Επεξήγηση:</strong> Ο συνδυασμός είναι εξαιρετικά χαρακτηριστικός για ψώρα.</div>
+    </article>
+    </div>
+  </main>
+  <footer>GreekDoc • Exam-focused dermatology notes</footer>
+</div>
+
+<script>
+let answered=0, correct=0;
+function showView(id,btn){
+  document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  document.querySelectorAll('.tabbtn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+}
+function answer(btn,i){
+  const q=document.getElementById('q'+i);
+  if(q.dataset.answered==='1') return;
+  q.dataset.answered='1';
+  const buttons=[...q.querySelectorAll('.option')];
+  buttons.forEach(b=>{
+    b.disabled=true;
+    if(b.dataset.correct==='true') b.classList.add('correct');
+  });
+  answered++;
+  if(btn.dataset.correct==='true') correct++;
+  else btn.classList.add('wrong');
+  document.getElementById('f'+i).classList.add('show');
+  document.getElementById('score').textContent=`Σκορ: ${correct} / ${answered}`;
+}
+function resetQuiz(){
+  answered=0; correct=0;
+  document.getElementById('score').textContent='Σκορ: 0 / 0';
+  document.querySelectorAll('.question').forEach(q=>{
+    delete q.dataset.answered;
+    q.querySelectorAll('.option').forEach(b=>{b.disabled=false;b.classList.remove('correct','wrong')});
+    q.querySelector('.feedback').classList.remove('show');
+  });
+}
+</script>
+</body>
+</html>
