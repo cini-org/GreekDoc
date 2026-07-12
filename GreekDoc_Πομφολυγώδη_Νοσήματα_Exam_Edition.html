@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Πομφολυγώδη Νοσήματα — GreekDoc Exam Edition</title>
+<style>
+:root{
+  --bg:#f3f0eb; --paper:#fffdfa; --ink:#202225; --muted:#6f7278;
+  --accent:#7b2448; --accent2:#2e6774; --line:#ddd7cf;
+  --sos:#fff2b8; --red:#ffe1df; --green:#e8f5e9; --blue:#e9f2f8; --purple:#f1e8f6;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,Arial,"Noto Sans",sans-serif;line-height:1.48}
+.container{max-width:1180px;margin:auto;padding:24px}
+.hero{background:linear-gradient(135deg,#7b2448,#2e6774);color:#fff;border-radius:24px;padding:34px 36px;box-shadow:0 14px 34px #0002}
+.hero h1{margin:0 0 6px;font-size:clamp(2.2rem,5vw,4rem);letter-spacing:-.04em}
+.hero p{max-width:900px;margin:6px 0}
+.badges{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}
+.badge{padding:6px 11px;border:1px solid #ffffff66;background:#ffffff18;border-radius:999px;font-size:.87rem}
+.toolbar{display:flex;gap:10px;flex-wrap:wrap;margin:18px 0}
+button{border:0;border-radius:12px;padding:10px 14px;background:var(--accent);color:#fff;font-weight:800;cursor:pointer}
+button.secondary{background:var(--accent2)}
+h2{font-size:1.7rem;margin:34px 0 14px;border-bottom:3px solid var(--accent);padding-bottom:7px}
+h3{margin:0 0 8px;color:var(--accent)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:17px;box-shadow:0 5px 15px #0000000c}
+.card.sos{background:var(--sos);border-color:#e2c95d}
+.card.red{background:var(--red)}
+.card.green{background:var(--green)}
+.card.blue{background:var(--blue)}
+.card.purple{background:var(--purple)}
+.kicker{font-size:.75rem;text-transform:uppercase;letter-spacing:.12em;font-weight:900;color:var(--accent2)}
+ul{margin:8px 0 0 20px;padding:0}
+li{margin:4px 0}
+strong{color:#4e1732}
+.callout{border-left:5px solid #b8860b;background:#fff7d6;padding:14px 16px;border-radius:0 14px 14px 0;margin:14px 0}
+.memory{font-weight:900;color:#28535c}
+.table-wrap{overflow:auto;background:var(--paper);border-radius:16px;border:1px solid var(--line)}
+table{border-collapse:collapse;width:100%;min-width:980px}
+th,td{padding:11px 12px;border-bottom:1px solid var(--line);vertical-align:top;text-align:left}
+th{background:#eee7e2;color:#57213b;position:sticky;top:0}
+details{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:12px 14px;margin:9px 0}
+summary{cursor:pointer;font-weight:900;color:var(--accent)}
+.quiz-item{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:15px;margin:10px 0}
+.option{display:block;margin:6px 0;padding:8px 10px;border-radius:9px;background:#f5f2ef}
+.answer{display:none;margin-top:10px;padding:10px;border-radius:10px;background:var(--green);font-weight:800}
+.small{font-size:.9rem;color:var(--muted)}
+.flow{display:grid;gap:8px;max-width:800px}
+.flow div{background:var(--paper);border:1px solid var(--line);padding:12px 14px;border-radius:12px}
+.arrow{text-align:center;font-size:1.4rem;font-weight:900;color:var(--accent)}
+footer{margin:36px 0 10px;text-align:center;color:var(--muted);font-size:.88rem}
+@media print{
+ body{background:#fff;font-size:10.4pt}
+ .container{max-width:none;padding:0}
+ .hero{box-shadow:none;border-radius:0;padding:20px}
+ .toolbar{display:none}
+ .card,details,.quiz-item{break-inside:avoid;box-shadow:none}
+ h2{break-after:avoid}
+ .answer{display:block!important}
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<section class="hero">
+  <div class="kicker" style="color:#f5dce9">GreekDoc • Exam Edition</div>
+  <h1>Πομφολυγώδη Νοσήματα</h1>
+  <p>Συμπυκνωμένες εξεταστικές σημειώσεις με έμφαση σε <b>επίπεδο διάσπασης, κλινική εικόνα, βλεννογόνους, Nikolsky, ανοσοφθορισμό, αντιγόνα και βασική θεραπεία</b>.</p>
+  <div class="badges">
+    <span class="badge">SOS πίνακες</span><span class="badge">Διαφορική διάγνωση</span>
+    <span class="badge">Flashcards</span><span class="badge">MCQ quiz</span><span class="badge">Print friendly</span>
+  </div>
+</section>
+
+<div class="toolbar">
+  <button onclick="window.print()">🖨 Εκτύπωση / PDF</button>
+  <button class="secondary" onclick="document.querySelectorAll('details').forEach(x=>x.open=true)">Άνοιγμα flashcards</button>
+  <button class="secondary" onclick="document.querySelectorAll('details').forEach(x=>x.open=false)">Κλείσιμο flashcards</button>
+</div>
+
+<h2>1. Η μεγάλη εικόνα</h2>
+<div class="grid">
+  <div class="card sos">
+    <h3>Ενδοεπιδερμική πομφόλυγα</h3>
+    <ul>
+      <li><strong>Πέμφιγα</strong></li>
+      <li><strong>Απλή πομφολυγώδης επιδερμόλυση</strong></li>
+      <li>Συνήθως πιο χαλαρές πομφόλυγες.</li>
+    </ul>
+  </div>
+  <div class="card blue">
+    <h3>Υποεπιδερμική πομφόλυγα</h3>
+    <ul>
+      <li>Πομφολυγώδες πεμφιγοειδές</li>
+      <li>Ερπητοειδής δερματίτιδα</li>
+      <li>Γραμμική IgA</li>
+      <li>Επίκτητη πομφολυγώδης επιδερμόλυση</li>
+      <li>Συνήθως πιο τεταμένες πομφόλυγες.</li>
+    </ul>
+  </div>
+  <div class="card purple">
+    <h3>Κληρονομικές πομφολυγώσεις</h3>
+    <ul>
+      <li>Απλή πομφολυγώδης επιδερμόλυση</li>
+      <li>Συνδεσμική πομφολυγώδης επιδερμόλυση</li>
+      <li>Δυστροφική πομφολυγώδης επιδερμόλυση</li>
+      <li>Hailey–Hailey</li>
+    </ul>
+  </div>
+</div>
+
+<div class="callout"><b>Βασικός κανόνας:</b> χαλαρή πομφόλυγα → σκέψου ενδοεπιδερμική διάσπαση. Τεταμένη πομφόλυγα → σκέψου υποεπιδερμική διάσπαση.</div>
+
+<h2>2. Μεγάλος συγκριτικός πίνακας</h2>
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+<th>Νόσημα</th><th>Ηλικία / clue</th><th>Πομφόλυγα</th><th>Κνησμός</th><th>Βλεννογόνοι</th><th>Nikolsky</th><th>Άμεσος IF</th><th>Αντιγόνο</th><th>Ουλές</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><b>Κοινή πέμφιγα</b></td>
+<td>Μέση/μεγαλύτερη ηλικία</td>
+<td>Χαλαρή, εύθραυστη</td>
+<td>Συνήθως όχι έντονος</td>
+<td><b>Συχνά</b>, συχνά πρώτα στόμα</td>
+<td><b>Θετικό</b></td>
+<td>Δικτυωτή IgG/C3 μεταξύ κερατινοκυττάρων</td>
+<td>Desmoglein 3 ± 1</td>
+<td>Όχι συνήθως</td>
+</tr>
+<tr>
+<td><b>Φυλλώδης πέμφιγα</b></td>
+<td>Επιπολής νόσος</td>
+<td>Πολύ επιφανειακή, συχνά κρούστες</td>
+<td>Μπορεί</td>
+<td><b>Όχι</b></td>
+<td>Θετικό</td>
+<td>Δικτυωτή IgG/C3</td>
+<td>Desmoglein 1</td>
+<td>Όχι</td>
+</tr>
+<tr>
+<td><b>Πομφολυγώδες πεμφιγοειδές</b></td>
+<td>Ηλικιωμένοι</td>
+<td><b>Τεταμένη</b></td>
+<td><b>Έντονος</b></td>
+<td>Σπάνια/ήπια</td>
+<td>Συνήθως αρνητικό</td>
+<td><b>Γραμμική IgG/C3</b> στη βασική μεμβράνη</td>
+<td>BP180, BP230</td>
+<td>Όχι</td>
+</tr>
+<tr>
+<td><b>Ερπητοειδής δερματίτιδα</b></td>
+<td>Νεότεροι, κοιλιοκάκη</td>
+<td>Μικρές ομαδοποιημένες φυσαλίδες</td>
+<td><b>Πολύ έντονος</b></td>
+<td>Σπάνια</td>
+<td>Αρνητικό</td>
+<td><b>Κοκκώδης IgA</b> στις θηλές του χορίου</td>
+<td>Επιδερμική transglutaminase</td>
+<td>Όχι</td>
+</tr>
+<tr>
+<td><b>Γραμμική IgA</b></td>
+<td>Παιδιά ή ενήλικες</td>
+<td>Τεταμένες, «string of pearls»</td>
+<td>Συχνός</td>
+<td>Μπορεί</td>
+<td>Μεταβλητό</td>
+<td><b>Γραμμική IgA</b> στη βασική μεμβράνη</td>
+<td>Συχνά BP180</td>
+<td>Όχι συνήθως</td>
+</tr>
+<tr>
+<td><b>Επίκτητη πομφολυγώδης επιδερμόλυση</b></td>
+<td>Τραυματικές περιοχές</td>
+<td>Τεταμένη</td>
+<td>Μεταβλητός</td>
+<td>Μπορεί</td>
+<td>Μεταβλητό</td>
+<td>Γραμμική IgG στη βασική μεμβράνη</td>
+<td>Κολλαγόνο VII</td>
+<td><b>Ναι, μίλια</b></td>
+</tr>
+<tr>
+<td><b>Ουλωτικό πεμφιγοειδές</b></td>
+<td>Κυρίως βλεννογόνοι</td>
+<td>Υποεπιδερμική</td>
+<td>Μεταβλητός</td>
+<td><b>Κυρίαρχοι</b></td>
+<td>Συνήθως αρνητικό</td>
+<td>Γραμμική IgG/C3</td>
+<td>Ποικίλα BMZ αντιγόνα</td>
+<td><b>Ναι</b></td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<h2>3. Κληρονομικές πομφολυγώσεις</h2>
+<div class="grid">
+<div class="card sos">
+  <h3>Απλή πομφολυγώδης επιδερμόλυση</h3>
+  <ul>
+    <li>Διάσπαση <strong>εντός της επιδερμίδας</strong>.</li>
+    <li>Πομφόλυγες μετά από τριβή, κυρίως παλάμες/πέλματα.</li>
+    <li>Συνήθως χωρίς ουλές.</li>
+    <li>Weber–Cockayne: εντοπισμένη μορφή.</li>
+    <li>Dowling–Meara: βαρύτερη, ομαδοποιημένες φυσαλίδες.</li>
+  </ul>
+</div>
+<div class="card">
+  <h3>Συνδεσμική πομφολυγώδης επιδερμόλυση</h3>
+  <ul>
+    <li>Διάσπαση στη <strong>διαυγή ζώνη</strong> της βασικής μεμβράνης.</li>
+    <li>Μπορεί να είναι πολύ βαριά από τη νεογνική ηλικία.</li>
+    <li>Πιθανή προσβολή βλεννογόνων και οργάνων.</li>
+  </ul>
+</div>
+<div class="card red">
+  <h3>Δυστροφική πομφολυγώδης επιδερμόλυση</h3>
+  <ul>
+    <li>Διάσπαση <strong>κάτω από τη βασική μεμβράνη</strong>.</li>
+    <li>Αφορά κολλαγόνο VII / ινίδια αγκύρωσης.</li>
+    <li>Επούλωση με <strong>ουλές και μίλια</strong>.</li>
+    <li>Βαριές μορφές: συμφύσεις δακτύλων, λειτουργική αναπηρία.</li>
+  </ul>
+</div>
+<div class="card purple">
+  <h3>Hailey–Hailey</h3>
+  <ul>
+    <li>Αυτοσωματική επικρατής.</li>
+    <li>Υποτροπιάζουσες διαβρώσεις/πλάκες σε <strong>καμπτικές επιφάνειες</strong>.</li>
+    <li>Θερμότητα, ιδρώτας και τριβή επιδεινώνουν.</li>
+    <li>Κλασικά χωρίς συστηματική συμμετοχή.</li>
+  </ul>
+</div>
+</div>
+
+<h2>4. Πέμφιγα</h2>
+<div class="grid">
+<div class="card sos">
+  <h3>Κοινή πέμφιγα</h3>
+  <ul>
+    <li>Αυτοαντισώματα κατά <strong>desmoglein 3</strong> ± desmoglein 1.</li>
+    <li>Ακανθόλυση → ενδοεπιδερμική πομφόλυγα.</li>
+    <li>Χαλαρές πομφόλυγες που ρήγνυνται εύκολα.</li>
+    <li>Στοματικές διαβρώσεις πολύ συχνές και μπορεί να προηγούνται.</li>
+    <li><strong>Nikolsky θετικό.</strong></li>
+    <li>Άμεσος IF: «δικτυωτή / chicken-wire» IgG και C3.</li>
+  </ul>
+</div>
+<div class="card">
+  <h3>Φυλλώδης πέμφιγα</h3>
+  <ul>
+    <li>Αντισώματα κατά <strong>desmoglein 1</strong>.</li>
+    <li>Πολύ επιφανειακή διάσπαση.</li>
+    <li>Κρούστες, διαβρώσεις, ερυθροδερμία.</li>
+    <li><strong>Δεν προσβάλλει βλεννογόνους.</strong></li>
+  </ul>
+</div>
+<div class="card">
+  <h3>Βλαστική πέμφιγα</h3>
+  <ul>
+    <li>Παραλλαγή κοινής πέμφιγας.</li>
+    <li>Βλαστικές, υπερτροφικές βλάβες κυρίως σε πτυχές.</li>
+  </ul>
+</div>
+<div class="card">
+  <h3>Ερυθηματώδης πέμφιγα</h3>
+  <ul>
+    <li>Επιπολής μορφή, συχνά σμηγματορροϊκή κατανομή.</li>
+    <li>Μπορεί να επικαλύπτεται κλινικά/ανοσολογικά με λύκο.</li>
+  </ul>
+</div>
+</div>
+
+<h2>5. Πομφολυγώδες πεμφιγοειδές</h2>
+<div class="grid">
+<div class="card sos">
+  <h3>Κλασική εικόνα</h3>
+  <ul>
+    <li>Ηλικιωμένος με <strong>έντονο κνησμό</strong>.</li>
+    <li>Κνησμώδεις ουρτικαριώδεις πλάκες πριν από τις πομφόλυγες.</li>
+    <li><strong>Τεταμένες πομφόλυγες</strong> σε ερυθηματώδη ή φυσιολογική βάση.</li>
+    <li>Βλεννογόνοι συνήθως απουσιάζουν ή προσβάλλονται ήπια.</li>
+    <li>Nikolsky συνήθως αρνητικό.</li>
+  </ul>
+</div>
+<div class="card blue">
+  <h3>Διάγνωση</h3>
+  <ul>
+    <li>Ιστολογία: υποεπιδερμική πομφόλυγα με ηωσινόφιλα.</li>
+    <li>Άμεσος IF: <strong>γραμμική IgG και C3</strong> στη βασική μεμβράνη.</li>
+    <li>Αντιγόνα: <strong>BP180 και BP230</strong>.</li>
+  </ul>
+</div>
+<div class="card green">
+  <h3>Θεραπεία — επίπεδο εξετάσεων</h3>
+  <ul>
+    <li>Ισχυρά τοπικά κορτικοστεροειδή σε εντοπισμένη/μέτρια νόσο.</li>
+    <li>Συστηματικά κορτικοστεροειδή σε εκτεταμένη νόσο.</li>
+    <li>Ανοσοκατασταλτικά ως στεροειδο-εξοικονομητικά.</li>
+  </ul>
+</div>
+</div>
+
+<h2>6. Ερπητοειδής δερματίτιδα</h2>
+<div class="grid">
+<div class="card sos">
+  <h3>Κλινική εικόνα</h3>
+  <ul>
+    <li><strong>Έντονα κνησμώδεις</strong>, μικρές, ομαδοποιημένες φυσαλίδες.</li>
+    <li>Συμμετρικά σε αγκώνες, γόνατα, γλουτούς, τριχωτό.</li>
+    <li>Συχνά βλέπουμε εκδορές και κρούστες αντί άθικτων φυσαλίδων.</li>
+    <li>Ισχυρή συσχέτιση με <strong>κοιλιοκάκη / γλουτένη</strong>.</li>
+  </ul>
+</div>
+<div class="card blue">
+  <h3>Διάγνωση</h3>
+  <ul>
+    <li>Ιστολογία: ουδετερόφιλα στις θηλές του χορίου.</li>
+    <li>Άμεσος IF: <strong>κοκκώδης IgA</strong> στις θηλές του χορίου.</li>
+    <li>Αντιγόνο: επιδερμική transglutaminase.</li>
+  </ul>
+</div>
+<div class="card green">
+  <h3>Θεραπεία</h3>
+  <ul>
+    <li><strong>Δαψόνη</strong> για ταχεία υποχώρηση του κνησμού.</li>
+    <li><strong>Δίαιτα χωρίς γλουτένη</strong> για μακροχρόνιο έλεγχο.</li>
+  </ul>
+</div>
+</div>
+
+<h2>7. Γραμμική IgA και παιδική πομφολυγώδης δερματοπάθεια</h2>
+<div class="grid">
+<div class="card sos">
+  <h3>Γραμμική IgA</h3>
+  <ul>
+    <li>Υποεπιδερμική πομφολυγώδης νόσος.</li>
+    <li>Άμεσος IF: <strong>γραμμική IgA</strong> κατά μήκος βασικής μεμβράνης.</li>
+    <li>Μπορεί να είναι ιδιοπαθής ή φαρμακευτική.</li>
+  </ul>
+</div>
+<div class="card">
+  <h3>Χρόνια πομφολυγώδης δερματοπάθεια παιδικής ηλικίας</h3>
+  <ul>
+    <li>Παιδική μορφή γραμμικής IgA.</li>
+    <li>Τεταμένες φυσαλίδες σε δακτυλιοειδή διάταξη.</li>
+    <li>Κλασικό «<strong>string of pearls</strong>» ή «cluster of jewels».</li>
+    <li>Συχνά γεννητικά, κάτω κοιλία, μηροί.</li>
+  </ul>
+</div>
+</div>
+
+<h2>8. Επίκτητη πομφολυγώδης επιδερμόλυση</h2>
+<div class="grid">
+<div class="card red">
+  <h3>Τι τη ξεχωρίζει</h3>
+  <ul>
+    <li>Αυτοαντισώματα κατά <strong>κολλαγόνου VII</strong>.</li>
+    <li>Πομφόλυγες σε σημεία τραυματισμού: χέρια, πόδια, αγκώνες, γόνατα.</li>
+    <li>Επούλωση με <strong>ουλές και μίλια</strong>.</li>
+    <li>Μπορεί να προσβάλει βλεννογόνους.</li>
+  </ul>
+</div>
+<div class="card blue">
+  <h3>Salt-split skin</h3>
+  <p>Στην επίκτητη πομφολυγώδη επιδερμόλυση τα αντισώματα συνδέονται συνήθως στην <strong>οροφή του χορίου / floor</strong> του τεχνητού διαχωρισμού, σε αντίθεση με το πομφολυγώδες πεμφιγοειδές που συνήθως δίνει σύνδεση στην οροφή της πομφόλυγας.</p>
+</div>
+</div>
+
+<h2>9. Ουλωτικό πεμφιγοειδές</h2>
+<div class="card sos">
+  <ul>
+    <li>Κυρίως προσβολή <strong>βλεννογόνων</strong>.</li>
+    <li>Στόμα, επιπεφυκότες, ρινοφάρυγγας, λάρυγγας, γεννητικά.</li>
+    <li>Επούλωση με <strong>ουλοποίηση</strong>.</li>
+    <li>Οφθαλμική προσβολή μπορεί να απειλήσει την όραση.</li>
+  </ul>
+</div>
+
+<h2>10. Διαγνωστικός αλγόριθμος</h2>
+<div class="flow">
+  <div><b>1. Είναι η πομφόλυγα χαλαρή ή τεταμένη;</b></div>
+  <div class="arrow">↓</div>
+  <div><b>Χαλαρή</b> → σκέψου πέμφιγα.</div>
+  <div><b>Τεταμένη</b> → σκέψου υποεπιδερμικό νόσημα.</div>
+  <div class="arrow">↓</div>
+  <div><b>Έντονος κνησμός σε ηλικιωμένο</b> → πομφολυγώδες πεμφιγοειδές.</div>
+  <div><b>Ομαδοποιημένες φυσαλίδες σε αγκώνες/γόνατα + κοιλιοκάκη</b> → ερπητοειδής δερματίτιδα.</div>
+  <div><b>Ουλές και μίλια σε σημεία τραυματισμού</b> → επίκτητη πομφολυγώδης επιδερμόλυση.</div>
+  <div><b>Κυρίαρχη προσβολή βλεννογόνων με ουλές</b> → ουλωτικό πεμφιγοειδές.</div>
+</div>
+
+<h2>11. Exam traps</h2>
+<div class="grid">
+<div class="card sos"><b>Πέμφιγα:</b> χαλαρές πομφόλυγες, όχι τεταμένες.</div>
+<div class="card sos"><b>Πομφολυγώδες πεμφιγοειδές:</b> έντονος κνησμός και τεταμένες πομφόλυγες.</div>
+<div class="card sos"><b>Φυλλώδης πέμφιγα:</b> δεν προσβάλλει βλεννογόνους.</div>
+<div class="card sos"><b>Ερπητοειδής δερματίτιδα:</b> δεν σχετίζεται με HSV· σχετίζεται με γλουτένη.</div>
+<div class="card sos"><b>Γραμμική IgA:</b> γραμμική εναπόθεση IgA, όχι κοκκώδης.</div>
+<div class="card sos"><b>Επίκτητη πομφολυγώδης επιδερμόλυση:</b> κολλαγόνο VII, ουλές και μίλια.</div>
+</div>
+
+<h2>12. Οι 12 φράσεις που πρέπει να θυμάσαι</h2>
+<div class="grid">
+<div class="card green"><b>1.</b> Χαλαρή πομφόλυγα + στόμα → κοινή πέμφιγα.</div>
+<div class="card green"><b>2.</b> Δικτυωτή IgG μεταξύ κερατινοκυττάρων → πέμφιγα.</div>
+<div class="card green"><b>3.</b> Τεταμένη πομφόλυγα ηλικιωμένου + κνησμός → πεμφιγοειδές.</div>
+<div class="card green"><b>4.</b> Γραμμική IgG/C3 στη βασική μεμβράνη → πεμφιγοειδές.</div>
+<div class="card green"><b>5.</b> Dsg3 → βλεννογόνοι.</div>
+<div class="card green"><b>6.</b> Dsg1 → επιπολής δέρμα.</div>
+<div class="card green"><b>7.</b> Κοκκώδης IgA στις θηλές → ερπητοειδής δερματίτιδα.</div>
+<div class="card green"><b>8.</b> Γλουτένη + δαψόνη → ερπητοειδής δερματίτιδα.</div>
+<div class="card green"><b>9.</b> «String of pearls» → γραμμική IgA παιδικής ηλικίας.</div>
+<div class="card green"><b>10.</b> Κολλαγόνο VII → επίκτητη πομφολυγώδης επιδερμόλυση.</div>
+<div class="card green"><b>11.</b> Ουλές + μίλια → επίκτητη πομφολυγώδης επιδερμόλυση.</div>
+<div class="card green"><b>12.</b> Βλεννογόνοι + ουλές → ουλωτικό πεμφιγοειδές.</div>
+</div>
+
+<h2>13. Flashcards</h2>
+<details><summary>Ποιο είναι το επίπεδο διάσπασης στην κοινή πέμφιγα;</summary><p>Ενδοεπιδερμικό, λόγω ακανθόλυσης.</p></details>
+<details><summary>Ποια desmoglein σχετίζεται κυρίως με βλεννογονική προσβολή;</summary><p>Η desmoglein 3.</p></details>
+<details><summary>Ποια είναι η εικόνα του άμεσου ανοσοφθορισμού στην πέμφιγα;</summary><p>Δικτυωτή εναπόθεση IgG και C3 μεταξύ των κερατινοκυττάρων.</p></details>
+<details><summary>Ποια είναι η τυπική ηλικία και κλινική εικόνα του πομφολυγώδους πεμφιγοειδούς;</summary><p>Ηλικιωμένος με έντονο κνησμό και τεταμένες πομφόλυγες.</p></details>
+<details><summary>Ποια αντιγόνα στοχεύονται στο πομφολυγώδες πεμφιγοειδές;</summary><p>BP180 και BP230.</p></details>
+<details><summary>Ποια είναι η εικόνα του IF στην ερπητοειδή δερματίτιδα;</summary><p>Κοκκώδης εναπόθεση IgA στις θηλές του χορίου.</p></details>
+<details><summary>Ποια νόσος συνδέεται με κοιλιοκάκη;</summary><p>Η ερπητοειδής δερματίτιδα.</p></details>
+<details><summary>Ποια θεραπεία δίνει γρήγορη ανακούφιση στην ερπητοειδή δερματίτιδα;</summary><p>Η δαψόνη.</p></details>
+<details><summary>Ποιο είναι το χαρακτηριστικό μοτίβο της παιδικής γραμμικής IgA;</summary><p>«String of pearls» ή «cluster of jewels».</p></details>
+<details><summary>Ποιο αντιγόνο στοχεύεται στην επίκτητη πομφολυγώδη επιδερμόλυση;</summary><p>Το κολλαγόνο VII.</p></details>
+<details><summary>Ποια νόσος αφήνει ουλές και μίλια;</summary><p>Η επίκτητη πομφολυγώδης επιδερμόλυση.</p></details>
+<details><summary>Ποια πομφολυγώδης νόσος προσβάλλει κυρίως βλεννογόνους και ουλοποιείται;</summary><p>Το ουλωτικό πεμφιγοειδές.</p></details>
+
+<h2>14. Mini quiz</h2>
+<div id="quiz">
+<div class="quiz-item">
+<b>1. Ηλικιωμένος με έντονο κνησμό και τεταμένες πομφόλυγες έχει πιθανότερα:</b>
+<label class="option"><input type="radio" name="q1"> Κοινή πέμφιγα</label>
+<label class="option"><input type="radio" name="q1" data-correct> Πομφολυγώδες πεμφιγοειδές</label>
+<label class="option"><input type="radio" name="q1"> Φυλλώδη πέμφιγα</label>
+<div class="answer">Σωστό: πομφολυγώδες πεμφιγοειδές.</div>
+</div>
+
+<div class="quiz-item">
+<b>2. Ποια νόσος σχετίζεται με desmoglein 3;</b>
+<label class="option"><input type="radio" name="q2" data-correct> Κοινή πέμφιγα</label>
+<label class="option"><input type="radio" name="q2"> Ερπητοειδής δερματίτιδα</label>
+<label class="option"><input type="radio" name="q2"> Γραμμική IgA</label>
+<div class="answer">Σωστό: κοινή πέμφιγα.</div>
+</div>
+
+<div class="quiz-item">
+<b>3. Κοκκώδης IgA στις θηλές του χορίου είναι χαρακτηριστική για:</b>
+<label class="option"><input type="radio" name="q3"> Πομφολυγώδες πεμφιγοειδές</label>
+<label class="option"><input type="radio" name="q3" data-correct> Ερπητοειδή δερματίτιδα</label>
+<label class="option"><input type="radio" name="q3"> Επίκτητη πομφολυγώδη επιδερμόλυση</label>
+<div class="answer">Σωστό: ερπητοειδής δερματίτιδα.</div>
+</div>
+
+<div class="quiz-item">
+<b>4. Ποια νόσος αφήνει συχνά ουλές και μίλια;</b>
+<label class="option"><input type="radio" name="q4"> Πομφολυγώδες πεμφιγοειδές</label>
+<label class="option"><input type="radio" name="q4" data-correct> Επίκτητη πομφολυγώδης επιδερμόλυση</label>
+<label class="option"><input type="radio" name="q4"> Φυλλώδης πέμφιγα</label>
+<div class="answer">Σωστό: επίκτητη πομφολυγώδης επιδερμόλυση.</div>
+</div>
+
+<div class="quiz-item">
+<b>5. Ποια νόσος συνδέεται περισσότερο με κοιλιοκάκη;</b>
+<label class="option"><input type="radio" name="q5"> Ουλωτικό πεμφιγοειδές</label>
+<label class="option"><input type="radio" name="q5" data-correct> Ερπητοειδής δερματίτιδα</label>
+<label class="option"><input type="radio" name="q5"> Hailey–Hailey</label>
+<div class="answer">Σωστό: ερπητοειδής δερματίτιδα.</div>
+</div>
+
+<div class="quiz-item">
+<b>6. Ποιο IF είναι τυπικό για πομφολυγώδες πεμφιγοειδές;</b>
+<label class="option"><input type="radio" name="q6"> Δικτυωτή IgG μεταξύ κερατινοκυττάρων</label>
+<label class="option"><input type="radio" name="q6" data-correct> Γραμμική IgG/C3 στη βασική μεμβράνη</label>
+<label class="option"><input type="radio" name="q6"> Κοκκώδης IgA στις θηλές του χορίου</label>
+<div class="answer">Σωστό: γραμμική IgG/C3 στη βασική μεμβράνη.</div>
+</div>
+</div>
+
+<button onclick="gradeQuiz()">Έλεγχος απαντήσεων</button>
+<p id="score" style="font-weight:900"></p>
+
+<footer>GreekDoc Exam Edition • Πομφολυγώδη Νοσήματα • Βασισμένο στο ανεβασμένο κεφάλαιο</footer>
+</div>
+
+<script>
+function gradeQuiz(){
+  const qs=[...document.querySelectorAll('.quiz-item')];
+  let score=0;
+  qs.forEach(q=>{
+    const checked=q.querySelector('input:checked');
+    if(checked && checked.hasAttribute('data-correct')) score++;
+    q.querySelector('.answer').style.display='block';
+  });
+  document.getElementById('score').textContent=`Σκορ: ${score}/${qs.length}`;
+}
+</script>
+</body>
+</html>
